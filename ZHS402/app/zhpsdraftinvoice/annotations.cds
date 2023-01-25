@@ -1,0 +1,1 @@
+using ZCDSEHBTC0002 as service from '../../srv/cat-service';

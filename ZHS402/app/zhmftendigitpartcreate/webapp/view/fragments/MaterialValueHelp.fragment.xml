@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:m="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:core="sap.ui.core">
+	<ValueHelpDialog
+		title="{i18n>Material}"
+		ok=".onValueHelpOkPress"
+		cancel=".onValueHelpCancelPress"
+		supportRanges="false"
+		key="CompanyCode"
+        supportMultiselect="false"
+		descriptionKey="CompanyCode">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="E_PARTS_NO"
+						label="{i18n>Material}"
+						visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="E_PARTS_NO" />
+						</fb:control>
+					</fb:FilterGroupItem>
+					
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

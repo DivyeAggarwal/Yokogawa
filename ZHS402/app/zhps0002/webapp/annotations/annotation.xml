@@ -1,0 +1,23 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZSRVBHPS0008/$metadata">
+        <edmx:Include Namespace="cds_zsrvhps0004"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="cds_zsrvhps0004.ZCDSEHPSC0005Type">
+                <Annotation Term="UI.SelectionFields">
+                    <Collection>
+                        <PropertyPath>pbukr</PropertyPath>
+                        <PropertyPath>cpsphi</PropertyPath>
+                        <PropertyPath>cps_psp_pnr</PropertyPath>
+                        <PropertyPath>zz1_mscode_prd</PropertyPath>
+                        <PropertyPath>cpudt</PropertyPath>
+                    </Collection>
+                </Annotation>
+            </Annotations>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

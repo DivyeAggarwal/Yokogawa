@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="4.0" xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx">
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Capabilities.V1.xml">
+        <edmx:Include Alias="Capabilities" Namespace="Org.OData.Capabilities.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Alias="Common" Namespace="com.sap.vocabularies.Common.v1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://oasis-tcs.github.io/odata-vocabularies/vocabularies/Org.OData.Core.V1.xml">
+        <edmx:Include Alias="Core" Namespace="Org.OData.Core.V1"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Alias="UI" Namespace="com.sap.vocabularies.UI.v1"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema Namespace="ZCDSEHBTC0002" xmlns="http://docs.oasis-open.org/odata/ns/edm">
+            <EntityContainer Name="EntityContainer">
+                <EntitySet Name="ZTHBT0021" EntityType="ZCDSEHBTC0002.ZTHBT0021"/>
+                <EntitySet Name="ZTHBT0022" EntityType="ZCDSEHBTC0002.ZTHBT0022">
+                    <NavigationPropertyBinding Path="Resouces" Target="ZTHBT0023"/>
+                    <NavigationPropertyBinding Path="Expense" Target="ZTHBT0024"/>
+                    <NavigationPropertyBinding Path="Material" Target="ZTHBT0025"/>
+                </EntitySet>
+                <EntitySet Name="ZTHBT0023" EntityType="ZCDSEHBTC0002.ZTHBT0023">
+                    <NavigationPropertyBinding Path="D_Invoice" Target="ZTHBT0022"/>
+                </EntitySet>
+                <EntitySet Name="ZTHBT0024" EntityType="ZCDSEHBTC0002.ZTHBT0024">
+                    <NavigationPropertyBinding Path="D_Invoice" Target="ZTHBT0022"/>
+                </EntitySet>
+                <EntitySet Name="ZTHBT0025" EntityType="ZCDSEHBTC0002.ZTHBT0025">
+                    <NavigationPropertyBinding Path="D_Invoice" Target="ZTHBT0022"/>
+                </EntitySet>
+            </EntityContainer>
+            <EntityType Name="ZTHBT0021">
+                <Key>
+                    <PropertyRef Name="ProjectID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ProjectID" Type="Edm.String" Nullable="false"/>
+                <Property Name="ActivityType" Type="Edm.String"/>
+                <Property Name="AI" Type="Edm.String"/>
+                <Property Name="UnitPrice" Type="Edm.Int32"/>
+                <Property Name="Currency" Type="Edm.String"/>
+            </EntityType>
+            <EntityType Name="ZTHBT0022">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <Property Name="D_Invoice" Type="Edm.String"/>
+                <Property Name="InvDate" Type="Edm.String"/>
+                <Property Name="ProjectID" Type="Edm.String"/>
+                <Property Name="EmpID" Type="Edm.Int32"/>
+                <NavigationProperty Name="Resouces" Type="Collection(ZCDSEHBTC0002.ZTHBT0023)" Partner="D_Invoice">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="Expense" Type="Collection(ZCDSEHBTC0002.ZTHBT0024)" Partner="D_Invoice">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+                <NavigationProperty Name="Material" Type="Collection(ZCDSEHBTC0002.ZTHBT0025)" Partner="D_Invoice">
+                    <OnDelete Action="Cascade"/>
+                </NavigationProperty>
+            </EntityType>
+            <EntityType Name="ZTHBT0023">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="D_Invoice" Type="ZCDSEHBTC0002.ZTHBT0022" Partner="Resouces">
+                    <ReferentialConstraint Property="D_Invoice_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="D_Invoice_ID" Type="Edm.Guid"/>
+                <Property Name="YearMonth" Type="Edm.String"/>
+                <Property Name="EmpID" Type="Edm.Int32"/>
+                <Property Name="EmpName" Type="Edm.String"/>
+                <Property Name="Grade" Type="Edm.String"/>
+                <Property Name="Belongs" Type="Edm.String"/>
+                <Property Name="Curr" Type="Edm.String"/>
+                <Property Name="UnitPrice" Type="Edm.Int32"/>
+                <Property Name="Hours" Type="Edm.Int32"/>
+                <Property Name="BillingAmount" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="ZTHBT0024">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="D_Invoice" Type="ZCDSEHBTC0002.ZTHBT0022" Partner="Expense">
+                    <ReferentialConstraint Property="D_Invoice_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="D_Invoice_ID" Type="Edm.Guid"/>
+                <Property Name="CostElement" Type="Edm.String"/>
+                <Property Name="Note" Type="Edm.String"/>
+                <Property Name="ItemText" Type="Edm.String"/>
+                <Property Name="Currency" Type="Edm.String"/>
+                <Property Name="Amount" Type="Edm.Int32"/>
+                <Property Name="CalcType" Type="Edm.String"/>
+                <Property Name="MarkUp" Type="Edm.Int32"/>
+                <Property Name="BillingAmount" Type="Edm.Int32"/>
+            </EntityType>
+            <EntityType Name="ZTHBT0025">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="createdAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="createdBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="modifiedAt" Type="Edm.DateTimeOffset" Precision="7"/>
+                <Property Name="modifiedBy" Type="Edm.String" MaxLength="255"/>
+                <Property Name="ID" Type="Edm.Guid" Nullable="false"/>
+                <NavigationProperty Name="D_Invoice" Type="ZCDSEHBTC0002.ZTHBT0022" Partner="Material">
+                    <ReferentialConstraint Property="D_Invoice_ID" ReferencedProperty="ID"/>
+                </NavigationProperty>
+                <Property Name="D_Invoice_ID" Type="Edm.Guid"/>
+                <Property Name="MaterialDesc" Type="Edm.String"/>
+                <Property Name="Currency" Type="Edm.String"/>
+                <Property Name="UnitPrice" Type="Edm.Int32"/>
+                <Property Name="Quan" Type="Edm.Int32"/>
+                <Property Name="UoM" Type="Edm.String"/>
+                <Property Name="BillingAmount" Type="Edm.Int32"/>
+            </EntityType>
+            <Annotations Target="ZCDSEHBTC0002.EntityContainer/ZTHBT0021">
+                <Annotation Term="Capabilities.UpdateRestrictions">
+                    <Record Type="Capabilities.UpdateRestrictionsType">
+                        <PropertyValue Property="Updatable" Bool="true"/>
+                    </Record>
+                </Annotation>
+                <Annotation Term="Capabilities.InsertRestrictions">
+                    <Record Type="Capabilities.InsertRestrictionsType">
+                        <PropertyValue Property="Insertable" Bool="true"/>
+                    </Record>
+                </Annotation>
+            </Annotations>
+            <Annotations Target="ZCDSEHBTC0002.ZTHBT0021/createdAt">
+                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                <Annotation Term="Core.Immutable" Bool="true"/>
+                <Annotation Term="Core.Computed" Bool="true"/>
+                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                </Annotations>
+                <Annotations Target="ZCDSEHBTC0002.ZTHBT0021/createdBy">
+                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                    <Annotation Term="Core.Immutable" Bool="true"/>
+                    <Annotation Term="Core.Computed" Bool="true"/>
+                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                        </Annotations>
+                        <Annotations Target="ZCDSEHBTC0002.ZTHBT0021/modifiedAt">
+                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                            <Annotation Term="Core.Computed" Bool="true"/>
+                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                            </Annotations>
+                            <Annotations Target="ZCDSEHBTC0002.ZTHBT0021/modifiedBy">
+                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                <Annotation Term="Core.Computed" Bool="true"/>
+                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                    </Annotations>
+                                    <Annotations Target="ZCDSEHBTC0002.ZTHBT0022/createdAt">
+                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                        <Annotation Term="Core.Immutable" Bool="true"/>
+                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                        <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                        </Annotations>
+                                        <Annotations Target="ZCDSEHBTC0002.ZTHBT0022/createdBy">
+                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                            <Annotation Term="Core.Immutable" Bool="true"/>
+                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                            <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                </Annotations>
+                                                <Annotations Target="ZCDSEHBTC0002.ZTHBT0022/modifiedAt">
+                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                    <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                    </Annotations>
+                                                    <Annotations Target="ZCDSEHBTC0002.ZTHBT0022/modifiedBy">
+                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                            <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                            </Annotations>
+                                                            <Annotations Target="ZCDSEHBTC0002.ZTHBT0023/createdAt">
+                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                </Annotations>
+                                                                <Annotations Target="ZCDSEHBTC0002.ZTHBT0023/createdBy">
+                                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                    <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                        </Annotations>
+                                                                        <Annotations Target="ZCDSEHBTC0002.ZTHBT0023/modifiedAt">
+                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                            </Annotations>
+                                                                            <Annotations Target="ZCDSEHBTC0002.ZTHBT0023/modifiedBy">
+                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                    </Annotations>
+                                                                                    <Annotations Target="ZCDSEHBTC0002.ZTHBT0024/createdAt">
+                                                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                        <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                        <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                                        </Annotations>
+                                                                                        <Annotations Target="ZCDSEHBTC0002.ZTHBT0024/createdBy">
+                                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                            <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                            <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                                                </Annotations>
+                                                                                                <Annotations Target="ZCDSEHBTC0002.ZTHBT0024/modifiedAt">
+                                                                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                    <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                                                    </Annotations>
+                                                                                                    <Annotations Target="ZCDSEHBTC0002.ZTHBT0024/modifiedBy">
+                                                                                                        <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                        <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                        <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                            <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                                            </Annotations>
+                                                                                                            <Annotations Target="ZCDSEHBTC0002.ZTHBT0025/createdAt">
+                                                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                <Annotation Term="Common.Label" String="{i18n>CreatedAt}"/>
+                                                                                                                </Annotations>
+                                                                                                                <Annotations Target="ZCDSEHBTC0002.ZTHBT0025/createdBy">
+                                                                                                                    <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                    <Annotation Term="Core.Immutable" Bool="true"/>
+                                                                                                                    <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                    <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                        <Annotation Term="Common.Label" String="{i18n>CreatedBy}"/>
+                                                                                                                        </Annotations>
+                                                                                                                        <Annotations Target="ZCDSEHBTC0002.ZTHBT0025/modifiedAt">
+                                                                                                                            <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                            <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                            <Annotation Term="Common.Label" String="{i18n>ChangedAt}"/>
+                                                                                                                            </Annotations>
+                                                                                                                            <Annotations Target="ZCDSEHBTC0002.ZTHBT0025/modifiedBy">
+                                                                                                                                <Annotation Term="UI.HiddenFilter" Bool="true"/>
+                                                                                                                                <Annotation Term="Core.Computed" Bool="true"/>
+                                                                                                                                <Annotation Term="Core.Description" String="{i18n>UserID.Description}"/>
+                                                                                                                                    <Annotation Term="Common.Label" String="{i18n>ChangedBy}"/>
+                                                                                                                                    </Annotations>
+                                                                                                                                </Schema>
+                                                                                                                            </edmx:DataServices>
+                                                                                                                        </edmx:Edmx>

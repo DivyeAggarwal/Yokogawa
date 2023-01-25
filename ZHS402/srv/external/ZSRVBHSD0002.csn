@@ -1,0 +1,343 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.3.1"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHSD0002": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHSD0002.ZCDSEHSDB0010": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Basic view for Customer Master extend",
+      "@sap.value.list": "true",
+      "elements": {
+        "Kunnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer",
+          "@sap.quickinfo": "Customer Number",
+          "notNull": true
+        },
+        "Vkorg": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Organization",
+          "notNull": true
+        },
+        "Vtweg": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Distribution Channel",
+          "notNull": true
+        },
+        "Spart": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Division",
+          "notNull": true
+        },
+        "stctyp": {
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "error_status": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Error Status",
+          "notNull": false
+        },
+        "message_type": {
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "message_text": {
+          "type": "cds.String",
+          "length": 100,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHSD0002.ZCDSEHSDB0011": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Input help for error status",
+      "@sap.value.list": "true",
+      "elements": {
+        "DOMALANGU": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.label": "Lang.",
+          "@sap.quickinfo": "Language Key",
+          "notNull": true
+        },
+        "domvalue_l": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Lower Value",
+          "@sap.quickinfo": "Values for Domains: Single Value/Lower Limit",
+          "notNull": true
+        },
+        "Value": {
+          "type": "cds.String",
+          "length": 60,
+          "@sap.label": "Short Descript.",
+          "@sap.quickinfo": "Short Text for Fixed Values",
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHSD0002.ZCDSEHSDC0002": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumption view for Customer extend",
+      "elements": {
+        "Kunnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer",
+          "@sap.quickinfo": "Customer Number",
+          "@sap.value.list": "standard",
+          "notNull": true
+        },
+        "Vkorg": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Organization",
+          "notNull": true
+        },
+        "Vtweg": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Distribution Channel",
+          "notNull": true
+        },
+        "Spart": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Division",
+          "notNull": true
+        },
+        "error_status": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Error Status",
+          "notNull": false
+        },
+        "message_type": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.label": "Message type",
+          "notNull": false
+        },
+        "message_text": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.label": "Result",
+          "notNull": false
+        }
+      },
+      "actions": {
+        "Extend_Customer": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHSD0002.ZCDSEHSDC0002",
+            "notNull": false
+          }
+        }
+      }
+    },
+    "ZSRVBHSD0002.ZCDSEHSDC0003": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumption view for Customer extend",
+      "elements": {
+        "Kunnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Customer",
+          "@sap.quickinfo": "Customer Number",
+          "@sap.value.list": "standard",
+          "notNull": true
+        },
+        "Vkorg": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Organization",
+          "notNull": true
+        },
+        "Vtweg": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Distribution Channel",
+          "notNull": true
+        },
+        "Spart": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Division",
+          "notNull": true
+        },
+        "error_status": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Error Status",
+          "notNull": true
+        },
+        "stctyp": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.filter.restriction": "single-value",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Error Status",
+          "@sap.value.list": "fixed-values",
+          "notNull": false
+        },
+        "message_type": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.label": "Message type",
+          "notNull": false
+        },
+        "message_text": {
+          "type": "cds.String",
+          "length": 100,
+          "@sap.label": "Result",
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHSD0002.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.label": "Short text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHSD0002.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "ExternalCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Commercial",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "UoM Text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@sap.label": "Decimal Places",
+          "notNull": false
+        }
+      }
+    }
+  }
+}

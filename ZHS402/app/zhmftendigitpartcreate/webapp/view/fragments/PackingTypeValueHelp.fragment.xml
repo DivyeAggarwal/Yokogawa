@@ -1,0 +1,31 @@
+<core:FragmentDefinition
+	xmlns="sap.ui.comp.valuehelpdialog"
+	xmlns:m="sap.m"
+	xmlns:fb="sap.ui.comp.filterbar"
+	xmlns:core="sap.ui.core">
+	<ValueHelpDialog
+		title="{i18n>PackingType}"
+		ok=".onPackageTypeValueHelpOkPress"
+		cancel=".onPackageTypeValueHelpCancelPress"
+		supportRanges="false"
+		key="PCKG_TYPE"
+        supportMultiselect="false"
+		descriptionKey="PCKG_TYPE">
+		<filterBar>
+			<fb:FilterBar advancedMode="true" search=".onFilterBarSearch" isRunningInValueHelpDialog="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem
+						groupName="__$INTERNAL$"
+						name="PCKG_TYPE"
+						label="{i18n>PackingType}"
+						visibleInFilterBar="true">
+						<fb:control>
+							<m:Input name="PCKG_TYPE" />
+						</fb:control>
+					</fb:FilterGroupItem>
+					
+				</fb:filterGroupItems>
+			</fb:FilterBar>
+		</filterBar>
+	</ValueHelpDialog>
+</core:FragmentDefinition>

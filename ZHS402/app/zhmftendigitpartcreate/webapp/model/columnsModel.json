@@ -1,0 +1,17 @@
+{
+	"cols": [
+		{
+			"label": "Material",
+			"template": "E_PARTS_NO",
+			"width": "5rem"
+		},
+		{
+			"label": "Makers Code",
+			"template": "YEOS_MNF_NO"
+		},
+		{
+			"label": "Packing Code",
+			"template": "PCKG_CD"
+		}
+	]
+}
