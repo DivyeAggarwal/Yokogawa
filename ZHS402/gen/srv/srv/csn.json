@@ -3713,7 +3713,10 @@
               "ValueListProperty": "AccountingIndicator"
             },
             {
-              "$Type": "Common.ValueListParameterDisplayOnly",
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "ACINDICATORDESC"
+              },
               "ValueListProperty": "AcctIndDescription"
             },
             {
@@ -3777,6 +3780,45 @@
           "length": 10
         },
         "SERVICEORDERITEM": {
+          "@Common.Label": "Service Order Item",
+          "@Common.ValueList.CollectionPath": "ServiceOrderItem",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "OBJECT_ID"
+              },
+              "ValueListProperty": "object_id"
+            },
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "SERVICEORDERITEM"
+              },
+              "ValueListProperty": "number_int"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "SERVORDERITEMDESC"
+              },
+              "ValueListProperty": "description_i"
+            },
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "EAUFNR"
+              },
+              "ValueListProperty": "InternalOrder"
+            },
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "BEMOT"
+              },
+              "ValueListProperty": "ac_indicator"
+            }
+          ],
           "@title": "Service Order Item",
           "type": "cds.String",
           "length": 6
@@ -3803,7 +3845,10 @@
               "ValueListProperty": "ProjectId"
             },
             {
-              "$Type": "Common.ValueListParameterDisplayOnly",
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PARENTWBSDESC"
+              },
               "ValueListProperty": "ProjectDesc"
             }
           ],
@@ -3833,7 +3878,10 @@
               "ValueListProperty": "ProjectId"
             },
             {
-              "$Type": "Common.ValueListParameterDisplayOnly",
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "RWBSDESC"
+              },
               "ValueListProperty": "ProjectDesc"
             }
           ],
