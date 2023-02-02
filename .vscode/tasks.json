@@ -1,0 +1,23 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "cds-deploy-to-hana-ZHS402-ZHS402-db",
+      "type": "shell",
+      "command": "cds",
+      "args": [
+        "deploy",
+        "--to",
+        "hana:ZHS402-db",
+        "--no-save"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}/ZHS402"
+      },
+      "isBackground": true,
+      "problemMatcher": [
+        "$cap-hdi-bind-handler"
+      ]
+    }
+  ]
+}

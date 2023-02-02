@@ -47,14 +47,69 @@ service ZCDSEHBTC0002 {
     }
 }
 
-service ZCDSEHBTC0003 {
-    entity ZTHBT0019     as projection on db.ZTHBT0019;
-    entity ZTHBT0020     as projection on db.ZTHBT0020;
-
-    entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
+service ZCDSEHBTC0003
+{
+   // entity ZTHBT0019 as projection on db.ZTHBT0019;
+       entity AccountingIndicator as projection on TimeSheetEntry.ZCDSEHCSC0003 {
         key AccountingIndicator,
-            AcctIndDescription
-    };
+            AcctIndDescription,
+            Language
+    }
+        entity I_StatisticalKeyFigureText as projection on TimeSheetEntry.ZCDSEHFIC0006 {
+        key StatisticalKeyFigure,
+            StatisticalKeyFigureName
+    }
+    entity ServiceOrderItem as projection on TimeSheetEntry.ZCDSEHCSC0005 {
+        key object_id,
+            number_int,
+            description_i,
+            ac_indicator,
+            InternalOrder
+    }
+
+    entity ServiceOrder as projection on TimeSheetEntry.ZCDSEHCSC0006 {
+        key object_id,
+            description_h
+    }
+    entity InternalOrder as projection on TimeSheetEntry.ZCDSEHPSC0007 {
+        key aufnr,
+            ktext
+    }
+
+    entity ReceiverWBS as projection on TimeSheetEntry.ZCDSEHPSC0008 {
+        key WBSId,
+            ProjectDesc,
+            ProjectId
+    }
+   entity ZTHBT0019 as
+        select from db.ZTHBT0019 as _assignment
+        {
+            key _assignment.ZPNAME,
+                _assignment.ZPFDT,
+                _assignment.ZPTDT,
+                _assignment.BEMOT,
+                _assignment.EAUFNR,
+                _assignment.EKOSTL,
+                _assignment.OBJECT_ID,
+                _assignment.SERVICEORDERITEM,
+                //'' as description_i,
+                _assignment.PWBS,
+                //_ParentWBS.ProjectDesc as ParentWBSDescr,
+                _assignment.RWBS,
+                //_ReceiverWBS.ProjectDesc as ReceiverWBSDesc,
+                _assignment.STAGR,
+                _assignment.ZTCODE,
+                _assignment.BEGDA,
+                _assignment.ENDDA,
+                _assignment.ZESTA,
+                _assignment.ZPSTS
+        } ;
+
+    entity ZTHBT0020 as
+        projection on db.ZTHBT0020;
+    
+
+
 
 }
 

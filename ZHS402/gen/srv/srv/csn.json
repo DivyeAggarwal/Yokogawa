@@ -953,20 +953,20 @@
           "type": "User",
           "length": 255
         },
-        "ZTcode": {
+        "ZTCODE": {
           "key": true,
           "type": "cds.String",
           "length": 8
         },
-        "ZTcds": {
+        "ZTCDS": {
           "type": "cds.String",
           "length": 80
         },
-        "ZObject": {
+        "ZOBJECT": {
           "type": "cds.String",
           "length": 16
         },
-        "Kokrs": {
+        "KOKRS": {
           "type": "cds.String",
           "length": 4
         }
@@ -1026,103 +1026,89 @@
           "type": "User",
           "length": 255
         },
-        "ZPname": {
+        "ZPNAME": {
+          "@title": "Assignment Name",
           "key": true,
           "type": "cds.String",
           "length": 40
         },
-        "ZPfdt": {
+        "ZPFDT": {
+          "@title": "Assignment Validity From Date",
           "type": "cds.Date"
         },
-        "ZPtdt": {
+        "ZPTDT": {
+          "@title": "Assignment Validity To Date",
           "type": "cds.Date"
         },
-        "Werks": {
-          "type": "cds.String",
-          "length": 4
-        },
-        "Stagr": {
+        "STAGR": {
+          "@title": "Statistical Key Figure",
           "type": "cds.String",
           "length": 6
         },
-        "Posid": {
-          "type": "cds.String",
-          "length": 24
-        },
         "EAUFNR": {
+          "@title": "Internal Order",
           "type": "cds.String",
           "length": 12
         },
-        "Kokrs": {
-          "type": "cds.String",
-          "length": 4
-        },
-        "Arbpl": {
-          "type": "cds.String",
-          "length": 8
-        },
-        "ZTcode": {
+        "ZTCODE": {
+          "@title": "Task Code",
           "type": "cds.Association",
           "target": "ZHS402.ZTHBT0020",
           "keys": [
             {
               "ref": [
-                "ZTcode"
+                "ZTCODE"
               ]
             }
           ]
         },
-        "SKostl": {
+        "EKOSTL": {
+          "@title": "Receiver Cost Center",
           "type": "cds.String",
           "length": 10
-        },
-        "EKostl": {
-          "type": "cds.String",
-          "length": 10
-        },
-        "LStar": {
-          "type": "cds.String",
-          "length": 6
         },
         "BEMOT": {
+          "@title": "Accounting Indicator",
           "type": "cds.String",
           "length": 2
         },
-        "ObjectId": {
+        "OBJECT_ID": {
+          "@title": "Service Order",
           "type": "cds.String",
           "length": 10
         },
-        "Kostl": {
-          "type": "cds.String",
-          "length": 10
-        },
-        "ZCrtOn": {
+        "BEGDA": {
+          "@title": "Employee Start Date",
           "type": "cds.Date"
         },
-        "ZCrtBy": {
-          "type": "cds.String",
-          "length": 40
-        },
-        "ZChnOn": {
+        "ENDDA": {
+          "@title": "Employee End Date",
           "type": "cds.Date"
         },
-        "ZChnBy": {
-          "type": "cds.String",
-          "length": 40
-        },
-        "Begda": {
-          "type": "cds.Date"
-        },
-        "Endda": {
-          "type": "cds.Date"
-        },
-        "Zests": {
+        "ZESTA": {
+          "@title": "Employee Status",
           "type": "cds.String",
           "length": 1
         },
-        "Zpsts": {
+        "ZPSTS": {
+          "@title": "Assignment Status",
           "type": "cds.String",
           "length": 2
+        },
+        "RWBS": {
+          "@title": "Receiver WBS",
+          "type": "cds.String",
+          "length": 24
+        },
+        "SERVICEORDERITEM": {
+          "@title": "Service Order Item",
+          "type": "cds.String",
+          "length": 6
+        },
+        "PWBS": {
+          "@title": "Parent WBS",
+          "type": "cds.String",
+          "length": 24
         }
       }
     },
@@ -1321,6 +1307,267 @@
       }
     },
     "ZHS402.ZTHBT0048": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "ID": {
+          "type": "cds.Integer"
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "MATERIALCODE": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "TOKUCHUFLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZHS402.ZTHBT0032": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MATERIALCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "MODEL": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "SUFFIXLEVEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "SUFFIXVALUE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        }
+      }
+    },
+    "ZHS402.ZTHBT0033": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PPLLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "PUBLIC.DUMMY": {
+      "kind": "entity",
+      "@cds.persistence.exists": true,
+      "elements": {
+        "DUMMY": {
+          "@title": "Dummy",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "PUBLIC.TABLE_COLUMNS": {
       "kind": "entity",
       "includes": [
         "managed"
@@ -3037,63 +3284,384 @@
       "@source": "srv/cat-service.cds",
       "kind": "service"
     },
+    "ZCDSEHBTC0003.AccountingIndicator": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "F4 for Accounting Indicator",
+      "projection": {
+        "from": {
+          "ref": [
+            "TimeSheetEntry.ZCDSEHCSC0003"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "AccountingIndicator"
+            ]
+          },
+          {
+            "ref": [
+              "AcctIndDescription"
+            ]
+          },
+          {
+            "ref": [
+              "Language"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "AccountingIndicator": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Accounting Indicator",
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "notNull": true
+        },
+        "AcctIndDescription": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Accounting Indicator Description",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        },
+        "Language": {
+          "@sap.label": "Language",
+          "@sap.quickinfo": "Language Key",
+          "type": "cds.String",
+          "length": 2,
+          "notNull": false
+        }
+      }
+    },
+    "ZCDSEHBTC0003.I_StatisticalKeyFigureText": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumption view for Statistical Fig",
+      "projection": {
+        "from": {
+          "ref": [
+            "TimeSheetEntry.ZCDSEHFIC0006"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "StatisticalKeyFigure"
+            ]
+          },
+          {
+            "ref": [
+              "StatisticalKeyFigureName"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "StatisticalKeyFigure": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Statistical Key Figure",
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "notNull": true
+        },
+        "StatisticalKeyFigureName": {
+          "@sap.label": "Statistical Key Figure",
+          "@sap.quickinfo": "Statistical Key Figure Name",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        }
+      }
+    },
+    "ZCDSEHBTC0003.ServiceOrderItem": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "F4 for Service Order Item",
+      "projection": {
+        "from": {
+          "ref": [
+            "TimeSheetEntry.ZCDSEHCSC0005"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "object_id"
+            ]
+          },
+          {
+            "ref": [
+              "number_int"
+            ]
+          },
+          {
+            "ref": [
+              "description_i"
+            ]
+          },
+          {
+            "ref": [
+              "ac_indicator"
+            ]
+          },
+          {
+            "ref": [
+              "InternalOrder"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "object_id": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Service Order",
+          "@sap.quickinfo": "Transaction ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "number_int": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Service Order Item",
+          "@sap.quickinfo": "Shortened Item Number in Document",
+          "type": "cds.String",
+          "length": 6,
+          "notNull": true
+        },
+        "description_i": {
+          "@sap.label": "Item Description",
+          "@sap.quickinfo": "Product Description",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "ac_indicator": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Accounting Indicator",
+          "type": "cds.String",
+          "length": 2,
+          "notNull": false
+        },
+        "InternalOrder": {
+          "@sap.label": "Internal Order",
+          "@sap.quickinfo": "Object key",
+          "type": "cds.String",
+          "length": 70,
+          "notNull": false
+        }
+      }
+    },
+    "ZCDSEHBTC0003.ServiceOrder": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "F4 for Service Order",
+      "projection": {
+        "from": {
+          "ref": [
+            "TimeSheetEntry.ZCDSEHCSC0006"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "object_id"
+            ]
+          },
+          {
+            "ref": [
+              "description_h"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "object_id": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Service Order",
+          "@sap.quickinfo": "Transaction ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "description_h": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Transaction Description",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        }
+      }
+    },
+    "ZCDSEHBTC0003.InternalOrder": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "F4 for Receiver Order In Assignment",
+      "projection": {
+        "from": {
+          "ref": [
+            "TimeSheetEntry.ZCDSEHPSC0007"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "aufnr"
+            ]
+          },
+          {
+            "ref": [
+              "ktext"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Internal Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "ktext": {
+          "@sap.label": "Internal Order Description",
+          "@sap.quickinfo": "Description",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        }
+      }
+    },
+    "ZCDSEHBTC0003.ReceiverWBS": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "F4 for Receiver WBS in Assignemnt",
+      "projection": {
+        "from": {
+          "ref": [
+            "TimeSheetEntry.ZCDSEHPSC0008"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "WBSId"
+            ]
+          },
+          {
+            "ref": [
+              "ProjectDesc"
+            ]
+          },
+          {
+            "ref": [
+              "ProjectId"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "WBSId": {
+          "@sap.label": "Receiver WBS",
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        },
+        "ProjectDesc": {
+          "@sap.label": "Receiver Project Description",
+          "@sap.quickinfo": "PS: Short description (1st text line)",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "ProjectId": {
+          "@sap.label": "Project ID",
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
+        }
+      }
+    },
     "ZCDSEHBTC0003.ZTHBT0019": {
       "kind": "entity",
-      "@odata.draft.enabled": true,
       "@UI.HeaderInfo.TypeName": "",
       "@UI.HeaderInfo.TypeNamePlural": "Assignments",
       "@UI.HeaderInfo.Title.Value": {
-        "=": "ZPname"
+        "=": "ZPNAME"
       },
       "@UI.HeaderInfo.Description.Value": {
-        "=": "ZPname"
+        "=": "ZPNAME"
       },
       "@UI.SelectionFields": [
         {
-          "=": "Kokrs"
+          "=": "ZPNAME"
         },
         {
-          "=": "ZPname"
+          "=": "ZPFDT"
         },
         {
-          "=": "ZPfdt"
-        },
-        {
-          "=": "ZPtdt"
-        },
-        {
-          "=": "Werks"
+          "=": "ZPTDT"
         }
       ],
       "@UI.LineItem": [
         {
           "Value": {
-            "=": "ZPname"
+            "=": "ZPNAME"
           }
         },
         {
           "Value": {
-            "=": "ZPfdt"
+            "=": "ZPFDT"
           }
         },
         {
           "Value": {
-            "=": "ZPtdt"
+            "=": "ZPTDT"
           }
         },
         {
           "Value": {
-            "=": "Werks"
-          }
-        },
-        {
-          "Value": {
-            "=": "Stagr"
-          }
-        },
-        {
-          "Value": {
-            "=": "Posid"
+            "=": "STAGR"
           }
         },
         {
@@ -3103,32 +3671,12 @@
         },
         {
           "Value": {
-            "=": "Kokrs"
+            "=": "ZTCODE.ZTCODE"
           }
         },
         {
           "Value": {
-            "=": "Arbpl"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZTcode.ZTcode"
-          }
-        },
-        {
-          "Value": {
-            "=": "SKostl"
-          }
-        },
-        {
-          "Value": {
-            "=": "EKostl"
-          }
-        },
-        {
-          "Value": {
-            "=": "LStar"
+            "=": "EKOSTL"
           }
         },
         {
@@ -3138,52 +3686,27 @@
         },
         {
           "Value": {
-            "=": "ObjectId"
+            "=": "OBJECT_ID"
           }
         },
         {
           "Value": {
-            "=": "Kostl"
+            "=": "BEGDA"
           }
         },
         {
           "Value": {
-            "=": "ZCrtOn"
+            "=": "ENDDA"
           }
         },
         {
           "Value": {
-            "=": "ZCrtBy"
+            "=": "ZESTA"
           }
         },
         {
           "Value": {
-            "=": "ZChnOn"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZChnBy"
-          }
-        },
-        {
-          "Value": {
-            "=": "Begda"
-          }
-        },
-        {
-          "Value": {
-            "=": "Endda"
-          }
-        },
-        {
-          "Value": {
-            "=": "Zests"
-          }
-        },
-        {
-          "Value": {
-            "=": "Zpsts"
+            "=": "ZPSTS"
           }
         }
       ],
@@ -3203,32 +3726,22 @@
       "@UI.FieldGroup#MainAs.Data": [
         {
           "Value": {
-            "=": "ZPname"
+            "=": "ZPNAME"
           }
         },
         {
           "Value": {
-            "=": "ZPfdt"
+            "=": "ZPFDT"
           }
         },
         {
           "Value": {
-            "=": "ZPtdt"
+            "=": "ZPTDT"
           }
         },
         {
           "Value": {
-            "=": "Werks"
-          }
-        },
-        {
-          "Value": {
-            "=": "Stagr"
-          }
-        },
-        {
-          "Value": {
-            "=": "Posid"
+            "=": "STAGR"
           }
         },
         {
@@ -3238,32 +3751,12 @@
         },
         {
           "Value": {
-            "=": "Kokrs"
+            "=": "ZTCODE.ZTCODE"
           }
         },
         {
           "Value": {
-            "=": "Arbpl"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZTcode.ZTcode"
-          }
-        },
-        {
-          "Value": {
-            "=": "SKostl"
-          }
-        },
-        {
-          "Value": {
-            "=": "EKostl"
-          }
-        },
-        {
-          "Value": {
-            "=": "LStar"
+            "=": "EAUFNR"
           }
         },
         {
@@ -3273,172 +3766,157 @@
         },
         {
           "Value": {
-            "=": "ObjectId"
+            "=": "OBJECT_ID"
           }
         },
         {
           "Value": {
-            "=": "Kostl"
+            "=": "BEGDA"
           }
         },
         {
           "Value": {
-            "=": "ZCrtOn"
+            "=": "EKOSTL"
           }
         },
         {
           "Value": {
-            "=": "ZCrtBy"
+            "=": "ZESTA"
           }
         },
         {
           "Value": {
-            "=": "ZChnOn"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZChnBy"
-          }
-        },
-        {
-          "Value": {
-            "=": "Begda"
-          }
-        },
-        {
-          "Value": {
-            "=": "Endda"
-          }
-        },
-        {
-          "Value": {
-            "=": "Zests"
-          }
-        },
-        {
-          "Value": {
-            "=": "Zpsts"
+            "=": "ZPSTS"
           }
         }
       ],
-      "projection": {
-        "from": {
-          "ref": [
-            "ZHS402.ZTHBT0019"
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "ZHS402.ZTHBT0019"
+            ],
+            "as": "_assignment"
+          },
+          "columns": [
+            {
+              "key": true,
+              "ref": [
+                "_assignment",
+                "ZPNAME"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "ZPFDT"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "ZPTDT"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "BEMOT"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "EAUFNR"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "EKOSTL"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "OBJECT_ID"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "SERVICEORDERITEM"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "PWBS"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "RWBS"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "STAGR"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "ZTCODE"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "BEGDA"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "ENDDA"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "ZESTA"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "ZPSTS"
+              ]
+            }
           ]
         }
       },
       "elements": {
-        "createdAt": {
-          "@cds.on.insert": {
-            "=": "$now"
-          },
-          "@UI.HiddenFilter": true,
-          "@Core.Immutable": true,
-          "@title": "{i18n>CreatedAt}",
-          "@readonly": true,
-          "type": "cds.Timestamp"
-        },
-        "createdBy": {
-          "@cds.on.insert": {
-            "=": "$user"
-          },
-          "@UI.HiddenFilter": true,
-          "@Core.Immutable": true,
-          "@title": "{i18n>CreatedBy}",
-          "@readonly": true,
-          "@description": "{i18n>UserID.Description}",
-          "type": "User",
-          "length": 255
-        },
-        "modifiedAt": {
-          "@cds.on.insert": {
-            "=": "$now"
-          },
-          "@cds.on.update": {
-            "=": "$now"
-          },
-          "@UI.HiddenFilter": true,
-          "@title": "{i18n>ChangedAt}",
-          "@readonly": true,
-          "type": "cds.Timestamp"
-        },
-        "modifiedBy": {
-          "@cds.on.insert": {
-            "=": "$user"
-          },
-          "@cds.on.update": {
-            "=": "$user"
-          },
-          "@UI.HiddenFilter": true,
-          "@title": "{i18n>ChangedBy}",
-          "@readonly": true,
-          "@description": "{i18n>UserID.Description}",
-          "type": "User",
-          "length": 255
-        },
-        "ZPname": {
+        "ZPNAME": {
+          "@title": "Assignment Name",
           "key": true,
           "type": "cds.String",
           "length": 40
         },
-        "ZPfdt": {
+        "ZPFDT": {
+          "@title": "Assignment Validity From Date",
           "type": "cds.Date"
         },
-        "ZPtdt": {
+        "ZPTDT": {
+          "@title": "Assignment Validity To Date",
           "type": "cds.Date"
-        },
-        "Werks": {
-          "type": "cds.String",
-          "length": 4
-        },
-        "Stagr": {
-          "type": "cds.String",
-          "length": 6
-        },
-        "Posid": {
-          "type": "cds.String",
-          "length": 24
-        },
-        "EAUFNR": {
-          "type": "cds.String",
-          "length": 12
-        },
-        "Kokrs": {
-          "type": "cds.String",
-          "length": 4
-        },
-        "Arbpl": {
-          "type": "cds.String",
-          "length": 8
-        },
-        "ZTcode": {
-          "type": "cds.Association",
-          "target": "ZCDSEHBTC0003.ZTHBT0020",
-          "keys": [
-            {
-              "ref": [
-                "ZTcode"
-              ]
-            }
-          ]
-        },
-        "SKostl": {
-          "type": "cds.String",
-          "length": 10
-        },
-        "EKostl": {
-          "type": "cds.String",
-          "length": 10
-        },
-        "LStar": {
-          "type": "cds.String",
-          "length": 6
         },
         "BEMOT": {
           "@Common.Label": "Accounting Indicator",
-          "@Common.ValueList.CollectionPath": "ZCDSEHCSC0003",
+          "@Common.ValueList.CollectionPath": "AccountingIndicator",
           "@Common.ValueList.Parameters": [
             {
               "$Type": "Common.ValueListParameterInOut",
@@ -3450,44 +3928,161 @@
             {
               "$Type": "Common.ValueListParameterDisplayOnly",
               "ValueListProperty": "AcctIndDescription"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Language"
             }
           ],
+          "@title": "Accounting Indicator",
           "type": "cds.String",
           "length": 2
         },
-        "ObjectId": {
+        "EAUFNR": {
+          "@Common.Label": "Internal Order",
+          "@Common.ValueList.CollectionPath": "InternalOrder",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "EAUFNR"
+              },
+              "ValueListProperty": "aufnr"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "ktext"
+            }
+          ],
+          "@title": "Internal Order",
+          "type": "cds.String",
+          "length": 12
+        },
+        "EKOSTL": {
+          "@title": "Receiver Cost Center",
           "type": "cds.String",
           "length": 10
         },
-        "Kostl": {
+        "OBJECT_ID": {
+          "@Common.Label": "Service Order",
+          "@Common.ValueList.CollectionPath": "ServiceOrder",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "OBJECT_ID"
+              },
+              "ValueListProperty": "object_id"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "description_h"
+            }
+          ],
+          "@title": "Service Order",
           "type": "cds.String",
           "length": 10
         },
-        "ZCrtOn": {
-          "type": "cds.Date"
-        },
-        "ZCrtBy": {
+        "SERVICEORDERITEM": {
+          "@title": "Service Order Item",
           "type": "cds.String",
-          "length": 40
+          "length": 6
         },
-        "ZChnOn": {
-          "type": "cds.Date"
-        },
-        "ZChnBy": {
+        "PWBS": {
+          "@Common.Label": "Parent WBS",
+          "@Common.ValueList.CollectionPath": "ReceiverWBS",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PWBS"
+              },
+              "ValueListProperty": "WBSId"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "ProjectId"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "ProjectDesc"
+            }
+          ],
+          "@title": "Parent WBS",
           "type": "cds.String",
-          "length": 40
+          "length": 24
         },
-        "Begda": {
+        "RWBS": {
+          "@Common.Label": "Receiver WBS",
+          "@Common.ValueList.CollectionPath": "ReceiverWBS",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "RWBS"
+              },
+              "ValueListProperty": "WBSId"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "ProjectId"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "ProjectDesc"
+            }
+          ],
+          "@title": "Receiver WBS",
+          "type": "cds.String",
+          "length": 24
+        },
+        "STAGR": {
+          "@Common.Label": "Statistical Key Figure",
+          "@Common.ValueList.CollectionPath": "I_StatisticalKeyFigureText",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "STAGR"
+              },
+              "ValueListProperty": "StatisticalKeyFigure"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "StatisticalKeyFigureName"
+            }
+          ],
+          "@title": "Statistical Key Figure",
+          "type": "cds.String",
+          "length": 6
+        },
+        "ZTCODE": {
+          "@title": "Task Code",
+          "type": "cds.Association",
+          "target": "ZCDSEHBTC0003.ZTHBT0020",
+          "keys": [
+            {
+              "ref": [
+                "ZTCODE"
+              ]
+            }
+          ]
+        },
+        "BEGDA": {
+          "@title": "Employee Start Date",
           "type": "cds.Date"
         },
-        "Endda": {
+        "ENDDA": {
+          "@title": "Employee End Date",
           "type": "cds.Date"
         },
-        "Zests": {
+        "ZESTA": {
+          "@title": "Employee Status",
           "type": "cds.String",
           "length": 1
         },
-        "Zpsts": {
+        "ZPSTS": {
+          "@title": "Assignment Status",
           "type": "cds.String",
           "length": 2
         }
@@ -3498,44 +4093,44 @@
       "@UI.HeaderInfo.TypeName": "",
       "@UI.HeaderInfo.TypeNamePlural": "Task Code",
       "@UI.HeaderInfo.Title.Value": {
-        "=": "ZTcode"
+        "=": "ZTCODE"
       },
       "@UI.HeaderInfo.Description.Value": {
-        "=": "ZTcds"
+        "=": "ZTCDS"
       },
       "@UI.SelectionFields": [
         {
-          "=": "ZTcode"
+          "=": "ZTCODE"
         },
         {
-          "=": "ZTcds"
+          "=": "ZTCDS"
         },
         {
-          "=": "ZObject"
+          "=": "ZOBJECT"
         },
         {
-          "=": "Kokrs"
+          "=": "KOKRS"
         }
       ],
       "@UI.LineItem": [
         {
           "Value": {
-            "=": "ZTcode"
+            "=": "ZTCODE"
           }
         },
         {
           "Value": {
-            "=": "ZTcds"
+            "=": "ZTCDS"
           }
         },
         {
           "Value": {
-            "=": "ZObject"
+            "=": "ZOBJECT"
           }
         },
         {
           "Value": {
-            "=": "Kokrs"
+            "=": "KOKRS"
           }
         }
       ],
@@ -3555,22 +4150,22 @@
       "@UI.FieldGroup#MainTC.Data": [
         {
           "Value": {
-            "=": "ZTcode"
+            "=": "ZTCODE"
           }
         },
         {
           "Value": {
-            "=": "ZTcds"
+            "=": "ZTCDS"
           }
         },
         {
           "Value": {
-            "=": "ZObject"
+            "=": "ZOBJECT"
           }
         },
         {
           "Value": {
-            "=": "Kokrs"
+            "=": "KOKRS"
           }
         }
       ],
@@ -3630,68 +4225,22 @@
           "type": "User",
           "length": 255
         },
-        "ZTcode": {
+        "ZTCODE": {
           "key": true,
           "type": "cds.String",
           "length": 8
         },
-        "ZTcds": {
+        "ZTCDS": {
           "type": "cds.String",
           "length": 80
         },
-        "ZObject": {
+        "ZOBJECT": {
           "type": "cds.String",
           "length": 16
         },
-        "Kokrs": {
+        "KOKRS": {
           "type": "cds.String",
           "length": 4
-        }
-      }
-    },
-    "ZCDSEHBTC0003.ZCDSEHCSC0003": {
-      "kind": "entity",
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.content.version": "1",
-      "@sap.label": "F4 for Accounting Indicator",
-      "projection": {
-        "from": {
-          "ref": [
-            "TimeSheetEntry.ZCDSEHCSC0003"
-          ]
-        },
-        "columns": [
-          {
-            "key": true,
-            "ref": [
-              "AccountingIndicator"
-            ]
-          },
-          {
-            "ref": [
-              "AcctIndDescription"
-            ]
-          }
-        ]
-      },
-      "elements": {
-        "AccountingIndicator": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Accounting Indicator",
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "notNull": true
-        },
-        "AcctIndDescription": {
-          "@sap.label": "Description",
-          "@sap.quickinfo": "Accounting Indicator Description",
-          "type": "cds.String",
-          "length": 25,
-          "notNull": false
         }
       }
     },
@@ -4394,103 +4943,89 @@
           "type": "User",
           "length": 255
         },
-        "ZPname": {
+        "ZPNAME": {
+          "@title": "Assignment Name",
           "key": true,
           "type": "cds.String",
           "length": 40
         },
-        "ZPfdt": {
+        "ZPFDT": {
+          "@title": "Assignment Validity From Date",
           "type": "cds.Date"
         },
-        "ZPtdt": {
+        "ZPTDT": {
+          "@title": "Assignment Validity To Date",
           "type": "cds.Date"
         },
-        "Werks": {
-          "type": "cds.String",
-          "length": 4
-        },
-        "Stagr": {
+        "STAGR": {
+          "@title": "Statistical Key Figure",
           "type": "cds.String",
           "length": 6
         },
-        "Posid": {
-          "type": "cds.String",
-          "length": 24
-        },
         "EAUFNR": {
+          "@title": "Internal Order",
           "type": "cds.String",
           "length": 12
         },
-        "Kokrs": {
-          "type": "cds.String",
-          "length": 4
-        },
-        "Arbpl": {
-          "type": "cds.String",
-          "length": 8
-        },
-        "ZTcode": {
+        "ZTCODE": {
+          "@title": "Task Code",
           "type": "cds.Association",
           "target": "ZCDS_ALL_ENTITIES.ZTHBT0020",
           "keys": [
             {
               "ref": [
-                "ZTcode"
+                "ZTCODE"
               ]
             }
           ]
         },
-        "SKostl": {
+        "EKOSTL": {
+          "@title": "Receiver Cost Center",
           "type": "cds.String",
           "length": 10
-        },
-        "EKostl": {
-          "type": "cds.String",
-          "length": 10
-        },
-        "LStar": {
-          "type": "cds.String",
-          "length": 6
         },
         "BEMOT": {
+          "@title": "Accounting Indicator",
           "type": "cds.String",
           "length": 2
         },
-        "ObjectId": {
+        "OBJECT_ID": {
+          "@title": "Service Order",
           "type": "cds.String",
           "length": 10
         },
-        "Kostl": {
-          "type": "cds.String",
-          "length": 10
-        },
-        "ZCrtOn": {
+        "BEGDA": {
+          "@title": "Employee Start Date",
           "type": "cds.Date"
         },
-        "ZCrtBy": {
-          "type": "cds.String",
-          "length": 40
-        },
-        "ZChnOn": {
+        "ENDDA": {
+          "@title": "Employee End Date",
           "type": "cds.Date"
         },
-        "ZChnBy": {
-          "type": "cds.String",
-          "length": 40
-        },
-        "Begda": {
-          "type": "cds.Date"
-        },
-        "Endda": {
-          "type": "cds.Date"
-        },
-        "Zests": {
+        "ZESTA": {
+          "@title": "Employee Status",
           "type": "cds.String",
           "length": 1
         },
-        "Zpsts": {
+        "ZPSTS": {
+          "@title": "Assignment Status",
           "type": "cds.String",
           "length": 2
+        },
+        "RWBS": {
+          "@title": "Receiver WBS",
+          "type": "cds.String",
+          "length": 24
+        },
+        "SERVICEORDERITEM": {
+          "@title": "Service Order Item",
+          "type": "cds.String",
+          "length": 6
+        },
+        "PWBS": {
+          "@title": "Parent WBS",
+          "type": "cds.String",
+          "length": 24
         }
       }
     },
@@ -4552,20 +5087,20 @@
           "type": "User",
           "length": 255
         },
-        "ZTcode": {
+        "ZTCODE": {
           "key": true,
           "type": "cds.String",
           "length": 8
         },
-        "ZTcds": {
+        "ZTCDS": {
           "type": "cds.String",
           "length": 80
         },
-        "ZObject": {
+        "ZOBJECT": {
           "type": "cds.String",
           "length": 16
         },
-        "Kokrs": {
+        "KOKRS": {
           "type": "cds.String",
           "length": 4
         }
@@ -5443,6 +5978,272 @@
         }
       }
     },
+    "ZCDSEHBTC0006": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZCDSEHBTC0006.ZTHBT0048": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0048"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "ID": {
+          "type": "cds.Integer"
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "MATERIALCODE": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "TOKUCHUFLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZCDSEHBTC0006.ZTHBT0032": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0032"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MATERIALCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "MODEL": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "SUFFIXLEVEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "SUFFIXVALUE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        }
+      }
+    },
+    "ZCDSEHBTC0006.ZTHBT0033": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0033"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PPLLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
     "external.PublicSynonymsService": {
       "@source": "srv/public-synonym.cds",
       "kind": "service"
@@ -6040,53 +6841,12 @@
       }
     },
     "TimeSheetEntry": {
-      "@source": "srv/external/TimeSheetEntry.cds",
+      "@source": "srv/external/TimeSheetEntry.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
-    },
-    "TimeSheetEntry.I_StatisticalKeyFigureText": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.content.version": "1",
-      "@sap.label": "Statistical Key Figure - Text",
-      "elements": {
-        "Language": {
-          "@sap.label": "Language Key",
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "notNull": true
-        },
-        "ControllingArea": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Controlling Area",
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "notNull": true
-        },
-        "StatisticalKeyFigure": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Statistical Key Figure",
-          "key": true,
-          "type": "cds.String",
-          "length": 6,
-          "notNull": true
-        },
-        "StatisticalKeyFigureName": {
-          "@sap.label": "Statistical Key Figure Name",
-          "type": "cds.String",
-          "length": 40,
-          "notNull": false
-        }
-      }
     },
     "TimeSheetEntry.ZCDSEHCSC0003": {
       "kind": "entity",
@@ -6109,10 +6869,9 @@
         "Language": {
           "@sap.label": "Language",
           "@sap.quickinfo": "Language Key",
-          "key": true,
           "type": "cds.String",
           "length": 2,
-          "notNull": true
+          "notNull": false
         },
         "AcctIndDescription": {
           "@sap.label": "Description",
@@ -6196,6 +6955,33 @@
         "description_h": {
           "@sap.label": "Description",
           "@sap.quickinfo": "Transaction Description",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        }
+      }
+    },
+    "TimeSheetEntry.ZCDSEHFIC0006": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumption view for Statistical Fig",
+      "elements": {
+        "StatisticalKeyFigure": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Statistical Key Figure",
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "notNull": true
+        },
+        "StatisticalKeyFigureName": {
+          "@sap.label": "Statistical Key Figure",
+          "@sap.quickinfo": "Statistical Key Figure Name",
           "type": "cds.String",
           "length": 40,
           "notNull": false
@@ -6444,6 +7230,34 @@
           "type": "cds.String",
           "length": 25,
           "notNull": false
+        },
+        "ActivityType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Activity Type",
+          "type": "cds.String",
+          "length": 6,
+          "notNull": false
+        },
+        "ActivityTypeName": {
+          "@sap.label": "Activity Type Name",
+          "@sap.quickinfo": "General Name",
+          "type": "cds.String",
+          "length": 20,
+          "notNull": false
+        },
+        "CostCenterName": {
+          "@sap.label": "Cost Center Name",
+          "@sap.quickinfo": "Description",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "CompanyCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company Code",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
         }
       }
     },
@@ -6485,19 +7299,18 @@
       "@sap.content.version": "1",
       "@sap.label": "F4 for Receiver WBS in Assignemnt",
       "elements": {
-        "ProjectId": {
-          "@sap.label": "Project ID",
-          "key": true,
-          "type": "cds.String",
-          "length": 24,
-          "notNull": true
-        },
         "WBSId": {
           "@sap.label": "Receiver WBS",
           "key": true,
           "type": "cds.String",
           "length": 24,
           "notNull": true
+        },
+        "ProjectId": {
+          "@sap.label": "Project ID",
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
         },
         "ProjectDesc": {
           "@sap.label": "Receiver Project Description",

@@ -20,7 +20,7 @@ lib-cov
 
 ./mta_archives
 # Coverage directory used by tools like istanbul
-coverage
+coveragecd 
 *.lcov
 
 # nyc test coverage

@@ -120,14 +120,40 @@ const { SELECT, INSERT, UPDATE } = cds.ql
 
 module.exports = cds.service.impl(async function() {
 
-    const db = await cds.connect.to("db");
-
-    const bupa = await cds.connect.to('TimeSheetEntry');
-
-    this.on('READ', 'ZCDSEHCSC0003', async req => {
+    this.on('READ', 'AccountingIndicator', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
         return bupa.run(req.query);
     });
+    this.on('READ', 'I_StatisticalKeyFigureText', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ServiceOrderItem', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ServiceOrder', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'InternalOrder', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ReceiverWBS', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    
+    this.on('READ', 'ZTHBT0019', async req => {
+        const db = await cds.connect.to('db');
+        var oData = await db.run(req.query);
+        return oData;
+    });
+
+
     this.on('UpdatePOItem', async (req) => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
         if(req.data.input.update.length > 0){	
         await UPSERT.into('ZHS402.ZTHBT0027').entries(req.data.input.update);
         }
