@@ -6,6 +6,10 @@
     {
       "name": "uaa.user",
       "description": "UAA"
+    },
+    {
+      "name": "$XSAPPNAME.cap-scope",
+      "description": "CAPSCOPE"
     }
   ],
   "role-templates": [
@@ -15,6 +19,14 @@
       "scope-references": [
         "uaa.user"
       ]
-    }
-  ]
+    },
+    {
+      "name": "Access_to-cap-srv",
+      "description": "Access to cap-srv",
+      "scope-references": [
+        "$XSAPPNAME.cap-scope"
+      ]
+    }   
+  ],
+  "foreign-scope-references": ["$XSAPPNAME(application,backendxsuaa).backendscope"]
 }

@@ -164,3 +164,30 @@ entity ZTHBT0027 : managed {
         ERFME          : String(3);
     key SERNR          : String(18);
 } 
+
+entity ZTHBT0048 : managed {
+        ID: Integer;
+    key MSCODE : String(80);
+        PRODUCTCAREER: String(8);
+    key INSTRUMENTMODEL: String(18);
+    key PARTSNUMBER: String(18);
+        MODEL: String(18);
+        MATERIALCODE: String(40);
+        TOKUCHUFLAG: String(1);
+}
+
+entity ZTHBT0032 : managed {
+    key MATERIALCODE : String(80);
+        MODEL: String(8);
+    key SUFFIXLEVEL: String(18);
+    key SUFFIXVALUE: String(18);
+}
+
+entity ZTHBT0033 : managed {
+    key MSCODE : String(80);
+    key PRODUCTCAREER: String(8);
+    key INSTRUMENTMODEL: String(18);
+    key PARTSNUMBER: String(18);
+    key MODEL: String(18);
+        PPLLAG: String(1);
+}

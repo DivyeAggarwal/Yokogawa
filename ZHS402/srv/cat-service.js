@@ -3,7 +3,7 @@
 // const axios = require("axios");
 // const SapCfAxios = require("sap-cf-axios").default;
 // const qs = require('querystring');
-// const SequenceHelper = require("./lib/SequenceHelper");
+const SequenceHelper = require("./lib/SequenceHelper");
 // const { SELECT, INSERT, UPDATE } = cds.ql
 // const axios1 = SapCfAxios("dest-adsrestapi");
 
@@ -120,6 +120,8 @@ const { SELECT, INSERT, UPDATE } = cds.ql
 
 module.exports = cds.service.impl(async function() {
 
+    const db = await cds.connect.to("db");
+
     const bupa = await cds.connect.to('TimeSheetEntry');
 
     this.on('READ', 'ZCDSEHCSC0003', async req => {
@@ -135,5 +137,153 @@ module.exports = cds.service.impl(async function() {
         return {acknowledge:"Success", message: "Deleted " + req.data.input.delete.length + " entries \n" 
         + "Updated " + req.data.input.update.length + " entries \n"  }
    });
+
+   this.before('CREATE', 'ZTHBT0022', async (context) => {
+    		const productId = new SequenceHelper({
+    			db: db,
+    			sequence: "INVOICE_ID",
+    			table: "ZTHBT0022",
+    			field: "ID"
+    		});
+    
+    		context.data.ID = await productId.getNextNumber();
+    		var ID = context.data.ID;
+    		var currentYear = new Date().getFullYear();
+    		var convertedID = String(ID).padStart(5, "0");
+    		var InvoiceID = currentYear + "-" + convertedID;
+    		context.data.InvoiceID = InvoiceID;
+    	});
+
+    this.after('CREATE', 'ZTHBT0033', async (context) => {
+        var MSCODE = context.data.MSCODE;
+        var PRODUCTCAREER = context.data.PRODUCTCAREER;
+        var INSTRUMENTMODEL = context.data.INSTRUMENTMODEL;
+        var PARTSNUMBER = context.data.PARTSNUMBER;
+        var MODEL = context.data.MODEL;
+        var PPLFLAG = context.data.PPLLAG;
+        // var value = "";
+        const mscode = await SELECT.from('ZHS402.ZTHBT0048').where({
+            MSCODE: context.data.MSCODE,
+            PRODUCTCAREER: context.data.PRODUCTCAREER,
+            INSTRUMENTMODEL: context.data.INSTRUMENTMODEL,
+            PARTSNUMBER: context.data.PARTSNUMBER,
+            MODEL:context.data.MODEL,
+        })
+        // var value = await SELECT.from('ZHS402.ZTHBT0032').where({ MSCODE: { '=': MSCODE }, PRODUCTCAREER: { '=': PRODUCTCAREER }, INSTRUMENTMODEL: { '=': INSTRUMENTMODEL }, PARTSNUMBER: { '=': PARTSNUMBER }, -: { '=': MODEL } })
+        if (mscode.length > 0) {
+            return;
+        } else {
+            if (PPLFLAG == "X") {
+                //PPL
+                const mcodeId = new SequenceHelper({
+                    db: db,
+                    sequence: "MATERIALCODE_ID",
+                    table: "ZTHBT0048",
+                    field: "ID"
+                });
+                var ID = await mcodeId.getNextNumber();
+                var convertedID = String(ID).padStart(9, "0");
+                var MaterialCode = MODEL + "_" + convertedID;
+                    var conversion = {
+                        ID: ID,
+                        MSCODE: MSCODE,
+                        PRODUCTCAREER: PRODUCTCAREER,
+                        INSTRUMENTMODEL: INSTRUMENTMODEL,
+                        PARTSNUMBER: PARTSNUMBER,
+                        MODEL: MODEL,
+                        MATERIALCODE: MaterialCode,
+                        TOKUCHUFLAG: ""
+                    };
+                    await UPSERT.into('ZHS402.ZTHBT0048').entries(conversion);
+            }
+            if (MSCODE) {
+                const mcodeId = new SequenceHelper({
+                    db: db,
+                    sequence: "MATERIALCODE_ID",
+                    table: "ZTHBT0048",
+                    field: "ID"
+                });
+                var ID = await mcodeId.getNextNumber();
+                var convertedID = String(ID).padStart(9, "0");
+
+                let checkZ = MSCODE.includes('Z');
+                if (checkZ == false) {
+                    //Normal scenario
+                    var MaterialCode = MODEL + "_F" + convertedID;
+                    var conversion = {
+                        ID: ID,
+                        MSCODE: MSCODE,
+                        PRODUCTCAREER: PRODUCTCAREER,
+                        INSTRUMENTMODEL: INSTRUMENTMODEL,
+                        PARTSNUMBER: PARTSNUMBER,
+                        MODEL: MODEL,
+                        MATERIALCODE: MaterialCode,
+                        TOKUCHUFLAG: ""
+                    };
+                    await UPSERT.into('ZHS402.ZTHBT0048').entries(conversion);
+
+                } else if (checkZ == true && INSTRUMENTMODEL === "" && PARTSNUMBER === "") {
+                    //Tokuchu Product
+                    var MaterialCode = MODEL + "_Z" + convertedID;
+                    var conversion = {
+                        ID: ID,
+                        MSCODE: MSCODE,
+                        PRODUCTCAREER: PRODUCTCAREER,
+                        INSTRUMENTMODEL: INSTRUMENTMODEL,
+                        PARTSNUMBER: PARTSNUMBER,
+                        MODEL: MODEL,
+                        MATERIALCODE: MaterialCode,
+                        TOKUCHUFLAG: "X"
+                    };
+                    await UPSERT.into('ZHS402.ZTHBT0048').entries(conversion);
+                } else if (checkZ == true && INSTRUMENTMODEL !== "" && PARTSNUMBER !== "") {
+                    //Tokuchu Parts
+                    var MaterialCode = PARTSNUMBER + "_" + convertedID;
+                    var conversion = {
+                        ID: ID,
+                        MSCODE: MSCODE,
+                        PRODUCTCAREER: PRODUCTCAREER,
+                        INSTRUMENTMODEL: INSTRUMENTMODEL,
+                        PARTSNUMBER: PARTSNUMBER,
+                        MODEL: MODEL,
+                        MATERIALCODE: MaterialCode,
+                        TOKUCHUFLAG: "X"
+                    };
+                    await UPSERT.into('ZHS402.ZTHBT0048').entries(conversion);
+                }
+            }
+        }
+    });
+
+//    this.on('CreateMaterialCode', async (req) => {
+//     if(req.data.input.data.length > 0){	
+//     await UPSERT.into('ZHS402.ZTHBT0033').entries(req.data.input.data);
+//     }
+//     var data = req.data.input.data;
+//     var value = await SELECT.from('ZHS402.ZTHBT0032').where ({MSCODE:{'=':data.MSCODE},PRODUCTCAREER:{'=':data.PRODUCTCAREER},INSTRUMENTMODEL:{'=':data.INSTRUMENTMODEL},PARTSNUMBER:{'=':data.PARTSNUMBER},MODEL:{'=':data.MODEL}})
+//     if(value){
+//         return {acknowledge:"Error", message: "Data Already Exist"  }
+//     } else {
+//         if(data.PPLFlag == "X") {
+//             //PPL
+//         }
+//         if(data.MSCODE) {
+//             let checkZ = data.MSCODE.includes('Z');
+//             if(checkZ == false) {
+//                 //Normal
+//             } else if(checkZ == true && data.INSTRUMENTMODEL === "" && data.PARTSNUMBER === "") {
+//                 //Tokuchu Product
+//             } else if (checkZ == true && data.INSTRUMENTMODEL !== "" && data.PARTSNUMBER !== "") {
+//                 //Tokuchu Parts
+//             }
+//         }
+
+//     }
+//     for (let oDelete of req.data.input.delete) {  
+//         await DELETE.from('ZHS402.ZTHBT0027').where ({MBLNR:{'=':oDelete.MBLNR},ZEILE:{'=':oDelete.ZEILE},MJAHR:{'=':oDelete.MJAHR},SERNR:{'=':oDelete.SERNR}});
+//     }
+//     return {acknowledge:"Success", message: "Deleted " + req.data.input.delete.length + " entries \n" 
+//     + "Updated " + req.data.input.update.length + " entries \n"  }
+// });
 
 });

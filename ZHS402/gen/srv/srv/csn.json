@@ -1320,6 +1320,256 @@
         }
       }
     },
+    "ZHS402.ZTHBT0048": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "ID": {
+          "type": "cds.Integer"
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "MATERIALCODE": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "TOKUCHUFLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZHS402.ZTHBT0032": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MATERIALCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "MODEL": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "SUFFIXLEVEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "SUFFIXVALUE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        }
+      }
+    },
+    "ZHS402.ZTHBT0033": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PPLLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
     "PUBLIC.DUMMY": {
       "kind": "entity",
       "@cds.persistence.exists": true,
@@ -4924,6 +5174,272 @@
         },
         "ZZ1_COSTOJECT": {
           "type": "cds.String"
+        }
+      }
+    },
+    "ZCDSEHBTC0006": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZCDSEHBTC0006.ZTHBT0048": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0048"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "ID": {
+          "type": "cds.Integer"
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "MATERIALCODE": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "TOKUCHUFLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZCDSEHBTC0006.ZTHBT0032": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0032"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MATERIALCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "MODEL": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "SUFFIXLEVEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "SUFFIXVALUE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        }
+      }
+    },
+    "ZCDSEHBTC0006.ZTHBT0033": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0033"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PPLLAG": {
+          "type": "cds.String",
+          "length": 1
         }
       }
     },
