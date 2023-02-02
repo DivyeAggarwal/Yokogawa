@@ -119,14 +119,18 @@ entity ZTHBT0019: managed {
         ZTCODE: Association to ZTHBT0020 @title : 'Task Code';
         EKOSTL: String(10) @title : 'Receiver Cost Center';
         BEMOT: String(2) @title : 'Accounting Indicator';
+        ACINDICATORDESC: String(25) @title : 'Account Indicator Description' @readonly;
         OBJECT_ID: String(10) @title : 'Service Order'; 
         BEGDA: Date @title : 'Employee Start Date';
         ENDDA: Date @title : 'Employee End Date';
         ZESTA: String(1) @title : 'Employee Status';
         ZPSTS: String(2) @title : 'Assignment Status';
         RWBS: String(24) @title : 'Receiver WBS';
+        RWBSDESC: String(40) @title : 'Receiver WBS Description' @readonly;
         SERVICEORDERITEM: String(6) @title : 'Service Order Item';
+        SERVORDERITEMDESC: String(40) @title : 'Service Order Item Description' @readonly;
         PWBS: String(24) @title : 'Parent WBS';
+        PARENTWBSDESC: String(40) @title : 'Parent WBS Description' @readonly;
 
 }
 

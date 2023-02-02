@@ -77,7 +77,8 @@ annotate ZCDSEHBTC0003.ZTHBT0019 {
                     ValueListProperty : 'AccountingIndicator'
                 },
                 {
-                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ACINDICATORDESC,
                     ValueListProperty : 'AcctIndDescription'
                 },
                 {
@@ -157,7 +158,8 @@ annotate ZCDSEHBTC0003.ZTHBT0019 {
                     ValueListProperty : 'ProjectId'
                 },
                 {
-                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : RWBSDESC,
                     ValueListProperty : 'ProjectDesc'
                 }
                 ]
@@ -179,13 +181,48 @@ annotate ZCDSEHBTC0003.ZTHBT0019 {
                     ValueListProperty : 'ProjectId'
                 },
                 {
-                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PARENTWBSDESC,
                     ValueListProperty : 'ProjectDesc'
                 }
                 ]
             }
         })
         PWBS;
+        @(Common : {
+           Label        : 'Service Order Item',
+            ValueList    : {
+                CollectionPath : 'ServiceOrderItem',
+                Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : OBJECT_ID,
+                    ValueListProperty : 'object_id'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : SERVICEORDERITEM,
+                    ValueListProperty : 'number_int'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : SERVORDERITEMDESC,
+                    ValueListProperty : 'description_i'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : EAUFNR,
+                    ValueListProperty : 'InternalOrder'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : BEMOT,
+                    ValueListProperty : 'ac_indicator'
+                }
+                ]
+            }
+        })
+        SERVICEORDERITEM;
     
 }
 
