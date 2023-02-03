@@ -120,6 +120,8 @@ const { SELECT, INSERT, UPDATE } = cds.ql
 
 module.exports = cds.service.impl(async function() {
 
+    const db = await cds.connect.to("db");
+
     this.on('READ', 'AccountingIndicator', async req => {
         const bupa = await cds.connect.to('TimeSheetEntry');
         return bupa.run(req.query);
