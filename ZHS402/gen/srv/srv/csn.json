@@ -3834,6 +3834,24 @@
           "length": 12
         },
         "EKOSTL": {
+          "@Common.Label": "Receiver Cost Center",
+          "@Common.ValueList.CollectionPath": "ReceiverCostCenter",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "EKOSTL"
+              },
+              "ValueListProperty": "CostCenter"
+            },
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "COSTCENTERNAME"
+              },
+              "ValueListProperty": "CostCenterName"
+            }
+          ],
           "@title": "Receiver Cost Center",
           "type": "cds.String",
           "length": 10
@@ -4000,6 +4018,24 @@
           "length": 6
         },
         "ZTCODE": {
+          "@Common.Label": "Task Codes",
+          "@Common.ValueList.CollectionPath": "ZTHBT0020",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "ZTCODE_ZTCODE"
+              },
+              "ValueListProperty": "ZTCODE"
+            },
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "ZTCDS"
+              },
+              "ValueListProperty": "ZTCDS"
+            }
+          ],
           "@title": "Task Code",
           "type": "cds.Association",
           "target": "ZCDSEHBTC0003.ZTHBT0020",
@@ -4012,6 +4048,7 @@
           ]
         },
         "ZTCDS": {
+          "@readonly": true,
           "@title": "Task Code Description",
           "type": "cds.String",
           "length": 80

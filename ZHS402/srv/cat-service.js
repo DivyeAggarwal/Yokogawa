@@ -313,5 +313,10 @@ module.exports = cds.service.impl(async function() {
 //     return {acknowledge:"Success", message: "Deleted " + req.data.input.delete.length + " entries \n" 
 //     + "Updated " + req.data.input.update.length + " entries \n"  }
 // });
+this.on('READ', 'ReceiverCostCenter', async req => {
+    const db = await cds.connect.to('TimeSheetEntry');
+    var oData = await db.run(req.query);
+    return oData;
+});
 
 });
