@@ -16,7 +16,7 @@ sap.ui.define(["sap/m/MessageBox"],
                 oContexts.forEach(function (oContext, index) {
                     // if any Material Document, Material Doc. Year, Material Doc.Item  fields are not initial S/4 then delete from BTP check with 4 key 
                     let object = oContext.getObject();
-                    if (object.smbln) { //
+                    if (object.Xmblnr) { //
                         deletes.push({
                             MBLNR: object.mblnr,
                             MJAHR: object.mjahr,
