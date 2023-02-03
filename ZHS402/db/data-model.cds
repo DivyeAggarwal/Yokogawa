@@ -156,7 +156,7 @@ entity ZTHBT0027 : managed {
         KDAUF          : String(10);
         KDPOS          : String(6);
         CPUDT_MKPF     : DateTime;
-        ERFMG          : String(1);
+        ERFMG          : String(18);
         ERFME          : String(3);
     key SERNR          : String(18);
 } 
