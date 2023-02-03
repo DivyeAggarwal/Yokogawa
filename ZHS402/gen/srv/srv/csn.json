@@ -954,19 +954,23 @@
           "length": 255
         },
         "ZTCODE": {
+          "@title": "Task Code",
           "key": true,
           "type": "cds.String",
           "length": 8
         },
         "ZTCDS": {
+          "@title": "Task Code Description",
           "type": "cds.String",
           "length": 80
         },
         "ZOBJECT": {
+          "@title": "Object",
           "type": "cds.String",
           "length": 16
         },
         "KOKRS": {
+          "@title": "Company Code",
           "type": "cds.String",
           "length": 4
         }
@@ -1064,8 +1068,15 @@
         },
         "EKOSTL": {
           "@title": "Receiver Cost Center",
-          "type": "cds.String",
-          "length": 10
+          "type": "cds.Association",
+          "target": "TimeSheetEntry.ZCDSEHFIC0007",
+          "keys": [
+            {
+              "ref": [
+                "CostCenter"
+              ]
+            }
+          ]
         },
         "BEMOT": {
           "@title": "Accounting Indicator",
@@ -1317,7 +1328,7 @@
         },
         "ERFMG": {
           "type": "cds.String",
-          "length": 1
+          "length": 18
         },
         "ERFME": {
           "type": "cds.String",
@@ -3387,6 +3398,52 @@
         }
       }
     },
+    "ZCDSEHBTC0003.ReceiverCostCenter": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "COnsumption View for Controlling Area",
+      "projection": {
+        "from": {
+          "ref": [
+            "TimeSheetEntry.ZCDSEHFIC0007"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "CostCenter"
+            ]
+          },
+          {
+            "ref": [
+              "CostCenterName"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "CostCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cost Center",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "CostCenterName": {
+          "@sap.label": "Name",
+          "@sap.quickinfo": "General Name",
+          "type": "cds.String",
+          "length": 20,
+          "notNull": false
+        }
+      }
+    },
     "ZCDSEHBTC0003.ZTHBT0019": {
       "kind": "entity",
       "@UI.HeaderInfo.TypeName": "",
@@ -3473,6 +3530,11 @@
           "Value": {
             "=": "ZPSTS"
           }
+        },
+        {
+          "Value": {
+            "=": "CostCenterName"
+          }
         }
       ],
       "@UI.Facets": [
@@ -3553,6 +3615,11 @@
           "Value": {
             "=": "ZPSTS"
           }
+        },
+        {
+          "Value": {
+            "=": "CostCenterName"
+          }
         }
       ],
       "query": {
@@ -3604,7 +3671,16 @@
             {
               "ref": [
                 "_assignment",
-                "EKOSTL"
+                "EKOSTL",
+                "CostCenter"
+              ],
+              "as": "EKOSTL"
+            },
+            {
+              "ref": [
+                "_assignment",
+                "EKOSTL",
+                "CostCenterName"
               ]
             },
             {
@@ -3659,6 +3735,13 @@
               "ref": [
                 "_assignment",
                 "ZTCODE"
+              ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "ZTCODE",
+                "ZTCDS"
               ]
             },
             {
@@ -3757,9 +3840,16 @@
           "length": 12
         },
         "EKOSTL": {
-          "@title": "Receiver Cost Center",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cost Center",
           "type": "cds.String",
           "length": 10
+        },
+        "CostCenterName": {
+          "@sap.label": "Name",
+          "@sap.quickinfo": "General Name",
+          "type": "cds.String",
+          "length": 20
         },
         "OBJECT_ID": {
           "@Common.Label": "Service Order",
@@ -3929,6 +4019,11 @@
             }
           ]
         },
+        "ZTCDS": {
+          "@title": "Task Code Description",
+          "type": "cds.String",
+          "length": 80
+        },
         "BEGDA": {
           "@title": "Employee Start Date",
           "type": "cds.Date"
@@ -4087,19 +4182,23 @@
           "length": 255
         },
         "ZTCODE": {
+          "@title": "Task Code",
           "key": true,
           "type": "cds.String",
           "length": 8
         },
         "ZTCDS": {
+          "@title": "Task Code Description",
           "type": "cds.String",
           "length": 80
         },
         "ZOBJECT": {
+          "@title": "Object",
           "type": "cds.String",
           "length": 16
         },
         "KOKRS": {
+          "@title": "Company Code",
           "type": "cds.String",
           "length": 4
         }
@@ -4302,7 +4401,7 @@
         },
         "ERFMG": {
           "type": "cds.String",
-          "length": 1
+          "length": 18
         },
         "ERFME": {
           "type": "cds.String",
@@ -4842,8 +4941,15 @@
         },
         "EKOSTL": {
           "@title": "Receiver Cost Center",
-          "type": "cds.String",
-          "length": 10
+          "type": "cds.Association",
+          "target": "TimeSheetEntry.ZCDSEHFIC0007",
+          "keys": [
+            {
+              "ref": [
+                "CostCenter"
+              ]
+            }
+          ]
         },
         "BEMOT": {
           "@title": "Accounting Indicator",
@@ -4973,19 +5079,23 @@
           "length": 255
         },
         "ZTCODE": {
+          "@title": "Task Code",
           "key": true,
           "type": "cds.String",
           "length": 8
         },
         "ZTCDS": {
+          "@title": "Task Code Description",
           "type": "cds.String",
           "length": 80
         },
         "ZOBJECT": {
+          "@title": "Object",
           "type": "cds.String",
           "length": 16
         },
         "KOKRS": {
+          "@title": "Company Code",
           "type": "cds.String",
           "length": 4
         }
@@ -6605,6 +6715,33 @@
           "@sap.quickinfo": "Statistical Key Figure Name",
           "type": "cds.String",
           "length": 40,
+          "notNull": false
+        }
+      }
+    },
+    "TimeSheetEntry.ZCDSEHFIC0007": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "COnsumption View for Controlling Area",
+      "elements": {
+        "CostCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cost Center",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "CostCenterName": {
+          "@sap.label": "Name",
+          "@sap.quickinfo": "General Name",
+          "type": "cds.String",
+          "length": 20,
           "notNull": false
         }
       }

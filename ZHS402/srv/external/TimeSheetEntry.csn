@@ -151,6 +151,33 @@
         }
       }
     },
+    "TimeSheetEntry.ZCDSEHFIC0007": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "COnsumption View for Controlling Area",
+      "elements": {
+        "CostCenter": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cost Center",
+          "notNull": true
+        },
+        "CostCenterName": {
+          "type": "cds.String",
+          "length": 20,
+          "@sap.label": "Name",
+          "@sap.quickinfo": "General Name",
+          "notNull": false
+        }
+      }
+    },
     "TimeSheetEntry.ZCDSEHPSB0030": {
       "kind": "entity",
       "@cds.external": true,

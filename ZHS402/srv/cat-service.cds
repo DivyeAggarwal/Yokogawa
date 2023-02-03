@@ -81,6 +81,10 @@ service ZCDSEHBTC0003
             ProjectDesc,
             ProjectId
     }
+    entity ReceiverCostCenter as projection on TimeSheetEntry.ZCDSEHFIC0007 {
+        key CostCenter,
+            CostCenterName
+    }
    entity ZTHBT0019 as
         select from db.ZTHBT0019 as _assignment
         {
@@ -91,6 +95,7 @@ service ZCDSEHBTC0003
                 _assignment.ACINDICATORDESC,
                 _assignment.EAUFNR,
                 _assignment.EKOSTL,
+                _assignment.COSTCENTERNAME,
                 _assignment.OBJECT_ID,
                 _assignment.SERVICEORDERITEM,
                 _assignment.SERVORDERITEMDESC,
@@ -103,6 +108,7 @@ service ZCDSEHBTC0003
                 //_ReceiverWBS.ProjectDesc as ReceiverWBSDesc,
                 _assignment.STAGR,
                 _assignment.ZTCODE,
+                _assignment.ZTCODE.ZTCDS,
                 _assignment.BEGDA,
                 _assignment.ENDDA,
                 _assignment.ZESTA,

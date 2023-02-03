@@ -249,7 +249,8 @@ annotate  ZCDSEHBTC0003.ZTHBT0019 with @(
             { Value: BEGDA },
             { Value: ENDDA },
             { Value: ZESTA },
-            { Value: ZPSTS }            
+            { Value: ZPSTS } ,
+            { Value: COSTCENTERNAME}           
         ],
         Facets: [
             {
@@ -274,7 +275,8 @@ annotate  ZCDSEHBTC0003.ZTHBT0019 with @(
             { Value: BEGDA },
             { Value: EKOSTL },
             { Value: ZESTA },
-            { Value: ZPSTS }                
+            { Value: ZPSTS },
+            { Value: COSTCENTERNAME}                
             ]
         }
     }

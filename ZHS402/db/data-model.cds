@@ -105,10 +105,10 @@ entity ZTHBT0025: managed, cuid {
     BillingAmount : Integer;
 }
 entity ZTHBT0020: managed {
-    key ZTCODE: String(8);
-        ZTCDS: String(80);
-        ZOBJECT: String(16);
-        KOKRS: String(4);
+    key ZTCODE: String(8) @title : 'Task Code';
+        ZTCDS: String(80) @title : 'Task Code Description';
+        ZOBJECT: String(16) @title : 'Object';
+        KOKRS: String(4) @title : 'Company Code';
 }
 entity ZTHBT0019: managed {
     key ZPNAME: String(40) @title : 'Assignment Name';
@@ -118,13 +118,14 @@ entity ZTHBT0019: managed {
         EAUFNR: String(12) @title : 'Internal Order';
         ZTCODE: Association to ZTHBT0020 @title : 'Task Code';
         EKOSTL: String(10) @title : 'Receiver Cost Center';
+        COSTCENTERNAME: String(20) @title : 'Cost Center Name';
         BEMOT: String(2) @title : 'Accounting Indicator';
         ACINDICATORDESC: String(25) @title : 'Account Indicator Description' @readonly;
         OBJECT_ID: String(10) @title : 'Service Order'; 
         BEGDA: Date @title : 'Employee Start Date';
         ENDDA: Date @title : 'Employee End Date';
         ZESTA: String(1) @title : 'Employee Status';
-        ZPSTS: String(2) @title : 'Assignment Status';
+        ZPSTS: Boolean @title : 'Assignment Status';
         RWBS: String(24) @title : 'Receiver WBS';
         RWBSDESC: String(40) @title : 'Receiver WBS Description' @readonly;
         SERVICEORDERITEM: String(6) @title : 'Service Order Item';
