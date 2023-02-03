@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run ZHS402-3",
+      "request": "launch",
+      "type": "pwa-node",
+      "cwd": "${workspaceFolder}/ZHS402",
+      "runtimeExecutable": "npx",
+      "args": [
+        "cds",
+        "run",
+        "--in-memory?"
+      ],
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "envFile": "${workspaceFolder}/ZHS402/.env3",
+      "env": {
+        "NODE_ENV": "development",
+        "run.config": "{\"handlerId\":\"cap_run_config_handler_id\",\"runnableId\":\"{\\\"projectPath\\\":\\\"/home/user/projects/ZHS402/ZHS402\\\",\\\"profileName\\\":\\\"development\\\"}\"}"
+      }
+    }
+  ]
+}

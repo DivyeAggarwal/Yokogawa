@@ -33,15 +33,15 @@ annotate  ZCDSEHBTC0003.ZTHBT0020 with @(
         HeaderInfo: {
             TypeName: '',
             TypeNamePlural: 'Task Code',
-            Title: { Value: ZTcode },
-            Description: { Value: ZTcds }
+            Title: { Value: ZTCODE },
+            Description: { Value: ZTCDS }
         },
-        SelectionFields: [ ZTcode,ZTcds,ZObject,Kokrs ],
+        SelectionFields: [ ZTCODE,ZTCDS,ZOBJECT,KOKRS ],
         LineItem: [
-            { Value: ZTcode },
-            { Value: ZTcds },
-            { Value: ZObject },
-            { Value: Kokrs }             
+            { Value: ZTCODE },
+            { Value: ZTCDS },
+            { Value: ZOBJECT },
+            { Value: KOKRS }             
         ],
         Facets: [
             {
@@ -54,10 +54,10 @@ annotate  ZCDSEHBTC0003.ZTHBT0020 with @(
         ],        
         FieldGroup#MainTC: {
             Data: [
-                { Value: ZTcode },
-                { Value: ZTcds },
-                { Value: ZObject },
-                { Value: Kokrs }               
+                { Value: ZTCODE },
+                { Value: ZTCDS },
+                { Value: ZOBJECT },
+                { Value: KOKRS }               
             ]
         }
     }
@@ -69,7 +69,7 @@ annotate ZCDSEHBTC0003.ZTHBT0019 {
     @(Common : {
            Label        : 'Accounting Indicator',
             ValueList    : {
-                CollectionPath : 'ZCDSEHCSC0003',
+                CollectionPath : 'AccountingIndicator',
                 Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
@@ -77,51 +77,179 @@ annotate ZCDSEHBTC0003.ZTHBT0019 {
                     ValueListProperty : 'AccountingIndicator'
                 },
                 {
-                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ACINDICATORDESC,
                     ValueListProperty : 'AcctIndDescription'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Language'
                 }
                 ]
             }
         })
         BEMOT;
+     @(Common : {
+           Label        : 'Statistical Key Figure',
+            ValueList    : {
+                CollectionPath : 'I_StatisticalKeyFigureText',
+                Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : STAGR,
+                    ValueListProperty : 'StatisticalKeyFigure'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'StatisticalKeyFigureName'
+                }
+                ]
+            }
+        })
+        STAGR;
+         @(Common : {
+           Label        : 'Service Order',
+            ValueList    : {
+                CollectionPath : 'ServiceOrder',
+                Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : OBJECT_ID,
+                    ValueListProperty : 'object_id'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'description_h'
+                }
+                ]
+            }
+        })
+        OBJECT_ID;
+         @(Common : {
+           Label        : 'Internal Order',
+            ValueList    : {
+                CollectionPath : 'InternalOrder',
+                Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : EAUFNR,
+                    ValueListProperty : 'aufnr'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ktext'
+                }
+                ]
+            }
+        })
+        EAUFNR;
+        @(Common : {
+           Label        : 'Receiver WBS',
+            ValueList    : {
+                CollectionPath : 'ReceiverWBS',
+                Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : RWBS,
+                    ValueListProperty : 'WBSId'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ProjectId'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : RWBSDESC,
+                    ValueListProperty : 'ProjectDesc'
+                }
+                ]
+            }
+        })
+        RWBS;
+         @(Common : {
+           Label        : 'Parent WBS',
+            ValueList    : {
+                CollectionPath : 'ReceiverWBS',
+                Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PWBS,
+                    ValueListProperty : 'WBSId'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ProjectId'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PARENTWBSDESC,
+                    ValueListProperty : 'ProjectDesc'
+                }
+                ]
+            }
+        })
+        PWBS;
+        @(Common : {
+           Label        : 'Service Order Item',
+            ValueList    : {
+                CollectionPath : 'ServiceOrderItem',
+                Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : OBJECT_ID,
+                    ValueListProperty : 'object_id'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : SERVICEORDERITEM,
+                    ValueListProperty : 'number_int'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : SERVORDERITEMDESC,
+                    ValueListProperty : 'description_i'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : EAUFNR,
+                    ValueListProperty : 'InternalOrder'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : BEMOT,
+                    ValueListProperty : 'ac_indicator'
+                }
+                ]
+            }
+        })
+        SERVICEORDERITEM;
+    
 }
 
-annotate ZCDSEHBTC0003.ZTHBT0019 with @odata.draft.enabled;
 
 annotate  ZCDSEHBTC0003.ZTHBT0019 with @(
     UI: {
         HeaderInfo: {
             TypeName: '',
             TypeNamePlural: 'Assignments',
-            Title: { Value: ZPname },
-            Description: { Value: ZPname }
+            Title: { Value: ZPNAME },
+            Description: { Value: ZPNAME }
         },
-        SelectionFields: [ Kokrs,ZPname,ZPfdt,ZPtdt,Werks ],
+        SelectionFields: [ ZPNAME,ZPFDT,ZPTDT ],
         LineItem: [
-            { Value: ZPname },
-            { Value: ZPfdt },
-            { Value: ZPtdt },
-            { Value: Werks },
-            { Value: Stagr },
-            { Value: Posid },
+            { Value: ZPNAME },
+            { Value: ZPFDT },
+            { Value: ZPTDT },
+            { Value: STAGR },
             { Value: EAUFNR },
-            { Value: Kokrs },
-            { Value: Arbpl },
-            { Value: ZTcode.ZTcode },
-            { Value: SKostl },
-            { Value: EKostl },
-            { Value: LStar },
+            { Value: ZTCODE.ZTCODE },
+            { Value: EKOSTL },
             { Value: BEMOT },
-            { Value: ObjectId },
-            { Value: Kostl },
-            { Value: ZCrtOn },
-            { Value: ZCrtBy },
-            { Value: ZChnOn },
-            { Value: ZChnBy },
-            { Value: Begda },
-            { Value: Endda },
-            { Value: Zests },
-            { Value: Zpsts }            
+            { Value: OBJECT_ID},
+            { Value: BEGDA },
+            { Value: ENDDA },
+            { Value: ZESTA },
+            { Value: ZPSTS }            
         ],
         Facets: [
             {
@@ -134,30 +262,19 @@ annotate  ZCDSEHBTC0003.ZTHBT0019 with @(
         ],        
         FieldGroup#MainAs: {
             Data: [
-               { Value: ZPname },
-            { Value: ZPfdt },
-            { Value: ZPtdt },
-            { Value: Werks },
-            { Value: Stagr },
-            { Value: Posid },
+               { Value: ZPNAME },
+            { Value: ZPFDT },
+            { Value: ZPTDT },
+            { Value: STAGR },
             { Value: EAUFNR },
-            { Value: Kokrs },
-            { Value: Arbpl },
-            { Value: ZTcode.ZTcode },
-            { Value: SKostl },
-            { Value: EKostl },
-            { Value: LStar },
+            { Value: ZTCODE.ZTCODE },
+            { Value: EAUFNR },
             { Value: BEMOT },
-            { Value: ObjectId },
-            { Value: Kostl },
-            { Value: ZCrtOn },
-            { Value: ZCrtBy },
-            { Value: ZChnOn },
-            { Value: ZChnBy },
-            { Value: Begda },
-            { Value: Endda },
-            { Value: Zests },
-            { Value: Zpsts }                
+            { Value: OBJECT_ID },
+            { Value: BEGDA },
+            { Value: EKOSTL },
+            { Value: ZESTA },
+            { Value: ZPSTS }                
             ]
         }
     }

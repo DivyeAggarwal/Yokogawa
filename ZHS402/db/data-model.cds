@@ -1,6 +1,7 @@
 namespace ZHS402;
 using { managed, cuid } from '@sap/cds/common';
 using { CatalogService } from '../srv/cat-service';
+using { TimeSheetEntry } from '../srv/external/TimeSheetEntry';
 
 
 entity Books {
@@ -104,37 +105,32 @@ entity ZTHBT0025: managed, cuid {
     BillingAmount : Integer;
 }
 entity ZTHBT0020: managed {
-    key ZTcode: String(8);
-        ZTcds: String(80);
-        ZObject: String(16);
-        Kokrs: String(4);
+    key ZTCODE: String(8);
+        ZTCDS: String(80);
+        ZOBJECT: String(16);
+        KOKRS: String(4);
 }
 entity ZTHBT0019: managed {
-    key ZPname: String(40);
-        ZPfdt: Date;
-        ZPtdt: Date;
-        Werks: String(4);
-        Stagr: String(6);
-        Posid: String(24);
-        EAUFNR: String(12);
-        Kokrs: String(4);
-        Arbpl: String(8);
-        ZTcode: Association to ZTHBT0020;
-        SKostl: String(10);
-        EKostl: String(10);
-        LStar: String(6);
-        BEMOT: String(2) ;
-        ObjectId: String(10);
-        Kostl: String(10);
-        ZCrtOn: Date;
-        ZCrtBy: String(40);
-        ZChnOn: Date;
-        ZChnBy: String(40);
-        Begda: Date;
-        Endda: Date;
-        Zests: String(1);
-        Zpsts: String(2);
-
+    key ZPNAME: String(40) @title : 'Assignment Name';
+        ZPFDT: Date @title : 'Assignment Validity From Date';
+        ZPTDT: Date @title : 'Assignment Validity To Date';
+        STAGR: String(6) @title : 'Statistical Key Figure'; 
+        EAUFNR: String(12) @title : 'Internal Order';
+        ZTCODE: Association to ZTHBT0020 @title : 'Task Code';
+        EKOSTL: String(10) @title : 'Receiver Cost Center';
+        BEMOT: String(2) @title : 'Accounting Indicator';
+        ACINDICATORDESC: String(25) @title : 'Account Indicator Description' @readonly;
+        OBJECT_ID: String(10) @title : 'Service Order'; 
+        BEGDA: Date @title : 'Employee Start Date';
+        ENDDA: Date @title : 'Employee End Date';
+        ZESTA: String(1) @title : 'Employee Status';
+        ZPSTS: String(2) @title : 'Assignment Status';
+        RWBS: String(24) @title : 'Receiver WBS';
+        RWBSDESC: String(40) @title : 'Receiver WBS Description' @readonly;
+        SERVICEORDERITEM: String(6) @title : 'Service Order Item';
+        SERVORDERITEMDESC: String(40) @title : 'Service Order Item Description' @readonly;
+        PWBS: String(24) @title : 'Parent WBS';
+        PARENTWBSDESC: String(40) @title : 'Parent WBS Description' @readonly;
 
 }
 
@@ -160,7 +156,7 @@ entity ZTHBT0027 : managed {
         KDAUF          : String(10);
         KDPOS          : String(6);
         CPUDT_MKPF     : DateTime;
-        ERFMG          : String(1);
+        ERFMG          : String(18);
         ERFME          : String(3);
     key SERNR          : String(18);
 } 
@@ -171,8 +167,8 @@ entity ZTHBT0048 : managed {
         PRODUCTCAREER: String(8);
     key INSTRUMENTMODEL: String(18);
     key PARTSNUMBER: String(18);
-        MODEL: String(18);
-        MATERIALCODE: String(40);
+    key MODEL: String(18);
+    key MATERIALCODE: String(40);
         TOKUCHUFLAG: String(1);
 }
 

@@ -15,6 +15,21 @@
         "vcap": {
           "name": "destination"
         }
+      },
+      "db": {
+        "binding": {
+          "type": "cf",
+          "apiEndpoint": "https://api.cf.jp20.hana.ondemand.com",
+          "org": "global-dev-001",
+          "space": "space-001",
+          "instance": "ZHS402-db",
+          "key": "ZHS402-db-key",
+          "resolved": false
+        },
+        "kind": "hana",
+        "vcap": {
+          "name": "db"
+        }
       }
     }
   }

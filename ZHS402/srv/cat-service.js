@@ -120,14 +120,40 @@ const { SELECT, INSERT, UPDATE } = cds.ql
 
 module.exports = cds.service.impl(async function() {
 
-    const db = await cds.connect.to("db");
-
-    const bupa = await cds.connect.to('TimeSheetEntry');
-
-    this.on('READ', 'ZCDSEHCSC0003', async req => {
+    this.on('READ', 'AccountingIndicator', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
         return bupa.run(req.query);
     });
+    this.on('READ', 'I_StatisticalKeyFigureText', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ServiceOrderItem', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ServiceOrder', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'InternalOrder', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ReceiverWBS', async req => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    
+    this.on('READ', 'ZTHBT0019', async req => {
+        const db = await cds.connect.to('db');
+        var oData = await db.run(req.query);
+        return oData;
+    });
+
+
     this.on('UpdatePOItem', async (req) => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
         if(req.data.input.update.length > 0){	
         await UPSERT.into('ZHS402.ZTHBT0027').entries(req.data.input.update);
         }
@@ -155,21 +181,20 @@ module.exports = cds.service.impl(async function() {
     	});
 
     this.after('CREATE', 'ZTHBT0033', async (context) => {
-        var MSCODE = context.data.MSCODE;
-        var PRODUCTCAREER = context.data.PRODUCTCAREER;
-        var INSTRUMENTMODEL = context.data.INSTRUMENTMODEL;
-        var PARTSNUMBER = context.data.PARTSNUMBER;
-        var MODEL = context.data.MODEL;
-        var PPLFLAG = context.data.PPLLAG;
+        var MSCODE = context.MSCODE;
+        var PRODUCTCAREER = context.PRODUCTCAREER;
+        var INSTRUMENTMODEL = context.INSTRUMENTMODEL;
+        var PARTSNUMBER = context.PARTSNUMBER;
+        var MODEL = context.MODEL;
+        var PPLFLAG = context.PPLLAG;
         // var value = "";
         const mscode = await SELECT.from('ZHS402.ZTHBT0048').where({
-            MSCODE: context.data.MSCODE,
-            PRODUCTCAREER: context.data.PRODUCTCAREER,
-            INSTRUMENTMODEL: context.data.INSTRUMENTMODEL,
-            PARTSNUMBER: context.data.PARTSNUMBER,
-            MODEL:context.data.MODEL,
+            MSCODE: context.MSCODE,
+            PRODUCTCAREER: context.PRODUCTCAREER,
+            INSTRUMENTMODEL: context.INSTRUMENTMODEL,
+            PARTSNUMBER: context.PARTSNUMBER,
+            MODEL:context.MODEL,
         })
-        // var value = await SELECT.from('ZHS402.ZTHBT0032').where({ MSCODE: { '=': MSCODE }, PRODUCTCAREER: { '=': PRODUCTCAREER }, INSTRUMENTMODEL: { '=': INSTRUMENTMODEL }, PARTSNUMBER: { '=': PARTSNUMBER }, -: { '=': MODEL } })
         if (mscode.length > 0) {
             return;
         } else {
@@ -194,7 +219,8 @@ module.exports = cds.service.impl(async function() {
                         MATERIALCODE: MaterialCode,
                         TOKUCHUFLAG: ""
                     };
-                    await UPSERT.into('ZHS402.ZTHBT0048').entries(conversion);
+                    await INSERT.into('ZHS402.ZTHBT0048').entries(conversion);
+                    await DELETE.from('ZHS402.ZTHBT0033').where ({MSCODE:{'=':MSCODE},PRODUCTCAREER:{'=':PRODUCTCAREER},INSTRUMENTMODEL:{'=':INSTRUMENTMODEL},PARTSNUMBER:{'=':PARTSNUMBER},MODEL:{'=':MODEL}});
             }
             if (MSCODE) {
                 const mcodeId = new SequenceHelper({

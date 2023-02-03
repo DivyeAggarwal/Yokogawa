@@ -10,6 +10,7 @@ modules:
   - name: ZHS402-db
   - name: uaa_ZHS402
   - name: destination_ZHS402
+  - name: con001
   provides:
   - name: srv-api
     properties:
@@ -117,6 +118,11 @@ resources:
   type: org.cloudfoundry.managed-service
   parameters:
     service: destination
+    service-plan: lite
+- name: con001
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: connectivity
     service-plan: lite
 - name: ZHS402-destination-service
   type: org.cloudfoundry.managed-service
