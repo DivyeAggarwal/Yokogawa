@@ -223,7 +223,44 @@ annotate ZCDSEHBTC0003.ZTHBT0019 {
             }
         })
         SERVICEORDERITEM;
-    
+        @(Common : {
+           Label        : 'Receiver Cost Center',
+            ValueList    : {
+                CollectionPath : 'ReceiverCostCenter',
+                Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : EKOSTL,
+                    ValueListProperty : 'CostCenter'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : COSTCENTERNAME,
+                    ValueListProperty : 'CostCenterName'
+                }
+                ]
+            }
+        })
+        EKOSTL;
+         @(Common : {
+           Label        : 'Task Codes',
+            ValueList    : {
+                CollectionPath : 'ZTHBT0020',
+                Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ZTCODE_ZTCODE,
+                    ValueListProperty : 'ZTCODE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ZTCDS,
+                    ValueListProperty : 'ZTCDS'
+                }
+                ]
+            }
+        })
+        ZTCODE;
 }
 
 

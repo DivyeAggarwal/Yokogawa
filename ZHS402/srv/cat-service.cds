@@ -108,7 +108,7 @@ service ZCDSEHBTC0003
                 //_ReceiverWBS.ProjectDesc as ReceiverWBSDesc,
                 _assignment.STAGR,
                 _assignment.ZTCODE,
-                _assignment.ZTCODE.ZTCDS,
+                _assignment.ZTCODE.ZTCDS @readonly,
                 _assignment.BEGDA,
                 _assignment.ENDDA,
                 _assignment.ZESTA,

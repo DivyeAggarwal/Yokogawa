@@ -1068,15 +1068,13 @@
         },
         "EKOSTL": {
           "@title": "Receiver Cost Center",
-          "type": "cds.Association",
-          "target": "TimeSheetEntry.ZCDSEHFIC0007",
-          "keys": [
-            {
-              "ref": [
-                "CostCenter"
-              ]
-            }
-          ]
+          "type": "cds.String",
+          "length": 10
+        },
+        "COSTCENTERNAME": {
+          "@title": "Cost Center Name",
+          "type": "cds.String",
+          "length": 20
         },
         "BEMOT": {
           "@title": "Accounting Indicator",
@@ -1109,8 +1107,7 @@
         },
         "ZPSTS": {
           "@title": "Assignment Status",
-          "type": "cds.String",
-          "length": 2
+          "type": "cds.Boolean"
         },
         "RWBS": {
           "@title": "Receiver WBS",
@@ -3533,7 +3530,7 @@
         },
         {
           "Value": {
-            "=": "CostCenterName"
+            "=": "COSTCENTERNAME"
           }
         }
       ],
@@ -3618,7 +3615,7 @@
         },
         {
           "Value": {
-            "=": "CostCenterName"
+            "=": "COSTCENTERNAME"
           }
         }
       ],
@@ -3671,16 +3668,13 @@
             {
               "ref": [
                 "_assignment",
-                "EKOSTL",
-                "CostCenter"
-              ],
-              "as": "EKOSTL"
+                "EKOSTL"
+              ]
             },
             {
               "ref": [
                 "_assignment",
-                "EKOSTL",
-                "CostCenterName"
+                "COSTCENTERNAME"
               ]
             },
             {
@@ -3840,14 +3834,12 @@
           "length": 12
         },
         "EKOSTL": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Cost Center",
+          "@title": "Receiver Cost Center",
           "type": "cds.String",
           "length": 10
         },
-        "CostCenterName": {
-          "@sap.label": "Name",
-          "@sap.quickinfo": "General Name",
+        "COSTCENTERNAME": {
+          "@title": "Cost Center Name",
           "type": "cds.String",
           "length": 20
         },
@@ -4039,8 +4031,7 @@
         },
         "ZPSTS": {
           "@title": "Assignment Status",
-          "type": "cds.String",
-          "length": 2
+          "type": "cds.Boolean"
         }
       }
     },
@@ -4941,15 +4932,13 @@
         },
         "EKOSTL": {
           "@title": "Receiver Cost Center",
-          "type": "cds.Association",
-          "target": "TimeSheetEntry.ZCDSEHFIC0007",
-          "keys": [
-            {
-              "ref": [
-                "CostCenter"
-              ]
-            }
-          ]
+          "type": "cds.String",
+          "length": 10
+        },
+        "COSTCENTERNAME": {
+          "@title": "Cost Center Name",
+          "type": "cds.String",
+          "length": 20
         },
         "BEMOT": {
           "@title": "Accounting Indicator",
@@ -4982,8 +4971,7 @@
         },
         "ZPSTS": {
           "@title": "Assignment Status",
-          "type": "cds.String",
-          "length": 2
+          "type": "cds.Boolean"
         },
         "RWBS": {
           "@title": "Receiver WBS",
