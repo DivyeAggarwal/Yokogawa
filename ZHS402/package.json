@@ -83,7 +83,7 @@
         "kind": "odata-v2",
         "model": "srv/external/TimeSheetEntry",
         "credentials": {
-          "destination": "s4003-ap-https"
+          "destination": "s4003-ap-https_CLONING"
         }
       }
     },
