@@ -442,20 +442,20 @@
           "type": "User",
           "length": 255
         },
-        "ProjectID": {
+        "PROJECTID": {
           "key": true,
           "type": "cds.String"
         },
-        "ActivityType": {
+        "ACTIVITYTYPE": {
           "type": "cds.String"
         },
         "AI": {
           "type": "cds.String"
         },
-        "UnitPrice": {
+        "UNITPRICE": {
           "type": "cds.Integer"
         },
-        "Currency": {
+        "CURRENCY": {
           "type": "cds.String"
         }
       }
@@ -515,29 +515,29 @@
           "type": "User",
           "length": 255
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "key": true,
           "type": "cds.String"
         },
         "ID": {
           "type": "cds.Integer"
         },
-        "InvDate": {
+        "INVDATE": {
           "type": "cds.Date"
         },
-        "ProjectID": {
+        "PROJECTID": {
           "type": "cds.String"
         },
-        "CompanyCode": {
+        "COMPANYCODE": {
           "type": "cds.String"
         },
-        "TotalAmount": {
+        "TOTALAMOUNT": {
           "type": "cds.Integer"
         },
-        "TaxAmount": {
+        "TAXAMOUNT": {
           "type": "cds.Integer"
         },
-        "Resources": {
+        "RESOURCES": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
@@ -546,8 +546,8 @@
           "on": [
             {
               "ref": [
-                "Resources",
-                "InvoiceID"
+                "RESOURCES",
+                "INVOICEID"
               ]
             },
             "=",
@@ -558,7 +558,7 @@
             }
           ]
         },
-        "Expense": {
+        "EXPENSE": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
@@ -567,8 +567,8 @@
           "on": [
             {
               "ref": [
-                "Expense",
-                "InvoiceID"
+                "EXPENSE",
+                "INVOICEID"
               ]
             },
             "=",
@@ -579,7 +579,7 @@
             }
           ]
         },
-        "Material": {
+        "MATERIAL": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
@@ -588,8 +588,8 @@
           "on": [
             {
               "ref": [
-                "Material",
-                "InvoiceID"
+                "MATERIAL",
+                "INVOICEID"
               ]
             },
             "=",
@@ -662,7 +662,7 @@
           "key": true,
           "type": "cds.UUID"
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "type": "cds.Association",
           "cardinality": {
             "max": 1
@@ -671,38 +671,38 @@
           "keys": [
             {
               "ref": [
-                "InvoiceID"
+                "INVOICEID"
               ]
             }
           ]
         },
-        "YearMonth": {
+        "YEARMONTH": {
           "type": "cds.String"
         },
-        "EmpID": {
+        "EMPID": {
           "type": "cds.Integer"
         },
-        "EmpName": {
+        "EMPNAME": {
           "type": "cds.String"
         },
-        "Grade": {
+        "GRADE": {
           "type": "cds.String"
         },
-        "Belongs": {
+        "BELONGS": {
           "type": "cds.String"
         },
-        "Curr": {
+        "CURR": {
           "type": "cds.String"
         },
-        "UnitPrice": {
+        "UNITPRICE": {
           "type": "cds.Integer"
         },
-        "Hours": {
+        "HOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2
         },
-        "BillingAmount": {
+        "BILLINGAMOUNT": {
           "type": "cds.Integer"
         }
       }
@@ -766,7 +766,7 @@
           "key": true,
           "type": "cds.UUID"
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "type": "cds.Association",
           "cardinality": {
             "max": 1
@@ -775,33 +775,33 @@
           "keys": [
             {
               "ref": [
-                "InvoiceID"
+                "INVOICEID"
               ]
             }
           ]
         },
-        "CostElement": {
+        "COSTELEMENT": {
           "type": "cds.String"
         },
-        "Note": {
+        "NOTE": {
           "type": "cds.String"
         },
-        "ItemText": {
+        "ITEMTEXT": {
           "type": "cds.String"
         },
-        "Currency": {
+        "CURRENCY": {
           "type": "cds.String"
         },
-        "Amount": {
+        "AMOUNT": {
           "type": "cds.Integer"
         },
-        "CalcType": {
+        "CALCTYPE": {
           "type": "cds.String"
         },
-        "MarkUp": {
+        "MARKUP": {
           "type": "cds.Integer"
         },
-        "BillingAmount": {
+        "BILLINGAMOUNT": {
           "type": "cds.Integer"
         }
       }
@@ -865,7 +865,7 @@
           "key": true,
           "type": "cds.UUID"
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "type": "cds.Association",
           "cardinality": {
             "max": 1
@@ -874,27 +874,27 @@
           "keys": [
             {
               "ref": [
-                "InvoiceID"
+                "INVOICEID"
               ]
             }
           ]
         },
-        "MaterialDesc": {
+        "MATERIALDESC": {
           "type": "cds.String"
         },
-        "Currency": {
+        "CURRENCY": {
           "type": "cds.String"
         },
-        "UnitPrice": {
+        "UNITPRICE": {
           "type": "cds.Integer"
         },
-        "Quan": {
+        "QUAN": {
           "type": "cds.Integer"
         },
-        "UoM": {
+        "UOM": {
           "type": "cds.String"
         },
-        "BillingAmount": {
+        "BILLINGAMOUNT": {
           "type": "cds.Integer"
         }
       }
@@ -2535,20 +2535,20 @@
           "type": "User",
           "length": 255
         },
-        "ProjectID": {
+        "PROJECTID": {
           "key": true,
           "type": "cds.String"
         },
-        "ActivityType": {
+        "ACTIVITYTYPE": {
           "type": "cds.String"
         },
         "AI": {
           "type": "cds.String"
         },
-        "UnitPrice": {
+        "UNITPRICE": {
           "type": "cds.Integer"
         },
-        "Currency": {
+        "CURRENCY": {
           "type": "cds.String"
         }
       }
@@ -2645,33 +2645,29 @@
           "type": "User",
           "length": 255
         },
-        "InvoiceID": {
-          "@title": "Invoice ID",
+        "INVOICEID": {
           "key": true,
           "type": "cds.String"
         },
         "ID": {
           "type": "cds.Integer"
         },
-        "InvDate": {
-          "@title": "Invoice Date",
+        "INVDATE": {
           "type": "cds.Date"
         },
-        "ProjectID": {
-          "@title": "Project Definition",
+        "PROJECTID": {
           "type": "cds.String"
         },
-        "CompanyCode": {
-          "@title": "Company Code",
+        "COMPANYCODE": {
           "type": "cds.String"
         },
-        "TotalAmount": {
+        "TOTALAMOUNT": {
           "type": "cds.Integer"
         },
-        "TaxAmount": {
+        "TAXAMOUNT": {
           "type": "cds.Integer"
         },
-        "Resources": {
+        "RESOURCES": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
@@ -2680,8 +2676,8 @@
           "on": [
             {
               "ref": [
-                "Resources",
-                "InvoiceID"
+                "RESOURCES",
+                "INVOICEID"
               ]
             },
             "=",
@@ -2692,7 +2688,7 @@
             }
           ]
         },
-        "Expense": {
+        "EXPENSE": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
@@ -2701,8 +2697,8 @@
           "on": [
             {
               "ref": [
-                "Expense",
-                "InvoiceID"
+                "EXPENSE",
+                "INVOICEID"
               ]
             },
             "=",
@@ -2713,7 +2709,7 @@
             }
           ]
         },
-        "Material": {
+        "MATERIAL": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
@@ -2722,8 +2718,8 @@
           "on": [
             {
               "ref": [
-                "Material",
-                "InvoiceID"
+                "MATERIAL",
+                "INVOICEID"
               ]
             },
             "=",
@@ -2799,7 +2795,7 @@
           "key": true,
           "type": "cds.UUID"
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "type": "cds.Association",
           "cardinality": {
             "max": 1
@@ -2808,38 +2804,38 @@
           "keys": [
             {
               "ref": [
-                "InvoiceID"
+                "INVOICEID"
               ]
             }
           ]
         },
-        "YearMonth": {
+        "YEARMONTH": {
           "type": "cds.String"
         },
-        "EmpID": {
+        "EMPID": {
           "type": "cds.Integer"
         },
-        "EmpName": {
+        "EMPNAME": {
           "type": "cds.String"
         },
-        "Grade": {
+        "GRADE": {
           "type": "cds.String"
         },
-        "Belongs": {
+        "BELONGS": {
           "type": "cds.String"
         },
-        "Curr": {
+        "CURR": {
           "type": "cds.String"
         },
-        "UnitPrice": {
+        "UNITPRICE": {
           "type": "cds.Integer"
         },
-        "Hours": {
+        "HOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2
         },
-        "BillingAmount": {
+        "BILLINGAMOUNT": {
           "type": "cds.Integer"
         }
       }
@@ -2906,7 +2902,7 @@
           "key": true,
           "type": "cds.UUID"
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "type": "cds.Association",
           "cardinality": {
             "max": 1
@@ -2915,33 +2911,33 @@
           "keys": [
             {
               "ref": [
-                "InvoiceID"
+                "INVOICEID"
               ]
             }
           ]
         },
-        "CostElement": {
+        "COSTELEMENT": {
           "type": "cds.String"
         },
-        "Note": {
+        "NOTE": {
           "type": "cds.String"
         },
-        "ItemText": {
+        "ITEMTEXT": {
           "type": "cds.String"
         },
-        "Currency": {
+        "CURRENCY": {
           "type": "cds.String"
         },
-        "Amount": {
+        "AMOUNT": {
           "type": "cds.Integer"
         },
-        "CalcType": {
+        "CALCTYPE": {
           "type": "cds.String"
         },
-        "MarkUp": {
+        "MARKUP": {
           "type": "cds.Integer"
         },
-        "BillingAmount": {
+        "BILLINGAMOUNT": {
           "type": "cds.Integer"
         }
       }
@@ -3008,7 +3004,7 @@
           "key": true,
           "type": "cds.UUID"
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "type": "cds.Association",
           "cardinality": {
             "max": 1
@@ -3017,27 +3013,27 @@
           "keys": [
             {
               "ref": [
-                "InvoiceID"
+                "INVOICEID"
               ]
             }
           ]
         },
-        "MaterialDesc": {
+        "MATERIALDESC": {
           "type": "cds.String"
         },
-        "Currency": {
+        "CURRENCY": {
           "type": "cds.String"
         },
-        "UnitPrice": {
+        "UNITPRICE": {
           "type": "cds.Integer"
         },
-        "Quan": {
+        "QUAN": {
           "type": "cds.Integer"
         },
-        "UoM": {
+        "UOM": {
           "type": "cds.String"
         },
-        "BillingAmount": {
+        "BILLINGAMOUNT": {
           "type": "cds.Integer"
         }
       }
@@ -5185,20 +5181,20 @@
           "type": "User",
           "length": 255
         },
-        "ProjectID": {
+        "PROJECTID": {
           "key": true,
           "type": "cds.String"
         },
-        "ActivityType": {
+        "ACTIVITYTYPE": {
           "type": "cds.String"
         },
         "AI": {
           "type": "cds.String"
         },
-        "UnitPrice": {
+        "UNITPRICE": {
           "type": "cds.Integer"
         },
-        "Currency": {
+        "CURRENCY": {
           "type": "cds.String"
         }
       }
@@ -5262,29 +5258,29 @@
           "type": "User",
           "length": 255
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "key": true,
           "type": "cds.String"
         },
         "ID": {
           "type": "cds.Integer"
         },
-        "InvDate": {
+        "INVDATE": {
           "type": "cds.Date"
         },
-        "ProjectID": {
+        "PROJECTID": {
           "type": "cds.String"
         },
-        "CompanyCode": {
+        "COMPANYCODE": {
           "type": "cds.String"
         },
-        "TotalAmount": {
+        "TOTALAMOUNT": {
           "type": "cds.Integer"
         },
-        "TaxAmount": {
+        "TAXAMOUNT": {
           "type": "cds.Integer"
         },
-        "Resources": {
+        "RESOURCES": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
@@ -5293,8 +5289,8 @@
           "on": [
             {
               "ref": [
-                "Resources",
-                "InvoiceID"
+                "RESOURCES",
+                "INVOICEID"
               ]
             },
             "=",
@@ -5305,7 +5301,7 @@
             }
           ]
         },
-        "Expense": {
+        "EXPENSE": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
@@ -5314,8 +5310,8 @@
           "on": [
             {
               "ref": [
-                "Expense",
-                "InvoiceID"
+                "EXPENSE",
+                "INVOICEID"
               ]
             },
             "=",
@@ -5326,7 +5322,7 @@
             }
           ]
         },
-        "Material": {
+        "MATERIAL": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
@@ -5335,8 +5331,8 @@
           "on": [
             {
               "ref": [
-                "Material",
-                "InvoiceID"
+                "MATERIAL",
+                "INVOICEID"
               ]
             },
             "=",
@@ -5412,7 +5408,7 @@
           "key": true,
           "type": "cds.UUID"
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "type": "cds.Association",
           "cardinality": {
             "max": 1
@@ -5421,38 +5417,38 @@
           "keys": [
             {
               "ref": [
-                "InvoiceID"
+                "INVOICEID"
               ]
             }
           ]
         },
-        "YearMonth": {
+        "YEARMONTH": {
           "type": "cds.String"
         },
-        "EmpID": {
+        "EMPID": {
           "type": "cds.Integer"
         },
-        "EmpName": {
+        "EMPNAME": {
           "type": "cds.String"
         },
-        "Grade": {
+        "GRADE": {
           "type": "cds.String"
         },
-        "Belongs": {
+        "BELONGS": {
           "type": "cds.String"
         },
-        "Curr": {
+        "CURR": {
           "type": "cds.String"
         },
-        "UnitPrice": {
+        "UNITPRICE": {
           "type": "cds.Integer"
         },
-        "Hours": {
+        "HOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2
         },
-        "BillingAmount": {
+        "BILLINGAMOUNT": {
           "type": "cds.Integer"
         }
       }
@@ -5519,7 +5515,7 @@
           "key": true,
           "type": "cds.UUID"
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "type": "cds.Association",
           "cardinality": {
             "max": 1
@@ -5528,33 +5524,33 @@
           "keys": [
             {
               "ref": [
-                "InvoiceID"
+                "INVOICEID"
               ]
             }
           ]
         },
-        "CostElement": {
+        "COSTELEMENT": {
           "type": "cds.String"
         },
-        "Note": {
+        "NOTE": {
           "type": "cds.String"
         },
-        "ItemText": {
+        "ITEMTEXT": {
           "type": "cds.String"
         },
-        "Currency": {
+        "CURRENCY": {
           "type": "cds.String"
         },
-        "Amount": {
+        "AMOUNT": {
           "type": "cds.Integer"
         },
-        "CalcType": {
+        "CALCTYPE": {
           "type": "cds.String"
         },
-        "MarkUp": {
+        "MARKUP": {
           "type": "cds.Integer"
         },
-        "BillingAmount": {
+        "BILLINGAMOUNT": {
           "type": "cds.Integer"
         }
       }
@@ -5621,7 +5617,7 @@
           "key": true,
           "type": "cds.UUID"
         },
-        "InvoiceID": {
+        "INVOICEID": {
           "type": "cds.Association",
           "cardinality": {
             "max": 1
@@ -5630,27 +5626,27 @@
           "keys": [
             {
               "ref": [
-                "InvoiceID"
+                "INVOICEID"
               ]
             }
           ]
         },
-        "MaterialDesc": {
+        "MATERIALDESC": {
           "type": "cds.String"
         },
-        "Currency": {
+        "CURRENCY": {
           "type": "cds.String"
         },
-        "UnitPrice": {
+        "UNITPRICE": {
           "type": "cds.Integer"
         },
-        "Quan": {
+        "QUAN": {
           "type": "cds.Integer"
         },
-        "UoM": {
+        "UOM": {
           "type": "cds.String"
         },
-        "BillingAmount": {
+        "BILLINGAMOUNT": {
           "type": "cds.Integer"
         }
       }
@@ -7657,6 +7653,25 @@
       }
     }
   },
+  "extensions": [
+    {
+      "annotate": "ZCDSEHBTC0002.ZTHBT0022",
+      "elements": {
+        "InvoiceID": {
+          "@title": "Invoice ID"
+        },
+        "CompanyCode": {
+          "@title": "Company Code"
+        },
+        "ProjectID": {
+          "@title": "Project Definition"
+        },
+        "InvDate": {
+          "@title": "Invoice Date"
+        }
+      }
+    }
+  ],
   "meta": {
     "creator": "CDS Compiler v3.4.4",
     "flavor": "inferred"

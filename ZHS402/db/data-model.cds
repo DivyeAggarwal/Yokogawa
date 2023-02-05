@@ -48,61 +48,61 @@ entity ZTHBT0005: managed{
 }
 @title : '{i18n>SalesRegistration}'
 entity ZTHBT0021: managed {
-    key ProjectID    : String;
-    ActivityType : String;
+    key PROJECTID    : String;
+    ACTIVITYTYPE : String;
     AI           : String;
-    UnitPrice    : Integer;
-    Currency     : String;
+    UNITPRICE    : Integer;
+    CURRENCY     : String;
 }
 @title : '{i18n>DraftInvoice}'
 entity ZTHBT0022: managed {
-    key InvoiceID     : String;
+    key INVOICEID     : String;
     ID:             Integer;
-    InvDate       : Date;
-    ProjectID     : String;
-    CompanyCode   : String;
-    TotalAmount   : Integer;
-    TaxAmount     : Integer;
-    Resources      : Association to many ZTHBT0023
-                      on Resources.InvoiceID = $self;
-    Expense       : Association to many ZTHBT0024
-                      on Expense.InvoiceID = $self;
-    Material      : Association to many ZTHBT0025
-                      on Material.InvoiceID = $self;
+    INVDATE       : Date;
+    PROJECTID     : String;
+    COMPANYCODE   : String;
+    TOTALAMOUNT   : Integer;
+    TAXAMOUNT     : Integer;
+    RESOURCES      : Association to many ZTHBT0023
+                      on RESOURCES.INVOICEID = $self;
+    EXPENSE       : Association to many ZTHBT0024
+                      on EXPENSE.INVOICEID = $self;
+    MATERIAL      : Association to many ZTHBT0025
+                      on MATERIAL.INVOICEID = $self;
 }
 
 @title : '{i18n>DraftResources}'
 entity ZTHBT0023: managed, cuid {
-    InvoiceID     : Association to one ZTHBT0022;
-    YearMonth     : String;
-    EmpID         : Integer;
-    EmpName       : String;
-    Grade         : String; 
-    Belongs       : String;
-    Curr          : String;
-    UnitPrice     : Integer;
-    Hours         : Decimal(4, 2);
-    BillingAmount : Integer;
+    INVOICEID     : Association to one ZTHBT0022;
+    YEARMONTH     : String;
+    EMPID         : Integer;
+    EMPNAME       : String;
+    GRADE         : String; 
+    BELONGS       : String;
+    CURR          : String;
+    UNITPRICE     : Integer;
+    HOURS         : Decimal(4, 2);
+    BILLINGAMOUNT : Integer;
 }
 entity ZTHBT0024: managed, cuid {
-    InvoiceID     : Association to one ZTHBT0022;
-    CostElement   : String;
-    Note          : String;
-    ItemText      : String;
-    Currency      : String;
-    Amount        : Integer;
-    CalcType      : String;
-    MarkUp        : Integer;
-    BillingAmount : Integer;
+    INVOICEID     : Association to one ZTHBT0022;
+    COSTELEMENT   : String;
+    NOTE          : String;
+    ITEMTEXT      : String;
+    CURRENCY      : String;
+    AMOUNT        : Integer;
+    CALCTYPE      : String;
+    MARKUP        : Integer;
+    BILLINGAMOUNT : Integer;
 }
 entity ZTHBT0025: managed, cuid {
-    InvoiceID     : Association to one ZTHBT0022;  
-    MaterialDesc  : String;
-    Currency      : String;
-    UnitPrice     : Integer;
-    Quan          : Integer;
-    UoM           : String;
-    BillingAmount : Integer;
+    INVOICEID     : Association to one ZTHBT0022;  
+    MATERIALDESC  : String;
+    CURRENCY      : String;
+    UNITPRICE     : Integer;
+    QUAN          : Integer;
+    UOM           : String;
+    BILLINGAMOUNT : Integer;
 }
 entity ZTHBT0020: managed {
     key ZTCODE: String(8) @title : 'Task Code';
