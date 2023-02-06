@@ -1317,7 +1317,7 @@
         },
         "ERFMG": {
           "type": "cds.String",
-          "length": 1
+          "length": 18
         },
         "ERFME": {
           "type": "cds.String",
@@ -1820,6 +1820,685 @@
         "ASCENDING_ORDER": {
           "@title": "Order of the column",
           "type": "cds.hana.SMALLINT"
+        }
+      }
+    },
+    "ZSRVBHPS0008Service": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZSRVBHPS0008Service.ZCDSEHPSB0004": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Search Help for Company Code",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHPSB0004"
+          ]
+        }
+      },
+      "elements": {
+        "CompanyCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for the project",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "CompanyCodeDesc": {
+          "@sap.label": "Company Name",
+          "@sap.quickinfo": "Name of Company Code or Company",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.ZCDSEHPSB0037": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for Project Goods API",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHPSB0037"
+          ]
+        }
+      },
+      "elements": {
+        "cpsphi": {
+          "@sap.label": "Project",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.ZCDSEHPSB0038": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help - WBS Element",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHPSB0038"
+          ]
+        }
+      },
+      "elements": {
+        "cps_psp_pnr": {
+          "@sap.label": "WBS Element",
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.ZCDSEHPSC0005": {
+      "kind": "entity",
+      "@UI.HeaderInfo.TypeName": "Create Purchase Item Record",
+      "@UI.HeaderInfo.TypeNamePlural": "Create Purchase Item Records",
+      "@UI.HeaderInfo.Title.Value": "Create Purchase Item Record",
+      "@UI.HeaderInfo.Description.Value": "Create Purchase Item Record",
+      "@UI.SelectionFields": [
+        {
+          "=": "pbukr"
+        },
+        {
+          "=": "cpsphi"
+        },
+        {
+          "=": "cps_psp_pnr"
+        },
+        {
+          "=": "zz1_mscode_prd"
+        },
+        {
+          "=": "cpudt"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "mblnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "mjahr"
+          }
+        },
+        {
+          "Value": {
+            "=": "zeile"
+          }
+        },
+        {
+          "Value": {
+            "=": "pspnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "sernr"
+          }
+        },
+        {
+          "Value": {
+            "=": "posid"
+          }
+        },
+        {
+          "Value": {
+            "=": "pbukr"
+          }
+        },
+        {
+          "Value": {
+            "=": "psphi"
+          }
+        },
+        {
+          "Value": {
+            "=": "ps_psp_pnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "matnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "erfmg"
+          }
+        },
+        {
+          "Value": {
+            "=": "kdauf"
+          }
+        },
+        {
+          "Value": {
+            "=": "kdpos"
+          }
+        },
+        {
+          "Value": {
+            "=": "cpudt"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFME"
+          }
+        },
+        {
+          "Value": {
+            "=": "ebeln"
+          }
+        },
+        {
+          "Value": {
+            "=": "ebelp"
+          }
+        },
+        {
+          "Value": {
+            "=": "smbln"
+          }
+        },
+        {
+          "Value": {
+            "=": "smblp"
+          }
+        },
+        {
+          "Value": {
+            "=": "sjahr"
+          }
+        },
+        {
+          "Value": {
+            "=": "zz1_mscode_prd"
+          }
+        },
+        {
+          "Value": {
+            "=": "idnlf"
+          }
+        },
+        {
+          "Value": {
+            "=": "obknr"
+          }
+        },
+        {
+          "Value": {
+            "=": "Xmblnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "xmjahr"
+          }
+        },
+        {
+          "Value": {
+            "=": "xzeile"
+          }
+        },
+        {
+          "Value": {
+            "=": "cpsphi"
+          }
+        },
+        {
+          "Value": {
+            "=": "cps_psp_pnr"
+          }
+        }
+      ],
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumtion View for Project Goods API",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHPSC0005"
+          ]
+        }
+      },
+      "elements": {
+        "mblnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "mjahr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "zeile": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "pspnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "sernr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "notNull": true
+        },
+        "posid": {
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
+        },
+        "pbukr": {
+          "@Common.Label": "Company code",
+          "@Common.ValueList.CollectionPath": "ZCDSEHPSB0004",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "pbukr"
+              },
+              "ValueListProperty": "CompanyCode"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "CompanyCodeDesc"
+            }
+          ],
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for WBS element",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "psphi": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "ps_psp_pnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "erfmg": {
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6,
+          "notNull": false
+        },
+        "cpudt": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Entry Date",
+          "@sap.quickinfo": "Day On Which Accounting Document Was Entered",
+          "type": "cds.Date",
+          "notNull": false
+        },
+        "ERFME": {
+          "@sap.label": "Unit of Entry",
+          "@sap.quickinfo": "Unit of entry",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "ebeln": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purchase order",
+          "@sap.quickinfo": "Purchase order number",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "ebelp": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Item Number of Purchasing Document",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": false
+        },
+        "smbln": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "smblp": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "sjahr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "zz1_mscode_prd": {
+          "@Common.Label": "MS Code",
+          "@Common.ValueList.CollectionPath": "ZCDSEHSDB0013",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "zz1_mscode_prd"
+              },
+              "ValueListProperty": "zz1_mscode_prd"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "matnr"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "mtart"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "atwrt"
+            }
+          ],
+          "@sap.label": "MS Code",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 80,
+          "notNull": false
+        },
+        "idnlf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier Mat. No.",
+          "@sap.quickinfo": "Material Number Used by Supplier",
+          "type": "cds.String",
+          "length": 35,
+          "notNull": false
+        },
+        "obknr": {
+          "@sap.label": "Object list",
+          "@sap.quickinfo": "Object list number",
+          "type": "cds.Integer64",
+          "notNull": false
+        },
+        "Xmblnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "xmjahr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "xzeile": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "cpsphi": {
+          "@Common.Label": "Project Definition",
+          "@Common.ValueList.CollectionPath": "ZCDSEHPSB0037",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "cpsphi"
+              },
+              "ValueListProperty": "cpsphi"
+            }
+          ],
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "cps_psp_pnr": {
+          "@Common.Label": "WBS element",
+          "@Common.ValueList.CollectionPath": "ZCDSEHPSB0038",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "cps_psp_pnr"
+              },
+              "ValueListProperty": "cps_psp_pnr"
+            }
+          ],
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.ZCDSEHSDB0013": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Search help for Material by MS code",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHSDB0013"
+          ]
+        }
+      },
+      "elements": {
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80,
+          "notNull": false
+        },
+        "mtart": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material type",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "atwrt": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.SAP__Currencies"
+          ]
+        }
+      },
+      "elements": {
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.SAP__UnitsOfMeasure"
+          ]
+        }
+      },
+      "elements": {
+        "UnitCode": {
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ExternalCode": {
+          "@sap.label": "Commercial",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "UoM Text",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@sap.label": "Decimal Places",
+          "type": "cds.Integer",
+          "notNull": false
         }
       }
     },
@@ -4300,7 +4979,7 @@
         },
         "ERFMG": {
           "type": "cds.String",
-          "length": 1
+          "length": 18
         },
         "ERFME": {
           "type": "cds.String",
@@ -6121,346 +6800,460 @@
         }
       }
     },
-    "ZSRVBHSD0002": {
-      "@source": "srv/external/ZSRVBHSD0002.csn",
-      "kind": "service",
-      "@cds.external": "odata-v2",
-      "@m.IsDefaultEntityContainer": "true",
-      "@sap.message.scope.supported": "true",
-      "@sap.supported.formats": "atom json xlsx"
-    },
-    "ZSRVBHSD0002.ZCDSEHSDB0010": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.content.version": "1",
-      "@sap.label": "Basic view for Customer Master extend",
-      "@sap.value.list": "true",
-      "elements": {
-        "Kunnr": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number",
-          "key": true,
-          "type": "cds.String",
-          "length": 10,
-          "notNull": true
-        },
-        "Vkorg": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Sales Organization",
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "notNull": true
-        },
-        "Vtweg": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Distribution Channel",
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "notNull": true
-        },
-        "Spart": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Division",
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "notNull": true
-        },
-        "stctyp": {
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "error_status": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Error Status",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "message_type": {
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "message_text": {
-          "type": "cds.String",
-          "length": 100,
-          "notNull": false
+    "Language": {
+      "kind": "type",
+      "@title": "{i18n>Language}",
+      "@description": "{i18n>LanguageCode.Description}",
+      "type": "cds.Association",
+      "target": "sap.common.Languages",
+      "keys": [
+        {
+          "ref": [
+            "code"
+          ]
         }
-      }
+      ]
     },
-    "ZSRVBHSD0002.ZCDSEHSDB0011": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.content.version": "1",
-      "@sap.label": "Input help for error status",
-      "@sap.value.list": "true",
-      "elements": {
-        "DOMALANGU": {
-          "@sap.label": "Lang.",
-          "@sap.quickinfo": "Language Key",
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "notNull": true
-        },
-        "domvalue_l": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Lower Value",
-          "@sap.quickinfo": "Values for Domains: Single Value/Lower Limit",
-          "key": true,
-          "type": "cds.String",
-          "length": 10,
-          "notNull": true
-        },
-        "Value": {
-          "@sap.label": "Short Descript.",
-          "@sap.quickinfo": "Short Text for Fixed Values",
-          "type": "cds.String",
-          "length": 60,
-          "notNull": false
+    "Currency": {
+      "kind": "type",
+      "@title": "{i18n>Currency}",
+      "@description": "{i18n>CurrencyCode.Description}",
+      "type": "cds.Association",
+      "target": "sap.common.Currencies",
+      "keys": [
+        {
+          "ref": [
+            "code"
+          ]
         }
-      }
+      ]
     },
-    "ZSRVBHSD0002.ZCDSEHSDC0002": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.content.version": "1",
-      "@sap.label": "Consumption view for Customer extend",
-      "elements": {
-        "Kunnr": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number",
-          "@sap.value.list": "standard",
-          "key": true,
-          "type": "cds.String",
-          "length": 10,
-          "notNull": true
-        },
-        "Vkorg": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Sales Organization",
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "notNull": true
-        },
-        "Vtweg": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Distribution Channel",
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "notNull": true
-        },
-        "Spart": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Division",
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "notNull": true
-        },
-        "error_status": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Error Status",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "message_type": {
-          "@sap.label": "Message type",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "message_text": {
-          "@sap.label": "Result",
-          "type": "cds.String",
-          "length": 100,
-          "notNull": false
+    "Country": {
+      "kind": "type",
+      "@title": "{i18n>Country}",
+      "@description": "{i18n>CountryCode.Description}",
+      "type": "cds.Association",
+      "target": "sap.common.Countries",
+      "keys": [
+        {
+          "ref": [
+            "code"
+          ]
         }
-      },
-      "actions": {
-        "Extend_Customer": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHSD0002.ZCDSEHSDC0002",
-            "notNull": false
+      ]
+    },
+    "sap.common": {
+      "kind": "context"
+    },
+    "sap.common.Locale": {
+      "kind": "type",
+      "@title": "{i18n>LanguageCode}",
+      "type": "cds.String",
+      "length": 14
+    },
+    "sap.common.Languages": {
+      "kind": "entity",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
           }
         }
-      }
-    },
-    "ZSRVBHSD0002.ZCDSEHSDC0003": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.requires.filter": "true",
-      "@sap.content.version": "1",
-      "@sap.label": "Consumption view for Customer extend",
+      ],
+      "@cds.odata.valuelist": true,
+      "includes": [
+        "sap.common.CodeList"
+      ],
       "elements": {
-        "Kunnr": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Customer",
-          "@sap.quickinfo": "Customer Number",
-          "@sap.value.list": "standard",
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@Common.Text": {
+            "=": "name"
+          },
+          "@title": "{i18n>LanguageCode}",
           "key": true,
-          "type": "cds.String",
-          "length": 10,
-          "notNull": true
+          "type": "sap.common.Locale",
+          "length": 14
         },
-        "Vkorg": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Sales Organization",
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "notNull": true
+        "texts": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "sap.common.Languages.texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
         },
-        "Vtweg": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Distribution Channel",
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "notNull": true
-        },
-        "Spart": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Division",
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "notNull": true
-        },
-        "error_status": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Error Status",
-          "key": true,
-          "type": "cds.String",
-          "length": 1,
-          "notNull": true
-        },
-        "stctyp": {
-          "@sap.filter.restriction": "single-value",
-          "@sap.required.in.filter": "true",
-          "@sap.label": "Error Status",
-          "@sap.value.list": "fixed-values",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "message_type": {
-          "@sap.label": "Message type",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "message_text": {
-          "@sap.label": "Result",
-          "type": "cds.String",
-          "length": 100,
-          "notNull": false
+        "localized": {
+          "type": "cds.Association",
+          "target": "sap.common.Languages.texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
         }
       }
     },
-    "ZSRVBHSD0002.SAP__Currencies": {
+    "sap.common.Countries": {
       "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.content.version": "1",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "includes": [
+        "sap.common.CodeList"
+      ],
       "elements": {
-        "CurrencyCode": {
-          "@sap.label": "Currency",
-          "@sap.semantics": "currency-code",
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@title": "{i18n>CountryCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
           "key": true,
           "type": "cds.String",
-          "length": 5,
-          "notNull": true
+          "length": 3
         },
-        "ISOCode": {
-          "@sap.label": "ISO code",
-          "type": "cds.String",
-          "length": 3,
-          "notNull": true
+        "texts": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "sap.common.Countries.texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
         },
-        "Text": {
-          "@sap.label": "Short text",
-          "type": "cds.String",
-          "length": 15,
-          "notNull": true
-        },
-        "DecimalPlaces": {
-          "@odata.Type": "Edm.Byte",
-          "@sap.label": "Decimals",
-          "type": "cds.Integer",
-          "notNull": true
+        "localized": {
+          "type": "cds.Association",
+          "target": "sap.common.Countries.texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
         }
       }
     },
-    "ZSRVBHSD0002.SAP__UnitsOfMeasure": {
+    "sap.common.Currencies": {
       "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.content.version": "1",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "includes": [
+        "sap.common.CodeList"
+      ],
       "elements": {
-        "UnitCode": {
-          "@sap.label": "Internal UoM",
-          "@sap.semantics": "unit-of-measure",
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 255
+        },
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
+          "type": "cds.String",
+          "length": 1000
+        },
+        "code": {
+          "@title": "{i18n>CurrencyCode}",
+          "@Common.Text": {
+            "=": "name"
+          },
           "key": true,
           "type": "cds.String",
-          "length": 3,
-          "notNull": true
+          "length": 3
         },
-        "ISOCode": {
-          "@sap.label": "ISO code",
+        "symbol": {
+          "@title": "{i18n>CurrencySymbol}",
           "type": "cds.String",
-          "length": 3,
-          "notNull": true
+          "length": 5
         },
-        "ExternalCode": {
-          "@sap.label": "Commercial",
+        "texts": {
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "sap.common.Currencies.texts",
+          "on": [
+            {
+              "ref": [
+                "texts",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            }
+          ]
+        },
+        "localized": {
+          "type": "cds.Association",
+          "target": "sap.common.Currencies.texts",
+          "on": [
+            {
+              "ref": [
+                "localized",
+                "code"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "code"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "localized",
+                "locale"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$user",
+                "locale"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "sap.common.CodeList": {
+      "kind": "aspect",
+      "@cds.autoexpose": true,
+      "@cds.persistence.skip": "if-unused",
+      "@UI.Identification": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        }
+      ],
+      "@cds.odata.valuelist": true,
+      "elements": {
+        "name": {
+          "@title": "{i18n>Name}",
+          "localized": true,
           "type": "cds.String",
-          "length": 3,
-          "notNull": true
+          "length": 255
         },
-        "Text": {
-          "@sap.label": "UoM Text",
+        "descr": {
+          "@title": "{i18n>Description}",
+          "localized": true,
           "type": "cds.String",
-          "length": 30,
-          "notNull": true
+          "length": 1000
+        }
+      }
+    },
+    "cuid": {
+      "kind": "aspect",
+      "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        }
+      }
+    },
+    "managed": {
+      "kind": "aspect",
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
         },
-        "DecimalPlaces": {
-          "@sap.label": "Decimal Places",
-          "type": "cds.Integer",
-          "notNull": false
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        }
+      }
+    },
+    "temporal": {
+      "kind": "aspect",
+      "elements": {
+        "validFrom": {
+          "@cds.valid.from": true,
+          "type": "cds.Timestamp"
+        },
+        "validTo": {
+          "@cds.valid.to": true,
+          "type": "cds.Timestamp"
+        }
+      }
+    },
+    "User": {
+      "kind": "type",
+      "@title": "{i18n>UserID}",
+      "@description": "{i18n>UserID.Description}",
+      "type": "cds.String",
+      "length": 255
+    },
+    "extensible": {
+      "kind": "aspect",
+      "elements": {
+        "extensions__": {
+          "@cds.api.ignore": true,
+          "type": "cds.String"
         }
       }
     },
     "TimeSheetEntry": {
       "@source": "srv/external/TimeSheetEntry.csn",
       "kind": "service",
-      "@cds.external": "odata-v2",
+      "@cds.external": true,
       "@m.IsDefaultEntityContainer": "true",
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
@@ -6938,453 +7731,421 @@
         }
       }
     },
-    "Language": {
-      "kind": "type",
-      "@title": "{i18n>Language}",
-      "@description": "{i18n>LanguageCode.Description}",
-      "type": "cds.Association",
-      "target": "sap.common.Languages",
-      "keys": [
-        {
-          "ref": [
-            "code"
-          ]
-        }
-      ]
+    "ZSRVBHPS0008": {
+      "@source": "srv/external/ZSRVBHPS0008.csn",
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
     },
-    "Currency": {
-      "kind": "type",
-      "@title": "{i18n>Currency}",
-      "@description": "{i18n>CurrencyCode.Description}",
-      "type": "cds.Association",
-      "target": "sap.common.Currencies",
-      "keys": [
-        {
-          "ref": [
-            "code"
-          ]
-        }
-      ]
-    },
-    "Country": {
-      "kind": "type",
-      "@title": "{i18n>Country}",
-      "@description": "{i18n>CountryCode.Description}",
-      "type": "cds.Association",
-      "target": "sap.common.Countries",
-      "keys": [
-        {
-          "ref": [
-            "code"
-          ]
-        }
-      ]
-    },
-    "sap.common": {
-      "kind": "context"
-    },
-    "sap.common.Locale": {
-      "kind": "type",
-      "@title": "{i18n>LanguageCode}",
-      "type": "cds.String",
-      "length": 14
-    },
-    "sap.common.Languages": {
+    "ZSRVBHPS0008.ZCDSEHPSB0004": {
       "kind": "entity",
-      "@cds.autoexpose": true,
-      "@cds.persistence.skip": "if-unused",
-      "@UI.Identification": [
-        {
-          "Value": {
-            "=": "name"
-          }
-        }
-      ],
-      "@cds.odata.valuelist": true,
-      "includes": [
-        "sap.common.CodeList"
-      ],
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Search Help for Company Code",
+      "@sap.value.list": "true",
       "elements": {
-        "name": {
-          "@title": "{i18n>Name}",
-          "localized": true,
-          "type": "cds.String",
-          "length": 255
-        },
-        "descr": {
-          "@title": "{i18n>Description}",
-          "localized": true,
-          "type": "cds.String",
-          "length": 1000
-        },
-        "code": {
-          "@Common.Text": {
-            "=": "name"
-          },
-          "@title": "{i18n>LanguageCode}",
+        "CompanyCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for the project",
           "key": true,
-          "type": "sap.common.Locale",
-          "length": 14
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
         },
-        "texts": {
-          "type": "cds.Composition",
-          "cardinality": {
-            "max": "*"
-          },
-          "target": "sap.common.Languages.texts",
-          "on": [
-            {
-              "ref": [
-                "texts",
-                "code"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "code"
-              ]
-            }
-          ]
-        },
-        "localized": {
-          "type": "cds.Association",
-          "target": "sap.common.Languages.texts",
-          "on": [
-            {
-              "ref": [
-                "localized",
-                "code"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "code"
-              ]
-            },
-            "and",
-            {
-              "ref": [
-                "localized",
-                "locale"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "$user",
-                "locale"
-              ]
-            }
-          ]
+        "CompanyCodeDesc": {
+          "@sap.label": "Company Name",
+          "@sap.quickinfo": "Name of Company Code or Company",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
         }
       }
     },
-    "sap.common.Countries": {
+    "ZSRVBHPS0008.ZCDSEHPSB0037": {
       "kind": "entity",
-      "@cds.autoexpose": true,
-      "@cds.persistence.skip": "if-unused",
-      "@UI.Identification": [
-        {
-          "Value": {
-            "=": "name"
-          }
-        }
-      ],
-      "@cds.odata.valuelist": true,
-      "includes": [
-        "sap.common.CodeList"
-      ],
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for Project Goods API",
+      "@sap.value.list": "true",
       "elements": {
-        "name": {
-          "@title": "{i18n>Name}",
-          "localized": true,
-          "type": "cds.String",
-          "length": 255
-        },
-        "descr": {
-          "@title": "{i18n>Description}",
-          "localized": true,
-          "type": "cds.String",
-          "length": 1000
-        },
-        "code": {
-          "@title": "{i18n>CountryCode}",
-          "@Common.Text": {
-            "=": "name"
-          },
+        "cpsphi": {
+          "@sap.label": "Project",
           "key": true,
           "type": "cds.String",
-          "length": 3
-        },
-        "texts": {
-          "type": "cds.Composition",
-          "cardinality": {
-            "max": "*"
-          },
-          "target": "sap.common.Countries.texts",
-          "on": [
-            {
-              "ref": [
-                "texts",
-                "code"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "code"
-              ]
-            }
-          ]
-        },
-        "localized": {
-          "type": "cds.Association",
-          "target": "sap.common.Countries.texts",
-          "on": [
-            {
-              "ref": [
-                "localized",
-                "code"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "code"
-              ]
-            },
-            "and",
-            {
-              "ref": [
-                "localized",
-                "locale"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "$user",
-                "locale"
-              ]
-            }
-          ]
+          "length": 10,
+          "notNull": true
         }
       }
     },
-    "sap.common.Currencies": {
+    "ZSRVBHPS0008.ZCDSEHPSB0038": {
       "kind": "entity",
-      "@cds.autoexpose": true,
-      "@cds.persistence.skip": "if-unused",
-      "@UI.Identification": [
-        {
-          "Value": {
-            "=": "name"
-          }
-        }
-      ],
-      "@cds.odata.valuelist": true,
-      "includes": [
-        "sap.common.CodeList"
-      ],
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help - WBS Element",
+      "@sap.value.list": "true",
       "elements": {
-        "name": {
-          "@title": "{i18n>Name}",
-          "localized": true,
-          "type": "cds.String",
-          "length": 255
-        },
-        "descr": {
-          "@title": "{i18n>Description}",
-          "localized": true,
-          "type": "cds.String",
-          "length": 1000
-        },
-        "code": {
-          "@title": "{i18n>CurrencyCode}",
-          "@Common.Text": {
-            "=": "name"
-          },
+        "cps_psp_pnr": {
+          "@sap.label": "WBS Element",
           "key": true,
           "type": "cds.String",
-          "length": 3
-        },
-        "symbol": {
-          "@title": "{i18n>CurrencySymbol}",
-          "type": "cds.String",
-          "length": 5
-        },
-        "texts": {
-          "type": "cds.Composition",
-          "cardinality": {
-            "max": "*"
-          },
-          "target": "sap.common.Currencies.texts",
-          "on": [
-            {
-              "ref": [
-                "texts",
-                "code"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "code"
-              ]
-            }
-          ]
-        },
-        "localized": {
-          "type": "cds.Association",
-          "target": "sap.common.Currencies.texts",
-          "on": [
-            {
-              "ref": [
-                "localized",
-                "code"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "code"
-              ]
-            },
-            "and",
-            {
-              "ref": [
-                "localized",
-                "locale"
-              ]
-            },
-            "=",
-            {
-              "ref": [
-                "$user",
-                "locale"
-              ]
-            }
-          ]
+          "length": 24,
+          "notNull": true
         }
       }
     },
-    "sap.common.CodeList": {
-      "kind": "aspect",
-      "@cds.autoexpose": true,
-      "@cds.persistence.skip": "if-unused",
-      "@UI.Identification": [
-        {
-          "Value": {
-            "=": "name"
-          }
-        }
-      ],
-      "@cds.odata.valuelist": true,
+    "ZSRVBHPS0008.ZCDSEHPSC0005": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumtion View for Project Goods API",
       "elements": {
-        "name": {
-          "@title": "{i18n>Name}",
-          "localized": true,
-          "type": "cds.String",
-          "length": 255
-        },
-        "descr": {
-          "@title": "{i18n>Description}",
-          "localized": true,
-          "type": "cds.String",
-          "length": 1000
-        }
-      }
-    },
-    "cuid": {
-      "kind": "aspect",
-      "elements": {
-        "ID": {
+        "mblnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
           "key": true,
-          "type": "cds.UUID"
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "mjahr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "zeile": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "pspnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "sernr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "notNull": true
+        },
+        "posid": {
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
+        },
+        "pbukr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for WBS element",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "psphi": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "ps_psp_pnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "erfmg": {
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6,
+          "notNull": false
+        },
+        "cpudt": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Entry Date",
+          "@sap.quickinfo": "Day On Which Accounting Document Was Entered",
+          "type": "cds.Date",
+          "notNull": false
+        },
+        "ERFME": {
+          "@sap.label": "Unit of Entry",
+          "@sap.quickinfo": "Unit of entry",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "ebeln": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purchase order",
+          "@sap.quickinfo": "Purchase order number",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "ebelp": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Item Number of Purchasing Document",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": false
+        },
+        "smbln": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "smblp": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "sjahr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 80,
+          "notNull": false
+        },
+        "idnlf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier Mat. No.",
+          "@sap.quickinfo": "Material Number Used by Supplier",
+          "type": "cds.String",
+          "length": 35,
+          "notNull": false
+        },
+        "obknr": {
+          "@sap.label": "Object list",
+          "@sap.quickinfo": "Object list number",
+          "type": "cds.Integer64",
+          "notNull": false
+        },
+        "Xmblnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "xmjahr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "xzeile": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "cpsphi": {
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "cps_psp_pnr": {
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
         }
       }
     },
-    "managed": {
-      "kind": "aspect",
+    "ZSRVBHPS0008.ZCDSEHSDB0013": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Search help for Material by MS code",
+      "@sap.value.list": "true",
       "elements": {
-        "createdAt": {
-          "@cds.on.insert": {
-            "=": "$now"
-          },
-          "@UI.HiddenFilter": true,
-          "@Core.Immutable": true,
-          "@title": "{i18n>CreatedAt}",
-          "@readonly": true,
-          "type": "cds.Timestamp"
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
         },
-        "createdBy": {
-          "@cds.on.insert": {
-            "=": "$user"
-          },
-          "@UI.HiddenFilter": true,
-          "@Core.Immutable": true,
-          "@title": "{i18n>CreatedBy}",
-          "@readonly": true,
-          "@description": "{i18n>UserID.Description}",
-          "type": "User",
-          "length": 255
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80,
+          "notNull": false
         },
-        "modifiedAt": {
-          "@cds.on.insert": {
-            "=": "$now"
-          },
-          "@cds.on.update": {
-            "=": "$now"
-          },
-          "@UI.HiddenFilter": true,
-          "@title": "{i18n>ChangedAt}",
-          "@readonly": true,
-          "type": "cds.Timestamp"
+        "mtart": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material type",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
         },
-        "modifiedBy": {
-          "@cds.on.insert": {
-            "=": "$user"
-          },
-          "@cds.on.update": {
-            "=": "$user"
-          },
-          "@UI.HiddenFilter": true,
-          "@title": "{i18n>ChangedBy}",
-          "@readonly": true,
-          "@description": "{i18n>UserID.Description}",
-          "type": "User",
-          "length": 255
+        "atwrt": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70,
+          "notNull": false
         }
       }
     },
-    "temporal": {
-      "kind": "aspect",
+    "ZSRVBHPS0008.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
       "elements": {
-        "validFrom": {
-          "@cds.valid.from": true,
-          "type": "cds.Timestamp"
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
         },
-        "validTo": {
-          "@cds.valid.to": true,
-          "type": "cds.Timestamp"
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
         }
       }
     },
-    "User": {
-      "kind": "type",
-      "@title": "{i18n>UserID}",
-      "@description": "{i18n>UserID.Description}",
-      "type": "cds.String",
-      "length": 255
-    },
-    "extensible": {
-      "kind": "aspect",
+    "ZSRVBHPS0008.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
       "elements": {
-        "extensions__": {
-          "@cds.api.ignore": true,
-          "type": "cds.String"
+        "UnitCode": {
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ExternalCode": {
+          "@sap.label": "Commercial",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "UoM Text",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@sap.label": "Decimal Places",
+          "type": "cds.Integer",
+          "notNull": false
         }
       }
     },

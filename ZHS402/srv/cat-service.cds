@@ -1,5 +1,18 @@
 using ZHS402 as db from '../db/data-model';
 using TimeSheetEntry from './external/TimeSheetEntry';
+using ZSRVBHPS0008 from './external/ZSRVBHPS0008';
+
+service ZSRVBHPS0008Service {
+
+    entity ZCDSEHPSB0004 as projection on ZSRVBHPS0008.ZCDSEHPSB0004; 
+    entity ZCDSEHPSB0037 as projection on ZSRVBHPS0008.ZCDSEHPSB0037; 
+    entity ZCDSEHPSB0038 as projection on ZSRVBHPS0008.ZCDSEHPSB0038; 
+    entity ZCDSEHPSC0005 as projection on ZSRVBHPS0008.ZCDSEHPSC0005; 
+    entity ZCDSEHSDB0013 as projection on ZSRVBHPS0008.ZCDSEHSDB0013; 
+    entity SAP__Currencies as projection on ZSRVBHPS0008.SAP__Currencies; 
+    entity SAP__UnitsOfMeasure as projection on ZSRVBHPS0008.SAP__UnitsOfMeasure; 
+
+}
 
 service CatalogService {
     entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
