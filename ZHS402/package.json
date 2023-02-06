@@ -88,7 +88,10 @@
       },
       "ZSRVBHPS0008": {
         "kind": "odata-v2",
-        "model": "srv/external/ZSRVBHPS0008"
+        "model": "srv/external/ZSRVBHPS0008",
+        "credentials": {
+          "destination": "s4003-ap-https_CLONING"
+        }
       }
     },
     "hana": {
