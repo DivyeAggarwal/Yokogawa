@@ -324,20 +324,20 @@ annotate  ZCDSEHBTC0003.ZTHBT0019 with @(
 annotate ZCDSEHBTC0002.ZTHBT0022 with @(
     UI : { 
         SelectionFields  : [
-            InvoiceID,CompanyCode,ProjectID
+            INVOICEID,COMPANYCODE,PROJECTID
         ],
         LineItem  : [
-            { Value : InvoiceID },
-            { Value : CompanyCode }, 
-            { Value : ProjectID },
-            { Value : InvDate }                                   
+            { Value : INVOICEID },
+            { Value : COMPANYCODE }, 
+            { Value : PROJECTID },
+            { Value : INVDATE }                                   
         ],
      }
 ){
-    InvoiceID @( title: 'Invoice ID' );    
-    CompanyCode @( title: 'Company Code' );
-    ProjectID @( title: 'Project Definition' );
-    InvDate @( title: 'Invoice Date' )
+    INVOICEID @( title: 'Invoice ID' );    
+    COMPANYCODE @( title: 'Company Code' );
+    PROJECTID @( title: 'Project Definition' );
+    INVDATE @( title: 'Invoice Date' )
 };
 
 
