@@ -340,7 +340,36 @@ annotate ZCDSEHBTC0002.ZTHBT0022 with @(
     INVDATE @( title: 'Invoice Date' )
 };
 
-
+annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with {
+    mblnr       @title : 'Material Document';
+    mjahr       @title : 'Material Doc. Year';
+    zeile       @title : 'aterial Doc.Item';
+    pspnr       @title : 'WBS Element';
+    sernr       @title : 'Serial Number';
+    posid       @title : 'WBS Element';
+    pbukr       @title : 'Company code';
+    matnr       @title : 'Material';
+    erfmg       @title : 'Quantity';
+    kdauf       @title : 'Sales Order';
+    kdpos       @title : 'Sales order item';
+    cpudt       @title : 'Entry Date';
+    ERFME       @title : 'Unit of entry';
+    ebeln       @title : 'Purchase Order';
+    ebelp       @title : 'PO Item';
+    smbln       @title : 'Material Document';
+    smblp       @title : 'Material Doc.Item';
+    sjahr       @title : 'Material Doc.Year';
+    zz1_mscode_prd       @title : 'MS Code';
+    idnlf       @title : 'Supplier Mat. No.';
+    obknr       @title : 'Object list number';
+    Xmblnr       @title : 'aterial Document';
+    xmjahr       @title : 'Material Doc.Item';
+    xzeile       @title : 'Material Doc.Year';
+    cpsphi       @title : 'WBS Element Short';
+    cps_psp_pnr       @title : 'WBS Element Long';
+    psphi       @title : 'Current number of the appropriate project';
+    ps_psp_pnr       @title : 'Work Breakdown Structure Element (Stock Identifier)';
+}
 annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with @(UI : {
     HeaderInfo      : {
         TypeName       : 'Create Purchase Item Record',
@@ -356,34 +385,34 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with @(UI : {
         cpudt
     ],
     LineItem        : [
-        {Value : mblnr},
-        {Value : mjahr},
-        {Value : zeile},
-        {Value : pspnr},
-        {Value : sernr},
-        {Value : posid},
-        {Value : pbukr},
-        {Value : psphi},
-        {Value : ps_psp_pnr},
-        {Value : matnr},
-        {Value : erfmg},
-        {Value : kdauf},
-        {Value : kdpos},
-        {Value : cpudt},
-        {Value : ERFME},
-        {Value : ebeln},
-        {Value : ebelp},
-        {Value : smbln},
-        {Value : smblp},
-        {Value : sjahr},
-        {Value : zz1_mscode_prd},
-        {Value : idnlf},
-        {Value : obknr},
-        {Value : Xmblnr},
-        {Value : xmjahr},
-        {Value : xzeile},
-        {Value : cpsphi},
-        {Value : cps_psp_pnr}
+        {Value : mblnr },
+        {Value : mjahr },
+        {Value : zeile },
+        {Value : pspnr },
+        {Value : sernr },
+        {Value : posid },
+        {Value : pbukr },
+        {Value : psphi },
+        {Value : ps_psp_pnr },
+        {Value : matnr },
+        {Value : erfmg },
+        {Value : kdauf },
+        {Value : kdpos },
+        {Value : cpudt },
+        {Value : ERFME },
+        {Value : ebeln },
+        {Value : ebelp },
+        {Value : smbln },
+        {Value : smblp },
+        {Value : sjahr },
+        {Value : zz1_mscode_prd },
+        {Value : idnlf },
+        {Value : obknr },
+        {Value : Xmblnr },
+        {Value : xmjahr },
+        {Value : xzeile },
+        {Value : cpsphi },
+        {Value : cps_psp_pnr }
     ],
 }) {
 

@@ -74,10 +74,6 @@ modules:
       - comyokogawazhpsdraftinvoice.zip
       name: comyokogawazhpsdraftinvoice
       target-path: resources/
-    - artifacts:
-      - comyokogawazhps0002zhps0002.zip
-      name: comyokogawazhps0002zhps0002
-      target-path: resources/
 - name: comyokogawazhmftendigitpartcreate
   type: html5
   path: app/zhmftendigitpartcreate
@@ -91,16 +87,6 @@ modules:
 - name: comyokogawazhpsdraftinvoice
   type: html5
   path: app/zhpsdraftinvoice
-  build-parameters:
-    build-result: dist
-    builder: custom
-    commands:
-    - npm install
-    - npm run build:cf
-    supported-platforms: []
-- name: comyokogawazhps0002zhps0002
-  type: html5
-  path: app/zhps0002
   build-parameters:
     build-result: dist
     builder: custom
