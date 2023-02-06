@@ -341,5 +341,128 @@ annotate ZCDSEHBTC0002.ZTHBT0022 with @(
 };
 
 
+annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with @(UI : {
+    HeaderInfo      : {
+        TypeName       : 'Create Purchase Item Record',
+        TypeNamePlural : 'Create Purchase Item Records',
+        Title          : {Value : 'Create Purchase Item Record'},
+        Description    : {Value : 'Create Purchase Item Record'}
+    },
+    SelectionFields : [
+        pbukr,
+        cpsphi,
+        cps_psp_pnr,
+        zz1_mscode_prd,
+        cpudt
+    ],
+    LineItem        : [
+        {Value : mblnr},
+        {Value : mjahr},
+        {Value : zeile},
+        {Value : pspnr},
+        {Value : sernr},
+        {Value : posid},
+        {Value : pbukr},
+        {Value : psphi},
+        {Value : ps_psp_pnr},
+        {Value : matnr},
+        {Value : erfmg},
+        {Value : kdauf},
+        {Value : kdpos},
+        {Value : cpudt},
+        {Value : ERFME},
+        {Value : ebeln},
+        {Value : ebelp},
+        {Value : smbln},
+        {Value : smblp},
+        {Value : sjahr},
+        {Value : zz1_mscode_prd},
+        {Value : idnlf},
+        {Value : obknr},
+        {Value : Xmblnr},
+        {Value : xmjahr},
+        {Value : xzeile},
+        {Value : cpsphi},
+        {Value : cps_psp_pnr}
+    ],
+}) {
+
+};
+
+annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 {
+    @(Common : {
+        Label     : 'Company code',
+        ValueList : {
+            CollectionPath : 'ZCDSEHPSB0004',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : pbukr,
+                    ValueListProperty : 'CompanyCode'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'CompanyCodeDesc'
+                }
+            ]
+        }
+    })
+    pbukr;
+    @(Common : {
+        Label     : 'WBS element',
+        ValueList : {
+            CollectionPath : 'ZCDSEHPSB0038',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : cps_psp_pnr,
+                    ValueListProperty : 'cps_psp_pnr'
+                }
+            ]
+        }
+    })
+    cps_psp_pnr;
+    @(Common : {
+        Label     : 'Project Definition',
+        ValueList : {
+            CollectionPath : 'ZCDSEHPSB0037',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : cpsphi,
+                    ValueListProperty : 'cpsphi'
+                }
+            ]
+        }
+    })
+    cpsphi;
+    @(Common : {
+        Label     : 'MS Code',
+        ValueList : {
+            CollectionPath : 'ZCDSEHSDB0013',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : zz1_mscode_prd,
+                    ValueListProperty : 'zz1_mscode_prd'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'matnr'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'mtart'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'atwrt'
+                }
+            ]
+        }
+    })
+    zz1_mscode_prd;
+}
+
 
 
