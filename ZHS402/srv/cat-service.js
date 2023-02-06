@@ -211,7 +211,7 @@ module.exports = cds.service.impl(async function() {
     		var currentYear = new Date().getFullYear();
     		var convertedID = String(ID).padStart(5, "0");
     		var InvoiceID = currentYear + "-" + convertedID;
-    		context.data.InvoiceID = InvoiceID;
+    		context.data.INVOICEID = InvoiceID;
     	});
 
     this.after('CREATE', 'ZTHBT0033', async (context) => {
