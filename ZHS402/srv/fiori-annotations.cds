@@ -343,7 +343,7 @@ annotate ZCDSEHBTC0002.ZTHBT0022 with @(
 annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with {
     mblnr       @title : 'Material Document';
     mjahr       @title : 'Material Doc. Year';
-    zeile       @title : 'aterial Doc.Item';
+    zeile       @title : 'Material Doc.Item';
     pspnr       @title : 'WBS Element';
     sernr       @title : 'Serial Number';
     posid       @title : 'WBS Element';
@@ -362,7 +362,7 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with {
     zz1_mscode_prd       @title : 'MS Code';
     idnlf       @title : 'Supplier Mat. No.';
     obknr       @title : 'Object list number';
-    Xmblnr       @title : 'aterial Document';
+    Xmblnr       @title : 'Material Document';
     xmjahr       @title : 'Material Doc.Item';
     xzeile       @title : 'Material Doc.Year';
     cpsphi       @title : 'WBS Element Short';
