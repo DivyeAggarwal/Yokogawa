@@ -159,7 +159,7 @@
       "@sap.updatable": "false",
       "@sap.deletable": "false",
       "@sap.content.version": "1",
-      "@sap.label": "COnsumption View for Controlling Area",
+      "@sap.label": "Consumption View for Controlling Area",
       "elements": {
         "CostCenter": {
           "key": true,
