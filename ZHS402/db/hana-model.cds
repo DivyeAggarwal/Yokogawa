@@ -84,23 +84,32 @@ entity SYNONYMS {
 
 @cds.persistence.exists
 entity INDEX_COLUMNS {
+    SCHEMA_NAME     : String(256)
+    @title : 'Schema name';
+    TABLE_NAME      : String(256)
+    @title : 'Table name';
+    TABLE_OID       : Integer64
+    @title : 'Object ID of the table';
+    INDEX_NAME      : String(256)
+    @title : 'Index of the column';
+    INDEX_OID       : String(256)
+    @title : 'Index ID of the Table';
+    CONSTRAINT      : String(256)
+    @title : 'Constraint of the column';
+    COLUMN_NAME     : String(256)
+    @title : 'Name of the column';
+    POSITION        : Integer
+    @title : 'Ordinal position of the column in the record';
+    // ASCENDING_ORDER : hana.SMALLINT
+    // @title : 'Order of the column';
+
+}
+
+@cds.persistence.exists
+entity M_TABLES {
     SCHEMA_NAME    : String(256)
     @title : 'Schema name';
     TABLE_NAME     : String(256)
     @title : 'Table name';
-    TABLE_OID      : Integer64
-    @title : 'Object ID of the table';
-    INDEX_NAME    : String(256)
-    @title : 'Index of the column';
-    INDEX_OID    : String(256)
-    @title : 'Index ID of the Table';
-    CONSTRAINT    : String(256)
-    @title : 'Constraint of the column';
-    COLUMN_NAME    : String(256)
-    @title : 'Name of the column';
-    POSITION       : Integer
-    @title : 'Ordinal position of the column in the record';
-    ASCENDING_ORDER   : hana.SMALLINT
-    @title : 'Order of the column';
     
 }

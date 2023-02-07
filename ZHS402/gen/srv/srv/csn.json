@@ -1826,10 +1826,729 @@
         "POSITION": {
           "@title": "Ordinal position of the column in the record",
           "type": "cds.Integer"
+        }
+      }
+    },
+    "PUBLIC.M_TABLES": {
+      "kind": "entity",
+      "@cds.persistence.exists": true,
+      "elements": {
+        "SCHEMA_NAME": {
+          "@title": "Schema name",
+          "type": "cds.String",
+          "length": 256
         },
-        "ASCENDING_ORDER": {
-          "@title": "Order of the column",
-          "type": "cds.hana.SMALLINT"
+        "TABLE_NAME": {
+          "@title": "Table name",
+          "type": "cds.String",
+          "length": 256
+        }
+      }
+    },
+    "ZSRVBHPS0008Service": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZSRVBHPS0008Service.ZCDSEHPSB0004": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Search Help for Company Code",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHPSB0004"
+          ]
+        }
+      },
+      "elements": {
+        "CompanyCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for the project",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "CompanyCodeDesc": {
+          "@sap.label": "Company Name",
+          "@sap.quickinfo": "Name of Company Code or Company",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.ZCDSEHPSB0037": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for Project Goods API",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHPSB0037"
+          ]
+        }
+      },
+      "elements": {
+        "cpsphi": {
+          "@sap.label": "Project",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.ZCDSEHPSB0038": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help - WBS Element",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHPSB0038"
+          ]
+        }
+      },
+      "elements": {
+        "cps_psp_pnr": {
+          "@sap.label": "WBS Element",
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.ZCDSEHPSC0005": {
+      "kind": "entity",
+      "@UI.HeaderInfo.TypeName": "Create Purchase Item Record",
+      "@UI.HeaderInfo.TypeNamePlural": "Create Purchase Item Records",
+      "@UI.HeaderInfo.Title.Value": "Create Purchase Item Record",
+      "@UI.HeaderInfo.Description.Value": "Create Purchase Item Record",
+      "@UI.SelectionFields": [
+        {
+          "=": "pbukr"
+        },
+        {
+          "=": "cpsphi"
+        },
+        {
+          "=": "cps_psp_pnr"
+        },
+        {
+          "=": "zz1_mscode_prd"
+        },
+        {
+          "=": "cpudt"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "mblnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "mjahr"
+          }
+        },
+        {
+          "Value": {
+            "=": "zeile"
+          }
+        },
+        {
+          "Value": {
+            "=": "pspnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "sernr"
+          }
+        },
+        {
+          "Value": {
+            "=": "posid"
+          }
+        },
+        {
+          "Value": {
+            "=": "pbukr"
+          }
+        },
+        {
+          "Value": {
+            "=": "psphi"
+          }
+        },
+        {
+          "Value": {
+            "=": "ps_psp_pnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "matnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "erfmg"
+          }
+        },
+        {
+          "Value": {
+            "=": "kdauf"
+          }
+        },
+        {
+          "Value": {
+            "=": "kdpos"
+          }
+        },
+        {
+          "Value": {
+            "=": "cpudt"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFME"
+          }
+        },
+        {
+          "Value": {
+            "=": "ebeln"
+          }
+        },
+        {
+          "Value": {
+            "=": "ebelp"
+          }
+        },
+        {
+          "Value": {
+            "=": "smbln"
+          }
+        },
+        {
+          "Value": {
+            "=": "smblp"
+          }
+        },
+        {
+          "Value": {
+            "=": "sjahr"
+          }
+        },
+        {
+          "Value": {
+            "=": "zz1_mscode_prd"
+          }
+        },
+        {
+          "Value": {
+            "=": "idnlf"
+          }
+        },
+        {
+          "Value": {
+            "=": "obknr"
+          }
+        },
+        {
+          "Value": {
+            "=": "Xmblnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "xmjahr"
+          }
+        },
+        {
+          "Value": {
+            "=": "xzeile"
+          }
+        },
+        {
+          "Value": {
+            "=": "cpsphi"
+          }
+        },
+        {
+          "Value": {
+            "=": "cps_psp_pnr"
+          }
+        }
+      ],
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumtion View for Project Goods API",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHPSC0005"
+          ]
+        }
+      },
+      "elements": {
+        "mblnr": {
+          "@title": "Material Document",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "mjahr": {
+          "@title": "Material Doc. Year",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "zeile": {
+          "@title": "Material Doc.Item",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "pspnr": {
+          "@title": "WBS Element",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "sernr": {
+          "@title": "Serial Number",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "notNull": true
+        },
+        "posid": {
+          "@title": "WBS Element",
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
+        },
+        "pbukr": {
+          "@title": "Company code",
+          "@Common.Label": "Company code",
+          "@Common.ValueList.CollectionPath": "ZCDSEHPSB0004",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "pbukr"
+              },
+              "ValueListProperty": "CompanyCode"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "CompanyCodeDesc"
+            }
+          ],
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for WBS element",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "psphi": {
+          "@title": "Current number of the appropriate project",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "ps_psp_pnr": {
+          "@title": "Work Breakdown Structure Element (Stock Identifier)",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "matnr": {
+          "@title": "Material",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "erfmg": {
+          "@title": "Quantity",
+          "type": "cds.String",
+          "length": 18,
+          "notNull": false
+        },
+        "kdauf": {
+          "@title": "Sales Order",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "kdpos": {
+          "@title": "Sales order item",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6,
+          "notNull": false
+        },
+        "cpudt": {
+          "@title": "Entry Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Entry Date",
+          "@sap.quickinfo": "Day On Which Accounting Document Was Entered",
+          "type": "cds.Date",
+          "notNull": false
+        },
+        "ERFME": {
+          "@title": "Unit of entry",
+          "@sap.label": "Unit of Entry",
+          "@sap.quickinfo": "Unit of entry",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "ebeln": {
+          "@title": "Purchase Order",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purchase order",
+          "@sap.quickinfo": "Purchase order number",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "ebelp": {
+          "@title": "PO Item",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Item Number of Purchasing Document",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": false
+        },
+        "smbln": {
+          "@title": "Material Document",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "smblp": {
+          "@title": "Material Doc.Item",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "sjahr": {
+          "@title": "Material Doc.Year",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "zz1_mscode_prd": {
+          "@title": "MS Code",
+          "@Common.Label": "MS Code",
+          "@Common.ValueList.CollectionPath": "ZCDSEHSDB0013",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "zz1_mscode_prd"
+              },
+              "ValueListProperty": "zz1_mscode_prd"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "matnr"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "mtart"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "atwrt"
+            }
+          ],
+          "@sap.label": "MS Code",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 80,
+          "notNull": false
+        },
+        "idnlf": {
+          "@title": "Supplier Mat. No.",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier Mat. No.",
+          "@sap.quickinfo": "Material Number Used by Supplier",
+          "type": "cds.String",
+          "length": 35,
+          "notNull": false
+        },
+        "obknr": {
+          "@title": "Object list number",
+          "@sap.label": "Object list",
+          "@sap.quickinfo": "Object list number",
+          "type": "cds.Integer64",
+          "notNull": false
+        },
+        "Xmblnr": {
+          "@title": "Material Document",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "xmjahr": {
+          "@title": "Material Doc.Item",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "xzeile": {
+          "@title": "Material Doc.Year",
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "cpsphi": {
+          "@title": "WBS Element Short",
+          "@Common.Label": "Project Definition",
+          "@Common.ValueList.CollectionPath": "ZCDSEHPSB0037",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "cpsphi"
+              },
+              "ValueListProperty": "cpsphi"
+            }
+          ],
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "cps_psp_pnr": {
+          "@title": "WBS Element Long",
+          "@Common.Label": "WBS element",
+          "@Common.ValueList.CollectionPath": "ZCDSEHPSB0038",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "cps_psp_pnr"
+              },
+              "ValueListProperty": "cps_psp_pnr"
+            }
+          ],
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.ZCDSEHSDB0013": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Search help for Material by MS code",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.ZCDSEHSDB0013"
+          ]
+        }
+      },
+      "elements": {
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80,
+          "notNull": false
+        },
+        "mtart": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material type",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "atwrt": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.SAP__Currencies"
+          ]
+        }
+      },
+      "elements": {
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0008Service.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0008.SAP__UnitsOfMeasure"
+          ]
+        }
+      },
+      "elements": {
+        "UnitCode": {
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ExternalCode": {
+          "@sap.label": "Commercial",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "UoM Text",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@sap.label": "Decimal Places",
+          "type": "cds.Integer",
+          "notNull": false
         }
       }
     },
@@ -2557,34 +3276,34 @@
       "kind": "entity",
       "@UI.SelectionFields": [
         {
-          "=": "InvoiceID"
+          "=": "INVOICEID"
         },
         {
-          "=": "CompanyCode"
+          "=": "COMPANYCODE"
         },
         {
-          "=": "ProjectID"
+          "=": "PROJECTID"
         }
       ],
       "@UI.LineItem": [
         {
           "Value": {
-            "=": "InvoiceID"
+            "=": "INVOICEID"
           }
         },
         {
           "Value": {
-            "=": "CompanyCode"
+            "=": "COMPANYCODE"
           }
         },
         {
           "Value": {
-            "=": "ProjectID"
+            "=": "PROJECTID"
           }
         },
         {
           "Value": {
-            "=": "InvDate"
+            "=": "INVDATE"
           }
         }
       ],
@@ -2646,6 +3365,7 @@
           "length": 255
         },
         "INVOICEID": {
+          "@title": "Invoice ID",
           "key": true,
           "type": "cds.String"
         },
@@ -2653,12 +3373,15 @@
           "type": "cds.Integer"
         },
         "INVDATE": {
+          "@title": "Invoice Date",
           "type": "cds.Date"
         },
         "PROJECTID": {
+          "@title": "Project Definition",
           "type": "cds.String"
         },
         "COMPANYCODE": {
+          "@title": "Company Code",
           "type": "cds.String"
         },
         "TOTALAMOUNT": {
@@ -3398,7 +4121,7 @@
       "@sap.updatable": "false",
       "@sap.deletable": "false",
       "@sap.content.version": "1",
-      "@sap.label": "COnsumption View for Controlling Area",
+      "@sap.label": "Consumption View for Controlling Area",
       "projection": {
         "from": {
           "ref": [
@@ -5728,6 +6451,394 @@
         }
       }
     },
+    "ZCDS_ALL_ENTITIES.ZTHBT0027": {
+      "kind": "entity",
+      "@title": "{i18n>CreatepurchaseItemRecord}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0027"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "PBUKR": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "PSPHI": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "PS_PSP_PNR": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "MATNR": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "ZZ1_MSCODE_PRD": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "IDNLF": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "MBLNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "ZEILE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "MJAHR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "KDAUF": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KDPOS": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "CPUDT_MKPF": {
+          "type": "cds.DateTime"
+        },
+        "ERFMG": {
+          "type": "cds.String",
+          "length": 18
+        },
+        "ERFME": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "SERNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        }
+      }
+    },
+    "ZCDS_ALL_ENTITIES.ZTHBT0032": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0032"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MATERIALCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "MODEL": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "SUFFIXLEVEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "SUFFIXVALUE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        }
+      }
+    },
+    "ZCDS_ALL_ENTITIES.ZTHBT0033": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0033"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PPLLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZCDS_ALL_ENTITIES.ZTHBT0048": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0048"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "ID": {
+          "type": "cds.Integer"
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MATERIALCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "TOKUCHUFLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
     "ZCDSEHBTC0006": {
       "@source": "srv/cat-service.cds",
       "kind": "service"
@@ -6249,10 +7360,28 @@
         "POSITION": {
           "@title": "Ordinal position of the column in the record",
           "type": "cds.Integer"
+        }
+      }
+    },
+    "external.PublicSynonymsService.M_TABLES": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "PUBLIC.M_TABLES"
+          ]
+        }
+      },
+      "elements": {
+        "SCHEMA_NAME": {
+          "@title": "Schema name",
+          "type": "cds.String",
+          "length": 256
         },
-        "ASCENDING_ORDER": {
-          "@title": "Order of the column",
-          "type": "cds.hana.SMALLINT"
+        "TABLE_NAME": {
+          "@title": "Table name",
+          "type": "cds.String",
+          "length": 256
         }
       }
     },
@@ -6748,7 +7877,7 @@
       "@sap.updatable": "false",
       "@sap.deletable": "false",
       "@sap.content.version": "1",
-      "@sap.label": "COnsumption View for Controlling Area",
+      "@sap.label": "Consumption View for Controlling Area",
       "elements": {
         "CostCenter": {
           "@sap.display.format": "UpperCase",
@@ -7096,6 +8225,424 @@
           "@sap.quickinfo": "PS: Short description (1st text line)",
           "type": "cds.String",
           "length": 40,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008": {
+      "@source": "srv/external/ZSRVBHPS0008.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPS0008.ZCDSEHPSB0004": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Search Help for Company Code",
+      "@sap.value.list": "true",
+      "elements": {
+        "CompanyCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for the project",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "CompanyCodeDesc": {
+          "@sap.label": "Company Name",
+          "@sap.quickinfo": "Name of Company Code or Company",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008.ZCDSEHPSB0037": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for Project Goods API",
+      "@sap.value.list": "true",
+      "elements": {
+        "cpsphi": {
+          "@sap.label": "Project",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0008.ZCDSEHPSB0038": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help - WBS Element",
+      "@sap.value.list": "true",
+      "elements": {
+        "cps_psp_pnr": {
+          "@sap.label": "WBS Element",
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0008.ZCDSEHPSC0005": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumtion View for Project Goods API",
+      "elements": {
+        "mblnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "mjahr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "zeile": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "pspnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "sernr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "notNull": true
+        },
+        "posid": {
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
+        },
+        "pbukr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for WBS element",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "psphi": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "ps_psp_pnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Numeric 8-figures",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "erfmg": {
+          "type": "cds.String",
+          "length": 18,
+          "notNull": false
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6,
+          "notNull": false
+        },
+        "cpudt": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Entry Date",
+          "@sap.quickinfo": "Day On Which Accounting Document Was Entered",
+          "type": "cds.Date",
+          "notNull": false
+        },
+        "ERFME": {
+          "@sap.label": "Unit of Entry",
+          "@sap.quickinfo": "Unit of entry",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "ebeln": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purchase order",
+          "@sap.quickinfo": "Purchase order number",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "ebelp": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Item Number of Purchasing Document",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": false
+        },
+        "smbln": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "smblp": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "sjahr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 80,
+          "notNull": false
+        },
+        "idnlf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier Mat. No.",
+          "@sap.quickinfo": "Material Number Used by Supplier",
+          "type": "cds.String",
+          "length": 35,
+          "notNull": false
+        },
+        "obknr": {
+          "@sap.label": "Object list",
+          "@sap.quickinfo": "Object list number",
+          "type": "cds.Integer64",
+          "notNull": false
+        },
+        "Xmblnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "xmjahr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc. Year",
+          "@sap.quickinfo": "Material Document Year",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "xzeile": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Material Doc.Item",
+          "@sap.quickinfo": "Item in Material Document",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "cpsphi": {
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "cps_psp_pnr": {
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008.ZCDSEHSDB0013": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Search help for Material by MS code",
+      "@sap.value.list": "true",
+      "elements": {
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80,
+          "notNull": false
+        },
+        "mtart": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material type",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "atwrt": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0008.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0008.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ExternalCode": {
+          "@sap.label": "Commercial",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "UoM Text",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@sap.label": "Decimal Places",
+          "type": "cds.Integer",
           "notNull": false
         }
       }
@@ -7653,25 +9200,6 @@
       }
     }
   },
-  "extensions": [
-    {
-      "annotate": "ZCDSEHBTC0002.ZTHBT0022",
-      "elements": {
-        "InvoiceID": {
-          "@title": "Invoice ID"
-        },
-        "CompanyCode": {
-          "@title": "Company Code"
-        },
-        "ProjectID": {
-          "@title": "Project Definition"
-        },
-        "InvDate": {
-          "@title": "Invoice Date"
-        }
-      }
-    }
-  ],
   "meta": {
     "creator": "CDS Compiler v3.4.4",
     "flavor": "inferred"

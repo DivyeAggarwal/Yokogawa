@@ -147,11 +147,43 @@ module.exports = cds.service.impl(async function() {
         return bupa.run(req.query);
     });
     
+    
+    this.on('READ', 'ZCDSEHPSB0004', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0008');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ZCDSEHPSB0037', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0008');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ZCDSEHPSB0038', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0008');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ZCDSEHPSC0005', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0008');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'ZCDSEHSDB0013', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0008');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'SAP__Currencies', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0008');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'SAP__UnitsOfMeasure', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0008');
+        return bupa.run(req.query);
+    });
+
+
     this.on('READ', 'ZTHBT0019', async req => {
         const db = await cds.connect.to('db');
         var oData = await db.run(req.query);
         return oData;
     });
+
 
 
     this.on('UpdatePOItem', async (req) => {
@@ -179,7 +211,7 @@ module.exports = cds.service.impl(async function() {
     		var currentYear = new Date().getFullYear();
     		var convertedID = String(ID).padStart(5, "0");
     		var InvoiceID = currentYear + "-" + convertedID;
-    		context.data.InvoiceID = InvoiceID;
+    		context.data.INVOICEID = InvoiceID;
     	});
 
     this.after('CREATE', 'ZTHBT0033', async (context) => {
