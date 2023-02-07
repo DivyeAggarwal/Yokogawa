@@ -173,6 +173,10 @@ service ZCDS_ALL_ENTITIES {
     entity ZTHBT0024 as projection on db.ZTHBT0024;
     entity ZTHBT0025 as projection on db.ZTHBT0025;
     entity ZTHBT0026 as projection on db.ZTHBT0026;
+    entity ZTHBT0027 as projection on db.ZTHBT0027;
+    entity ZTHBT0032 as projection on db.ZTHBT0032;
+    entity ZTHBT0033 as projection on db.ZTHBT0033;
+    entity ZTHBT0048 as projection on db.ZTHBT0048;
 }
 
 service ZCDSEHBTC0006 {
