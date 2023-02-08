@@ -130,6 +130,41 @@ service ZCDSEHBTC0003
     entity ZTHBT0020 as
         projection on db.ZTHBT0020;
     
+    entity TimeSheetTemplate as select from db.ZTHBT0051 as _TimeSheetTemplate{
+        key _TimeSheetTemplate.PERNR,
+        key _TimeSheetTemplate.WEEK_NUMBER,
+        key _TimeSheetTemplate.ZPNAME.ZPNAME,
+            _TimeSheetTemplate.ZPNAME.RWBS,
+            _TimeSheetTemplate.ZPNAME.RWBSDESC,
+            _TimeSheetTemplate.ZPNAME.OBJECT_ID,
+            _TimeSheetTemplate.ZPNAME.SERVICEORDERITEM,
+            _TimeSheetTemplate.ZPNAME.SERVORDERITEMDESC,
+            _TimeSheetTemplate.ZPNAME.EKOSTL,
+            _TimeSheetTemplate.ZPNAME.COSTCENTERNAME,
+            _TimeSheetTemplate.ZPNAME.PWBS,
+            _TimeSheetTemplate.ZPNAME.PARENTWBSDESC,
+            _TimeSheetTemplate.ZPNAME.ZTCODE,
+            _TimeSheetTemplate.ZPNAME.ZTCODE.ZTCDS,
+            _TimeSheetTemplate.ZPNAME.BEMOT,
+            _TimeSheetTemplate.ZPNAME.ACINDICATORDESC,
+            _TimeSheetTemplate.ZPNAME.STAGR,
+            _TimeSheetTemplate.DAY1_DATE,
+            _TimeSheetTemplate.DAY1_HOUR,
+            _TimeSheetTemplate.DAY2_DATE,
+            _TimeSheetTemplate.DAY2_HOUR,
+            _TimeSheetTemplate.DAY3_DATE,
+            _TimeSheetTemplate.DAY3_HOUR,
+            _TimeSheetTemplate.DAY4_DATE,
+            _TimeSheetTemplate.DAY4_HOUR,
+            _TimeSheetTemplate.DAY5_DATE,
+            _TimeSheetTemplate.DAY5_HOUR,
+            _TimeSheetTemplate.DAY6_DATE,
+            _TimeSheetTemplate.DAY6_HOUR,
+            _TimeSheetTemplate.DAY7_DATE,
+            _TimeSheetTemplate.DAY7_HOUR,
+
+    };
+    
 
 
 

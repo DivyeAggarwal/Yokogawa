@@ -118,7 +118,7 @@ entity ZTHBT0019: managed {
         EAUFNR: String(12) @title : 'Internal Order';
         ZTCODE: Association to ZTHBT0020 @title : 'Task Code';
         EKOSTL: String(10) @title : 'Receiver Cost Center';
-        COSTCENTERNAME: String(20) @title : 'Cost Center Name';
+        COSTCENTERNAME: String(20) @title : 'Cost Center Name' @readonly;
         BEMOT: String(2) @title : 'Accounting Indicator';
         ACINDICATORDESC: String(25) @title : 'Account Indicator Description' @readonly;
         OBJECT_ID: String(10) @title : 'Service Order'; 
@@ -132,6 +132,27 @@ entity ZTHBT0019: managed {
         SERVORDERITEMDESC: String(40) @title : 'Service Order Item Description' @readonly;
         PWBS: String(24) @title : 'Parent WBS';
         PARENTWBSDESC: String(40) @title : 'Parent WBS Description' @readonly;
+        ZPS_IDENTIFIER: String(1) @title : 'Assignment Identifier';
+
+}
+entity ZTHBT0051 : managed {
+    key PERNR: String(10) @title : 'Employee Number';
+    key WEEK_NUMBER: Integer @title : 'WWeek Number';
+    key ZPNAME: Association to ZTHBT0019 @title : 'Assignment Name';
+    DAY1_DATE: Date @title : 'Date of Day1';
+    DAY1_HOUR: Integer @title : 'Hours for Day1';
+    DAY2_DATE: Date @title : 'Date of Day2';
+    DAY2_HOUR: Integer @title : 'Hours for Day2';
+    DAY3_DATE: Date @title : 'Date of Day3';
+    DAY3_HOUR: Integer @title : 'Hours for Day3';
+    DAY4_DATE: Date @title : 'Date of Day4';
+    DAY4_HOUR: Integer @title : 'Hours for Day4';
+    DAY5_DATE: Date @title : 'Date of Day5';
+    DAY5_HOUR: Integer @title : 'Hours for Day5';
+    DAY6_DATE: Date @title : 'Date of Day6';
+    DAY6_HOUR: Integer @title : 'Hours for Day6';
+    DAY7_DATE: Date @title : 'Date of Day7';
+    DAY7_HOUR: Integer @title : 'Hours for Day7';
 
 }
 

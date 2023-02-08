@@ -6577,6 +6577,7 @@
     },
     "ZCDS_ALL_ENTITIES.ZTHBT0032": {
       "kind": "entity",
+      "@title": "{i18n>DraftResources}",
       "projection": {
         "from": {
           "ref": [
@@ -6853,6 +6854,10 @@
         }
       },
       "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
         "createdAt": {
           "@cds.on.insert": {
             "=": "$now"
