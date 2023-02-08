@@ -124,7 +124,8 @@ service ZCDSEHBTC0003
                 _assignment.BEGDA,
                 _assignment.ENDDA,
                 _assignment.ZESTA,
-                _assignment.ZPSTS
+                _assignment.ZPSTS,
+                _assignment.ZPS_IDENTIFIER,
         } ;
 
     entity ZTHBT0020 as
