@@ -67,7 +67,8 @@ annotate  ZCDSEHBTC0003.ZTHBT0020 with @(
 
 annotate ZCDSEHBTC0003.ZTHBT0019 {
     @(Common : {
-           Label        : 'Accounting Indicator',
+            Label        : 'Accounting Indicator',
+            ValueListForValidation: '',
             ValueList    : {
                 CollectionPath : 'AccountingIndicator',
                 Parameters     : [

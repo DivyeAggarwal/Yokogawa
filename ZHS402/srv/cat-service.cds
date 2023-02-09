@@ -100,11 +100,11 @@ service ZCDSEHBTC0003
    entity ZTHBT0019 as
         select from db.ZTHBT0019 as _assignment
         {
-            key _assignment.ZPNAME,
+            key _assignment.ZPNAME @mandatory,
                 _assignment.ZPFDT,
                 _assignment.ZPTDT,
                 _assignment.BEMOT,
-                _assignment.ACINDICATORDESC,
+                _assignment.ACINDICATORDESC @Common.ValueListForValidation : '',
                 _assignment.EAUFNR,
                 _assignment.EKOSTL,
                 _assignment.COSTCENTERNAME,

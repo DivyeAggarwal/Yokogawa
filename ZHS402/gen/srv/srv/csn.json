@@ -4622,6 +4622,12 @@
                 "_assignment",
                 "ZPSTS"
               ]
+            },
+            {
+              "ref": [
+                "_assignment",
+                "ZPS_IDENTIFIER"
+              ]
             }
           ]
         }
@@ -4931,6 +4937,11 @@
         "ZPSTS": {
           "@title": "Assignment Status",
           "type": "cds.Boolean"
+        },
+        "ZPS_IDENTIFIER": {
+          "@title": "Assignment Identifier",
+          "type": "cds.String",
+          "length": 1
         }
       }
     },

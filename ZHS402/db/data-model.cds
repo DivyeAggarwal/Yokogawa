@@ -116,7 +116,7 @@ entity ZTHBT0019: managed {
         ZPTDT: Date @title : 'Assignment Validity To Date';
         STAGR: String(6) @title : 'Statistical Key Figure'; 
         EAUFNR: String(12) @title : 'Internal Order';
-        ZTCODE: Association to ZTHBT0020 @title : 'Task Code';
+        ZTCODE: Association to ZTHBT0020 @assert.integrity @title : 'Task Code';
         EKOSTL: String(10) @title : 'Receiver Cost Center';
         COSTCENTERNAME: String(20) @title : 'Cost Center Name' @readonly;
         BEMOT: String(2) @title : 'Accounting Indicator';
