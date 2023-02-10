@@ -100,8 +100,8 @@ entity INDEX_COLUMNS {
     @title : 'Name of the column';
     POSITION        : Integer
     @title : 'Ordinal position of the column in the record';
-    // ASCENDING_ORDER : hana.SMALLINT
-    // @title : 'Order of the column';
+    ASCENDING_ORDER : hana.SMALLINT
+    @title : 'Order of the column';
 
 }
 

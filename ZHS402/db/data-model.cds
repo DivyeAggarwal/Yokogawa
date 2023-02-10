@@ -209,3 +209,75 @@ entity ZTHBT0033 : managed {
     key MODEL: String(18);
         PPLLAG: String(1);
 }
+@title : '{i18n>PartsStructureSpecification}'
+entity ZTHBT0010 : managed {
+    key E_DOC_NO: String(18) @title : 'Technical document No';
+    key E_REV_NO: String(5) @title : 'Technical renewal REV No';
+    key PS_GROUP_NO: String(3) @title : 'PS group No';
+    KEY PS_ITEM_NO: String(3) @title : 'PS Item No';
+    MODEL1: String(18) @title : 'MODEL1';
+    PS_SYMBOL: String(10) @title : 'PS Symbol';
+    E_PART_NO: String(18) @title : 'Material number';
+    PARTS_QTY: String(13) @title : 'Parts quantity';
+    PARTS_QTY_UNIT: String(4) @title : 'Parts quantity unit';
+    SELECT_SIGN: String(1) @title : 'Select sign';
+    PARTS_USE_RATIO: String(3) @title : 'Parts use ratio';
+    PS_NOTE: String(64) @title : 'PS note';
+    OR_SIGN: String(1) @title : 'OR sign';
+    SFIX_DIGIT_PTN: String(1) @title : 'Basic suffix digit pattern';
+    SFIX_PTN: String @title : 'Suffix pattern';
+    OPTION_PTN: String @title : 'Option pattern';
+    PROD_CARRER: String(9) @title : 'Production carrer';
+    E_TR_TYPE: String(1) @title : 'Techinical transaction type';
+    PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
+}
+
+@title : '{i18n>PartsStructureTr}'
+entity ZTHBT0014 : managed {
+    key E_DOC_NO: String(18) @title : 'Technical document No';
+    key E_REV_NO: String(5) @title : 'Technical renewal REV No';
+    key PS_GROUP_NO: String(3) @title : 'PS group No';
+    key PS_ITEM_NO: String(3) @title : 'PS Item No';
+    PS_SYMBOL: String(10) @title : 'PS Symbol';
+    E_SIGN: String(1) @title : 'E SIGN';
+    M_SIGN: String(1) @title : 'M SIGN';
+    PARENT_PARTS_NO: String(40) @title : 'Parts no.';
+    E_PART_NO: String(40) @title : 'Material number';
+    COMP_PARTS_QTY: String(13) @title : 'Parts quantity';
+    COMP_PARTS_QTY_UNIT: String(4) @title : 'Parts quantity unit';
+    SELECT_SIGN: String(1) @title : 'Select sign';
+    PARTS_USE_RATIO: String(3) @title : 'Parts use ratio';
+    PS_NOTE: String(64) @title : 'PS note';
+    E_TR_TYPE: String(1) @title : 'Techinical transaction type';
+    PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
+}
+
+@title : '{i18n>PartsStructureMaster}'
+entity ZTHBT0037 : managed {
+    key WERKS: String(4) @title : 'Plant';
+    key E_DOC_TYPE: String(3) @title : 'Document Type7';
+    key E_DOC_NO: String(18) @title : 'Technical document No';
+    key E_REV_NO: String(5) @title : 'Technical renewal REV No';
+    key PS_GROUP_NO: String(3) @title : 'PS group No';
+    key PS_ITEM_NO: String(3) @title : 'PS Item No';
+    key MODEL: String(10) @title : 'MODEL';
+    key E_SEQUENCE_NO: String(3) @title : 'Sequence No';
+    PS_SYMBOL: String(10) @title : 'PS Symbol';
+    E_PART_NO: String(18) @title : 'Material number';
+    TEN_DIGIT_SIGN: String(1) @title : '10 Digit Sign';
+    COMP_PART_NO: String(18) @title : 'Part No';
+    PARTS_QTY: String(13) @title : 'Parts quantity';
+    PARTS_QTY_UNIT: String(3) @title : 'Parts quantity unit';
+    SELECT_SIGN: String(1) @title : 'Select sign';
+    PARTS_USE_RATIO: String(3) @title : 'Parts use ratio';
+    PS_NOTE: String(64) @title : 'PS note';
+    OR_SIGN: String(1) @title : 'OR sign';
+    SFIX_DIGIT_PTN: String(50) @title : 'Basic suffix digit pattern';
+    SFIX_PTN: String @title : 'Suffix pattern';
+    OPTION_PTN: String @title : 'Option pattern';
+    PROD_CARRER: String(9) @title : 'Production carrer';
+    EFFECT_D: String(8) @title : 'Valid From';
+    INVALID_D: String(8) @title : 'Valid To';
+    E_TR_TYPE: String(1) @title : 'Techinical transaction type';
+    PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
+}
