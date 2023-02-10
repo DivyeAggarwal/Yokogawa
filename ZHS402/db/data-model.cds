@@ -166,21 +166,23 @@ entity ZTHBT0026: cuid, managed {
 
 @title : '{i18n>CreatepurchaseItemRecord}'
 entity ZTHBT0027 : managed {
-        PBUKR          : String(4);
-        PSPHI          : String(10);
-        PS_PSP_PNR     : String(24);
-        MATNR          : String(40);
-        ZZ1_MSCODE_PRD : String(80);
-        IDNLF          : String(35);
-    key MBLNR          : String(10);
-    key ZEILE          : String(4);
-    key MJAHR          : String(4);
-        KDAUF          : String(10);
-        KDPOS          : String(6);
-        CPUDT_MKPF     : DateTime;
-        ERFMG          : String(18);
-        ERFME          : String(3);
-    key SERNR          : String(18);
+        PBUKR               : String(4);
+        PSPHI               : String(10);
+        PS_PSP_PNR          : String(24);
+        MATNR               : String(40);
+        ZZ1_MSCODE_PRD      : String(80);
+        IDNLF               : String(35);
+    key MBLNR               : String(10);
+    key ZEILE               : String(4);
+    key MJAHR               : String(4);
+        KDAUF               : String(10);
+        KDPOS               : String(6);
+        CPUDT_MKPF          : DateTime;
+        ERFMG               : String(18);
+        ERFME               : String(3);
+        CONFIRM_STATUS      : String(100);
+        REASON_DIFF         : String(200);
+    key SERNR               : String(18);
 } 
 
 entity ZTHBT0048 : managed {
