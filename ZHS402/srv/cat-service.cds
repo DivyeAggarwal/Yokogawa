@@ -104,7 +104,7 @@ service ZCDSEHBTC0003
                 _assignment.ZPFDT,
                 _assignment.ZPTDT,
                 _assignment.BEMOT,
-                _assignment.ACINDICATORDESC @Common.ValueListForValidation : '',
+                _assignment.ACINDICATORDESC @Common.ValueListForValidation,
                 _assignment.EAUFNR,
                 _assignment.EKOSTL,
                 _assignment.COSTCENTERNAME,
