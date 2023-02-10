@@ -167,8 +167,8 @@ entity ZTHBT0026: cuid, managed {
 @title : '{i18n>CreatepurchaseItemRecord}'
 entity ZTHBT0027 : managed {
         PBUKR          : String(4);
-        PSPHI          : String(8);
-        PS_PSP_PNR     : String(8);
+        PSPHI          : String(10);
+        PS_PSP_PNR     : String(24);
         MATNR          : String(40);
         ZZ1_MSCODE_PRD : String(80);
         IDNLF          : String(35);

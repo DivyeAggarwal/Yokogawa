@@ -150,7 +150,7 @@
         },
         "psphi": {
           "type": "cds.String",
-          "length": 8,
+          "length": 10,
           "@sap.display.format": "NonNegative",
           "@sap.label": "Numeric 8-figures",
           "@sap.heading": "",
@@ -158,7 +158,7 @@
         },
         "ps_psp_pnr": {
           "type": "cds.String",
-          "length": 8,
+          "length": 24,
           "@sap.display.format": "NonNegative",
           "@sap.label": "Numeric 8-figures",
           "@sap.heading": "",

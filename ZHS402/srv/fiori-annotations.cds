@@ -340,7 +340,7 @@ annotate ZCDSEHBTC0002.ZTHBT0022 with @(
     PROJECTID @( title: 'Project Definition' );
     INVDATE @( title: 'Invoice Date' )
 };
-
+//Labels
 annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with {
     mblnr       @title : 'Material Document';
     mjahr       @title : 'Material Doc. Year';
@@ -371,6 +371,16 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with {
     psphi       @title : 'Current number of the appropriate project';
     ps_psp_pnr       @title : 'Work Breakdown Structure Element (Stock Identifier)';
 }
+// hidden fields
+annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with {
+    posid       @UI.Hidden;
+    ps_psp_pnr  @UI.Hidden;
+    smbln       @UI.Hidden;
+    smblp       @UI.Hidden;
+    sjahr       @UI.Hidden;
+    obknr       @UI.Hidden;
+}
+// List report 
 annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with @(UI : {
     HeaderInfo      : {
         TypeName       : 'Create Purchase Item Record',
@@ -389,12 +399,8 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with @(UI : {
         {Value : mblnr },
         {Value : mjahr },
         {Value : zeile },
-        {Value : pspnr },
         {Value : sernr },
-        {Value : posid },
         {Value : pbukr },
-        {Value : psphi },
-        {Value : ps_psp_pnr },
         {Value : matnr },
         {Value : erfmg },
         {Value : kdauf },
@@ -403,12 +409,8 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with @(UI : {
         {Value : ERFME },
         {Value : ebeln },
         {Value : ebelp },
-        {Value : smbln },
-        {Value : smblp },
-        {Value : sjahr },
         {Value : zz1_mscode_prd },
         {Value : idnlf },
-        {Value : obknr },
         {Value : Xmblnr },
         {Value : xmjahr },
         {Value : xzeile },
@@ -418,7 +420,7 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with @(UI : {
 }) {
 
 };
-
+//Valuehelp
 annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 {
     @(Common : {
         Label     : 'Company code',
