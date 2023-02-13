@@ -513,5 +513,14 @@ annotate ZCDSEHBTC0007.BOMDisplay with @(
      }
 ){
 };
+// annotate ZCDSEHBTC0007.BOMDisplay {
+//     E_DOC_TYPE @(
+//         @Common.ValueListWithFixedValues : true,
+//         Common : {Text : {
+//             $value                 : 'FE1',
+//             ![@UI.TextArrangement] : #TextOnly
+//         }}
+//     );
+// }
 
 

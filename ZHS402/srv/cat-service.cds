@@ -1,6 +1,7 @@
 using ZHS402 as db from '../db/data-model';
 using TimeSheetEntry from './external/TimeSheetEntry';
 using ZSRVBHPS0008 from './external/ZSRVBHPS0008';
+using { PlantAPI as external } from './external/PlantAPI';
 
 service ZSRVBHPS0008Service {
 
@@ -229,6 +230,7 @@ service ZCDSEHBTC0007 {
     entity ZTHBT0010 as projection on db.ZTHBT0010;
     entity ZTHBT0014 as projection on db.ZTHBT0014;
     entity ZTHBT0037 as projection on db.ZTHBT0037;
+    entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
 
     @cds.persistency.skip
     entity BOMDisplay {

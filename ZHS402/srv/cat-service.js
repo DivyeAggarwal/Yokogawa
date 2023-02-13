@@ -177,6 +177,12 @@ module.exports = cds.service.impl(async function() {
         return bupa.run(req.query);
     });
 
+    this.on('READ', 'VL_SH_H_T001', async req => {
+        const plant = await cds.connect.to('PlantAPI');
+        return plant.run(req.query);
+    });
+
+
 
     this.on('READ', 'ZTHBT0019', async req => {
         const db = await cds.connect.to('db');

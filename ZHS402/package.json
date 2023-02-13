@@ -90,7 +90,15 @@
         "kind": "odata-v2",
         "model": "srv/external/ZSRVBHPS0008",
         "credentials": {
-          "path":"/sap/opu/odata/sap/ZSRVBHPS0008",
+          "path": "/sap/opu/odata/sap/ZSRVBHPS0008",
+          "destination": "s4003-ap-https_ZSRVBHPS0008"
+        }
+      },
+      "PlantAPI": {
+        "kind": "odata-v2",
+        "model": "srv/external/PlantAPI",
+        "credentials": {
+          "path": "/sap/opu/odata/sap/FIN_USER_DEFAULTPARAMETER_SRV",
           "destination": "s4003-ap-https_ZSRVBHPS0008"
         }
       }

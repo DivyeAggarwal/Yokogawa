@@ -1892,6 +1892,14 @@
           "@title": "Parts no exist sign",
           "type": "cds.String",
           "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         }
       }
     },
@@ -2033,6 +2041,14 @@
           "@title": "Parts no exist sign",
           "type": "cds.String",
           "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         }
       }
     },
@@ -2209,13 +2225,11 @@
         },
         "EFFECT_D": {
           "@title": "Valid From",
-          "type": "cds.String",
-          "length": 8
+          "type": "cds.Date"
         },
         "INVALID_D": {
           "@title": "Valid To",
-          "type": "cds.String",
-          "length": 8
+          "type": "cds.Date"
         },
         "E_TR_TYPE": {
           "@title": "Techinical transaction type",
@@ -2967,7 +2981,7 @@
           "notNull": false
         },
         "Xmblnr": {
-          "@title": "Material Document",
+          "@title": "Reversal Material Document",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material Document",
           "@sap.quickinfo": "Number of Material Document",
@@ -2976,7 +2990,7 @@
           "notNull": false
         },
         "xmjahr": {
-          "@title": "Material Doc.Item",
+          "@title": "Reversal Material Doc.Item",
           "@sap.display.format": "NonNegative",
           "@sap.label": "Material Doc. Year",
           "@sap.quickinfo": "Material Document Year",
@@ -2985,7 +2999,7 @@
           "notNull": false
         },
         "xzeile": {
-          "@title": "Material Doc.Year",
+          "@title": "Reversal Material Doc.Year",
           "@sap.display.format": "NonNegative",
           "@sap.label": "Material Doc.Item",
           "@sap.quickinfo": "Item in Material Document",
@@ -8022,6 +8036,14 @@
           "@title": "Parts no exist sign",
           "type": "cds.String",
           "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         }
       }
     },
@@ -8167,6 +8189,14 @@
           "@title": "Parts no exist sign",
           "type": "cds.String",
           "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         }
       }
     },
@@ -8347,13 +8377,11 @@
         },
         "EFFECT_D": {
           "@title": "Valid From",
-          "type": "cds.String",
-          "length": 8
+          "type": "cds.Date"
         },
         "INVALID_D": {
           "@title": "Valid To",
-          "type": "cds.String",
-          "length": 8
+          "type": "cds.Date"
         },
         "E_TR_TYPE": {
           "@title": "Techinical transaction type",
@@ -8794,6 +8822,14 @@
           "@title": "Parts no exist sign",
           "type": "cds.String",
           "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         }
       }
     },
@@ -8939,6 +8975,14 @@
           "@title": "Parts no exist sign",
           "type": "cds.String",
           "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         }
       }
     },
@@ -9119,13 +9163,11 @@
         },
         "EFFECT_D": {
           "@title": "Valid From",
-          "type": "cds.String",
-          "length": 8
+          "type": "cds.Date"
         },
         "INVALID_D": {
           "@title": "Valid To",
-          "type": "cds.String",
-          "length": 8
+          "type": "cds.Date"
         },
         "E_TR_TYPE": {
           "@title": "Techinical transaction type",
@@ -9136,6 +9178,99 @@
           "@title": "Parts no exist sign",
           "type": "cds.String",
           "length": 1
+        }
+      }
+    },
+    "ZCDSEHBTC0007.BOMDisplay": {
+      "kind": "entity",
+      "@cds.persistency.skip": true,
+      "@UI.SelectionFields": [
+        {
+          "=": "E_DOC_TYPE"
+        },
+        {
+          "=": "WERKS"
+        },
+        {
+          "=": "E_DOC_NO"
+        },
+        {
+          "=": "E_REV_NO"
+        },
+        {
+          "=": "PS_GROUP_NO"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "E_DOC_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_REV_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_GROUP_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "FORMALIZE_DATE"
+          }
+        },
+        {
+          "Value": {
+            "=": "CREATION_DATE"
+          }
+        }
+      ],
+      "elements": {
+        "E_DOC_TYPE": {
+          "@title": "Document Type7",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "WERKS": {
+          "@title": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "FORMALIZE_DATE": {
+          "@title": "Formalized Date",
+          "type": "cds.Date"
+        },
+        "CREATION_DATE": {
+          "@title": "Creation Date",
+          "type": "cds.Date"
         }
       }
     },
