@@ -232,6 +232,8 @@ entity ZTHBT0010 : managed {
     PROD_CARRER: String(9) @title : 'Production carrer';
     E_TR_TYPE: String(1) @title : 'Techinical transaction type';
     PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
+    EFFECT_D: Date @title : 'Valid From';
+    INVALID_D: Date @title : 'Valid To';
 }
 
 @title : '{i18n>PartsStructureTr}'
@@ -252,6 +254,8 @@ entity ZTHBT0014 : managed {
     PS_NOTE: String(64) @title : 'PS note';
     E_TR_TYPE: String(1) @title : 'Techinical transaction type';
     PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
+    EFFECT_D: Date @title : 'Valid From';
+    INVALID_D: Date @title : 'Valid To';
 }
 
 @title : '{i18n>PartsStructureMaster}'
@@ -278,8 +282,8 @@ entity ZTHBT0037 : managed {
     SFIX_PTN: String @title : 'Suffix pattern';
     OPTION_PTN: String @title : 'Option pattern';
     PROD_CARRER: String(9) @title : 'Production carrer';
-    EFFECT_D: String(8) @title : 'Valid From';
-    INVALID_D: String(8) @title : 'Valid To';
+    EFFECT_D: Date @title : 'Valid From';
+    INVALID_D: Date @title : 'Valid To';
     E_TR_TYPE: String(1) @title : 'Techinical transaction type';
     PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
 }
