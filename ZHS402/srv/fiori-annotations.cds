@@ -379,6 +379,8 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with {
     smblp       @UI.Hidden;
     sjahr       @UI.Hidden;
     obknr       @UI.Hidden;
+    pspnr       @UI.Hidden;
+    psphi       @UI.Hidden;
 }
 // List report 
 annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with @(UI : {
