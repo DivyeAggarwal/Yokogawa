@@ -230,4 +230,15 @@ service ZCDSEHBTC0007 {
     entity ZTHBT0014 as projection on db.ZTHBT0014;
     entity ZTHBT0037 as projection on db.ZTHBT0037;
 
+    @cds.persistency.skip
+    entity BOMDisplay {
+    key E_DOC_TYPE: String(3) @title : 'Document Type7';
+    key WERKS: String(4) @title : 'Plant';
+    key E_DOC_NO: String(18) @title : 'Technical document No';
+    key E_REV_NO: String(5) @title : 'Technical renewal REV No';
+    key PS_GROUP_NO: String(3) @title : 'PS group No';
+    FORMALIZE_DATE: Date @title : 'Formalized Date';
+    CREATION_DATE: Date @title : 'Creation Date';
+    }
+
 }

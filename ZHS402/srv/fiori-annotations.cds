@@ -497,6 +497,21 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 {
     })
     zz1_mscode_prd;
 }
-
+annotate ZCDSEHBTC0007.BOMDisplay with @(
+    UI : { 
+        SelectionFields  : [
+            E_DOC_TYPE,WERKS,E_DOC_NO,E_REV_NO,PS_GROUP_NO
+        ],
+        LineItem  : [
+            { Value : E_DOC_TYPE },
+            { Value : E_DOC_NO }, 
+            { Value : E_REV_NO },
+            { Value : PS_GROUP_NO },
+            { Value : FORMALIZE_DATE },
+            { Value : CREATION_DATE }                                         
+        ],
+     }
+){
+};
 
 
