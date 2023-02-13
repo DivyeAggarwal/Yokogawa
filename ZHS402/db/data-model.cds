@@ -160,7 +160,7 @@ entity ZTHBT0051 : managed {
 entity ZTHBT0026: cuid, managed {
     ZZ1_EMPLOYEE_ID: String;
     ZZ1_WORKORDER_ID: String;
-    ZZ1_CostCategory: String;
+    ZZ1_COSTCATEGORY: String;
     ZZ1_COSTOJECT: String;
 }
 
