@@ -363,9 +363,9 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 with {
     zz1_mscode_prd       @title : 'MS Code';
     idnlf       @title : 'Supplier Mat. No.';
     obknr       @title : 'Object list number';
-    Xmblnr       @title : 'Material Document';
-    xmjahr       @title : 'Material Doc.Item';
-    xzeile       @title : 'Material Doc.Year';
+    Xmblnr       @title : 'Reversal Material Document';
+    xmjahr       @title : 'Reversal Material Doc.Item';
+    xzeile       @title : 'Reversal Material Doc.Year';
     cpsphi       @title : 'WBS Element Short';
     cps_psp_pnr       @title : 'WBS Element Long';
     psphi       @title : 'Current number of the appropriate project';
