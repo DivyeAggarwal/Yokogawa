@@ -232,7 +232,7 @@ service ZCDSEHBTC0007 {
     entity ZTHBT0037 as projection on db.ZTHBT0037;
     entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
 
-    @cds.persistency.skip
+    @cds.persistence.exists
     entity BOMDisplay {
     key E_DOC_TYPE: String(3) @title : 'Document Type7';
     key WERKS: String(4) @title : 'Plant';

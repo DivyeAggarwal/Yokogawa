@@ -261,7 +261,7 @@ entity ZTHBT0014 : managed {
 @title : '{i18n>PartsStructureMaster}'
 entity ZTHBT0037 : managed {
     key WERKS: String(4) @title : 'Plant';
-    key E_DOC_TYPE: String(3) @title : 'Document Type7';
+    key E_DOC_TYPE: String(3) @title : 'Document Type';
     key E_DOC_NO: String(18) @title : 'Technical document No';
     key E_REV_NO: String(5) @title : 'Technical renewal REV No';
     key PS_GROUP_NO: String(3) @title : 'PS group No';
