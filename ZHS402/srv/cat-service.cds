@@ -28,18 +28,18 @@ service ZCDSEHBTC0001 {
     entity ZTHBT0004    as projection on db.ZTHBT0004;
     entity ZTHBT0005    as projection on db.ZTHBT0005;
 
-    entity ZSCREEN1 {
-        E_PARTS_NO  : String(40)
-        @sap.creatable
-        @sap.insertable
-        @sap.updatable;
-        YEOS_MNF_NO : String(5);
-        PCKG_CD     : String(1);
-    }
+    // entity ZSCREEN1 {
+    //     E_PARTS_NO  : String(40)
+    //     @sap.creatable
+    //     @sap.insertable
+    //     @sap.updatable;
+    //     YEOS_MNF_NO : String(5);
+    //     PCKG_CD     : String(1);
+    // }
 
-    entity ZAdobeService {
-        pdfFile : LargeString;
-    }
+    // entity ZAdobeService {
+    //     pdfFile : LargeString;
+    // }
 
     entity ZCDSEHBT0001 as
         select from db.ZTHBT0005 {
@@ -54,10 +54,10 @@ service ZCDSEHBTC0002 {
     entity ZTHBT0024 as projection on db.ZTHBT0024;
     entity ZTHBT0025 as projection on db.ZTHBT0025;
 
-    entity ZABTGETPDF {
-        pdfFile : LargeString;
-        Message : String;
-    }
+    // entity ZABTGETPDF {
+    //     pdfFile : LargeString;
+    //     Message : String;
+    // }
 }
 
 service ZCDSEHBTC0003
@@ -232,7 +232,7 @@ service ZCDSEHBTC0007 {
     entity ZTHBT0037 as projection on db.ZTHBT0037;
     entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
 
-    @cds.persistence.exists
+    @cds.persistence.skip
     entity BOMDisplay {
     key E_DOC_TYPE: String(3) @title : 'Document Type7';
     key WERKS: String(4) @title : 'Plant';

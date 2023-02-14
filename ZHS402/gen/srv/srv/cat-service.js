@@ -118,7 +118,7 @@ const SequenceHelper = require("./lib/SequenceHelper");
 const cds = require('@sap/cds');
 const { SELECT, INSERT, UPDATE } = cds.ql
 
-module.exports = cds.service.impl(async function() {
+module.exports = cds.service.impl(async function(srv) {
 
     const db = await cds.connect.to("db");
 
@@ -176,6 +176,12 @@ module.exports = cds.service.impl(async function() {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
         return bupa.run(req.query);
     });
+
+    this.on('READ', 'VL_SH_H_T001', async req => {
+        const plant = await cds.connect.to('PlantAPI');
+        return plant.run(req.query);
+    });
+
 
 
     this.on('READ', 'ZTHBT0019', async req => {
@@ -350,5 +356,38 @@ this.on('READ', 'ReceiverCostCenter', async req => {
     var oData = await db.run(req.query);
     return oData;
 });
+this.on('READ', 'BOMDisplay', async req => {
+    const db = await cds.connect.to('db');
+    if(req._query) {
+        var E_DOC_TYPE = req._query.E_DOC_TYPE;
+        // var E_DOC_NO = req._query.E_DOC_NO;
+        // var WERKS = req._query.WERKS;
+        // var E_REV_NO = req._query.E_REV_NO;
+        // var PS_GROUP_NO = req._query.PS_GROUP_NO;
 
+        if (E_DOC_TYPE == "FE01") {
+            let query = SELECT.from('ZHS402_ZTHBT0037')
+		.leftJoin('ZHS402_ZTHBT0010')
+		.on('ZHS402_ZTHBT0037.E_DOC_NO', "=", "ZHS402_ZTHBT0010.E_DOC_NO")
+
+            let results = await cds.run(query)
+            let aData = [];
+            for (let oData of results) { 
+            const data = {
+                E_DOC_TYPE: oData.E_DOC_TYPE,
+                WERKS: oData.E_DOC_TYPE,
+                E_DOC_NO: oData.E_DOC_TYPE,
+                E_REV_NO: oData.E_DOC_TYPE,
+                PS_GROUP_NO: oData.E_DOC_TYPE
+                }
+                aData.push(data);
+            }
+            return aData;
+        } else if(E_DOC_TYPE == "FE02") {
+
+        }
+    }
+
+    // return oData;
+l});
 });
