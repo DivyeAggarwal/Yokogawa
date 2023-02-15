@@ -9185,18 +9185,47 @@
       "elements": {
         "E_DOC_TYPE": {
           "@title": "Document Type7",
+          "@Common.ValueListWithFixedValues": true,
+          "@Common.Label": "Doc Type",
+          "@Common.ValueList.$Type": "Common.ValueListType",
+          "@Common.ValueList.CollectionPath": "Doc_Type",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "E_DOC_TYPE"
+              },
+              "ValueListProperty": "DOC_TYPE"
+            }
+          ],
           "key": true,
           "type": "cds.String",
           "length": 3
         },
         "WERKS": {
           "@title": "Plant",
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "VL_SH_H_T001",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "WERKS"
+              },
+              "ValueListProperty": "BUKRS"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "BUTXT"
+            }
+          ],
           "key": true,
           "type": "cds.String",
           "length": 4
         },
         "E_DOC_NO": {
           "@title": "Technical document No",
+          "@UI.HiddenFilter": true,
           "key": true,
           "type": "cds.String",
           "length": 18
@@ -9220,6 +9249,18 @@
         "CREATION_DATE": {
           "@title": "Creation Date",
           "type": "cds.Date"
+        }
+      }
+    },
+    "ZCDSEHBTC0007.Doc_Type": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "DOC_TYPE": {
+          "@title": "Document Type",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
         }
       }
     },
@@ -27954,9 +27995,6 @@
   "extensions": [
     {
       "annotate": "ZCDSEHBTC0001.ZSCREEN1",
-      "@Capabilities.Insertable": true,
-      "@Capabilities.Deletable": true,
-      "@Capabilities.Updatable": true,
       "elements": {
         "E_PARTS_NO": {
           "@Common.ValueList.Label": "{i18n>Material}",

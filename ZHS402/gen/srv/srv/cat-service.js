@@ -358,8 +358,8 @@ this.on('READ', 'ReceiverCostCenter', async req => {
 });
 this.on('READ', 'BOMDisplay', async req => {
     const db = await cds.connect.to('db');
-    if(req._query) {
-        var E_DOC_TYPE = req._query.E_DOC_TYPE;
+    // if(req._query) {
+        var E_DOC_TYPE = "FE01";//req._query.E_DOC_TYPE;
         // var E_DOC_NO = req._query.E_DOC_NO;
         // var WERKS = req._query.WERKS;
         // var E_REV_NO = req._query.E_REV_NO;
@@ -378,7 +378,9 @@ this.on('READ', 'BOMDisplay', async req => {
                 WERKS: oData.E_DOC_TYPE,
                 E_DOC_NO: oData.E_DOC_TYPE,
                 E_REV_NO: oData.E_DOC_TYPE,
-                PS_GROUP_NO: oData.E_DOC_TYPE
+                PS_GROUP_NO: oData.E_DOC_TYPE,
+                FORMALIZE_DATE: "2023-01-01",
+                CREATION_DATE: "2023-01-01"
                 }
                 aData.push(data);
             }
@@ -386,8 +388,23 @@ this.on('READ', 'BOMDisplay', async req => {
         } else if(E_DOC_TYPE == "FE02") {
 
         }
-    }
+    // }
 
     // return oData;
-l});
+});
+this.on('READ', 'Doc_Type', async req => {
+    const db = await cds.connect.to('db');
+
+            let aData = [];
+            const data = {
+                DOC_TYPE: "FE0",               
+                }
+                aData.push(data);
+            data = {
+                    DOC_TYPE: "FE1",               
+                    }
+                aData.push(data);
+            return aData;
+
+});
 });

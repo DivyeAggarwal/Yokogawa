@@ -4,15 +4,15 @@ using ZCDSEHBTC0003 from './cat-service';
 using { CatalogService.ZCDSEHCSC0003 as ZCDSEHCSC0003} from './cat-service';
 
 
-annotate ZCDSEHBTC0001.ZSCREEN1 @(Capabilities : {
-    // SearchRestrictions : {
-    //     $Type      : 'Capabilities.SearchRestrictionsType',
-    //     Searchable : true
-    // },
-    Insertable         : true,
-    Deletable          : true,
-    Updatable          : true
-});
+// annotate ZCDSEHBTC0001.ZSCREEN1 @(Capabilities : {
+//     // SearchRestrictions : {
+//     //     $Type      : 'Capabilities.SearchRestrictionsType',
+//     //     Searchable : true
+//     // },
+//     Insertable         : true,
+//     Deletable          : true,
+//     Updatable          : true
+// });
 
 annotate ZCDSEHBTC0001.ZTHBT0005 @(Capabilities : {
     // SearchRestrictions : {
@@ -512,6 +512,59 @@ annotate ZCDSEHBTC0007.BOMDisplay with @(
         ],
      }
 ){
+};
+annotate ZCDSEHBTC0007.BOMDisplay with {
+E_DOC_NO @UI.HiddenFilter: true;
+}
+annotate ZCDSEHBTC0007.BOMDisplay {
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'VL_SH_H_T001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : WERKS,
+                    ValueListProperty : 'BUKRS'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'BUTXT'
+                }
+            ]
+        }
+    })
+    WERKS;
+}
+annotate ZCDSEHBTC0007.BOMDisplay {
+    @Common.ValueListWithFixedValues : true
+    @(Common : {
+        Label     : 'Doc Type',
+        ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'Doc_Type',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : E_DOC_TYPE,
+                    ValueListProperty : 'DOC_TYPE'
+                }
+            ]
+        }
+    })
+    E_DOC_TYPE;
+}
+annotate ZCDSEHBTC0007.BOMDisplay @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : E_DOC_TYPE,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
+annotate ZCDSEHBTC0007.BOMDisplay with {
+    @Common.FilterDefaultValue : 'FE0'
+    E_DOC_TYPE
 };
 // annotate ZCDSEHBTC0007.BOMDisplay {
 //     E_DOC_TYPE @(

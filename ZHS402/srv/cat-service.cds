@@ -242,5 +242,9 @@ service ZCDSEHBTC0007 {
     FORMALIZE_DATE: Date @title : 'Formalized Date';
     CREATION_DATE: Date @title : 'Creation Date';
     }
+    @cds.persistence.skip
+    entity Doc_Type {
+    key DOC_TYPE: String(3) @title : 'Document Type';
+    }
 
 }
