@@ -358,14 +358,30 @@ this.on('READ', 'ReceiverCostCenter', async req => {
 });
 this.on('READ', 'BOMDisplay', async req => {
     const db = await cds.connect.to('db');
-    // if(req._query) {
-        var E_DOC_TYPE = "FE01";//req._query.E_DOC_TYPE;
-        // var E_DOC_NO = req._query.E_DOC_NO;
-        // var WERKS = req._query.WERKS;
-        // var E_REV_NO = req._query.E_REV_NO;
-        // var PS_GROUP_NO = req._query.PS_GROUP_NO;
+    if(req._query) {
+    const doc_type_idx = req.query.SELECT.where.findIndex((filter)=>filter && filter.ref && filter.ref.find((field)=>field==="E_DOC_TYPE"));
+    if(doc_type_idx >= 0) {
+        var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx+2].val
+    }
+    const WERKS_idx = req.query.SELECT.where.findIndex((filter)=>filter && filter.ref && filter.ref.find((field)=>field==="WERKS"));
+    if(WERKS_idx >= 0) {
+        var WERKS = req.query.SELECT.where[WERKS_idx+2].val
+    }
+    const DOC_NO_idx = req.query.SELECT.where.findIndex((filter)=>filter && filter.ref && filter.ref.find((field)=>field==="E_DOC_NO"));
+    if(DOC_NO_idx >= 0) {
+        var E_DOC_NO = req.query.SELECT.where[DOC_NO_idx+2].val
+    }
+    const REV_NO_idx = req.query.SELECT.where.findIndex((filter)=>filter && filter.ref && filter.ref.find((field)=>field==="E_REV_NO"));
+    if(REV_NO_idx >= 0) {
+        var E_REV_NO = req.query.SELECT.where[REV_NO_idx+2].val
+    }
+    const GROUP_NO_idx = req.query.SELECT.where.findIndex((filter)=>filter && filter.ref && filter.ref.find((field)=>field==="PS_GROUP_NO"));
+    if(GROUP_NO_idx >= 0) {
+        var PS_GROUP_NO = req.query.SELECT.where[GROUP_NO_idx+2].val
+    }
+    }
+        if (E_DOC_TYPE == "FE0") {
 
-        if (E_DOC_TYPE == "FE01") {
             let query = SELECT.from('ZHS402_ZTHBT0037')
 		.leftJoin('ZHS402_ZTHBT0010')
 		.on('ZHS402_ZTHBT0037.E_DOC_NO', "=", "ZHS402_ZTHBT0010.E_DOC_NO")
@@ -400,10 +416,10 @@ this.on('READ', 'Doc_Type', async req => {
                 DOC_TYPE: "FE0",               
                 }
                 aData.push(data);
-            data = {
+            const data1 = {
                     DOC_TYPE: "FE1",               
                     }
-                aData.push(data);
+                aData.push(data1);
             return aData;
 
 });

@@ -9182,6 +9182,14 @@
           }
         }
       ],
+      "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+        {
+          "Property": {
+            "=": "E_DOC_TYPE"
+          },
+          "AllowedExpressions": "SingleValue"
+        }
+      ],
       "elements": {
         "E_DOC_TYPE": {
           "@title": "Document Type7",
@@ -9198,6 +9206,7 @@
               "ValueListProperty": "DOC_TYPE"
             }
           ],
+          "@Common.FilterDefaultValue": "FE0",
           "key": true,
           "type": "cds.String",
           "length": 3
