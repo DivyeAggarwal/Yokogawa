@@ -20,7 +20,7 @@ entity ZTHBT0001: managed {
 
 }
 
-entity ZTHBT0002: managed {
+entity ZTHBT0002: managed, cuid {
     PCKG_TYPE: String(2) @title : 'Packing Type';
     PCKG_STYLE: String(2) @title : 'Packing Style';
     PCKG_STYLE_N: String(40) @title : 'Packing Style Name';
