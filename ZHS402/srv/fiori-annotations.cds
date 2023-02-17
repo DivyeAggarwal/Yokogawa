@@ -516,6 +516,28 @@ annotate ZCDSEHBTC0007.BOMDisplay with @(
 annotate ZCDSEHBTC0007.BOMDisplay with {
 E_DOC_NO @UI.HiddenFilter: true;
 }
+// annotate ZCDSEHBTC0007.BOMDisplay with {
+//     WERKS @(
+//            Common.ValueList : {
+//             Label           : 'Consequence',
+//             CollectionPath  : 'VL_SH_H_T001',
+//             SearchSupported : false,
+//             Parameters      : [
+//                 {
+//                     $Type             : 'Common.ValueListParameterInOut',
+//                     ValueListProperty : 'BUKRS',
+//                     LocalDataProperty : WERKS,
+//                     ![@Common.Label] : 'tPlant',
+//                 },
+//                 {
+//                     $Type             : 'Common.ValueListParameterDisplayOnly',
+//                     ValueListProperty : 'BUTXT'
+                 
+//                 }    
+//             ]
+//         });
+// };
+
 annotate ZCDSEHBTC0007.BOMDisplay {
     @(Common : {
         Label     : 'Plant',

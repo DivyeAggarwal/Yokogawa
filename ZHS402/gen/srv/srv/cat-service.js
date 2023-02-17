@@ -391,10 +391,10 @@ this.on('READ', 'BOMDisplay', async req => {
             for (let oData of results) { 
             const data = {
                 E_DOC_TYPE: oData.E_DOC_TYPE,
-                WERKS: oData.E_DOC_TYPE,
-                E_DOC_NO: oData.E_DOC_TYPE,
-                E_REV_NO: oData.E_DOC_TYPE,
-                PS_GROUP_NO: oData.E_DOC_TYPE,
+                WERKS: oData.WERKS,
+                E_DOC_NO: oData.E_DOC_NO,
+                E_REV_NO: oData.E_REV_NO,
+                PS_GROUP_NO: oData.PS_GROUP_NO,
                 FORMALIZE_DATE: "2023-01-01",
                 CREATION_DATE: "2023-01-01"
                 }
