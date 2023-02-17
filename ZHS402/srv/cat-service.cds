@@ -202,6 +202,9 @@ service ZCDS_ALL_ENTITIES {
     entity ZTHBT0003 as projection on db.ZTHBT0003;
     entity ZTHBT0004 as projection on db.ZTHBT0004;
     entity ZTHBT0005 as projection on db.ZTHBT0005;
+    entity ZTHBT0006 as projection on db.ZTHBT0006;
+    entity ZTHBT0007 as projection on db.ZTHBT0007;
+    entity ZTHBT0015 as projection on db.ZTHBT0015;
     entity ZTHBT0019 as projection on db.ZTHBT0019;
     entity ZTHBT0020 as projection on db.ZTHBT0020;
     entity ZTHBT0021 as projection on db.ZTHBT0021;
@@ -247,4 +250,16 @@ service ZCDSEHBTC0007 {
     key DOC_TYPE: String(3) @title : 'Document Type';
     }
 
+}
+
+
+service ZCDSEHBTC0009 {
+    entity ZTHBT0001 as projection on db.ZTHBT0001;
+    entity ZTHBT0002 as projection on db.ZTHBT0002;
+    entity ZTHBT0003 as projection on db.ZTHBT0003;
+    entity ZTHBT0004 as projection on db.ZTHBT0004;
+    entity ZTHBT0005 as projection on db.ZTHBT0005;
+    entity ZTHBT0006 as projection on db.ZTHBT0006;
+    entity ZTHBT0007 as projection on db.ZTHBT0007;
+    entity ZTHBT0015 as projection on db.ZTHBT0015;
 }

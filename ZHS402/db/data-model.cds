@@ -10,41 +10,76 @@ entity Books {
   stock  : Integer;
 }
 entity ZTHBT0001: managed {
-    Key PARTS_NO: String(40);
-        PCKG_CD: String(1);
-        PCKG_TYPE: String(2);
-        PCKG_STYLE: String(2);
-        SUPPLY_STYLE: String(2);
-        PCKG_UNIT_QTY: String;
-        PARTS_UNIT: String;
+    Key PARTS_NO: String(18) @title : 'Parts  Number';
+        E_PARTS_NO: String(40) @title : 'Material Number';
+        SOURCE_CD: String(2) @title : 'Source  Code';
+        YEOS_MNF_NO: String(5) @title : 'Maker Model Number';
+        YEOS_MNF_MODEL: String(80) @title : 'Maker Model Name';
+        PCKG_CD: String(1) @title : 'Packing Code';
+        IND_DEMAND_SIGN: String(1) @title : 'Ind Demand Sign';
 
 }
 
 entity ZTHBT0002: managed {
-    PCKG_TYPE: String(2);
-    PCKG_STYLE: String(2);
-    PCKG_STYLE_N: String(40);
+    PCKG_TYPE: String(2) @title : 'Packing Type';
+    PCKG_STYLE: String(2) @title : 'Packing Style';
+    PCKG_STYLE_N: String(40) @title : 'Packing Style Name';
 }
 
 entity ZTHBT0003: managed {
-    key PCKG_TYPE: String(2);
-        PCKG_TYPE_N: String(40);
+    key PCKG_TYPE: String(2) @title : 'Packing Type';
+        PCKG_TYPE_N: String(40) @title : 'Packing Type Name';
 }
 
 entity ZTHBT0004: managed {
-    key PCKG_TYPE: String(2);
-    key SUPPLY_STYLE: String(4);
-        SUPPLY_STYLE_N: String(40);
+    key PCKG_TYPE: String(2) @title : 'Packing Type';
+    key SUPPLY_STYLE: String(4) @title : 'Supply Style';
+        SUPPLY_STYLE_N: String(40) @title : 'Supply Style Name';
 }
 
-entity ZTHBT0005: managed{
-    key PARTS_NO: String(18);
-        E_PARTS_NO: String(40);
-        SOURCE_CD: String(2);
-        YEOS_MNF_NO: String(5);
-        YEOS_MNF_MODEL: String(80);
-        PCKG_CD: String(1);
-        IND_DEMAND_SIGN: String(1);
+entity ZTHBT0006: managed {
+    key E_PARTS_NO: String(18) @title : 'Material Number';
+        E_PARTS_N: String(20) @title : 'Parts Name';
+        PARTS_TYPE: String(4) @title : 'Parts Type';
+        RCMND_CLASS: String(2) @title : 'Rcmnd Class';
+        MOUNT_TYPE: String(6) @title : 'Mount Type';
+        SAFETY_SIGN: String(1) @title : 'Safety Sign';
+        ANTIEXPLODE_SIGN: String(1) @title : 'Antiexplode Sign';
+        RADIO_SIGN: String(1) @title : 'Radio Sign';
+        USE_NON_COMPLAINT: String(1) @title : 'Use non complaint product Sign';
+        EMC_SIGN: String(1) @title : 'Emc Sign';
+        PED_SIGN: String(1) @title : 'Ped Sign';
+        PARTS_UNIT: String(3) @title : 'Parts Unit';
+        CLASS3_NAME: String(3) @title : 'Class Name';
+        PRODUCT_TYPE: String(1) @title : 'Product Type';
+}
+entity ZTHBT0007: managed {
+    key E_PARTS_NO: String(18) @title : 'Material Number';
+    key SOURCE_CD: String(2) @title : 'Source Code';
+        DATA_ST: String(1) @title : 'Data status';
+        YEOS_MNF_NO: String(5) @title : 'Maker Model Number';
+        YEOS_MNF_MODEL: String(90) @title : 'Maker Model Name';
+        Y_LEVEL: String(2) @title : 'level';
+        PARTS_NO_EXT_SIGN: Decimal(13, 3) @title : 'Parts No ext sign';
+        MASS: String(40) @title : 'Mass';
+        INVESTIGATION_UNIT: String(5) @title : 'Investigation Unit';
+}
+
+entity ZTHBT0005: managed{ 
+    key PARTS_NO: String(40) @title : 'Material Number';
+    key PCKG_CD: String(1) @title : 'Packing Code';
+    PCKG_TYPE: String(2) @title : 'Packing Type';
+    PCKG_STYLE: String(2) @title : 'Packing Style';
+    SUPPLY_STYLE: String(2) @title : 'Supply Style';
+    PCKG_UNIT_QTY: Decimal(13, 3) @title : 'Number of storage';
+    PARTS_UNIT: String(3) @title : 'Parts Unit'; 
+}
+
+entity ZTHBT0015: managed{ 
+    key PARTS_TYPE: String(4) @title : 'Parts Type';
+        PARTS_TYPE_N: String(30) @title : 'Parts Type Name';
+    PARTS_TYPE_ABB_N: String(20) @title : 'Parts Type Abb Name';
+    PARTS_NO_EXT_SIGN: String(1) @title : 'Parts No ext sign'; 
 }
 @title : '{i18n>SalesRegistration}'
 entity ZTHBT0021: managed {
