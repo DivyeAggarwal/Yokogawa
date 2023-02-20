@@ -27,6 +27,7 @@ service ZCDSEHBTC0001 {
     entity ZTHBT0003    as projection on db.ZTHBT0003;
     entity ZTHBT0004    as projection on db.ZTHBT0004;
     entity ZTHBT0005    as projection on db.ZTHBT0005;
+    entity ZTHBT0016    as projection on db.ZTHBT0016;
 
     // entity ZSCREEN1 {
     //     E_PARTS_NO  : String(40)

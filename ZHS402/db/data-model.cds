@@ -81,6 +81,13 @@ entity ZTHBT0015: managed{
     PARTS_TYPE_ABB_N: String(20) @title : 'Parts Type Abb Name';
     PARTS_NO_EXT_SIGN: String(1) @title : 'Parts No ext sign'; 
 }
+@title : '{i18n>YEOSMakerNO}'
+entity ZTHBT0016: managed{ 
+    key YEOS_MNF_NO: String(4) @title : 'Makers Model Number';
+        YEOS_MNF_N: String(30) @title : 'Makers Model Name';
+        YEOS_MNF_N_J: String(20) @title : 'Makers Model Name J';
+        YEOS_MNF_ABB_N: String(1) @title : 'Makers Model Abb'; 
+}
 @title : '{i18n>SalesRegistration}'
 entity ZTHBT0021: managed {
     key PROJECTID    : String;
