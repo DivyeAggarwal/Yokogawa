@@ -2,6 +2,7 @@ using ZHS402 as db from '../db/data-model';
 using TimeSheetEntry from './external/TimeSheetEntry';
 using ZSRVBHPS0008 from './external/ZSRVBHPS0008';
 using { PlantAPI as external } from './external/PlantAPI';
+using  API_PRODUCT_SRV from './external/API_PRODUCT_SRV';
 
 service ZSRVBHPS0008Service {
 
@@ -263,8 +264,12 @@ service ZCDSEHBTC0009 {
     entity ZTHBT0006 as projection on db.ZTHBT0006;
     entity ZTHBT0007 as projection on db.ZTHBT0007;
     entity ZTHBT0015 as projection on db.ZTHBT0015;
+    entity A_ProductDescription as projection on API_PRODUCT_SRV.A_ProductDescription;
     // @cds.persistence.skip
     entity t as select ZTHBT0001.E_PARTS_NO, ZTHBT0006.E_PARTS_N from db.ZTHBT0001 left outer join db.ZTHBT0006 on ZTHBT0001.E_PARTS_NO = ZTHBT0006.E_PARTS_NO where ZTHBT0001.E_PARTS_NO = '123';
+
+    // entity DigitPartList as select ZTHBT0001.SOURCE_CD, ZTHBT0001.YEOS_MNF_MODEL, A_ProductDescription.ProductDescription from db.ZTHBT0001 left outer join API_PRODUCT_SRV.A_ProductDescription 
+    //     on ZTHBT0001.E_PARTS_NO  = A_ProductDescription.Product;// where ZTHBT0007.E_PARTS_NO = '123';
 
     entity MakersList as select ZTHBT0007.SOURCE_CD, ZTHBT0007.YEOS_MNF_NO, ZTHBT0007.DATA_ST, ZTHBT0007.YEOS_MNF_MODEL, ZTHBT0016.YEOS_MNF_N from db.ZTHBT0007 left outer join db.ZTHBT0016 
         on ZTHBT0007.YEOS_MNF_NO = ZTHBT0016.YEOS_MNF_NO;// where ZTHBT0007.E_PARTS_NO = '123';

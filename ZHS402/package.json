@@ -101,6 +101,14 @@
           "path": "/sap/opu/odata/sap/FIN_USER_DEFAULTPARAMETER_SRV",
           "destination": "s4003-ap-https_ZSRVBHPS0008"
         }
+      },
+      "API_PRODUCT_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_PRODUCT_SRV",
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_PRODUCT_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008"
+        }
       }
     },
     "hana": {
