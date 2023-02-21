@@ -588,6 +588,37 @@ annotate ZCDSEHBTC0007.BOMDisplay with {
     @Common.FilterDefaultValue : 'FE0'
     E_DOC_TYPE
 };
+annotate ZCDSEHBTC0009.ZTHBT0006 with @(
+   UI.SelectionVariant#One :
+{
+    Text: 'type1',
+    SelectOptions:
+    [
+        {
+            $Type : 'UI.SelectOptionType',
+            PropertyName : E_PARTS_NO
+             
+        }
+    ]
+}
+){
+};
+annotate ZCDSEHBTC0009.ZTHBT0001 with @(
+   UI.SelectionVariant#two :
+{
+    Text: 'type 2',
+    SelectOptions:
+    [
+        {
+            $Type : 'UI.SelectOptionType',
+            PropertyName : E_PARTS_NO
+             
+        }
+    ]
+}
+){
+};
+
 // annotate ZCDSEHBTC0007.BOMDisplay {
 //     E_DOC_TYPE @(
 //         @Common.ValueListWithFixedValues : true,

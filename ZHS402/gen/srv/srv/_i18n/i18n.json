@@ -34,7 +34,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "cs": {
     "CreatedBy": "Vytvořil",
@@ -71,7 +72,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "da": {
     "CreatedBy": "Oprettet af",
@@ -108,7 +110,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "de": {
     "CreatedBy": "Angelegt von",
@@ -145,7 +148,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "en": {
     "CreatedBy": "Created By",
@@ -182,7 +186,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "es": {
     "CreatedBy": "Creado por",
@@ -219,7 +224,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "fi": {
     "CreatedBy": "Tekijä",
@@ -256,7 +262,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "fr": {
     "CreatedBy": "Auteur de la création",
@@ -293,7 +300,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "hu": {
     "CreatedBy": "Létrehozó:",
@@ -330,7 +338,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "it": {
     "CreatedBy": "Autore creazione",
@@ -367,7 +376,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "ja": {
     "CreatedBy": "登録者",
@@ -404,7 +414,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "ko": {
     "CreatedBy": "생성자",
@@ -441,7 +452,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "ms": {
     "CreatedBy": "Dicipta oleh",
@@ -478,7 +490,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "nl": {
     "CreatedBy": "Gecreëerd door",
@@ -515,7 +528,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "no": {
     "CreatedBy": "Opprettet av",
@@ -552,7 +566,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "pl": {
     "CreatedBy": "Utworzone przez",
@@ -589,7 +604,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "pt": {
     "CreatedBy": "Criado por",
@@ -626,7 +642,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "ro": {
     "CreatedBy": "Creat de",
@@ -663,7 +680,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "ru": {
     "CreatedBy": "Создал",
@@ -700,7 +718,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "sv": {
     "CreatedBy": "Uppläggning av",
@@ -737,7 +756,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "th": {
     "CreatedBy": "สร้างโดย",
@@ -774,7 +794,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "tr": {
     "CreatedBy": "Oluşturan",
@@ -811,7 +832,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "zh_CN": {
     "CreatedBy": "创建者",
@@ -848,7 +870,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "zh_TW": {
     "CreatedBy": "建立者",
@@ -885,7 +908,8 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   },
   "": {
     "CreatedBy": "Created By",
@@ -922,6 +946,7 @@
     "CreatepurchaseItemRecord": "Create Purchase Item Record",
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
-    "PartsStructureTr": "Parts Structure Tr"
+    "PartsStructureTr": "Parts Structure Tr",
+    "YEOSMakerNO": "YEOS Maker NO"
   }
 }
