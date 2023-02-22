@@ -428,8 +428,7 @@ this.on('READ', 'Doc_Type', async req => {
 });
 this.on('READ', 'DigitPartList', async req => {
     const db = await cds.connect.to('db');
-    const bupa = await cds.connect.to('API_PRODUCT_SRV');
-    const {A_ProductDescription} = bupa;
+    
 
     const material = await SELECT.from('ZHS402.ZTHBT0001');
     
@@ -441,8 +440,11 @@ this.on('READ', 'DigitPartList', async req => {
                 YEOS_MNF_NO: oData.YEOS_MNF_NO
                 }
                 if(oData.E_PARTS_NO) {
+                const bupa = await cds.connect.to('API_PRODUCT_SRV');
                 const MatDesc = await bupa.get('ZCDSEHBTC0009.A_ProductDescription').where({Product:oData.E_PARTS_NO});
-                data.MATERIALDESC = MatDesc.data.results[0].ProductDescription;
+                console.log(MatDesc);
+                data.MATERIALDESC = MatDesc.d.results[0].ProductDescription;
+                data.MATERIALDESC = "Test Mat";
                 } else {
                     data.MATERIALDESC = "Test Material";
                 }
