@@ -265,16 +265,23 @@ service ZCDSEHBTC0009 {
     entity ZTHBT0007 as projection on db.ZTHBT0007;
     entity ZTHBT0015 as projection on db.ZTHBT0015;
     entity A_ProductDescription as projection on API_PRODUCT_SRV.A_ProductDescription;
-    // @cds.persistence.skip
-    entity t as select ZTHBT0001.E_PARTS_NO, ZTHBT0006.E_PARTS_N from db.ZTHBT0001 left outer join db.ZTHBT0006 on ZTHBT0001.E_PARTS_NO = ZTHBT0006.E_PARTS_NO where ZTHBT0001.E_PARTS_NO = '123';
-
+    
     // entity DigitPartList as select ZTHBT0001.SOURCE_CD, ZTHBT0001.YEOS_MNF_MODEL, A_ProductDescription.ProductDescription from db.ZTHBT0001 left outer join API_PRODUCT_SRV.A_ProductDescription 
     //     on ZTHBT0001.E_PARTS_NO  = A_ProductDescription.Product;// where ZTHBT0007.E_PARTS_NO = '123';
+    // @cds.persistence.skip
+    // entity DigitPartList {
+    //     key E_PARTS_NO: String(40) @title : 'Material Number';
+    //     MATERIALDESC: String(40) @title : 'Material Description';
+    //     SOURCE_CD: String(2) @title : 'Source  Code';
+    //     YEOS_MNF_NO: String(5) @title : 'Maker Model Number';
 
-    entity MakersList as select ZTHBT0007.SOURCE_CD, ZTHBT0007.YEOS_MNF_NO, ZTHBT0007.DATA_ST, ZTHBT0007.YEOS_MNF_MODEL, ZTHBT0016.YEOS_MNF_N from db.ZTHBT0007 left outer join db.ZTHBT0016 
+    // }
+    entity MaterialInput as select ZTHBT0006.E_PARTS_NO from db.ZTHBT0006 left outer join db.ZTHBT0015 
+        on ZTHBT0006.PARTS_TYPE = ZTHBT0015.PARTS_TYPE where ZTHBT0015.PARTS_NO_EXT_SIGN = '1';
+    entity MakersList as select ZTHBT0007.E_PARTS_NO, ZTHBT0007.SOURCE_CD, ZTHBT0007.YEOS_MNF_NO, ZTHBT0007.DATA_ST, ZTHBT0007.YEOS_MNF_MODEL, ZTHBT0016.YEOS_MNF_N from db.ZTHBT0007 left outer join db.ZTHBT0016 
         on ZTHBT0007.YEOS_MNF_NO = ZTHBT0016.YEOS_MNF_NO;// where ZTHBT0007.E_PARTS_NO = '123';
     
-      entity PackingList as select ZTHBT0005.PCKG_CD, ZTHBT0005.PCKG_TYPE, ZTHBT0005.PCKG_STYLE, ZTHBT0005.SUPPLY_STYLE, ZTHBT0003.PCKG_TYPE_N, ZTHBT0002.PCKG_STYLE_N, ZTHBT0004.SUPPLY_STYLE_N from db.ZTHBT0005 join db.ZTHBT0003 
+      entity PackingList as select ZTHBT0005.PARTS_NO, ZTHBT0005.PCKG_CD, ZTHBT0005.PCKG_TYPE, ZTHBT0005.PCKG_STYLE, ZTHBT0005.SUPPLY_STYLE, ZTHBT0003.PCKG_TYPE_N, ZTHBT0002.PCKG_STYLE_N, ZTHBT0004.SUPPLY_STYLE_N from db.ZTHBT0005 join db.ZTHBT0003 
         on ZTHBT0005.PCKG_TYPE = ZTHBT0003.PCKG_TYPE
         join db.ZTHBT0002
         on ZTHBT0005.PCKG_TYPE = ZTHBT0002.PCKG_TYPE
@@ -282,4 +289,9 @@ service ZCDSEHBTC0009 {
         join db.ZTHBT0004 
         on ZTHBT0005.PCKG_TYPE = ZTHBT0004.PCKG_TYPE
         and ZTHBT0005.SUPPLY_STYLE = ZTHBT0004.SUPPLY_STYLE;
+    
+    entity DigitPartList as
+        select from db.ZTHBT0001 {
+            *
+        };
 }

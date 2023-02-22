@@ -588,37 +588,115 @@ annotate ZCDSEHBTC0007.BOMDisplay with {
     @Common.FilterDefaultValue : 'FE0'
     E_DOC_TYPE
 };
-annotate ZCDSEHBTC0009.ZTHBT0006 with @(
-   UI.SelectionVariant#One :
-{
-    Text: 'type1',
-    SelectOptions:
-    [
-        {
-            $Type : 'UI.SelectOptionType',
-            PropertyName : E_PARTS_NO
+annotate ZCDSEHBTC0009.MakersList with @(
+  UI.SelectionPresentationVariant #makerlist : {
+    Text : 'Maker List',
+    SelectionVariant : { 
+        Text : 'MakerList',
+        SelectOptions : [
+            {
+                $Type : 'UI.SelectOptionType',
+                PropertyName : E_PARTS_NO,
+            }
+        ]
+    },
+    PresentationVariant : {
+        SortOrder : [
+            {
+                Property : E_PARTS_NO,
+                Descending : false
+            }
+        ]
+    }
+  }
+);
+// annotate ZCDSEHBTC0009.MakersList with @(
+//    UI.SelectionVariant#One :
+// {
+//     Text: 'Makers List',
+//     SelectOptions:
+//     [
+//         {
+//             $Type : 'UI.SelectOptionType',
+//             PropertyName : E_PARTS_NO
              
-        }
-    ]
-}
-){
-};
+//         }
+//     ]
+// }
+// ){
+// };
 annotate ZCDSEHBTC0009.ZTHBT0001 with @(
-   UI.SelectionVariant#two :
-{
-    Text: 'type 2',
-    SelectOptions:
-    [
-        {
-            $Type : 'UI.SelectOptionType',
-            PropertyName : E_PARTS_NO
-             
-        }
-    ]
-}
+  UI.SelectionVariant #DigitPartList : {
+    Text : '10 Digit Part List'
+  }
+);
+annotate ZCDSEHBTC0009.DigitPartList with @(
+  UI.SelectionVariant #DigitPartListTest : {
+    Text : '10 Digit Part List'
+  }
+);
+
+annotate ZCDSEHBTC0009.PackingList with @(
+  UI.SelectionVariant #PackingList : {
+    Text : 'PackingList'
+  }
+);
+
+annotate ZCDSEHBTC0009.MakersList with @(
+    UI : { 
+        
+        LineItem  : [
+            { Value : E_PARTS_NO },
+            { Value : SOURCE_CD }, 
+            { Value : YEOS_MNF_NO },
+            { Value : DATA_ST },
+            { Value : YEOS_MNF_MODEL },
+            { Value : YEOS_MNF_N }                                         
+        ],
+     }
 ){
 };
 
+annotate ZCDSEHBTC0009.PackingList with @(
+    UI : { 
+        
+        LineItem  : [
+            { Value : PARTS_NO },
+            { Value : PCKG_CD }, 
+            { Value : PCKG_TYPE },
+            { Value : PCKG_STYLE },
+            { Value : SUPPLY_STYLE },
+            { Value : PCKG_TYPE_N }, 
+            { Value : PCKG_STYLE_N }, 
+            { Value : SUPPLY_STYLE_N }                                       
+        ],
+     }
+){
+};
+annotate ZCDSEHBTC0009.ZTHBT0001 with @(
+    UI : { 
+        SelectionFields  : [
+            E_PARTS_NO
+        ]
+     }
+){
+};
+annotate ZCDSEHBTC0009.ZTHBT0001 {
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'MaterialInput',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : E_PARTS_NO,
+                    ValueListProperty : 'E_PARTS_NO'
+                }
+            ]
+        }
+    })
+    E_PARTS_NO;
+}
 // annotate ZCDSEHBTC0007.BOMDisplay {
 //     E_DOC_TYPE @(
 //         @Common.ValueListWithFixedValues : true,

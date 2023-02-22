@@ -10161,13 +10161,10 @@
     },
     "ZCDSEHBTC0009.ZTHBT0001": {
       "kind": "entity",
-      "@UI.SelectionVariant#two.Text": "type 2",
-      "@UI.SelectionVariant#two.SelectOptions": [
+      "@UI.SelectionVariant#DigitPartList.Text": "10 Digit Part List",
+      "@UI.SelectionFields": [
         {
-          "$Type": "UI.SelectOptionType",
-          "PropertyName": {
-            "=": "E_PARTS_NO"
-          }
+          "=": "E_PARTS_NO"
         }
       ],
       "projection": {
@@ -10233,6 +10230,17 @@
           "length": 18
         },
         "E_PARTS_NO": {
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "MaterialInput",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "E_PARTS_NO"
+              },
+              "ValueListProperty": "E_PARTS_NO"
+            }
+          ],
           "@title": "Material Number",
           "type": "cds.String",
           "length": 40
@@ -10591,15 +10599,6 @@
     },
     "ZCDSEHBTC0009.ZTHBT0006": {
       "kind": "entity",
-      "@UI.SelectionVariant#One.Text": "type1",
-      "@UI.SelectionVariant#One.SelectOptions": [
-        {
-          "$Type": "UI.SelectOptionType",
-          "PropertyName": {
-            "=": "E_PARTS_NO"
-          }
-        }
-      ],
       "projection": {
         "from": {
           "ref": [
@@ -11030,8 +11029,122 @@
         }
       }
     },
+    "ZCDSEHBTC0009.MaterialInput": {
+      "kind": "entity",
+      "query": {
+        "SELECT": {
+          "from": {
+            "join": "left",
+            "args": [
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0006"
+                ]
+              },
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0015"
+                ]
+              }
+            ],
+            "on": [
+              {
+                "ref": [
+                  "ZTHBT0006",
+                  "PARTS_TYPE"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0015",
+                  "PARTS_TYPE"
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "ZTHBT0006",
+                "E_PARTS_NO"
+              ]
+            }
+          ],
+          "where": [
+            {
+              "ref": [
+                "ZTHBT0015",
+                "PARTS_NO_EXT_SIGN"
+              ]
+            },
+            "=",
+            {
+              "val": "1"
+            }
+          ]
+        }
+      },
+      "elements": {
+        "E_PARTS_NO": {
+          "@title": "Material Number",
+          "type": "cds.String",
+          "length": 18
+        }
+      }
+    },
     "ZCDSEHBTC0009.MakersList": {
       "kind": "entity",
+      "@UI.SelectionPresentationVariant#makerlist.Text": "Maker List",
+      "@UI.SelectionPresentationVariant#makerlist.SelectionVariant.Text": "MakerList",
+      "@UI.SelectionPresentationVariant#makerlist.SelectionVariant.SelectOptions": [
+        {
+          "$Type": "UI.SelectOptionType",
+          "PropertyName": {
+            "=": "E_PARTS_NO"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#makerlist.PresentationVariant.SortOrder": [
+        {
+          "Property": {
+            "=": "E_PARTS_NO"
+          },
+          "Descending": false
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "E_PARTS_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "SOURCE_CD"
+          }
+        },
+        {
+          "Value": {
+            "=": "YEOS_MNF_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "DATA_ST"
+          }
+        },
+        {
+          "Value": {
+            "=": "YEOS_MNF_MODEL"
+          }
+        },
+        {
+          "Value": {
+            "=": "YEOS_MNF_N"
+          }
+        }
+      ],
       "query": {
         "SELECT": {
           "from": {
@@ -11068,6 +11181,12 @@
             {
               "ref": [
                 "ZTHBT0007",
+                "E_PARTS_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0007",
                 "SOURCE_CD"
               ]
             },
@@ -11099,6 +11218,11 @@
         }
       },
       "elements": {
+        "E_PARTS_NO": {
+          "@title": "Material Number",
+          "type": "cds.String",
+          "length": 18
+        },
         "SOURCE_CD": {
           "@title": "Source Code",
           "type": "cds.String",
@@ -11128,6 +11252,49 @@
     },
     "ZCDSEHBTC0009.PackingList": {
       "kind": "entity",
+      "@UI.SelectionVariant#PackingList.Text": "PackingList",
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "PARTS_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PCKG_CD"
+          }
+        },
+        {
+          "Value": {
+            "=": "PCKG_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "PCKG_STYLE"
+          }
+        },
+        {
+          "Value": {
+            "=": "SUPPLY_STYLE"
+          }
+        },
+        {
+          "Value": {
+            "=": "PCKG_TYPE_N"
+          }
+        },
+        {
+          "Value": {
+            "=": "PCKG_STYLE_N"
+          }
+        },
+        {
+          "Value": {
+            "=": "SUPPLY_STYLE_N"
+          }
+        }
+      ],
       "query": {
         "SELECT": {
           "from": {
@@ -11242,6 +11409,12 @@
             {
               "ref": [
                 "ZTHBT0005",
+                "PARTS_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0005",
                 "PCKG_CD"
               ]
             },
@@ -11285,6 +11458,11 @@
         }
       },
       "elements": {
+        "PARTS_NO": {
+          "@title": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
         "PCKG_CD": {
           "@title": "Packing Code",
           "type": "cds.String",
@@ -11319,6 +11497,108 @@
           "@title": "Supply Style Name",
           "type": "cds.String",
           "length": 40
+        }
+      }
+    },
+    "ZCDSEHBTC0009.DigitPartList": {
+      "kind": "entity",
+      "@UI.SelectionVariant#DigitPartListTest.Text": "10 Digit Part List",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "ZHS402.ZTHBT0001"
+            ]
+          },
+          "columns": [
+            "*"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "PARTS_NO": {
+          "@title": "Parts  Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_PARTS_NO": {
+          "@title": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "SOURCE_CD": {
+          "@title": "Source  Code",
+          "type": "cds.String",
+          "length": 2
+        },
+        "YEOS_MNF_NO": {
+          "@title": "Maker Model Number",
+          "type": "cds.String",
+          "length": 5
+        },
+        "YEOS_MNF_MODEL": {
+          "@title": "Maker Model Name",
+          "type": "cds.String",
+          "length": 80
+        },
+        "PCKG_CD": {
+          "@title": "Packing Code",
+          "type": "cds.String",
+          "length": 1
+        },
+        "IND_DEMAND_SIGN": {
+          "@title": "Ind Demand Sign",
+          "type": "cds.String",
+          "length": 1
         }
       }
     },

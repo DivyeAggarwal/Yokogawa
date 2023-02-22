@@ -426,4 +426,33 @@ this.on('READ', 'Doc_Type', async req => {
             return aData;
 
 });
+// this.on('READ', 'DigitPartList', async req => {
+//     const db = await cds.connect.to('db');
+//     const bupa = await cds.connect.to('API_PRODUCT_SRV');
+//     const {AccountingIndicator} = bupa;
+//     const data = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({AccountingIndicator:'S1'});
+//     console.log(data);
+//             let query = SELECT.from('ZHS402_ZTHBT0037')
+// 		    .leftJoin('ZHS402_ZTHBT0010')
+// 		    .on('ZHS402_ZTHBT0037.E_DOC_NO', "=", "ZHS402_ZTHBT0010.E_DOC_NO")
+
+//             let results = await cds.run(query)
+//             let aData = [];
+//             for (let oData of results) { 
+//             const data = {
+//                 E_DOC_TYPE: oData.E_DOC_TYPE,
+//                 WERKS: oData.WERKS,
+//                 E_DOC_NO: oData.E_DOC_NO,
+//                 E_REV_NO: oData.E_REV_NO,
+//                 PS_GROUP_NO: oData.PS_GROUP_NO,
+//                 FORMALIZE_DATE: "2023-01-01",
+//                 CREATION_DATE: "2023-01-01"
+//                 }
+//                 aData.push(data);
+//             }
+//             return aData;
+//     // }
+
+//     // return oData;
+// });
 });
