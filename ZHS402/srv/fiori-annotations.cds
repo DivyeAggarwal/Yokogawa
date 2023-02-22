@@ -715,3 +715,77 @@ annotate ZCDSEHBTC0009.ZTHBT0001 {
 // }
 
 
+//Labels
+annotate ZCDSEHBTC0009.ZTHBT0001 with {
+    PARTS_NO        @title : 'Parts  Number';
+    E_PARTS_NO      @title : 'Material Number';
+    SOURCE_CD       @title : 'Source  Code';
+    YEOS_MNF_NO     @title : 'Maker Model Number';
+    YEOS_MNF_MODEL  @title : 'Maker Model Name';
+    PCKG_CD         @title : 'Packing Code';
+    IND_DEMAND_SIGN @title : 'Ind Demand Sign';
+}
+
+annotate ZCDSEHBTC0009.ZTHBT0002 with {
+    PCKG_TYPE    @title : 'Packing Type';
+    PCKG_STYLE   @title : 'Packing Style';
+    PCKG_STYLE_N @title : 'Packing Style Name';
+}
+
+annotate ZCDSEHBTC0009.ZTHBT0003 with {
+    PCKG_TYPE   @title : 'Packing Type';
+    PCKG_TYPE_N @title : 'Packing Type Name';
+}
+
+annotate ZCDSEHBTC0009.ZTHBT0004 with {
+    PCKG_TYPE      @title : 'Packing Type';
+    SUPPLY_STYLE   @title : 'Supply Style';
+    SUPPLY_STYLE_N @title : 'Supply Style Name';
+}
+
+annotate ZCDSEHBTC0009.ZTHBT0005 with {
+    PARTS_NO      @title : 'Material Number';
+    PCKG_CD       @title : 'Packing Code';
+    PCKG_TYPE     @title : 'Packing Type';
+    PCKG_STYLE    @title : 'Packing Style';
+    SUPPLY_STYLE  @title : 'Supply Style';
+    PCKG_UNIT_QTY @title : 'Number of storage';
+    PARTS_UNIT    @title : 'Parts Unit';
+}
+
+annotate ZCDSEHBTC0009.ZTHBT0006 with {
+    E_PARTS_NO        @title : 'Material Number';
+    E_PARTS_N         @title : 'Parts Name';
+    PARTS_TYPE        @title : 'Parts Type';
+    RCMND_CLASS       @title : 'Rcmnd Class';
+    MOUNT_TYPE        @title : 'Mount Type';
+    SAFETY_SIGN       @title : 'Safety Sign';
+    ANTIEXPLODE_SIGN  @title : 'Antiexplode Sign';
+    RADIO_SIGN        @title : 'Radio Sign';
+    USE_NON_COMPLAINT @title : 'Use non complaint product Sign';
+    EMC_SIGN          @title : 'Emc Sign';
+    PED_SIGN          @title : 'Ped Sign';
+    PARTS_UNIT        @title : 'Parts Unit';
+    CLASS3_NAME       @title : 'Class Name';
+    PRODUCT_TYPE      @title : 'Product Type';
+}
+
+annotate ZCDSEHBTC0009.ZTHBT0007 with {
+    E_PARTS_NO         @title : 'Material Number';
+    SOURCE_CD          @title : 'Source Code';
+    DATA_ST            @title : 'Data status';
+    YEOS_MNF_NO        @title : 'Maker Model Number';
+    YEOS_MNF_MODEL     @title : 'Maker Model Name';
+    Y_LEVEL            @title : 'level';
+    PARTS_NO_EXT_SIGN  @title : 'Parts No ext sign';
+    MASS               @title : 'Mass';
+    INVESTIGATION_UNIT @title : 'Investigation Unit';
+}
+
+annotate ZCDSEHBTC0009.ZTHBT0015 with {
+    PARTS_TYPE        @title : 'Parts Type';
+    PARTS_TYPE_N      @title : 'Parts Type Name';
+    PARTS_TYPE_ABB_N  @title : 'Parts Type Abb Name';
+    PARTS_NO_EXT_SIGN @title : 'Parts No ext sign';
+}
+

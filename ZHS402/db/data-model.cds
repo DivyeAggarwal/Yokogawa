@@ -219,7 +219,7 @@ entity ZTHBT0027 : managed {
     key MJAHR               : String(4);
         KDAUF               : String(10);
         KDPOS               : String(6);
-        CPUDT_MKPF          : DateTime;
+        CPUDT_MKPF          : Date;
         ERFMG               : String(18);
         ERFME               : String(3);
         CONFIRM_STATUS      : String(100);
