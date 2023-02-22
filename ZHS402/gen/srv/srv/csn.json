@@ -10161,7 +10161,6 @@
     },
     "ZCDSEHBTC0009.ZTHBT0001": {
       "kind": "entity",
-      "@UI.SelectionVariant#DigitPartList.Text": "10 Digit Part List",
       "@UI.SelectionFields": [
         {
           "=": "E_PARTS_NO"
@@ -10954,78 +10953,53 @@
         }
       }
     },
-    "ZCDSEHBTC0009.t": {
+    "ZCDSEHBTC0009.DigitPartList": {
       "kind": "entity",
-      "query": {
-        "SELECT": {
-          "from": {
-            "join": "left",
-            "args": [
-              {
-                "ref": [
-                  "ZHS402.ZTHBT0001"
-                ]
-              },
-              {
-                "ref": [
-                  "ZHS402.ZTHBT0006"
-                ]
-              }
-            ],
-            "on": [
-              {
-                "ref": [
-                  "ZTHBT0001",
-                  "E_PARTS_NO"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "ZTHBT0006",
-                  "E_PARTS_NO"
-                ]
-              }
-            ]
-          },
-          "columns": [
-            {
-              "ref": [
-                "ZTHBT0001",
-                "E_PARTS_NO"
-              ]
-            },
-            {
-              "ref": [
-                "ZTHBT0006",
-                "E_PARTS_N"
-              ]
-            }
-          ],
-          "where": [
-            {
-              "ref": [
-                "ZTHBT0001",
-                "E_PARTS_NO"
-              ]
-            },
-            "=",
-            {
-              "val": "123"
-            }
-          ]
+      "@cds.persistence.skip": true,
+      "@UI.SelectionVariant#DigitPartList.Text": "10 Digit Part List",
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "E_PARTS_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATERIALDESC"
+          }
+        },
+        {
+          "Value": {
+            "=": "SOURCE_CD"
+          }
+        },
+        {
+          "Value": {
+            "=": "YEOS_MNF_NO"
+          }
         }
-      },
+      ],
       "elements": {
         "E_PARTS_NO": {
           "@title": "Material Number",
+          "key": true,
           "type": "cds.String",
           "length": 40
         },
-        "E_PARTS_N": {
-          "@title": "Parts Name",
+        "MATERIALDESC": {
+          "@title": "Material Description",
           "type": "cds.String",
-          "length": 20
+          "length": 40
+        },
+        "SOURCE_CD": {
+          "@title": "Source  Code",
+          "type": "cds.String",
+          "length": 2
+        },
+        "YEOS_MNF_NO": {
+          "@title": "Maker Model Number",
+          "type": "cds.String",
+          "length": 5
         }
       }
     },
@@ -11497,108 +11471,6 @@
           "@title": "Supply Style Name",
           "type": "cds.String",
           "length": 40
-        }
-      }
-    },
-    "ZCDSEHBTC0009.DigitPartList": {
-      "kind": "entity",
-      "@UI.SelectionVariant#DigitPartListTest.Text": "10 Digit Part List",
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "ZHS402.ZTHBT0001"
-            ]
-          },
-          "columns": [
-            "*"
-          ]
-        }
-      },
-      "elements": {
-        "createdAt": {
-          "@cds.on.insert": {
-            "=": "$now"
-          },
-          "@UI.HiddenFilter": true,
-          "@Core.Immutable": true,
-          "@title": "{i18n>CreatedAt}",
-          "@readonly": true,
-          "type": "cds.Timestamp"
-        },
-        "createdBy": {
-          "@cds.on.insert": {
-            "=": "$user"
-          },
-          "@UI.HiddenFilter": true,
-          "@Core.Immutable": true,
-          "@title": "{i18n>CreatedBy}",
-          "@readonly": true,
-          "@description": "{i18n>UserID.Description}",
-          "type": "User",
-          "length": 255
-        },
-        "modifiedAt": {
-          "@cds.on.insert": {
-            "=": "$now"
-          },
-          "@cds.on.update": {
-            "=": "$now"
-          },
-          "@UI.HiddenFilter": true,
-          "@title": "{i18n>ChangedAt}",
-          "@readonly": true,
-          "type": "cds.Timestamp"
-        },
-        "modifiedBy": {
-          "@cds.on.insert": {
-            "=": "$user"
-          },
-          "@cds.on.update": {
-            "=": "$user"
-          },
-          "@UI.HiddenFilter": true,
-          "@title": "{i18n>ChangedBy}",
-          "@readonly": true,
-          "@description": "{i18n>UserID.Description}",
-          "type": "User",
-          "length": 255
-        },
-        "PARTS_NO": {
-          "@title": "Parts  Number",
-          "key": true,
-          "type": "cds.String",
-          "length": 18
-        },
-        "E_PARTS_NO": {
-          "@title": "Material Number",
-          "type": "cds.String",
-          "length": 40
-        },
-        "SOURCE_CD": {
-          "@title": "Source  Code",
-          "type": "cds.String",
-          "length": 2
-        },
-        "YEOS_MNF_NO": {
-          "@title": "Maker Model Number",
-          "type": "cds.String",
-          "length": 5
-        },
-        "YEOS_MNF_MODEL": {
-          "@title": "Maker Model Name",
-          "type": "cds.String",
-          "length": 80
-        },
-        "PCKG_CD": {
-          "@title": "Packing Code",
-          "type": "cds.String",
-          "length": 1
-        },
-        "IND_DEMAND_SIGN": {
-          "@title": "Ind Demand Sign",
-          "type": "cds.String",
-          "length": 1
         }
       }
     },

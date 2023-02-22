@@ -625,13 +625,8 @@ annotate ZCDSEHBTC0009.MakersList with @(
 // }
 // ){
 // };
-annotate ZCDSEHBTC0009.ZTHBT0001 with @(
-  UI.SelectionVariant #DigitPartList : {
-    Text : '10 Digit Part List'
-  }
-);
 annotate ZCDSEHBTC0009.DigitPartList with @(
-  UI.SelectionVariant #DigitPartListTest : {
+  UI.SelectionVariant #DigitPartList : {
     Text : '10 Digit Part List'
   }
 );
@@ -652,6 +647,18 @@ annotate ZCDSEHBTC0009.MakersList with @(
             { Value : DATA_ST },
             { Value : YEOS_MNF_MODEL },
             { Value : YEOS_MNF_N }                                         
+        ],
+     }
+){
+};
+annotate ZCDSEHBTC0009.DigitPartList with @(
+    UI : { 
+        
+        LineItem  : [
+            { Value : E_PARTS_NO },
+            { Value : MATERIALDESC },
+            { Value : SOURCE_CD }, 
+            { Value : YEOS_MNF_NO }                                        
         ],
      }
 ){
