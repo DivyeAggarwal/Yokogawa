@@ -443,8 +443,7 @@ this.on('READ', 'DigitPartList', async req => {
                 const bupa = await cds.connect.to('API_PRODUCT_SRV');
                 const MatDesc = await bupa.get('ZCDSEHBTC0009.A_ProductDescription').where({Product:oData.E_PARTS_NO});
                 console.log(MatDesc);
-                data.MATERIALDESC = MatDesc.d.results[0].ProductDescription;
-                data.MATERIALDESC = "Test Mat";
+                data.MATERIALDESC = MatDesc[0].ProductDescription;
                 } else {
                     data.MATERIALDESC = "Test Material";
                 }

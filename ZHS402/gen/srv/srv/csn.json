@@ -1881,7 +1881,7 @@
           "length": 6
         },
         "CPUDT_MKPF": {
-          "type": "cds.DateTime"
+          "type": "cds.Date"
         },
         "ERFMG": {
           "type": "cds.String",
@@ -6593,7 +6593,7 @@
           "length": 6
         },
         "CPUDT_MKPF": {
-          "type": "cds.DateTime"
+          "type": "cds.Date"
         },
         "ERFMG": {
           "type": "cds.String",
@@ -8372,7 +8372,7 @@
           "length": 6
         },
         "CPUDT_MKPF": {
-          "type": "cds.DateTime"
+          "type": "cds.Date"
         },
         "ERFMG": {
           "type": "cds.String",
