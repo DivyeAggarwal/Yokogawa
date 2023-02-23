@@ -619,7 +619,6 @@ annotate ZCDSEHBTC0007.BOMDisplay {
                     LocalDataProperty : E_DOC_NO,
                     ValueListProperty : 'FZ2_NO'
                 },
-                ,
                 {
                     $Type             : 'Common.ValueListParameterDisplayOnly',
                     ValueListProperty : 'YEOS_MODEL_GROUP'
