@@ -14,20 +14,20 @@ using { CatalogService.ZCDSEHCSC0003 as ZCDSEHCSC0003} from './cat-service';
 //     Updatable          : true
 // });
 
-annotate ZCDSEHBTC0001.ZTHBT0005 @(Capabilities : {
-    // SearchRestrictions : {
-    //     $Type      : 'Capabilities.SearchRestrictionsType',
-    //     Searchable : true
-    // },
-    Insertable         : true,
-    Deletable          : true,
-    Updatable          : true
-});
-annotate ZCDSEHBTC0001.ZTHBT0005 {
-    E_PARTS_NO      @sap.insertable:true;
-  E_PARTS_NO      @sap.updatable:true ;
-  E_PARTS_NO      @sap.Label:'ddaad' ;
-}
+// annotate ZCDSEHBTC0001.ZTHBT0005 @(Capabilities : {
+//     // SearchRestrictions : {
+//     //     $Type      : 'Capabilities.SearchRestrictionsType',
+//     //     Searchable : true
+//     // },
+//     Insertable         : true,
+//     Deletable          : true,
+//     Updatable          : true
+// });
+// annotate ZCDSEHBTC0001.ZTHBT0005 {
+//     E_PARTS_NO      @sap.insertable:true;
+//   E_PARTS_NO      @sap.updatable:true ;
+//   E_PARTS_NO      @sap.Label:'ddaad' ;
+// }
 annotate  ZCDSEHBTC0003.ZTHBT0020 with @(
     UI: {
         HeaderInfo: {
@@ -610,21 +610,7 @@ annotate ZCDSEHBTC0009.MakersList with @(
     }
   }
 );
-// annotate ZCDSEHBTC0009.MakersList with @(
-//    UI.SelectionVariant#One :
-// {
-//     Text: 'Makers List',
-//     SelectOptions:
-//     [
-//         {
-//             $Type : 'UI.SelectOptionType',
-//             PropertyName : E_PARTS_NO
-             
-//         }
-//     ]
-// }
-// ){
-// };
+
 annotate ZCDSEHBTC0009.DigitPartList with @(
   UI.SelectionVariant #DigitPartList : {
     Text : '10 Digit Part List'
@@ -704,15 +690,25 @@ annotate ZCDSEHBTC0009.ZTHBT0001 {
     })
     E_PARTS_NO;
 }
-// annotate ZCDSEHBTC0007.BOMDisplay {
-//     E_DOC_TYPE @(
-//         @Common.ValueListWithFixedValues : true,
-//         Common : {Text : {
-//             $value                 : 'FE1',
-//             ![@UI.TextArrangement] : #TextOnly
-//         }}
-//     );
-// }
+// annotate ZCDSEHBTC0009.ZTHBT0001 with @(
+//   Capabilities.InsertRestrictions : {
+//     Insertable : false,
+//   }
+// );
+annotate ZCDSEHBTC0009.ZTHBT0001 @(Capabilities : {
+    SearchRestrictions : {
+        $Type      : 'Capabilities.SearchRestrictionsType',
+        Searchable : false
+    },
+    InsertRestrictions : {
+        $Type : 'Capabilities.InsertRestrictionsType',
+        Insertable: false
+    },
+    DeleteRestrictions : {
+        $Type : 'Capabilities.DeleteRestrictionsType',
+        Deletable: false
+    }
+});
 
 
 //Labels

@@ -3973,9 +3973,6 @@
     },
     "ZCDSEHBTC0001.ZTHBT0005": {
       "kind": "entity",
-      "@Capabilities.Insertable": true,
-      "@Capabilities.Deletable": true,
-      "@Capabilities.Updatable": true,
       "projection": {
         "from": {
           "ref": [
@@ -10166,6 +10163,12 @@
           "=": "E_PARTS_NO"
         }
       ],
+      "@Capabilities.SearchRestrictions.$Type": "Capabilities.SearchRestrictionsType",
+      "@Capabilities.SearchRestrictions.Searchable": false,
+      "@Capabilities.InsertRestrictions.$Type": "Capabilities.InsertRestrictionsType",
+      "@Capabilities.InsertRestrictions.Insertable": false,
+      "@Capabilities.DeleteRestrictions.$Type": "Capabilities.DeleteRestrictionsType",
+      "@Capabilities.DeleteRestrictions.Deletable": false,
       "projection": {
         "from": {
           "ref": [
@@ -34613,9 +34616,6 @@
       "annotate": "ZCDSEHBTC0001.ZTHBT0005",
       "elements": {
         "E_PARTS_NO": {
-          "@sap.insertable": true,
-          "@sap.updatable": true,
-          "@sap.Label": "ddaad",
           "@title": "Material"
         },
         "YEOS_MNF_NO": {
