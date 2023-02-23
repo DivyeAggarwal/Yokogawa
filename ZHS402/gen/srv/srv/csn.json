@@ -2660,6 +2660,352 @@
         }
       }
     },
+    "ZHS402.ZTHBT0009": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "YEOS_MODEL_GROUP": {
+          "@title": "Yeos Model Group",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "FZ2_NO": {
+          "@title": "Fz2 Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "FZ2_NO_SFIX": {
+          "@title": "Fz2 Number Sfix",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "E_DOC_TYPE": {
+          "@title": "Engineering Doc Type",
+          "type": "cds.String",
+          "length": 5
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No.",
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No.",
+          "type": "cds.String",
+          "length": 5
+        },
+        "E_DOC_N": {
+          "@title": "Engineering Doc Name",
+          "type": "cds.String",
+          "length": 20
+        },
+        "MEDAI_TYPE": {
+          "@title": "Media Type",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZHS402.ZTHBT0008": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "YEOS_MODEL_GROUP": {
+          "@title": "Yeos Model Group",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "FZ2_NO": {
+          "@title": "Fz2 Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "YEOS_MODEL_GROUP_N": {
+          "@title": "Yeos Model Gp Name",
+          "type": "cds.String",
+          "length": 40
+        },
+        "REV_SBJCT": {
+          "@title": "Rev Sbjct",
+          "type": "cds.String",
+          "length": 80
+        },
+        "E_EMP_NO": {
+          "@title": "Engineering Emp Number",
+          "type": "cds.String",
+          "length": 7
+        },
+        "E_EMP_NAME": {
+          "@title": "Engineering Emp Name",
+          "type": "cds.String",
+          "length": 80
+        },
+        "E_DEPT_IN": {
+          "@title": "Engineering Dept Name",
+          "type": "cds.String",
+          "length": 60
+        },
+        "E_AUTHORIZED_D": {
+          "@title": "Engineering Authorized Date",
+          "type": "cds.String",
+          "length": 8
+        },
+        "APPLY_DATE_CD": {
+          "@title": "Apply Date Code",
+          "type": "cds.String",
+          "length": 1
+        },
+        "MODIFY_CAUSE": {
+          "@title": "Modify Cause",
+          "type": "cds.String",
+          "length": 2
+        },
+        "TRIAL_TYPE": {
+          "@title": "Trial Type",
+          "type": "cds.String",
+          "length": 2
+        }
+      }
+    },
+    "ZHS402.ZTHBT0017": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "MODIFY_CAUSE": {
+          "@title": "Modify Cause",
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "MODIFY_CAUSE_N": {
+          "@title": "Modify Cause N",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZHS402.ZTHBT0018": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "APPLY_DATE_CD": {
+          "@title": "Apply date CD",
+          "key": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "APPLY_DATE_N": {
+          "@title": "Apply date Name",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
     "PUBLIC.DUMMY": {
       "kind": "entity",
       "@cds.persistence.exists": true,
@@ -9172,6 +9518,616 @@
         }
       }
     },
+    "ZCDS_ALL_ENTITIES.ZTHBT0008": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0048"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "ID": {
+          "type": "cds.Integer"
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MATERIALCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "TOKUCHUFLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZCDS_ALL_ENTITIES.ZTHBT0009": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureSpecification}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0010"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "MODEL1": {
+          "@title": "MODEL1",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PS_SYMBOL": {
+          "@title": "PS Symbol",
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_USE_RATIO": {
+          "@title": "Parts use ratio",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_NOTE": {
+          "@title": "PS note",
+          "type": "cds.String",
+          "length": 64
+        },
+        "OR_SIGN": {
+          "@title": "OR sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_DIGIT_PTN": {
+          "@title": "Basic suffix digit pattern",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_PTN": {
+          "@title": "Suffix pattern",
+          "type": "cds.String"
+        },
+        "OPTION_PTN": {
+          "@title": "Option pattern",
+          "type": "cds.String"
+        },
+        "PROD_CARRER": {
+          "@title": "Production carrer",
+          "type": "cds.String",
+          "length": 9
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_NO_EXT_SIGN": {
+          "@title": "Parts no exist sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ZCDS_ALL_ENTITIES.ZTHBT0017": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureTr}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0014"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_SYMBOL": {
+          "@title": "PS Symbol",
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_SIGN": {
+          "@title": "E SIGN",
+          "type": "cds.String",
+          "length": 1
+        },
+        "M_SIGN": {
+          "@title": "M SIGN",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARENT_PARTS_NO": {
+          "@title": "Parts no.",
+          "type": "cds.String",
+          "length": 40
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "COMP_PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "COMP_PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_USE_RATIO": {
+          "@title": "Parts use ratio",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_NOTE": {
+          "@title": "PS note",
+          "type": "cds.String",
+          "length": 64
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_NO_EXT_SIGN": {
+          "@title": "Parts no exist sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ZCDS_ALL_ENTITIES.ZTHBT0038": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureMaster}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0037"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "WERKS": {
+          "@title": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "E_DOC_TYPE": {
+          "@title": "Document Type",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "MODEL": {
+          "@title": "MODEL",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_SEQUENCE_NO": {
+          "@title": "Sequence No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_SYMBOL": {
+          "@title": "PS Symbol",
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 18
+        },
+        "TEN_DIGIT_SIGN": {
+          "@title": "10 Digit Sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "COMP_PART_NO": {
+          "@title": "Part No",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_USE_RATIO": {
+          "@title": "Parts use ratio",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_NOTE": {
+          "@title": "PS note",
+          "type": "cds.String",
+          "length": 64
+        },
+        "OR_SIGN": {
+          "@title": "OR sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_DIGIT_PTN": {
+          "@title": "Basic suffix digit pattern",
+          "type": "cds.String",
+          "length": 50
+        },
+        "SFIX_PTN": {
+          "@title": "Suffix pattern",
+          "type": "cds.String"
+        },
+        "OPTION_PTN": {
+          "@title": "Option pattern",
+          "type": "cds.String"
+        },
+        "PROD_CARRER": {
+          "@title": "Production carrer",
+          "type": "cds.String",
+          "length": 9
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_NO_EXT_SIGN": {
+          "@title": "Parts no exist sign",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
     "ZCDSEHBTC0006": {
       "@source": "srv/cat-service.cds",
       "kind": "service"
@@ -9958,6 +10914,616 @@
         }
       }
     },
+    "ZCDSEHBTC0007.ZTHBT0008": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0048"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "ID": {
+          "type": "cds.Integer"
+        },
+        "MSCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "PRODUCTCAREER": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "INSTRUMENTMODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTSNUMBER": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MODEL": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "MATERIALCODE": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "TOKUCHUFLAG": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZCDSEHBTC0007.ZTHBT0009": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureSpecification}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0010"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "MODEL1": {
+          "@title": "MODEL1",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PS_SYMBOL": {
+          "@title": "PS Symbol",
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_USE_RATIO": {
+          "@title": "Parts use ratio",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_NOTE": {
+          "@title": "PS note",
+          "type": "cds.String",
+          "length": 64
+        },
+        "OR_SIGN": {
+          "@title": "OR sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_DIGIT_PTN": {
+          "@title": "Basic suffix digit pattern",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_PTN": {
+          "@title": "Suffix pattern",
+          "type": "cds.String"
+        },
+        "OPTION_PTN": {
+          "@title": "Option pattern",
+          "type": "cds.String"
+        },
+        "PROD_CARRER": {
+          "@title": "Production carrer",
+          "type": "cds.String",
+          "length": 9
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_NO_EXT_SIGN": {
+          "@title": "Parts no exist sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ZCDSEHBTC0007.ZTHBT0017": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureTr}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0014"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_SYMBOL": {
+          "@title": "PS Symbol",
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_SIGN": {
+          "@title": "E SIGN",
+          "type": "cds.String",
+          "length": 1
+        },
+        "M_SIGN": {
+          "@title": "M SIGN",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARENT_PARTS_NO": {
+          "@title": "Parts no.",
+          "type": "cds.String",
+          "length": 40
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "COMP_PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "COMP_PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_USE_RATIO": {
+          "@title": "Parts use ratio",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_NOTE": {
+          "@title": "PS note",
+          "type": "cds.String",
+          "length": 64
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_NO_EXT_SIGN": {
+          "@title": "Parts no exist sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ZCDSEHBTC0007.ZTHBT0038": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureMaster}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0037"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "WERKS": {
+          "@title": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "E_DOC_TYPE": {
+          "@title": "Document Type",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "MODEL": {
+          "@title": "MODEL",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_SEQUENCE_NO": {
+          "@title": "Sequence No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_SYMBOL": {
+          "@title": "PS Symbol",
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 18
+        },
+        "TEN_DIGIT_SIGN": {
+          "@title": "10 Digit Sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "COMP_PART_NO": {
+          "@title": "Part No",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_USE_RATIO": {
+          "@title": "Parts use ratio",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_NOTE": {
+          "@title": "PS note",
+          "type": "cds.String",
+          "length": 64
+        },
+        "OR_SIGN": {
+          "@title": "OR sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_DIGIT_PTN": {
+          "@title": "Basic suffix digit pattern",
+          "type": "cds.String",
+          "length": 50
+        },
+        "SFIX_PTN": {
+          "@title": "Suffix pattern",
+          "type": "cds.String"
+        },
+        "OPTION_PTN": {
+          "@title": "Option pattern",
+          "type": "cds.String"
+        },
+        "PROD_CARRER": {
+          "@title": "Production carrer",
+          "type": "cds.String",
+          "length": 9
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_NO_EXT_SIGN": {
+          "@title": "Parts no exist sign",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
     "ZCDSEHBTC0007.VL_SH_H_T001": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -10006,6 +11572,221 @@
           "type": "cds.String",
           "length": 5,
           "notNull": false
+        }
+      }
+    },
+    "ZCDSEHBTC0007.DOC_NO_HELP": {
+      "kind": "entity",
+      "query": {
+        "SELECT": {
+          "from": {
+            "join": "inner",
+            "args": [
+              {
+                "join": "inner",
+                "args": [
+                  {
+                    "join": "inner",
+                    "args": [
+                      {
+                        "ref": [
+                          "ZHS402.ZTHBT0009"
+                        ]
+                      },
+                      {
+                        "ref": [
+                          "ZHS402.ZTHBT0008"
+                        ]
+                      }
+                    ],
+                    "on": [
+                      {
+                        "ref": [
+                          "ZTHBT0009",
+                          "YEOS_MODEL_GROUP"
+                        ]
+                      },
+                      "=",
+                      {
+                        "ref": [
+                          "ZTHBT0008",
+                          "YEOS_MODEL_GROUP"
+                        ]
+                      },
+                      "and",
+                      {
+                        "ref": [
+                          "ZTHBT0009",
+                          "FZ2_NO"
+                        ]
+                      },
+                      "=",
+                      {
+                        "ref": [
+                          "ZTHBT0008",
+                          "FZ2_NO"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ref": [
+                      "ZHS402.ZTHBT0017"
+                    ]
+                  }
+                ],
+                "on": [
+                  {
+                    "ref": [
+                      "ZTHBT0008",
+                      "MODIFY_CAUSE"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "ZTHBT0017",
+                      "MODIFY_CAUSE"
+                    ]
+                  }
+                ]
+              },
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0018"
+                ]
+              }
+            ],
+            "on": [
+              {
+                "ref": [
+                  "ZTHBT0008",
+                  "APPLY_DATE_CD"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0018",
+                  "APPLY_DATE_CD"
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "ZTHBT0009",
+                "E_DOC_TYPE"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "E_DOC_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "E_REV_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "E_DOC_N"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "MEDAI_TYPE"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "YEOS_MODEL_GROUP"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "FZ2_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0008",
+                "REV_SBJCT"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0017",
+                "MODIFY_CAUSE_N"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0018",
+                "APPLY_DATE_N"
+              ]
+            }
+          ]
+        }
+      },
+      "elements": {
+        "E_DOC_TYPE": {
+          "@title": "Engineering Doc Type",
+          "type": "cds.String",
+          "length": 5
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No.",
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No.",
+          "type": "cds.String",
+          "length": 5
+        },
+        "E_DOC_N": {
+          "@title": "Engineering Doc Name",
+          "type": "cds.String",
+          "length": 20
+        },
+        "MEDAI_TYPE": {
+          "@title": "Media Type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "YEOS_MODEL_GROUP": {
+          "@title": "Yeos Model Group",
+          "type": "cds.String",
+          "length": 18
+        },
+        "FZ2_NO": {
+          "@title": "Fz2 Number",
+          "type": "cds.String",
+          "length": 5
+        },
+        "REV_SBJCT": {
+          "@title": "Rev Sbjct",
+          "type": "cds.String",
+          "length": 80
+        },
+        "MODIFY_CAUSE_N": {
+          "@title": "Modify Cause N",
+          "type": "cds.String",
+          "length": 40
+        },
+        "APPLY_DATE_N": {
+          "@title": "Apply date Name",
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -10113,7 +11894,21 @@
         },
         "E_DOC_NO": {
           "@title": "Technical document No",
-          "@UI.HiddenFilter": true,
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "DOC_NO_HELP",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "E_DOC_NO"
+              },
+              "ValueListProperty": "E_DOC_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_TYPE"
+            }
+          ],
           "key": true,
           "type": "cds.String",
           "length": 18

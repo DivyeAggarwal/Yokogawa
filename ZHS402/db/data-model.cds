@@ -329,3 +329,41 @@ entity ZTHBT0037 : managed {
     E_TR_TYPE: String(1) @title : 'Techinical transaction type';
     PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
 }
+
+entity ZTHBT0009: managed {
+    key YEOS_MODEL_GROUP: String(18) @title : 'Yeos Model Group';
+    key FZ2_NO: String(5) @title : 'Fz2 Number';
+    key FZ2_NO_SFIX: String(4) @title : 'Fz2 Number Sfix';
+    E_DOC_TYPE: String(5) @title : 'Engineering Doc Type';
+    E_DOC_NO: String(18) @title : 'Technical document No.';
+    E_REV_NO: String(5) @title : 'Technical renewal REV No.';
+    E_DOC_N: String(20) @title : 'Engineering Doc Name';
+    MEDAI_TYPE: String(1) @title : 'Media Type';
+
+}
+
+entity ZTHBT0008: managed {
+    key YEOS_MODEL_GROUP: String(18) @title : 'Yeos Model Group';
+    key FZ2_NO: String(5) @title : 'Fz2 Number';
+    YEOS_MODEL_GROUP_N: String(40) @title : 'Yeos Model Gp Name';
+    REV_SBJCT: String(80) @title : 'Rev Sbjct';
+    E_EMP_NO: String(7) @title : 'Engineering Emp Number';
+    E_EMP_NAME: String(80) @title : 'Engineering Emp Name';
+    E_DEPT_IN: String(60) @title : 'Engineering Dept Name';
+    E_AUTHORIZED_D: String(8) @title : 'Engineering Authorized Date';
+    APPLY_DATE_CD: String(1) @title : 'Apply Date Code';
+    MODIFY_CAUSE: String(2) @title : 'Modify Cause';
+    TRIAL_TYPE: String(2) @title : 'Trial Type';
+
+}
+
+entity ZTHBT0017: managed {
+    key MODIFY_CAUSE: String(2) @title : 'Modify Cause';
+    MODIFY_CAUSE_N: String(40) @title : 'Modify Cause N';
+
+}
+entity ZTHBT0018: managed {
+    key APPLY_DATE_CD: String(1) @title : 'Apply date CD';
+    APPLY_DATE_N: String(40) @title : 'Apply date Name';
+
+}

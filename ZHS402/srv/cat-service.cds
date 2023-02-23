@@ -222,6 +222,10 @@ service ZCDS_ALL_ENTITIES {
     entity ZTHBT0010 as projection on db.ZTHBT0010;
     entity ZTHBT0014 as projection on db.ZTHBT0014;
     entity ZTHBT0037 as projection on db.ZTHBT0037;
+    entity ZTHBT0008 as projection on db.ZTHBT0048;
+    entity ZTHBT0009 as projection on db.ZTHBT0010;
+    entity ZTHBT0017 as projection on db.ZTHBT0014;
+    entity ZTHBT0038 as projection on db.ZTHBT0037;
 }
 
 service ZCDSEHBTC0006 {
@@ -235,7 +239,27 @@ service ZCDSEHBTC0007 {
     entity ZTHBT0010 as projection on db.ZTHBT0010;
     entity ZTHBT0014 as projection on db.ZTHBT0014;
     entity ZTHBT0037 as projection on db.ZTHBT0037;
+    entity ZTHBT0008 as projection on db.ZTHBT0048;
+    entity ZTHBT0009 as projection on db.ZTHBT0010;
+    entity ZTHBT0017 as projection on db.ZTHBT0014;
+    entity ZTHBT0038 as projection on db.ZTHBT0037;
     entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
+
+    entity DOC_NO_HELP as select ZTHBT0009.E_DOC_TYPE, ZTHBT0009.E_DOC_NO, ZTHBT0009.E_REV_NO, ZTHBT0009.E_DOC_N, ZTHBT0009.MEDAI_TYPE, ZTHBT0009.YEOS_MODEL_GROUP, ZTHBT0009.FZ2_NO, ZTHBT0008.REV_SBJCT, ZTHBT0017.MODIFY_CAUSE_N, ZTHBT0018.APPLY_DATE_N  from db.ZTHBT0009 join db.ZTHBT0008 
+        on ZTHBT0009.YEOS_MODEL_GROUP = ZTHBT0008.YEOS_MODEL_GROUP
+        and ZTHBT0009.FZ2_NO = ZTHBT0008.FZ2_NO
+        join db.ZTHBT0017
+        on ZTHBT0008.MODIFY_CAUSE = ZTHBT0017.MODIFY_CAUSE
+        join db.ZTHBT0018 
+        on ZTHBT0008.APPLY_DATE_CD = ZTHBT0018.APPLY_DATE_CD;
+
+    entity MAIN_MODEL_HELP as select ZTHBT0009.E_DOC_TYPE, ZTHBT0009.E_DOC_NO, ZTHBT0009.E_REV_NO, ZTHBT0009.E_DOC_N, ZTHBT0009.MEDAI_TYPE, ZTHBT0009.YEOS_MODEL_GROUP, ZTHBT0009.FZ2_NO, ZTHBT0008.REV_SBJCT, ZTHBT0017.MODIFY_CAUSE_N, ZTHBT0018.APPLY_DATE_N  from db.ZTHBT0009 join db.ZTHBT0008 
+        on ZTHBT0009.YEOS_MODEL_GROUP = ZTHBT0008.YEOS_MODEL_GROUP
+        and ZTHBT0009.FZ2_NO = ZTHBT0008.FZ2_NO
+        join db.ZTHBT0017
+        on ZTHBT0008.MODIFY_CAUSE = ZTHBT0017.MODIFY_CAUSE
+        join db.ZTHBT0018 
+        on ZTHBT0008.APPLY_DATE_CD = ZTHBT0018.APPLY_DATE_CD;
 
     @cds.persistence.skip
     entity BOMDisplay {
