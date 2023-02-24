@@ -83,7 +83,7 @@ entity ZTHBT0015: managed{
 }
 @title : '{i18n>YEOSMakerNO}'
 entity ZTHBT0016: managed{ 
-    key YEOS_MNF_NO: String(4) @title : 'Makers Model Number';
+    key YEOS_MNF_NO: String(5) @title : 'Makers Model Number';
         YEOS_MNF_N: String(30) @title : 'Makers Model Name';
         YEOS_MNF_N_J: String(20) @title : 'Makers Model Name J';
         YEOS_MNF_ABB_N: String(1) @title : 'Makers Model Abb'; 

@@ -785,7 +785,7 @@
           "@title": "Makers Model Number",
           "key": true,
           "type": "cds.String",
-          "length": 4
+          "length": 5
         },
         "YEOS_MNF_N": {
           "@title": "Makers Model Name",
@@ -4478,7 +4478,7 @@
           "@title": "Makers Model Number",
           "key": true,
           "type": "cds.String",
-          "length": 4
+          "length": 5
         },
         "YEOS_MNF_N": {
           "@title": "Makers Model Name",
@@ -11577,6 +11577,341 @@
     },
     "ZCDSEHBTC0007.DOC_NO_HELP": {
       "kind": "entity",
+      "@UI.SelectionFields": [
+        {
+          "=": "E_DOC_TYPE"
+        },
+        {
+          "=": "E_DOC_NO"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "E_DOC_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_REV_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_DOC_N"
+          }
+        },
+        {
+          "Value": {
+            "=": "MEDAI_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "YEOS_MODEL_GROUP"
+          }
+        },
+        {
+          "Value": {
+            "=": "FZ2_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "REV_SBJCT"
+          }
+        },
+        {
+          "Value": {
+            "=": "MODIFY_CAUSE_N"
+          }
+        },
+        {
+          "Value": {
+            "=": "APPLY_DATE_N"
+          }
+        }
+      ],
+      "query": {
+        "SELECT": {
+          "from": {
+            "join": "inner",
+            "args": [
+              {
+                "join": "inner",
+                "args": [
+                  {
+                    "join": "inner",
+                    "args": [
+                      {
+                        "ref": [
+                          "ZHS402.ZTHBT0009"
+                        ]
+                      },
+                      {
+                        "ref": [
+                          "ZHS402.ZTHBT0008"
+                        ]
+                      }
+                    ],
+                    "on": [
+                      {
+                        "ref": [
+                          "ZTHBT0009",
+                          "YEOS_MODEL_GROUP"
+                        ]
+                      },
+                      "=",
+                      {
+                        "ref": [
+                          "ZTHBT0008",
+                          "YEOS_MODEL_GROUP"
+                        ]
+                      },
+                      "and",
+                      {
+                        "ref": [
+                          "ZTHBT0009",
+                          "FZ2_NO"
+                        ]
+                      },
+                      "=",
+                      {
+                        "ref": [
+                          "ZTHBT0008",
+                          "FZ2_NO"
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "ref": [
+                      "ZHS402.ZTHBT0017"
+                    ]
+                  }
+                ],
+                "on": [
+                  {
+                    "ref": [
+                      "ZTHBT0008",
+                      "MODIFY_CAUSE"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "ZTHBT0017",
+                      "MODIFY_CAUSE"
+                    ]
+                  }
+                ]
+              },
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0018"
+                ]
+              }
+            ],
+            "on": [
+              {
+                "ref": [
+                  "ZTHBT0008",
+                  "APPLY_DATE_CD"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0018",
+                  "APPLY_DATE_CD"
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "ZTHBT0009",
+                "E_DOC_TYPE"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "E_DOC_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "E_REV_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "E_DOC_N"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "MEDAI_TYPE"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "YEOS_MODEL_GROUP"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0009",
+                "FZ2_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0008",
+                "REV_SBJCT"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0017",
+                "MODIFY_CAUSE_N"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0018",
+                "APPLY_DATE_N"
+              ]
+            }
+          ]
+        }
+      },
+      "elements": {
+        "E_DOC_TYPE": {
+          "@title": "Engineering Doc Type",
+          "type": "cds.String",
+          "length": 5
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No.",
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No.",
+          "type": "cds.String",
+          "length": 5
+        },
+        "E_DOC_N": {
+          "@title": "Engineering Doc Name",
+          "type": "cds.String",
+          "length": 20
+        },
+        "MEDAI_TYPE": {
+          "@title": "Media Type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "YEOS_MODEL_GROUP": {
+          "@title": "Yeos Model Group",
+          "type": "cds.String",
+          "length": 18
+        },
+        "FZ2_NO": {
+          "@title": "Fz2 Number",
+          "type": "cds.String",
+          "length": 5
+        },
+        "REV_SBJCT": {
+          "@title": "Rev Sbjct",
+          "type": "cds.String",
+          "length": 80
+        },
+        "MODIFY_CAUSE_N": {
+          "@title": "Modify Cause N",
+          "type": "cds.String",
+          "length": 40
+        },
+        "APPLY_DATE_N": {
+          "@title": "Apply date Name",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZCDSEHBTC0007.MAIN_MODEL_HELP": {
+      "kind": "entity",
+      "@UI.SelectionFields": [
+        {
+          "=": "FZ2_NO"
+        },
+        {
+          "=": "YEOS_MODEL_GROUP"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "E_DOC_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_REV_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_DOC_N"
+          }
+        },
+        {
+          "Value": {
+            "=": "MEDAI_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "YEOS_MODEL_GROUP"
+          }
+        },
+        {
+          "Value": {
+            "=": "FZ2_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "REV_SBJCT"
+          }
+        },
+        {
+          "Value": {
+            "=": "MODIFY_CAUSE_N"
+          }
+        },
+        {
+          "Value": {
+            "=": "APPLY_DATE_N"
+          }
+        }
+      ],
       "query": {
         "SELECT": {
           "from": {
@@ -11894,7 +12229,7 @@
         },
         "E_DOC_NO": {
           "@title": "Technical document No",
-          "@Common.Label": "Plant",
+          "@Common.Label": "Document number",
           "@Common.ValueList.CollectionPath": "DOC_NO_HELP",
           "@Common.ValueList.Parameters": [
             {
@@ -11907,6 +12242,84 @@
             {
               "$Type": "Common.ValueListParameterDisplayOnly",
               "ValueListProperty": "E_DOC_TYPE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_REV_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "MEDAI_TYPE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "YEOS_MODEL_GROUP"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "FZ2_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "REV_SBJCT"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "MODIFY_CAUSE_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "APPLY_DATE_N"
+            }
+          ],
+          "@Common.ValueList#MainModel.CollectionPath": "MAIN_MODEL_HELP",
+          "@Common.ValueList#MainModel.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "E_DOC_NO"
+              },
+              "ValueListProperty": "FZ2_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "YEOS_MODEL_GROUP"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_TYPE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_REV_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "MEDAI_TYPE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "REV_SBJCT"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "MODIFY_CAUSE_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "APPLY_DATE_N"
             }
           ],
           "key": true,

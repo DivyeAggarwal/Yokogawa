@@ -442,8 +442,12 @@ this.on('READ', 'DigitPartList', async req => {
                 if(oData.E_PARTS_NO) {
                 const bupa = await cds.connect.to('API_PRODUCT_SRV');
                 const MatDesc = await bupa.get('ZCDSEHBTC0009.A_ProductDescription').where({Product:oData.E_PARTS_NO});
+                if(MatDesc.length > 0) {
                 console.log(MatDesc);
                 data.MATERIALDESC = MatDesc[0].ProductDescription;
+                } else {
+                    data.MATERIALDESC = "Not Found"
+                }
                 } else {
                     data.MATERIALDESC = "Test Material";
                 }
