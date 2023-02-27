@@ -436,11 +436,12 @@ this.on('READ', 'DigitPartList', async req => {
     const db = await cds.connect.to('db');
     
 
-    const material = await SELECT.from('ZHS402.ZTHBT0001');
+    const material = await SELECT.from('ZHS402.ZTHBT0001').limit(1);
     
     let aData = [];
             for (let oData of material) { 
             const data = {
+                PARTS_NO: oData.PARTS_NO,
                 E_PARTS_NO: oData.E_PARTS_NO,
                 SOURCE_CD: oData.SOURCE_CD,
                 YEOS_MNF_NO: oData.YEOS_MNF_NO

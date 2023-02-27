@@ -609,7 +609,7 @@
           "type": "User",
           "length": 255
         },
-        "PARTS_NO": {
+        "E_PARTS_NO": {
           "@title": "Material Number",
           "key": true,
           "type": "cds.String",
@@ -4375,8 +4375,8 @@
           "type": "User",
           "length": 255
         },
-        "PARTS_NO": {
-          "@title": "Material Number",
+        "E_PARTS_NO": {
+          "@title": "Material",
           "key": true,
           "type": "cds.String",
           "length": 40
@@ -4560,7 +4560,7 @@
           "type": "User",
           "length": 255
         },
-        "PARTS_NO": {
+        "E_PARTS_NO": {
           "@title": "Material Number",
           "key": true,
           "type": "cds.String",
@@ -7382,7 +7382,7 @@
           "type": "User",
           "length": 255
         },
-        "PARTS_NO": {
+        "E_PARTS_NO": {
           "@title": "Material Number",
           "key": true,
           "type": "cds.String",
@@ -12855,7 +12855,7 @@
           "type": "User",
           "length": 255
         },
-        "PARTS_NO": {
+        "E_PARTS_NO": {
           "@title": "Material Number",
           "key": true,
           "type": "cds.String",
@@ -13256,6 +13256,11 @@
       "kind": "entity",
       "@cds.persistence.skip": true,
       "@UI.SelectionVariant#DigitPartList.Text": "10 Digit Part List",
+      "@UI.SelectionFields": [
+        {
+          "=": "E_PARTS_NO"
+        }
+      ],
       "@UI.LineItem": [
         {
           "Value": {
@@ -13281,9 +13286,13 @@
       "@UI.UpdateHidden": true,
       "@UI.DeleteHidden": true,
       "elements": {
+        "PARTS_NO": {
+          "@title": "Parts  Number",
+          "type": "cds.String",
+          "length": 18
+        },
         "E_PARTS_NO": {
           "@title": "Material Number",
-          "key": true,
           "type": "cds.String",
           "length": 40
         },
@@ -13538,7 +13547,7 @@
       "@UI.LineItem": [
         {
           "Value": {
-            "=": "PARTS_NO"
+            "=": "E_PARTS_NO"
           }
         },
         {
@@ -13693,7 +13702,7 @@
             {
               "ref": [
                 "ZTHBT0005",
-                "PARTS_NO"
+                "E_PARTS_NO"
               ]
             },
             {
@@ -13742,7 +13751,7 @@
         }
       },
       "elements": {
-        "PARTS_NO": {
+        "E_PARTS_NO": {
           "@title": "Material Number",
           "type": "cds.String",
           "length": 40
@@ -36922,9 +36931,6 @@
     {
       "annotate": "ZCDSEHBTC0001.ZTHBT0005",
       "elements": {
-        "E_PARTS_NO": {
-          "@title": "Material"
-        },
         "YEOS_MNF_NO": {
           "@title": "Makers Code"
         }

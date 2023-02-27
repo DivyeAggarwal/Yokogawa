@@ -785,7 +785,9 @@ annotate ZCDSEHBTC0009.MakersList with @(
 };
 annotate ZCDSEHBTC0009.DigitPartList with @(
     UI : { 
-        
+        SelectionFields  : [
+            E_PARTS_NO
+        ],
         LineItem  : [
             { Value : E_PARTS_NO },
             { Value : MATERIALDESC },
@@ -800,7 +802,7 @@ annotate ZCDSEHBTC0009.PackingList with @(
     UI : { 
         
         LineItem  : [
-            { Value : PARTS_NO },
+            { Value : E_PARTS_NO },
             { Value : PCKG_CD }, 
             { Value : PCKG_TYPE },
             { Value : PCKG_STYLE },
@@ -901,7 +903,7 @@ annotate ZCDSEHBTC0009.ZTHBT0004 with {
 }
 
 annotate ZCDSEHBTC0009.ZTHBT0005 with {
-    PARTS_NO      @title : 'Material Number';
+    E_PARTS_NO      @title : 'Material Number';
     PCKG_CD       @title : 'Packing Code';
     PCKG_TYPE     @title : 'Packing Type';
     PCKG_STYLE    @title : 'Packing Style';

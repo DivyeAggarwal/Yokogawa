@@ -66,7 +66,7 @@ entity ZTHBT0007: managed {
 }
 
 entity ZTHBT0005: managed{ 
-    key PARTS_NO: String(40) @title : 'Material Number';
+    key E_PARTS_NO: String(40) @title : 'Material Number';
     key PCKG_CD: String(1) @title : 'Packing Code';
     PCKG_TYPE: String(2) @title : 'Packing Type';
     PCKG_STYLE: String(2) @title : 'Packing Style';

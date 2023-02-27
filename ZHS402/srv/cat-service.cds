@@ -307,7 +307,8 @@ service ZCDSEHBTC0009 {
     //     on ZTHBT0001.E_PARTS_NO  = A_ProductDescription.Product;// where ZTHBT0007.E_PARTS_NO = '123';
     @cds.persistence.skip
     entity DigitPartList {
-        key E_PARTS_NO: String(40) @title : 'Material Number';
+        PARTS_NO: String(18) @title : 'Parts  Number';
+        E_PARTS_NO: String(40) @title : 'Material Number';
         MATERIALDESC: String(40) @title : 'Material Description';
         SOURCE_CD: String(2) @title : 'Source  Code';
         YEOS_MNF_NO: String(5) @title : 'Maker Model Number';
@@ -321,7 +322,7 @@ service ZCDSEHBTC0009 {
         on ZTHBT0007.YEOS_MNF_NO = ZTHBT0016.YEOS_MNF_NO;// where ZTHBT0007.E_PARTS_NO = :E_PART_NO;
 
     
-      entity PackingList as select ZTHBT0005.PARTS_NO, ZTHBT0005.PCKG_CD, ZTHBT0005.PCKG_TYPE, ZTHBT0005.PCKG_STYLE, ZTHBT0005.SUPPLY_STYLE, ZTHBT0003.PCKG_TYPE_N, ZTHBT0002.PCKG_STYLE_N, ZTHBT0004.SUPPLY_STYLE_N from db.ZTHBT0005 join db.ZTHBT0003 
+      entity PackingList as select ZTHBT0005.E_PARTS_NO, ZTHBT0005.PCKG_CD, ZTHBT0005.PCKG_TYPE, ZTHBT0005.PCKG_STYLE, ZTHBT0005.SUPPLY_STYLE, ZTHBT0003.PCKG_TYPE_N, ZTHBT0002.PCKG_STYLE_N, ZTHBT0004.SUPPLY_STYLE_N from db.ZTHBT0005 join db.ZTHBT0003 
         on ZTHBT0005.PCKG_TYPE = ZTHBT0003.PCKG_TYPE
         join db.ZTHBT0002
         on ZTHBT0005.PCKG_TYPE = ZTHBT0002.PCKG_TYPE
