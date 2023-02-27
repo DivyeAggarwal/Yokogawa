@@ -9933,13 +9933,12 @@
         }
       }
     },
-    "ZCDS_ALL_ENTITIES.ZTHBT0038": {
+    "ZCDS_ALL_ENTITIES.ZTHBT0018": {
       "kind": "entity",
-      "@title": "{i18n>PartsStructureMaster}",
       "projection": {
         "from": {
           "ref": [
-            "ZHS402.ZTHBT0037"
+            "ZHS402.ZTHBT0018"
           ]
         }
       },
@@ -9992,139 +9991,16 @@
           "type": "User",
           "length": 255
         },
-        "WERKS": {
-          "@title": "Plant",
+        "APPLY_DATE_CD": {
+          "@title": "Apply date CD",
           "key": true,
-          "type": "cds.String",
-          "length": 4
-        },
-        "E_DOC_TYPE": {
-          "@title": "Document Type",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "E_DOC_NO": {
-          "@title": "Technical document No",
-          "key": true,
-          "type": "cds.String",
-          "length": 18
-        },
-        "E_REV_NO": {
-          "@title": "Technical renewal REV No",
-          "key": true,
-          "type": "cds.String",
-          "length": 5
-        },
-        "PS_GROUP_NO": {
-          "@title": "PS group No",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "PS_ITEM_NO": {
-          "@title": "PS Item No",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "MODEL": {
-          "@title": "MODEL",
-          "key": true,
-          "type": "cds.String",
-          "length": 10
-        },
-        "E_SEQUENCE_NO": {
-          "@title": "Sequence No",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "PS_SYMBOL": {
-          "@title": "PS Symbol",
-          "type": "cds.String",
-          "length": 10
-        },
-        "E_PART_NO": {
-          "@title": "Material number",
-          "type": "cds.String",
-          "length": 18
-        },
-        "TEN_DIGIT_SIGN": {
-          "@title": "10 Digit Sign",
           "type": "cds.String",
           "length": 1
         },
-        "COMP_PART_NO": {
-          "@title": "Part No",
+        "APPLY_DATE_N": {
+          "@title": "Apply date Name",
           "type": "cds.String",
-          "length": 18
-        },
-        "PARTS_QTY": {
-          "@title": "Parts quantity",
-          "type": "cds.String",
-          "length": 13
-        },
-        "PARTS_QTY_UNIT": {
-          "@title": "Parts quantity unit",
-          "type": "cds.String",
-          "length": 3
-        },
-        "SELECT_SIGN": {
-          "@title": "Select sign",
-          "type": "cds.String",
-          "length": 1
-        },
-        "PARTS_USE_RATIO": {
-          "@title": "Parts use ratio",
-          "type": "cds.String",
-          "length": 3
-        },
-        "PS_NOTE": {
-          "@title": "PS note",
-          "type": "cds.String",
-          "length": 64
-        },
-        "OR_SIGN": {
-          "@title": "OR sign",
-          "type": "cds.String",
-          "length": 1
-        },
-        "SFIX_DIGIT_PTN": {
-          "@title": "Basic suffix digit pattern",
-          "type": "cds.String",
-          "length": 50
-        },
-        "SFIX_PTN": {
-          "@title": "Suffix pattern",
-          "type": "cds.String"
-        },
-        "OPTION_PTN": {
-          "@title": "Option pattern",
-          "type": "cds.String"
-        },
-        "PROD_CARRER": {
-          "@title": "Production carrer",
-          "type": "cds.String",
-          "length": 9
-        },
-        "EFFECT_D": {
-          "@title": "Valid From",
-          "type": "cds.Date"
-        },
-        "INVALID_D": {
-          "@title": "Valid To",
-          "type": "cds.Date"
-        },
-        "E_TR_TYPE": {
-          "@title": "Techinical transaction type",
-          "type": "cds.String",
-          "length": 1
-        },
-        "PARTS_NO_EXT_SIGN": {
-          "@title": "Parts no exist sign",
-          "type": "cds.String",
-          "length": 1
+          "length": 40
         }
       }
     },
@@ -11329,13 +11205,12 @@
         }
       }
     },
-    "ZCDSEHBTC0007.ZTHBT0038": {
+    "ZCDSEHBTC0007.ZTHBT0018": {
       "kind": "entity",
-      "@title": "{i18n>PartsStructureMaster}",
       "projection": {
         "from": {
           "ref": [
-            "ZHS402.ZTHBT0037"
+            "ZHS402.ZTHBT0018"
           ]
         }
       },
@@ -11388,139 +11263,16 @@
           "type": "User",
           "length": 255
         },
-        "WERKS": {
-          "@title": "Plant",
+        "APPLY_DATE_CD": {
+          "@title": "Apply date CD",
           "key": true,
-          "type": "cds.String",
-          "length": 4
-        },
-        "E_DOC_TYPE": {
-          "@title": "Document Type",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "E_DOC_NO": {
-          "@title": "Technical document No",
-          "key": true,
-          "type": "cds.String",
-          "length": 18
-        },
-        "E_REV_NO": {
-          "@title": "Technical renewal REV No",
-          "key": true,
-          "type": "cds.String",
-          "length": 5
-        },
-        "PS_GROUP_NO": {
-          "@title": "PS group No",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "PS_ITEM_NO": {
-          "@title": "PS Item No",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "MODEL": {
-          "@title": "MODEL",
-          "key": true,
-          "type": "cds.String",
-          "length": 10
-        },
-        "E_SEQUENCE_NO": {
-          "@title": "Sequence No",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "PS_SYMBOL": {
-          "@title": "PS Symbol",
-          "type": "cds.String",
-          "length": 10
-        },
-        "E_PART_NO": {
-          "@title": "Material number",
-          "type": "cds.String",
-          "length": 18
-        },
-        "TEN_DIGIT_SIGN": {
-          "@title": "10 Digit Sign",
           "type": "cds.String",
           "length": 1
         },
-        "COMP_PART_NO": {
-          "@title": "Part No",
+        "APPLY_DATE_N": {
+          "@title": "Apply date Name",
           "type": "cds.String",
-          "length": 18
-        },
-        "PARTS_QTY": {
-          "@title": "Parts quantity",
-          "type": "cds.String",
-          "length": 13
-        },
-        "PARTS_QTY_UNIT": {
-          "@title": "Parts quantity unit",
-          "type": "cds.String",
-          "length": 3
-        },
-        "SELECT_SIGN": {
-          "@title": "Select sign",
-          "type": "cds.String",
-          "length": 1
-        },
-        "PARTS_USE_RATIO": {
-          "@title": "Parts use ratio",
-          "type": "cds.String",
-          "length": 3
-        },
-        "PS_NOTE": {
-          "@title": "PS note",
-          "type": "cds.String",
-          "length": 64
-        },
-        "OR_SIGN": {
-          "@title": "OR sign",
-          "type": "cds.String",
-          "length": 1
-        },
-        "SFIX_DIGIT_PTN": {
-          "@title": "Basic suffix digit pattern",
-          "type": "cds.String",
-          "length": 50
-        },
-        "SFIX_PTN": {
-          "@title": "Suffix pattern",
-          "type": "cds.String"
-        },
-        "OPTION_PTN": {
-          "@title": "Option pattern",
-          "type": "cds.String"
-        },
-        "PROD_CARRER": {
-          "@title": "Production carrer",
-          "type": "cds.String",
-          "length": 9
-        },
-        "EFFECT_D": {
-          "@title": "Valid From",
-          "type": "cds.Date"
-        },
-        "INVALID_D": {
-          "@title": "Valid To",
-          "type": "cds.Date"
-        },
-        "E_TR_TYPE": {
-          "@title": "Techinical transaction type",
-          "type": "cds.String",
-          "length": 1
-        },
-        "PARTS_NO_EXT_SIGN": {
-          "@title": "Parts no exist sign",
-          "type": "cds.String",
-          "length": 1
+          "length": 40
         }
       }
     },
@@ -12360,6 +12112,340 @@
         }
       }
     },
+    "ZCDSEHBTC0007.DATAFE0": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureSpecification}",
+      "query": {
+        "SELECT": {
+          "from": {
+            "join": "full",
+            "args": [
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0010"
+                ]
+              },
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0037"
+                ]
+              }
+            ],
+            "on": [
+              {
+                "ref": [
+                  "ZTHBT0010",
+                  "E_DOC_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0037",
+                  "E_DOC_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZTHBT0010",
+                  "E_REV_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0037",
+                  "E_REV_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZTHBT0010",
+                  "PS_GROUP_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0037",
+                  "PS_GROUP_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZTHBT0010",
+                  "PS_ITEM_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0037",
+                  "PS_ITEM_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZTHBT0010",
+                  "MODEL1"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0037",
+                  "MODEL"
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "ZTHBT0037",
+                "E_DOC_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "E_REV_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "PS_GROUP_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "E_DOC_TYPE"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "EFFECT_D"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "INVALID_D"
+              ]
+            }
+          ],
+          "where": [
+            {
+              "ref": [
+                "ZTHBT0037",
+                "E_DOC_TYPE"
+              ]
+            },
+            "=",
+            {
+              "val": "FE0"
+            }
+          ]
+        }
+      },
+      "elements": {
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "type": "cds.String",
+          "length": 3
+        },
+        "E_DOC_TYPE": {
+          "@title": "Document Type",
+          "type": "cds.String",
+          "length": 3
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ZCDSEHBTC0007.DATAFE1": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureTr}",
+      "query": {
+        "SELECT": {
+          "from": {
+            "join": "full",
+            "args": [
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0014"
+                ]
+              },
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0037"
+                ]
+              }
+            ],
+            "on": [
+              {
+                "ref": [
+                  "ZTHBT0014",
+                  "E_DOC_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0037",
+                  "E_DOC_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZTHBT0014",
+                  "E_REV_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0037",
+                  "E_REV_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZTHBT0014",
+                  "PS_GROUP_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0037",
+                  "PS_GROUP_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZTHBT0014",
+                  "PS_ITEM_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "ZTHBT0037",
+                  "PS_ITEM_NO"
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "ZTHBT0037",
+                "E_DOC_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "E_REV_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "PS_GROUP_NO"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "E_DOC_TYPE"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "EFFECT_D"
+              ]
+            },
+            {
+              "ref": [
+                "ZTHBT0037",
+                "INVALID_D"
+              ]
+            }
+          ],
+          "where": [
+            {
+              "ref": [
+                "ZTHBT0037",
+                "E_DOC_TYPE"
+              ]
+            },
+            "=",
+            {
+              "val": "FE1"
+            }
+          ]
+        }
+      },
+      "elements": {
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "type": "cds.String",
+          "length": 3
+        },
+        "E_DOC_TYPE": {
+          "@title": "Document Type",
+          "type": "cds.String",
+          "length": 3
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        }
+      }
+    },
     "ZCDSEHBTC0009": {
       "@source": "srv/cat-service.cds",
       "kind": "service"
@@ -12377,6 +12463,8 @@
       "@Capabilities.InsertRestrictions.Insertable": false,
       "@Capabilities.DeleteRestrictions.$Type": "Capabilities.DeleteRestrictionsType",
       "@Capabilities.DeleteRestrictions.Deletable": false,
+      "@UI.UpdateHidden": true,
+      "@UI.DeleteHidden": true,
       "projection": {
         "from": {
           "ref": [
@@ -13190,6 +13278,8 @@
           }
         }
       ],
+      "@UI.UpdateHidden": true,
+      "@UI.DeleteHidden": true,
       "elements": {
         "E_PARTS_NO": {
           "@title": "Material Number",
@@ -13298,6 +13388,11 @@
           "Descending": false
         }
       ],
+      "@UI.SelectionFields": [
+        {
+          "=": "E_PARTS_NO"
+        }
+      ],
       "@UI.LineItem": [
         {
           "Value": {
@@ -13330,6 +13425,8 @@
           }
         }
       ],
+      "@UI.UpdateHidden": true,
+      "@UI.DeleteHidden": true,
       "query": {
         "SELECT": {
           "from": {
@@ -13480,6 +13577,8 @@
           }
         }
       ],
+      "@UI.UpdateHidden": true,
+      "@UI.DeleteHidden": true,
       "query": {
         "SELECT": {
           "from": {

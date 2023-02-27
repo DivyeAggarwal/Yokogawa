@@ -385,21 +385,27 @@ this.on('READ', 'BOMDisplay', async req => {
     }
         if (E_DOC_TYPE == "FE0") {
 
-            let query = SELECT.from('ZHS402_ZTHBT0037')
-		.leftJoin('ZHS402_ZTHBT0010')
-		.on('ZHS402_ZTHBT0037.E_DOC_NO', "=", "ZHS402_ZTHBT0010.E_DOC_NO")
+            // const DATAFE0 = await SELECT.from('ZCDSEHBTC0007.DATAFE0').where({
+            //     E_DOC_NO: E_DOC_NO,
+            //     E_REV_NO: E_REV_NO,
+            //     PS_GROUP_NO: PS_GROUP_NO
+            // })
 
-            let results = await cds.run(query)
+            let query = SELECT.from('ZHS402_ZTHBT0010')
+		.fullOuterJoin('ZHS402_ZTHBT0037')
+		.on('ZHS402_ZTHBT0010.E_DOC_NO', "=", "ZHS402_ZTHBT0037.E_DOC_NO")
+
+        //     let results = await cds.run(query)
             let aData = [];
-            for (let oData of results) { 
+            for (let oData of DATAFE0) { 
             const data = {
                 E_DOC_TYPE: oData.E_DOC_TYPE,
-                WERKS: oData.WERKS,
+                // WERKS: oData.WERKS,
                 E_DOC_NO: oData.E_DOC_NO,
                 E_REV_NO: oData.E_REV_NO,
                 PS_GROUP_NO: oData.PS_GROUP_NO,
-                FORMALIZE_DATE: "2023-01-01",
-                CREATION_DATE: "2023-01-01"
+                FORMALIZE_DATE: oData.INVALID_D,
+                CREATION_DATE: oData.EFFECT_D
                 }
                 aData.push(data);
             }

@@ -367,3 +367,5 @@ entity ZTHBT0018: managed {
     APPLY_DATE_N: String(40) @title : 'Apply date Name';
 
 }
+
+

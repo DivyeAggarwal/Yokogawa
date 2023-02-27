@@ -769,7 +769,9 @@ annotate ZCDSEHBTC0009.PackingList with @(
 
 annotate ZCDSEHBTC0009.MakersList with @(
     UI : { 
-        
+        SelectionFields  : [
+            E_PARTS_NO
+        ],
         LineItem  : [
             { Value : E_PARTS_NO },
             { Value : SOURCE_CD }, 
@@ -853,7 +855,22 @@ annotate ZCDSEHBTC0009.ZTHBT0001 @(Capabilities : {
         Deletable: false
     }
 });
-
+annotate ZCDSEHBTC0009.ZTHBT0001 with @(
+    UI.UpdateHidden : true,
+    UI.DeleteHidden : true
+);
+annotate ZCDSEHBTC0009.MakersList with @(
+    UI.UpdateHidden : true,
+    UI.DeleteHidden : true
+);
+annotate ZCDSEHBTC0009.DigitPartList with @(
+    UI.UpdateHidden : true,
+    UI.DeleteHidden : true
+);
+annotate ZCDSEHBTC0009.PackingList with @(
+    UI.UpdateHidden : true,
+    UI.DeleteHidden : true
+);
 
 //Labels
 annotate ZCDSEHBTC0009.ZTHBT0001 with {
