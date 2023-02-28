@@ -100,6 +100,7 @@ service ZCDSEHBTC0003
         key CostCenter,
             CostCenterName
     }
+   
    entity ZTHBT0019 as
         select from db.ZTHBT0019 as _assignment
         {
