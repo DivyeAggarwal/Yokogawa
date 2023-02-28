@@ -475,6 +475,10 @@ this.on('READ', 'DigitPartList', async req => {
 
     // return oData;
 });
+this.on('READ', 'ProductionOrderCombined', async req => {
+    const bupa = await cds.connect.to('ProductionOrder');
+    return bupa.run(req.query);
+});
 });
 
 const ValidateAssignment = async(req) => {

@@ -3,6 +3,7 @@ using TimeSheetEntry from './external/TimeSheetEntry';
 using ZSRVBHPS0008 from './external/ZSRVBHPS0008';
 using { PlantAPI as external } from './external/PlantAPI';
 using  API_PRODUCT_SRV from './external/API_PRODUCT_SRV';
+using ProductionOrder from './external/ProductionOrder';
 
 service ZSRVBHPS0008Service {
 
@@ -337,3 +338,12 @@ service ZCDSEHBTC0009 {
     //         *
     //     };
 }
+
+service ZCDSEHBTC0010 {
+    entity ProductionOrderCombined as projection on ProductionOrder.ZCDSEHPPC0006 {
+        key prod_order_created,
+            plant
+    }
+}
+
+
