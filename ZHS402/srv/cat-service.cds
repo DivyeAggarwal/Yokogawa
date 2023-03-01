@@ -278,18 +278,60 @@ service ZCDSEHBTC0007 {
     key DOC_TYPE: String(3) @title : 'Document Type';
     }
 
-    entity DATAFE0 as select ZTHBT0037.E_DOC_NO, ZTHBT0037.E_REV_NO, ZTHBT0037.PS_GROUP_NO, ZTHBT0037.E_DOC_TYPE, ZTHBT0037.EFFECT_D, ZTHBT0037.INVALID_D from db.ZTHBT0010 full outer join db.ZTHBT0037
-        on ZTHBT0010.E_DOC_NO = ZTHBT0037.E_DOC_NO
-        and ZTHBT0010.E_REV_NO = ZTHBT0037.E_REV_NO
-        and ZTHBT0010.PS_GROUP_NO = ZTHBT0037.PS_GROUP_NO
-        and ZTHBT0010.PS_ITEM_NO = ZTHBT0037.PS_ITEM_NO
-        and ZTHBT0010.MODEL1 = ZTHBT0037.MODEL where ZTHBT0037.E_DOC_TYPE = 'FE0';
+        // entity DATAFE0 as select ZTHBT0037.E_DOC_NO, ZTHBT0037.E_REV_NO, ZTHBT0037.PS_GROUP_NO, ZTHBT0037.E_DOC_TYPE, ZTHBT0037.EFFECT_D, ZTHBT0037.INVALID_D from db.ZTHBT0010 full outer join db.ZTHBT0037
+    //     on ZTHBT0010.E_DOC_NO = ZTHBT0037.E_DOC_NO
+    //     and ZTHBT0010.E_REV_NO = ZTHBT0037.E_REV_NO
+    //     and ZTHBT0010.PS_GROUP_NO = ZTHBT0037.PS_GROUP_NO
+    //     and ZTHBT0010.PS_ITEM_NO = ZTHBT0037.PS_ITEM_NO
+    //     and ZTHBT0010.MODEL1 = ZTHBT0037.MODEL where ZTHBT0037.E_DOC_TYPE = 'FE0';
 
-    entity DATAFE1 as select ZTHBT0037.E_DOC_NO, ZTHBT0037.E_REV_NO, ZTHBT0037.PS_GROUP_NO, ZTHBT0037.E_DOC_TYPE, ZTHBT0037.EFFECT_D, ZTHBT0037.INVALID_D from db.ZTHBT0014 full outer join db.ZTHBT0037
-        on ZTHBT0014.E_DOC_NO = ZTHBT0037.E_DOC_NO
-        and ZTHBT0014.E_REV_NO = ZTHBT0037.E_REV_NO
-        and ZTHBT0014.PS_GROUP_NO = ZTHBT0037.PS_GROUP_NO
-        and ZTHBT0014.PS_ITEM_NO = ZTHBT0037.PS_ITEM_NO where ZTHBT0037.E_DOC_TYPE = 'FE1';
+    // entity DATAFE1 as select ZTHBT0037.E_DOC_NO, ZTHBT0037.E_REV_NO, ZTHBT0037.PS_GROUP_NO, ZTHBT0037.E_DOC_TYPE, ZTHBT0037.EFFECT_D, ZTHBT0037.INVALID_D from db.ZTHBT0014 full outer join db.ZTHBT0037
+    //     on ZTHBT0014.E_DOC_NO = ZTHBT0037.E_DOC_NO
+    //     and ZTHBT0014.E_REV_NO = ZTHBT0037.E_REV_NO
+    //     and ZTHBT0014.PS_GROUP_NO = ZTHBT0037.PS_GROUP_NO
+    //     and ZTHBT0014.PS_ITEM_NO = ZTHBT0037.PS_ITEM_NO where ZTHBT0037.E_DOC_TYPE = 'FE1';
+    // entity DATAFE0 as projection on db.DATAFE0;
+    entity DATAFE0 as
+        select from db.ZTHBT0010 as A
+        full outer join db.ZTHBT0037 as B
+            on  A.E_DOC_NO    = B.E_DOC_NO
+            and A.E_REV_NO    = B.E_REV_NO
+            and A.PS_GROUP_NO = B.PS_GROUP_NO
+            and A.PS_ITEM_NO  = B.PS_ITEM_NO
+            and A.MODEL1      = B.MODEL
+        {
+
+            key B.E_DOC_NO    as E_DOC_NO,
+                B.E_REV_NO    as E_REV_NO,
+                B.PS_GROUP_NO as PS_GROUP_NO,
+                B.E_DOC_TYPE  as E_DOC_TYPE,
+                B.WERKS       as WERKS,
+                ZTHBT0010 : Association [*] to ZCDSEHBTC0007.ZTHBT0010
+                                on ZTHBT0010.E_DOC_NO = E_DOC_NO
+        }
+        where
+            B.E_DOC_TYPE = 'FE0';
+    
+    entity DATAFE1 as
+        select from db.ZTHBT0014 as A
+        full outer join db.ZTHBT0037 as B
+            on  A.E_DOC_NO    = B.E_DOC_NO
+            and A.E_REV_NO    = B.E_REV_NO
+            and A.PS_GROUP_NO = B.PS_GROUP_NO
+            and A.PS_ITEM_NO  = B.PS_ITEM_NO
+        {
+
+            key B.E_DOC_NO    as E_DOC_NO,
+                B.E_REV_NO    as E_REV_NO,
+                B.PS_GROUP_NO as PS_GROUP_NO,
+                B.E_DOC_TYPE  as E_DOC_TYPE,
+                B.WERKS       as WERKS,
+                ZTHBT0014 : Association [*] to ZCDSEHBTC0007.ZTHBT0014
+                                on ZTHBT0014.E_DOC_NO = E_DOC_NO
+        }
+        where
+            B.E_DOC_TYPE = 'FE0';
+
 
 }
 
