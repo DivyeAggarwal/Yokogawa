@@ -1,7 +1,7 @@
 {
 	"destinations": [ {
 		"name": "s4003-ap-https_CLONING",
-		"url": "http://s4apdevds1:44300/sap/opu/odata/sap/ZSRVBHPS0002",
+		"url": "http://s4apdevds1:44300/sap/opu/odata/sap/ZAPIHPP0003_SRV",
 		"username": "30055996",
 		"password": "Dayanandan@1"
 	},{

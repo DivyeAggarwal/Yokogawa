@@ -116,6 +116,7 @@ const SequenceHelper = require("./lib/SequenceHelper");
 // };
 
 const cds = require('@sap/cds');
+const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql
 
 module.exports = cds.service.impl(async function(srv) {
@@ -191,6 +192,14 @@ module.exports = cds.service.impl(async function(srv) {
         const db = await cds.connect.to('db');
         var oData = await db.run(req.query);
         return oData;
+    });
+    this.before('READ','ZTHBT0019', async (req) => {
+        ValidateAssignment(req);
+
+    });
+    this.before('UPDATE','ZTHBT0019', async (req) => {
+        ValidateAssignment(req);
+
     });
 
 
@@ -466,4 +475,21 @@ this.on('READ', 'DigitPartList', async req => {
 
     // return oData;
 });
+this.on('READ', 'ProductionOrderCombined', async req => {
+    const bupa = await cds.connect.to('ProductionOrder');
+    return bupa.run(req.query);
 });
+});
+
+const ValidateAssignment = async(req) => {
+    const bupa = await cds.connect.to('TimeSheetEntry');
+    // if(req.data.ZPS_IDENTIFIER === 'P') {
+        // if(req.BEMOT) {
+            const data = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({AccountingIndicator:'G6'});
+            if(data.length === 0) {
+                req.reject(400,'Accounting Indicator is Invalid',"BEMOT");
+                //req.error(400,'Accounting Indicator is Invalid',"BEMOT");
+            // }
+        // }
+    }
+}
