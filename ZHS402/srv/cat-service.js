@@ -475,10 +475,19 @@ this.on('READ', 'DigitPartList', async req => {
 
     // return oData;
 });
-this.on('READ', 'ProductionOrderCombined', async req => {
+this.on('READ', 'ProcessRecordSheetCombined', async req => {
     const bupa = await cds.connect.to('ProductionOrder');
     return bupa.run(req.query);
 });
+this.on('READ', 'OperationList', async req => {
+    const bupa = await cds.connect.to('ProductionOrder');
+    return bupa.run(req.query);
+});
+this.on('READ', 'ProductionOrderSheetCombined', async req => {
+    const bupa = await cds.connect.to('ProductionOrder');
+    return bupa.run(req.query);
+});
+
 });
 
 const ValidateAssignment = async(req) => {

@@ -3006,6 +3006,140 @@
         }
       }
     },
+    "ZHS402.ZTHBT0028": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "PRODUCTIONORDER": {
+          "@title": "Production Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 12
+        },
+        "ZPRINT": {
+          "@title": "Print Status",
+          "type": "cds.String",
+          "length": 1
+        },
+        "STATUS": {
+          "@title": "Change Status",
+          "type": "cds.String",
+          "length": 10
+        },
+        "FTRMS_S": {
+          "@title": "Initial Specified Start Date",
+          "type": "cds.Date"
+        },
+        "GLTRS_S": {
+          "@title": "Initial Specified Finish Date",
+          "type": "cds.Date"
+        },
+        "FTRMS_I": {
+          "@title": "Initial Specified Finish Date",
+          "type": "cds.Date"
+        },
+        "GLTRS_I": {
+          "@title": "Initial scheduled start date",
+          "type": "cds.Date"
+        },
+        "FTRMS_C": {
+          "@title": "Initial scheduled finish date",
+          "type": "cds.Date"
+        },
+        "GLTRS_C": {
+          "@title": "Changed scheduled finish date",
+          "type": "cds.Date"
+        },
+        "ZZINDEXNO": {
+          "@title": "Index No.",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ZZPLANT": {
+          "@title": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "MAT_TEXT": {
+          "@title": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ZZINTERFACEFLAG": {
+          "@title": "Interface Flag",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZZG_PRINTED_REV": {
+          "@title": "Printed Revision of Production Order Sheet",
+          "type": "cds.String",
+          "length": 2
+        },
+        "ZZG_PRNTDATE": {
+          "@title": "Printed Date",
+          "type": "cds.Date"
+        },
+        "ZZG_PRNTTIME": {
+          "@title": "Printed Time",
+          "type": "cds.Time"
+        },
+        "ZZG_PRNTPRID": {
+          "@title": "Printed Person Id",
+          "type": "cds.String",
+          "length": 12
+        }
+      }
+    },
     "PUBLIC.DUMMY": {
       "kind": "entity",
       "@cds.persistence.exists": true,
@@ -14134,53 +14268,1467 @@
       "@source": "srv/cat-service.cds",
       "kind": "service"
     },
-    "ZCDSEHBTC0010.ProductionOrderCombined": {
+    "ZCDSEHBTC0010.OperationList": {
       "kind": "entity",
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.updatable": "false",
       "@sap.deletable": "false",
       "@sap.content.version": "1",
-      "@sap.label": "Concumption View for Production Order",
+      "@sap.label": "CDS View for Work Centre and Cost Centre",
       "projection": {
         "from": {
           "ref": [
-            "ProductionOrder.ZCDSEHPPC0006"
+            "ProductionOrder.ZCDSEHPPB0031"
+          ]
+        }
+      },
+      "elements": {
+        "OrderNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "OperationNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Activity",
+          "@sap.quickinfo": "Operation/Activity Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "Code": {
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "WorkCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "CostCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cost Center",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "StandardValue5": {
+          "@sap.unit": "Unit5",
+          "@sap.label": "Standard Value",
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3,
+          "notNull": false
+        },
+        "Unit5": {
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "StandardValue3": {
+          "@sap.unit": "Unit3",
+          "@sap.label": "Standard Value",
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3,
+          "notNull": false
+        },
+        "Unit3": {
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "Supplier": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier",
+          "@sap.quickinfo": "Account Number of Supplier",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "StandardValue4": {
+          "@sap.label": "Standard Value",
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3,
+          "notNull": false
+        },
+        "Unit4": {
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "operationInColumn": {
+          "type": "cds.Integer",
+          "notNull": false
+        },
+        "ControlKey": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control key",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "Description": {
+          "@sap.label": "Operation Short Text",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "Conf_Number": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Confirmation",
+          "@sap.quickinfo": "Completion confirmation number for the operation",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "LatestScheduleFinishDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Latest finish date",
+          "@sap.quickinfo": "Latest scheduled finish: Execution (date)",
+          "type": "cds.Date",
+          "notNull": false
+        }
+      }
+    },
+    "ZCDSEHBTC0010.AdditionalStatus": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0028"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "PRODUCTIONORDER": {
+          "@title": "Production Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 12
+        },
+        "ZPRINT": {
+          "@title": "Print Status",
+          "type": "cds.String",
+          "length": 1
+        },
+        "STATUS": {
+          "@title": "Change Status",
+          "type": "cds.String",
+          "length": 10
+        },
+        "FTRMS_S": {
+          "@title": "Initial Specified Start Date",
+          "type": "cds.Date"
+        },
+        "GLTRS_S": {
+          "@title": "Initial Specified Finish Date",
+          "type": "cds.Date"
+        },
+        "FTRMS_I": {
+          "@title": "Initial Specified Finish Date",
+          "type": "cds.Date"
+        },
+        "GLTRS_I": {
+          "@title": "Initial scheduled start date",
+          "type": "cds.Date"
+        },
+        "FTRMS_C": {
+          "@title": "Initial scheduled finish date",
+          "type": "cds.Date"
+        },
+        "GLTRS_C": {
+          "@title": "Changed scheduled finish date",
+          "type": "cds.Date"
+        },
+        "ZZINDEXNO": {
+          "@title": "Index No.",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ZZPLANT": {
+          "@title": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "MAT_TEXT": {
+          "@title": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ZZINTERFACEFLAG": {
+          "@title": "Interface Flag",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ZZG_PRINTED_REV": {
+          "@title": "Printed Revision of Production Order Sheet",
+          "type": "cds.String",
+          "length": 2
+        },
+        "ZZG_PRNTDATE": {
+          "@title": "Printed Date",
+          "type": "cds.Date"
+        },
+        "ZZG_PRNTTIME": {
+          "@title": "Printed Time",
+          "type": "cds.Time"
+        },
+        "ZZG_PRNTPRID": {
+          "@title": "Printed Person Id",
+          "type": "cds.String",
+          "length": 12
+        }
+      }
+    },
+    "ZCDSEHBTC0010.ChildPartListCombined": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "COMPOSITE for Prodcution Order Child Part list Form",
+      "projection": {
+        "from": {
+          "ref": [
+            "ProductionOrder.ZCDSEHPPI0001"
           ]
         },
         "columns": [
           {
             "key": true,
             "ref": [
-              "prod_order_created"
+              "ProductionOrderNo"
             ]
           },
           {
             "ref": [
-              "plant"
+              "Reservation"
             ]
+          },
+          {
+            "ref": [
+              "MaterialNumber"
+            ]
+          },
+          {
+            "ref": [
+              "MaterialDescriptionH"
+            ]
+          },
+          {
+            "ref": [
+              "OrderQty"
+            ]
+          },
+          {
+            "ref": [
+              "BaseUnitMeasure"
+            ]
+          },
+          {
+            "ref": [
+              "StartDate"
+            ]
+          },
+          {
+            "ref": [
+              "EndDate"
+            ]
+          },
+          {
+            "ref": [
+              "StorageLocation"
+            ]
+          },
+          {
+            "val": "",
+            "as": "Reprint"
+          },
+          {
+            "as": "to_Components",
+            "cast": {
+              "target": "ProductionOrder.ZCDSEHPPB0020",
+              "cardinality": {
+                "max": "*"
+              },
+              "type": "cds.Association",
+              "on": [
+                {
+                  "ref": [
+                    "ProductionOrderNo"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "$projection",
+                    "ProductionOrderNo"
+                  ]
+                }
+              ]
+            }
           }
         ]
       },
       "elements": {
-        "prod_order_created": {
+        "ProductionOrderNo": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Production Order",
-          "@sap.quickinfo": "Manufacturing Order ID",
-          "@sap.value.list": "standard",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
           "key": true,
           "type": "cds.String",
           "length": 12,
           "notNull": true
         },
-        "plant": {
+        "Reservation": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Reservation",
+          "@sap.quickinfo": "Number of reservation/dependent requirements",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "MaterialNumber": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Plant",
-          "@sap.quickinfo": "Production Plant",
+          "@sap.label": "BOO Material",
+          "@sap.quickinfo": "Bill of Operations Material",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "MaterialDescriptionH": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "OrderQty": {
+          "@sap.label": "Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "BaseUnitMeasure": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "StartDate": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "EndDate": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "Reprint": {
+          "@Core.Computed": true
+        },
+        "to_Components": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ProductionOrder.ZCDSEHPPB0020",
+          "on": [
+            {
+              "ref": [
+                "ProductionOrderNo"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$projection",
+                "ProductionOrderNo"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ZCDSEHBTC0010.ProcessRecordSheetCombined": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "COMPOSITE View for Process Record Sheet",
+      "projection": {
+        "from": {
+          "ref": [
+            "ProductionOrder.ZCDSEHPPI0004"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "OrderNumber"
+            ]
+          },
+          {
+            "ref": [
+              "title"
+            ]
+          },
+          {
+            "ref": [
+              "ProductionVersion"
+            ]
+          },
+          {
+            "ref": [
+              "WorkCenter"
+            ]
+          },
+          {
+            "ref": [
+              "MaterialDescription"
+            ]
+          },
+          {
+            "ref": [
+              "TransProd"
+            ]
+          },
+          {
+            "ref": [
+              "Model"
+            ]
+          },
+          {
+            "ref": [
+              "Ivtryprod"
+            ]
+          },
+          {
+            "ref": [
+              "TRWorkCenter"
+            ]
+          },
+          {
+            "ref": [
+              "StorageLocation"
+            ]
+          },
+          {
+            "ref": [
+              "StorageBin"
+            ]
+          },
+          {
+            "ref": [
+              "PartsNo"
+            ]
+          },
+          {
+            "ref": [
+              "Store"
+            ]
+          },
+          {
+            "ref": [
+              "MfgOrderPlannedTotalQty"
+            ]
+          },
+          {
+            "ref": [
+              "ProductionUnit"
+            ]
+          },
+          {
+            "ref": [
+              "MfgOrderScheduledStartDate"
+            ]
+          },
+          {
+            "ref": [
+              "MfgOrderScheduledEndDate"
+            ]
+          },
+          {
+            "ref": [
+              "PrintD"
+            ]
+          },
+          {
+            "ref": [
+              "RePrint"
+            ]
+          },
+          {
+            "ref": [
+              "Scanner"
+            ]
+          },
+          {
+            "ref": [
+              "Note"
+            ]
+          },
+          {
+            "ref": [
+              "memo1"
+            ]
+          },
+          {
+            "ref": [
+              "memo2"
+            ]
+          },
+          {
+            "ref": [
+              "memo3"
+            ]
+          },
+          {
+            "ref": [
+              "memo4"
+            ]
+          },
+          {
+            "ref": [
+              "ReportId"
+            ]
+          },
+          {
+            "as": "to_OpertaionsList",
+            "cast": {
+              "target": "ProductionOrder.ZCDSEHPPB0031",
+              "cardinality": {
+                "max": "*"
+              },
+              "type": "cds.Association",
+              "on": [
+                {
+                  "ref": [
+                    "OrderNumber"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "$projection",
+                    "OrderNumber"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "elements": {
+        "OrderNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Manufacturing Order",
+          "@sap.quickinfo": "Manufacturing Order ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 24,
+          "notNull": false
+        },
+        "ProductionVersion": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Version",
           "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 4,
           "notNull": false
+        },
+        "WorkCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "MaterialDescription": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "TransProd": {
+          "@sap.label": "Unloading Point",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        },
+        "Model": {
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "Ivtryprod": {
+          "@sap.label": "Unloading Point",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        },
+        "TRWorkCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "StorageBin": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "PartsNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number for Order",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "Store": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "MfgOrderPlannedTotalQty": {
+          "@sap.unit": "ProductionUnit",
+          "@sap.label": "Total Quantity",
+          "@sap.quickinfo": "Manufacturing Order Planned Total Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "ProductionUnit": {
+          "@sap.label": "Production Unit",
+          "@sap.quickinfo": "Production Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "MfgOrderScheduledStartDate": {
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "MfgOrderScheduledEndDate": {
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "PrintD": {
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "RePrint": {
+          "type": "cds.String",
+          "length": 7,
+          "notNull": false
+        },
+        "Scanner": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Manufacturing Order",
+          "@sap.quickinfo": "Manufacturing Order ID",
+          "type": "cds.String",
+          "length": 12,
+          "notNull": false
+        },
+        "Note": {
+          "@sap.label": "Long Text",
+          "type": "cds.LargeString",
+          "notNull": false
+        },
+        "memo1": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "memo2": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "memo3": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "memo4": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "ReportId": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "to_OpertaionsList": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZCDSEHBTC0010.OperationList",
+          "on": [
+            {
+              "ref": [
+                "OrderNumber"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self",
+                "OrderNumber"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ZCDSEHBTC0010.ProductionOrderSheetCombined": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Process Record Sheet Form API",
+      "projection": {
+        "from": {
+          "ref": [
+            "ProductionOrder.ZCDSEHPPI0010"
+          ]
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "OrderNumber"
+            ]
+          },
+          {
+            "ref": [
+              "title2"
+            ]
+          },
+          {
+            "ref": [
+              "title"
+            ]
+          },
+          {
+            "ref": [
+              "PrssType"
+            ]
+          },
+          {
+            "ref": [
+              "MfgOrderScheduledStartDate"
+            ]
+          },
+          {
+            "ref": [
+              "MfgOrderScheduledEndDate"
+            ]
+          },
+          {
+            "ref": [
+              "StorageLocation"
+            ]
+          },
+          {
+            "ref": [
+              "Material"
+            ]
+          },
+          {
+            "ref": [
+              "MfgOrderPlannedTotalQty"
+            ]
+          },
+          {
+            "ref": [
+              "ProductionUnit"
+            ]
+          },
+          {
+            "ref": [
+              "WorkCenter"
+            ]
+          },
+          {
+            "ref": [
+              "MaterialDescription"
+            ]
+          },
+          {
+            "ref": [
+              "PartsNo"
+            ]
+          },
+          {
+            "ref": [
+              "InvRecAddress"
+            ]
+          },
+          {
+            "ref": [
+              "TransProd"
+            ]
+          },
+          {
+            "ref": [
+              "BuildingLocation"
+            ]
+          },
+          {
+            "ref": [
+              "rwcd"
+            ]
+          },
+          {
+            "ref": [
+              "EntryQty"
+            ]
+          },
+          {
+            "ref": [
+              "EntryUnit"
+            ]
+          },
+          {
+            "ref": [
+              "TotalReqQty"
+            ]
+          },
+          {
+            "ref": [
+              "EntryUnit2"
+            ]
+          },
+          {
+            "ref": [
+              "StorageBin"
+            ]
+          },
+          {
+            "ref": [
+              "MtlLocation"
+            ]
+          },
+          {
+            "ref": [
+              "MtlPartsShelfNo"
+            ]
+          },
+          {
+            "ref": [
+              "Ivtryprod"
+            ]
+          },
+          {
+            "ref": [
+              "MatExplanation"
+            ]
+          },
+          {
+            "ref": [
+              "Finish"
+            ]
+          },
+          {
+            "ref": [
+              "PrintDate"
+            ]
+          },
+          {
+            "ref": [
+              "RePrint"
+            ]
+          },
+          {
+            "ref": [
+              "Machine"
+            ]
+          },
+          {
+            "ref": [
+              "Unit5"
+            ]
+          },
+          {
+            "ref": [
+              "Labour"
+            ]
+          },
+          {
+            "ref": [
+              "Unit4"
+            ]
+          },
+          {
+            "ref": [
+              "SetUp"
+            ]
+          },
+          {
+            "ref": [
+              "Unit3"
+            ]
+          },
+          {
+            "ref": [
+              "memo1"
+            ]
+          },
+          {
+            "ref": [
+              "memo2"
+            ]
+          },
+          {
+            "ref": [
+              "memo3"
+            ]
+          },
+          {
+            "ref": [
+              "TRWorkCenter"
+            ]
+          },
+          {
+            "ref": [
+              "ReportId"
+            ]
+          },
+          {
+            "ref": [
+              "Scanner"
+            ]
+          },
+          {
+            "as": "to_OpertaionsListColumn1",
+            "cast": {
+              "target": "ProductionOrder.ZCDSEHPPB0031",
+              "cardinality": {
+                "max": "*"
+              },
+              "type": "cds.Association",
+              "on": [
+                {
+                  "ref": [
+                    "OrderNumber"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "$projection",
+                    "OrderNumber"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "as": "to_OpertaionsListColumn2",
+            "cast": {
+              "target": "ProductionOrder.ZCDSEHPPB0031",
+              "cardinality": {
+                "max": "*"
+              },
+              "type": "cds.Association",
+              "on": [
+                {
+                  "ref": [
+                    "OrderNumber"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "$projection",
+                    "OrderNumber"
+                  ]
+                }
+              ]
+            }
+          },
+          {
+            "as": "to_OpertaionsListColumn3",
+            "cast": {
+              "target": "ProductionOrder.ZCDSEHPPB0031",
+              "cardinality": {
+                "max": "*"
+              },
+              "type": "cds.Association",
+              "on": [
+                {
+                  "ref": [
+                    "OrderNumber"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "$projection",
+                    "OrderNumber"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "elements": {
+        "OrderNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Manufacturing Order",
+          "@sap.quickinfo": "Manufacturing Order ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "title2": {
+          "type": "cds.String",
+          "length": 37,
+          "notNull": false
+        },
+        "title": {
+          "type": "cds.String",
+          "length": 32,
+          "notNull": false
+        },
+        "PrssType": {
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "MfgOrderScheduledStartDate": {
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "MfgOrderScheduledEndDate": {
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "Material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number for Order",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "MfgOrderPlannedTotalQty": {
+          "@sap.unit": "ProductionUnit",
+          "@sap.label": "Total Quantity",
+          "@sap.quickinfo": "Manufacturing Order Planned Total Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "ProductionUnit": {
+          "@sap.label": "Production Unit",
+          "@sap.quickinfo": "Production Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "WorkCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "MaterialDescription": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "PartsNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number for Order",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "InvRecAddress": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "TransProd": {
+          "@sap.label": "Unloading Point",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        },
+        "BuildingLocation": {
+          "type": "cds.String",
+          "length": 42,
+          "notNull": false
+        },
+        "rwcd": {
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "EntryQty": {
+          "@sap.unit": "EntryUnit",
+          "@sap.label": "Quantity in Unit of Entry",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "EntryUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "TotalReqQty": {
+          "@sap.unit": "EntryUnit2",
+          "type": "cds.Decimal",
+          "precision": 34,
+          "scale": 6,
+          "notNull": false
+        },
+        "EntryUnit2": {
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "StorageBin": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "MtlLocation": {
+          "type": "cds.String",
+          "length": 42,
+          "notNull": false
+        },
+        "MtlPartsShelfNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "Ivtryprod": {
+          "@sap.label": "Unloading Point",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        },
+        "MatExplanation": {
+          "@sap.label": "BOM Description",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "Finish": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Confirmation",
+          "@sap.quickinfo": "Completion confirmation number for the operation",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "PrintDate": {
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 0,
+          "notNull": false
+        },
+        "RePrint": {
+          "type": "cds.String",
+          "length": 7,
+          "notNull": false
+        },
+        "Machine": {
+          "@sap.unit": "Unit4",
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3,
+          "notNull": false
+        },
+        "Unit5": {
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "Labour": {
+          "@sap.unit": "Unit5",
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3,
+          "notNull": false
+        },
+        "Unit4": {
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "SetUp": {
+          "@sap.unit": "Unit3",
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3,
+          "notNull": false
+        },
+        "Unit3": {
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "memo1": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "memo2": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "memo3": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "TRWorkCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "ReportId": {
+          "type": "cds.String",
+          "length": 9,
+          "notNull": false
+        },
+        "Scanner": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Confirmation",
+          "@sap.quickinfo": "Completion confirmation number for the operation",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "to_OpertaionsListColumn1": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZCDSEHBTC0010.OperationList",
+          "on": [
+            {
+              "ref": [
+                "OrderNumber"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self",
+                "OrderNumber"
+              ]
+            }
+          ]
+        },
+        "to_OpertaionsListColumn2": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZCDSEHBTC0010.OperationList",
+          "on": [
+            {
+              "ref": [
+                "OrderNumber"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self",
+                "OrderNumber"
+              ]
+            }
+          ]
+        },
+        "to_OpertaionsListColumn3": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZCDSEHBTC0010.OperationList",
+          "on": [
+            {
+              "ref": [
+                "OrderNumber"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "$self",
+                "OrderNumber"
+              ]
+            }
+          ]
         }
       }
     },

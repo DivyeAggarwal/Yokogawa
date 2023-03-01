@@ -114,7 +114,8 @@
         "kind": "odata-v2",
         "model": "srv/external/ProductionOrder",
         "credentials": {
-          "destination": "s4003-ap-https_CLONING"
+          "path": "/sap/opu/odata/sap/ZAPIHPP0003_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008"
         }
       }
     },

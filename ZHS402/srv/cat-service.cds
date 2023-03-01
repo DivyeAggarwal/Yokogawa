@@ -382,10 +382,105 @@ service ZCDSEHBTC0009 {
 }
 
 service ZCDSEHBTC0010 {
-    entity ProductionOrderCombined as projection on ProductionOrder.ZCDSEHPPC0006 {
-        key prod_order_created,
-            plant
+    entity OperationList as projection on ProductionOrder.ZCDSEHPPB0031;
+    entity AdditionalStatus as projection on db.ZTHBT0028;
+    entity ChildPartListCombined as projection on ProductionOrder.ZCDSEHPPI0001{
+        key ProductionOrderNo,
+         Reservation,
+        MaterialNumber,
+        MaterialDescriptionH,
+        OrderQty,
+        BaseUnitMeasure,
+        StartDate,
+        EndDate, 
+        StorageLocation, 
+        '' as Reprint,
+        to_Components: Association to many ProductionOrder.ZCDSEHPPB0020
+               on ProductionOrderNo = $projection.ProductionOrderNo
     }
+    
+    entity ProcessRecordSheetCombined as projection on ProductionOrder.ZCDSEHPPI0004
+       {
+        key OrderNumber,
+         title,
+         ProductionVersion,
+         WorkCenter,
+         MaterialDescription,
+         TransProd,
+          Model,
+         Ivtryprod,
+         TRWorkCenter,     
+         StorageLocation,
+         StorageBin,
+         PartsNo,
+         Store,
+         MfgOrderPlannedTotalQty,
+         ProductionUnit,
+         MfgOrderScheduledStartDate,
+         MfgOrderScheduledEndDate,  
+        PrintD,
+        RePrint,
+        Scanner,   
+        Note,
+        memo1,
+        memo2,
+        memo3,
+        memo4 ,
+        ReportId ,
+        to_OpertaionsList: Association to many ProductionOrder.ZCDSEHPPB0031
+                         on OrderNumber = $projection.OrderNumber
+    };
+    entity ProductionOrderSheetCombined as projection on ProductionOrder.ZCDSEHPPI0010
+    {
+        key   OrderNumber,
+         title2,
+         title,
+         PrssType,
+         MfgOrderScheduledStartDate,
+         MfgOrderScheduledEndDate,
+         StorageLocation,
+         Material,
+         MfgOrderPlannedTotalQty,
+        ProductionUnit,
+         WorkCenter,
+         MaterialDescription,
+         PartsNo,
+          InvRecAddress,
+         TransProd,
+         BuildingLocation,
+         rwcd,
+         EntryQty,
+         EntryUnit,
+         TotalReqQty,
+        EntryUnit2,
+        StorageBin,
+        MtlLocation,
+        MtlPartsShelfNo,
+        Ivtryprod,
+        MatExplanation,
+        Finish,
+        PrintDate,
+        RePrint,
+        Machine,
+        Unit5,
+        Labour,
+        Unit4,
+        SetUp,
+        Unit3,
+        memo1,
+        memo2,
+        memo3,
+        TRWorkCenter,
+        ReportId, 
+        Scanner ,
+        to_OpertaionsListColumn1:Association to many ProductionOrder.ZCDSEHPPB0031
+                                 on OrderNumber = $projection.OrderNumber,
+        to_OpertaionsListColumn2:Association to many ProductionOrder.ZCDSEHPPB0031
+                                 on OrderNumber = $projection.OrderNumber,
+        to_OpertaionsListColumn3:Association to many ProductionOrder.ZCDSEHPPB0031
+                                 on OrderNumber = $projection.OrderNumber  
+    }
+
 }
 
 

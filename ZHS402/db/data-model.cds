@@ -367,5 +367,24 @@ entity ZTHBT0018: managed {
     APPLY_DATE_N: String(40) @title : 'Apply date Name';
 
 }
+entity ZTHBT0028: managed{
+    key PRODUCTIONORDER: String(12) @title : 'Production Order';
+        ZPRINT: String(1) @title : 'Print Status';
+        STATUS: String(10) @title : 'Change Status';
+        FTRMS_S: Date @title : 'Initial Specified Start Date';
+        GLTRS_S: Date @title : 'Initial Specified Finish Date';
+        FTRMS_I: Date @title : 'Initial Specified Finish Date';
+        GLTRS_I: Date @title : 'Initial scheduled start date';
+        FTRMS_C: Date @title : 'Initial scheduled finish date';
+        GLTRS_C: Date @title : 'Changed scheduled finish date';
+        ZZINDEXNO: String(8) @title : 'Index No.';  
+        ZZPLANT: String(4) @title : 'Plant';
+        MAT_TEXT: String(40) @title : 'Material Description';
+        ZZINTERFACEFLAG: String(1) @title : 'Interface Flag';
+        ZZG_PRINTED_REV: String(2) @title : 'Printed Revision of Production Order Sheet';
+        ZZG_PRNTDATE: Date @title : 'Printed Date';
+        ZZG_PRNTTIME: Time @title : 'Printed Time';
+        ZZG_PRNTPRID: String(12) @title : 'Printed Person Id';
+}
 
 
