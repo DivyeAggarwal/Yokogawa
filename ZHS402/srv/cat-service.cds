@@ -265,11 +265,12 @@ service ZCDSEHBTC0007 {
 
     @cds.persistence.skip
     entity BOMDisplay {
-    key E_DOC_TYPE: String(3) @title : 'Document Type7';
-    key WERKS: String(4) @title : 'Plant';
+     E_DOC_TYPE: String(3) @title : 'Document Type7';
+     WERKS: String(4) @title : 'Plant';
     key E_DOC_NO: String(18) @title : 'Technical document No';
     key E_REV_NO: String(5) @title : 'Technical renewal REV No';
     key PS_GROUP_NO: String(3) @title : 'PS group No';
+    key PS_ITEM_NO: String(3) @title : 'PS Item No';
     FORMALIZE_DATE: Date @title : 'Formalized Date';
     CREATION_DATE: Date @title : 'Creation Date';
     }
@@ -293,7 +294,7 @@ service ZCDSEHBTC0007 {
     // entity DATAFE0 as projection on db.DATAFE0;
     entity DATAFE0 as
         select from db.ZTHBT0010 as A
-        full outer join db.ZTHBT0037 as B
+        left outer join db.ZTHBT0037 as B
             on  A.E_DOC_NO    = B.E_DOC_NO
             and A.E_REV_NO    = B.E_REV_NO
             and A.PS_GROUP_NO = B.PS_GROUP_NO
@@ -302,10 +303,14 @@ service ZCDSEHBTC0007 {
         {
 
             key B.E_DOC_NO    as E_DOC_NO,
-                B.E_REV_NO    as E_REV_NO,
-                B.PS_GROUP_NO as PS_GROUP_NO,
+            key B.E_REV_NO    as E_REV_NO,
+            key B.PS_GROUP_NO as PS_GROUP_NO,
+            key B.PS_ITEM_NO as PS_ITEM_NO,
                 B.E_DOC_TYPE  as E_DOC_TYPE,
                 B.WERKS       as WERKS,
+                B.MODEL       as MODEL,
+                B.EFFECT_D    as EFFECT_D,
+                B.INVALID_D   as INVALID_D,
                 ZTHBT0010 : Association [*] to ZCDSEHBTC0007.ZTHBT0010
                                 on ZTHBT0010.E_DOC_NO = E_DOC_NO
         }
@@ -314,7 +319,7 @@ service ZCDSEHBTC0007 {
     
     entity DATAFE1 as
         select from db.ZTHBT0014 as A
-        full outer join db.ZTHBT0037 as B
+        left outer join db.ZTHBT0037 as B
             on  A.E_DOC_NO    = B.E_DOC_NO
             and A.E_REV_NO    = B.E_REV_NO
             and A.PS_GROUP_NO = B.PS_GROUP_NO
@@ -322,15 +327,18 @@ service ZCDSEHBTC0007 {
         {
 
             key B.E_DOC_NO    as E_DOC_NO,
-                B.E_REV_NO    as E_REV_NO,
-                B.PS_GROUP_NO as PS_GROUP_NO,
+            key B.E_REV_NO    as E_REV_NO,
+            key B.PS_GROUP_NO as PS_GROUP_NO,
+            key B.PS_ITEM_NO as PS_ITEM_NO,
                 B.E_DOC_TYPE  as E_DOC_TYPE,
                 B.WERKS       as WERKS,
+                B.EFFECT_D    as EFFECT_D,
+                B.INVALID_D   as INVALID_D,
                 ZTHBT0014 : Association [*] to ZCDSEHBTC0007.ZTHBT0014
                                 on ZTHBT0014.E_DOC_NO = E_DOC_NO
         }
         where
-            B.E_DOC_TYPE = 'FE0';
+            B.E_DOC_TYPE = 'FE1';
 
 
 }

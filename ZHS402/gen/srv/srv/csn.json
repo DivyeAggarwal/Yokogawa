@@ -12252,13 +12252,11 @@
             }
           ],
           "@Common.FilterDefaultValue": "FE0",
-          "key": true,
           "type": "cds.String",
           "length": 3
         },
         "WERKS": {
           "@title": "Plant",
-          "key": true,
           "type": "cds.String",
           "length": 4
         },
@@ -12276,6 +12274,12 @@
         },
         "PS_GROUP_NO": {
           "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
           "key": true,
           "type": "cds.String",
           "length": 3
@@ -12380,7 +12384,7 @@
       "query": {
         "SELECT": {
           "from": {
-            "join": "full",
+            "join": "left",
             "args": [
               {
                 "ref": [
@@ -12477,6 +12481,7 @@
               "as": "E_DOC_NO"
             },
             {
+              "key": true,
               "ref": [
                 "B",
                 "E_REV_NO"
@@ -12484,11 +12489,20 @@
               "as": "E_REV_NO"
             },
             {
+              "key": true,
               "ref": [
                 "B",
                 "PS_GROUP_NO"
               ],
               "as": "PS_GROUP_NO"
+            },
+            {
+              "key": true,
+              "ref": [
+                "B",
+                "PS_ITEM_NO"
+              ],
+              "as": "PS_ITEM_NO"
             },
             {
               "ref": [
@@ -12503,6 +12517,27 @@
                 "WERKS"
               ],
               "as": "WERKS"
+            },
+            {
+              "ref": [
+                "B",
+                "MODEL"
+              ],
+              "as": "MODEL"
+            },
+            {
+              "ref": [
+                "B",
+                "EFFECT_D"
+              ],
+              "as": "EFFECT_D"
+            },
+            {
+              "ref": [
+                "B",
+                "INVALID_D"
+              ],
+              "as": "INVALID_D"
             },
             {
               "as": "ZTHBT0010",
@@ -12647,11 +12682,19 @@
         },
         "E_REV_NO": {
           "@title": "Technical renewal REV No",
+          "key": true,
           "type": "cds.String",
           "length": 5
         },
         "PS_GROUP_NO": {
           "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
           "type": "cds.String",
           "length": 3
         },
@@ -12679,6 +12722,19 @@
           "@title": "Plant",
           "type": "cds.String",
           "length": 4
+        },
+        "MODEL": {
+          "@title": "MODEL",
+          "type": "cds.String",
+          "length": 10
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         },
         "ZTHBT0010": {
           "type": "cds.Association",
@@ -12781,7 +12837,7 @@
       "query": {
         "SELECT": {
           "from": {
-            "join": "full",
+            "join": "left",
             "args": [
               {
                 "ref": [
@@ -12864,6 +12920,7 @@
               "as": "E_DOC_NO"
             },
             {
+              "key": true,
               "ref": [
                 "B",
                 "E_REV_NO"
@@ -12871,11 +12928,20 @@
               "as": "E_REV_NO"
             },
             {
+              "key": true,
               "ref": [
                 "B",
                 "PS_GROUP_NO"
               ],
               "as": "PS_GROUP_NO"
+            },
+            {
+              "key": true,
+              "ref": [
+                "B",
+                "PS_ITEM_NO"
+              ],
+              "as": "PS_ITEM_NO"
             },
             {
               "ref": [
@@ -12890,6 +12956,20 @@
                 "WERKS"
               ],
               "as": "WERKS"
+            },
+            {
+              "ref": [
+                "B",
+                "EFFECT_D"
+              ],
+              "as": "EFFECT_D"
+            },
+            {
+              "ref": [
+                "B",
+                "INVALID_D"
+              ],
+              "as": "INVALID_D"
             },
             {
               "as": "ZTHBT0014",
@@ -12925,7 +13005,7 @@
             },
             "=",
             {
-              "val": "FE0"
+              "val": "FE1"
             }
           ]
         }
@@ -12939,11 +13019,19 @@
         },
         "E_REV_NO": {
           "@title": "Technical renewal REV No",
+          "key": true,
           "type": "cds.String",
           "length": 5
         },
         "PS_GROUP_NO": {
           "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
           "type": "cds.String",
           "length": 3
         },
@@ -12956,6 +13044,14 @@
           "@title": "Plant",
           "type": "cds.String",
           "length": 4
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         },
         "ZTHBT0014": {
           "type": "cds.Association",
@@ -14674,8 +14770,9 @@
             ]
           },
           {
-            "val": "",
-            "as": "Reprint"
+            "ref": [
+              "Reprint"
+            ]
           },
           {
             "as": "to_Components",
@@ -14773,7 +14870,10 @@
           "notNull": false
         },
         "Reprint": {
-          "@Core.Computed": true
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Print Status",
+          "type": "cds.Boolean",
+          "notNull": false
         },
         "to_Components": {
           "type": "cds.Association",

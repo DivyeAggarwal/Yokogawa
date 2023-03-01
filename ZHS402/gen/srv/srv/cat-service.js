@@ -394,22 +394,20 @@ this.on('READ', 'BOMDisplay', async req => {
     }
         if (E_DOC_TYPE == "FE0") {
 
-            // const DATAFE0 = await SELECT.from('ZCDSEHBTC0007.DATAFE0').where({
-            //     E_DOC_NO: E_DOC_NO,
-            //     E_REV_NO: E_REV_NO,
-            //     PS_GROUP_NO: PS_GROUP_NO
-            // })
+            const DATAFE0 = await SELECT.from('ZCDSEHBTC0007.DATAFE0').where(req.query.SELECT.where)
 
-            let query = SELECT.from('ZHS402_ZTHBT0010')
-		.fullOuterJoin('ZHS402_ZTHBT0037')
-		.on('ZHS402_ZTHBT0010.E_DOC_NO', "=", "ZHS402_ZTHBT0037.E_DOC_NO")
+
+        //     let query = SELECT.from('ZHS402_ZTHBT0010')
+		// .fullOuterJoin('ZHS402_ZTHBT0037')
+		// .on('ZHS402_ZTHBT0010.E_DOC_NO', "=", "ZHS402_ZTHBT0037.E_DOC_NO")
 
         //     let results = await cds.run(query)
             let aData = [];
             for (let oData of DATAFE0) { 
             const data = {
                 E_DOC_TYPE: oData.E_DOC_TYPE,
-                // WERKS: oData.WERKS,
+                WERKS: oData.WERKS,
+                PS_ITEM_NO: oData.PS_ITEM_NO,
                 E_DOC_NO: oData.E_DOC_NO,
                 E_REV_NO: oData.E_REV_NO,
                 PS_GROUP_NO: oData.PS_GROUP_NO,
@@ -419,8 +417,23 @@ this.on('READ', 'BOMDisplay', async req => {
                 aData.push(data);
             }
             return aData;
-        } else if(E_DOC_TYPE == "FE02") {
-
+        } else if(E_DOC_TYPE == "FE1") {
+            const DATAFE1 = await SELECT.from('ZCDSEHBTC0007.DATAFE1').where(req.query.SELECT.where)
+            let aData = [];
+            for (let oData of DATAFE1) { 
+            const data = {
+                E_DOC_TYPE: oData.E_DOC_TYPE,
+                WERKS: oData.WERKS,
+                PS_ITEM_NO: oData.PS_ITEM_NO,
+                E_DOC_NO: oData.E_DOC_NO,
+                E_REV_NO: oData.E_REV_NO,
+                PS_GROUP_NO: oData.PS_GROUP_NO,
+                FORMALIZE_DATE: oData.INVALID_D,
+                CREATION_DATE: oData.EFFECT_D
+                }
+                aData.push(data);
+            }
+            return aData;
         }
     // }
 
