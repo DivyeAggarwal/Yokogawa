@@ -11186,10 +11186,11 @@
     },
     "ZCDSEHBTC0007.ZTHBT0009": {
       "kind": "entity",
+      "@title": "{i18n>PartsStructureSpecification}",
       "projection": {
         "from": {
           "ref": [
-            "ZHS402.ZTHBT0009"
+            "ZHS402.ZTHBT0010"
           ]
         }
       },
@@ -11242,48 +11243,110 @@
           "type": "User",
           "length": 255
         },
-        "YEOS_MODEL_GROUP": {
-          "@title": "Yeos Model Group",
-          "key": true,
-          "type": "cds.String",
-          "length": 18
-        },
-        "FZ2_NO": {
-          "@title": "Fz2 Number",
-          "key": true,
-          "type": "cds.String",
-          "length": 5
-        },
-        "FZ2_NO_SFIX": {
-          "@title": "Fz2 Number Sfix",
-          "key": true,
-          "type": "cds.String",
-          "length": 4
-        },
-        "E_DOC_TYPE": {
-          "@title": "Engineering Doc Type",
-          "type": "cds.String",
-          "length": 5
-        },
         "E_DOC_NO": {
-          "@title": "Technical document No.",
+          "@title": "Technical document No",
+          "key": true,
           "type": "cds.String",
           "length": 18
         },
         "E_REV_NO": {
-          "@title": "Technical renewal REV No.",
+          "@title": "Technical renewal REV No",
+          "key": true,
           "type": "cds.String",
           "length": 5
         },
-        "E_DOC_N": {
-          "@title": "Engineering Doc Name",
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
           "type": "cds.String",
-          "length": 20
+          "length": 3
         },
-        "MEDAI_TYPE": {
-          "@title": "Media Type",
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "MODEL1": {
+          "@title": "MODEL1",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PS_SYMBOL": {
+          "@title": "PS Symbol",
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
           "type": "cds.String",
           "length": 1
+        },
+        "PARTS_USE_RATIO": {
+          "@title": "Parts use ratio",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_NOTE": {
+          "@title": "PS note",
+          "type": "cds.String",
+          "length": 64
+        },
+        "OR_SIGN": {
+          "@title": "OR sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_DIGIT_PTN": {
+          "@title": "Basic suffix digit pattern",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_PTN": {
+          "@title": "Suffix pattern",
+          "type": "cds.String"
+        },
+        "OPTION_PTN": {
+          "@title": "Option pattern",
+          "type": "cds.String"
+        },
+        "PROD_CARRER": {
+          "@title": "Production carrer",
+          "type": "cds.String",
+          "length": 9
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_NO_EXT_SIGN": {
+          "@title": "Parts no exist sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         }
       }
     },

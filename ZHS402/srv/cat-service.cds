@@ -394,7 +394,7 @@ service ZCDSEHBTC0010 {
         StartDate,
         EndDate, 
         StorageLocation, 
-        '' as Reprint,
+        Reprint,
         to_Components: Association to many ProductionOrder.ZCDSEHPPB0020
                on ProductionOrderNo = $projection.ProductionOrderNo
     }
