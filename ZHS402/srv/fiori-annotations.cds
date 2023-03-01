@@ -538,7 +538,7 @@ annotate ZCDSEHBTC0007.BOMDisplay with @(
 //         });
 // };
 
-annotate ZCDSEHBTC0007.BOMDisplay {
+annotate ZCDSEHBTC0007.DATAFE0 {
     @(Common : {
         Label     : 'Plant',
         ValueList : {
@@ -559,10 +559,11 @@ annotate ZCDSEHBTC0007.BOMDisplay {
     WERKS;
 }
 
-annotate ZCDSEHBTC0007.BOMDisplay {
+annotate ZCDSEHBTC0007.DATAFE0 {
     @(Common : {
         Label     : 'Document number',
         ValueList : {
+            Label: 'DOC Type/Doc No',
             CollectionPath : 'DOC_NO_HELP',
             Parameters     : [
                 {
@@ -612,6 +613,7 @@ annotate ZCDSEHBTC0007.BOMDisplay {
             ]
         },
         ValueList #MainModel : {
+            Label: 'Main Model/FZ2 No',
             CollectionPath : 'MAIN_MODEL_HELP',
             Parameters     : [
                 {
@@ -947,4 +949,163 @@ annotate ZCDSEHBTC0009.ZTHBT0015 with {
     PARTS_TYPE_ABB_N  @title : 'Parts Type Abb Name';
     PARTS_NO_EXT_SIGN @title : 'Parts No ext sign';
 }
+annotate ZCDSEHBTC0007.DATAFE0 with @(
+  UI.SelectionVariant #tab1 : {
+    Text : 'Parts Structure Specification'
+  }
+);
+annotate  ZCDSEHBTC0007.DATAFE0 with @(
+    UI: {
+        HeaderInfo: {
+            TypeName: '',
+            TypeNamePlural: 'Parts Structure Specification',
+            Title: { Value: E_DOC_NO },
+            Description: { Value: E_DOC_NO }
+        },
+        SelectionFields  : [
+            E_DOC_TYPE,WERKS,E_DOC_NO,E_REV_NO,PS_GROUP_NO
+        ],
+        LineItem: [
+            { Value: E_DOC_NO },
+            { Value: E_REV_NO },
+            { Value: PS_GROUP_NO }          
+        ],
+        Facets: [
+            {
+                $Type: 'UI.ReferenceFacet',
+                Label: 'Parts Structure Specification',
+                Target: '@UI.FieldGroup#MainAs'
+            },
+            {
+                $Type: 'UI.ReferenceFacet',
+                Label: 'Details',
+                Target: 'ZTHBT0010@UI.LineItem'
+            }
+        ],        
+        FieldGroup#MainAs: {
+            Data: [
+               { Value: E_DOC_NO },
+            { Value: E_REV_NO },
+            { Value: PS_GROUP_NO }              
+            ]
+        }
+    }
+){
+    
+};
 
+
+annotate ZCDSEHBTC0007.DATAFE1 with @(
+  UI.SelectionVariant #tab2 : {
+    Text : 'Parts Structure Specification'
+  }
+);
+annotate  ZCDSEHBTC0007.DATAFE1 with @(
+    UI: {
+        HeaderInfo: {
+            TypeName: '',
+            TypeNamePlural: 'Parts Structure Tr',
+            Title: { Value: E_DOC_NO },
+            Description: { Value: E_DOC_NO }
+        },
+        SelectionFields  : [
+            E_DOC_TYPE,WERKS,E_DOC_NO,E_REV_NO,PS_GROUP_NO
+        ],
+        LineItem: [
+            { Value: E_DOC_NO },
+            { Value: E_REV_NO },
+            { Value: PS_GROUP_NO }          
+        ],
+        Facets: [
+            {
+                $Type: 'UI.ReferenceFacet',
+                Label: 'General Information',
+                Target: '@UI.FieldGroup#MainAs'
+            },
+            {
+                $Type: 'UI.ReferenceFacet',
+                Label: 'Details',
+                Target: 'ZTHBT0014@UI.LineItem'
+            }
+        ],        
+        FieldGroup#MainAs: {
+            Data: [
+               { Value: E_DOC_NO },
+            { Value: E_REV_NO },
+            { Value: PS_GROUP_NO }              
+            ]
+        }
+    }
+){
+    
+};
+
+annotate ZCDSEHBTC0007.ZTHBT0010 with @(
+    Identification      : [
+        {Value : E_DOC_NO}
+    ],
+    UI : { 
+        LineItem  : [
+            { Value : PS_GROUP_NO },
+            { Value : PS_ITEM_NO },
+            { Value : E_TR_TYPE },
+            { Value : E_PARTS_NO },
+            { Value : PARTS_NO_EXT_SIGN },
+            { Value : PARTS_QTY },
+            { Value : PARTS_QTY_UNIT },
+            { Value : SELECT_SIGN },
+            { Value : PARTS_USE_RATIO },
+            { Value : OR_SIGN },
+            { Value : SFIX_PTN },
+            { Value : OPTION_PTN },
+            { Value : MODEL1 },
+            { Value : SFIX_DIGIT_PTN },
+            { Value : PROD_CAREER_FROM },  
+            { Value : PS_SYMBOL },
+            { Value : PS_NOTE }                                     
+        ],
+     }
+){
+};
+// annotate ZCDSEHBTC0007.ZTHBT0010 with @(
+//     UI : { 
+//         LineItem  : [
+//             { Value : SFIX_PTN },
+//             { Value : OPTION_PTN },
+//             { Value : MODEL1 },
+//             { Value : SFIX_DIGIT_PTN },
+//             { Value : PROD_CAREER_FROM },  
+//             { Value : PS_SYMBOL },
+//             { Value : PS_NOTE }                                     
+//         ],
+//      }
+// ){
+// };
+
+annotate ZCDSEHBTC0007.ZTHBT0014 with @(
+    Identification      : [
+        {Value : E_DOC_NO}
+    ],
+    UI : { 
+        LineItem  : [
+            { Value : PS_GROUP_NO },
+            { Value : PS_ITEM_NO },
+            { Value : E_TR_TYPE },
+            { Value : PARENT_PARTS_NO },
+            { Value : PARTS_NO_EXT_SIGN },
+            { Value : E_PARTS_NO },
+            { Value : PARTS_QTY },
+            { Value : PARTS_QTY_UNIT },
+            { Value : SELECT_SIGN },
+            { Value : PARTS_USE_RATIO },                                     
+            { Value : PS_SYMBOL },
+            { Value : PS_NOTE },
+        ],
+     }
+){
+};
+// annotate ZCDSEHBTC0009.DigitPartList with @(
+//   UI.SelectionVariant #DigitPartList : {
+//     Text : '10 Digit Part List'
+//   }
+// );

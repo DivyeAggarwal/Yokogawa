@@ -3260,6 +3260,7 @@
         },
         "TABLE_NAME": {
           "@title": "Table name",
+          "key": true,
           "type": "cds.String",
           "length": 256
         }
@@ -10278,6 +10279,100 @@
     },
     "ZCDSEHBTC0007.ZTHBT0010": {
       "kind": "entity",
+      "@Identification": [
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "PS_GROUP_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_ITEM_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_TR_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_PARTS_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_NO_EXT_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_QTY"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_QTY_UNIT"
+          }
+        },
+        {
+          "Value": {
+            "=": "SELECT_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_USE_RATIO"
+          }
+        },
+        {
+          "Value": {
+            "=": "OR_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "SFIX_PTN"
+          }
+        },
+        {
+          "Value": {
+            "=": "OPTION_PTN"
+          }
+        },
+        {
+          "Value": {
+            "=": "MODEL1"
+          }
+        },
+        {
+          "Value": {
+            "=": "SFIX_DIGIT_PTN"
+          }
+        },
+        {
+          "Value": {
+            "=": "PROD_CAREER_FROM"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_SYMBOL"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_NOTE"
+          }
+        }
+      ],
       "@title": "{i18n>PartsStructureSpecification}",
       "projection": {
         "from": {
@@ -10444,6 +10539,75 @@
     },
     "ZCDSEHBTC0007.ZTHBT0014": {
       "kind": "entity",
+      "@Identification": [
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "PS_GROUP_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_ITEM_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_TR_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARENT_PARTS_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_NO_EXT_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_PARTS_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_QTY"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_QTY_UNIT"
+          }
+        },
+        {
+          "Value": {
+            "=": "SELECT_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_USE_RATIO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_SYMBOL"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_NOTE"
+          }
+        }
+      ],
       "@title": "{i18n>PartsStructureTr}",
       "projection": {
         "from": {
@@ -10888,11 +11052,10 @@
     },
     "ZCDSEHBTC0007.ZTHBT0009": {
       "kind": "entity",
-      "@title": "{i18n>PartsStructureSpecification}",
       "projection": {
         "from": {
           "ref": [
-            "ZHS402.ZTHBT0010"
+            "ZHS402.ZTHBT0009"
           ]
         }
       },
@@ -10945,110 +11108,48 @@
           "type": "User",
           "length": 255
         },
-        "E_DOC_NO": {
-          "@title": "Technical document No",
+        "YEOS_MODEL_GROUP": {
+          "@title": "Yeos Model Group",
           "key": true,
           "type": "cds.String",
           "length": 18
         },
-        "E_REV_NO": {
-          "@title": "Technical renewal REV No",
+        "FZ2_NO": {
+          "@title": "Fz2 Number",
           "key": true,
           "type": "cds.String",
           "length": 5
         },
-        "PS_GROUP_NO": {
-          "@title": "PS group No",
+        "FZ2_NO_SFIX": {
+          "@title": "Fz2 Number Sfix",
           "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "PS_ITEM_NO": {
-          "@title": "PS Item No",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "MODEL1": {
-          "@title": "MODEL1",
-          "type": "cds.String",
-          "length": 18
-        },
-        "PS_SYMBOL": {
-          "@title": "PS Symbol",
-          "type": "cds.String",
-          "length": 10
-        },
-        "E_PART_NO": {
-          "@title": "Material number",
-          "type": "cds.String",
-          "length": 18
-        },
-        "PARTS_QTY": {
-          "@title": "Parts quantity",
-          "type": "cds.String",
-          "length": 13
-        },
-        "PARTS_QTY_UNIT": {
-          "@title": "Parts quantity unit",
           "type": "cds.String",
           "length": 4
         },
-        "SELECT_SIGN": {
-          "@title": "Select sign",
+        "E_DOC_TYPE": {
+          "@title": "Engineering Doc Type",
+          "type": "cds.String",
+          "length": 5
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No.",
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No.",
+          "type": "cds.String",
+          "length": 5
+        },
+        "E_DOC_N": {
+          "@title": "Engineering Doc Name",
+          "type": "cds.String",
+          "length": 20
+        },
+        "MEDAI_TYPE": {
+          "@title": "Media Type",
           "type": "cds.String",
           "length": 1
-        },
-        "PARTS_USE_RATIO": {
-          "@title": "Parts use ratio",
-          "type": "cds.String",
-          "length": 3
-        },
-        "PS_NOTE": {
-          "@title": "PS note",
-          "type": "cds.String",
-          "length": 64
-        },
-        "OR_SIGN": {
-          "@title": "OR sign",
-          "type": "cds.String",
-          "length": 1
-        },
-        "SFIX_DIGIT_PTN": {
-          "@title": "Basic suffix digit pattern",
-          "type": "cds.String",
-          "length": 1
-        },
-        "SFIX_PTN": {
-          "@title": "Suffix pattern",
-          "type": "cds.String"
-        },
-        "OPTION_PTN": {
-          "@title": "Option pattern",
-          "type": "cds.String"
-        },
-        "PROD_CARRER": {
-          "@title": "Production carrer",
-          "type": "cds.String",
-          "length": 9
-        },
-        "E_TR_TYPE": {
-          "@title": "Techinical transaction type",
-          "type": "cds.String",
-          "length": 1
-        },
-        "PARTS_NO_EXT_SIGN": {
-          "@title": "Parts no exist sign",
-          "type": "cds.String",
-          "length": 1
-        },
-        "EFFECT_D": {
-          "@title": "Valid From",
-          "type": "cds.Date"
-        },
-        "INVALID_D": {
-          "@title": "Valid To",
-          "type": "cds.Date"
         }
       }
     },
@@ -11960,28 +12061,295 @@
         },
         "WERKS": {
           "@title": "Plant",
-          "@Common.Label": "Plant",
-          "@Common.ValueList.CollectionPath": "VL_SH_H_T001",
-          "@Common.ValueList.Parameters": [
-            {
-              "$Type": "Common.ValueListParameterInOut",
-              "LocalDataProperty": {
-                "=": "WERKS"
-              },
-              "ValueListProperty": "BUKRS"
-            },
-            {
-              "$Type": "Common.ValueListParameterDisplayOnly",
-              "ValueListProperty": "BUTXT"
-            }
-          ],
           "key": true,
           "type": "cds.String",
           "length": 4
         },
         "E_DOC_NO": {
           "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "FORMALIZE_DATE": {
+          "@title": "Formalized Date",
+          "type": "cds.Date"
+        },
+        "CREATION_DATE": {
+          "@title": "Creation Date",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ZCDSEHBTC0007.Doc_Type": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "DOC_TYPE": {
+          "@title": "Document Type",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    },
+    "ZCDSEHBTC0007.DATAFE0": {
+      "kind": "entity",
+      "@UI.SelectionVariant#tab1.Text": "Parts Structure Specification",
+      "@UI.HeaderInfo.TypeName": "",
+      "@UI.HeaderInfo.TypeNamePlural": "Parts Structure Specification",
+      "@UI.HeaderInfo.Title.Value": {
+        "=": "E_DOC_NO"
+      },
+      "@UI.HeaderInfo.Description.Value": {
+        "=": "E_DOC_NO"
+      },
+      "@UI.SelectionFields": [
+        {
+          "=": "E_DOC_TYPE"
+        },
+        {
+          "=": "WERKS"
+        },
+        {
+          "=": "E_DOC_NO"
+        },
+        {
+          "=": "E_REV_NO"
+        },
+        {
+          "=": "PS_GROUP_NO"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_REV_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_GROUP_NO"
+          }
+        }
+      ],
+      "@UI.Facets": [
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Parts Structure Specification",
+          "Target": "@UI.FieldGroup#MainAs"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Details",
+          "Target": "ZTHBT0010@UI.LineItem"
+        }
+      ],
+      "@UI.FieldGroup#MainAs.Data": [
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_REV_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_GROUP_NO"
+          }
+        }
+      ],
+      "@title": "{i18n>PartsStructureSpecification}",
+      "query": {
+        "SELECT": {
+          "from": {
+            "join": "full",
+            "args": [
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0010"
+                ],
+                "as": "A"
+              },
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0037"
+                ],
+                "as": "B"
+              }
+            ],
+            "on": [
+              {
+                "ref": [
+                  "A",
+                  "E_DOC_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "B",
+                  "E_DOC_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "A",
+                  "E_REV_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "B",
+                  "E_REV_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "A",
+                  "PS_GROUP_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "B",
+                  "PS_GROUP_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "A",
+                  "PS_ITEM_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "B",
+                  "PS_ITEM_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "A",
+                  "MODEL1"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "B",
+                  "MODEL"
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "key": true,
+              "ref": [
+                "B",
+                "E_DOC_NO"
+              ],
+              "as": "E_DOC_NO"
+            },
+            {
+              "ref": [
+                "B",
+                "E_REV_NO"
+              ],
+              "as": "E_REV_NO"
+            },
+            {
+              "ref": [
+                "B",
+                "PS_GROUP_NO"
+              ],
+              "as": "PS_GROUP_NO"
+            },
+            {
+              "ref": [
+                "B",
+                "E_DOC_TYPE"
+              ],
+              "as": "E_DOC_TYPE"
+            },
+            {
+              "ref": [
+                "B",
+                "WERKS"
+              ],
+              "as": "WERKS"
+            },
+            {
+              "as": "ZTHBT0010",
+              "cast": {
+                "target": "ZCDSEHBTC0007.ZTHBT0010",
+                "cardinality": {
+                  "max": "*"
+                },
+                "type": "cds.Association",
+                "on": [
+                  {
+                    "ref": [
+                      "ZTHBT0010",
+                      "E_DOC_NO"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "E_DOC_NO"
+                    ]
+                  }
+                ]
+              }
+            }
+          ],
+          "where": [
+            {
+              "ref": [
+                "B",
+                "E_DOC_TYPE"
+              ]
+            },
+            "=",
+            {
+              "val": "FE0"
+            }
+          ]
+        }
+      },
+      "elements": {
+        "E_DOC_NO": {
           "@Common.Label": "Document number",
+          "@Common.ValueList.Label": "DOC Type/Doc No",
           "@Common.ValueList.CollectionPath": "DOC_NO_HELP",
           "@Common.ValueList.Parameters": [
             {
@@ -12028,6 +12396,7 @@
               "ValueListProperty": "APPLY_DATE_N"
             }
           ],
+          "@Common.ValueList#MainModel.Label": "Main Model/FZ2 No",
           "@Common.ValueList#MainModel.CollectionPath": "MAIN_MODEL_HELP",
           "@Common.ValueList#MainModel.Parameters": [
             {
@@ -12074,47 +12443,144 @@
               "ValueListProperty": "APPLY_DATE_N"
             }
           ],
+          "@title": "Technical document No",
           "key": true,
           "type": "cds.String",
           "length": 18
         },
         "E_REV_NO": {
           "@title": "Technical renewal REV No",
-          "key": true,
           "type": "cds.String",
           "length": 5
         },
         "PS_GROUP_NO": {
           "@title": "PS group No",
-          "key": true,
           "type": "cds.String",
           "length": 3
         },
-        "FORMALIZE_DATE": {
-          "@title": "Formalized Date",
-          "type": "cds.Date"
-        },
-        "CREATION_DATE": {
-          "@title": "Creation Date",
-          "type": "cds.Date"
-        }
-      }
-    },
-    "ZCDSEHBTC0007.Doc_Type": {
-      "kind": "entity",
-      "@cds.persistence.skip": true,
-      "elements": {
-        "DOC_TYPE": {
+        "E_DOC_TYPE": {
           "@title": "Document Type",
-          "key": true,
           "type": "cds.String",
           "length": 3
+        },
+        "WERKS": {
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "VL_SH_H_T001",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "WERKS"
+              },
+              "ValueListProperty": "BUKRS"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "BUTXT"
+            }
+          ],
+          "@title": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ZTHBT0010": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZCDSEHBTC0007.ZTHBT0010",
+          "on": [
+            {
+              "ref": [
+                "ZTHBT0010",
+                "E_DOC_NO"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "E_DOC_NO"
+              ]
+            }
+          ]
         }
       }
     },
-    "ZCDSEHBTC0007.DATAFE0": {
+    "ZCDSEHBTC0007.DATAFE1": {
       "kind": "entity",
-      "@title": "{i18n>PartsStructureSpecification}",
+      "@UI.SelectionVariant#tab2.Text": "Parts Structure Specification",
+      "@UI.HeaderInfo.TypeName": "",
+      "@UI.HeaderInfo.TypeNamePlural": "Parts Structure Tr",
+      "@UI.HeaderInfo.Title.Value": {
+        "=": "E_DOC_NO"
+      },
+      "@UI.HeaderInfo.Description.Value": {
+        "=": "E_DOC_NO"
+      },
+      "@UI.SelectionFields": [
+        {
+          "=": "E_DOC_TYPE"
+        },
+        {
+          "=": "WERKS"
+        },
+        {
+          "=": "E_DOC_NO"
+        },
+        {
+          "=": "E_REV_NO"
+        },
+        {
+          "=": "PS_GROUP_NO"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_REV_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_GROUP_NO"
+          }
+        }
+      ],
+      "@UI.Facets": [
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "General Information",
+          "Target": "@UI.FieldGroup#MainAs"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Details",
+          "Target": "ZTHBT0014@UI.LineItem"
+        }
+      ],
+      "@UI.FieldGroup#MainAs.Data": [
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_REV_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_GROUP_NO"
+          }
+        }
+      ],
+      "@title": "{i18n>PartsStructureTr}",
       "query": {
         "SELECT": {
           "from": {
@@ -12122,129 +12588,141 @@
             "args": [
               {
                 "ref": [
-                  "ZHS402.ZTHBT0010"
-                ]
+                  "ZHS402.ZTHBT0014"
+                ],
+                "as": "A"
               },
               {
                 "ref": [
                   "ZHS402.ZTHBT0037"
-                ]
+                ],
+                "as": "B"
               }
             ],
             "on": [
               {
                 "ref": [
-                  "ZTHBT0010",
+                  "A",
                   "E_DOC_NO"
                 ]
               },
               "=",
               {
                 "ref": [
-                  "ZTHBT0037",
+                  "B",
                   "E_DOC_NO"
                 ]
               },
               "and",
               {
                 "ref": [
-                  "ZTHBT0010",
+                  "A",
                   "E_REV_NO"
                 ]
               },
               "=",
               {
                 "ref": [
-                  "ZTHBT0037",
+                  "B",
                   "E_REV_NO"
                 ]
               },
               "and",
               {
                 "ref": [
-                  "ZTHBT0010",
+                  "A",
                   "PS_GROUP_NO"
                 ]
               },
               "=",
               {
                 "ref": [
-                  "ZTHBT0037",
+                  "B",
                   "PS_GROUP_NO"
                 ]
               },
               "and",
               {
                 "ref": [
-                  "ZTHBT0010",
+                  "A",
                   "PS_ITEM_NO"
                 ]
               },
               "=",
               {
                 "ref": [
-                  "ZTHBT0037",
+                  "B",
                   "PS_ITEM_NO"
-                ]
-              },
-              "and",
-              {
-                "ref": [
-                  "ZTHBT0010",
-                  "MODEL1"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "ZTHBT0037",
-                  "MODEL"
                 ]
               }
             ]
           },
           "columns": [
             {
+              "key": true,
               "ref": [
-                "ZTHBT0037",
+                "B",
                 "E_DOC_NO"
-              ]
+              ],
+              "as": "E_DOC_NO"
             },
             {
               "ref": [
-                "ZTHBT0037",
+                "B",
                 "E_REV_NO"
-              ]
+              ],
+              "as": "E_REV_NO"
             },
             {
               "ref": [
-                "ZTHBT0037",
+                "B",
                 "PS_GROUP_NO"
-              ]
+              ],
+              "as": "PS_GROUP_NO"
             },
             {
               "ref": [
-                "ZTHBT0037",
+                "B",
                 "E_DOC_TYPE"
-              ]
+              ],
+              "as": "E_DOC_TYPE"
             },
             {
               "ref": [
-                "ZTHBT0037",
-                "EFFECT_D"
-              ]
+                "B",
+                "WERKS"
+              ],
+              "as": "WERKS"
             },
             {
-              "ref": [
-                "ZTHBT0037",
-                "INVALID_D"
-              ]
+              "as": "ZTHBT0014",
+              "cast": {
+                "target": "ZCDSEHBTC0007.ZTHBT0014",
+                "cardinality": {
+                  "max": "*"
+                },
+                "type": "cds.Association",
+                "on": [
+                  {
+                    "ref": [
+                      "ZTHBT0014",
+                      "E_DOC_NO"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "E_DOC_NO"
+                    ]
+                  }
+                ]
+              }
             }
           ],
           "where": [
             {
               "ref": [
-                "ZTHBT0037",
+                "B",
                 "E_DOC_TYPE"
               ]
             },
@@ -12258,6 +12736,7 @@
       "elements": {
         "E_DOC_NO": {
           "@title": "Technical document No",
+          "key": true,
           "type": "cds.String",
           "length": 18
         },
@@ -12276,173 +12755,31 @@
           "type": "cds.String",
           "length": 3
         },
-        "EFFECT_D": {
-          "@title": "Valid From",
-          "type": "cds.Date"
+        "WERKS": {
+          "@title": "Plant",
+          "type": "cds.String",
+          "length": 4
         },
-        "INVALID_D": {
-          "@title": "Valid To",
-          "type": "cds.Date"
-        }
-      }
-    },
-    "ZCDSEHBTC0007.DATAFE1": {
-      "kind": "entity",
-      "@title": "{i18n>PartsStructureTr}",
-      "query": {
-        "SELECT": {
-          "from": {
-            "join": "full",
-            "args": [
-              {
-                "ref": [
-                  "ZHS402.ZTHBT0014"
-                ]
-              },
-              {
-                "ref": [
-                  "ZHS402.ZTHBT0037"
-                ]
-              }
-            ],
-            "on": [
-              {
-                "ref": [
-                  "ZTHBT0014",
-                  "E_DOC_NO"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "ZTHBT0037",
-                  "E_DOC_NO"
-                ]
-              },
-              "and",
-              {
-                "ref": [
-                  "ZTHBT0014",
-                  "E_REV_NO"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "ZTHBT0037",
-                  "E_REV_NO"
-                ]
-              },
-              "and",
-              {
-                "ref": [
-                  "ZTHBT0014",
-                  "PS_GROUP_NO"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "ZTHBT0037",
-                  "PS_GROUP_NO"
-                ]
-              },
-              "and",
-              {
-                "ref": [
-                  "ZTHBT0014",
-                  "PS_ITEM_NO"
-                ]
-              },
-              "=",
-              {
-                "ref": [
-                  "ZTHBT0037",
-                  "PS_ITEM_NO"
-                ]
-              }
-            ]
+        "ZTHBT0014": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
           },
-          "columns": [
+          "target": "ZCDSEHBTC0007.ZTHBT0014",
+          "on": [
             {
               "ref": [
-                "ZTHBT0037",
+                "ZTHBT0014",
                 "E_DOC_NO"
-              ]
-            },
-            {
-              "ref": [
-                "ZTHBT0037",
-                "E_REV_NO"
-              ]
-            },
-            {
-              "ref": [
-                "ZTHBT0037",
-                "PS_GROUP_NO"
-              ]
-            },
-            {
-              "ref": [
-                "ZTHBT0037",
-                "E_DOC_TYPE"
-              ]
-            },
-            {
-              "ref": [
-                "ZTHBT0037",
-                "EFFECT_D"
-              ]
-            },
-            {
-              "ref": [
-                "ZTHBT0037",
-                "INVALID_D"
-              ]
-            }
-          ],
-          "where": [
-            {
-              "ref": [
-                "ZTHBT0037",
-                "E_DOC_TYPE"
               ]
             },
             "=",
             {
-              "val": "FE1"
+              "ref": [
+                "E_DOC_NO"
+              ]
             }
           ]
-        }
-      },
-      "elements": {
-        "E_DOC_NO": {
-          "@title": "Technical document No",
-          "type": "cds.String",
-          "length": 18
-        },
-        "E_REV_NO": {
-          "@title": "Technical renewal REV No",
-          "type": "cds.String",
-          "length": 5
-        },
-        "PS_GROUP_NO": {
-          "@title": "PS group No",
-          "type": "cds.String",
-          "length": 3
-        },
-        "E_DOC_TYPE": {
-          "@title": "Document Type",
-          "type": "cds.String",
-          "length": 3
-        },
-        "EFFECT_D": {
-          "@title": "Valid From",
-          "type": "cds.Date"
-        },
-        "INVALID_D": {
-          "@title": "Valid To",
-          "type": "cds.Date"
         }
       }
     },
@@ -14070,6 +14407,7 @@
         },
         "TABLE_NAME": {
           "@title": "Table name",
+          "key": true,
           "type": "cds.String",
           "length": 256
         }

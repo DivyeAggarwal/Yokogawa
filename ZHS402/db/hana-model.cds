@@ -109,7 +109,7 @@ entity INDEX_COLUMNS {
 entity M_TABLES {
     SCHEMA_NAME    : String(256)
     @title : 'Schema name';
-    TABLE_NAME     : String(256)
+   key TABLE_NAME     : String(256)
     @title : 'Table name';
     
 }
