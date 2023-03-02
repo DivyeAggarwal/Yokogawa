@@ -559,7 +559,7 @@ annotate ZCDSEHBTC0007.DATAFE0 {
     WERKS;
 }
 
-annotate ZCDSEHBTC0007.DATAFE0 {
+annotate ZCDSEHBTC0007.BOMDisplay {
     @(Common : {
         Label     : 'Document number',
         ValueList : {
@@ -1049,7 +1049,7 @@ annotate ZCDSEHBTC0007.ZTHBT0010 with @(
             { Value : PS_GROUP_NO },
             { Value : PS_ITEM_NO },
             { Value : E_TR_TYPE },
-            { Value : E_PARTS_NO },
+            { Value : E_PART_NO },
             { Value : PARTS_NO_EXT_SIGN },
             { Value : PARTS_QTY },
             { Value : PARTS_QTY_UNIT },
@@ -1060,7 +1060,7 @@ annotate ZCDSEHBTC0007.ZTHBT0010 with @(
             { Value : OPTION_PTN },
             { Value : MODEL1 },
             { Value : SFIX_DIGIT_PTN },
-            { Value : PROD_CAREER_FROM },  
+            { Value : PROD_CARRER },  
             { Value : PS_SYMBOL },
             { Value : PS_NOTE }                                     
         ],
@@ -1093,9 +1093,7 @@ annotate ZCDSEHBTC0007.ZTHBT0014 with @(
             { Value : E_TR_TYPE },
             { Value : PARENT_PARTS_NO },
             { Value : PARTS_NO_EXT_SIGN },
-            { Value : E_PARTS_NO },
-            { Value : PARTS_QTY },
-            { Value : PARTS_QTY_UNIT },
+            { Value : E_PART_NO },
             { Value : SELECT_SIGN },
             { Value : PARTS_USE_RATIO },                                     
             { Value : PS_SYMBOL },
