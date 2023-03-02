@@ -497,23 +497,41 @@ module.exports = cds.service.impl(async function (srv) {
         /* Prepare array of Production Order by which Addiional status is going to be 
         Read from the Cloud Table */
         let arrayInput = [];
-        for (let result of results) {
-            arrayInput.push(result.OrderNumber);
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                arrayInput.push(result.OrderNumber);
+            }
         }
+        else {
+            arrayInput.push(results.OrderNumber);
+        }
+
         let objectAddStatus = {};
         await PrepareResultObject(arrayInput, objectAddStatus);
         /*Manipulate the result from cloud and On Premise */
-        for (let result of results) {
-            let DataFromObject = objectAddStatus[result.OrderNumber];
-            if (DataFromObject) {
-                result.RePrint = DataFromObject;
-            }
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                let DataFromObject = objectAddStatus[result.OrderNumber];
+                if (DataFromObject) {
+                    result.RePrint = DataFromObject;
+                }
 
+            }
+        }
+        else {
+            let DataFromObject = objectAddStatus[results.OrderNumber];
+            if (DataFromObject) {
+                results.RePrint = DataFromObject;
+            }
         }
 
         return results;
     });
     this.on('READ', 'OperationList', async req => {
+        const bupa = await cds.connect.to('ProductionOrder');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'Components', async req => {
         const bupa = await cds.connect.to('ProductionOrder');
         return bupa.run(req.query);
     });
@@ -523,19 +541,32 @@ module.exports = cds.service.impl(async function (srv) {
         /* Prepare array of Production Order by which Addiional status is going to be 
         Read from the Cloud Table */
         let arrayInput = [];
-        for (let result of results) {
-            arrayInput.push(result.OrderNumber);
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                arrayInput.push(result.OrderNumber);
+            }
+        }
+        else {
+            arrayInput.push(results.OrderNumber);
         }
         let objectAddStatus = {};
         await PrepareResultObject(arrayInput, objectAddStatus);
 
         /*Manipulate the result from cloud and On Premise */
-        for (let result of results) {
-            let DataFromObject = objectAddStatus[result.OrderNumber];
-            if (DataFromObject) {
-                result.RePrint = DataFromObject;
-            }
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                let DataFromObject = objectAddStatus[result.OrderNumber];
+                if (DataFromObject) {
+                    result.RePrint = DataFromObject;
+                }
 
+            }
+        }
+        else {
+            let DataFromObject = objectAddStatus[results.OrderNumber];
+            if (DataFromObject) {
+                results.RePrint = DataFromObject;
+            }
         }
 
         return results;
@@ -546,18 +577,30 @@ module.exports = cds.service.impl(async function (srv) {
         /* Prepare array of Production Order by which Addiional status is going to be 
         Read from the Cloud Table */
         let arrayInput = [];
-        for (let result of results) {
-            arrayInput.push(result.ProductionOrderNo);
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                arrayInput.push(result.ProductionOrderNo);
+            }
+        }
+        else {
+            arrayInput.push(results.ProductionOrderNo);
         }
         let objectAddStatus = {};
         await PrepareResultObject(arrayInput, objectAddStatus);
         /*Manipulate the result from cloud and On Premise */
-        for (let result of results) {
-            let DataFromObject = objectAddStatus[result.ProductionOrderNo];
-            if (DataFromObject) {
-                result.RePrint = DataFromObject;
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                let DataFromObject = objectAddStatus[result.ProductionOrderNo];
+                if (DataFromObject) {
+                    result.RePrint = DataFromObject;
+                }
             }
-
+        }
+        else {
+            let DataFromObject = objectAddStatus[results.ProductionOrderNo];
+            if (DataFromObject) {
+                results.RePrint = DataFromObject;
+            }
         }
 
         return results;

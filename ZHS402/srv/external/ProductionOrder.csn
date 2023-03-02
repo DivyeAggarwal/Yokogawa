@@ -175,6 +175,17 @@
           "@sap.label": "Order",
           "notNull": true
         },
+        "Language": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.unicode": "false",
+          "@sap.label": "Language",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
         "OrderType": {
           "type": "cds.String",
           "length": 4,
@@ -292,7 +303,7 @@
         },
         "Note": {
           "type": "cds.String",
-          "length": 20,
+          "length": 2000,
           "@sap.unicode": "false",
           "@sap.label": "Description",
           "@sap.sortable": "false",
@@ -1675,8 +1686,8 @@
           "type": "cds.String",
           "length": 12,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Order",
-          "@sap.quickinfo": "Order Number",
+          "@sap.label": "Manufacturing Order",
+          "@sap.quickinfo": "Manufacturing Order ID",
           "notNull": true
         },
         "Reservation": {
@@ -1705,13 +1716,16 @@
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 3,
-          "@sap.label": "Total Order Quantity",
+          "@sap.unit": "PBEBD262AB87EBDF64C721EAC45119F9A",
+          "@sap.label": "Total Quantity",
+          "@sap.quickinfo": "Manufacturing Order Planned Total Quantity",
           "notNull": false
         },
         "BaseUnitMeasure": {
           "type": "cds.String",
           "length": 3,
-          "@sap.label": "Base Unit of Measure",
+          "@sap.label": "Production Unit",
+          "@sap.quickinfo": "Production Unit of Measure",
           "@sap.semantics": "unit-of-measure",
           "notNull": false
         },
@@ -1735,7 +1749,7 @@
           "type": "cds.String",
           "length": 4,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage location",
+          "@sap.label": "Storage Location",
           "notNull": false
         },
         "Reprint": {
@@ -2079,18 +2093,25 @@
         "EntryUnit": {
           "type": "cds.String",
           "length": 3,
+          "@sap.label": "Unit of Entry",
+          "@sap.quickinfo": "Unit of entry",
+          "@sap.semantics": "unit-of-measure",
           "notNull": false
         },
         "TotalReqQty": {
           "type": "cds.Decimal",
-          "precision": 34,
-          "scale": 6,
+          "precision": 13,
+          "scale": 3,
           "@sap.unit": "EntryUnit2",
+          "@sap.label": "Quantity in Unit of Entry",
           "notNull": false
         },
         "EntryUnit2": {
           "type": "cds.String",
           "length": 3,
+          "@sap.label": "Unit of Entry",
+          "@sap.quickinfo": "Unit of entry",
+          "@sap.semantics": "unit-of-measure",
           "notNull": false
         },
         "StorageBin": {
