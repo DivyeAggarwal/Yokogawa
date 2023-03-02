@@ -501,7 +501,7 @@ module.exports = cds.service.impl(async function (srv) {
             arrayInput.push(result.OrderNumber);
         }
         let objectAddStatus = {};
-        PrepareResultObject(arrayInput, objectAddStatus);
+        await PrepareResultObject(arrayInput, objectAddStatus);
         /*Manipulate the result from cloud and On Premise */
         for (let result of results) {
             let DataFromObject = objectAddStatus[result.OrderNumber];
@@ -527,7 +527,7 @@ module.exports = cds.service.impl(async function (srv) {
             arrayInput.push(result.OrderNumber);
         }
         let objectAddStatus = {};
-        PrepareResultObject(arrayInput, objectAddStatus);
+        await PrepareResultObject(arrayInput, objectAddStatus);
 
         /*Manipulate the result from cloud and On Premise */
         for (let result of results) {
@@ -550,10 +550,10 @@ module.exports = cds.service.impl(async function (srv) {
             arrayInput.push(result.ProductionOrderNo);
         }
         let objectAddStatus = {};
-        PrepareResultObject(arrayInput, objectAddStatus);
+        await PrepareResultObject(arrayInput, objectAddStatus);
         /*Manipulate the result from cloud and On Premise */
         for (let result of results) {
-            let DataFromObject = ObjectAddStatus[result.ProductionOrderNo];
+            let DataFromObject = objectAddStatus[result.ProductionOrderNo];
             if (DataFromObject) {
                 result.RePrint = DataFromObject;
             }

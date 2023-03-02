@@ -538,7 +538,7 @@ annotate ZCDSEHBTC0007.BOMDisplay with @(
 //         });
 // };
 
-annotate ZCDSEHBTC0007.DATAFE0 {
+annotate ZCDSEHBTC0007.BOMDisplay {
     @(Common : {
         Label     : 'Plant',
         ValueList : {
