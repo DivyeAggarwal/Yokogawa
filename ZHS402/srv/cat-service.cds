@@ -391,6 +391,7 @@ service ZCDSEHBTC0009 {
 
 service ZCDSEHBTC0010 {
     entity OperationList as projection on ProductionOrder.ZCDSEHPPB0031;
+    entity Components as projection on ProductionOrder.ZCDSEHPPB0020;
     entity AdditionalStatus as projection on db.ZTHBT0028;
     entity ChildPartListCombined as projection on ProductionOrder.ZCDSEHPPI0001{
         key ProductionOrderNo,
@@ -457,9 +458,13 @@ service ZCDSEHBTC0010 {
          TransProd,
          BuildingLocation,
          rwcd,
+         @Semantics.quantity.unitOfMeasure: 'EntryUnit'
          EntryQty,
+         @Semantics.unitOfMeasure
          EntryUnit,
+         @Semantics.quantity.unitOfMeasure: 'EntryUnit2'
          TotalReqQty,
+         @Semantics.unitOfMeasure
         EntryUnit2,
         StorageBin,
         MtlLocation,
