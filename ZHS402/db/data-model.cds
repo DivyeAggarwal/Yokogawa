@@ -386,5 +386,10 @@ entity ZTHBT0028: managed{
         ZZG_PRNTTIME: Time @title : 'Printed Time';
         ZZG_PRNTPRID: String(12) @title : 'Printed Person Id';
 }
-
+entity ZTHBT0058: managed {
+    key REPORTID: Integer @title : 'Integer';
+    key KEY1: String(10) @title: 'Key1';
+    key KEY2: String(10) @title: 'Key2';
+        PRINTERID: String(10) @title: 'Printer Id'
+}
 
