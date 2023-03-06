@@ -103,7 +103,7 @@ entity ZTHBT0022: managed {
     INVDATE       : Date;
     PROJECTID     : String;
     COMPANYCODE   : String;
-    TOTALAMOUNT   : Integer;
+    TOTALAMOUNT   : Decimal(13, 2) @odata.Type:'Edm.String';
     TAXAMOUNT     : Integer;
     RESOURCES      : Association to many ZTHBT0023
                       on RESOURCES.INVOICEID = $self;
@@ -123,8 +123,8 @@ entity ZTHBT0023: managed, cuid {
     BELONGS       : String;
     CURR          : String;
     UNITPRICE     : Integer;
-    HOURS         : Decimal(4, 2);
-    BILLINGAMOUNT : Integer;
+    HOURS         : Decimal(13, 2);
+    BILLINGAMOUNT : Decimal(13, 2);
 }
 entity ZTHBT0024: managed, cuid {
     INVOICEID     : Association to one ZTHBT0022;
@@ -135,7 +135,7 @@ entity ZTHBT0024: managed, cuid {
     AMOUNT        : Integer;
     CALCTYPE      : String;
     MARKUP        : Integer;
-    BILLINGAMOUNT : Integer;
+    BILLINGAMOUNT : Decimal(13, 2);
 }
 entity ZTHBT0025: managed, cuid {
     INVOICEID     : Association to one ZTHBT0022;  
@@ -144,7 +144,7 @@ entity ZTHBT0025: managed, cuid {
     UNITPRICE     : Integer;
     QUAN          : Integer;
     UOM           : String;
-    BILLINGAMOUNT : Integer;
+    BILLINGAMOUNT : Decimal(13, 2);
 }
 entity ZTHBT0020: managed {
     key ZTCODE: String(8) @title : 'Task Code';
