@@ -498,3 +498,16 @@ service ZCDSEHBTC0010 {
 }
 
 
+service ZCDSEHBTC00011 {
+    entity ZTHBT0006 as projection on db.ZTHBT0006;
+    entity ZTHBT0008 as projection on db.ZTHBT0008;
+    entity ZTHBT0009 as projection on db.ZTHBT0009;
+    entity ZTHBT0015 as projection on db.ZTHBT0015;
+    entity ZTHBT0017 as projection on db.ZTHBT0017;
+    entity ZTHBT0018 as projection on db.ZTHBT0018;
+    entity ZTHBT0037 as projection on db.ZTHBT0037;
+    entity A_Product as projection on API_PRODUCT_SRV.A_Product;
+}
+
+
+
