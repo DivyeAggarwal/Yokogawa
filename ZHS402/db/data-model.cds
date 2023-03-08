@@ -387,9 +387,13 @@ entity ZTHBT0028: managed{
         ZZG_PRNTPRID: String(12) @title : 'Printed Person Id';
 }
 entity ZTHBT0058: managed {
-    key REPORTID: Integer @title : 'Integer';
+    key REPORTID   : Integer @title : 'Report ID';
     key KEY1: String(10) @title: 'Key1';
     key KEY2: String(10) @title: 'Key2';
         PRINTERID: String(10) @title: 'Printer Id'
 }
 
+entity ZTHBT0052: managed {
+    key BUKRS: String(4) @title: 'Company Code';
+        CATEGORY: String(3) @title: 'Category'
+}

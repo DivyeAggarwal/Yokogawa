@@ -80,16 +80,34 @@ service ZCDSEHBTC0003
         key aufnr,
             ktext
     }
-
+    entity ReceiverWBSExt as projection on TimeSheetEntry.ZCDSEHPSC0008;
     entity ReceiverWBS as projection on TimeSheetEntry.ZCDSEHPSC0008 {
         key WBSId,
             ProjectDesc,
-            ProjectId
+            ProjectId,
+            Profile,
+            UserStatus,
+            LevelInHierarchy,
+            ProjectType
     }
     entity ReceiverCostCenter as projection on TimeSheetEntry.ZCDSEHFIC0007 {
         key CostCenter,
             CostCenterName
     }
+    entity ParentWBSExt as projection on TimeSheetEntry.ZCDSEHPSC0006;
+    
+    entity ParentWBS as projection on TimeSheetEntry.ZCDSEHPSC0006{
+        key ReceiverWBS,
+        key ReceiverProjDesc,
+        key ParentWBS,
+            ParentProjDesc,
+            LevelInHierarchy,
+            ParentCompanyCode,
+            projectType,
+            IhpaObjFound,
+            UserStatus
+    }
+    entity LoggedInUser as projection on TimeSheetEntry.CurrentLoginUser;
    
    entity ZTHBT0019 as
         select from db.ZTHBT0019 as _assignment

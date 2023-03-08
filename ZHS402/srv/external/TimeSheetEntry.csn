@@ -159,7 +159,7 @@
       "@sap.updatable": "false",
       "@sap.deletable": "false",
       "@sap.content.version": "1",
-      "@sap.label": "Consumption View for Controlling Area",
+      "@sap.label": "Consumption View for Cost Center",
       "elements": {
         "CostCenter": {
           "key": true,
@@ -412,6 +412,7 @@
           "length": 10,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Cost Center",
+          "@sap.quickinfo": "Sender Cost Center",
           "notNull": false
         },
         "Designation": {
@@ -447,6 +448,80 @@
           "length": 4,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Company Code",
+          "notNull": false
+        }
+      }
+    },
+    "TimeSheetEntry.ZCDSEHPSC0006": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "F4 for Parent WBS",
+      "elements": {
+        "ReceiverWBS": {
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "@sap.label": "Receiver WBS",
+          "notNull": true
+        },
+        "ReceiverProjDesc": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Receiver Project Description",
+          "@sap.quickinfo": "PS: Short description (1st text line)",
+          "notNull": true
+        },
+        "ParentWBS": {
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "@sap.label": "Parent WBS",
+          "notNull": true
+        },
+        "ParentProjDesc": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Parent Project Description",
+          "@sap.quickinfo": "PS: Short description (1st text line)",
+          "notNull": false
+        },
+        "LevelInHierarchy": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Level",
+          "@sap.quickinfo": "Level in Project Hierarchy",
+          "notNull": false
+        },
+        "ParentCompanyCode": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.label": "ParentCompanyCode",
+          "notNull": false
+        },
+        "projectType": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Project Type",
+          "notNull": false
+        },
+        "IhpaObjFound": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.label": "IHPA Object Found",
+          "notNull": false
+        },
+        "UserStatus": {
+          "type": "cds.String",
+          "length": 20,
+          "@sap.label": "User Status",
+          "@sap.quickinfo": "User field with 20 characters",
           "notNull": false
         }
       }
@@ -507,6 +582,118 @@
           "length": 40,
           "@sap.label": "Receiver Project Description",
           "@sap.quickinfo": "PS: Short description (1st text line)",
+          "notNull": false
+        },
+        "Profile": {
+          "type": "cds.String",
+          "length": 7,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Profile",
+          "@sap.quickinfo": "Project Profile",
+          "notNull": false
+        },
+        "UserStatus": {
+          "type": "cds.String",
+          "length": 20,
+          "@sap.label": "User Status",
+          "@sap.quickinfo": "User field with 20 characters",
+          "notNull": false
+        },
+        "LevelInHierarchy": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Level",
+          "@sap.quickinfo": "Level in Project Hierarchy",
+          "notNull": false
+        },
+        "ProjectType": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Project Type",
+          "notNull": false
+        }
+      }
+    },
+    "TimeSheetEntry.CurrentLoginUser": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Logged In User Details",
+      "elements": {
+        "email_Address": {
+          "key": true,
+          "type": "cds.String",
+          "length": 241,
+          "notNull": true
+        },
+        "globalID": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "System ID",
+          "@sap.quickinfo": "Communication Identification/Number",
+          "notNull": false
+        },
+        "EmployeeId": {
+          "type": "cds.String",
+          "length": 60,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ID number",
+          "@sap.quickinfo": "Identification Number",
+          "notNull": false
+        },
+        "EmployeeName": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Last name First name",
+          "@sap.quickinfo": "Employee's Name (Sortable by LAST NAME FIRST NAME)",
+          "notNull": false
+        },
+        "CostCenter": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sender Cost Center",
+          "notNull": false
+        },
+        "Designation": {
+          "type": "cds.String",
+          "length": 25,
+          "@sap.label": "Position Short Text",
+          "@sap.quickinfo": "Short Text of Position",
+          "notNull": false
+        },
+        "CostCenterName": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Description",
+          "notNull": false
+        },
+        "ActivityType": {
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Activity Type",
+          "notNull": false
+        },
+        "ActivityTypeName": {
+          "type": "cds.String",
+          "length": 20,
+          "@sap.label": "Name",
+          "@sap.quickinfo": "General Name",
+          "notNull": false
+        },
+        "CompanyCode": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company Code",
           "notNull": false
         }
       }
