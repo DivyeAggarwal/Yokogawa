@@ -545,7 +545,7 @@ module.exports = cds.service.impl(async function (srv) {
                     case 'OPP':
                         oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({Profile:'YD00001', and:{LevelInHierarchy:{'>=':002}}, and:{ProjectType:'D1'}});
                     default:
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({UserStatus:'CCW', and:{LevelInHierarchy:{'>=':006}}});
+                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({UserStatus:'CCTW', and:{LevelInHierarchy:{'>=':006}}});
                         break;
                 }
                 

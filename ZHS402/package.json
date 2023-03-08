@@ -90,8 +90,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZSRVBHPS0008",
         "credentials": {
-          "path": "/sap/opu/odata/sap/ZSRVBHPS0008",
-          "destination": "s4003-ap-https_ZSRVBHPS0008"
+          "destination": "s4003-ap-https_CLONING"
         }
       },
       "PlantAPI": {
