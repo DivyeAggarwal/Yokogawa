@@ -82,6 +82,10 @@ module.exports = cds.service.impl(async function (srv) {
         var oData = await db.run(req.query);
         return oData;
     });
+    this.before('READ', 'ZTHBT0019', async (req) => {
+        ValidateAssignment(req);
+
+    });
     this.before('UPDATE', 'ZTHBT0019', async (req) => {
         ValidateAssignment(req);
 

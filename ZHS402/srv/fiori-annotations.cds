@@ -170,21 +170,25 @@ annotate ZCDSEHBTC0003.ZTHBT0019 {
          @(Common : {
            Label        : 'Parent WBS',
             ValueList    : {
-                CollectionPath : 'ReceiverWBS',
+                CollectionPath : 'ParentWBS',
                 Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
                     LocalDataProperty : PWBS,
-                    ValueListProperty : 'WBSId'
+                    ValueListProperty : 'ParentWBS'
                 },
                 {
                     $Type             : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'ProjectId'
+                    ValueListProperty : 'ReceiverProjDesc'
                 },
                 {
                     $Type             : 'Common.ValueListParameterInOut',
                     LocalDataProperty : PARENTWBSDESC,
-                    ValueListProperty : 'ProjectDesc'
+                    ValueListProperty : 'ParentProjDesc'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterFilterOnly',
+                    ValueListProperty : 'ReceiverWBS'
                 }
                 ]
             }
