@@ -5,17 +5,6 @@ using { PlantAPI as external } from './external/PlantAPI';
 using  API_PRODUCT_SRV from './external/API_PRODUCT_SRV';
 using ProductionOrder from './external/ProductionOrder';
 
-service ZSRVBHPS0008Service {
-
-    entity ZCDSEHPSB0004 as projection on ZSRVBHPS0008.ZCDSEHPSB0004; 
-    entity ZCDSEHPSB0037 as projection on ZSRVBHPS0008.ZCDSEHPSB0037; 
-    entity ZCDSEHPSB0038 as projection on ZSRVBHPS0008.ZCDSEHPSB0038; 
-    entity ZCDSEHPSC0005 as projection on ZSRVBHPS0008.ZCDSEHPSC0005; 
-    entity ZCDSEHSDB0013 as projection on ZSRVBHPS0008.ZCDSEHSDB0013; 
-    entity SAP__Currencies as projection on ZSRVBHPS0008.SAP__Currencies; 
-    entity SAP__UnitsOfMeasure as projection on ZSRVBHPS0008.SAP__UnitsOfMeasure; 
-
-}
 service CatalogService {
     entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
         key AccountingIndicator,
@@ -343,6 +332,17 @@ service ZCDSEHBTC0007 {
 
 }
 
+service ZSRVBHPS0008Service {
+
+    entity ZCDSEHPSB0004 as projection on ZSRVBHPS0008.ZCDSEHPSB0004; 
+    entity ZCDSEHPSB0037 as projection on ZSRVBHPS0008.ZCDSEHPSB0037; 
+    entity ZCDSEHPSB0038 as projection on ZSRVBHPS0008.ZCDSEHPSB0038; 
+    entity ZCDSEHPSC0005 as projection on ZSRVBHPS0008.ZCDSEHPSC0005; 
+    entity ZCDSEHSDB0013 as projection on ZSRVBHPS0008.ZCDSEHSDB0013; 
+    entity SAP__Currencies as projection on ZSRVBHPS0008.SAP__Currencies; 
+    entity SAP__UnitsOfMeasure as projection on ZSRVBHPS0008.SAP__UnitsOfMeasure; 
+
+}
 
 service ZCDSEHBTC0009 {
     entity ZTHBT0001 as projection on db.ZTHBT0001;
@@ -354,6 +354,7 @@ service ZCDSEHBTC0009 {
     entity ZTHBT0007 as projection on db.ZTHBT0007;
     entity ZTHBT0015 as projection on db.ZTHBT0015;
     entity A_ProductDescription as projection on API_PRODUCT_SRV.A_ProductDescription;
+    entity A_Product as projection on API_PRODUCT_SRV.A_Product;
 
     // entity DigitPartList as select ZTHBT0001.SOURCE_CD, ZTHBT0001.YEOS_MNF_MODEL, A_ProductDescription.ProductDescription from db.ZTHBT0001 left outer join API_PRODUCT_SRV.A_ProductDescription 
     //     on ZTHBT0001.E_PARTS_NO  = A_ProductDescription.Product;// where ZTHBT0007.E_PARTS_NO = '123';
@@ -497,16 +498,15 @@ service ZCDSEHBTC0010 {
 
 }
 
-
-service ZCDSEHBTC00011 {
+//BOM Update
+service ZCDSEHBTC0011 {
     entity ZTHBT0006 as projection on db.ZTHBT0006;
     entity ZTHBT0008 as projection on db.ZTHBT0008;
     entity ZTHBT0009 as projection on db.ZTHBT0009;
     entity ZTHBT0015 as projection on db.ZTHBT0015;
     entity ZTHBT0017 as projection on db.ZTHBT0017;
     entity ZTHBT0018 as projection on db.ZTHBT0018;
-    entity ZTHBT0037 as projection on db.ZTHBT0037;
-    entity A_Product as projection on API_PRODUCT_SRV.A_Product;
+    entity ZTHBT0037 as projection on db.ZTHBT0037; 
 }
 
 
