@@ -397,3 +397,10 @@ entity ZTHBT0052: managed {
     key BUKRS: String(4) @title: 'Company Code';
         CATEGORY: String(3) @title: 'Category'
 }
+
+entity ZTHBT0056 : managed {
+    key WERKS         : String(4)  @title : 'Plant';
+    key MOD_ITEM      : String(18) @title : 'Module Item';
+    key MOD_CODE      : String(40) @title : 'Module Code';
+        BOM_CRTE_FLAG : String(1)  @title : 'BOM creation Flag';
+}

@@ -541,6 +541,43 @@ module.exports = cds.service.impl(async function (srv) {
         return oData;
     });
 
+    this.on('READ', 'materialWhereUsed', async req => {
+        const materialWhereUsed = await cds.connect.to('ZSRVBHPP0011');
+        const results = await materialWhereUsed.run(req.query);
+        /* Prepare array of Production Order by which Addiional status is going to be 
+        Read from the Cloud Table */
+        let arrayInput = [];
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                arrayInput.push(result.MTART);
+            }
+        }
+        else {
+            arrayInput.push(results.MTART);
+        }
+        let objectAddStatus = {};
+        await PrepareWherUsedObject(arrayInput, objectAddStatus);
+
+        /*Manipulate the result from cloud and On Premise */
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                let DataFromObject = objectAddStatus[result.MTART];
+                if (DataFromObject) {
+                    result.MTART = DataFromObject;
+                }
+
+            }
+        }
+        else {
+            let DataFromObject = objectAddStatus[results.MTART];
+            if (DataFromObject) {
+                results.MTART = DataFromObject;
+            }
+        }
+
+        return results;
+    });
+
 
 });
 
@@ -566,6 +603,20 @@ const PrepareResultObject = async (arrayInput, objectAddStatus) => {
     if (addStatusDataArray.length > 0) {
         for (let addStatusData of addStatusDataArray) {
             objectAddStatus[addStatusData.PRODUCTIONORDER] = addStatusData.ZPRINT;
+        }
+    }
+}
+
+const PrepareWherUsedObject = async (arrayInput, objectAddStatus) => {
+    /*Fire the Query to the Cloiud table */
+    const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0033').where({ MODEL: { in: arrayInput } });
+    /*Prepare the Result in Object Format so that processing is quick */
+    if (objectAddStatus) {
+        objectAddStatus = {};
+    }
+    if (addMSCodeDataArray.length > 0) {
+        for (let addStatusData of addMSCodeDataArray) {
+            objectAddStatus[addStatusData.MSCODE] = addStatusData.MSCODE;
         }
     }
 }

@@ -116,6 +116,14 @@
           "path": "/sap/opu/odata/sap/ZAPIHPP0003_SRV",
           "destination": "s4003-ap-https_ZSRVBHPS0008"
         }
+      },
+      "ZSRVBHPP0011": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVBHPP0011",
+        "credentials": {
+          "path": "/sap/opu/odata/sap/ZSRVBHPP0011",
+          "destination": "s4003-ap-https_ZSRVBHPS0008"
+        }
       }
     },
     "hana": {

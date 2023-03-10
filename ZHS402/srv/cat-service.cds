@@ -4,6 +4,7 @@ using ZSRVBHPS0008 from './external/ZSRVBHPS0008';
 using { PlantAPI as external } from './external/PlantAPI';
 using  API_PRODUCT_SRV from './external/API_PRODUCT_SRV';
 using ProductionOrder from './external/ProductionOrder';
+using ZSRVBHPP0011 from './external/ZSRVBHPP0011';
 
 service CatalogService {
     entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -235,6 +236,7 @@ service ZCDS_ALL_ENTITIES {
     entity ZTHBT0009 as projection on db.ZTHBT0010;
     entity ZTHBT0017 as projection on db.ZTHBT0014;
     entity ZTHBT0018 as projection on db.ZTHBT0018;
+    entity ZTHBT0056 as projection on db.ZTHBT0056;
 }
 
 service ZCDSEHBTC0006 {
@@ -527,5 +529,51 @@ service ZCDSEHBTC0011 {
     entity ZTHBT0037 as projection on db.ZTHBT0037; 
 }
 
+service ZCDSEHBTC0012 {
+    entity ZTHBT0056  as projection on db.ZTHBT0056;
 
-
+    entity materialWhereUsed as projection on ZSRVBHPP0011.ZCDSEHPPB0070 {
+        key WERKS,
+        key MATNR_COM,
+            MAKTX_COM,
+            MTART_COM,
+            POTX1_0,
+            POSNR,
+            SORTF,
+            POTX1_19,
+            MATNR,
+            MAKTX,
+            MTART,
+            EMENG,
+            @Semantics.unitOfMeasure
+            BMEIN,
+            POTX1_22,
+            SCHGT,
+            POTX1_24,
+            ARBPL,
+            VGW01,
+            @Semantics.unitOfMeasure
+            VGE01,
+            VMSTD,
+            LEVEL_BOM,
+            SEARCH_FROM,
+            SCHGT_TO,
+            BESKZ_TO,
+            SOBSL_TO,
+            LVORM_TO,
+            SCHGT_FROM,
+            BESKZ_FROM,
+            SOBSL_FROM,
+            LVORM_FROM,
+            @Semantics.unitOfMeasure
+            BSTME,
+            MEINS,
+            BMTYP,
+            SUMFG,
+            STLAN,
+            STLNR,
+            MMSTD,
+            DT_MFG,
+            MESSAGE,
+    };
+}

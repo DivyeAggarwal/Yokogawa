@@ -1,0 +1,317 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.3.1"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHPP0011": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0011.ZCDSEHPPB0070": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Where Used List",
+      "elements": {
+        "WERKS": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "notNull": true
+        },
+        "MATNR_COM": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "notNull": true
+        },
+        "MAKTX_COM": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description",
+          "notNull": false
+        },
+        "MTART_COM": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material type",
+          "notNull": false
+        },
+        "POTX1_0": {
+          "type": "cds.String",
+          "length": 18,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Field length 18",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "POSNR": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Undefined range (can be used for patch levels)",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "SORTF": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sort String",
+          "notNull": false
+        },
+        "POTX1_19": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component of the Version Number",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "MATNR": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "notNull": false
+        },
+        "MAKTX": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description",
+          "notNull": false
+        },
+        "MTART": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material type",
+          "notNull": false
+        },
+        "EMENG": {
+          "type": "cds.Double",
+          "@sap.label": "CS Float field (quantity help ...)",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "BMEIN": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.quickinfo": "Base Unit of Measure for BOM",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": false
+        },
+        "POTX1_22": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "SCHGT": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Bulk material",
+          "@sap.quickinfo": "Indicator: bulk material",
+          "notNull": false
+        },
+        "POTX1_24": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "ARBPL": {
+          "type": "cds.String",
+          "length": 8,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "notNull": false
+        },
+        "VGW01": {
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3,
+          "@sap.unit": "VGE01",
+          "@sap.label": "Standard Value",
+          "notNull": false
+        },
+        "VGE01": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": false
+        },
+        "VMSTD": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid from",
+          "@sap.quickinfo": "Date from which distr.-chain-spec. material status is valid",
+          "notNull": false
+        },
+        "LEVEL_BOM": {
+          "type": "cds.Decimal",
+          "precision": 2,
+          "scale": 0,
+          "@sap.label": "Level",
+          "@sap.quickinfo": "Level (in multi-level BOM explosions)",
+          "notNull": false
+        },
+        "SEARCH_FROM": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "3-Byte field",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "SCHGT_TO": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Bulk material",
+          "@sap.quickinfo": "Indicator: bulk material",
+          "notNull": false
+        },
+        "BESKZ_TO": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Procurement Type",
+          "notNull": false
+        },
+        "SOBSL_TO": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Special procurement",
+          "@sap.quickinfo": "Special procurement type",
+          "notNull": false
+        },
+        "LVORM_TO": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "DF at plant level",
+          "@sap.quickinfo": "Flag Material for Deletion at Plant Level",
+          "notNull": false
+        },
+        "SCHGT_FROM": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Bulk material",
+          "@sap.quickinfo": "Indicator: bulk material",
+          "notNull": false
+        },
+        "BESKZ_FROM": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Procurement Type",
+          "notNull": false
+        },
+        "SOBSL_FROM": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Special procurement",
+          "@sap.quickinfo": "Special procurement type",
+          "notNull": false
+        },
+        "LVORM_FROM": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "DF at plant level",
+          "@sap.quickinfo": "Flag Material for Deletion at Plant Level",
+          "notNull": false
+        },
+        "BSTME": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Order Unit",
+          "@sap.quickinfo": "Purchase Order Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": false
+        },
+        "MEINS": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": false
+        },
+        "BMTYP": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "BOM category",
+          "notNull": false
+        },
+        "SUMFG": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Totals record ID",
+          "@sap.quickinfo": "Totals record indicator",
+          "notNull": false
+        },
+        "STLAN": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "BOM Usage",
+          "notNull": false
+        },
+        "STLNR": {
+          "type": "cds.String",
+          "length": 8,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char8",
+          "@sap.quickinfo": "Character field, 8 characters long",
+          "notNull": false
+        },
+        "MMSTD": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid From",
+          "@sap.quickinfo": "Date from Which the Plant-Specific Material Status Is Valid",
+          "notNull": false
+        },
+        "DT_MFG": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "30 Characters",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "MESSAGE": {
+          "type": "cds.String",
+          "length": 50,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Message Variable",
+          "notNull": false
+        }
+      }
+    }
+  }
+}
