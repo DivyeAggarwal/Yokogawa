@@ -1,0 +1,190 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.3.1"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHPP0012": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0012.ZCDSEHPPB0071": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom entity for BOM upload",
+      "elements": {
+        "e_doc_type": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "notNull": true
+        },
+        "e_doc_no": {
+          "type": "cds.String",
+          "length": 19,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "19 Characters",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "e_rev_no": {
+          "type": "cds.String",
+          "length": 8,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char8",
+          "@sap.quickinfo": "Character field, 8 characters long",
+          "notNull": false
+        },
+        "ps_group_no": {
+          "type": "cds.String",
+          "length": 11,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Data Element Length 11",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "ps_item_no": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "e_parts_no": {
+          "type": "cds.String",
+          "length": 19,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "19 Characters",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "model1_parts": {
+          "type": "cds.String",
+          "length": 19,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "19 Characters",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "parts_qty": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char15",
+          "@sap.quickinfo": "Char 15",
+          "notNull": false
+        },
+        "parts_qty_unit": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char15",
+          "@sap.quickinfo": "Char 15",
+          "notNull": false
+        },
+        "select_sign": {
+          "type": "cds.String",
+          "length": 11,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Data Element Length 11",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "parts_use_ratio": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char15",
+          "@sap.quickinfo": "Char 15",
+          "notNull": false
+        },
+        "ps_note": {
+          "type": "cds.String",
+          "length": 65,
+          "@sap.label": "Character 65",
+          "@sap.quickinfo": "Character Field of Length 65",
+          "notNull": false
+        },
+        "or_sign": {
+          "type": "cds.String",
+          "length": 7,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character field, length 7",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "sfix_digit_ptn": {
+          "type": "cds.String",
+          "length": 51,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Empty",
+          "notNull": false
+        },
+        "sfix_ptn": {
+          "type": "cds.String",
+          "length": 452,
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Text (452 characters)",
+          "notNull": false
+        },
+        "option_ptn": {
+          "type": "cds.String",
+          "length": 452,
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Text (452 characters)",
+          "notNull": false
+        },
+        "prod_career": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "e_tr_type": {
+          "type": "cds.String",
+          "length": 9,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "CHAR9",
+          "@sap.quickinfo": "Character field of 9 digits",
+          "notNull": false
+        },
+        "ps_symbol": {
+          "type": "cds.String",
+          "length": 11,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Data Element Length 11",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "valid_frm": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Current Date",
+          "@sap.quickinfo": "ABAP system field: Current date of application server",
+          "notNull": false
+        },
+        "error_cod": {
+          "type": "cds.String",
+          "length": 25,
+          "@sap.label": "Proxy Data Element (Generated)",
+          "@sap.heading": "",
+          "notNull": false
+        }
+      }
+    }
+  }
+}

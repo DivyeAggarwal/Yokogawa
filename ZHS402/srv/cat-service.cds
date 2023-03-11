@@ -5,6 +5,7 @@ using { PlantAPI as external } from './external/PlantAPI';
 using  API_PRODUCT_SRV from './external/API_PRODUCT_SRV';
 using ProductionOrder from './external/ProductionOrder';
 using ZSRVBHPP0011 from './external/ZSRVBHPP0011';
+using ZSRVBHPP0012 from './external/ZSRVBHPP0012';
 
 service CatalogService {
     entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -527,6 +528,7 @@ service ZCDSEHBTC0011 {
     entity ZTHBT0017 as projection on db.ZTHBT0017;
     entity ZTHBT0018 as projection on db.ZTHBT0018;
     entity ZTHBT0037 as projection on db.ZTHBT0037; 
+    entity ZCDSEHPPB0071 as projection on ZSRVBHPP0012.ZCDSEHPPB0071
 }
 
 service ZCDSEHBTC0012 {
