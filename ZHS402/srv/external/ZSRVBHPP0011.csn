@@ -96,6 +96,12 @@
           "@sap.label": "Material Description",
           "notNull": false
         },
+        "ZZ1_MSCODE_PRD": {
+          "type": "cds.String",
+          "length": 80,
+          "@sap.label": "MS Code",
+          "notNull": false
+        },
         "MTART": {
           "type": "cds.String",
           "length": 4,
@@ -115,6 +121,14 @@
           "@sap.label": "Base Unit of Measure",
           "@sap.quickinfo": "Base Unit of Measure for BOM",
           "@sap.semantics": "unit-of-measure",
+          "notNull": false
+        },
+        "ASM": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
           "notNull": false
         },
         "POTX1_22": {
@@ -215,6 +229,20 @@
           "@sap.quickinfo": "Flag Material for Deletion at Plant Level",
           "notNull": false
         },
+        "WERKS_FROM": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "notNull": false
+        },
+        "UMLGO": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "notNull": false
+        },
         "SCHGT_FROM": {
           "type": "cds.Boolean",
           "@sap.display.format": "UpperCase",
@@ -309,6 +337,22 @@
           "length": 50,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Message Variable",
+          "notNull": false
+        },
+        "LIST_TYPE": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "notNull": false
+        },
+        "MASTER_DATA": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
           "notNull": false
         }
       }

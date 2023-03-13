@@ -1111,3 +1111,21 @@ annotate ZCDSEHBTC0007.ZTHBT0014 with @(
 //     Text : '10 Digit Part List'
 //   }
 // );
+annotate ZCDSEHBTC0012.materialWhereUsed with @(
+    UI : { 
+        SelectionFields  : [
+            LIST_TYPE,
+            MASTER_DATA,
+            WERKS,
+            MATNR_COM,MMSTD
+        ],
+        LineItem  : [
+            { Value : LIST_TYPE },
+            { Value : MASTER_DATA },
+            { Value : WERKS }, 
+            { Value : MATNR_COM },
+            { Value : MMSTD }                                          
+        ],
+     }
+){
+};

@@ -577,5 +577,7 @@ service ZCDSEHBTC0012 {
             MMSTD,
             DT_MFG,
             MESSAGE,
+            LIST_TYPE,
+            MASTER_DATA,
     };
 }
