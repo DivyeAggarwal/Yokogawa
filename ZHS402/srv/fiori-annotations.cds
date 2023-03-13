@@ -1129,3 +1129,9 @@ annotate ZCDSEHBTC0012.materialWhereUsed with @(
      }
 ){
 };
+annotate ZCDSEHBTC0012.materialWhereUsed with {
+    LIST_TYPE         @title : 'Where Used List Type';
+    MASTER_DATA          @title : 'Other Master Data';
+    MATNR_COM            @title : 'Component material';
+    MMSTD        @title : 'Valid From';
+}
