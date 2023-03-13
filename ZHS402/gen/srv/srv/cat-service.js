@@ -82,10 +82,6 @@ module.exports = cds.service.impl(async function (srv) {
         var oData = await db.run(req.query);
         return oData;
     });
-    this.before('READ', 'ZTHBT0019', async (req) => {
-        ValidateAssignment(req);
-
-    });
     this.before('UPDATE', 'ZTHBT0019', async (req) => {
         ValidateAssignment(req);
 
@@ -261,40 +257,33 @@ module.exports = cds.service.impl(async function (srv) {
     });
     this.on('READ', 'BOMDisplay', async req => {
         const db = await cds.connect.to('db');
-        if (req._query) {
-            const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
-            if (doc_type_idx >= 0) {
-                var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
-            }
-            const WERKS_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "WERKS"));
-            if (WERKS_idx >= 0) {
-                var WERKS = req.query.SELECT.where[WERKS_idx + 2].val
-            }
-            const DOC_NO_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_NO"));
-            if (DOC_NO_idx >= 0) {
-                var E_DOC_NO = req.query.SELECT.where[DOC_NO_idx + 2].val
-            }
-            const REV_NO_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_REV_NO"));
-            if (REV_NO_idx >= 0) {
-                var E_REV_NO = req.query.SELECT.where[REV_NO_idx + 2].val
-            }
-            const GROUP_NO_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "PS_GROUP_NO"));
-            if (GROUP_NO_idx >= 0) {
-                var PS_GROUP_NO = req.query.SELECT.where[GROUP_NO_idx + 2].val
-            }
-        }
+        // if (req._query) {
+            // const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
+            // if (doc_type_idx >= 0) {
+            //     var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
+            // }
+            // const WERKS_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "WERKS"));
+            // if (WERKS_idx >= 0) {
+            //     var WERKS = req.query.SELECT.where[WERKS_idx + 2].val
+            // }
+            // const DOC_NO_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_NO"));
+            // if (DOC_NO_idx >= 0) {
+            //     var E_DOC_NO = req.query.SELECT.where[DOC_NO_idx + 2].val
+            // }
+            // const REV_NO_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_REV_NO"));
+            // if (REV_NO_idx >= 0) {
+            //     var E_REV_NO = req.query.SELECT.where[REV_NO_idx + 2].val
+            // }
+            // const GROUP_NO_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "PS_GROUP_NO"));
+            // if (GROUP_NO_idx >= 0) {
+            //     var PS_GROUP_NO = req.query.SELECT.where[GROUP_NO_idx + 2].val
+            // }
+        // }
         if (E_DOC_TYPE == "FE0") {
+            const dataFe0 = await SELECT.from('ZCDSEHBTC0007.DATAFE0').where(req.query.SELECT.where)
 
-            const DATAFE0 = await SELECT.from('ZCDSEHBTC0007.DATAFE0').where(req.query.SELECT.where)
-
-
-            //     let query = SELECT.from('ZHS402_ZTHBT0010')
-            // .fullOuterJoin('ZHS402_ZTHBT0037')
-            // .on('ZHS402_ZTHBT0010.E_DOC_NO', "=", "ZHS402_ZTHBT0037.E_DOC_NO")
-
-            //     let results = await cds.run(query)
             let aData = [];
-            for (let oData of DATAFE0) {
+            for (let oData of dataFe0) {
                 const data = {
                     E_DOC_TYPE: oData.E_DOC_TYPE,
                     WERKS: oData.WERKS,
@@ -309,9 +298,9 @@ module.exports = cds.service.impl(async function (srv) {
             }
             return aData;
         } else if (E_DOC_TYPE == "FE1") {
-            const DATAFE1 = await SELECT.from('ZCDSEHBTC0007.DATAFE1').where(req.query.SELECT.where)
+            const dataFe1 = await SELECT.from('ZCDSEHBTC0007.DATAFE1').where(req.query.SELECT.where)
             let aData = [];
-            for (let oData of DATAFE1) {
+            for (let oData of dataFe1) {
                 const data = {
                     E_DOC_TYPE: oData.E_DOC_TYPE,
                     WERKS: oData.WERKS,
@@ -347,8 +336,6 @@ module.exports = cds.service.impl(async function (srv) {
     });
     this.on('READ', 'DigitPartList', async req => {
         const db = await cds.connect.to('db');
-
-
         const material = await SELECT.from('ZHS402.ZTHBT0001').limit(1);
 
         let aData = [];
@@ -554,6 +541,63 @@ module.exports = cds.service.impl(async function (srv) {
         return oData;
     });
 
+    this.on('READ', 'materialWhereUsed', async req => {
+        const materialWhereUsed = await cds.connect.to('ZSRVBHPP0011');
+        const results = await materialWhereUsed.run(req.query);
+        /* Prepare array of Production Order by which Addiional status is going to be 
+        Read from the Cloud Table */
+        let arrayInput = [];
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                arrayInput.push(result.MTART);
+            }
+        }
+        else {
+            arrayInput.push(results.MTART);
+        }
+        let objectAddStatus = {};
+        await PrepareWherUsedObject(arrayInput, objectAddStatus);
+
+        /*Manipulate the result from cloud and On Premise */
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                let DataFromObject = objectAddStatus[result.MTART];
+                if (DataFromObject) {
+                    result.MTART = DataFromObject;
+                }
+
+            }
+        }
+        else {
+            let DataFromObject = objectAddStatus[results.MTART];
+            if (DataFromObject) {
+                results.MTART = DataFromObject;
+            }
+        }
+
+        let objectAddModel = {};
+        await PrepareModelData(arrayInput, objectAddModel);
+
+        /*Manipulate the result from cloud and On Premise */
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                let DataFromObject = objectAddModel[result.MTART];
+                if (DataFromObject) {
+                    result.MTART = DataFromObject;
+                }
+
+            }
+        }
+        else {
+            let DataFromObject = objectAddModel[results.MTART];
+            if (DataFromObject) {
+                results.MTART = DataFromObject;
+            }
+        }
+
+        return results;
+    });
+
 
 });
 
@@ -579,6 +623,33 @@ const PrepareResultObject = async (arrayInput, objectAddStatus) => {
     if (addStatusDataArray.length > 0) {
         for (let addStatusData of addStatusDataArray) {
             objectAddStatus[addStatusData.PRODUCTIONORDER] = addStatusData.ZPRINT;
+        }
+    }
+}
+
+const PrepareWherUsedObject = async (arrayInput, objectAddStatus) => {
+    /*Fire the Query to the Cloiud table */
+    const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0033').where({ MODEL: { in: arrayInput } });
+    /*Prepare the Result in Object Format so that processing is quick */
+    if (objectAddStatus) {
+        objectAddStatus = {};
+    }
+    if (addMSCodeDataArray.length > 0) {
+        for (let addStatusData of addMSCodeDataArray) {
+            objectAddStatus[addStatusData.MSCODE] = addStatusData.MSCODE;
+        }
+    }
+}
+const PrepareModelData = async (arrayInput, objectAddStatus) => {
+    /*Fire the Query to the Cloiud table */
+    const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0056').where({ MODEL: { in: arrayInput } });
+    /*Prepare the Result in Object Format so that processing is quick */
+    if (objectAddStatus) {
+        objectAddStatus = {};
+    }
+    if (addMSCodeDataArray.length > 0) {
+        for (let addStatusData of addMSCodeDataArray) {
+            objectAddStatus[addStatusData.MSCODE] = addStatusData.MSCODE;
         }
     }
 }

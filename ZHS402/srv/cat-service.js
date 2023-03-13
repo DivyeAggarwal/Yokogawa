@@ -575,6 +575,26 @@ module.exports = cds.service.impl(async function (srv) {
             }
         }
 
+        let objectAddModel = {};
+        await PrepareModelData(arrayInput, objectAddModel);
+
+        /*Manipulate the result from cloud and On Premise */
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                let DataFromObject = objectAddModel[result.MTART];
+                if (DataFromObject) {
+                    result.MTART = DataFromObject;
+                }
+
+            }
+        }
+        else {
+            let DataFromObject = objectAddModel[results.MTART];
+            if (DataFromObject) {
+                results.MTART = DataFromObject;
+            }
+        }
+
         return results;
     });
 
@@ -610,6 +630,19 @@ const PrepareResultObject = async (arrayInput, objectAddStatus) => {
 const PrepareWherUsedObject = async (arrayInput, objectAddStatus) => {
     /*Fire the Query to the Cloiud table */
     const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0033').where({ MODEL: { in: arrayInput } });
+    /*Prepare the Result in Object Format so that processing is quick */
+    if (objectAddStatus) {
+        objectAddStatus = {};
+    }
+    if (addMSCodeDataArray.length > 0) {
+        for (let addStatusData of addMSCodeDataArray) {
+            objectAddStatus[addStatusData.MSCODE] = addStatusData.MSCODE;
+        }
+    }
+}
+const PrepareModelData = async (arrayInput, objectAddStatus) => {
+    /*Fire the Query to the Cloiud table */
+    const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0056').where({ MODEL: { in: arrayInput } });
     /*Prepare the Result in Object Format so that processing is quick */
     if (objectAddStatus) {
         objectAddStatus = {};

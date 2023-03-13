@@ -533,7 +533,7 @@ service ZCDSEHBTC0011 {
 
 service ZCDSEHBTC0012 {
     entity ZTHBT0056  as projection on db.ZTHBT0056;
-
+    entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
     entity materialWhereUsed as projection on ZSRVBHPP0011.ZCDSEHPPB0070 {
         key WERKS,
         key MATNR_COM,

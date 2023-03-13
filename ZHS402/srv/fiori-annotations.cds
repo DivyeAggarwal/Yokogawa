@@ -1114,8 +1114,6 @@ annotate ZCDSEHBTC0007.ZTHBT0014 with @(
 annotate ZCDSEHBTC0012.materialWhereUsed with @(
     UI : { 
         SelectionFields  : [
-            LIST_TYPE,
-            MASTER_DATA,
             WERKS,
             MATNR_COM,MMSTD
         ],
@@ -1134,4 +1132,24 @@ annotate ZCDSEHBTC0012.materialWhereUsed with {
     MASTER_DATA          @title : 'Other Master Data';
     MATNR_COM            @title : 'Component material';
     MMSTD        @title : 'Valid From';
+}
+annotate ZCDSEHBTC0012.materialWhereUsed {
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'VL_SH_H_T001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : WERKS,
+                    ValueListProperty : 'BUKRS'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'BUTXT'
+                }
+            ]
+        }
+    })
+    WERKS;
 }
