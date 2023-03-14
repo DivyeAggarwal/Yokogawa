@@ -544,54 +544,45 @@ module.exports = cds.service.impl(async function (srv) {
     this.on('READ', 'materialWhereUsed', async req => {
         const materialWhereUsed = await cds.connect.to('ZSRVBHPP0011');
         const results = await materialWhereUsed.run(req.query);
+        // const bupa = await cds.connect.to('ProductionOrder');
+        // return materialWhereUsed.run(req.query);
         /* Prepare array of Production Order by which Addiional status is going to be 
         Read from the Cloud Table */
         let arrayInput = [];
         if (Array.isArray(results)) {
             for (let result of results) {
-                arrayInput.push(result.MTART);
+                arrayInput.push(result.ZZ1_MSCODE_PRD);
             }
         }
         else {
-            arrayInput.push(results.MTART);
+            arrayInput.push(results.ZZ1_MSCODE_PRD);
         }
-        let objectAddStatus = {};
-        await PrepareWherUsedObject(arrayInput, objectAddStatus);
-
-        /*Manipulate the result from cloud and On Premise */
-        if (Array.isArray(results)) {
-            for (let result of results) {
-                let DataFromObject = objectAddStatus[result.MTART];
-                if (DataFromObject) {
-                    result.MTART = DataFromObject;
-                }
-
-            }
-        }
-        else {
-            let DataFromObject = objectAddStatus[results.MTART];
-            if (DataFromObject) {
-                results.MTART = DataFromObject;
-            }
-        }
+        let objectAddMSCode = {};
+        objectAddMSCode = await PrepareWherUsedObject(arrayInput, objectAddMSCode);
 
         let objectAddModel = {};
-        await PrepareModelData(arrayInput, objectAddModel);
+        objectAddModel = await PrepareModelData(arrayInput, objectAddModel);
 
         /*Manipulate the result from cloud and On Premise */
         if (Array.isArray(results)) {
             for (let result of results) {
-                let DataFromObject = objectAddModel[result.MTART];
+                let DataFromObject = objectAddMSCode[result.ZZ1_MSCODE_PRD];
+                let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
                 if (DataFromObject) {
                     result.MTART = DataFromObject;
+                } else if(DataFromModTable) {
+                    result.MTART = DataFromModTable;
                 }
 
             }
         }
         else {
-            let DataFromObject = objectAddModel[results.MTART];
+            let DataFromObject = objectAddStatus[results.ZZ1_MSCODE_PRD];
+            let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
             if (DataFromObject) {
                 results.MTART = DataFromObject;
+            } else if(DataFromModTable) {
+                results.MTART = DataFromModTable;
             }
         }
 
@@ -627,29 +618,31 @@ const PrepareResultObject = async (arrayInput, objectAddStatus) => {
     }
 }
 
-const PrepareWherUsedObject = async (arrayInput, objectAddStatus) => {
+const PrepareWherUsedObject = async (arrayInput, objectAddMSCode) => {
     /*Fire the Query to the Cloiud table */
-    const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0033').where({ MODEL: { in: arrayInput } });
+    const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0033').where({ MSCODE: { in: arrayInput } });
     /*Prepare the Result in Object Format so that processing is quick */
-    if (objectAddStatus) {
-        objectAddStatus = {};
+    if (objectAddMSCode) {
+        objectAddMSCode = {};
     }
     if (addMSCodeDataArray.length > 0) {
-        for (let addStatusData of addMSCodeDataArray) {
-            objectAddStatus[addStatusData.MSCODE] = addStatusData.MSCODE;
+        for (let addCodeData of addMSCodeDataArray) {
+            objectAddMSCode[addCodeData.MSCODE] = addCodeData.MODEL;
         }
     }
+    return objectAddMSCode;
 }
-const PrepareModelData = async (arrayInput, objectAddStatus) => {
+const PrepareModelData = async (arrayInput, objectAddModel) => {
     /*Fire the Query to the Cloiud table */
-    const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0056').where({ MODEL: { in: arrayInput } });
+    const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0056').where({ MOD_CODE: { in: arrayInput } });
     /*Prepare the Result in Object Format so that processing is quick */
-    if (objectAddStatus) {
-        objectAddStatus = {};
+    if (objectAddModel) {
+        objectAddModel = {};
     }
     if (addMSCodeDataArray.length > 0) {
-        for (let addStatusData of addMSCodeDataArray) {
-            objectAddStatus[addStatusData.MSCODE] = addStatusData.MSCODE;
+        for (let addModelData of addMSCodeDataArray) {
+            objectAddModel[addModelData.MSCODE] = addModelData.MOD_ITEM;
         }
     }
+    return objectAddModel;
 }
