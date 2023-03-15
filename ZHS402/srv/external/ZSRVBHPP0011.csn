@@ -274,7 +274,7 @@
         },
         "BSTME": {
           "type": "cds.String",
-          "length": 3,
+          "length": 10,
           "@sap.label": "Order Unit",
           "@sap.quickinfo": "Purchase Order Unit of Measure",
           "@sap.semantics": "unit-of-measure",
