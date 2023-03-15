@@ -404,3 +404,23 @@ entity ZTHBT0056 : managed {
     key MOD_CODE      : String(40) @title : 'Module Code';
         BOM_CRTE_FLAG : String(1)  @title : 'BOM creation Flag';
 }
+entity ZTHBT0100 : managed {
+    key ZSD_GRPSUPP           : String(20) @title : 'Group Supplier';
+    key ZWBS_ELEMENT          : String(20) @title : 'WBS Element';
+        ZSD_SOWEVENT          : String(3)  @title : 'SOW Event Number';
+        ZSD_MILESTONE         : String(10) @title : 'MileStone Number';
+        ZSD_ACTUAL_DATE       : Date       @title : 'Actual Date';
+        ZSD_BILLINGPLAN_VALUE : String(16) @title : 'Billing Plan Value';
+        ZFG_INVOICE_ID        : String(20) @title : 'FG Invoice ID';
+        ZSD_MAIN_SONUM        : String(10) @title : 'Main SO Number';
+        ZSD_SO_DEBIT_NUM      : String(10) @title : 'SO Debit Memo Number';
+        ZSD_INV_SUBMIT_DATE   : Date       @title : 'Invoice Submit Date';
+        ZSD_GROSS_VALUE       : String(16) @title : 'SO Gross Value';
+        ZSD_BILLING_DATE      : Date       @title : 'SO Billing Date';
+        ZSD_PRICING_DATE      : Date       @title : 'SO Pricing Date';
+        ZSD_DEBIT_DOC_DATE    : Date       @title : 'SO Debit Document Date';
+        ZSD_DEBIT_NET_VALUE   : String(16) @title : 'SO Debit Net Value';
+        ZSD_STATUS            : String(40) @title : 'Status';
+        ZSD_ERROR             : String     @title : 'Error Message';
+
+}

@@ -581,4 +581,10 @@ service ZCDSEHBTC0012 {
             LIST_TYPE,
             MASTER_DATA,
     };
+
+    
 }
+
+service ZCDSEHBTC0013 {
+    entity ZTHBT0100 as projection on db.ZTHBT0100;
+    }

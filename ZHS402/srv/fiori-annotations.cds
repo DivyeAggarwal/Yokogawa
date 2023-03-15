@@ -1153,3 +1153,25 @@ annotate ZCDSEHBTC0012.materialWhereUsed {
     })
     WERKS;
 }
+annotate ZCDSEHBTC0013.ZTHBT0100 with @(
+    UI : { 
+        SelectionFields  : [
+            ZWBS_ELEMENT,
+            ZSD_GRPSUPP
+        ],
+        LineItem  : [
+            { Value : ZWBS_ELEMENT },
+            { Value : ZFG_INVOICE_ID },
+            { Value : ZSD_MAIN_SONUM }, 
+            { Value : ZSD_SO_DEBIT_NUM },
+            { Value : ZSD_INV_SUBMIT_DATE },
+            { Value : ZSD_GROSS_VALUE },
+            { Value : ZSD_BILLING_DATE },
+            { Value : ZSD_DEBIT_DOC_DATE },
+            { Value : ZSD_DEBIT_NET_VALUE },
+            { Value : ZSD_STATUS },
+            { Value : ZSD_ERROR },                                        
+        ],
+     }
+){
+};
