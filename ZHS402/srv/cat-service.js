@@ -546,7 +546,7 @@ module.exports = cds.service.impl(async function (srv) {
         const results = await materialWhereUsed.run(req.query);
         // const bupa = await cds.connect.to('ProductionOrder');
         // return materialWhereUsed.run(req.query);
-        /* Prepare array of Production Order by which Addiional status is going to be 
+        /* Prepare array of Model by which Addiional status is going to be 
         Read from the Cloud Table */
         let arrayInput = [];
         if (Array.isArray(results)) {

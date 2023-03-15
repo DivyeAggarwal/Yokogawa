@@ -545,6 +545,7 @@ service ZCDSEHBTC0012 {
             POTX1_19,
             MATNR,
             MAKTX,
+            ZZ1_MSCODE_PRD,
             MTART,
             EMENG,
             @Semantics.unitOfMeasure
