@@ -6,6 +6,7 @@ using  API_PRODUCT_SRV from './external/API_PRODUCT_SRV';
 using ProductionOrder from './external/ProductionOrder';
 using ZSRVBHPP0011 from './external/ZSRVBHPP0011';
 using ZSRVBHPP0012 from './external/ZSRVBHPP0012';
+using ZSRVBHMM0004 from './external/ZSRVBHMM0004';
 
 service CatalogService {
     entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -244,6 +245,7 @@ service ZCDSEHBTC0006 {
     entity ZTHBT0048 as projection on db.ZTHBT0048;
     entity ZTHBT0032 as projection on db.ZTHBT0032;
     entity ZTHBT0033 as projection on db.ZTHBT0033;
+    entity ZCDSEHMMC0004 as projection on ZSRVBHMM0004.ZCDSEHMMC0004;
 
 }
 
@@ -588,3 +590,4 @@ service ZCDSEHBTC0012 {
 service ZCDSEHBTC0013 {
     entity ZTHBT0100 as projection on db.ZTHBT0100;
     }
+
