@@ -73,7 +73,7 @@
 <Property Name="BESKZ_FROM" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Procurement Type"/>
 <Property Name="SOBSL_FROM" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Special procurement" sap:quickinfo="Special procurement type"/>
 <Property Name="LVORM_FROM" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DF at plant level" sap:quickinfo="Flag Material for Deletion at Plant Level"/>
-<Property Name="BSTME" Type="Edm.String" MaxLength="3" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+<Property Name="BSTME" Type="Edm.String" MaxLength="10" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
 <Property Name="MEINS" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
 <Property Name="BMTYP" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="BOM category"/>
 <Property Name="SUMFG" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Totals record ID" sap:quickinfo="Totals record indicator"/>

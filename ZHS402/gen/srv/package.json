@@ -127,7 +127,19 @@
       },
       "ZSRVBHPP0012": {
         "kind": "odata-v2",
-        "model": "srv/external/ZSRVBHPP0012"
+        "model": "srv/external/ZSRVBHPP0012",
+        "credentials": {
+          "path": "/sap/opu/odata/sap/ZSRVBHPP0012",
+          "destination": "s4003-ap-https_ZSRVBHPS0008"
+        }
+      },
+      "ZSRVBHMM0004": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVBHMM0004",
+        "credentials": {
+          "path": "/sap/opu/odata/sap/ZSRVBHMM0004",
+          "destination": "s4003-ap-https_ZSRVBHPS0008"
+        }
       }
     },
     "hana": {

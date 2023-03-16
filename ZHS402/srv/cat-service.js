@@ -71,6 +71,10 @@ module.exports = cds.service.impl(async function (srv) {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
+    this.on('READ', 'ZCDSEHMMC0004', async req => {
+        const specData = await cds.connect.to('ZSRVBHMM0004');
+        return specData.run(req.query);
+    });
     this.on('READ', 'A_Product', async req => {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);

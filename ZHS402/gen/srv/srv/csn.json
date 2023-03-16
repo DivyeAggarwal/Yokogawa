@@ -10622,6 +10622,52 @@
         }
       }
     },
+    "ZCDSEHBTC0006.ZCDSEHMMC0004": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Specification table for MS-CODE API",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHMM0004.ZCDSEHMMC0004"
+          ]
+        }
+      },
+      "elements": {
+        "mscode": {
+          "@sap.label": "MS Code",
+          "key": true,
+          "type": "cds.String",
+          "length": 80,
+          "notNull": true
+        },
+        "model": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "suffixlevel": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "suffixvalue": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "notNull": true
+        }
+      }
+    },
     "ZCDSEHBTC0007": {
       "@source": "srv/cat-service.cds",
       "kind": "service"
@@ -19306,7 +19352,7 @@
           "@sap.quickinfo": "Purchase Order Unit of Measure",
           "@sap.semantics": "unit-of-measure",
           "type": "cds.String",
-          "length": 3,
+          "length": 10,
           "notNull": false
         },
         "MEINS": {
@@ -44849,7 +44895,7 @@
           "@sap.quickinfo": "Purchase Order Unit of Measure",
           "@sap.semantics": "unit-of-measure",
           "type": "cds.String",
-          "length": 3,
+          "length": 10,
           "notNull": false
         },
         "MEINS": {
@@ -45108,6 +45154,127 @@
           "@sap.heading": "",
           "type": "cds.String",
           "length": 25,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHMM0004": {
+      "@source": "srv/external/ZSRVBHMM0004.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHMM0004.ZCDSEHMMC0004": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Specification table for MS-CODE API",
+      "elements": {
+        "mscode": {
+          "@sap.label": "MS Code",
+          "key": true,
+          "type": "cds.String",
+          "length": 80,
+          "notNull": true
+        },
+        "model": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "suffixlevel": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "suffixvalue": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHMM0004.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHMM0004.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ExternalCode": {
+          "@sap.label": "Commercial",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "UoM Text",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@sap.label": "Decimal Places",
+          "type": "cds.Integer",
           "notNull": false
         }
       }

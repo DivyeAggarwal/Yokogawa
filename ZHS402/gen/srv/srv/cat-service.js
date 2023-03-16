@@ -217,6 +217,17 @@ module.exports = cds.service.impl(async function (srv) {
                     await UPSERT.into('ZHS402.ZTHBT0048').entries(conversion);
                 }
             }
+            //code for spec table
+            const specData = await bupa.get('ZCDSEHBTC0006.ZCDSEHMMC0004').where({ model: MODEL });
+            if(specData.length > 0) {
+                var conversionSpec = {
+                    MATERIALCODE: specData[0].mscode,
+                    MODEL: specData[0].model,
+                    SUFFIXLEVEL: specData[0].suffixlevel,
+                    SUFFIXVALUE: specData[0].suffixvalue
+                };
+                await UPSERT.into('ZHS402.ZTHBT0032').entries(conversionSpec);
+            }
         }
     });
 
