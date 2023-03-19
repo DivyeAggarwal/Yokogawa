@@ -543,6 +543,14 @@
           "@sap.semantics": "unit-of-measure",
           "notNull": false
         },
+        "DangerousGoodsIndProfile": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "DG indicator profile",
+          "@sap.quickinfo": "Dangerous Goods Indicator Profile",
+          "notNull": false
+        },
         "ZZ1_Testfield_PRD": {
           "type": "cds.String",
           "length": 20,
@@ -1334,6 +1342,12 @@
           "target": "API_PRODUCT_SRV.A_ProductPlantForecasting",
           "keys": []
         },
+        "to_ProductPlantProcurement": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantProcurement",
+          "keys": []
+        },
         "to_ProductSupplyPlanning": {
           "@cds.ambiguous": "missing on condition?",
           "type": "cds.Association",
@@ -1898,6 +1912,63 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Prod. stor. location",
           "@sap.quickinfo": "Issue Storage Location",
+          "notNull": false
+        }
+      }
+    },
+    "API_PRODUCT_SRV.A_ProductPlantProcurement": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Procurement Data",
+      "elements": {
+        "Product": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Product",
+          "@sap.quickinfo": "Product Number",
+          "notNull": true
+        },
+        "Plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "notNull": true
+        },
+        "IsAutoPurOrdCreationAllowed": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Automatic PO",
+          "@sap.quickinfo": "Indicator: &quot;automatic purchase order allowed&quot;",
+          "notNull": false
+        },
+        "IsSourceListRequired": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Source list",
+          "@sap.quickinfo": "Indicator: Source list requirement",
+          "notNull": false
+        },
+        "SourceOfSupplyCategory": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Source of supply",
+          "@sap.quickinfo": "Source of Supply",
+          "notNull": false
+        },
+        "ItmIsRlvtToJITDelivSchedules": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "JIT Indicator",
+          "@sap.quickinfo": "Indicator: Item Relevant to JIT Delivery Schedules",
           "notNull": false
         }
       }
