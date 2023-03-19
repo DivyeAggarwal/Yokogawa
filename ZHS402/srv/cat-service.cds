@@ -369,6 +369,7 @@ service ZSRVBHPS0008Service {
 
 service ZCDSEHBTC0009 {
     entity ZTHBT0001 as projection on db.ZTHBT0001;
+    entity ZTHBT0001_I as projection on db.ZTHBT0001;
     entity ZTHBT0002 as projection on db.ZTHBT0002;
     entity ZTHBT0003 as projection on db.ZTHBT0003;
     entity ZTHBT0004 as projection on db.ZTHBT0004;

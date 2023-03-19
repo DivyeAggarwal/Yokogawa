@@ -104,9 +104,13 @@
       "API_PRODUCT_SRV": {
         "kind": "odata-v2",
         "model": "srv/external/API_PRODUCT_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
         "credentials": {
           "path": "/sap/opu/odata/sap/API_PRODUCT_SRV",
-          "destination": "s4003-ap-https_ZSRVBHPS0008"
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+            "csrf": true,
+            "csrfInBatch": true
         }
       },
       "ProductionOrder": {
