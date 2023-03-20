@@ -71,6 +71,7 @@ module.exports = cds.service.impl(async function (srv) {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
+    
     this.on('READ', 'ZCDSEHMMC0004', async req => {
         const specData = await cds.connect.to('ZSRVBHMM0004');
         return specData.run(req.query);
@@ -367,9 +368,25 @@ module.exports = cds.service.impl(async function (srv) {
         return aData;
 
     });
+    this.after('READ', 'DigitPartList', async (req,res) => {
+        res.results.$count = req.length;
+    });
+
     this.on('READ', 'DigitPartList', async req => {
         const db = await cds.connect.to('db');
-        const material = await SELECT.from('ZHS402.ZTHBT0001').limit(1);
+        const material = await SELECT.from('ZHS402.ZTHBT0001');
+
+        let arrayInput = [];
+        if (Array.isArray(material)) {
+            for (let result of material) {
+                arrayInput.push(result.E_PARTS_NO);
+            }
+        }
+        else {
+            arrayInput.push(results.E_PARTS_NO);
+        }
+        let objectMaterialDesc = {};
+        objectMaterialDesc = await PrepareMaterialData(arrayInput, objectMaterialDesc);
 
         let aData = [];
         for (let oData of material) {
@@ -380,11 +397,11 @@ module.exports = cds.service.impl(async function (srv) {
                 YEOS_MNF_NO: oData.YEOS_MNF_NO
             }
             if (oData.E_PARTS_NO) {
-                const bupa = await cds.connect.to('API_PRODUCT_SRV');
-                const MatDesc = await bupa.get('ZCDSEHBTC0009.A_ProductDescription').where({ Product: oData.E_PARTS_NO });
-                if (MatDesc.length > 0) {
-                    console.log(MatDesc);
-                    data.MATERIALDESC = MatDesc[0].ProductDescription;
+                let matDescription = objectMaterialDesc[oData.E_PARTS_NO];
+                // const bupa = await cds.connect.to('API_PRODUCT_SRV');
+                // const MatDesc = await bupa.get('ZCDSEHBTC0009.A_ProductDescription').where({ Product: oData.E_PARTS_NO });
+                if (matDescription) {
+                    data.MATERIALDESC = matDescription;
                 } else {
                     data.MATERIALDESC = "Not Found"
                 }
@@ -685,4 +702,22 @@ const PrepareModelData = async (arrayInput, objectAddModel) => {
         }
     }
     return objectAddModel;
+}
+
+const PrepareMaterialData = async (arrayInput, objectAddMaterial) => {
+    /*Fire the Query to the Cloiud table */
+    const bupa = await cds.connect.to('API_PRODUCT_SRV');
+    const materialArray = await bupa.get('ZCDSEHBTC0009.A_ProductDescription').where({ Product: { in: arrayInput } });
+    
+    // const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0056').where({ MOD_CODE: { in: arrayInput } });
+    /*Prepare the Result in Object Format so that processing is quick */
+    if (objectAddMaterial) {
+        objectAddMaterial = {};
+    }
+    if (materialArray.length > 0) {
+        for (let addMaterial of materialArray) {
+            objectAddMaterial[addMaterial.Product] = addMaterial.ProductDescription;
+        }
+    }
+    return objectAddMaterial;
 }
