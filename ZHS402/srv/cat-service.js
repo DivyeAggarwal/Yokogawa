@@ -91,11 +91,11 @@ module.exports = cds.service.impl(async function (srv) {
         return oData;
     });
     this.before('CREATE', 'ZTHBT0019', async (req) => {
-        ValidateAssignment(req);
+        await ValidateAssignment(req);
 
     });
     this.before('UPDATE', 'ZTHBT0019', async (req) => {
-        ValidateAssignment(req);
+        await ValidateAssignment(req);
 
     });
 
@@ -619,8 +619,8 @@ const ValidateAssignment = async (req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
     // if(req.data.ZPS_IDENTIFIER === 'P') {
     // if(req.BEMOT) {
-    const data = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({ AccountingIndicator: 'G6' });
-    if (data.length === 0) {
+    // const data = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({ AccountingIndicator: 'G6' });
+    // if (data.length === 0) {
         //throw 'Order quantity must not exceed 11'
         //req.reject(418, 'Accounting Indicator is Invalid', "BEMOT");
         //req.error(400,'Accounting Indicator is Invalid',"BEMOT");
@@ -632,7 +632,7 @@ const ValidateAssignment = async (req) => {
             msg: 'Accounting Indicator is Invalid'
           })
 
-    }
+    // }
 }
 const PrepareResultObject = async (arrayInput, objectAddStatus) => {
     /*Fire the Query to the Cloiud table */

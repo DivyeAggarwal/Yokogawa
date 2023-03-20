@@ -14129,6 +14129,102 @@
         }
       }
     },
+    "ZCDSEHBTC0009.ZTHBT0001_I": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0001"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "PARTS_NO": {
+          "@title": "Parts  Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_PARTS_NO": {
+          "@title": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "SOURCE_CD": {
+          "@title": "Source  Code",
+          "type": "cds.String",
+          "length": 2
+        },
+        "YEOS_MNF_NO": {
+          "@title": "Maker Model Number",
+          "type": "cds.String",
+          "length": 5
+        },
+        "YEOS_MNF_MODEL": {
+          "@title": "Maker Model Name",
+          "type": "cds.String",
+          "length": 80
+        },
+        "PCKG_CD": {
+          "@title": "Packing Code",
+          "type": "cds.String",
+          "length": 1
+        },
+        "IND_DEMAND_SIGN": {
+          "@title": "Ind Demand Sign",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
     "ZCDSEHBTC0009.ZTHBT0002": {
       "kind": "entity",
       "projection": {
@@ -15346,6 +15442,14 @@
           "@sap.label": "Unit of Measurement",
           "@sap.quickinfo": "Unit of Measure for Maximum Packing Length/Width/Height",
           "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "DangerousGoodsIndProfile": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "DG indicator profile",
+          "@sap.quickinfo": "Dangerous Goods Indicator Profile",
           "type": "cds.String",
           "length": 3,
           "notNull": false
@@ -38551,6 +38655,14 @@
           "length": 3,
           "notNull": false
         },
+        "DangerousGoodsIndProfile": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "DG indicator profile",
+          "@sap.quickinfo": "Dangerous Goods Indicator Profile",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
         "ZZ1_Testfield_PRD": {
           "@sap.label": "Testfield",
           "type": "cds.String",
@@ -39342,6 +39454,12 @@
           "target": "API_PRODUCT_SRV.A_ProductPlantForecasting",
           "keys": []
         },
+        "to_ProductPlantProcurement": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantProcurement",
+          "keys": []
+        },
         "to_ProductSupplyPlanning": {
           "@cds.ambiguous": "missing on condition?",
           "type": "cds.Association",
@@ -39906,6 +40024,63 @@
           "@sap.quickinfo": "Issue Storage Location",
           "type": "cds.String",
           "length": 4,
+          "notNull": false
+        }
+      }
+    },
+    "API_PRODUCT_SRV.A_ProductPlantProcurement": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Procurement Data",
+      "elements": {
+        "Product": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Product",
+          "@sap.quickinfo": "Product Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "IsAutoPurOrdCreationAllowed": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Automatic PO",
+          "@sap.quickinfo": "Indicator: &quot;automatic purchase order allowed&quot;",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "IsSourceListRequired": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Source list",
+          "@sap.quickinfo": "Indicator: Source list requirement",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "SourceOfSupplyCategory": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Source of supply",
+          "@sap.quickinfo": "Source of Supply",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "ItmIsRlvtToJITDelivSchedules": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "JIT Indicator",
+          "@sap.quickinfo": "Indicator: Item Relevant to JIT Delivery Schedules",
+          "type": "cds.String",
+          "length": 1,
           "notNull": false
         }
       }

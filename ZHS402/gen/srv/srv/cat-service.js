@@ -71,7 +71,15 @@ module.exports = cds.service.impl(async function (srv) {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
+    this.on('READ', 'ZCDSEHMMC0004', async req => {
+        const specData = await cds.connect.to('ZSRVBHMM0004');
+        return specData.run(req.query);
+    });
     this.on('READ', 'A_Product', async req => {
+        const product = await cds.connect.to('API_PRODUCT_SRV');
+        return product.run(req.query);
+    });
+    this.on('CREATE', 'A_Product', async req => {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
@@ -82,8 +90,12 @@ module.exports = cds.service.impl(async function (srv) {
         var oData = await db.run(req.query);
         return oData;
     });
+    this.before('CREATE', 'ZTHBT0019', async (req) => {
+        await ValidateAssignment(req);
+
+    });
     this.before('UPDATE', 'ZTHBT0019', async (req) => {
-        ValidateAssignment(req);
+        await ValidateAssignment(req);
 
     });
 
@@ -607,13 +619,20 @@ const ValidateAssignment = async (req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
     // if(req.data.ZPS_IDENTIFIER === 'P') {
     // if(req.BEMOT) {
-    const data = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({ AccountingIndicator: 'G6' });
-    if (data.length === 0) {
-        req.reject(400, 'Accounting Indicator is Invalid', "BEMOT");
+    // const data = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({ AccountingIndicator: 'G6' });
+    // if (data.length === 0) {
+        //throw 'Order quantity must not exceed 11'
+        //req.reject(418, 'Accounting Indicator is Invalid', "BEMOT");
         //req.error(400,'Accounting Indicator is Invalid',"BEMOT");
         // }
         // }
-    }
+
+        req.reject ({
+            code: 403,
+            msg: 'Accounting Indicator is Invalid'
+          })
+
+    // }
 }
 const PrepareResultObject = async (arrayInput, objectAddStatus) => {
     /*Fire the Query to the Cloiud table */
