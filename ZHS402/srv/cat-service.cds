@@ -595,5 +595,6 @@ service ZCDSEHBTC0012 {
 
 service ZCDSEHBTC0013 {
     entity ZTHBT0100 as projection on db.ZTHBT0100;
+    entity ZCDSEHPSC0011 as projection on ZSRVBHPS0010.ZCDSEHPSC0011;
     }
 
