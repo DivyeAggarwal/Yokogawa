@@ -99,6 +99,11 @@ module.exports = cds.service.impl(async function (srv) {
 
     });
 
+    this.on('CREATE', 'ZCDSEHPSC0011', async req => {
+        const product = await cds.connect.to('ZSRVBHPS0010');
+        return product.run(req.query);
+    });
+
 
 
     this.on('UpdatePOItem', async (req) => {

@@ -19752,6 +19752,90 @@
         }
       }
     },
+    "ZCDSEHBTC0013.ZCDSEHPSC0011": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom CDS View for Bill Info",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0010.ZCDSEHPSC0011"
+          ]
+        }
+      },
+      "elements": {
+        "GrpSup": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "notNull": true
+        },
+        "WbsElmt": {
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        },
+        "InvDat": {
+          "@sap.display.format": "Date",
+          "type": "cds.Date",
+          "notNull": false
+        },
+        "ActDat": {
+          "@sap.display.format": "Date",
+          "type": "cds.Date",
+          "notNull": false
+        },
+        "BillVal": {
+          "@sap.unit": "Currency",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Net Value",
+          "@sap.quickinfo": "Net Value of the Sales Order in Document Currency",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3,
+          "notNull": false
+        },
+        "Currency": {
+          "@sap.label": "Document Currency",
+          "@sap.quickinfo": "SD Document Currency",
+          "@sap.semantics": "currency-code",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": false
+        },
+        "MainSO": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "DebitSo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "Status": {
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "ErrMsg": {
+          "type": "cds.String",
+          "length": 200,
+          "notNull": false
+        }
+      }
+    },
     "external.PublicSynonymsService": {
       "@source": "srv/public-synonym.cds",
       "kind": "service"
@@ -45419,6 +45503,165 @@
       }
     },
     "ZSRVBHMM0004.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ExternalCode": {
+          "@sap.label": "Commercial",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "UoM Text",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@sap.label": "Decimal Places",
+          "type": "cds.Integer",
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0010": {
+      "@source": "srv/external/ZSRVBHPS0010.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPS0010.ZCDSEHPSC0011": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom CDS View for Bill Info",
+      "elements": {
+        "GrpSup": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "notNull": true
+        },
+        "WbsElmt": {
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        },
+        "InvDat": {
+          "@sap.display.format": "Date",
+          "type": "cds.Date",
+          "notNull": false
+        },
+        "ActDat": {
+          "@sap.display.format": "Date",
+          "type": "cds.Date",
+          "notNull": false
+        },
+        "BillVal": {
+          "@sap.unit": "Currency",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Net Value",
+          "@sap.quickinfo": "Net Value of the Sales Order in Document Currency",
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3,
+          "notNull": false
+        },
+        "Currency": {
+          "@sap.label": "Document Currency",
+          "@sap.quickinfo": "SD Document Currency",
+          "@sap.semantics": "currency-code",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": false
+        },
+        "MainSO": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "DebitSo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales Document",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "Status": {
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "ErrMsg": {
+          "type": "cds.String",
+          "length": 200,
+          "notNull": false
+        }
+      }
+    },
+    "ZSRVBHPS0010.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPS0010.SAP__UnitsOfMeasure": {
       "kind": "entity",
       "@cds.external": true,
       "@cds.persistence.skip": true,
