@@ -7,6 +7,7 @@ using ProductionOrder from './external/ProductionOrder';
 using ZSRVBHPP0011 from './external/ZSRVBHPP0011';
 using ZSRVBHPP0012 from './external/ZSRVBHPP0012';
 using ZSRVBHMM0004 from './external/ZSRVBHMM0004';
+using ZSRVBHPS0010 from './external/ZSRVBHPS0010';
 
 service CatalogService {
     entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
