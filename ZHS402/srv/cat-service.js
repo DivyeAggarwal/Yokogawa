@@ -90,6 +90,10 @@ module.exports = cds.service.impl(async function (srv) {
         var oData = await db.run(req.query);
         return oData;
     });
+    this.before('CREATE', 'ZTHBT0019', async (req) => {
+        ValidateAssignment(req);
+
+    });
     this.before('UPDATE', 'ZTHBT0019', async (req) => {
         ValidateAssignment(req);
 
@@ -617,10 +621,17 @@ const ValidateAssignment = async (req) => {
     // if(req.BEMOT) {
     const data = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({ AccountingIndicator: 'G6' });
     if (data.length === 0) {
-        req.reject(400, 'Accounting Indicator is Invalid', "BEMOT");
+        //throw 'Order quantity must not exceed 11'
+        //req.reject(418, 'Accounting Indicator is Invalid', "BEMOT");
         //req.error(400,'Accounting Indicator is Invalid',"BEMOT");
         // }
         // }
+
+        req.reject ({
+            code: 403,
+            msg: 'Accounting Indicator is Invalid'
+          })
+
     }
 }
 const PrepareResultObject = async (arrayInput, objectAddStatus) => {

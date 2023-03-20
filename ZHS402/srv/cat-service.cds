@@ -304,6 +304,9 @@ service ZCDSEHBTC0007 {
     //     and ZTHBT0014.PS_GROUP_NO = ZTHBT0037.PS_GROUP_NO
     //     and ZTHBT0014.PS_ITEM_NO = ZTHBT0037.PS_ITEM_NO where ZTHBT0037.E_DOC_TYPE = 'FE1';
     // entity DATAFE0 as projection on db.DATAFE0;
+
+     
+
     entity DATAFE0 as
         select from db.ZTHBT0010 as A
         left outer join db.ZTHBT0037 as B
@@ -328,6 +331,7 @@ service ZCDSEHBTC0007 {
         }
         where
             B.E_DOC_TYPE = 'FE0';
+   
     
     entity DATAFE1 as
         select from db.ZTHBT0014 as A

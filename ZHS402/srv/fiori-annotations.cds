@@ -187,8 +187,9 @@ annotate ZCDSEHBTC0003.ZTHBT0019 {
                     ValueListProperty : 'ParentProjDesc'
                 },
                 {
-                    $Type             : 'Common.ValueListParameterFilterOnly',
-                    ValueListProperty : 'ReceiverWBS'
+                    $Type             : 'Common.ValueListParameterIn',
+                    ValueListProperty : 'ReceiverWBS',
+                    LocalDataProperty : RWBS,
                 }
                 ]
             }
