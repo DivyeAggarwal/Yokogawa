@@ -374,7 +374,13 @@ module.exports = cds.service.impl(async function (srv) {
 
     this.on('READ', 'DigitPartList', async req => {
         const db = await cds.connect.to('db');
-        const material = await SELECT.from('ZHS402.ZTHBT0001').where(req.query);
+        var material;
+        if(req.query.SELECT.where) {
+            material = await SELECT.from('ZHS402.ZTHBT0001').where(req.query.SELECT.where); 
+        } else {
+            material = await SELECT.from('ZHS402.ZTHBT0001');
+        }
+        
 
         let arrayInput = [];
         if (Array.isArray(material)) {
