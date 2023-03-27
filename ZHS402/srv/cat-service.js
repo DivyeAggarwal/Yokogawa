@@ -625,9 +625,9 @@ module.exports = cds.service.impl(async function (srv) {
                 let DataFromObject = objectAddMSCode[result.ZZ1_MSCODE_PRD];
                 let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
                 if (DataFromObject) {
-                    result.MTART = DataFromObject;
+                    result.MOD_CODE = DataFromObject;
                 } else if(DataFromModTable) {
-                    result.MTART = DataFromModTable;
+                    result.MOD_CODE = DataFromModTable;
                 }
 
             }
@@ -636,9 +636,9 @@ module.exports = cds.service.impl(async function (srv) {
             let DataFromObject = objectAddStatus[results.ZZ1_MSCODE_PRD];
             let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
             if (DataFromObject) {
-                results.MTART = DataFromObject;
+                results.MOD_CODE = DataFromObject;
             } else if(DataFromModTable) {
-                results.MTART = DataFromModTable;
+                results.MOD_CODE = DataFromModTable;
             }
         }
 

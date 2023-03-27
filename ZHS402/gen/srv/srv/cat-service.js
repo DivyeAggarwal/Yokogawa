@@ -374,10 +374,11 @@ module.exports = cds.service.impl(async function (srv) {
 
     this.on('READ', 'DigitPartList', async req => {
         const db = await cds.connect.to('db');
+        var material;
         if(req.query.SELECT.where) {
-            const material = await SELECT.from('ZHS402.ZTHBT0001').where(req.query.SELECT.where); 
+            material = await SELECT.from('ZHS402.ZTHBT0001').where(req.query.SELECT.where); 
         } else {
-            const material = await SELECT.from('ZHS402.ZTHBT0001');
+            material = await SELECT.from('ZHS402.ZTHBT0001');
         }
         
 
@@ -624,9 +625,9 @@ module.exports = cds.service.impl(async function (srv) {
                 let DataFromObject = objectAddMSCode[result.ZZ1_MSCODE_PRD];
                 let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
                 if (DataFromObject) {
-                    result.MTART = DataFromObject;
+                    result.MOD_CODE = DataFromObject;
                 } else if(DataFromModTable) {
-                    result.MTART = DataFromModTable;
+                    result.MOD_CODE = DataFromModTable;
                 }
 
             }
@@ -635,9 +636,9 @@ module.exports = cds.service.impl(async function (srv) {
             let DataFromObject = objectAddStatus[results.ZZ1_MSCODE_PRD];
             let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
             if (DataFromObject) {
-                results.MTART = DataFromObject;
+                results.MOD_CODE = DataFromObject;
             } else if(DataFromModTable) {
-                results.MTART = DataFromModTable;
+                results.MOD_CODE = DataFromModTable;
             }
         }
 

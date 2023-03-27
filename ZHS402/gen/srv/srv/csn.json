@@ -19004,6 +19004,12 @@
             ]
           },
           {
+            "key": true,
+            "ref": [
+              "MATNR"
+            ]
+          },
+          {
             "ref": [
               "MAKTX_COM"
             ]
@@ -19035,7 +19041,7 @@
           },
           {
             "ref": [
-              "MATNR"
+              "MOD_CODE"
             ]
           },
           {
@@ -19061,6 +19067,11 @@
           {
             "ref": [
               "BMEIN"
+            ]
+          },
+          {
+            "ref": [
+              "ASM"
             ]
           },
           {
@@ -19130,6 +19141,16 @@
           },
           {
             "ref": [
+              "WERKS_FROM"
+            ]
+          },
+          {
+            "ref": [
+              "UMLGO"
+            ]
+          },
+          {
+            "ref": [
               "SCHGT_FROM"
             ]
           },
@@ -19160,32 +19181,7 @@
           },
           {
             "ref": [
-              "BMTYP"
-            ]
-          },
-          {
-            "ref": [
-              "SUMFG"
-            ]
-          },
-          {
-            "ref": [
-              "STLAN"
-            ]
-          },
-          {
-            "ref": [
-              "STLNR"
-            ]
-          },
-          {
-            "ref": [
               "MMSTD"
-            ]
-          },
-          {
-            "ref": [
-              "DT_MFG"
             ]
           },
           {
@@ -19239,6 +19235,15 @@
           "length": 40,
           "notNull": true
         },
+        "MATNR": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
         "MAKTX_COM": {
           "@sap.label": "Material Description",
           "type": "cds.String",
@@ -19283,10 +19288,10 @@
           "length": 2,
           "notNull": false
         },
-        "MATNR": {
+        "MOD_CODE": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
           "type": "cds.String",
           "length": 40,
           "notNull": false
@@ -19323,6 +19328,14 @@
           "@sap.semantics": "unit-of-measure",
           "type": "cds.String",
           "length": 3,
+          "notNull": false
+        },
+        "ASM": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 1,
           "notNull": false
         },
         "POTX1_22": {
@@ -19424,6 +19437,20 @@
           "type": "cds.Boolean",
           "notNull": false
         },
+        "WERKS_FROM": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "UMLGO": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
         "SCHGT_FROM": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Bulk material",
@@ -19455,9 +19482,9 @@
         },
         "BSTME": {
           "@Semantics.unitOfMeasure": true,
-          "@sap.label": "Order Unit",
-          "@sap.quickinfo": "Purchase Order Unit of Measure",
-          "@sap.semantics": "unit-of-measure",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
           "type": "cds.String",
           "length": 10,
           "notNull": false
@@ -19469,50 +19496,12 @@
           "length": 3,
           "notNull": false
         },
-        "BMTYP": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "BOM category",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "SUMFG": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Totals record ID",
-          "@sap.quickinfo": "Totals record indicator",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "STLAN": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "BOM Usage",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "STLNR": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "char8",
-          "@sap.quickinfo": "Character field, 8 characters long",
-          "type": "cds.String",
-          "length": 8,
-          "notNull": false
-        },
         "MMSTD": {
           "@title": "Valid From",
           "@sap.display.format": "Date",
           "@sap.label": "Valid From",
           "@sap.quickinfo": "Date from Which the Plant-Specific Material Status Is Valid",
           "type": "cds.Date",
-          "notNull": false
-        },
-        "DT_MFG": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "30 Characters",
-          "@sap.heading": "",
-          "type": "cds.String",
-          "length": 30,
           "notNull": false
         },
         "MESSAGE": {
@@ -44918,6 +44907,15 @@
           "length": 40,
           "notNull": true
         },
+        "MATNR": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
         "MAKTX_COM": {
           "@sap.label": "Material Description",
           "type": "cds.String",
@@ -44962,10 +44960,10 @@
           "length": 2,
           "notNull": false
         },
-        "MATNR": {
+        "MOD_CODE": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
           "type": "cds.String",
           "length": 40,
           "notNull": false
@@ -45153,9 +45151,9 @@
           "notNull": false
         },
         "BSTME": {
-          "@sap.label": "Order Unit",
-          "@sap.quickinfo": "Purchase Order Unit of Measure",
-          "@sap.semantics": "unit-of-measure",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
           "type": "cds.String",
           "length": 10,
           "notNull": false
@@ -45167,36 +45165,6 @@
           "length": 3,
           "notNull": false
         },
-        "BMTYP": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "BOM category",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "SUMFG": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Totals record ID",
-          "@sap.quickinfo": "Totals record indicator",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "STLAN": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "BOM Usage",
-          "type": "cds.String",
-          "length": 1,
-          "notNull": false
-        },
-        "STLNR": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "char8",
-          "@sap.quickinfo": "Character field, 8 characters long",
-          "type": "cds.String",
-          "length": 8,
-          "notNull": false
-        },
         "MMSTD": {
           "@sap.display.format": "Date",
           "@sap.label": "Valid From",
@@ -45204,19 +45172,19 @@
           "type": "cds.Date",
           "notNull": false
         },
-        "DT_MFG": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "30 Characters",
-          "@sap.heading": "",
-          "type": "cds.String",
-          "length": 30,
-          "notNull": false
-        },
         "MESSAGE": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Message Variable",
           "type": "cds.String",
           "length": 50,
+          "notNull": false
+        },
+        "KEEP": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 1,
           "notNull": false
         },
         "LIST_TYPE": {

@@ -1128,12 +1128,7 @@ annotate ZCDSEHBTC0012.materialWhereUsed with @(
      }
 ){
 };
-annotate ZCDSEHBTC0012.materialWhereUsed with {
-    LIST_TYPE         @title : 'Where Used List Type';
-    MASTER_DATA          @title : 'Other Master Data';
-    MATNR_COM            @title : 'Component material';
-    MMSTD        @title : 'Valid From';
-}
+
 annotate ZCDSEHBTC0012.materialWhereUsed {
     @(Common : {
         Label     : 'Plant',
@@ -1176,3 +1171,47 @@ annotate ZCDSEHBTC0013.ZTHBT0100 with @(
      }
 ){
 };
+annotate ZCDSEHBTC0012.materialWhereUsed with {
+            WERKS  @title : 'Plant';
+            MATNR_COM  @title : 'Component Material';
+            MATNR  @title : 'Material';
+            MAKTX_COM  @title : 'Component Description';
+            MTART_COM  @title : 'Material Type of Component';
+            POTX1_0  @title : 'Doc No';
+            POSNR  @title : 'Page';
+            SORTF  @title : 'Line';
+            POTX1_19  @title : 'Rev';
+            MOD_CODE  @title : 'Model / Module';
+            MAKTX  @title : 'Material Description';
+            ZZ1_MSCODE_PRD  @title : 'MS code';
+            MTART  @title : 'Material Type';
+            EMENG  @title : 'BOM QTY';
+            BMEIN  @title : 'Unit';
+            ASM  @title : 'ASM';
+            POTX1_22  @title : 'Select';
+            SCHGT  @title : 'Bulk';
+            POTX1_24  @title : 'ITEM';
+            ARBPL  @title : 'Work Center';
+            VGW01  @title : 'L/T';
+            VGE01  @title : 'L/T Unit';
+            VMSTD  @title : 'Sales Stop';
+            LEVEL_BOM  @title : 'Level (in multi-level BOM explosions)';
+            SEARCH_FROM  @title : 'Search From';
+            SCHGT_TO  @title : 'Bulk (To)';
+            BESKZ_TO  @title : 'Proc (To)';
+            SOBSL_TO  @title : 'SProc (To)';
+            LVORM_TO  @title : 'DLT (To)';
+            WERKS_FROM  @title : 'Plant (From)';
+            UMLGO  @title : 'Str (From)';
+            SCHGT_FROM  @title : 'Bulk (From)';
+            BESKZ_FROM  @title : 'Proc (From)';
+            SOBSL_FROM  @title : 'SProc (From)';
+            LVORM_FROM  @title : 'DLT (From)';
+            BSTME  @title : 'Arrange Type (From)';
+            MEINS  @title : 'Arrange Unit';
+            MMSTD  @title : 'Valid from';
+            MESSAGE  @title : 'Message';
+            LIST_TYPE         @title : 'Where Used List Type';
+            MASTER_DATA          @title : 'Other Master Data';
+    
+}
