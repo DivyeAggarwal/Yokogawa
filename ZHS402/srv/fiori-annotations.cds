@@ -954,7 +954,8 @@ annotate ZCDSEHBTC0009.ZTHBT0015 with {
     PARTS_TYPE_ABB_N  @title : 'Parts Type Abb Name';
     PARTS_NO_EXT_SIGN @title : 'Parts No ext sign';
 }
-annotate ZCDSEHBTC0009.TenDigitsParts {
+
+annotate ZCDSEHBTC0009.TenDigitsPartsFilter {
     @(Common : {
         Label     : 'Material',
         ValueList : {
@@ -962,7 +963,7 @@ annotate ZCDSEHBTC0009.TenDigitsParts {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : ZTHBT0001.E_PARTS_NO,
+                    LocalDataProperty : Product,
                     ValueListProperty : 'Product'
                 },
                 {

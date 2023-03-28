@@ -397,8 +397,14 @@ service ZCDSEHBTC0009 {
     }
 
     @cds.persistence.skip
+    entity TenDigitsPartsFilter {
+        key Product: String(40)  @title : 'Product' @Common.QuickInfo : 'Product Number'; 
+        YEOS_MNF_NO: String(5) @title : 'Maker Model Number';
+        PCKG_CD: String(1) @title : 'Packing Code';
+    }
+    @cds.persistence.skip
     entity TenDigitsParts {
-        Product: String(40)  @title : 'Product' @Common.QuickInfo : 'Product Number';
+       key Product: String(40)  @title : 'Product' @Common.QuickInfo : 'Product Number';
         ProductType: String(4) @title : 'Product Type' @Common.QuickInfo : 'Product Type';
         CrossPlantStatus: String(2) @title : 'Cross-Plant Product Status' @Common.QuickInfo : 'Cross-Plant Product Status';
         CrossPlantStatusValidityDate: String(2) @title : 'Valid from' @Common.QuickInfo : 'Date from which the cross-plant material status is valid';
