@@ -954,6 +954,30 @@ annotate ZCDSEHBTC0009.ZTHBT0015 with {
     PARTS_TYPE_ABB_N  @title : 'Parts Type Abb Name';
     PARTS_NO_EXT_SIGN @title : 'Parts No ext sign';
 }
+annotate ZCDSEHBTC0009.TenDigitsParts {
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'A_ProductDescription',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ZTHBT0001.E_PARTS_NO,
+                    ValueListProperty : 'Product'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ProductDescription'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Language'
+                }
+            ]
+        }
+    })
+    Product;
+}
 annotate ZCDSEHBTC0007.DATAFE0 with @(
   UI.SelectionVariant #tab1 : {
     Text : 'Parts Structure Specification'
