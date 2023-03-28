@@ -49,7 +49,7 @@
 <Property Name="ActDat" Type="Edm.DateTime" Precision="0" sap:display-format="Date"/>
 <Property Name="BillVal" Type="Edm.Decimal" Precision="15" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Net Value" sap:quickinfo="Net Value of the Sales Order in Document Currency"/>
 <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
-<Property Name="MainSO" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales Document"/>
+<Property Name="MainSo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales Document"/>
 <Property Name="DebitSo" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales Document"/>
 <Property Name="Status" Type="Edm.String" MaxLength="40"/>
 <Property Name="ErrMsg" Type="Edm.String" MaxLength="200"/>
@@ -74,7 +74,7 @@
 <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
 </EntityType>
 <EntityContainer Name="cds_zsrvhps0007_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
-<EntitySet Name="ZCDSEHPSC0011" EntityType="cds_zsrvhps0007.ZCDSEHPSC0011Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+<EntitySet Name="ZCDSEHPSC0011" EntityType="cds_zsrvhps0007.ZCDSEHPSC0011Type" sap:content-version="1"/>
 <EntitySet Name="SAP__Currencies" EntityType="cds_zsrvhps0007.SAP__Currency" sap:content-version="1"/>
 <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zsrvhps0007.SAP__UnitOfMeasure" sap:content-version="1"/>
 </EntityContainer>

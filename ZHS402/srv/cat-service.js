@@ -103,10 +103,16 @@ module.exports = cds.service.impl(async function (srv) {
     this.on('CREATE', 'ZCDSEHPSC0011', async req => {
         const product = await cds.connect.to('ZSRVBHPS0010');
         var t = {
-            "GrpSup":"67",
-            "WbsElmt":"78"
-          }
-        product.tx(req).post("/ZCDSEHPSC0011",req.data);
+            "GrpSup": "12",
+            "WbsElmt": "E0034332",
+            "InvDat": "20230323",
+            "ActDat": "20230323",
+            "BillVal": "20",
+            "Currency": "JPY",
+            "MainSo": "200",
+            "DebitSo": "300"
+        }
+        product.tx(req).post("/ZCDSEHPSC0011",t);
         // return product.run(req.query);
     });
 

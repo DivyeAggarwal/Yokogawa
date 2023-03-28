@@ -15,9 +15,6 @@
       "kind": "entity",
       "@cds.external": true,
       "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
       "@sap.content.version": "1",
       "@sap.label": "Custom CDS View for Bill Info",
       "elements": {
@@ -61,7 +58,7 @@
           "@sap.semantics": "currency-code",
           "notNull": false
         },
-        "MainSO": {
+        "MainSo": {
           "type": "cds.String",
           "length": 10,
           "@sap.display.format": "UpperCase",

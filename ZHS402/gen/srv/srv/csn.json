@@ -18954,16 +18954,6 @@
       "@UI.LineItem": [
         {
           "Value": {
-            "=": "LIST_TYPE"
-          }
-        },
-        {
-          "Value": {
-            "=": "MASTER_DATA"
-          }
-        },
-        {
-          "Value": {
             "=": "WERKS"
           }
         },
@@ -18974,7 +18964,172 @@
         },
         {
           "Value": {
-            "=": "MMSTD"
+            "=": "MATNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "MTART_COM"
+          }
+        },
+        {
+          "Value": {
+            "=": "POTX1_0"
+          }
+        },
+        {
+          "Value": {
+            "=": "POSNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "POTX1_19"
+          }
+        },
+        {
+          "Value": {
+            "=": "MOD_CODE"
+          }
+        },
+        {
+          "Value": {
+            "=": "MAKTX"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZZ1_MSCODE_PRD"
+          }
+        },
+        {
+          "Value": {
+            "=": "MTART"
+          }
+        },
+        {
+          "Value": {
+            "=": "EMENG"
+          }
+        },
+        {
+          "Value": {
+            "=": "BMEIN"
+          }
+        },
+        {
+          "Value": {
+            "=": "ASM"
+          }
+        },
+        {
+          "Value": {
+            "=": "POTX1_22"
+          }
+        },
+        {
+          "Value": {
+            "=": "SCHGT"
+          }
+        },
+        {
+          "Value": {
+            "=": "POTX1_24"
+          }
+        },
+        {
+          "Value": {
+            "=": "ARBPL"
+          }
+        },
+        {
+          "Value": {
+            "=": "VGW01"
+          }
+        },
+        {
+          "Value": {
+            "=": "VGE01"
+          }
+        },
+        {
+          "Value": {
+            "=": "LEVEL_BOM"
+          }
+        },
+        {
+          "Value": {
+            "=": "SEARCH_FROM"
+          }
+        },
+        {
+          "Value": {
+            "=": "SCHGT_TO"
+          }
+        },
+        {
+          "Value": {
+            "=": "BESKZ_TO"
+          }
+        },
+        {
+          "Value": {
+            "=": "SOBSL_TO"
+          }
+        },
+        {
+          "Value": {
+            "=": "LVORM_TO"
+          }
+        },
+        {
+          "Value": {
+            "=": "WERKS_FROM"
+          }
+        },
+        {
+          "Value": {
+            "=": "UMLGO"
+          }
+        },
+        {
+          "Value": {
+            "=": "SCHGT_FROM"
+          }
+        },
+        {
+          "Value": {
+            "=": "BESKZ_FROM"
+          }
+        },
+        {
+          "Value": {
+            "=": "SOBSL_FROM"
+          }
+        },
+        {
+          "Value": {
+            "=": "SOBSL_FROM"
+          }
+        },
+        {
+          "Value": {
+            "=": "BSTME"
+          }
+        },
+        {
+          "Value": {
+            "=": "MEINS"
+          }
+        },
+        {
+          "Value": {
+            "=": "MESSAGE"
           }
         }
       ],
@@ -19218,6 +19373,7 @@
               "ValueListProperty": "BUTXT"
             }
           ],
+          "@title": "Plant",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Plant",
           "key": true,
@@ -19226,7 +19382,7 @@
           "notNull": true
         },
         "MATNR_COM": {
-          "@title": "Component material",
+          "@title": "Component Material",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
@@ -19236,6 +19392,7 @@
           "notNull": true
         },
         "MATNR": {
+          "@title": "Material",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
@@ -19245,12 +19402,14 @@
           "notNull": true
         },
         "MAKTX_COM": {
+          "@title": "Component Description",
           "@sap.label": "Material Description",
           "type": "cds.String",
           "length": 40,
           "notNull": false
         },
         "MTART_COM": {
+          "@title": "Material Type of Component",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material type",
           "type": "cds.String",
@@ -19258,6 +19417,7 @@
           "notNull": false
         },
         "POTX1_0": {
+          "@title": "Doc No",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Field length 18",
           "@sap.heading": "",
@@ -19266,6 +19426,7 @@
           "notNull": false
         },
         "POSNR": {
+          "@title": "Page",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Undefined range (can be used for patch levels)",
           "@sap.heading": "",
@@ -19274,6 +19435,7 @@
           "notNull": false
         },
         "SORTF": {
+          "@title": "Line",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sort String",
           "type": "cds.String",
@@ -19281,6 +19443,7 @@
           "notNull": false
         },
         "POTX1_19": {
+          "@title": "Rev",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Component of the Version Number",
           "@sap.heading": "",
@@ -19289,6 +19452,7 @@
           "notNull": false
         },
         "MOD_CODE": {
+          "@title": "Model / Module",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Char",
           "@sap.quickinfo": "Character field of length 40",
@@ -19297,18 +19461,21 @@
           "notNull": false
         },
         "MAKTX": {
+          "@title": "Material Description",
           "@sap.label": "Material Description",
           "type": "cds.String",
           "length": 40,
           "notNull": false
         },
         "ZZ1_MSCODE_PRD": {
+          "@title": "MS code",
           "@sap.label": "MS Code",
           "type": "cds.String",
           "length": 80,
           "notNull": false
         },
         "MTART": {
+          "@title": "Material Type",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material type",
           "type": "cds.String",
@@ -19316,6 +19483,7 @@
           "notNull": false
         },
         "EMENG": {
+          "@title": "BOM QTY",
           "@sap.label": "CS Float field (quantity help ...)",
           "@sap.heading": "",
           "type": "cds.Double",
@@ -19323,6 +19491,7 @@
         },
         "BMEIN": {
           "@Semantics.unitOfMeasure": true,
+          "@title": "Unit",
           "@sap.label": "Base Unit of Measure",
           "@sap.quickinfo": "Base Unit of Measure for BOM",
           "@sap.semantics": "unit-of-measure",
@@ -19331,6 +19500,7 @@
           "notNull": false
         },
         "ASM": {
+          "@title": "ASM",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Single-Character Flag",
           "@sap.heading": "",
@@ -19339,6 +19509,7 @@
           "notNull": false
         },
         "POTX1_22": {
+          "@title": "Select",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Single-Character Flag",
           "@sap.heading": "",
@@ -19347,6 +19518,7 @@
           "notNull": false
         },
         "SCHGT": {
+          "@title": "Bulk",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Bulk material",
           "@sap.quickinfo": "Indicator: bulk material",
@@ -19354,6 +19526,7 @@
           "notNull": false
         },
         "POTX1_24": {
+          "@title": "ITEM",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Character Field with Length 10",
           "@sap.heading": "",
@@ -19362,6 +19535,7 @@
           "notNull": false
         },
         "ARBPL": {
+          "@title": "Work Center",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Work Center",
           "type": "cds.String",
@@ -19369,6 +19543,7 @@
           "notNull": false
         },
         "VGW01": {
+          "@title": "L/T",
           "@sap.unit": "VGE01",
           "@sap.label": "Standard Value",
           "type": "cds.Decimal",
@@ -19378,6 +19553,7 @@
         },
         "VGE01": {
           "@Semantics.unitOfMeasure": true,
+          "@title": "L/T Unit",
           "@sap.label": "Standard Value Unit",
           "@sap.quickinfo": "Unit of Measurement of Standard Value",
           "@sap.semantics": "unit-of-measure",
@@ -19386,6 +19562,7 @@
           "notNull": false
         },
         "VMSTD": {
+          "@title": "Sales Stop",
           "@sap.display.format": "Date",
           "@sap.label": "Valid from",
           "@sap.quickinfo": "Date from which distr.-chain-spec. material status is valid",
@@ -19393,6 +19570,7 @@
           "notNull": false
         },
         "LEVEL_BOM": {
+          "@title": "Level (in multi-level BOM explosions)",
           "@sap.label": "Level",
           "@sap.quickinfo": "Level (in multi-level BOM explosions)",
           "type": "cds.Decimal",
@@ -19401,6 +19579,7 @@
           "notNull": false
         },
         "SEARCH_FROM": {
+          "@title": "Search From",
           "@sap.display.format": "UpperCase",
           "@sap.label": "3-Byte field",
           "@sap.heading": "",
@@ -19409,6 +19588,7 @@
           "notNull": false
         },
         "SCHGT_TO": {
+          "@title": "Bulk (To)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Bulk material",
           "@sap.quickinfo": "Indicator: bulk material",
@@ -19416,6 +19596,7 @@
           "notNull": false
         },
         "BESKZ_TO": {
+          "@title": "Proc (To)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Procurement Type",
           "type": "cds.String",
@@ -19423,6 +19604,7 @@
           "notNull": false
         },
         "SOBSL_TO": {
+          "@title": "SProc (To)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Special procurement",
           "@sap.quickinfo": "Special procurement type",
@@ -19431,6 +19613,7 @@
           "notNull": false
         },
         "LVORM_TO": {
+          "@title": "DLT (To)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "DF at plant level",
           "@sap.quickinfo": "Flag Material for Deletion at Plant Level",
@@ -19438,6 +19621,7 @@
           "notNull": false
         },
         "WERKS_FROM": {
+          "@title": "Plant (From)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Plant",
           "type": "cds.String",
@@ -19445,6 +19629,7 @@
           "notNull": false
         },
         "UMLGO": {
+          "@title": "Str (From)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Storage location",
           "type": "cds.String",
@@ -19452,6 +19637,7 @@
           "notNull": false
         },
         "SCHGT_FROM": {
+          "@title": "Bulk (From)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Bulk material",
           "@sap.quickinfo": "Indicator: bulk material",
@@ -19459,6 +19645,7 @@
           "notNull": false
         },
         "BESKZ_FROM": {
+          "@title": "Proc (From)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Procurement Type",
           "type": "cds.String",
@@ -19466,6 +19653,7 @@
           "notNull": false
         },
         "SOBSL_FROM": {
+          "@title": "SProc (From)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Special procurement",
           "@sap.quickinfo": "Special procurement type",
@@ -19474,6 +19662,7 @@
           "notNull": false
         },
         "LVORM_FROM": {
+          "@title": "DLT (From)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "DF at plant level",
           "@sap.quickinfo": "Flag Material for Deletion at Plant Level",
@@ -19482,6 +19671,7 @@
         },
         "BSTME": {
           "@Semantics.unitOfMeasure": true,
+          "@title": "Arrange Type (From)",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Character Field with Length 10",
           "@sap.heading": "",
@@ -19490,6 +19680,7 @@
           "notNull": false
         },
         "MEINS": {
+          "@title": "Arrange Unit",
           "@sap.label": "Base Unit of Measure",
           "@sap.semantics": "unit-of-measure",
           "type": "cds.String",
@@ -19497,7 +19688,7 @@
           "notNull": false
         },
         "MMSTD": {
-          "@title": "Valid From",
+          "@title": "Valid from",
           "@sap.display.format": "Date",
           "@sap.label": "Valid From",
           "@sap.quickinfo": "Date from Which the Plant-Specific Material Status Is Valid",
@@ -19505,6 +19696,7 @@
           "notNull": false
         },
         "MESSAGE": {
+          "@title": "Message",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Message Variable",
           "type": "cds.String",

@@ -1140,7 +1140,6 @@ annotate ZCDSEHBTC0012.materialWhereUsed with @(
             { Value : ARBPL },
             { Value : VGW01 },
             { Value : VGE01 }, 
-            { Value : VMSTD },
             { Value : LEVEL_BOM },
             { Value : SEARCH_FROM },
             { Value : SCHGT_TO },
