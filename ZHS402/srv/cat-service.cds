@@ -374,7 +374,6 @@ service ZSRVBHPS0008Service {
 
 service ZCDSEHBTC0009 {
     entity ZTHBT0001 as projection on db.ZTHBT0001;
-    entity ZTHBT0001_I as projection on db.ZTHBT0001;
     entity ZTHBT0002 as projection on db.ZTHBT0002;
     entity ZTHBT0003 as projection on db.ZTHBT0003;
     entity ZTHBT0004 as projection on db.ZTHBT0004;
@@ -397,7 +396,90 @@ service ZCDSEHBTC0009 {
 
     }
 
-    
+    @cds.persistence.skip
+    entity TenDigitsPartsFilter {
+        key Product: String(40)  @title : 'Product' @Common.QuickInfo : 'Product Number'; 
+        YEOS_MNF_NO: String(5) @title : 'Maker Model Number';
+        PCKG_CD: String(1) @title : 'Packing Code';
+    }
+    @cds.persistence.skip
+    entity TenDigitsParts {
+       key Product: String(40)  @title : 'Product' @Common.QuickInfo : 'Product Number';
+        ProductType: String(4) @title : 'Product Type' @Common.QuickInfo : 'Product Type';
+        CrossPlantStatus: String(2) @title : 'Cross-Plant Product Status' @Common.QuickInfo : 'Cross-Plant Product Status';
+        CrossPlantStatusValidityDate: String(2) @title : 'Valid from' @Common.QuickInfo : 'Date from which the cross-plant material status is valid';
+        CreationDate: DateTime @title : 'Created On' @Common.QuickInfo : 'Created On';
+        CreatedByUser: String(12) @title : 'Created By' @Common.QuickInfo : 'Created By';
+        LastChangeDate: DateTime @title : 'Last Change' @Common.QuickInfo : 'Last Change';
+        LastChangedByUser: String(12) @title : 'Changed By' @Common.QuickInfo : 'Changed By';
+        LastChangeDateTime: Timestamp @title : 'Last Changed' @Common.QuickInfo : 'Last Changed';
+        IsMarkedForDeletion: Boolean @title : 'Marked for Deletion' @Common.QuickInfo : 'Marked for Deletion';
+        ProductOldID: String(40) @title : 'Old product number' @Common.QuickInfo : 'Old product number';
+        GrossWeight: Decimal @title : 'Gross weight' @Common.QuickInfo : 'Gross weight';
+        PurchaseOrderQuantityUnit: String(3) @title : 'Order Unit' @Common.QuickInfo : 'Order Unit';
+        SourceOfSupply: String(1) @title : 'Source of supply' @Common.QuickInfo : 'Source of supply';
+        WeightUnit: String(3) @title : 'Weight Unit' @Common.QuickInfo : 'Weight Unit';
+        NetWeight: Decimal @title : 'Net weight' @Common.QuickInfo : 'Net weight';
+        CountryOfOrigin: String(3) @title : 'Cntry/Reg of Origin' @Common.QuickInfo : 'Cntry/Reg of Origin';
+        CompetitorID: String(10) @title : 'Competitor' @Common.QuickInfo : 'Competitor';
+        ProductGroup: String(9) @title : 'Product Group' @Common.QuickInfo : 'Product Group';
+        BaseUnit: String(3) @title : 'Base Unit of Measure' @Common.QuickInfo : 'Base Unit of Measure';
+        ItemCategoryGroup: String(4) @title : 'Gen. item cat. grp' @Common.QuickInfo : 'Gen. item cat. grp';
+        ProductHierarchy: String(18) @title : 'Product hierarchy' @Common.QuickInfo : 'Product hierarchy';
+        Division: String(2) @title : 'Division' @Common.QuickInfo : 'Division';
+        VarblPurOrdUnitIsActive: String(1) @title : 'Var. Order Unit' @Common.QuickInfo : 'Var. Order Unit';
+        VolumeUnit: String(3) @title : 'Volume unit' @Common.QuickInfo : 'Volume unit';
+        MaterialVolume: Decimal @title : 'Volume' @Common.QuickInfo : 'Volume';
+        ANPCode: String(9) @title : 'ANP Code' @Common.QuickInfo : 'ANP Code';
+        Brand: String(4) @title : 'Brand' @Common.QuickInfo : 'Brand';
+        ProcurementRule: String(1) @title : 'Procurement rule' @Common.QuickInfo : 'Procurement rule';
+        ValidityStartDate: DateTime @title : 'Valid-From Date' @Common.QuickInfo : 'Valid-From Date';
+        LowLevelCode: String(3) @title : 'Low-Level Code' @Common.QuickInfo : 'Low-Level Code';
+        ProdNoInGenProdInPrepackProd: String(40) @title : 'Generic Material' @Common.QuickInfo : 'Generic Material';
+        SerialIdentifierAssgmtProfile: String(4) @title : 'Serial No. Profile' @Common.QuickInfo : 'Serial No. Profile';
+        SizeOrDimensionText: String(32) @title : 'Size/dimensions' @Common.QuickInfo : 'Size/dimensions';
+        IndustryStandardName: String(18) @title : 'Industry Std Desc.' @Common.QuickInfo : 'Industry Std Desc.';
+        ProductStandardID: String(18) @title : 'GTIN' @Common.QuickInfo : 'GTIN';
+        InternationalArticleNumberCat: String(2) @title : 'EAN category' @Common.QuickInfo : 'EAN category';
+        ProductIsConfigurable:Boolean @title : 'Configurable' @Common.QuickInfo : 'Configurable';
+        IsBatchManagementRequired: Boolean @title : 'Batch Management' @Common.QuickInfo : 'Batch Management';
+        ExternalProductGroup: String(18) @title : 'Ext. Product Group' @Common.QuickInfo : 'Ext. Product Group';
+        CrossPlantConfigurableProduct: String(40) @title : 'Cross-plant CP' @Common.QuickInfo : 'Cross-plant CP';
+        SerialNoExplicitnessLevel: String(1) @title : 'Serialization level' @Common.QuickInfo : 'Serialization level';
+        ProductManufacturerNumber: String(40) @title : 'Mfr Part Number' @Common.QuickInfo : 'Mfr Part Number';
+        ManufacturerNumber: String(10) @title : 'Manufacturer' @Common.QuickInfo : 'Manufacturer';
+        ManufacturerPartProfile: String(4) @title : 'Mfr part profile' @Common.QuickInfo : 'Mfr part profile';
+        QltyMgmtInProcmtIsActive: Boolean @title : 'QM in Procur. Active' @Common.QuickInfo : 'QM in Procur. Active';
+        IndustrySector: String(1) @title : 'Industry Sector' @Common.QuickInfo : 'Industry Sector';
+        ChangeNumber: String(12) @title : 'Change Number' @Common.QuickInfo : 'Change Number';
+        MaterialRevisionLevel: String(2) @title : 'Revision Level' @Common.QuickInfo : 'Revision Level';
+        HandlingIndicator: String(4) @title : 'Handling Indicator' @Common.QuickInfo : 'Handling Indicator';
+        WarehouseProductGroup: String(4) @title : 'WH Material Group' @Common.QuickInfo : 'WH Material Group';
+        WarehouseStorageCondition: String(2) @title : 'Whse Stor. Condition' @Common.QuickInfo : 'Whse Stor. Condition';
+        StandardHandlingUnitType: String(4) @title : 'Standard HU Type' @Common.QuickInfo : 'Standard HU Type';
+        SerialNumberProfile: String(4) @title : 'Serial No. Profile' @Common.QuickInfo : 'Serial No. Profile';
+        AdjustmentProfile: String(3) @title : 'Adjust. Profile' @Common.QuickInfo : 'Adjust. Profile';
+        PreferredUnitOfMeasure: String(3) @title : 'Preferred UoM' @Common.QuickInfo : 'Preferred UoM';
+        IsPilferable: Boolean @title : 'Pilferable' @Common.QuickInfo : 'Pilferable';
+        IsRelevantForHzdsSubstances: Boolean @title : 'Relevant for HS' @Common.QuickInfo : 'Relevant for HS';
+        QuarantinePeriod: Decimal @title : 'Quarant. Per.' @Common.QuickInfo : 'Quarant. Per.';
+        TimeUnitForQuarantinePeriod: String(3) @title : 'Time Unit' @Common.QuickInfo : 'Time Unit';
+        QualityInspectionGroup: String(4) @title : 'Quality Inspec. Grp' @Common.QuickInfo : 'Quality Inspec. Grp';
+        AuthorizationGroup: String(4) @title : 'Authorization Group' @Common.QuickInfo : 'Authorization Group';
+        HandlingUnitType: String(4) @title : 'Handling Unit Type' @Common.QuickInfo : 'Handling Unit Type';
+        HasVariableTareWeight: Boolean @title : 'Varb. Tare Weight' @Common.QuickInfo : 'Varb. Tare Weight';
+        MaximumPackagingLength: Decimal @title : 'Max. Pack. Length' @Common.QuickInfo : 'Max. Pack. Length';
+        MaximumPackagingWidth: Decimal @title : 'Max. Pack. Width' @Common.QuickInfo : 'Max. Pack. Width';
+        MaximumPackagingHeight: Decimal @title : 'Max. Pack. Height' @Common.QuickInfo : 'Max. Pack. Height';
+        UnitForMaxPackagingDimensions: String(3) @title : 'Unit of Measurement' @Common.QuickInfo : 'Unit of Measurement';
+        DangerousGoodsIndProfile: String(3) @title : 'DG indicator profile' @Common.QuickInfo : 'DG indicator profile';
+        ZZ1_Testfield_PRD: String(20) @title : 'Testfield' @Common.QuickInfo : 'Testfield';
+        ZZ1_AliasName_PRD: String(18) @title : 'Alias Name' @Common.QuickInfo : 'Alias Name';
+        ZZ1_MSCode_PRD: String(80) @title : 'MS Code' @Common.QuickInfo : 'MS Code'; 
+        to_Description: Association to many  API_PRODUCT_SRV.A_ProductDescription;
+        ZTHBT0001: Association to one  ZTHBT0001;
+        ZTHBT0005: Association to one  ZTHBT0005;
+    }
     entity MaterialInput as select ZTHBT0006.E_PARTS_NO from db.ZTHBT0006 left outer join db.ZTHBT0015 
         on ZTHBT0006.PARTS_TYPE = ZTHBT0015.PARTS_TYPE where ZTHBT0015.PARTS_NO_EXT_SIGN = '1';
     entity MakersList as select ZTHBT0007.E_PARTS_NO, ZTHBT0007.SOURCE_CD, ZTHBT0007.YEOS_MNF_NO, ZTHBT0007.DATA_ST, ZTHBT0007.YEOS_MNF_MODEL, ZTHBT0016.YEOS_MNF_N from db.ZTHBT0007 left outer join db.ZTHBT0016 
