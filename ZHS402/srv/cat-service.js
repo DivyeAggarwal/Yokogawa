@@ -102,17 +102,33 @@ module.exports = cds.service.impl(async function (srv) {
 
     this.on('CREATE', 'ZCDSEHPSC0011', async req => {
         const product = await cds.connect.to('ZSRVBHPS0010');
+        let query = req.query;
+        const headers = { 'x-csrf-token': 'fetch'}
+        
+        const results1 = await product.send({
+                method: 'GET',
+                headers: headers,
+                path: 'SAP__Currencies'
+        });
+        // var token = results1.headers;
         var t = {
-            "GrpSup": "12",
-            "WbsElmt": "E0034332",
-            "InvDat": "20230323",
-            "ActDat": "20230323",
-            "BillVal": "20",
-            "Currency": "JPY",
-            "MainSo": "200",
-            "DebitSo": "300"
+            GrpSup: "12",
+            WbsElmt: "E0034332",
+            InvDat: "20230323",
+            ActDat: "20230323",
+            BillVal: "20",
+            Currency: "JPY",
+            MainSo: "200",
+            DebitSo: "300"
         }
-        product.tx(req).post("/ZCDSEHPSC0011",t);
+        // const mandtHeaders = { 'x-csrf-token': 'nvtay_C_jPdTJXzCJag0wg=='}
+        const results = await product.send({
+                method: 'POST',
+                // headers: mandtHeaders,
+                path: 'ZCDSEHPSC0011',
+                data: t
+            });
+        // product.tx(req).post("/ZCDSEHPSC0011",t);
         // return product.run(req.query);
     });
 
