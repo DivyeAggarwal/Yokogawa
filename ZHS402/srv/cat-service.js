@@ -71,6 +71,7 @@ module.exports = cds.service.impl(async function (srv) {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
+    
     this.on('READ', 'ZCDSEHMMC0004', async req => {
         const specData = await cds.connect.to('ZSRVBHMM0004');
         return specData.run(req.query);
@@ -79,9 +80,20 @@ module.exports = cds.service.impl(async function (srv) {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
-    this.on('CREATE', 'A_Product', async req => {
+    this.on('CREATE', 'TenDigitsParts', async req => {
         const product = await cds.connect.to('API_PRODUCT_SRV');
-        return product.run(req.query);
+        var dulicate = Object.assign({}, req.data);
+        delete dulicate.ZTHBT0001;
+        delete dulicate.ZTHBT0005;
+        req.data = dulicate;
+        var response = await product.run(req.query);
+
+        var conversion = req.data.ZTHBT0001;
+        conversion.PARTS_NO = response.Product;
+        await INSERT.into('ZHS402.ZTHBT0001').entries(conversion);
+        var oObject5 = req.data.ZTHBT0005; 
+        await INSERT.into('ZHS402.ZTHBT0005').entries(oObject5);
+        return response;
     });
     
 
@@ -97,6 +109,47 @@ module.exports = cds.service.impl(async function (srv) {
     this.before('UPDATE', 'ZTHBT0019', async (req) => {
         await ValidateAssignment(req);
 
+    });
+
+    this.on('CREATE', 'ZCDSEHPSC0011', async req => {
+        const product = await cds.connect.to('ZSRVBHPS0010');
+        let query = req.query;
+        const headers = { 'x-csrf-token': 'fetch'}
+        
+        // const results1 = await product.send({
+        //         method: 'GET',
+        //         headers: headers,
+        //         path: 'SAP__Currencies'
+        // });
+        // var token = results1.headers;
+        var t = {
+            GrpSup: "12",
+            WbsElmt: "E0034332",
+            InvDat: "20230323",
+            ActDat: "20230323",
+            BillVal: "20",
+            Currency: "JPY",
+            MainSo: "200",
+            DebitSo: "300"
+        }
+        // const mandtHeaders = { 'x-csrf-token': 'nvtay_C_jPdTJXzCJag0wg=='}
+        try {
+            const results = await product.send({
+                method: 'POST',
+                // headers: mandtHeaders,
+                path: 'ZCDSEHPSC0011',
+                data: t
+            });
+        } catch (error) {
+            console.log(error);
+            req.reject ({
+                code: 403,
+                msg: error.message
+              })
+        }
+        
+        // product.tx(req).post("/ZCDSEHPSC0011",t);
+        // return product.run(req.query);
     });
 
 
@@ -357,9 +410,31 @@ module.exports = cds.service.impl(async function (srv) {
         return aData;
 
     });
+    this.after('READ', 'DigitPartList', async (req,res) => {
+        res.results.$count = req.length;
+    });
+
     this.on('READ', 'DigitPartList', async req => {
         const db = await cds.connect.to('db');
-        const material = await SELECT.from('ZHS402.ZTHBT0001').limit(1);
+        var material;
+        if(req.query.SELECT.where) {
+            material = await SELECT.from('ZHS402.ZTHBT0001').where(req.query.SELECT.where); 
+        } else {
+            material = await SELECT.from('ZHS402.ZTHBT0001');
+        }
+        
+
+        let arrayInput = [];
+        if (Array.isArray(material)) {
+            for (let result of material) {
+                arrayInput.push(result.E_PARTS_NO);
+            }
+        }
+        else {
+            arrayInput.push(results.E_PARTS_NO);
+        }
+        let objectMaterialDesc = {};
+        objectMaterialDesc = await PrepareMaterialData(arrayInput, objectMaterialDesc);
 
         let aData = [];
         for (let oData of material) {
@@ -370,11 +445,11 @@ module.exports = cds.service.impl(async function (srv) {
                 YEOS_MNF_NO: oData.YEOS_MNF_NO
             }
             if (oData.E_PARTS_NO) {
-                const bupa = await cds.connect.to('API_PRODUCT_SRV');
-                const MatDesc = await bupa.get('ZCDSEHBTC0009.A_ProductDescription').where({ Product: oData.E_PARTS_NO });
-                if (MatDesc.length > 0) {
-                    console.log(MatDesc);
-                    data.MATERIALDESC = MatDesc[0].ProductDescription;
+                let matDescription = objectMaterialDesc[oData.E_PARTS_NO];
+                // const bupa = await cds.connect.to('API_PRODUCT_SRV');
+                // const MatDesc = await bupa.get('ZCDSEHBTC0009.A_ProductDescription').where({ Product: oData.E_PARTS_NO });
+                if (matDescription) {
+                    data.MATERIALDESC = matDescription;
                 } else {
                     data.MATERIALDESC = "Not Found"
                 }
@@ -592,9 +667,9 @@ module.exports = cds.service.impl(async function (srv) {
                 let DataFromObject = objectAddMSCode[result.ZZ1_MSCODE_PRD];
                 let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
                 if (DataFromObject) {
-                    result.MTART = DataFromObject;
+                    result.MOD_CODE = DataFromObject;
                 } else if(DataFromModTable) {
-                    result.MTART = DataFromModTable;
+                    result.MOD_CODE = DataFromModTable;
                 }
 
             }
@@ -603,9 +678,9 @@ module.exports = cds.service.impl(async function (srv) {
             let DataFromObject = objectAddStatus[results.ZZ1_MSCODE_PRD];
             let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
             if (DataFromObject) {
-                results.MTART = DataFromObject;
+                results.MOD_CODE = DataFromObject;
             } else if(DataFromModTable) {
-                results.MTART = DataFromModTable;
+                results.MOD_CODE = DataFromModTable;
             }
         }
 
@@ -680,6 +755,7 @@ const PrepareModelData = async (arrayInput, objectAddModel) => {
     return objectAddModel;
 }
 const validateAssignmentProject = async (req,bupa) => {
+// Validate Receiver WBS
     if(!req.data.RWBS) {
         req.reject ({
             code: 403,
@@ -687,6 +763,7 @@ const validateAssignmentProject = async (req,bupa) => {
           })
     }
     else {
+// Validate existance of Receiver WBS Provided
         const data = await bupa.get('ZCDSEHBTC0003.ReceiverWBS').where({ WBSId: req.data.RWBS });
         if(data.length === 0) {
             req.reject ({
@@ -695,6 +772,7 @@ const validateAssignmentProject = async (req,bupa) => {
               }) ;
         }
         else {
+// Check the need for Parent WBS
             if(data[0].UserStatus = 'CCTW' && !req.data.PWBS) {
                 req.reject ({
                     code: 403,
@@ -703,6 +781,7 @@ const validateAssignmentProject = async (req,bupa) => {
             }
         }
     };
+//Validate Task CCode
     if(!req.data.ZTCODE_ZTCODE ) {
         req.reject ({
             code: 403,
@@ -719,6 +798,7 @@ const validateAssignmentProject = async (req,bupa) => {
         }
 
     }
+//Validate Accounting Indicator
     if(!req.data.BEMOT ) {
         req.reject ({
             code: 403,
@@ -735,6 +815,7 @@ const validateAssignmentProject = async (req,bupa) => {
         }
 
     }
+// Validate Receiver Cost Center
     const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
     if(LoggUser.length > 0) {
         if( (!LoggUser[0].ActivityType && !LoggUser[0].CostCenter ) || LoggUser[0].CostCenter === req.data.EKOSTL ) {
@@ -753,6 +834,7 @@ const validateAssignmentProject = async (req,bupa) => {
             }) ;
         }
     }
+//Validate Existance of Parent WBS
     if(req.data.PWBS) {
         const parentWBSdata = await bupa.get('ZCDSEHBTC0003.ParentWBS').where({ParentWBS : req.data.PWBS });
         if(parentWBSdata.length == 0) {
@@ -762,8 +844,23 @@ const validateAssignmentProject = async (req,bupa) => {
             }) ;
         }
     }
-    
+}  
 
-    
 
+const PrepareMaterialData = async (arrayInput, objectAddMaterial) => {
+    /*Fire the Query to the Cloiud table */
+    const bupa = await cds.connect.to('API_PRODUCT_SRV');
+    const materialArray = await bupa.get('ZCDSEHBTC0009.A_ProductDescription').where({ Product: { in: arrayInput } });
+    
+    // const addMSCodeDataArray = await SELECT.from('ZHS402.ZTHBT0056').where({ MOD_CODE: { in: arrayInput } });
+    /*Prepare the Result in Object Format so that processing is quick */
+    if (objectAddMaterial) {
+        objectAddMaterial = {};
+    }
+    if (materialArray.length > 0) {
+        for (let addMaterial of materialArray) {
+            objectAddMaterial[addMaterial.Product] = addMaterial.ProductDescription;
+        }
+    }
+    return objectAddMaterial;
 }

@@ -954,6 +954,49 @@ annotate ZCDSEHBTC0009.ZTHBT0015 with {
     PARTS_TYPE_ABB_N  @title : 'Parts Type Abb Name';
     PARTS_NO_EXT_SIGN @title : 'Parts No ext sign';
 }
+ 
+annotate ZCDSEHBTC0009.TenDigitsPartsFilter @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : Product,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : YEOS_MNF_NO,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : PCKG_CD,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
+
+annotate ZCDSEHBTC0009.TenDigitsPartsFilter {
+
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'A_ProductDescription',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Product,
+                    ValueListProperty : 'Product'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ProductDescription'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Language'
+                }
+            ]
+        }
+    })
+    Product;
+}
 annotate ZCDSEHBTC0007.DATAFE0 with @(
   UI.SelectionVariant #tab1 : {
     Text : 'Parts Structure Specification'
@@ -1119,21 +1162,47 @@ annotate ZCDSEHBTC0012.materialWhereUsed with @(
             MATNR_COM,MMSTD
         ],
         LineItem  : [
-            { Value : LIST_TYPE },
-            { Value : MASTER_DATA },
             { Value : WERKS }, 
             { Value : MATNR_COM },
-            { Value : MMSTD }                                          
+            { Value : MATNR },
+            { Value : MATNR },
+            { Value : MTART_COM },
+            { Value : POTX1_0 }, 
+            { Value : POSNR },
+            { Value : POTX1_19 },
+            { Value : MOD_CODE },
+            { Value : MAKTX },
+            { Value : ZZ1_MSCODE_PRD }, 
+            { Value : MTART },
+            { Value : EMENG },
+            { Value : BMEIN },
+            { Value : ASM },
+            { Value : POTX1_22 }, 
+            { Value : SCHGT },
+            { Value : POTX1_24 },
+            { Value : ARBPL },
+            { Value : VGW01 },
+            { Value : VGE01 }, 
+            { Value : LEVEL_BOM },
+            { Value : SEARCH_FROM },
+            { Value : SCHGT_TO },
+            { Value : BESKZ_TO }, 
+            { Value : SOBSL_TO },
+            { Value : LVORM_TO },
+            { Value : WERKS_FROM },
+            { Value : UMLGO },
+            { Value : SCHGT_FROM }, 
+            { Value : BESKZ_FROM },
+            { Value : SOBSL_FROM },
+            { Value : SOBSL_FROM },
+            { Value : BSTME },
+            { Value : MEINS }, 
+            { Value : MESSAGE }                                                
         ],
      }
 ){
 };
-annotate ZCDSEHBTC0012.materialWhereUsed with {
-    LIST_TYPE         @title : 'Where Used List Type';
-    MASTER_DATA          @title : 'Other Master Data';
-    MATNR_COM            @title : 'Component material';
-    MMSTD        @title : 'Valid From';
-}
+
 annotate ZCDSEHBTC0012.materialWhereUsed {
     @(Common : {
         Label     : 'Plant',
@@ -1176,3 +1245,47 @@ annotate ZCDSEHBTC0013.ZTHBT0100 with @(
      }
 ){
 };
+annotate ZCDSEHBTC0012.materialWhereUsed with {
+            WERKS  @title : 'Plant';
+            MATNR_COM  @title : 'Component Material';
+            MATNR  @title : 'Material';
+            MAKTX_COM  @title : 'Component Description';
+            MTART_COM  @title : 'Material Type of Component';
+            POTX1_0  @title : 'Doc No';
+            POSNR  @title : 'Page';
+            SORTF  @title : 'Line';
+            POTX1_19  @title : 'Rev';
+            MOD_CODE  @title : 'Model / Module';
+            MAKTX  @title : 'Material Description';
+            ZZ1_MSCODE_PRD  @title : 'MS code';
+            MTART  @title : 'Material Type';
+            EMENG  @title : 'BOM QTY';
+            BMEIN  @title : 'Unit';
+            ASM  @title : 'ASM';
+            POTX1_22  @title : 'Select';
+            SCHGT  @title : 'Bulk';
+            POTX1_24  @title : 'ITEM';
+            ARBPL  @title : 'Work Center';
+            VGW01  @title : 'L/T';
+            VGE01  @title : 'L/T Unit';
+            VMSTD  @title : 'Sales Stop';
+            LEVEL_BOM  @title : 'Level (in multi-level BOM explosions)';
+            SEARCH_FROM  @title : 'Search From';
+            SCHGT_TO  @title : 'Bulk (To)';
+            BESKZ_TO  @title : 'Proc (To)';
+            SOBSL_TO  @title : 'SProc (To)';
+            LVORM_TO  @title : 'DLT (To)';
+            WERKS_FROM  @title : 'Plant (From)';
+            UMLGO  @title : 'Str (From)';
+            SCHGT_FROM  @title : 'Bulk (From)';
+            BESKZ_FROM  @title : 'Proc (From)';
+            SOBSL_FROM  @title : 'SProc (From)';
+            LVORM_FROM  @title : 'DLT (From)';
+            BSTME  @title : 'Arrange Type (From)';
+            MEINS  @title : 'Arrange Unit';
+            MMSTD  @title : 'Valid from';
+            MESSAGE  @title : 'Message';
+            LIST_TYPE         @title : 'Where Used List Type';
+            MASTER_DATA          @title : 'Other Master Data';
+    
+}

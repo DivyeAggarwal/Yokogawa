@@ -38,16 +38,18 @@
 <Key>
 <PropertyRef Name="WERKS"/>
 <PropertyRef Name="MATNR_COM"/>
+<PropertyRef Name="MATNR"/>
 </Key>
 <Property Name="WERKS" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
 <Property Name="MATNR_COM" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+<Property Name="MATNR" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
 <Property Name="MAKTX_COM" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
 <Property Name="MTART_COM" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material type"/>
 <Property Name="POTX1_0" Type="Edm.String" MaxLength="18" sap:display-format="UpperCase" sap:label="Field length 18" sap:heading=""/>
 <Property Name="POSNR" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Undefined range (can be used for patch levels)" sap:heading=""/>
 <Property Name="SORTF" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Sort String"/>
 <Property Name="POTX1_19" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Component of the Version Number" sap:heading=""/>
-<Property Name="MATNR" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+<Property Name="MOD_CODE" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
 <Property Name="MAKTX" Type="Edm.String" MaxLength="40" sap:label="Material Description"/>
 <Property Name="ZZ1_MSCODE_PRD" Type="Edm.String" MaxLength="80" sap:label="MS Code"/>
 <Property Name="MTART" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Material type"/>
@@ -73,15 +75,11 @@
 <Property Name="BESKZ_FROM" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Procurement Type"/>
 <Property Name="SOBSL_FROM" Type="Edm.String" MaxLength="2" sap:display-format="UpperCase" sap:label="Special procurement" sap:quickinfo="Special procurement type"/>
 <Property Name="LVORM_FROM" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="DF at plant level" sap:quickinfo="Flag Material for Deletion at Plant Level"/>
-<Property Name="BSTME" Type="Edm.String" MaxLength="10" sap:label="Order Unit" sap:quickinfo="Purchase Order Unit of Measure" sap:semantics="unit-of-measure"/>
+<Property Name="BSTME" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="Character Field with Length 10" sap:heading=""/>
 <Property Name="MEINS" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
-<Property Name="BMTYP" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="BOM category"/>
-<Property Name="SUMFG" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Totals record ID" sap:quickinfo="Totals record indicator"/>
-<Property Name="STLAN" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="BOM Usage"/>
-<Property Name="STLNR" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="char8" sap:quickinfo="Character field, 8 characters long"/>
 <Property Name="MMSTD" Type="Edm.DateTime" Precision="0" sap:display-format="Date" sap:label="Valid From" sap:quickinfo="Date from Which the Plant-Specific Material Status Is Valid"/>
-<Property Name="DT_MFG" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="30 Characters" sap:heading=""/>
 <Property Name="MESSAGE" Type="Edm.String" MaxLength="50" sap:display-format="UpperCase" sap:label="Message Variable"/>
+<Property Name="KEEP" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
 <Property Name="LIST_TYPE" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
 <Property Name="MASTER_DATA" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
 </EntityType>
