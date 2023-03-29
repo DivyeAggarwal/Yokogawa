@@ -954,8 +954,26 @@ annotate ZCDSEHBTC0009.ZTHBT0015 with {
     PARTS_TYPE_ABB_N  @title : 'Parts Type Abb Name';
     PARTS_NO_EXT_SIGN @title : 'Parts No ext sign';
 }
+ 
+annotate ZCDSEHBTC0009.TenDigitsPartsFilter @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : Product,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : YEOS_MNF_NO,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : PCKG_CD,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
 
 annotate ZCDSEHBTC0009.TenDigitsPartsFilter {
+
     @(Common : {
         Label     : 'Material',
         ValueList : {
