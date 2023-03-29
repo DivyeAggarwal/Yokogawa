@@ -15547,6 +15547,26 @@
     "ZCDSEHBTC0009.TenDigitsPartsFilter": {
       "kind": "entity",
       "@cds.persistence.skip": true,
+      "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+        {
+          "Property": {
+            "=": "Product"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "YEOS_MNF_NO"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "PCKG_CD"
+          },
+          "AllowedExpressions": "SingleValue"
+        }
+      ],
       "elements": {
         "Product": {
           "@title": "Product",
