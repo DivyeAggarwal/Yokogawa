@@ -617,19 +617,22 @@ module.exports = cds.service.impl(async function (srv) {
 
 const ValidateAssignment = async (req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
+    if(req.data.ZPS_IDENTIFIER === 'P') {
+        await validateAssignmentProject(req,bupa);
+    }
     // if(req.data.ZPS_IDENTIFIER === 'P') {
     // if(req.BEMOT) {
     // const data = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({ AccountingIndicator: 'G6' });
     // if (data.length === 0) {
-        //throw 'Order quantity must not exceed 11'
+        //throw 'Accounting Indicator is Invalid'
         //req.reject(418, 'Accounting Indicator is Invalid', "BEMOT");
-        //req.error(400,'Accounting Indicator is Invalid',"BEMOT");
+        //req.error(418,'Accounting Indicator is Invalid',"BEMOT");
         // }
         // }
 
         req.reject ({
             code: 403,
-            msg: 'Accounting Indicator is Invalid'
+            message: 'Accounting Indicator is Invalid'
           })
 
     // }
@@ -675,4 +678,92 @@ const PrepareModelData = async (arrayInput, objectAddModel) => {
         }
     }
     return objectAddModel;
+}
+const validateAssignmentProject = async (req,bupa) => {
+    if(!req.data.RWBS) {
+        req.reject ({
+            code: 403,
+            message: 'Receiver WBS is Manadatory'
+          })
+    }
+    else {
+        const data = await bupa.get('ZCDSEHBTC0003.ReceiverWBS').where({ WBSId: req.data.RWBS });
+        if(data.length === 0) {
+            req.reject ({
+                code: 403,
+                message: 'Invalid Receiver WBS. Kindly choose a valid one'
+              }) ;
+        }
+        else {
+            if(data[0].UserStatus = 'CCTW' && !req.data.PWBS) {
+                req.reject ({
+                    code: 403,
+                    message: 'Kindly provide a valid Parent WBS'
+                  }) ;
+            }
+        }
+    };
+    if(!req.data.ZTCODE_ZTCODE ) {
+        req.reject ({
+            code: 403,
+            message: 'Kindly provide a valid Task Code'
+          }) ;
+    }
+    else {
+        const Taskdata = await SELECT.from('ZCDSEHBTC0003.ZTHBT0020').where({ ZTCODE: req.data.ZTCODE_ZTCODE });
+        if(Taskdata.length === 0){
+            req.reject ({
+                code: 403,
+                message: 'Provided Task code does not exists'
+              }) ;
+        }
+
+    }
+    if(!req.data.BEMOT ) {
+        req.reject ({
+            code: 403,
+            message: 'Kindly provide valid Accounting Indicator'
+          }) ;
+    }
+    else {
+        const Taskdata = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({ AccountingIndicator: req.data.BEMOT });
+        if(Taskdata.length === 0){
+            req.reject ({
+                code: 403,
+                message: 'Provided Accounting indicator does not exists'
+              }) ;
+        }
+
+    }
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+    if(LoggUser.length > 0) {
+        if( (!LoggUser[0].ActivityType && !LoggUser[0].CostCenter ) || LoggUser[0].CostCenter === req.data.EKOSTL ) {
+            req.reject ({
+                code: 403,
+                message: 'Kindly Provide a valid Receiver Cost Center'
+              }) ;
+        }
+    }
+    if(req.data.EKOSTL){
+        const costCenterdata = await bupa.get('ZCDSEHBTC0003.ReceiverCostCenter').where({CostCenter : req.data.EKOSTL });
+        if(costCenterdata.length == 0) {
+            req.reject ({
+                code: 403,
+                message: 'Provided Cost Center does not exists'
+            }) ;
+        }
+    }
+    if(req.data.PWBS) {
+        const parentWBSdata = await bupa.get('ZCDSEHBTC0003.ParentWBS').where({ParentWBS : req.data.PWBS });
+        if(parentWBSdata.length == 0) {
+            req.reject ({
+                code: 403,
+                message: 'Provided Parent WBS does not exists'
+            }) ;
+        }
+    }
+    
+
+    
+
 }
