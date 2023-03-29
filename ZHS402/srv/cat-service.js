@@ -116,11 +116,11 @@ module.exports = cds.service.impl(async function (srv) {
         let query = req.query;
         const headers = { 'x-csrf-token': 'fetch'}
         
-        const results1 = await product.send({
-                method: 'GET',
-                headers: headers,
-                path: 'SAP__Currencies'
-        });
+        // const results1 = await product.send({
+        //         method: 'GET',
+        //         headers: headers,
+        //         path: 'SAP__Currencies'
+        // });
         // var token = results1.headers;
         var t = {
             GrpSup: "12",
@@ -133,12 +133,21 @@ module.exports = cds.service.impl(async function (srv) {
             DebitSo: "300"
         }
         // const mandtHeaders = { 'x-csrf-token': 'nvtay_C_jPdTJXzCJag0wg=='}
-        const results = await product.send({
+        try {
+            const results = await product.send({
                 method: 'POST',
                 // headers: mandtHeaders,
                 path: 'ZCDSEHPSC0011',
                 data: t
             });
+        } catch (error) {
+            console.log(error);
+            req.reject ({
+                code: 403,
+                msg: error.message
+              })
+        }
+        
         // product.tx(req).post("/ZCDSEHPSC0011",t);
         // return product.run(req.query);
     });

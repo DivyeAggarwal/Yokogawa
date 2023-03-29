@@ -14129,102 +14129,6 @@
         }
       }
     },
-    "ZCDSEHBTC0009.ZTHBT0001_I": {
-      "kind": "entity",
-      "projection": {
-        "from": {
-          "ref": [
-            "ZHS402.ZTHBT0001"
-          ]
-        }
-      },
-      "elements": {
-        "createdAt": {
-          "@cds.on.insert": {
-            "=": "$now"
-          },
-          "@UI.HiddenFilter": true,
-          "@Core.Immutable": true,
-          "@title": "{i18n>CreatedAt}",
-          "@readonly": true,
-          "type": "cds.Timestamp"
-        },
-        "createdBy": {
-          "@cds.on.insert": {
-            "=": "$user"
-          },
-          "@UI.HiddenFilter": true,
-          "@Core.Immutable": true,
-          "@title": "{i18n>CreatedBy}",
-          "@readonly": true,
-          "@description": "{i18n>UserID.Description}",
-          "type": "User",
-          "length": 255
-        },
-        "modifiedAt": {
-          "@cds.on.insert": {
-            "=": "$now"
-          },
-          "@cds.on.update": {
-            "=": "$now"
-          },
-          "@UI.HiddenFilter": true,
-          "@title": "{i18n>ChangedAt}",
-          "@readonly": true,
-          "type": "cds.Timestamp"
-        },
-        "modifiedBy": {
-          "@cds.on.insert": {
-            "=": "$user"
-          },
-          "@cds.on.update": {
-            "=": "$user"
-          },
-          "@UI.HiddenFilter": true,
-          "@title": "{i18n>ChangedBy}",
-          "@readonly": true,
-          "@description": "{i18n>UserID.Description}",
-          "type": "User",
-          "length": 255
-        },
-        "PARTS_NO": {
-          "@title": "Parts  Number",
-          "key": true,
-          "type": "cds.String",
-          "length": 18
-        },
-        "E_PARTS_NO": {
-          "@title": "Material Number",
-          "type": "cds.String",
-          "length": 40
-        },
-        "SOURCE_CD": {
-          "@title": "Source  Code",
-          "type": "cds.String",
-          "length": 2
-        },
-        "YEOS_MNF_NO": {
-          "@title": "Maker Model Number",
-          "type": "cds.String",
-          "length": 5
-        },
-        "YEOS_MNF_MODEL": {
-          "@title": "Maker Model Name",
-          "type": "cds.String",
-          "length": 80
-        },
-        "PCKG_CD": {
-          "@title": "Packing Code",
-          "type": "cds.String",
-          "length": 1
-        },
-        "IND_DEMAND_SIGN": {
-          "@title": "Ind Demand Sign",
-          "type": "cds.String",
-          "length": 1
-        }
-      }
-    },
     "ZCDSEHBTC0009.ZTHBT0002": {
       "kind": "entity",
       "projection": {
@@ -15637,6 +15541,521 @@
           "@title": "Maker Model Number",
           "type": "cds.String",
           "length": 5
+        }
+      }
+    },
+    "ZCDSEHBTC0009.TenDigitsPartsFilter": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Product": {
+          "@title": "Product",
+          "@Common.QuickInfo": "Product Number",
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "A_ProductDescription",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "Product"
+              },
+              "ValueListProperty": "Product"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "ProductDescription"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Language"
+            }
+          ],
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "YEOS_MNF_NO": {
+          "@title": "Maker Model Number",
+          "type": "cds.String",
+          "length": 5
+        },
+        "PCKG_CD": {
+          "@title": "Packing Code",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZCDSEHBTC0009.TenDigitsParts": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Product": {
+          "@title": "Product",
+          "@Common.QuickInfo": "Product Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "ProductType": {
+          "@title": "Product Type",
+          "@Common.QuickInfo": "Product Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "CrossPlantStatus": {
+          "@title": "Cross-Plant Product Status",
+          "@Common.QuickInfo": "Cross-Plant Product Status",
+          "type": "cds.String",
+          "length": 2
+        },
+        "CrossPlantStatusValidityDate": {
+          "@title": "Valid from",
+          "@Common.QuickInfo": "Date from which the cross-plant material status is valid",
+          "type": "cds.String",
+          "length": 2
+        },
+        "CreationDate": {
+          "@title": "Created On",
+          "@Common.QuickInfo": "Created On",
+          "type": "cds.DateTime"
+        },
+        "CreatedByUser": {
+          "@title": "Created By",
+          "@Common.QuickInfo": "Created By",
+          "type": "cds.String",
+          "length": 12
+        },
+        "LastChangeDate": {
+          "@title": "Last Change",
+          "@Common.QuickInfo": "Last Change",
+          "type": "cds.DateTime"
+        },
+        "LastChangedByUser": {
+          "@title": "Changed By",
+          "@Common.QuickInfo": "Changed By",
+          "type": "cds.String",
+          "length": 12
+        },
+        "LastChangeDateTime": {
+          "@title": "Last Changed",
+          "@Common.QuickInfo": "Last Changed",
+          "type": "cds.Timestamp"
+        },
+        "IsMarkedForDeletion": {
+          "@title": "Marked for Deletion",
+          "@Common.QuickInfo": "Marked for Deletion",
+          "type": "cds.Boolean"
+        },
+        "ProductOldID": {
+          "@title": "Old product number",
+          "@Common.QuickInfo": "Old product number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "GrossWeight": {
+          "@title": "Gross weight",
+          "@Common.QuickInfo": "Gross weight",
+          "type": "cds.Decimal"
+        },
+        "PurchaseOrderQuantityUnit": {
+          "@title": "Order Unit",
+          "@Common.QuickInfo": "Order Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "SourceOfSupply": {
+          "@title": "Source of supply",
+          "@Common.QuickInfo": "Source of supply",
+          "type": "cds.String",
+          "length": 1
+        },
+        "WeightUnit": {
+          "@title": "Weight Unit",
+          "@Common.QuickInfo": "Weight Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "NetWeight": {
+          "@title": "Net weight",
+          "@Common.QuickInfo": "Net weight",
+          "type": "cds.Decimal"
+        },
+        "CountryOfOrigin": {
+          "@title": "Cntry/Reg of Origin",
+          "@Common.QuickInfo": "Cntry/Reg of Origin",
+          "type": "cds.String",
+          "length": 3
+        },
+        "CompetitorID": {
+          "@title": "Competitor",
+          "@Common.QuickInfo": "Competitor",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ProductGroup": {
+          "@title": "Product Group",
+          "@Common.QuickInfo": "Product Group",
+          "type": "cds.String",
+          "length": 9
+        },
+        "BaseUnit": {
+          "@title": "Base Unit of Measure",
+          "@Common.QuickInfo": "Base Unit of Measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ItemCategoryGroup": {
+          "@title": "Gen. item cat. grp",
+          "@Common.QuickInfo": "Gen. item cat. grp",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ProductHierarchy": {
+          "@title": "Product hierarchy",
+          "@Common.QuickInfo": "Product hierarchy",
+          "type": "cds.String",
+          "length": 18
+        },
+        "Division": {
+          "@title": "Division",
+          "@Common.QuickInfo": "Division",
+          "type": "cds.String",
+          "length": 2
+        },
+        "VarblPurOrdUnitIsActive": {
+          "@title": "Var. Order Unit",
+          "@Common.QuickInfo": "Var. Order Unit",
+          "type": "cds.String",
+          "length": 1
+        },
+        "VolumeUnit": {
+          "@title": "Volume unit",
+          "@Common.QuickInfo": "Volume unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "MaterialVolume": {
+          "@title": "Volume",
+          "@Common.QuickInfo": "Volume",
+          "type": "cds.Decimal"
+        },
+        "ANPCode": {
+          "@title": "ANP Code",
+          "@Common.QuickInfo": "ANP Code",
+          "type": "cds.String",
+          "length": 9
+        },
+        "Brand": {
+          "@title": "Brand",
+          "@Common.QuickInfo": "Brand",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ProcurementRule": {
+          "@title": "Procurement rule",
+          "@Common.QuickInfo": "Procurement rule",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ValidityStartDate": {
+          "@title": "Valid-From Date",
+          "@Common.QuickInfo": "Valid-From Date",
+          "type": "cds.DateTime"
+        },
+        "LowLevelCode": {
+          "@title": "Low-Level Code",
+          "@Common.QuickInfo": "Low-Level Code",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ProdNoInGenProdInPrepackProd": {
+          "@title": "Generic Material",
+          "@Common.QuickInfo": "Generic Material",
+          "type": "cds.String",
+          "length": 40
+        },
+        "SerialIdentifierAssgmtProfile": {
+          "@title": "Serial No. Profile",
+          "@Common.QuickInfo": "Serial No. Profile",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SizeOrDimensionText": {
+          "@title": "Size/dimensions",
+          "@Common.QuickInfo": "Size/dimensions",
+          "type": "cds.String",
+          "length": 32
+        },
+        "IndustryStandardName": {
+          "@title": "Industry Std Desc.",
+          "@Common.QuickInfo": "Industry Std Desc.",
+          "type": "cds.String",
+          "length": 18
+        },
+        "ProductStandardID": {
+          "@title": "GTIN",
+          "@Common.QuickInfo": "GTIN",
+          "type": "cds.String",
+          "length": 18
+        },
+        "InternationalArticleNumberCat": {
+          "@title": "EAN category",
+          "@Common.QuickInfo": "EAN category",
+          "type": "cds.String",
+          "length": 2
+        },
+        "ProductIsConfigurable": {
+          "@title": "Configurable",
+          "@Common.QuickInfo": "Configurable",
+          "type": "cds.Boolean"
+        },
+        "IsBatchManagementRequired": {
+          "@title": "Batch Management",
+          "@Common.QuickInfo": "Batch Management",
+          "type": "cds.Boolean"
+        },
+        "ExternalProductGroup": {
+          "@title": "Ext. Product Group",
+          "@Common.QuickInfo": "Ext. Product Group",
+          "type": "cds.String",
+          "length": 18
+        },
+        "CrossPlantConfigurableProduct": {
+          "@title": "Cross-plant CP",
+          "@Common.QuickInfo": "Cross-plant CP",
+          "type": "cds.String",
+          "length": 40
+        },
+        "SerialNoExplicitnessLevel": {
+          "@title": "Serialization level",
+          "@Common.QuickInfo": "Serialization level",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ProductManufacturerNumber": {
+          "@title": "Mfr Part Number",
+          "@Common.QuickInfo": "Mfr Part Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ManufacturerNumber": {
+          "@title": "Manufacturer",
+          "@Common.QuickInfo": "Manufacturer",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ManufacturerPartProfile": {
+          "@title": "Mfr part profile",
+          "@Common.QuickInfo": "Mfr part profile",
+          "type": "cds.String",
+          "length": 4
+        },
+        "QltyMgmtInProcmtIsActive": {
+          "@title": "QM in Procur. Active",
+          "@Common.QuickInfo": "QM in Procur. Active",
+          "type": "cds.Boolean"
+        },
+        "IndustrySector": {
+          "@title": "Industry Sector",
+          "@Common.QuickInfo": "Industry Sector",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ChangeNumber": {
+          "@title": "Change Number",
+          "@Common.QuickInfo": "Change Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "MaterialRevisionLevel": {
+          "@title": "Revision Level",
+          "@Common.QuickInfo": "Revision Level",
+          "type": "cds.String",
+          "length": 2
+        },
+        "HandlingIndicator": {
+          "@title": "Handling Indicator",
+          "@Common.QuickInfo": "Handling Indicator",
+          "type": "cds.String",
+          "length": 4
+        },
+        "WarehouseProductGroup": {
+          "@title": "WH Material Group",
+          "@Common.QuickInfo": "WH Material Group",
+          "type": "cds.String",
+          "length": 4
+        },
+        "WarehouseStorageCondition": {
+          "@title": "Whse Stor. Condition",
+          "@Common.QuickInfo": "Whse Stor. Condition",
+          "type": "cds.String",
+          "length": 2
+        },
+        "StandardHandlingUnitType": {
+          "@title": "Standard HU Type",
+          "@Common.QuickInfo": "Standard HU Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SerialNumberProfile": {
+          "@title": "Serial No. Profile",
+          "@Common.QuickInfo": "Serial No. Profile",
+          "type": "cds.String",
+          "length": 4
+        },
+        "AdjustmentProfile": {
+          "@title": "Adjust. Profile",
+          "@Common.QuickInfo": "Adjust. Profile",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PreferredUnitOfMeasure": {
+          "@title": "Preferred UoM",
+          "@Common.QuickInfo": "Preferred UoM",
+          "type": "cds.String",
+          "length": 3
+        },
+        "IsPilferable": {
+          "@title": "Pilferable",
+          "@Common.QuickInfo": "Pilferable",
+          "type": "cds.Boolean"
+        },
+        "IsRelevantForHzdsSubstances": {
+          "@title": "Relevant for HS",
+          "@Common.QuickInfo": "Relevant for HS",
+          "type": "cds.Boolean"
+        },
+        "QuarantinePeriod": {
+          "@title": "Quarant. Per.",
+          "@Common.QuickInfo": "Quarant. Per.",
+          "type": "cds.Decimal"
+        },
+        "TimeUnitForQuarantinePeriod": {
+          "@title": "Time Unit",
+          "@Common.QuickInfo": "Time Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "QualityInspectionGroup": {
+          "@title": "Quality Inspec. Grp",
+          "@Common.QuickInfo": "Quality Inspec. Grp",
+          "type": "cds.String",
+          "length": 4
+        },
+        "AuthorizationGroup": {
+          "@title": "Authorization Group",
+          "@Common.QuickInfo": "Authorization Group",
+          "type": "cds.String",
+          "length": 4
+        },
+        "HandlingUnitType": {
+          "@title": "Handling Unit Type",
+          "@Common.QuickInfo": "Handling Unit Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "HasVariableTareWeight": {
+          "@title": "Varb. Tare Weight",
+          "@Common.QuickInfo": "Varb. Tare Weight",
+          "type": "cds.Boolean"
+        },
+        "MaximumPackagingLength": {
+          "@title": "Max. Pack. Length",
+          "@Common.QuickInfo": "Max. Pack. Length",
+          "type": "cds.Decimal"
+        },
+        "MaximumPackagingWidth": {
+          "@title": "Max. Pack. Width",
+          "@Common.QuickInfo": "Max. Pack. Width",
+          "type": "cds.Decimal"
+        },
+        "MaximumPackagingHeight": {
+          "@title": "Max. Pack. Height",
+          "@Common.QuickInfo": "Max. Pack. Height",
+          "type": "cds.Decimal"
+        },
+        "UnitForMaxPackagingDimensions": {
+          "@title": "Unit of Measurement",
+          "@Common.QuickInfo": "Unit of Measurement",
+          "type": "cds.String",
+          "length": 3
+        },
+        "DangerousGoodsIndProfile": {
+          "@title": "DG indicator profile",
+          "@Common.QuickInfo": "DG indicator profile",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ZZ1_Testfield_PRD": {
+          "@title": "Testfield",
+          "@Common.QuickInfo": "Testfield",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ZZ1_AliasName_PRD": {
+          "@title": "Alias Name",
+          "@Common.QuickInfo": "Alias Name",
+          "type": "cds.String",
+          "length": 18
+        },
+        "ZZ1_MSCode_PRD": {
+          "@title": "MS Code",
+          "@Common.QuickInfo": "MS Code",
+          "type": "cds.String",
+          "length": 80
+        },
+        "to_Description": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZCDSEHBTC0009.A_ProductDescription",
+          "keys": [
+            {
+              "ref": [
+                "Product"
+              ]
+            },
+            {
+              "ref": [
+                "Language"
+              ]
+            }
+          ]
+        },
+        "ZTHBT0001": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "ZCDSEHBTC0009.ZTHBT0001",
+          "keys": [
+            {
+              "ref": [
+                "PARTS_NO"
+              ]
+            }
+          ]
+        },
+        "ZTHBT0005": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": 1
+          },
+          "target": "ZCDSEHBTC0009.ZTHBT0005",
+          "keys": [
+            {
+              "ref": [
+                "E_PARTS_NO"
+              ]
+            },
+            {
+              "ref": [
+                "PCKG_CD"
+              ]
+            }
+          ]
         }
       }
     },
@@ -19936,9 +20355,6 @@
     "ZCDSEHBTC0013.ZCDSEHPSC0011": {
       "kind": "entity",
       "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
       "@sap.content.version": "1",
       "@sap.label": "Custom CDS View for Bill Info",
       "projection": {
@@ -19989,7 +20405,7 @@
           "length": 5,
           "notNull": false
         },
-        "MainSO": {
+        "MainSo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales document",
           "@sap.quickinfo": "Sales Document",
@@ -45713,9 +46129,6 @@
       "kind": "entity",
       "@cds.external": true,
       "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
       "@sap.content.version": "1",
       "@sap.label": "Custom CDS View for Bill Info",
       "elements": {
@@ -45759,7 +46172,7 @@
           "length": 5,
           "notNull": false
         },
-        "MainSO": {
+        "MainSo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales document",
           "@sap.quickinfo": "Sales Document",
