@@ -148,6 +148,7 @@
       "ZSRVBHPS0010": {
         "kind": "odata-v2",
         "model": "srv/external/ZSRVBHPS0010",
+        "csrf": true,
         "credentials": {
           "path": "/sap/opu/odata/sap/ZSRVBHPS0010",
           "destination": "s4003-ap-https_ZSRVBHPS0008"

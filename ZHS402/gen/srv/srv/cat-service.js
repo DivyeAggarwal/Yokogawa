@@ -80,9 +80,20 @@ module.exports = cds.service.impl(async function (srv) {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
-    this.on('CREATE', 'A_Product', async req => {
+    this.on('CREATE', 'TenDigitsParts', async req => {
         const product = await cds.connect.to('API_PRODUCT_SRV');
-        return product.run(req.query);
+        var dulicate = Object.assign({}, req.data);
+        delete dulicate.ZTHBT0001;
+        delete dulicate.ZTHBT0005;
+        req.data = dulicate;
+        var response = await product.run(req.query);
+
+        var conversion = req.data.ZTHBT0001;
+        conversion.PARTS_NO = response.Product;
+        await INSERT.into('ZHS402.ZTHBT0001').entries(conversion);
+        var oObject5 = req.data.ZTHBT0005; 
+        await INSERT.into('ZHS402.ZTHBT0005').entries(oObject5);
+        return response;
     });
     
 
@@ -102,11 +113,33 @@ module.exports = cds.service.impl(async function (srv) {
 
     this.on('CREATE', 'ZCDSEHPSC0011', async req => {
         const product = await cds.connect.to('ZSRVBHPS0010');
+        let query = req.query;
+        const headers = { 'x-csrf-token': 'fetch'}
+        
+        const results1 = await product.send({
+                method: 'GET',
+                headers: headers,
+                path: 'SAP__Currencies'
+        });
+        // var token = results1.headers;
         var t = {
-            "GrpSup":"67",
-            "WbsElmt":"78"
-          }
-        product.tx(req).post("/ZCDSEHPSC0011",req.data);
+            GrpSup: "12",
+            WbsElmt: "E0034332",
+            InvDat: "20230323",
+            ActDat: "20230323",
+            BillVal: "20",
+            Currency: "JPY",
+            MainSo: "200",
+            DebitSo: "300"
+        }
+        // const mandtHeaders = { 'x-csrf-token': 'nvtay_C_jPdTJXzCJag0wg=='}
+        const results = await product.send({
+                method: 'POST',
+                // headers: mandtHeaders,
+                path: 'ZCDSEHPSC0011',
+                data: t
+            });
+        // product.tx(req).post("/ZCDSEHPSC0011",t);
         // return product.run(req.query);
     });
 
