@@ -16133,6 +16133,16 @@
           "type": "cds.String",
           "length": 40
         },
+        "YEOS_MNF_MODEL": {
+          "@title": "Manufacturing Model",
+          "type": "cds.String",
+          "length": 80
+        },
+        "YEOS_MNF_NO": {
+          "@title": "Maker Code",
+          "type": "cds.String",
+          "length": 5
+        },
         "ZTHBT0001": {
           "type": "cds.Association",
           "cardinality": {

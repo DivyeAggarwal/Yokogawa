@@ -89,11 +89,13 @@ module.exports = cds.service.impl(async function (srv) {
         delete dulicate.PCKG_STYLE_N; 
         delete dulicate.SUPPLY_STYLE;
         delete dulicate.SUPPLY_STYLE_N; 
+        delete dulicate.YEOS_MNF_MODEL; 
+        delete dulicate.YEOS_MNF_NO; 
         delete dulicate.CreationDate;
         delete dulicate.LastChangeDate; 
         delete dulicate.ZTHBT0001;
         delete dulicate.ZTHBT0005; 
-        var response = await api.tx(req).post("/entity",dulicate.data);
+        var response = await api.tx(req).post("/A_Product",dulicate);
 
         var conversion = req.data.ZTHBT0001;
         conversion.PARTS_NO = response.Product;
@@ -119,23 +121,28 @@ module.exports = cds.service.impl(async function (srv) {
     });
 
     this.on('CREATE', 'ZCDSEHPSC0011', async req => {
-        const so = await cds.connect.to('ZSRVBHPS0010');
+        const soapi = await cds.connect.to('ZSRVBHPS0010');
         req.data.InvDat = req.data.InvDat.split('-').join('');
         req.data.ActDat = req.data.ActDat.split('-').join('');
-        try {
-            const results = await so.send({
-                method: 'POST',
-                path: 'ZCDSEHPSC0011',
-                data: req.data
-            });
-            return results;
-        } catch (error) {
-            console.log(error);
-            req.error({
-                code: 403,
-                message: error.message
-            })
-        }
+        var response = await soapi.tx(req).post("/ZCDSEHPSC0011",req.data);
+        response.InvDat = response.InvDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        response.ActDat = response.ActDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        
+        return response;
+        // try {
+        //     const results = await so.send({
+        //         method: 'POST',
+        //         path: 'ZCDSEHPSC0011',
+        //         data: req.data
+        //     });
+        //     return results;
+        // } catch (error) {
+        //     console.log(error);
+        //     req.error({
+        //         code: 403,
+        //         message: error.message
+        //     })
+        // }
 
     });
 
