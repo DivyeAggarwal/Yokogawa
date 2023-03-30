@@ -1292,7 +1292,7 @@ annotate ZCDSEHBTC0012.materialWhereUsed {
     })
     WERKS;
 }
-annotate ZCDSEHBTC0013.ZTHBT0100 with @(
+annotate ZCDSEHBTC0013.ZTHBT0059 with @(
     UI : { 
         SelectionFields  : [
             ZWBS_ELEMENT,
