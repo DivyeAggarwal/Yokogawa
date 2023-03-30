@@ -487,8 +487,10 @@ service ZCDSEHBTC0009 {
         PCKG_STYLE_N: String(40) @title : 'Packing Style Name';
         @Semantics.quantity.unitOfMeasure: 'SUPPLY_STYLE_N'
         SUPPLY_STYLE: String(2) @title : 'Supply Style';
-        @Semantics.unitOfMeasure
+        @Semantics.unitOfMeasure 
         SUPPLY_STYLE_N: String(40) @title : 'Supply Style Name';
+        YEOS_MNF_MODEL: String(80) @title : 'Manufacturing Model';
+        YEOS_MNF_NO: String(5) @title : 'Maker Code';
         ZTHBT0001: Association to one  ZTHBT0001;
         ZTHBT0005: Association to one  ZTHBT0005;
     }

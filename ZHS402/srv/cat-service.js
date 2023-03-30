@@ -89,11 +89,13 @@ module.exports = cds.service.impl(async function (srv) {
         delete dulicate.PCKG_STYLE_N; 
         delete dulicate.SUPPLY_STYLE;
         delete dulicate.SUPPLY_STYLE_N; 
+        delete dulicate.YEOS_MNF_MODEL; 
+        delete dulicate.YEOS_MNF_NO; 
         delete dulicate.CreationDate;
         delete dulicate.LastChangeDate; 
         delete dulicate.ZTHBT0001;
         delete dulicate.ZTHBT0005; 
-        var response = await api.tx(req).post("/entity",dulicate.data);
+        var response = await api.tx(req).post("/A_Product",dulicate.data);
 
         var conversion = req.data.ZTHBT0001;
         conversion.PARTS_NO = response.Product;
