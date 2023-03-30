@@ -1297,8 +1297,7 @@ annotate ZCDSEHBTC0012.materialWhereUsed {
 annotate ZCDSEHBTC0013.ZTHBT0059 with @(
     UI : { 
         SelectionFields  : [
-            ZWBS_ELEMENT,
-            ZSD_GRPSUPP
+            ZWBS_ELEMENT
         ],
         LineItem  : [
             { Value : ZWBS_ELEMENT },
