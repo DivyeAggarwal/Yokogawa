@@ -987,7 +987,7 @@ annotate ZCDSEHBTC0009.TenDigitsPartsFilter {
                 {
                     $Type             : 'Common.ValueListParameterDisplayOnly',
                     ValueListProperty : 'ProductDescription'
-                },
+                },	
                 {
                     $Type             : 'Common.ValueListParameterDisplayOnly',
                     ValueListProperty : 'Language'
@@ -997,6 +997,75 @@ annotate ZCDSEHBTC0009.TenDigitsPartsFilter {
     })
     Product;
 }
+annotate ZCDSEHBTC0009.TenDigitsParts {
+	    @(Common : {
+	        Label     : 'Packing Type',
+	        ValueList : {
+	            CollectionPath : 'ZTHBT0003',
+	            Parameters     : [
+	                {
+	                    $Type             : 'Common.ValueListParameterInOut',
+	                    LocalDataProperty : PCKG_TYPE,
+	                    ValueListProperty : 'PCKG_TYPE'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterDisplayOnly',
+	                    ValueListProperty : 'PCKG_TYPE_N'
+	                }
+	            ]
+	        }
+	    })
+	    PCKG_TYPE;
+	}
+	annotate ZCDSEHBTC0009.TenDigitsParts {
+	    @(Common : {
+	        Label     : 'Packing Style',
+	        ValueList : {
+	            CollectionPath : 'ZTHBT0002',
+	            Parameters     : [
+	                {
+	                    $Type             : 'Common.ValueListParameterInOut',
+	                    LocalDataProperty : PCKG_STYLE,
+	                    ValueListProperty : 'PCKG_STYLE'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterDisplayOnly',
+	                    ValueListProperty : 'PCKG_STYLE_N'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterDisplayOnly',
+	                    ValueListProperty : 'PCKG_TYPE'
+	                }
+	            ]
+	        }
+	    })
+	    PCKG_STYLE;
+	}
+	annotate ZCDSEHBTC0009.TenDigitsParts {
+	    @(Common : {
+	        Label     : 'Supply Style',
+	        ValueList : {
+	            CollectionPath : 'ZTHBT0004',
+	            Parameters     : [
+	                {
+	                    $Type             : 'Common.ValueListParameterInOut',
+	                    LocalDataProperty : SUPPLY_STYLE,
+	                    ValueListProperty : 'SUPPLY_STYLE'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterDisplayOnly',
+	                    ValueListProperty : 'SUPPLY_STYLE_N'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterDisplayOnly',
+	                    ValueListProperty : 'PCKG_TYPE'
+	                }
+	            ]
+	        }
+	    })
+	    SUPPLY_STYLE;
+}
+
 annotate ZCDSEHBTC0007.DATAFE0 with @(
   UI.SelectionVariant #tab1 : {
     Text : 'Parts Structure Specification'

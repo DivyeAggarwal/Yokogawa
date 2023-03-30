@@ -398,8 +398,8 @@ service ZCDSEHBTC0009 {
 
     @cds.persistence.skip
     entity TenDigitsPartsFilter {
-        key Product: String(40)  @title : 'Product' @Common.QuickInfo : 'Product Number'; 
-        YEOS_MNF_NO: String(5) @title : 'Maker Model Number';
+        key Product: String(40)  @title : 'Material' @Common.QuickInfo : 'Material'; 
+        YEOS_MNF_NO: String(5) @title : 'Maker Code';
         PCKG_CD: String(1) @title : 'Packing Code';
     }
     @cds.persistence.skip
@@ -477,6 +477,18 @@ service ZCDSEHBTC0009 {
         ZZ1_AliasName_PRD: String(18) @title : 'Alias Name' @Common.QuickInfo : 'Alias Name';
         ZZ1_MSCode_PRD: String(80) @title : 'MS Code' @Common.QuickInfo : 'MS Code'; 
         to_Description: Association to many  API_PRODUCT_SRV.A_ProductDescription;
+        @Semantics.quantity.unitOfMeasure: 'PCKG_TYPE_N'
+        PCKG_TYPE: String(2) @title : 'Packing Type';
+        @Semantics.unitOfMeasure
+        PCKG_TYPE_N: String(40) @title : 'Packing Type Name';
+        @Semantics.quantity.unitOfMeasure: 'PCKG_STYLE_N'
+        PCKG_STYLE: String(2) @title : 'Packing Style';
+        @Semantics.unitOfMeasure
+        PCKG_STYLE_N: String(40) @title : 'Packing Style Name';
+        @Semantics.quantity.unitOfMeasure: 'SUPPLY_STYLE_N'
+        SUPPLY_STYLE: String(2) @title : 'Supply Style';
+        @Semantics.unitOfMeasure
+        SUPPLY_STYLE_N: String(40) @title : 'Supply Style Name';
         ZTHBT0001: Association to one  ZTHBT0001;
         ZTHBT0005: Association to one  ZTHBT0005;
     }

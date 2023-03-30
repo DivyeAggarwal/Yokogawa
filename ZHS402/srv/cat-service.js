@@ -81,12 +81,19 @@ module.exports = cds.service.impl(async function (srv) {
         return product.run(req.query);
     });
     this.on('CREATE', 'TenDigitsParts', async req => {
-        const product = await cds.connect.to('API_PRODUCT_SRV');
+        const api = await cds.connect.to('API_PRODUCT_SRV');
         var dulicate = Object.assign({}, req.data);
+        delete dulicate.PCKG_TYPE;
+        delete dulicate.PCKG_TYPE_N; 
+        delete dulicate.PCKG_STYLE;
+        delete dulicate.PCKG_STYLE_N; 
+        delete dulicate.SUPPLY_STYLE;
+        delete dulicate.SUPPLY_STYLE_N; 
+        delete dulicate.CreationDate;
+        delete dulicate.LastChangeDate; 
         delete dulicate.ZTHBT0001;
-        delete dulicate.ZTHBT0005;
-        req.data = dulicate;
-        var response = await product.run(req.query);
+        delete dulicate.ZTHBT0005; 
+        var response = await api.tx(req).post("/entity",dulicate.data);
 
         var conversion = req.data.ZTHBT0001;
         conversion.PARTS_NO = response.Product;
