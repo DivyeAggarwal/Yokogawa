@@ -101,7 +101,7 @@ module.exports = cds.service.impl(async function (srv) {
         conversion.PARTS_NO = response.Product;
         await INSERT.into('ZHS402.ZTHBT0001').entries(conversion);
         var oObject5 = req.data.ZTHBT0005; 
-        await INSERT.into('ZHS402.ZTHBT0005').entries(oObject5);
+        await UPSERT.into('ZHS402.ZTHBT0005').entries(oObject5);
         return response;
     });
     

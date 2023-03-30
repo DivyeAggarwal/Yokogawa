@@ -1033,8 +1033,9 @@ annotate ZCDSEHBTC0009.TenDigitsParts {
 	                    ValueListProperty : 'PCKG_STYLE_N'
 	                },
 	                {
-	                    $Type             : 'Common.ValueListParameterDisplayOnly',
-	                    ValueListProperty : 'PCKG_TYPE'
+	                    $Type             : 'Common.ValueListParameterIn',
+	                    ValueListProperty : 'PCKG_TYPE',
+	                    LocalDataProperty : PCKG_TYPE
 	                }
 	            ]
 	        }
@@ -1057,8 +1058,9 @@ annotate ZCDSEHBTC0009.TenDigitsParts {
 	                    ValueListProperty : 'SUPPLY_STYLE_N'
 	                },
 	                {
-	                    $Type             : 'Common.ValueListParameterDisplayOnly',
-	                    ValueListProperty : 'PCKG_TYPE'
+	                    $Type             : 'Common.ValueListParameterIn',
+	                    ValueListProperty : 'PCKG_TYPE',
+	                    LocalDataProperty :  PCKG_TYPE
 	                }
 	            ]
 	        }
