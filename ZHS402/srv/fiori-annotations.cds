@@ -1421,6 +1421,15 @@ annotate ZCDSEHBTC0011.ManBOMUpload {
 	    RevisionReason;
 }
 
+annotate  ZCDSEHBTC0011.ManBOMUpload with @(
+    UI: {
+        HeaderInfo: {
+            TypeName: 'Manufacture BOM Upload',
+            TypeNamePlural: 'Manufacture BOM Upload'
+        },
+        SelectionFields: [ Plant,MainModel,FZ2No,MainModelName,ApprovedDate,Title,ExecutionSchedule,RevisionReason ]
+    }
+);
 
 annotate ZCDSEHBTC0011.ManBOMUpload @(Capabilities.FilterRestrictions : {
    FilterExpressionRestrictions : [
