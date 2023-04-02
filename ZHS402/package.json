@@ -153,6 +153,10 @@
           "path": "/sap/opu/odata/sap/ZSRVBHPS0010",
           "destination": "s4003-ap-https_ZSRVBHPS0008"
         }
+      },
+      "ZSRVBHPP0014": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVBHPP0014"
       }
     },
     "hana": {
