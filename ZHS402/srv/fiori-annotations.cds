@@ -1359,3 +1359,106 @@ annotate ZCDSEHBTC0012.materialWhereUsed with {
             MASTER_DATA          @title : 'Other Master Data';
     
 }
+
+annotate ZCDSEHBTC0011.ManBOMUpload {
+	    @(Common : {
+	        Label     : 'Plant',
+	        ValueList : {
+	        CollectionPath : 'VL_SH_H_T001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Plant,
+                    ValueListProperty : 'BUKRS'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'BUTXT'
+                }
+            ]
+	        }
+	    })
+	    Plant;
+}
+annotate ZCDSEHBTC0011.ManBOMUpload {
+	    @(Common : {
+	        Label     : 'ExecutionSchedule',
+	        ValueList : {
+	        CollectionPath : 'ZTHBT0018',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ExecutionSchedule,
+                    ValueListProperty : 'APPLY_DATE_CD'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'APPLY_DATE_N'
+                }
+            ]
+	        }
+	    })
+	    ExecutionSchedule;
+}
+annotate ZCDSEHBTC0011.ManBOMUpload {
+	    @(Common : {
+	        Label     : 'RevisionReason',
+	        ValueList : {
+	        CollectionPath : 'ZTHBT0017',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : RevisionReason,
+                    ValueListProperty : 'MODIFY_CAUSE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MODIFY_CAUSE_N'
+                }
+            ]
+	        }
+	    })
+	    RevisionReason;
+}
+
+
+annotate ZCDSEHBTC0011.ManBOMUpload @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : Plant,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : MainModel,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : FZ2No,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : MainModelName,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : ApprovedDate,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : OperationDept,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : Title,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : ExecutionSchedule,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : RevisionReason,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});

@@ -633,7 +633,22 @@ service ZCDSEHBTC0011 {
     entity ZTHBT0017 as projection on db.ZTHBT0017;
     entity ZTHBT0018 as projection on db.ZTHBT0018;
     entity ZTHBT0037 as projection on db.ZTHBT0037; 
+    entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
     entity ZCDSEHPPB0071 as projection on ZSRVBHPP0012.ZCDSEHPPB0071
+    @cds.persistence.skip
+    entity ManBOMUpload {
+        key Plant  : String(4)  @title : 'Plant' @Common.QuickInfo : 'Plant'; 
+            MainModel  : String(40)  @title : 'Main Model' @Common.QuickInfo : 'Main Model'; 
+            FZ2No  : String(5)  @title : 'F2Z no.' @Common.QuickInfo : 'FZ2 no.'; 
+            MainModelName  : String(40)  @title : 'Main Model Name' @Common.QuickInfo : 'Main Model Name'; 
+            ApprovedDate  : Date  @title : 'Approved date' @Common.QuickInfo : 'Approved date'; 
+            OperationDept  : String(60)  @title : 'Operation Dept.' @Common.QuickInfo : 'Operation Dept.'; 
+            Title  : String(18)  @title : 'Title' @Common.QuickInfo : 'Title'; 
+            ExecutionSchedule  : String(2)  @title : 'Execution Schedule' @Common.QuickInfo : 'Execution Schedule'; 
+            RevisionReason  : String(2)  @title : 'Revision Reason' @Common.QuickInfo : 'Revision Reason'; 
+            ErrorFile  : String(128)  @title : 'Error file' @Common.QuickInfo : 'Error file'; 
+            UploadFile  : Association to many  ZCDSEHPPB0071;
+    }
 }
 
 service ZCDSEHBTC0012 {
@@ -693,7 +708,7 @@ service ZCDSEHBTC0013 {
     entity ZTHBT0059 as projection on db.ZTHBT0059;
     entity ZCDSEHPSC0011 as projection on ZSRVBHPS0010.ZCDSEHPSC0011;
 }
-
+//8410 Reserve Stock
 service ZCDSEHBTC0014 {
     entity ZCDSEHPPP0004 as projection on ZSRVBHPP0014.ZCDSEHPPP0004;
     entity A_ProductDescription as projection on API_PRODUCT_SRV.A_ProductDescription;

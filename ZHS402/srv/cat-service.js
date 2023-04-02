@@ -681,6 +681,11 @@ module.exports = cds.service.impl(async function (srv) {
         return results;
     });
 
+    //BOM Table Update
+    this.on('CREATE', 'ManBOMUpload', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0012');
+        return bupa.run(req.query);
+    });
 
 });
 
