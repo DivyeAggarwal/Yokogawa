@@ -15,6 +15,12 @@ service CatalogService {
             AcctIndDescription
     };
 }
+type messageType : String enum {
+        S = 'Success';
+        E = 'Error';
+        I = 'Information';
+        W = 'Warning';
+    }
 
 service ZCDSEHBTC0001 {
     entity ZTHBT0001    as projection on db.ZTHBT0001;
@@ -146,6 +152,7 @@ service ZCDSEHBTC0003
 
     entity ZTHBT0020 as
         projection on db.ZTHBT0020;
+    entity s4TimeSheet as projection on TimeSheetEntry.ZCDSEHCSC0003
     
     entity TimeSheetTemplate as select from db.ZTHBT0051 as _TimeSheetTemplate{
         key _TimeSheetTemplate.PERNR,
@@ -181,9 +188,35 @@ service ZCDSEHBTC0003
             _TimeSheetTemplate.DAY7_HOUR,
 
     };
+    type timeSheetData {
+        PERNR: String;
+        WEEK_NUMBER:Integer;
+        ZPNAME:String;
+        DAY1_DATE:Date;
+        DAY1_HOUR:Integer;
+        DAY2_DATE:Date;
+        DAY2_HOUR:Integer;
+        DAY3_DATE:Date;
+        DAY3_HOUR:Integer;
+        DAY4_DATE:Date;
+        DAY4_HOUR:Integer;
+        DAY5_DATE:Date;
+        DAY5_HOUR:Integer;
+        DAY6_DATE:Date;
+        DAY6_HOUR:Integer;
+        DAY7_DATE:Date;
+        DAY7_HOUR:Integer;
+    }
     
+    type timeSheetSubmitResult {
+        PERNR: String;
+        WEEK_NUMBER:Integer;
+        ZPNAME:String;
+        messageType:messageType;
+        message:String;
+    }
 
-
+    action SubmitTimeSheet(input : timeSheetData) returns timeSheetSubmitResult;
 
 }
 

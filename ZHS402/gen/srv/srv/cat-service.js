@@ -692,25 +692,15 @@ module.exports = cds.service.impl(async function (srv) {
 
 const ValidateAssignment = async (req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
+    if(req.data.ZPFDT > req.data.ZPTDT) {
+        req.reject ({
+            code: 403,
+            message: 'Valid from Date cant be greater than Valid To Date'
+          })
+    }
     if(req.data.ZPS_IDENTIFIER === 'P') {
         await validateAssignmentProject(req,bupa);
     }
-    // if(req.data.ZPS_IDENTIFIER === 'P') {
-    // if(req.BEMOT) {
-    // const data = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({ AccountingIndicator: 'G6' });
-    // if (data.length === 0) {
-        //throw 'Accounting Indicator is Invalid'
-        //req.reject(418, 'Accounting Indicator is Invalid', "BEMOT");
-        //req.error(418,'Accounting Indicator is Invalid',"BEMOT");
-        // }
-        // }
-
-        req.reject ({
-            code: 403,
-            message: 'Accounting Indicator is Invalid'
-          })
-
-    // }
 }
 const PrepareResultObject = async (arrayInput, objectAddStatus) => {
     /*Fire the Query to the Cloiud table */

@@ -307,7 +307,7 @@ annotate  ZCDSEHBTC0003.ZTHBT0019 with @(
         FieldGroup#MainAs: {
             Data: [
                { Value: ZPNAME },
-            { Value: ZPFDT },
+            { Value: ZPFDT},
             { Value: ZPTDT },
             { Value: STAGR },
             { Value: EAUFNR },
@@ -319,7 +319,15 @@ annotate  ZCDSEHBTC0003.ZTHBT0019 with @(
             { Value: EKOSTL },
             { Value: ZESTA },
             { Value: ZPSTS },
-            { Value: COSTCENTERNAME}                
+            { Value: COSTCENTERNAME},
+            { Value: ACINDICATORDESC},
+            { Value: SERVICEORDERITEM},
+            { Value: SERVORDERITEMDESC},
+            { Value: PARENTWBSDESC},
+            { Value: RWBSDESC},
+            { Value: ZTCODE.ZTCDS},
+            { Value: ENDDA},
+            { Value: ZPS_IDENTIFIER}          
             ]
         }
     }
