@@ -3373,7 +3373,7 @@
         }
       }
     },
-    "ZHS402.ZTHBT0100": {
+    "ZHS402.ZTHBT0059": {
       "kind": "entity",
       "includes": [
         "managed"
@@ -15569,8 +15569,8 @@
       ],
       "elements": {
         "Product": {
-          "@title": "Product",
-          "@Common.QuickInfo": "Product Number",
+          "@title": "Material",
+          "@Common.QuickInfo": "Material",
           "@Common.Label": "Material",
           "@Common.ValueList.CollectionPath": "A_ProductDescription",
           "@Common.ValueList.Parameters": [
@@ -15595,7 +15595,7 @@
           "length": 40
         },
         "YEOS_MNF_NO": {
-          "@title": "Maker Model Number",
+          "@title": "Maker Code",
           "type": "cds.String",
           "length": 5
         },
@@ -16043,6 +16043,105 @@
               ]
             }
           ]
+        },
+        "PCKG_TYPE": {
+          "@Semantics.quantity.unitOfMeasure": "PCKG_TYPE_N",
+          "@title": "Packing Type",
+          "@Common.Label": "Packing Type",
+          "@Common.ValueList.CollectionPath": "ZTHBT0003",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PCKG_TYPE"
+              },
+              "ValueListProperty": "PCKG_TYPE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PCKG_TYPE_N"
+            }
+          ],
+          "type": "cds.String",
+          "length": 2
+        },
+        "PCKG_TYPE_N": {
+          "@Semantics.unitOfMeasure": true,
+          "@title": "Packing Type Name",
+          "type": "cds.String",
+          "length": 40
+        },
+        "PCKG_STYLE": {
+          "@Semantics.quantity.unitOfMeasure": "PCKG_STYLE_N",
+          "@title": "Packing Style",
+          "@Common.Label": "Packing Style",
+          "@Common.ValueList.CollectionPath": "ZTHBT0002",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PCKG_STYLE"
+              },
+              "ValueListProperty": "PCKG_STYLE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PCKG_STYLE_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PCKG_TYPE"
+            }
+          ],
+          "type": "cds.String",
+          "length": 2
+        },
+        "PCKG_STYLE_N": {
+          "@Semantics.unitOfMeasure": true,
+          "@title": "Packing Style Name",
+          "type": "cds.String",
+          "length": 40
+        },
+        "SUPPLY_STYLE": {
+          "@Semantics.quantity.unitOfMeasure": "SUPPLY_STYLE_N",
+          "@title": "Supply Style",
+          "@Common.Label": "Supply Style",
+          "@Common.ValueList.CollectionPath": "ZTHBT0004",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "SUPPLY_STYLE"
+              },
+              "ValueListProperty": "SUPPLY_STYLE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "SUPPLY_STYLE_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PCKG_TYPE"
+            }
+          ],
+          "type": "cds.String",
+          "length": 2
+        },
+        "SUPPLY_STYLE_N": {
+          "@Semantics.unitOfMeasure": true,
+          "@title": "Supply Style Name",
+          "type": "cds.String",
+          "length": 40
+        },
+        "YEOS_MNF_MODEL": {
+          "@title": "Manufacturing Model",
+          "type": "cds.String",
+          "length": 80
+        },
+        "YEOS_MNF_NO": {
+          "@title": "Maker Code",
+          "type": "cds.String",
+          "length": 5
         },
         "ZTHBT0001": {
           "type": "cds.Association",
@@ -20166,7 +20265,7 @@
       "@source": "srv/cat-service.cds",
       "kind": "service"
     },
-    "ZCDSEHBTC0013.ZTHBT0100": {
+    "ZCDSEHBTC0013.ZTHBT0059": {
       "kind": "entity",
       "@UI.SelectionFields": [
         {
@@ -20236,7 +20335,7 @@
       "projection": {
         "from": {
           "ref": [
-            "ZHS402.ZTHBT0100"
+            "ZHS402.ZTHBT0059"
           ]
         }
       },

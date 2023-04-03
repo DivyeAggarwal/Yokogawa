@@ -8,6 +8,7 @@ using ZSRVBHPP0011 from './external/ZSRVBHPP0011';
 using ZSRVBHPP0012 from './external/ZSRVBHPP0012';
 using ZSRVBHMM0004 from './external/ZSRVBHMM0004';
 using ZSRVBHPS0010 from './external/ZSRVBHPS0010';
+using ZSRVBHPP0014 from './external/ZSRVBHPP0014';
 
 service CatalogService {
     entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -431,8 +432,8 @@ service ZCDSEHBTC0009 {
 
     @cds.persistence.skip
     entity TenDigitsPartsFilter {
-        key Product: String(40)  @title : 'Product' @Common.QuickInfo : 'Product Number'; 
-        YEOS_MNF_NO: String(5) @title : 'Maker Model Number';
+        key Product: String(40)  @title : 'Material' @Common.QuickInfo : 'Material'; 
+        YEOS_MNF_NO: String(5) @title : 'Maker Code';
         PCKG_CD: String(1) @title : 'Packing Code';
     }
     @cds.persistence.skip
@@ -510,6 +511,20 @@ service ZCDSEHBTC0009 {
         ZZ1_AliasName_PRD: String(18) @title : 'Alias Name' @Common.QuickInfo : 'Alias Name';
         ZZ1_MSCode_PRD: String(80) @title : 'MS Code' @Common.QuickInfo : 'MS Code'; 
         to_Description: Association to many  API_PRODUCT_SRV.A_ProductDescription;
+        @Semantics.quantity.unitOfMeasure: 'PCKG_TYPE_N'
+        PCKG_TYPE: String(2) @title : 'Packing Type';
+        @Semantics.unitOfMeasure
+        PCKG_TYPE_N: String(40) @title : 'Packing Type Name';
+        @Semantics.quantity.unitOfMeasure: 'PCKG_STYLE_N'
+        PCKG_STYLE: String(2) @title : 'Packing Style';
+        @Semantics.unitOfMeasure
+        PCKG_STYLE_N: String(40) @title : 'Packing Style Name';
+        @Semantics.quantity.unitOfMeasure: 'SUPPLY_STYLE_N'
+        SUPPLY_STYLE: String(2) @title : 'Supply Style';
+        @Semantics.unitOfMeasure 
+        SUPPLY_STYLE_N: String(40) @title : 'Supply Style Name';
+        YEOS_MNF_MODEL: String(80) @title : 'Manufacturing Model';
+        YEOS_MNF_NO: String(5) @title : 'Maker Code';
         ZTHBT0001: Association to one  ZTHBT0001;
         ZTHBT0005: Association to one  ZTHBT0005;
     }
@@ -651,7 +666,22 @@ service ZCDSEHBTC0011 {
     entity ZTHBT0017 as projection on db.ZTHBT0017;
     entity ZTHBT0018 as projection on db.ZTHBT0018;
     entity ZTHBT0037 as projection on db.ZTHBT0037; 
+    entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
     entity ZCDSEHPPB0071 as projection on ZSRVBHPP0012.ZCDSEHPPB0071
+    @cds.persistence.skip
+    entity ManBOMUpload {
+        key Plant  : String(4)  @title : 'Plant' @Common.QuickInfo : 'Plant'; 
+            MainModel  : String(40)  @title : 'Main Model' @Common.QuickInfo : 'Main Model'; 
+            FZ2No  : String(5)  @title : 'F2Z no.' @Common.QuickInfo : 'FZ2 no.'; 
+            MainModelName  : String(40)  @title : 'Main Model Name' @Common.QuickInfo : 'Main Model Name'; 
+            ApprovedDate  : Date  @title : 'Approved date' @Common.QuickInfo : 'Approved date'; 
+            OperationDept  : String(60)  @title : 'Operation Dept.' @Common.QuickInfo : 'Operation Dept.'; 
+            Title  : String(18)  @title : 'Title' @Common.QuickInfo : 'Title'; 
+            ExecutionSchedule  : String(2)  @title : 'Execution Schedule' @Common.QuickInfo : 'Execution Schedule'; 
+            RevisionReason  : String(2)  @title : 'Revision Reason' @Common.QuickInfo : 'Revision Reason'; 
+            ErrorFile  : String(128)  @title : 'Error file' @Common.QuickInfo : 'Error file'; 
+            UploadFile  : Association to many  ZCDSEHPPB0071;
+    }
 }
 
 service ZCDSEHBTC0012 {
@@ -708,7 +738,13 @@ service ZCDSEHBTC0012 {
 }
 
 service ZCDSEHBTC0013 {
-    entity ZTHBT0100 as projection on db.ZTHBT0100;
+    entity ZTHBT0059 as projection on db.ZTHBT0059;
     entity ZCDSEHPSC0011 as projection on ZSRVBHPS0010.ZCDSEHPSC0011;
-    }
+}
+//8410 Reserve Stock
+service ZCDSEHBTC0014 {
+    entity ZCDSEHPPP0004 as projection on ZSRVBHPP0014.ZCDSEHPPP0004;
+    entity A_ProductDescription as projection on API_PRODUCT_SRV.A_ProductDescription;
+    entity A_Product as projection on API_PRODUCT_SRV.A_Product;
+}
 

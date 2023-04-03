@@ -995,7 +995,7 @@ annotate ZCDSEHBTC0009.TenDigitsPartsFilter {
                 {
                     $Type             : 'Common.ValueListParameterDisplayOnly',
                     ValueListProperty : 'ProductDescription'
-                },
+                },	
                 {
                     $Type             : 'Common.ValueListParameterDisplayOnly',
                     ValueListProperty : 'Language'
@@ -1005,6 +1005,77 @@ annotate ZCDSEHBTC0009.TenDigitsPartsFilter {
     })
     Product;
 }
+annotate ZCDSEHBTC0009.TenDigitsParts {
+	    @(Common : {
+	        Label     : 'Packing Type',
+	        ValueList : {
+	            CollectionPath : 'ZTHBT0003',
+	            Parameters     : [
+	                {
+	                    $Type             : 'Common.ValueListParameterInOut',
+	                    LocalDataProperty : PCKG_TYPE,
+	                    ValueListProperty : 'PCKG_TYPE'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterDisplayOnly',
+	                    ValueListProperty : 'PCKG_TYPE_N'
+	                }
+	            ]
+	        }
+	    })
+	    PCKG_TYPE;
+	}
+	annotate ZCDSEHBTC0009.TenDigitsParts {
+	    @(Common : {
+	        Label     : 'Packing Style',
+	        ValueList : {
+	            CollectionPath : 'ZTHBT0002',
+	            Parameters     : [
+	                {
+	                    $Type             : 'Common.ValueListParameterInOut',
+	                    LocalDataProperty : PCKG_STYLE,
+	                    ValueListProperty : 'PCKG_STYLE'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterDisplayOnly',
+	                    ValueListProperty : 'PCKG_STYLE_N'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterIn',
+	                    ValueListProperty : 'PCKG_TYPE',
+	                    LocalDataProperty : PCKG_TYPE
+	                }
+	            ]
+	        }
+	    })
+	    PCKG_STYLE;
+	}
+	annotate ZCDSEHBTC0009.TenDigitsParts {
+	    @(Common : {
+	        Label     : 'Supply Style',
+	        ValueList : {
+	            CollectionPath : 'ZTHBT0004',
+	            Parameters     : [
+	                {
+	                    $Type             : 'Common.ValueListParameterInOut',
+	                    LocalDataProperty : SUPPLY_STYLE,
+	                    ValueListProperty : 'SUPPLY_STYLE'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterDisplayOnly',
+	                    ValueListProperty : 'SUPPLY_STYLE_N'
+	                },
+	                {
+	                    $Type             : 'Common.ValueListParameterIn',
+	                    ValueListProperty : 'PCKG_TYPE',
+	                    LocalDataProperty :  PCKG_TYPE
+	                }
+	            ]
+	        }
+	    })
+	    SUPPLY_STYLE;
+}
+
 annotate ZCDSEHBTC0007.DATAFE0 with @(
   UI.SelectionVariant #tab1 : {
     Text : 'Parts Structure Specification'
@@ -1231,11 +1302,28 @@ annotate ZCDSEHBTC0012.materialWhereUsed {
     })
     WERKS;
 }
-annotate ZCDSEHBTC0013.ZTHBT0100 with @(
+annotate ZCDSEHBTC0013.ZTHBT0059 @(Capabilities : {
+    SearchRestrictions : {
+        $Type      : 'Capabilities.SearchRestrictionsType',
+        Searchable : false
+    },
+    InsertRestrictions : {
+        $Type : 'Capabilities.InsertRestrictionsType',
+        Insertable: false
+    },
+    DeleteRestrictions : {
+        $Type : 'Capabilities.DeleteRestrictionsType',
+        Deletable: false
+    }
+});
+annotate ZCDSEHBTC0013.ZTHBT0059 with {
+ZSD_GRPSUPP @UI.HiddenFilter: true;
+}
+annotate ZCDSEHBTC0013.ZTHBT0059 with @(
+    
     UI : { 
         SelectionFields  : [
-            ZWBS_ELEMENT,
-            ZSD_GRPSUPP
+            ZWBS_ELEMENT
         ],
         LineItem  : [
             { Value : ZWBS_ELEMENT },
@@ -1246,9 +1334,11 @@ annotate ZCDSEHBTC0013.ZTHBT0100 with @(
             { Value : ZSD_GROSS_VALUE },
             { Value : ZSD_BILLING_DATE },
             { Value : ZSD_DEBIT_DOC_DATE },
-            { Value : ZSD_DEBIT_NET_VALUE },
+            { Value : ZSD_DEBIT_NET_VALUE },   
+            { Value : ZSD_ACTUAL_DATE },
+            { Value : ZSD_BILLINGPLAN_VALUE },
             { Value : ZSD_STATUS },
-            { Value : ZSD_ERROR },                                        
+            { Value : ZSD_ERROR }                                     
         ],
      }
 ){
@@ -1297,3 +1387,115 @@ annotate ZCDSEHBTC0012.materialWhereUsed with {
             MASTER_DATA          @title : 'Other Master Data';
     
 }
+
+annotate ZCDSEHBTC0011.ManBOMUpload {
+	    @(Common : {
+	        Label     : 'Plant',
+	        ValueList : {
+	        CollectionPath : 'VL_SH_H_T001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Plant,
+                    ValueListProperty : 'BUKRS'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'BUTXT'
+                }
+            ]
+	        }
+	    })
+	    Plant;
+}
+annotate ZCDSEHBTC0011.ManBOMUpload {
+	    @(Common : {
+	        Label     : 'ExecutionSchedule',
+	        ValueList : {
+	        CollectionPath : 'ZTHBT0018',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ExecutionSchedule,
+                    ValueListProperty : 'APPLY_DATE_CD'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'APPLY_DATE_N'
+                }
+            ]
+	        }
+	    })
+	    ExecutionSchedule;
+}
+annotate ZCDSEHBTC0011.ManBOMUpload {
+	    @(Common : {
+	        Label     : 'RevisionReason',
+	        ValueList : {
+	        CollectionPath : 'ZTHBT0017',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : RevisionReason,
+                    ValueListProperty : 'MODIFY_CAUSE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MODIFY_CAUSE_N'
+                }
+            ]
+	        }
+	    })
+	    RevisionReason;
+}
+
+annotate  ZCDSEHBTC0011.ManBOMUpload with @(
+    UI: {
+        HeaderInfo: {
+            TypeName: 'Manufacture BOM Upload',
+            TypeNamePlural: 'Manufacture BOM Upload'
+        },
+        SelectionFields: [ Plant,MainModel,FZ2No,MainModelName,ApprovedDate,Title,ExecutionSchedule,RevisionReason ]
+    }
+);
+
+annotate ZCDSEHBTC0011.ManBOMUpload @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : Plant,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : MainModel,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : FZ2No,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : MainModelName,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : ApprovedDate,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : OperationDept,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : Title,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : ExecutionSchedule,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : RevisionReason,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});

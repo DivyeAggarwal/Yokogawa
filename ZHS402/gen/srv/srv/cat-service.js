@@ -81,12 +81,21 @@ module.exports = cds.service.impl(async function (srv) {
         return product.run(req.query);
     });
     this.on('CREATE', 'TenDigitsParts', async req => {
-        const product = await cds.connect.to('API_PRODUCT_SRV');
+        const api = await cds.connect.to('API_PRODUCT_SRV');
         var dulicate = Object.assign({}, req.data);
+        delete dulicate.PCKG_TYPE;
+        delete dulicate.PCKG_TYPE_N; 
+        delete dulicate.PCKG_STYLE;
+        delete dulicate.PCKG_STYLE_N; 
+        delete dulicate.SUPPLY_STYLE;
+        delete dulicate.SUPPLY_STYLE_N; 
+        delete dulicate.YEOS_MNF_MODEL; 
+        delete dulicate.YEOS_MNF_NO; 
+        delete dulicate.CreationDate;
+        delete dulicate.LastChangeDate; 
         delete dulicate.ZTHBT0001;
-        delete dulicate.ZTHBT0005;
-        req.data = dulicate;
-        var response = await product.run(req.query);
+        delete dulicate.ZTHBT0005; 
+        var response = await api.tx(req).post("/A_Product",dulicate);
 
         var conversion = req.data.ZTHBT0001;
         conversion.PARTS_NO = response.Product;
@@ -112,44 +121,29 @@ module.exports = cds.service.impl(async function (srv) {
     });
 
     this.on('CREATE', 'ZCDSEHPSC0011', async req => {
-        const product = await cds.connect.to('ZSRVBHPS0010');
-        let query = req.query;
-        const headers = { 'x-csrf-token': 'fetch'}
+        const soapi = await cds.connect.to('ZSRVBHPS0010');
+        req.data.InvDat = req.data.InvDat.split('-').join('');
+        req.data.ActDat = req.data.ActDat.split('-').join('');
+        var response = await soapi.tx(req).post("/ZCDSEHPSC0011",req.data);
+        response.InvDat = response.InvDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        response.ActDat = response.ActDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
         
-        // const results1 = await product.send({
-        //         method: 'GET',
-        //         headers: headers,
-        //         path: 'SAP__Currencies'
-        // });
-        // var token = results1.headers;
-        var t = {
-            GrpSup: "12",
-            WbsElmt: "E0034332",
-            InvDat: "20230323",
-            ActDat: "20230323",
-            BillVal: "20",
-            Currency: "JPY",
-            MainSo: "200",
-            DebitSo: "300"
-        }
-        // const mandtHeaders = { 'x-csrf-token': 'nvtay_C_jPdTJXzCJag0wg=='}
-        try {
-            const results = await product.send({
-                method: 'POST',
-                // headers: mandtHeaders,
-                path: 'ZCDSEHPSC0011',
-                data: t
-            });
-        } catch (error) {
-            console.log(error);
-            req.reject ({
-                code: 403,
-                msg: error.message
-              })
-        }
-        
-        // product.tx(req).post("/ZCDSEHPSC0011",t);
-        // return product.run(req.query);
+        return response;
+        // try {
+        //     const results = await so.send({
+        //         method: 'POST',
+        //         path: 'ZCDSEHPSC0011',
+        //         data: req.data
+        //     });
+        //     return results;
+        // } catch (error) {
+        //     console.log(error);
+        //     req.error({
+        //         code: 403,
+        //         message: error.message
+        //     })
+        // }
+
     });
 
 

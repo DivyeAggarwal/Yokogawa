@@ -404,7 +404,7 @@ entity ZTHBT0056 : managed {
     key MOD_CODE      : String(40) @title : 'Module Code';
         BOM_CRTE_FLAG : String(1)  @title : 'BOM creation Flag';
 }
-entity ZTHBT0100 : managed {
+entity ZTHBT0059 : managed {
     key ZSD_GRPSUPP           : String(20) @title : 'Group Supplier';
     key ZWBS_ELEMENT          : String(20) @title : 'WBS Element';
         ZSD_SOWEVENT          : String(3)  @title : 'SOW Event Number';
