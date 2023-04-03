@@ -1294,7 +1294,25 @@ annotate ZCDSEHBTC0012.materialWhereUsed {
     })
     WERKS;
 }
+annotate ZCDSEHBTC0013.ZTHBT0059 @(Capabilities : {
+    SearchRestrictions : {
+        $Type      : 'Capabilities.SearchRestrictionsType',
+        Searchable : false
+    },
+    InsertRestrictions : {
+        $Type : 'Capabilities.InsertRestrictionsType',
+        Insertable: false
+    },
+    DeleteRestrictions : {
+        $Type : 'Capabilities.DeleteRestrictionsType',
+        Deletable: false
+    }
+});
+annotate ZCDSEHBTC0013.ZTHBT0059 with {
+ZSD_GRPSUPP @UI.HiddenFilter: true;
+}
 annotate ZCDSEHBTC0013.ZTHBT0059 with @(
+    
     UI : { 
         SelectionFields  : [
             ZWBS_ELEMENT
@@ -1308,9 +1326,11 @@ annotate ZCDSEHBTC0013.ZTHBT0059 with @(
             { Value : ZSD_GROSS_VALUE },
             { Value : ZSD_BILLING_DATE },
             { Value : ZSD_DEBIT_DOC_DATE },
-            { Value : ZSD_DEBIT_NET_VALUE },
+            { Value : ZSD_DEBIT_NET_VALUE },   
+            { Value : ZSD_ACTUAL_DATE },
+            { Value : ZSD_BILLINGPLAN_VALUE },
             { Value : ZSD_STATUS },
-            { Value : ZSD_ERROR },                                        
+            { Value : ZSD_ERROR }                                     
         ],
      }
 ){
