@@ -1,5 +1,7 @@
 
 const SequenceHelper = require("./lib/SequenceHelper");
+const registerTimeSheetHandler = require("./Handler/TimeSheet-Service");
+const registerProductionOrderPrint = require("./Handler/ProductionOrderPrint");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql
@@ -7,33 +9,9 @@ const { SELECT, INSERT, UPDATE } = cds.ql
 module.exports = cds.service.impl(async function (srv) {
 
     const db = await cds.connect.to("db");
-
-    this.on('READ', 'AccountingIndicator', async req => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        return bupa.run(req.query);
-    });
-    this.on('READ', 'I_StatisticalKeyFigureText', async req => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        return bupa.run(req.query);
-    });
-    this.on('READ', 'ServiceOrderItem', async req => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        return bupa.run(req.query);
-    });
-    this.on('READ', 'ServiceOrder', async req => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        return bupa.run(req.query);
-    });
-    this.on('READ', 'InternalOrder', async req => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        return bupa.run(req.query);
-    });
-    this.on('READ', 'ReceiverWBSExt', async req => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        return bupa.run(req.query);
-    });
-
-
+    registerTimeSheetHandler(this, cds);
+    registerProductionOrderPrint(this,cds);
+    
     this.on('READ', 'ZCDSEHPSB0004', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
         return bupa.run(req.query);
@@ -101,25 +79,12 @@ module.exports = cds.service.impl(async function (srv) {
         conversion.PARTS_NO = response.Product;
         await INSERT.into('ZHS402.ZTHBT0001').entries(conversion);
         var oObject5 = req.data.ZTHBT0005; 
-        await INSERT.into('ZHS402.ZTHBT0005').entries(oObject5);
+        await UPSERT.into('ZHS402.ZTHBT0005').entries(oObject5);
         return response;
     });
     
 
-    this.on('READ', 'ZTHBT0019', async req => {
-        const db = await cds.connect.to('db');
-        var oData = await db.run(req.query);
-        return oData;
-    });
-    this.before('CREATE', 'ZTHBT0019', async (req) => {
-        await ValidateAssignment(req);
-
-    });
-    this.before('UPDATE', 'ZTHBT0019', async (req) => {
-        await ValidateAssignment(req);
-
-    });
-
+   
     this.on('CREATE', 'ZCDSEHPSC0011', async req => {
         const soapi = await cds.connect.to('ZSRVBHPS0010');
         req.data.InvDat = req.data.InvDat.split('-').join('');
@@ -320,11 +285,7 @@ module.exports = cds.service.impl(async function (srv) {
     //     return {acknowledge:"Success", message: "Deleted " + req.data.input.delete.length + " entries \n" 
     //     + "Updated " + req.data.input.update.length + " entries \n"  }
     // });
-    this.on('READ', 'ReceiverCostCenter', async req => {
-        const db = await cds.connect.to('TimeSheetEntry');
-        var oData = await db.run(req.query);
-        return oData;
-    });
+
     this.on('READ', 'BOMDisplay', async req => {
         const db = await cds.connect.to('db');
         // if (req._query) {
@@ -458,180 +419,8 @@ module.exports = cds.service.impl(async function (srv) {
 
         // return oData;
     });
-    this.on('READ', 'ProcessRecordSheetCombined', async req => {
-        /* Read Data from the External API for Process Record Sheet */
-        const bupa = await cds.connect.to('ProductionOrder');
-        const results = await bupa.run(req.query);
-        /* Prepare array of Production Order by which Addiional status is going to be 
-        Read from the Cloud Table */
-        let arrayInput = [];
-        if (Array.isArray(results)) {
-            for (let result of results) {
-                arrayInput.push(result.OrderNumber);
-            }
-        }
-        else {
-            arrayInput.push(results.OrderNumber);
-        }
 
-        let objectAddStatus = {};
-        await PrepareResultObject(arrayInput, objectAddStatus);
-        /*Manipulate the result from cloud and On Premise */
-        if (Array.isArray(results)) {
-            for (let result of results) {
-                let DataFromObject = objectAddStatus[result.OrderNumber];
-                if (DataFromObject) {
-                    result.RePrint = DataFromObject;
-                }
 
-            }
-        }
-        else {
-            let DataFromObject = objectAddStatus[results.OrderNumber];
-            if (DataFromObject) {
-                results.RePrint = DataFromObject;
-            }
-        }
-
-        return results;
-    });
-    this.on('READ', 'OperationList', async req => {
-        const bupa = await cds.connect.to('ProductionOrder');
-        return bupa.run(req.query);
-    });
-    this.on('READ', 'Components', async req => {
-        const bupa = await cds.connect.to('ProductionOrder');
-        return bupa.run(req.query);
-    });
-    this.on('READ', 'ProductionOrderSheetCombined', async req => {
-        const bupa = await cds.connect.to('ProductionOrder');
-        const results = await bupa.run(req.query);
-        /* Prepare array of Production Order by which Addiional status is going to be 
-        Read from the Cloud Table */
-        let arrayInput = [];
-        if (Array.isArray(results)) {
-            for (let result of results) {
-                arrayInput.push(result.OrderNumber);
-            }
-        }
-        else {
-            arrayInput.push(results.OrderNumber);
-        }
-        let objectAddStatus = {};
-        await PrepareResultObject(arrayInput, objectAddStatus);
-
-        /*Manipulate the result from cloud and On Premise */
-        if (Array.isArray(results)) {
-            for (let result of results) {
-                let DataFromObject = objectAddStatus[result.OrderNumber];
-                if (DataFromObject) {
-                    result.RePrint = DataFromObject;
-                }
-
-            }
-        }
-        else {
-            let DataFromObject = objectAddStatus[results.OrderNumber];
-            if (DataFromObject) {
-                results.RePrint = DataFromObject;
-            }
-        }
-
-        return results;
-    });
-    this.on('READ', 'ChildPartListCombined', async req => {
-        const bupa = await cds.connect.to('ProductionOrder');
-        const results = await bupa.run(req.query);
-        /* Prepare array of Production Order by which Addiional status is going to be 
-        Read from the Cloud Table */
-        let arrayInput = [];
-        if (Array.isArray(results)) {
-            for (let result of results) {
-                arrayInput.push(result.ProductionOrderNo);
-            }
-        }
-        else {
-            arrayInput.push(results.ProductionOrderNo);
-        }
-        let objectAddStatus = {};
-        await PrepareResultObject(arrayInput, objectAddStatus);
-        /*Manipulate the result from cloud and On Premise */
-        if (Array.isArray(results)) {
-            for (let result of results) {
-                let DataFromObject = objectAddStatus[result.ProductionOrderNo];
-                if (DataFromObject) {
-                    result.RePrint = DataFromObject;
-                }
-            }
-        }
-        else {
-            let DataFromObject = objectAddStatus[results.ProductionOrderNo];
-            if (DataFromObject) {
-                results.RePrint = DataFromObject;
-            }
-        }
-
-        return results;
-    });
-    this.on('READ','ParentWBSExt', async req => {
-        
-        const db = await cds.connect.to('TimeSheetEntry');
-        var oData = await db.run(req.query);
-        return oData;
-    });
-
-    
-    this.on('READ','ParentWBS', async req => {
-        
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
-        var oData=[];
-        if(LoggUser.length > 0) {
-            const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
-            if(AssignmentByPassData && AssignmentByPassData.length > 0) {
-                switch (AssignmentByPassData[0].CATEGORY) {
-                    case 'PJT':
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where({projectType:'E1', and:{LevelInHierarchy:{'>=':006}}});
-                        break;
-                    case 'OPP':
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where({projectType:'D1', and:{LevelInHierarchy:{'>=':002}}});
-                    default:
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where({projectType:'E1', and:{LevelInHierarchy:{'>=':006}}, and:{IhpaObjFound:'X'}});
-                        break;
-                }
-                
-            }
-        } 
-        return oData;
-    });
-    this.on('READ','LoggedInUser', async req => {
-        
-        const db = await cds.connect.to('TimeSheetEntry');
-        var oData = await db.run(req.query);
-        return oData;
-    });
-    this.on('READ', 'ReceiverWBS', async req => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
-        var oData=[];
-        if(LoggUser.length > 0) {
-            const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
-            if(AssignmentByPassData && AssignmentByPassData.length > 0) {
-                switch (AssignmentByPassData[0].CATEGORY) {
-                    case 'PJT':
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({Profile:'YE00001', and:{LevelInHierarchy:{'>=':006}}, and:{ProjectType:'E1'}});
-                        break;
-                    case 'OPP':
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({Profile:'YD00001', and:{LevelInHierarchy:{'>=':002}}, and:{ProjectType:'D1'}});
-                    default:
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({UserStatus:'CCTW', and:{LevelInHierarchy:{'>=':006}}});
-                        break;
-                }
-                
-            }
-        } 
-        return oData;
-    });
 
     this.on('READ', 'materialWhereUsed', async req => {
         const materialWhereUsed = await cds.connect.to('ZSRVBHPP0011');
@@ -681,34 +470,16 @@ module.exports = cds.service.impl(async function (srv) {
         return results;
     });
 
+    //BOM Table Update
+    this.on('CREATE', 'ManBOMUpload', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0012');
+        return bupa.run(req.query);
+    });
 
 });
 
-const ValidateAssignment = async (req) => {
-    const bupa = await cds.connect.to('TimeSheetEntry');
-    if(req.data.ZPFDT > req.data.ZPTDT) {
-        req.reject ({
-            code: 403,
-            message: 'Valid from Date cant be greater than Valid To Date'
-          })
-    }
-    if(req.data.ZPS_IDENTIFIER === 'P') {
-        await validateAssignmentProject(req,bupa);
-    }
-}
-const PrepareResultObject = async (arrayInput, objectAddStatus) => {
-    /*Fire the Query to the Cloiud table */
-    const addStatusDataArray = await SELECT.from('ZHS402.ZTHBT0028').where({ PRODUCTIONORDER: { in: arrayInput } });
-    /*Prepare the Result in Object Format so that processing is quick */
-    if (objectAddStatus) {
-        objectAddStatus = {};
-    }
-    if (addStatusDataArray.length > 0) {
-        for (let addStatusData of addStatusDataArray) {
-            objectAddStatus[addStatusData.PRODUCTIONORDER] = addStatusData.ZPRINT;
-        }
-    }
-}
+
+
 
 const PrepareWherUsedObject = async (arrayInput, objectAddMSCode) => {
     /*Fire the Query to the Cloiud table */
@@ -738,97 +509,7 @@ const PrepareModelData = async (arrayInput, objectAddModel) => {
     }
     return objectAddModel;
 }
-const validateAssignmentProject = async (req,bupa) => {
-// Validate Receiver WBS
-    if(!req.data.RWBS) {
-        req.reject ({
-            code: 403,
-            message: 'Receiver WBS is Manadatory'
-          })
-    }
-    else {
-// Validate existance of Receiver WBS Provided
-        const data = await bupa.get('ZCDSEHBTC0003.ReceiverWBS').where({ WBSId: req.data.RWBS });
-        if(data.length === 0) {
-            req.reject ({
-                code: 403,
-                message: 'Invalid Receiver WBS. Kindly choose a valid one'
-              }) ;
-        }
-        else {
-// Check the need for Parent WBS
-            if(data[0].UserStatus = 'CCTW' && !req.data.PWBS) {
-                req.reject ({
-                    code: 403,
-                    message: 'Kindly provide a valid Parent WBS'
-                  }) ;
-            }
-        }
-    };
-//Validate Task CCode
-    if(!req.data.ZTCODE_ZTCODE ) {
-        req.reject ({
-            code: 403,
-            message: 'Kindly provide a valid Task Code'
-          }) ;
-    }
-    else {
-        const Taskdata = await SELECT.from('ZCDSEHBTC0003.ZTHBT0020').where({ ZTCODE: req.data.ZTCODE_ZTCODE });
-        if(Taskdata.length === 0){
-            req.reject ({
-                code: 403,
-                message: 'Provided Task code does not exists'
-              }) ;
-        }
 
-    }
-//Validate Accounting Indicator
-    if(!req.data.BEMOT ) {
-        req.reject ({
-            code: 403,
-            message: 'Kindly provide valid Accounting Indicator'
-          }) ;
-    }
-    else {
-        const Taskdata = await bupa.get('ZCDSEHBTC0003.AccountingIndicator').where({ AccountingIndicator: req.data.BEMOT });
-        if(Taskdata.length === 0){
-            req.reject ({
-                code: 403,
-                message: 'Provided Accounting indicator does not exists'
-              }) ;
-        }
-
-    }
-// Validate Receiver Cost Center
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
-    if(LoggUser.length > 0) {
-        if( (!LoggUser[0].ActivityType && !LoggUser[0].CostCenter ) || LoggUser[0].CostCenter === req.data.EKOSTL ) {
-            req.reject ({
-                code: 403,
-                message: 'Kindly Provide a valid Receiver Cost Center'
-              }) ;
-        }
-    }
-    if(req.data.EKOSTL){
-        const costCenterdata = await bupa.get('ZCDSEHBTC0003.ReceiverCostCenter').where({CostCenter : req.data.EKOSTL });
-        if(costCenterdata.length == 0) {
-            req.reject ({
-                code: 403,
-                message: 'Provided Cost Center does not exists'
-            }) ;
-        }
-    }
-//Validate Existance of Parent WBS
-    if(req.data.PWBS) {
-        const parentWBSdata = await bupa.get('ZCDSEHBTC0003.ParentWBS').where({ParentWBS : req.data.PWBS });
-        if(parentWBSdata.length == 0) {
-            req.reject ({
-                code: 403,
-                message: 'Provided Parent WBS does not exists'
-            }) ;
-        }
-    }
-}  
 
 
 const PrepareMaterialData = async (arrayInput, objectAddMaterial) => {

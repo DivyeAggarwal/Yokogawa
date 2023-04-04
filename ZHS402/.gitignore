@@ -107,3 +107,5 @@ dist
 
 # TernJS port file
 .tern-port
+# auto generated wildcard
+.env4
