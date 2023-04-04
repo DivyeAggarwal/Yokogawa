@@ -160,20 +160,20 @@ entity ZTHBT0019: managed {
         EAUFNR: String(12) @title : 'Internal Order';
         ZTCODE: Association to ZTHBT0020 @assert.integrity @title : 'Task Code';
         EKOSTL: String(10) @title : 'Receiver Cost Center';
-        COSTCENTERNAME: String(20) @title : 'Cost Center Name' @readonly;
+        COSTCENTERNAME: String(20) @title : 'Cost Center Name' ;
         BEMOT: String(2) @title : 'Accounting Indicator';
-        ACINDICATORDESC: String(25) @title : 'Account Indicator Description' @readonly;
+        ACINDICATORDESC: String(25) @title : 'Account Indicator Description' ;
         OBJECT_ID: String(10) @title : 'Service Order'; 
         BEGDA: Date @title : 'Employee Start Date';
         ENDDA: Date @title : 'Employee End Date';
         ZESTA: String(1) @title : 'Employee Status';
         ZPSTS: Boolean @title : 'Assignment Status';
         RWBS: String(24) @title : 'Receiver WBS';
-        RWBSDESC: String(40) @title : 'Receiver WBS Description' @readonly;
+        RWBSDESC: String(40) @title : 'Receiver WBS Description' ;
         SERVICEORDERITEM: String(6) @title : 'Service Order Item';
-        SERVORDERITEMDESC: String(40) @title : 'Service Order Item Description' @readonly;
+        SERVORDERITEMDESC: String(40) @title : 'Service Order Item Description' ;
         PWBS: String(24) @title : 'Parent WBS';
-        PARENTWBSDESC: String(40) @title : 'Parent WBS Description' @readonly;
+        PARENTWBSDESC: String(40) @title : 'Parent WBS Description' ;
         ZPS_IDENTIFIER: String(1) @title : 'Assignment Identifier';
 
 }
