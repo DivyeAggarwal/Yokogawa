@@ -1500,7 +1500,6 @@
         },
         "COSTCENTERNAME": {
           "@title": "Cost Center Name",
-          "@readonly": true,
           "type": "cds.String",
           "length": 20
         },
@@ -1511,7 +1510,6 @@
         },
         "ACINDICATORDESC": {
           "@title": "Account Indicator Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 25
         },
@@ -1544,7 +1542,6 @@
         },
         "RWBSDESC": {
           "@title": "Receiver WBS Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -1555,7 +1552,6 @@
         },
         "SERVORDERITEMDESC": {
           "@title": "Service Order Item Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -1566,7 +1562,6 @@
         },
         "PARENTWBSDESC": {
           "@title": "Parent WBS Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -6247,7 +6242,6 @@
         "ACINDICATORDESC": {
           "@Common.ValueListForValidation": true,
           "@title": "Account Indicator Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 25
         },
@@ -6296,7 +6290,6 @@
         },
         "COSTCENTERNAME": {
           "@title": "Cost Center Name",
-          "@readonly": true,
           "type": "cds.String",
           "length": 20
         },
@@ -6366,7 +6359,6 @@
         },
         "SERVORDERITEMDESC": {
           "@title": "Service Order Item Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -6406,7 +6398,6 @@
         },
         "PARENTWBSDESC": {
           "@title": "Parent WBS Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -6439,7 +6430,6 @@
         },
         "RWBSDESC": {
           "@title": "Receiver WBS Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -6968,7 +6958,6 @@
         },
         "RWBSDESC": {
           "@title": "Receiver WBS Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -6984,7 +6973,6 @@
         },
         "SERVORDERITEMDESC": {
           "@title": "Service Order Item Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -6995,7 +6983,6 @@
         },
         "COSTCENTERNAME": {
           "@title": "Cost Center Name",
-          "@readonly": true,
           "type": "cds.String",
           "length": 20
         },
@@ -7006,7 +6993,6 @@
         },
         "PARENTWBSDESC": {
           "@title": "Parent WBS Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -7035,7 +7021,6 @@
         },
         "ACINDICATORDESC": {
           "@title": "Account Indicator Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 25
         },
@@ -8290,7 +8275,6 @@
         },
         "COSTCENTERNAME": {
           "@title": "Cost Center Name",
-          "@readonly": true,
           "type": "cds.String",
           "length": 20
         },
@@ -8301,7 +8285,6 @@
         },
         "ACINDICATORDESC": {
           "@title": "Account Indicator Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 25
         },
@@ -8334,7 +8317,6 @@
         },
         "RWBSDESC": {
           "@title": "Receiver WBS Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -8345,7 +8327,6 @@
         },
         "SERVORDERITEMDESC": {
           "@title": "Service Order Item Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
@@ -8356,7 +8337,6 @@
         },
         "PARENTWBSDESC": {
           "@title": "Parent WBS Description",
-          "@readonly": true,
           "type": "cds.String",
           "length": 40
         },
