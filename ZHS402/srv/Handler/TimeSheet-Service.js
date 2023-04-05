@@ -83,7 +83,11 @@ var registerTimeSheetHandler = function (that, cds) {
     });
     that.on('READ', 'ReceiverWBS', async req => {
         const bupa = await cds.connect.to('TimeSheetEntry');
+
         var where = req.query.SELECT.where;
+        if(!where) {
+            where = {};
+        }
         const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
         
         var oData = [];
@@ -280,8 +284,9 @@ const SubmitTimeSheet = async (req, bupa) => {
 
 const prepareFilterAsObject = async(where,obj) => {
     const ge = '>=';
-    if(!where) {
-        where = [];
+    if(Object.keys(where).length === 0) {
+        Object.assign(where,obj);
+        return;
     }
     else {
         if(obj) {
