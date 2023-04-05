@@ -58,15 +58,15 @@ var registerTimeSheetHandler = function (that, cds) {
                 switch (AssignmentByPassData[0].CATEGORY) {
                     case 'PJT':
                         await prepareFilterAsObject(where,{ projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where);
+                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where).limit(req.query.SELECT.limit);
                         break;
                     case 'OPP':
                         await prepareFilterAsObject(where,{ projectType: 'D1', and: { LevelInHierarchy: { '>=': 002 } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where);
+                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where).limit(req.query.SELECT.limit);
                         break;
                     default:
                         await prepareFilterAsObject(where,{ projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 }, and: { IhpaObjFound: 'X' } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where);
+                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where).limit(req.query.SELECT.limit);
                         break;
                 }
 
@@ -93,15 +93,15 @@ var registerTimeSheetHandler = function (that, cds) {
                 switch (AssignmentByPassData[0].CATEGORY) {
                     case 'PJT':
                         await prepareFilterAsObject(where,{ Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where);
+                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where).limit(req.query.SELECT.limit);
                         break;
                     case 'OPP':
                         await prepareFilterAsObject(where,{ Profile: 'YD00001', and: { LevelInHierarchy: { '>=': 002 }, and: { ProjectType: 'D1' } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where);
+                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where).limit(req.query.SELECT.limit);
                         break;
                     default:
                         await prepareFilterAsObject(where,{ UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } });
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where);
+                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where).limit(req.query.SELECT.limit);
                         break;
                 }
 
