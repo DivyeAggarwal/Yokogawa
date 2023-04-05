@@ -6000,36 +6000,57 @@
         {
           "Value": {
             "=": "COSTCENTERNAME"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
           }
         },
         {
           "Value": {
             "=": "ACINDICATORDESC"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
           }
         },
         {
           "Value": {
             "=": "SERVICEORDERITEM"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
           }
         },
         {
           "Value": {
             "=": "SERVORDERITEMDESC"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
           }
         },
         {
           "Value": {
             "=": "PARENTWBSDESC"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
           }
         },
         {
           "Value": {
             "=": "RWBSDESC"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
           }
         },
         {
           "Value": {
             "=": "ZTCODE.ZTCDS"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
           }
         },
         {

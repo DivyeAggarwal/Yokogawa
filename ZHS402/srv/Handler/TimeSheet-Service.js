@@ -48,18 +48,25 @@ var registerTimeSheetHandler = function (that, cds) {
 
         const bupa = await cds.connect.to('TimeSheetEntry');
         const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+        var where = req.query.SELECT.where;
+
+        //test
         var oData = [];
         if (LoggUser.length > 0) {
             const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
             if (AssignmentByPassData && AssignmentByPassData.length > 0) {
                 switch (AssignmentByPassData[0].CATEGORY) {
                     case 'PJT':
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where({ projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 } } });
+                        await prepareFilterAsObject(where,{ projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 } } })
+                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where);
                         break;
                     case 'OPP':
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where({ projectType: 'D1', and: { LevelInHierarchy: { '>=': 002 } } });
+                        await prepareFilterAsObject(where,{ projectType: 'D1', and: { LevelInHierarchy: { '>=': 002 } } })
+                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where);
+                        break;
                     default:
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where({ projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 }, and: { IhpaObjFound: 'X' } } });
+                        await prepareFilterAsObject(where,{ projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 }, and: { IhpaObjFound: 'X' } } })
+                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where);
                         break;
                 }
 
@@ -71,25 +78,30 @@ var registerTimeSheetHandler = function (that, cds) {
 
         const db = await cds.connect.to('TimeSheetEntry');
         var oData = await db.run(req.query);
+        
         return oData;
     });
     that.on('READ', 'ReceiverWBS', async req => {
         const bupa = await cds.connect.to('TimeSheetEntry');
+        var where = req.query.SELECT.where;
         const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+        
         var oData = [];
-        var level = 006;
         if (LoggUser.length > 0) {
             const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
             if (AssignmentByPassData && AssignmentByPassData.length > 0) {
                 switch (AssignmentByPassData[0].CATEGORY) {
                     case 'PJT':
-                        //oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({ Profile: 'YE00001', and: { LevelInHierarchy: level}, and: { ProjectType: 'E1' } });
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({ Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } });
+                        await prepareFilterAsObject(where,{ Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } })
+                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where);
                         break;
                     case 'OPP':
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({ Profile: 'YD00001', and: { LevelInHierarchy: { '>=': 002 }, and: { ProjectType: 'D1' } } });
+                        await prepareFilterAsObject(where,{ Profile: 'YD00001', and: { LevelInHierarchy: { '>=': 002 }, and: { ProjectType: 'D1' } } })
+                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where);
+                        break;
                     default:
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where({ UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } });
+                        await prepareFilterAsObject(where,{ UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } });
+                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where);
                         break;
                 }
 
@@ -264,5 +276,34 @@ const SubmitTimeSheet = async (req, bupa) => {
 
 
 
+}
+
+const prepareFilterAsObject = async(where,obj) => {
+    const ge = '>=';
+    if(!where) {
+        where = [];
+    }
+    else {
+        if(obj) {
+            where.push('and');
+        }
+    }
+    if(obj) {
+        for(let property in obj) {
+            if(obj[property] instanceof Object) {
+                if(obj[property].hasOwnProperty(ge)) {
+                    where.push({ref:[property]});
+                    where.push('>=');
+                    where.push({val:obj[property]['>=']}); 
+                    continue;
+                }
+                await prepareFilterAsObject(where,obj[property] );
+                return;
+            }
+            where.push({ref:[property]});
+            where.push('=');
+            where.push({val:obj[property]});
+        }
+    }
 }
 module.exports = registerTimeSheetHandler;
