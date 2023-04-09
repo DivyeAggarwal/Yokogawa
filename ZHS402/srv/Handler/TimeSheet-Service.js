@@ -76,11 +76,11 @@ var registerTimeSheetHandler = function (that, cds) {
         var oData = await db.run(req.query);
         return oData;
     });
-    // that.on('SubmitTimeSheet', async (req) => {
-    //     const bupa = await cds.connect.to('TimeSheetEntry');
-    //     return await submitTimeSheet(req,bupa);
+    that.on('SubmitTimeSheet', async (req) => {
+        const bupa = await cds.connect.to('TimeSheetEntry');
+        return await submitTimeSheet(req,bupa);
 
-    // });
+    });
     // that.on('READ','s4TimeSheet',async req => {
     //     const db = await cds.connect.to('TimeSheetAPI');
     //     var oData = await db.run(req.query);

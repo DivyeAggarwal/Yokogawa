@@ -87,7 +87,7 @@ var registerTimeSheetHandler = function (that, cds) {
     //     return oData;
     // } )
     that.on('READ','TimeSheetTemplate', async req => {
-        const db = await cds.connect.to('TimeSheetEntry');
+        const db = await cds.connect.to('db');
         var oData = await db.run(req.query);
         var arrayPernr = [];
         var arrayDate = [];

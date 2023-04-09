@@ -198,35 +198,35 @@ service ZCDSEHBTC0003
             _TimeSheetTemplate.DAY7_DATE,
             _TimeSheetTemplate.DAY7_HOUR
     };
-    // type timeSheetData {
-    //     PERNR: String;
-    //     WEEK_NUMBER:Integer;
-    //     ZPNAME:String;
-    //     DAY1_DATE:Date;
-    //     DAY1_HOUR:Integer;
-    //     DAY2_DATE:Date;
-    //     DAY2_HOUR:Integer;
-    //     DAY3_DATE:Date;
-    //     DAY3_HOUR:Integer;
-    //     DAY4_DATE:Date;
-    //     DAY4_HOUR:Integer;
-    //     DAY5_DATE:Date;
-    //     DAY5_HOUR:Integer;
-    //     DAY6_DATE:Date;
-    //     DAY6_HOUR:Integer;
-    //     DAY7_DATE:Date;
-    //     DAY7_HOUR:Integer;
-    // }
+    type timeSheetData {
+        PERNR: String;
+        WEEK_NUMBER:Integer;
+        ZPNAME:String;
+        DAY1_DATE:Date;
+        DAY1_HOUR:Integer;
+        DAY2_DATE:Date;
+        DAY2_HOUR:Integer;
+        DAY3_DATE:Date;
+        DAY3_HOUR:Integer;
+        DAY4_DATE:Date;
+        DAY4_HOUR:Integer;
+        DAY5_DATE:Date;
+        DAY5_HOUR:Integer;
+        DAY6_DATE:Date;
+        DAY6_HOUR:Integer;
+        DAY7_DATE:Date;
+        DAY7_HOUR:Integer;
+    }
     
-    // type timeSheetSubmitResult {
-    //     PERNR: String;
-    //     WEEK_NUMBER:Integer;
-    //     ZPNAME:String;
-    //     messageType:messageType;
-    //     message:String;
-    // }
+    type timeSheetSubmitResult {
+        PERNR: String;
+        WEEK_NUMBER:Integer;
+        ZPNAME:String;
+        messageType:messageType;
+        message:String;
+    }
 
-    // action SubmitTimeSheet(input : timeSheetData) returns timeSheetSubmitResult;
+    action SubmitTimeSheet(input : timeSheetData) returns timeSheetSubmitResult;
 
 }
 
