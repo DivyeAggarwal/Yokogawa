@@ -165,6 +165,18 @@
           "csrf": true,
           "csrfInBatch": true
         }
+      },
+      "TimeSheetAPI": {
+        "kind": "odata-v2",
+        "model": "srv/external/TimeSheetAPI",
+        "csrf": true,
+        "csrfInBatch": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/HCM_CATS_MANAGE",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
       }
     },
     "hana": {

@@ -9,6 +9,7 @@ using ZSRVBHPP0012 from './external/ZSRVBHPP0012';
 using ZSRVBHMM0004 from './external/ZSRVBHMM0004';
 using ZSRVBHPS0010 from './external/ZSRVBHPS0010';
 using ZSRVBHPP0014 from './external/ZSRVBHPP0014';
+using TimeSheetAPI from './external/TimeSheetAPI';
 
 service CatalogService {
     entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -119,6 +120,14 @@ service ZCDSEHBTC0003
             UserStatus
     }
     entity LoggedInUser as projection on TimeSheetEntry.CurrentLoginUser;
+    entity s4TimeSheet as projection on TimeSheetAPI.TimeEntryCollection {
+        key EmploymentInternalID,
+        key Counter,
+        Refcounter,
+        WorkDate,
+        Status
+            
+    };
    
    entity ZTHBT0019 as
         select from db.ZTHBT0019 as _assignment
@@ -153,71 +162,71 @@ service ZCDSEHBTC0003
 
     entity ZTHBT0020 as
         projection on db.ZTHBT0020;
-    entity s4TimeSheet as projection on TimeSheetEntry.ZCDSEHCSC0003
-    
-    entity TimeSheetTemplate as select from db.ZTHBT0051 as _TimeSheetTemplate{
-        key _TimeSheetTemplate.PERNR,
-        key _TimeSheetTemplate.WEEK_NUMBER,
-        key _TimeSheetTemplate.ZPNAME.ZPNAME,
-            _TimeSheetTemplate.ZPNAME.RWBS,
-            _TimeSheetTemplate.ZPNAME.RWBSDESC,
-            _TimeSheetTemplate.ZPNAME.OBJECT_ID,
-            _TimeSheetTemplate.ZPNAME.SERVICEORDERITEM,
-            _TimeSheetTemplate.ZPNAME.SERVORDERITEMDESC,
-            _TimeSheetTemplate.ZPNAME.EKOSTL,
-            _TimeSheetTemplate.ZPNAME.COSTCENTERNAME,
-            _TimeSheetTemplate.ZPNAME.PWBS,
-            _TimeSheetTemplate.ZPNAME.PARENTWBSDESC,
-            _TimeSheetTemplate.ZPNAME.ZTCODE,
-            _TimeSheetTemplate.ZPNAME.ZTCODE.ZTCDS,
-            _TimeSheetTemplate.ZPNAME.BEMOT,
-            _TimeSheetTemplate.ZPNAME.ACINDICATORDESC,
-            _TimeSheetTemplate.ZPNAME.STAGR,
-            _TimeSheetTemplate.DAY1_DATE,
-            _TimeSheetTemplate.DAY1_HOUR,
-            _TimeSheetTemplate.DAY2_DATE,
-            _TimeSheetTemplate.DAY2_HOUR,
-            _TimeSheetTemplate.DAY3_DATE,
-            _TimeSheetTemplate.DAY3_HOUR,
-            _TimeSheetTemplate.DAY4_DATE,
-            _TimeSheetTemplate.DAY4_HOUR,
-            _TimeSheetTemplate.DAY5_DATE,
-            _TimeSheetTemplate.DAY5_HOUR,
-            _TimeSheetTemplate.DAY6_DATE,
-            _TimeSheetTemplate.DAY6_HOUR,
-            _TimeSheetTemplate.DAY7_DATE,
-            _TimeSheetTemplate.DAY7_HOUR,
 
-    };
-    type timeSheetData {
-        PERNR: String;
-        WEEK_NUMBER:Integer;
-        ZPNAME:String;
-        DAY1_DATE:Date;
-        DAY1_HOUR:Integer;
-        DAY2_DATE:Date;
-        DAY2_HOUR:Integer;
-        DAY3_DATE:Date;
-        DAY3_HOUR:Integer;
-        DAY4_DATE:Date;
-        DAY4_HOUR:Integer;
-        DAY5_DATE:Date;
-        DAY5_HOUR:Integer;
-        DAY6_DATE:Date;
-        DAY6_HOUR:Integer;
-        DAY7_DATE:Date;
-        DAY7_HOUR:Integer;
-    }
+    // entity ZTHBT0051 as projection on db.ZTHBT0051;
     
-    type timeSheetSubmitResult {
-        PERNR: String;
-        WEEK_NUMBER:Integer;
-        ZPNAME:String;
-        messageType:messageType;
-        message:String;
-    }
+    // entity TimeSheetTemplate as select from db.ZTHBT0051 as _TimeSheetTemplate{
+    //     key _TimeSheetTemplate.PERNR,
+    //     key _TimeSheetTemplate.WEEK_NUMBER,
+    //     key _TimeSheetTemplate.ZPNAME.ZPNAME,
+    //         _TimeSheetTemplate.ZPNAME.RWBS,
+    //         _TimeSheetTemplate.ZPNAME.RWBSDESC,
+    //         _TimeSheetTemplate.ZPNAME.OBJECT_ID,
+    //         _TimeSheetTemplate.ZPNAME.SERVICEORDERITEM,
+    //         _TimeSheetTemplate.ZPNAME.SERVORDERITEMDESC,
+    //         _TimeSheetTemplate.ZPNAME.EKOSTL,
+    //         _TimeSheetTemplate.ZPNAME.COSTCENTERNAME,
+    //         _TimeSheetTemplate.ZPNAME.PWBS,
+    //         _TimeSheetTemplate.ZPNAME.PARENTWBSDESC,
+    //         _TimeSheetTemplate.ZPNAME.ZTCODE,
+    //         _TimeSheetTemplate.ZPNAME.ZTCODE.ZTCDS,
+    //         _TimeSheetTemplate.ZPNAME.BEMOT,
+    //         _TimeSheetTemplate.ZPNAME.ACINDICATORDESC,
+    //         _TimeSheetTemplate.ZPNAME.STAGR,
+    //         _TimeSheetTemplate.DAY1_DATE,
+    //         _TimeSheetTemplate.DAY1_HOUR,
+    //         _TimeSheetTemplate.DAY2_DATE,
+    //         _TimeSheetTemplate.DAY2_HOUR,
+    //         _TimeSheetTemplate.DAY3_DATE,
+    //         _TimeSheetTemplate.DAY3_HOUR,
+    //         _TimeSheetTemplate.DAY4_DATE,
+    //         _TimeSheetTemplate.DAY4_HOUR,
+    //         _TimeSheetTemplate.DAY5_DATE,
+    //         _TimeSheetTemplate.DAY5_HOUR,
+    //         _TimeSheetTemplate.DAY6_DATE,
+    //         _TimeSheetTemplate.DAY6_HOUR,
+    //         _TimeSheetTemplate.DAY7_DATE,
+    //         _TimeSheetTemplate.DAY7_HOUR
+    // };
+    // type timeSheetData {
+    //     PERNR: String;
+    //     WEEK_NUMBER:Integer;
+    //     ZPNAME:String;
+    //     DAY1_DATE:Date;
+    //     DAY1_HOUR:Integer;
+    //     DAY2_DATE:Date;
+    //     DAY2_HOUR:Integer;
+    //     DAY3_DATE:Date;
+    //     DAY3_HOUR:Integer;
+    //     DAY4_DATE:Date;
+    //     DAY4_HOUR:Integer;
+    //     DAY5_DATE:Date;
+    //     DAY5_HOUR:Integer;
+    //     DAY6_DATE:Date;
+    //     DAY6_HOUR:Integer;
+    //     DAY7_DATE:Date;
+    //     DAY7_HOUR:Integer;
+    // }
+    
+    // type timeSheetSubmitResult {
+    //     PERNR: String;
+    //     WEEK_NUMBER:Integer;
+    //     ZPNAME:String;
+    //     messageType:messageType;
+    //     message:String;
+    // }
 
-    action SubmitTimeSheet(input : timeSheetData) returns timeSheetSubmitResult;
+    // action SubmitTimeSheet(input : timeSheetData) returns timeSheetSubmitResult;
 
 }
 
@@ -274,6 +283,7 @@ service ZCDS_ALL_ENTITIES {
     entity ZTHBT0017 as projection on db.ZTHBT0014;
     entity ZTHBT0018 as projection on db.ZTHBT0018;
     entity ZTHBT0056 as projection on db.ZTHBT0056;
+    entity ZTHBT0051 as projection on db.ZTHBT0051;
 }
 
 service ZCDSEHBTC0006 {

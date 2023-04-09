@@ -177,26 +177,26 @@ entity ZTHBT0019: managed {
         ZPS_IDENTIFIER: String(1) @title : 'Assignment Identifier';
 
 }
-entity ZTHBT0051 : managed {
-    key PERNR: String(10) @title : 'Employee Number';
-    key WEEK_NUMBER: Integer @title : 'WWeek Number';
-    key ZPNAME: Association to ZTHBT0019 @title : 'Assignment Name';
-    DAY1_DATE: Date @title : 'Date of Day1';
-    DAY1_HOUR: Integer @title : 'Hours for Day1';
-    DAY2_DATE: Date @title : 'Date of Day2';
-    DAY2_HOUR: Integer @title : 'Hours for Day2';
-    DAY3_DATE: Date @title : 'Date of Day3';
-    DAY3_HOUR: Integer @title : 'Hours for Day3';
-    DAY4_DATE: Date @title : 'Date of Day4';
-    DAY4_HOUR: Integer @title : 'Hours for Day4';
-    DAY5_DATE: Date @title : 'Date of Day5';
-    DAY5_HOUR: Integer @title : 'Hours for Day5';
-    DAY6_DATE: Date @title : 'Date of Day6';
-    DAY6_HOUR: Integer @title : 'Hours for Day6';
-    DAY7_DATE: Date @title : 'Date of Day7';
-    DAY7_HOUR: Integer @title : 'Hours for Day7';
+// entity ZTHBT0051 : managed {
+//     key PERNR: String(10) @title : 'Employee Number';
+//     key WEEK_NUMBER: Integer @title : 'WWeek Number';
+//     key ZPNAME: Association to ZTHBT0019 @title : 'Assignment Name';
+//     DAY1_DATE: Date @title : 'Date of Day1';
+//     DAY1_HOUR: Integer @title : 'Hours for Day1';
+//     DAY2_DATE: Date @title : 'Date of Day2';
+//     DAY2_HOUR: Integer @title : 'Hours for Day2';
+//     DAY3_DATE: Date @title : 'Date of Day3';
+//     DAY3_HOUR: Integer @title : 'Hours for Day3';
+//     DAY4_DATE: Date @title : 'Date of Day4';
+//     DAY4_HOUR: Integer @title : 'Hours for Day4';
+//     DAY5_DATE: Date @title : 'Date of Day5';
+//     DAY5_HOUR: Integer @title : 'Hours for Day5';
+//     DAY6_DATE: Date @title : 'Date of Day6';
+//     DAY6_HOUR: Integer @title : 'Hours for Day6';
+//     DAY7_DATE: Date @title : 'Date of Day7';
+//     DAY7_HOUR: Integer @title : 'Hours for Day7';
 
-}
+// }
 
 @title : '{i18n>WorkOrder}'
 entity ZTHBT0026: cuid, managed {

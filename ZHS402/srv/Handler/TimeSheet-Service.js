@@ -46,82 +46,99 @@ var registerTimeSheetHandler = function (that, cds) {
 
     that.on('READ', 'ParentWBS', async req => {
 
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+
         var where = req.query.SELECT.where;
-
-        //test
-        var oData = [];
-        if (LoggUser.length > 0) {
-            const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
-            if (AssignmentByPassData && AssignmentByPassData.length > 0) {
-                switch (AssignmentByPassData[0].CATEGORY) {
-                    case 'PJT':
-                        await prepareFilterAsObject(where,{ projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where).limit(req.query.SELECT.limit);
-                        break;
-                    case 'OPP':
-                        await prepareFilterAsObject(where,{ projectType: 'D1', and: { LevelInHierarchy: { '>=': 002 } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where).limit(req.query.SELECT.limit);
-                        break;
-                    default:
-                        await prepareFilterAsObject(where,{ projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 }, and: { IhpaObjFound: 'X' } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where).limit(req.query.SELECT.limit);
-                        break;
-                }
-
-            }
+        if (!where) {
+            where = {};
         }
-        return oData;
+        var limit = req.query.SELECT.limit;
+        return await readParentWBSCombined(where, limit);
     });
     that.on('READ', 'LoggedInUser', async req => {
 
         const db = await cds.connect.to('TimeSheetEntry');
         var oData = await db.run(req.query);
-        
+
         return oData;
     });
     that.on('READ', 'ReceiverWBS', async req => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
+
 
         var where = req.query.SELECT.where;
-        if(!where) {
+        if (!where) {
             where = {};
         }
-        const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
-        
-        var oData = [];
-        if (LoggUser.length > 0) {
-            const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
-            if (AssignmentByPassData && AssignmentByPassData.length > 0) {
-                switch (AssignmentByPassData[0].CATEGORY) {
-                    case 'PJT':
-                        await prepareFilterAsObject(where,{ Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where).limit(req.query.SELECT.limit);
-                        break;
-                    case 'OPP':
-                        await prepareFilterAsObject(where,{ Profile: 'YD00001', and: { LevelInHierarchy: { '>=': 002 }, and: { ProjectType: 'D1' } } })
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where).limit(req.query.SELECT.limit);
-                        break;
-                    default:
-                        await prepareFilterAsObject(where,{ UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } });
-                        oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where).limit(req.query.SELECT.limit);
-                        break;
-                }
-
-            }
-        }
-        return oData;
+        var limit = req.query.SELECT.limit;
+        return await readReceiverWBSCombined(where, limit);
     });
     that.on('READ', 'ReceiverCostCenter', async req => {
         const db = await cds.connect.to('TimeSheetEntry');
         var oData = await db.run(req.query);
         return oData;
     });
-    that.on('SubmitTimeSheet', async (req) => {
+    // that.on('SubmitTimeSheet', async (req) => {
+    //     const bupa = await cds.connect.to('TimeSheetEntry');
+    //     return await submitTimeSheet(req,bupa);
 
-
-    });
+    // });
+    // that.on('READ','s4TimeSheet',async req => {
+    //     const db = await cds.connect.to('TimeSheetAPI');
+    //     var oData = await db.run(req.query);
+    //     return oData;
+    // } )
+    // that.on('READ','TimeSheetTemplate', async req => {
+    //     const db = await cds.connect.to('TimeSheetEntry');
+    //     var oData = await db.run(req.query);
+    //     var arrayPernr = [];
+    //     var arrayDate = [];
+    
+    //     for (let reqData of oData) {
+    //         arrayPernr.push(reqData.PERNR);
+    //         if(reqData.DAY1_DATE) {
+    //             arrayDate.push(reqData.DAY1_DATE);
+    //         }
+    //         if(reqData.DAY2_DATE) {
+    //             arrayDate.push(reqData.DAY2_DATE);
+    //         }
+    //         if(reqData.DAY3_DATE) {
+    //             arrayDate.push(reqData.DAY3_DATE);
+    //         }
+    //         if(reqData.DAY4_DATE) {
+    //             arrayDate.push(reqData.DAY4_DATE);
+    //         }
+    //         if(reqData.DAY5_DATE) {
+    //             arrayDate.push(reqData.DAY5_DATE);
+    //         }
+    //         if(reqData.DAY6_DATE) {
+    //             arrayDate.push(reqData.DAY6_DATE);
+    //         }
+    //         if(reqData.DAY7_DATE) {
+    //             arrayDate.push(reqData.DAY7_DATE);
+    //         }
+            
+    //     }
+    //     try {
+    //         // const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({EmploymentInternalID: { in: arrayPernr }, and: { WorkDate: { in: arrayDate }}});
+    //         // for(let reqData of oData) {
+    //         //     let dataFound = s4TimeSheets.find( EmploymentInternalID === reqData.PERNR && WorkDate === reqData.DAY1_DATE );
+    //         //     if(dataFound) {
+    //         //         if(data.Status === '30') {
+    //         //             reqData.SUBMITTED = true;
+    //         //         }
+    //         //     }
+    //         // }
+    //         return oData;
+    //     } catch (error) {
+    //         return oData;
+    //     }
+        
+        
+    // });
+    // that.on('READ', 'ZTHBT0051', async req => {
+    //     const db = await cds.connect.to('db');
+    //     var oData = await db.run(req.query);
+    //     return oData;
+    // });
 
 }
 
@@ -157,7 +174,10 @@ const validateAssignmentProject = async (req, bupa) => {
     else {
         // Validate existance of Receiver WBS Provided
         if (req.data.RWBS) {
-            const data = await bupa.get('ZCDSEHBTC0003.ReceiverWBS').where({ WBSId: req.data.RWBS });
+            const whereRWB = [{ ref: ['WBSId'] }, '=', { val: req.data.RWBS }];
+
+            const data = await readReceiverWBSCombined(whereRWB);
+            //const data = await bupa.get('ZCDSEHBTC0003.ReceiverWBS').where({ WBSId: req.data.RWBS });
             if (data.length === 0) {
                 req.reject({
                     code: 403,
@@ -166,7 +186,7 @@ const validateAssignmentProject = async (req, bupa) => {
             }
             else {
                 // Check the need for Parent WBS
-                if (data[0].UserStatus = 'CCTW' && !req.data.PWBS) {
+                if (data[0].UserStatus === 'CCTW' && !req.data.PWBS) {
                     req.reject({
                         code: 403,
                         message: 'Kindly provide a valid Parent WBS'
@@ -219,11 +239,13 @@ const validateAssignmentProject = async (req, bupa) => {
 
     }
     // Validate Receiver Cost Center
-    
-    
+
+
     //Validate Existance of Parent WBS
     if (req.data.PWBS) {
-        const parentWBSdata = await bupa.get('ZCDSEHBTC0003.ParentWBS').where({ ParentWBS: req.data.PWBS });
+        const wherePWBS = [{ ref: ['ParentWBS'] }, '=', { val: req.data.PWBS }, 'and', { ref: ['ReceiverWBS'] }, '=', { val: req.data.RWBS }];
+        parentWBSdata = await readParentWBSCombined(wherePWBS);
+        //const parentWBSdata = await bupa.get('ZCDSEHBTC0003.ParentWBS').where({ ParentWBS: req.data.PWBS });
         if (parentWBSdata.length == 0) {
             req.reject({
                 code: 403,
@@ -232,8 +254,14 @@ const validateAssignmentProject = async (req, bupa) => {
         }
     }
 }
-const SubmitTimeSheet = async (req, bupa) => {
-    await UPSERT.into('ZHS402.ZTHBT0051').entries(req.data);
+const submitTimeSheet = async (req, bupa) => {
+    var response = [];
+    let loggedInUser;
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+    if (LoggUser.length > 0) {
+        loggedInUser = LoggUser[0];
+    }
+    
     arrayPernr = [];
     arrayWeekNumber = [];
     arrarAssignment = [];
@@ -251,64 +279,197 @@ const SubmitTimeSheet = async (req, bupa) => {
         arrayWeekNumber.push(req.data.WEEK_NUMBER);
         arrarAssignment.push(req.data.ZPNAME);
     }
-    const capTimeSheet = await SELECT.from('ZHS402.ZTHBT0028').where({
-        PERNR: { in: arrayPernr },
-        and: { WEEK_NUMBER: { in: arrayWeekNumber } },
-        and: { ZPNAME: { in: arrarAssignment } }
+    // const capTimeSheet = await SELECT.from('ZHS402.ZTHBT0028').where({
+    //     PERNR: { in: arrayPernr },
+    //     and: { WEEK_NUMBER: { in: arrayWeekNumber } },
+    //     and: { ZPNAME: { in: arrarAssignment } }
+    // });
+    const assignmentsData = await db.get('ZCDSEHBTC0003.ZTHBT0019').where({
+        ZPNAME: { in: arrarAssignment }
     });
-    const db = await cds.connect.to('TimeSheetEntry');
-    if (req.data instanceof Array) {
-        for (let reqData of req.data) {
-            const dataFound = capTimeSheet.find(PERNR === reqData.PERNR && WEEK_NUMBER === reqData.WEEK_NUMBER && ZPNAME === reqData.ZPNAME);
-            if (dataFound) {
-                try {
-                    db.send({
-                        method: 'POST',
-                        path: 'ZCDSEHPSC0011',
-                        data: t
-                    })
-                } catch (error) {
-
-                }
-
-            }
-            else {
-
-            }
+    if (assignmentsData.length != arrarAssignment.length) {
+        req.reject({
+            code: 403,
+            message: 'Assignmnet(s) you have selecteds are does not exists'
+        });
+    };
+    try {
+        await UPSERT.into('ZHS402.ZTHBT0051').entries(req.data);
+        for (let reqData of req.data)
+        {
+            response.push( {
+                PERNR: reqData.PERNR,
+                WEEK_NUMBER: reqData.WEEK_NUMBER,
+                ZPNAME: reqData.ZPNAME,
+                messageType: 'S',
+                message: 'TimeSheet is Saved Successfully'
+            });
         }
+        return response;
+    } catch (error) {
+        req.reject({
+            code: 403,
+            message: 'Error while updating TimeSheet in Cloud'
+        });
     }
+    
+
+
+    // const db = await cds.connect.to('TimeSheetAPI');
+    // if (req.data instanceof Array) {
+    //     for (let reqData of req.data) {
+    //         const dataFound = capTimeSheet.find(PERNR === reqData.PERNR && WEEK_NUMBER === reqData.WEEK_NUMBER && ZPNAME === reqData.ZPNAME);
+    //         const assignmentData = assignmentsData.find(ZPNAME === reqData.ZPNAME);
+    //         if (dataFound) {
+    //             try {
+    //                 await sendTimeSheetToS4(loggedInUser,assignmentData,reqData,response);
+    //                 return response;
+    //             } catch (error) {
+    //                 req.reject({
+    //                     code: 403,
+    //                     message: 'error while saving TimeSheet into S4 system'
+    //                 });
+    //             }
+
+    //         }
+    //         else {
+    //             req.reject({
+    //                 code: 403,
+    //                 message: `Assignment ${reqData.ZPNAME} does not exists`
+    //             });
+    //         }
+    //     }
+    // }
 
 
 
 }
 
-const prepareFilterAsObject = async(where,obj) => {
+const prepareFilterAsObject = async (where, obj) => {
     const ge = '>=';
-    if(Object.keys(where).length === 0) {
-        Object.assign(where,obj);
+    if (Object.keys(where).length === 0) {
+        Object.assign(where, obj);
         return;
     }
     else {
-        if(obj) {
+        if (obj) {
             where.push('and');
         }
     }
-    if(obj) {
-        for(let property in obj) {
-            if(obj[property] instanceof Object) {
-                if(obj[property].hasOwnProperty(ge)) {
-                    where.push({ref:[property]});
+    if (obj) {
+        for (let property in obj) {
+            if (obj[property] instanceof Object) {
+                if (obj[property].hasOwnProperty(ge)) {
+                    where.push({ ref: [property] });
                     where.push('>=');
-                    where.push({val:obj[property]['>=']}); 
+                    where.push({ val: obj[property]['>='] });
                     continue;
                 }
-                await prepareFilterAsObject(where,obj[property] );
+                await prepareFilterAsObject(where, obj[property]);
                 return;
             }
-            where.push({ref:[property]});
+            where.push({ ref: [property] });
             where.push('=');
-            where.push({val:obj[property]});
+            where.push({ val: obj[property] });
         }
     }
+}
+
+const readReceiverWBSCombined = async (where, limit) => {
+    const bupa = await cds.connect.to('TimeSheetEntry');
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+
+    var oData = [];
+    if (LoggUser.length > 0) {
+        const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
+        if (AssignmentByPassData && AssignmentByPassData.length > 0) {
+            switch (AssignmentByPassData[0].CATEGORY) {
+                case 'PJT':
+                    await prepareFilterAsObject(where, { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } })
+
+                    break;
+                case 'OPP':
+                    await prepareFilterAsObject(where, { Profile: 'YD00001', and: { LevelInHierarchy: { '>=': 002 }, and: { ProjectType: 'D1' } } })
+
+                    break;
+                default:
+                    await prepareFilterAsObject(where, { UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } });
+
+                    break;
+            }
+            if (limit) {
+                oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where).limit(limit);
+            }
+            else {
+                oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where);
+            }
+
+        }
+    }
+    return oData;
+}
+
+const readParentWBSCombined = async (where, limit) => {
+    const bupa = await cds.connect.to('TimeSheetEntry');
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+    var oData = [];
+    if (LoggUser.length > 0) {
+        const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
+        if (AssignmentByPassData && AssignmentByPassData.length > 0) {
+            switch (AssignmentByPassData[0].CATEGORY) {
+                case 'PJT':
+                    await prepareFilterAsObject(where, { projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 } } })
+
+                    break;
+                case 'OPP':
+                    await prepareFilterAsObject(where, { projectType: 'D1', and: { LevelInHierarchy: { '>=': 002 } } })
+
+                    break;
+                default:
+                    await prepareFilterAsObject(where, { projectType: 'E1', and: { LevelInHierarchy: { '>=': 006 }, and: { IhpaObjFound: 'X' } } })
+
+                    break;
+            }
+            if (limit) {
+                oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where).limit(limit);
+            }
+            else {
+                oData = await bupa.get('ZCDSEHBTC0003.ParentWBSExt').where(where);
+            }
+
+
+        }
+    }
+    return oData;
+}
+const sendTimeSheetToS4 = async (loggedInUser,assignmentData,reqData,response) => {
+
+var s4TimeSheetData = {
+    EmploymentInternalID: loggedInUser.EmployeeId,
+    ZZ1_ParentWBS_TIM: assignmentData.PWBS,
+    ZZ1_TaskCodeDescriptio_TIM: assignmentData.ZTCODE.ZTCDS,
+    ZZ1_TaskCode_TIM: assignmentData.ZTCODE.ZTCODE,
+    LSTAR: loggedInUser.ActivityType,
+    BEMOT: assignmentData.BEMOT,
+    KOKRS: loggedInUser.CompanyCode,
+    RKOSTL: assignmentData.EKOSTL,
+    RAUFNR: assignmentData.EAUFNR,
+    SKOSTL: loggedInUser.CostCenter,
+    WorkDate: reqData.DAY1_DATE,
+    Status: "30",
+    ZZ1_ServiceOrderItemNo_TIM: assignmentData.SERVICEORDERITEM,
+    CATSHOURS: reqData.DAY1_HOUR,
+    POSID: assignmentData.RWBS,
+    STATKEYFIG: assignmentData.STAGR
+};
+
+var s4Response = await db.tx(req).post("s4TimeSheet", s4TimeSheetData);
+response = {
+    PERNR: reqData.PERNR,
+    WEEK_NUMBER: reqData.WEEK_NUMBER,
+    ZPNAME: reqData.ZPNAME,
+    messageType: 'S',
+    message: 'TimeSheet is Saved Successfully'
+};
 }
 module.exports = registerTimeSheetHandler;
