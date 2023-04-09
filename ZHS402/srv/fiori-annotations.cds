@@ -1307,10 +1307,10 @@ annotate ZCDSEHBTC0013.ZTHBT0059 @(Capabilities : {
         $Type      : 'Capabilities.SearchRestrictionsType',
         Searchable : false
     },
-    InsertRestrictions : {
-        $Type : 'Capabilities.InsertRestrictionsType',
-        Insertable: false
-    },
+    // InsertRestrictions : {
+    //     $Type : 'Capabilities.InsertRestrictionsType',
+    //     Insertable: false
+    // },
     DeleteRestrictions : {
         $Type : 'Capabilities.DeleteRestrictionsType',
         Deletable: false
