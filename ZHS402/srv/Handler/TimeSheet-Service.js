@@ -77,7 +77,7 @@ var registerTimeSheetHandler = function (that, cds) {
         return oData;
     });
     that.on('SubmitTimeSheet', async (req) => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
+        const bupa = await cds.connect.to('db');
         return await submitTimeSheet(req,bupa);
 
     });
@@ -254,37 +254,24 @@ const validateAssignmentProject = async (req, bupa) => {
         }
     }
 }
-const submitTimeSheet = async (req, bupa) => {
-    var response = [];
-    let loggedInUser;
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
-    if (LoggUser.length > 0) {
-        loggedInUser = LoggUser[0];
-    }
+const submitTimeSheet = async (req, db) => {
+    var response = {};
+    // let loggedInUser;
+    // const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+    // if (LoggUser.length > 0) {
+    //     loggedInUser = LoggUser[0];
+    // }
     
     arrayPernr = [];
     arrayWeekNumber = [];
     arrarAssignment = [];
-    if (req.data instanceof Array) {
-        for (let reqData of req.data) {
-            arrayPernr.push(reqData.PERNR);
-            arrayWeekNumber.push(reqData.WEEK_NUMBER);
-            arrarAssignment.push(reqData.ZPNAME);
+    
+        arrayPernr.push(req.data.input.PERNR);
+        arrayWeekNumber.push(req.data.input.WEEK_NUMBER);
+        arrarAssignment.push(req.data.input.ZPNAME_ZPNAME);
+    
 
-        }
-    }
-
-    else {
-        arrayPernr.push(req.data.PERNR);
-        arrayWeekNumber.push(req.data.WEEK_NUMBER);
-        arrarAssignment.push(req.data.ZPNAME);
-    }
-    // const capTimeSheet = await SELECT.from('ZHS402.ZTHBT0028').where({
-    //     PERNR: { in: arrayPernr },
-    //     and: { WEEK_NUMBER: { in: arrayWeekNumber } },
-    //     and: { ZPNAME: { in: arrarAssignment } }
-    // });
-    const assignmentsData = await db.get('ZCDSEHBTC0003.ZTHBT0019').where({
+    const assignmentsData = await SELECT.from('ZHS402.ZTHBT0019').where({
         ZPNAME: { in: arrarAssignment }
     });
     if (assignmentsData.length != arrarAssignment.length) {
@@ -294,17 +281,16 @@ const submitTimeSheet = async (req, bupa) => {
         });
     };
     try {
-        await UPSERT.into('ZHS402.ZTHBT0051').entries(req.data);
-        for (let reqData of req.data)
-        {
-            response.push( {
+        await UPSERT.into('ZHS402.ZTHBT0051').entries(req.data.input);
+        
+            let reqData = req.data.input;
+            response = {
                 PERNR: reqData.PERNR,
                 WEEK_NUMBER: reqData.WEEK_NUMBER,
                 ZPNAME: reqData.ZPNAME,
                 messageType: 'S',
                 message: 'TimeSheet is Saved Successfully'
-            });
-        }
+            };    
         return response;
     } catch (error) {
         req.reject({

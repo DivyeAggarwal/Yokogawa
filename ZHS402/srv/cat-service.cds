@@ -168,7 +168,7 @@ service ZCDSEHBTC0003
     entity TimeSheetTemplate as select from db.ZTHBT0051 as _TimeSheetTemplate{
         key _TimeSheetTemplate.PERNR,
         key _TimeSheetTemplate.WEEK_NUMBER,
-        key _TimeSheetTemplate.ZPNAME.ZPNAME,
+        key _TimeSheetTemplate.ZPNAME.ZPNAME as ZPNAME_ZPNAME,
             _TimeSheetTemplate.ZPNAME.RWBS,
             _TimeSheetTemplate.ZPNAME.RWBSDESC,
             _TimeSheetTemplate.ZPNAME.OBJECT_ID,
@@ -201,7 +201,7 @@ service ZCDSEHBTC0003
     type timeSheetData {
         PERNR: String;
         WEEK_NUMBER:Integer;
-        ZPNAME:String;
+        ZPNAME_ZPNAME:String;
         DAY1_DATE:Date;
         DAY1_HOUR:Integer;
         DAY2_DATE:Date;

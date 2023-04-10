@@ -6961,7 +6961,8 @@
                 "_TimeSheetTemplate",
                 "ZPNAME",
                 "ZPNAME"
-              ]
+              ],
+              "as": "ZPNAME_ZPNAME"
             },
             {
               "ref": [
@@ -7161,7 +7162,7 @@
           "key": true,
           "type": "cds.Integer"
         },
-        "ZPNAME": {
+        "ZPNAME_ZPNAME": {
           "@title": "Assignment Name",
           "key": true,
           "type": "cds.String",
@@ -7301,6 +7302,93 @@
           "@title": "Hours for Day7",
           "type": "cds.Integer"
         }
+      }
+    },
+    "ZCDSEHBTC0003.timeSheetData": {
+      "kind": "type",
+      "elements": {
+        "PERNR": {
+          "type": "cds.String"
+        },
+        "WEEK_NUMBER": {
+          "type": "cds.Integer"
+        },
+        "ZPNAME_ZPNAME": {
+          "type": "cds.String"
+        },
+        "DAY1_DATE": {
+          "type": "cds.Date"
+        },
+        "DAY1_HOUR": {
+          "type": "cds.Integer"
+        },
+        "DAY2_DATE": {
+          "type": "cds.Date"
+        },
+        "DAY2_HOUR": {
+          "type": "cds.Integer"
+        },
+        "DAY3_DATE": {
+          "type": "cds.Date"
+        },
+        "DAY3_HOUR": {
+          "type": "cds.Integer"
+        },
+        "DAY4_DATE": {
+          "type": "cds.Date"
+        },
+        "DAY4_HOUR": {
+          "type": "cds.Integer"
+        },
+        "DAY5_DATE": {
+          "type": "cds.Date"
+        },
+        "DAY5_HOUR": {
+          "type": "cds.Integer"
+        },
+        "DAY6_DATE": {
+          "type": "cds.Date"
+        },
+        "DAY6_HOUR": {
+          "type": "cds.Integer"
+        },
+        "DAY7_DATE": {
+          "type": "cds.Date"
+        },
+        "DAY7_HOUR": {
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "ZCDSEHBTC0003.timeSheetSubmitResult": {
+      "kind": "type",
+      "elements": {
+        "PERNR": {
+          "type": "cds.String"
+        },
+        "WEEK_NUMBER": {
+          "type": "cds.Integer"
+        },
+        "ZPNAME": {
+          "type": "cds.String"
+        },
+        "messageType": {
+          "type": "messageType"
+        },
+        "message": {
+          "type": "cds.String"
+        }
+      }
+    },
+    "ZCDSEHBTC0003.SubmitTimeSheet": {
+      "kind": "action",
+      "params": {
+        "input": {
+          "type": "ZCDSEHBTC0003.timeSheetData"
+        }
+      },
+      "returns": {
+        "type": "ZCDSEHBTC0003.timeSheetSubmitResult"
       }
     },
     "ZCDSEHBTC0004": {
