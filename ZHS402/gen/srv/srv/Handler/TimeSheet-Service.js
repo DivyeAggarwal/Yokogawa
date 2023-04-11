@@ -81,11 +81,11 @@ var registerTimeSheetHandler = function (that, cds) {
         return await submitTimeSheet(req,bupa);
 
     });
-    // that.on('READ','s4TimeSheet',async req => {
-    //     const db = await cds.connect.to('TimeSheetAPI');
-    //     var oData = await db.run(req.query);
-    //     return oData;
-    // } )
+    that.on('READ','s4TimeSheet',async req => {
+        const db = await cds.connect.to('TimeSheetAPI');
+        var oData = await db.run(req.query);
+        return oData;
+    } )
     that.on('READ','TimeSheetTemplate', async req => {
         const db = await cds.connect.to('db');
         var oData = await db.run(req.query);
@@ -118,15 +118,15 @@ var registerTimeSheetHandler = function (that, cds) {
             
         }
         try {
-            // const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({EmploymentInternalID: { in: arrayPernr }, and: { WorkDate: { in: arrayDate }}});
-            // for(let reqData of oData) {
-            //     let dataFound = s4TimeSheets.find( EmploymentInternalID === reqData.PERNR && WorkDate === reqData.DAY1_DATE );
-            //     if(dataFound) {
-            //         if(data.Status === '30') {
-            //             reqData.SUBMITTED = true;
-            //         }
-            //     }
-            // }
+            const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({EmploymentInternalID: { in: arrayPernr }, and: { WorkDate: { in: arrayDate }}});
+            for(let reqData of oData) {
+                let dataFound = s4TimeSheets.find( EmploymentInternalID === reqData.PERNR && WorkDate === reqData.DAY1_DATE );
+                if(dataFound) {
+                    if(data.Status === '30') {
+                        reqData.SUBMITTED = true;
+                    }
+                }
+            }
             return oData;
         } catch (error) {
             return oData;
@@ -255,7 +255,7 @@ const validateAssignmentProject = async (req, bupa) => {
     }
 }
 const submitTimeSheet = async (req, db) => {
-    var response = [];
+    var response = {};
     // let loggedInUser;
     // const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
     // if (LoggUser.length > 0) {
@@ -265,25 +265,12 @@ const submitTimeSheet = async (req, db) => {
     arrayPernr = [];
     arrayWeekNumber = [];
     arrarAssignment = [];
-    if (req.data instanceof Array) {
-        for (let reqData of req.data) {
-            arrayPernr.push(reqData.PERNR);
-            arrayWeekNumber.push(reqData.WEEK_NUMBER);
-            arrarAssignment.push(reqData.ZPNAME_ZPNAME);
-
-        }
-    }
-
-    else {
+    
         arrayPernr.push(req.data.input.PERNR);
         arrayWeekNumber.push(req.data.input.WEEK_NUMBER);
         arrarAssignment.push(req.data.input.ZPNAME_ZPNAME);
-    }
-    // const capTimeSheet = await SELECT.from('ZHS402.ZTHBT0028').where({
-    //     PERNR: { in: arrayPernr },
-    //     and: { WEEK_NUMBER: { in: arrayWeekNumber } },
-    //     and: { ZPNAME: { in: arrarAssignment } }
-    // });
+    
+
     const assignmentsData = await SELECT.from('ZHS402.ZTHBT0019').where({
         ZPNAME: { in: arrarAssignment }
     });
@@ -295,29 +282,15 @@ const submitTimeSheet = async (req, db) => {
     };
     try {
         await UPSERT.into('ZHS402.ZTHBT0051').entries(req.data.input);
-        if(req.data.input instanceof Array) {
-            for (let reqData of req.data.input)
-                {
-                    response.push( {
-                        PERNR: reqData.PERNR,
-                        WEEK_NUMBER: reqData.WEEK_NUMBER,
-                        ZPNAME: reqData.ZPNAME,
-                        messageType: 'S',
-                        message: 'TimeSheet is Saved Successfully'
-                    });
-                }
-        }
-        else {
+        
             let reqData = req.data.input;
-            response.push( {
+            response = {
                 PERNR: reqData.PERNR,
                 WEEK_NUMBER: reqData.WEEK_NUMBER,
                 ZPNAME: reqData.ZPNAME,
                 messageType: 'S',
                 message: 'TimeSheet is Saved Successfully'
-            });
-        }
-        
+            };    
         return response;
     } catch (error) {
         req.reject({
@@ -398,7 +371,7 @@ const readReceiverWBSCombined = async (where, limit) => {
         if (AssignmentByPassData && AssignmentByPassData.length > 0) {
             switch (AssignmentByPassData[0].CATEGORY) {
                 case 'PJT':
-                    await prepareFilterAsObject(where, { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } })
+                    await prepareFilterAsObject(where, { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1', } } })
 
                     break;
                 case 'OPP':

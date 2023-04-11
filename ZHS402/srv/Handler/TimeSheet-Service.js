@@ -81,11 +81,11 @@ var registerTimeSheetHandler = function (that, cds) {
         return await submitTimeSheet(req,bupa);
 
     });
-    // that.on('READ','s4TimeSheet',async req => {
-    //     const db = await cds.connect.to('TimeSheetAPI');
-    //     var oData = await db.run(req.query);
-    //     return oData;
-    // } )
+    that.on('READ','s4TimeSheet',async req => {
+        const db = await cds.connect.to('TimeSheetAPI');
+        var oData = await db.run(req.query);
+        return oData;
+    } )
     that.on('READ','TimeSheetTemplate', async req => {
         const db = await cds.connect.to('db');
         var oData = await db.run(req.query);
@@ -118,15 +118,15 @@ var registerTimeSheetHandler = function (that, cds) {
             
         }
         try {
-            // const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({EmploymentInternalID: { in: arrayPernr }, and: { WorkDate: { in: arrayDate }}});
-            // for(let reqData of oData) {
-            //     let dataFound = s4TimeSheets.find( EmploymentInternalID === reqData.PERNR && WorkDate === reqData.DAY1_DATE );
-            //     if(dataFound) {
-            //         if(data.Status === '30') {
-            //             reqData.SUBMITTED = true;
-            //         }
-            //     }
-            // }
+            const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({EmploymentInternalID: { in: arrayPernr }, and: { WorkDate: { in: arrayDate }}});
+            for(let reqData of oData) {
+                let dataFound = s4TimeSheets.find( EmploymentInternalID === reqData.PERNR && WorkDate === reqData.DAY1_DATE );
+                if(dataFound) {
+                    if(data.Status === '30') {
+                        reqData.SUBMITTED = true;
+                    }
+                }
+            }
             return oData;
         } catch (error) {
             return oData;
@@ -371,7 +371,7 @@ const readReceiverWBSCombined = async (where, limit) => {
         if (AssignmentByPassData && AssignmentByPassData.length > 0) {
             switch (AssignmentByPassData[0].CATEGORY) {
                 case 'PJT':
-                    await prepareFilterAsObject(where, { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } })
+                    await prepareFilterAsObject(where, { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1', } } })
 
                     break;
                 case 'OPP':

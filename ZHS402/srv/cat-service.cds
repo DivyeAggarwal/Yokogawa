@@ -226,7 +226,7 @@ service ZCDSEHBTC0003
         message:String;
     }
 
-    action SubmitTimeSheet(input : timeSheetData) returns timeSheetSubmitResult;
+    action SubmitTimeSheet(input: timeSheetData) returns timeSheetSubmitResult;
 
 }
 
