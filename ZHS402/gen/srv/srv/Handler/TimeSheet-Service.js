@@ -78,61 +78,21 @@ var registerTimeSheetHandler = function (that, cds) {
     });
     that.on('SubmitTimeSheet', async (req) => {
         const bupa = await cds.connect.to('db');
-        return await submitTimeSheet(req,bupa);
+        return await submitTimeSheet(req, bupa);
 
     });
-    that.on('READ','s4TimeSheet',async req => {
+    that.on('READ', 's4TimeSheet', async req => {
         const db = await cds.connect.to('TimeSheetAPI');
         var oData = await db.run(req.query);
         return oData;
-    } )
-    that.on('READ','TimeSheetTemplate', async req => {
+    })
+    that.on('READ', 'TimeSheetTemplate', async req => {
         const db = await cds.connect.to('db');
         var oData = await db.run(req.query);
-        var arrayPernr = [];
-        var arrayDate = [];
-    
-        for (let reqData of oData) {
-            arrayPernr.push(reqData.PERNR);
-            if(reqData.DAY1_DATE) {
-                arrayDate.push(reqData.DAY1_DATE);
-            }
-            if(reqData.DAY2_DATE) {
-                arrayDate.push(reqData.DAY2_DATE);
-            }
-            if(reqData.DAY3_DATE) {
-                arrayDate.push(reqData.DAY3_DATE);
-            }
-            if(reqData.DAY4_DATE) {
-                arrayDate.push(reqData.DAY4_DATE);
-            }
-            if(reqData.DAY5_DATE) {
-                arrayDate.push(reqData.DAY5_DATE);
-            }
-            if(reqData.DAY6_DATE) {
-                arrayDate.push(reqData.DAY6_DATE);
-            }
-            if(reqData.DAY7_DATE) {
-                arrayDate.push(reqData.DAY7_DATE);
-            }
-            
-        }
-        try {
-            const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({EmploymentInternalID: { in: arrayPernr }, and: { WorkDate: { in: arrayDate }}});
-            for(let reqData of oData) {
-                let dataFound = s4TimeSheets.find( EmploymentInternalID === reqData.PERNR && WorkDate === reqData.DAY1_DATE );
-                if(dataFound) {
-                    if(data.Status === '30') {
-                        reqData.SUBMITTED = true;
-                    }
-                }
-            }
-            return oData;
-        } catch (error) {
-            return oData;
-        }
-        
-        
+        oData = await populateSubmittedFlag(oData);
+        return oData;
+
+
     });
     that.on('READ', 'ZTHBT0051', async req => {
         const db = await cds.connect.to('db');
@@ -140,6 +100,56 @@ var registerTimeSheetHandler = function (that, cds) {
         return oData;
     });
 
+}
+const populateSubmittedFlag = async (oData) => {
+    var arrayPernr = [];
+    var arrayDate = [];
+    for (let reqData of oData) {
+        arrayPernr.push(reqData.PERNR);
+        if (reqData.DAY1_DATE) {
+            arrayDate.push(new Date(reqData.DAY1_DATE).toISOString());
+        }
+        if (reqData.DAY2_DATE) {
+            arrayDate.push(new Date(reqData.DAY2_DATE).toISOString());
+        }
+        if (reqData.DAY3_DATE) {
+            arrayDate.push(new Date(reqData.DAY3_DATE).toISOString());
+        }
+        if (reqData.DAY4_DATE) {
+            arrayDate.push(new Date(reqData.DAY4_DATE).toISOString());
+        }
+        if (reqData.DAY5_DATE) {
+            arrayDate.push(new Date(reqData.DAY5_DATE).toISOString());
+        }
+        if (reqData.DAY6_DATE) {
+            arrayDate.push(new Date(reqData.DAY6_DATE).toISOString());
+        }
+        if (reqData.DAY7_DATE) {
+            arrayDate.push(new Date(reqData.DAY7_DATE).toISOString());
+        }
+
+    }
+    const db = await cds.connect.to('TimeSheetAPI');
+//   , and: { WorkDate: { in: arrayDate } }
+    try {
+        const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({ EmploymentInternalID: { in: arrayPernr } });
+        for (let reqData of oData) {
+            let dataFound = s4TimeSheets.find(function(element) {
+                const workDate = new Date(element.WorkDate).toDateString();
+                return element.EmploymentInternalID === reqData.PERNR && ( workDate === new Date(reqData.DAY1_DATE).toDateString() ||
+                workDate === new Date(reqData.DAY2_DATE).toDateString() || workDate === new Date(reqData.DAY3_DATE).toDateString() ||
+                workDate === new Date(reqData.DAY4_DATE).toDateString() || workDate === new Date(reqData.DAY5_DATE).toDateString() ||
+                workDate === new Date(reqData.DAY6_DATE).toDateString() || workDate === new Date(reqData.DAY7_DATE).toDateString() )});
+            if (dataFound) {
+                if (dataFound.Status === '30') {
+                    reqData.SUBMITTED = true;
+                }
+            }
+        }
+        return oData;
+    } catch (error) {
+        return oData;
+    }
 }
 
 const ValidateAssignment = async (req) => {
@@ -261,15 +271,15 @@ const submitTimeSheet = async (req, db) => {
     // if (LoggUser.length > 0) {
     //     loggedInUser = LoggUser[0];
     // }
-    
+
     arrayPernr = [];
     arrayWeekNumber = [];
     arrarAssignment = [];
-    
-        arrayPernr.push(req.data.input.PERNR);
-        arrayWeekNumber.push(req.data.input.WEEK_NUMBER);
-        arrarAssignment.push(req.data.input.ZPNAME_ZPNAME);
-    
+
+    arrayPernr.push(req.data.input.PERNR);
+    arrayWeekNumber.push(req.data.input.WEEK_NUMBER);
+    arrarAssignment.push(req.data.input.ZPNAME_ZPNAME);
+
 
     const assignmentsData = await SELECT.from('ZHS402.ZTHBT0019').where({
         ZPNAME: { in: arrarAssignment }
@@ -282,15 +292,15 @@ const submitTimeSheet = async (req, db) => {
     };
     try {
         await UPSERT.into('ZHS402.ZTHBT0051').entries(req.data.input);
-        
-            let reqData = req.data.input;
-            response = {
-                PERNR: reqData.PERNR,
-                WEEK_NUMBER: reqData.WEEK_NUMBER,
-                ZPNAME: reqData.ZPNAME,
-                messageType: 'S',
-                message: 'TimeSheet is Saved Successfully'
-            };    
+
+        let reqData = req.data.input;
+        response = {
+            PERNR: reqData.PERNR,
+            WEEK_NUMBER: reqData.WEEK_NUMBER,
+            ZPNAME: reqData.ZPNAME,
+            messageType: 'S',
+            message: 'TimeSheet is Saved Successfully'
+        };
         return response;
     } catch (error) {
         req.reject({
@@ -298,7 +308,7 @@ const submitTimeSheet = async (req, db) => {
             message: 'Error while updating TimeSheet in Cloud'
         });
     }
-    
+
 
 
     // const db = await cds.connect.to('TimeSheetAPI');
@@ -371,7 +381,7 @@ const readReceiverWBSCombined = async (where, limit) => {
         if (AssignmentByPassData && AssignmentByPassData.length > 0) {
             switch (AssignmentByPassData[0].CATEGORY) {
                 case 'PJT':
-                    await prepareFilterAsObject(where, { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1', } } })
+                    await prepareFilterAsObject(where, { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } })
 
                     break;
                 case 'OPP':
@@ -428,34 +438,34 @@ const readParentWBSCombined = async (where, limit) => {
     }
     return oData;
 }
-const sendTimeSheetToS4 = async (loggedInUser,assignmentData,reqData,response) => {
+const sendTimeSheetToS4 = async (loggedInUser, assignmentData, reqData, response) => {
 
-var s4TimeSheetData = {
-    EmploymentInternalID: loggedInUser.EmployeeId,
-    ZZ1_ParentWBS_TIM: assignmentData.PWBS,
-    ZZ1_TaskCodeDescriptio_TIM: assignmentData.ZTCODE.ZTCDS,
-    ZZ1_TaskCode_TIM: assignmentData.ZTCODE.ZTCODE,
-    LSTAR: loggedInUser.ActivityType,
-    BEMOT: assignmentData.BEMOT,
-    KOKRS: loggedInUser.CompanyCode,
-    RKOSTL: assignmentData.EKOSTL,
-    RAUFNR: assignmentData.EAUFNR,
-    SKOSTL: loggedInUser.CostCenter,
-    WorkDate: reqData.DAY1_DATE,
-    Status: "30",
-    ZZ1_ServiceOrderItemNo_TIM: assignmentData.SERVICEORDERITEM,
-    CATSHOURS: reqData.DAY1_HOUR,
-    POSID: assignmentData.RWBS,
-    STATKEYFIG: assignmentData.STAGR
-};
+    var s4TimeSheetData = {
+        EmploymentInternalID: loggedInUser.EmployeeId,
+        ZZ1_ParentWBS_TIM: assignmentData.PWBS,
+        ZZ1_TaskCodeDescriptio_TIM: assignmentData.ZTCODE.ZTCDS,
+        ZZ1_TaskCode_TIM: assignmentData.ZTCODE.ZTCODE,
+        LSTAR: loggedInUser.ActivityType,
+        BEMOT: assignmentData.BEMOT,
+        KOKRS: loggedInUser.CompanyCode,
+        RKOSTL: assignmentData.EKOSTL,
+        RAUFNR: assignmentData.EAUFNR,
+        SKOSTL: loggedInUser.CostCenter,
+        WorkDate: reqData.DAY1_DATE,
+        Status: "30",
+        ZZ1_ServiceOrderItemNo_TIM: assignmentData.SERVICEORDERITEM,
+        CATSHOURS: reqData.DAY1_HOUR,
+        POSID: assignmentData.RWBS,
+        STATKEYFIG: assignmentData.STAGR
+    };
 
-var s4Response = await db.tx(req).post("s4TimeSheet", s4TimeSheetData);
-response = {
-    PERNR: reqData.PERNR,
-    WEEK_NUMBER: reqData.WEEK_NUMBER,
-    ZPNAME: reqData.ZPNAME,
-    messageType: 'S',
-    message: 'TimeSheet is Saved Successfully'
-};
+    var s4Response = await db.tx(req).post("s4TimeSheet", s4TimeSheetData);
+    response = {
+        PERNR: reqData.PERNR,
+        WEEK_NUMBER: reqData.WEEK_NUMBER,
+        ZPNAME: reqData.ZPNAME,
+        messageType: 'S',
+        message: 'TimeSheet is Saved Successfully'
+    };
 }
 module.exports = registerTimeSheetHandler;

@@ -7146,6 +7146,13 @@
                 "_TimeSheetTemplate",
                 "DAY7_HOUR"
               ]
+            },
+            {
+              "val": null,
+              "as": "SUBMITTED",
+              "cast": {
+                "type": "cds.Boolean"
+              }
             }
           ]
         }
@@ -7301,6 +7308,10 @@
         "DAY7_HOUR": {
           "@title": "Hours for Day7",
           "type": "cds.Integer"
+        },
+        "SUBMITTED": {
+          "@Core.Computed": true,
+          "type": "cds.Boolean"
         }
       }
     },
