@@ -120,7 +120,33 @@ service ZCDSEHBTC0003
             UserStatus
     }
     entity LoggedInUser as projection on TimeSheetEntry.CurrentLoginUser;
-    entity s4TimeSheet as projection on TimeSheetEntry.ZCDSEHPSB0030;
+    entity s4TimeSheet as projection on TimeSheetEntry.ZCDSEHPSB0030 {
+        key EMPLOYEENUMBER,
+        key WEEKNUMBER,
+        key COUNTER,
+            day1_CATSHOURS,
+            day1_date,
+             day2_CATSHOURS,
+            day2_date,
+             day3_CATSHOURS,
+            day3_date,
+             day4_CATSHOURS,
+            day4_date,
+             day5_CATSHOURS,
+            day5_date,
+             day6_CATSHOURS,
+            day6_date,
+             day7_CATSHOURS,
+            day7_date,
+            ACTTYPE,
+            REC_CCTR,
+            REC_ORDER,
+            SEND_CCTR,
+            SERVICE,
+            WBS_ELEMENT,
+            WBS_ELEMENT_DESC,
+            UNIT
+    }
    
    entity ZTHBT0019 as
         select from db.ZTHBT0019 as _assignment
