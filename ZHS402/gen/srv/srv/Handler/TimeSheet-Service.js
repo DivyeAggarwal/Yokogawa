@@ -105,42 +105,56 @@ var registerTimeSheetHandler = function (that, cds) {
 const populateSubmittedFlag = async (oData) => {
     var arrayPernr = [];
     var arrayDate = [];
+    var arrayWeekNumber = [];
     for (let reqData of oData) {
-        arrayPernr.push(reqData.PERNR);
-        if (reqData.DAY1_DATE) {
-            arrayDate.push(new Date(reqData.DAY1_DATE).toISOString());
+        if(!arrayPernr.includes(reqData.PERNR)) {
+            arrayPernr.push(reqData.PERNR);
         }
-        if (reqData.DAY2_DATE) {
-            arrayDate.push(new Date(reqData.DAY2_DATE).toISOString());
+        
+        // if (reqData.DAY1_DATE) {
+        //     arrayDate.push(new Date(reqData.DAY1_DATE).toISOString());
+        // }
+        // if (reqData.DAY2_DATE) {
+        //     arrayDate.push(new Date(reqData.DAY2_DATE).toISOString());
+        // }
+        // if (reqData.DAY3_DATE) {
+        //     arrayDate.push(new Date(reqData.DAY3_DATE).toISOString());
+        // }
+        // if (reqData.DAY4_DATE) {
+        //     arrayDate.push(new Date(reqData.DAY4_DATE).toISOString());
+        // }
+        // if (reqData.DAY5_DATE) {
+        //     arrayDate.push(new Date(reqData.DAY5_DATE).toISOString());
+        // }
+        // if (reqData.DAY6_DATE) {
+        //     arrayDate.push(new Date(reqData.DAY6_DATE).toISOString());
+        // }
+        // if (reqData.DAY7_DATE) {
+        //     arrayDate.push(new Date(reqData.DAY7_DATE).toISOString());
+        // }
+        if(!arrayWeekNumber.includes(reqData.WEEK_NUMBER)) {
+            arrayWeekNumber.push(reqData.WEEK_NUMBER);
         }
-        if (reqData.DAY3_DATE) {
-            arrayDate.push(new Date(reqData.DAY3_DATE).toISOString());
-        }
-        if (reqData.DAY4_DATE) {
-            arrayDate.push(new Date(reqData.DAY4_DATE).toISOString());
-        }
-        if (reqData.DAY5_DATE) {
-            arrayDate.push(new Date(reqData.DAY5_DATE).toISOString());
-        }
-        if (reqData.DAY6_DATE) {
-            arrayDate.push(new Date(reqData.DAY6_DATE).toISOString());
-        }
-        if (reqData.DAY7_DATE) {
-            arrayDate.push(new Date(reqData.DAY7_DATE).toISOString());
-        }
+        
+        
 
     }
-    const db = await cds.connect.to('TimeSheetAPI');
+    const db = await cds.connect.to('TimeSheetEntry');
 //   , and: { WorkDate: { in: arrayDate } }
     try {
-        const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({ EmploymentInternalID: { in: arrayPernr } });
+        // ,and:{WEEKNUMBER:{in: arrayWeekNumber}}
+        const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({ EMPLOYEENUMBER: { in: arrayPernr },and:{WEEKNUMBER:{in: arrayWeekNumber}} });
+
         for (let reqData of oData) {
             let dataFound = s4TimeSheets.find(function(element) {
-                const workDate = new Date(element.WorkDate).toDateString();
-                return element.EmploymentInternalID === reqData.PERNR && ( workDate === new Date(reqData.DAY1_DATE).toDateString() ||
-                workDate === new Date(reqData.DAY2_DATE).toDateString() || workDate === new Date(reqData.DAY3_DATE).toDateString() ||
-                workDate === new Date(reqData.DAY4_DATE).toDateString() || workDate === new Date(reqData.DAY5_DATE).toDateString() ||
-                workDate === new Date(reqData.DAY6_DATE).toDateString() || workDate === new Date(reqData.DAY7_DATE).toDateString() )});
+                //const workDate = new Date(element.WorkDate).toDateString();
+                return element.EMPLOYEENUMBER === reqData.PERNR && element.WEEKNUMBER === reqData.WEEK_NUMBER && element.WBS_ELEMENT === reqData.RWBS
+                //  && ( workDate === new Date(reqData.DAY1_DATE).toDateString() ||
+                // workDate === new Date(reqData.DAY2_DATE).toDateString() || workDate === new Date(reqData.DAY3_DATE).toDateString() ||
+                // workDate === new Date(reqData.DAY4_DATE).toDateString() || workDate === new Date(reqData.DAY5_DATE).toDateString() ||
+                // workDate === new Date(reqData.DAY6_DATE).toDateString() || workDate === new Date(reqData.DAY7_DATE).toDateString()
+                //  )
+                });
             if (dataFound) {
                 if (dataFound.Status === '30') {
                     reqData.SUBMITTED = true;

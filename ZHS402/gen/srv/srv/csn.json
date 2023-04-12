@@ -5792,7 +5792,137 @@
           "ref": [
             "TimeSheetEntry.ZCDSEHPSB0030"
           ]
-        }
+        },
+        "columns": [
+          {
+            "key": true,
+            "ref": [
+              "EMPLOYEENUMBER"
+            ]
+          },
+          {
+            "key": true,
+            "ref": [
+              "WEEKNUMBER"
+            ]
+          },
+          {
+            "key": true,
+            "ref": [
+              "COUNTER"
+            ]
+          },
+          {
+            "ref": [
+              "day1_CATSHOURS"
+            ]
+          },
+          {
+            "ref": [
+              "day1_date"
+            ]
+          },
+          {
+            "ref": [
+              "day2_CATSHOURS"
+            ]
+          },
+          {
+            "ref": [
+              "day2_date"
+            ]
+          },
+          {
+            "ref": [
+              "day3_CATSHOURS"
+            ]
+          },
+          {
+            "ref": [
+              "day3_date"
+            ]
+          },
+          {
+            "ref": [
+              "day4_CATSHOURS"
+            ]
+          },
+          {
+            "ref": [
+              "day4_date"
+            ]
+          },
+          {
+            "ref": [
+              "day5_CATSHOURS"
+            ]
+          },
+          {
+            "ref": [
+              "day5_date"
+            ]
+          },
+          {
+            "ref": [
+              "day6_CATSHOURS"
+            ]
+          },
+          {
+            "ref": [
+              "day6_date"
+            ]
+          },
+          {
+            "ref": [
+              "day7_CATSHOURS"
+            ]
+          },
+          {
+            "ref": [
+              "day7_date"
+            ]
+          },
+          {
+            "ref": [
+              "ACTTYPE"
+            ]
+          },
+          {
+            "ref": [
+              "REC_CCTR"
+            ]
+          },
+          {
+            "ref": [
+              "REC_ORDER"
+            ]
+          },
+          {
+            "ref": [
+              "SEND_CCTR"
+            ]
+          },
+          {
+            "ref": [
+              "SERVICE"
+            ]
+          },
+          {
+            "ref": [
+              "WBS_ELEMENT"
+            ]
+          },
+          {
+            "ref": [
+              "WBS_ELEMENT_DESC"
+            ]
+          },
+          {
+            "ref": [
+              "UNIT"
+            ]
+          }
+        ]
       },
       "elements": {
         "EMPLOYEENUMBER": {
@@ -5819,24 +5949,95 @@
           "length": 12,
           "notNull": true
         },
-        "SEND_CCTR": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Sender Cost Center",
-          "type": "cds.String",
-          "length": 10
+        "day1_CATSHOURS": {
+          "@sap.unit": "UNIT",
+          "@sap.label": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "day1_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Date",
+          "type": "cds.Date"
+        },
+        "day2_CATSHOURS": {
+          "@sap.unit": "UNIT",
+          "@sap.label": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "day2_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Date",
+          "type": "cds.Date"
+        },
+        "day3_CATSHOURS": {
+          "@sap.unit": "UNIT",
+          "@sap.label": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "day3_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Date",
+          "type": "cds.Date"
+        },
+        "day4_CATSHOURS": {
+          "@sap.unit": "UNIT",
+          "@sap.label": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "day4_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Date",
+          "type": "cds.Date"
+        },
+        "day5_CATSHOURS": {
+          "@sap.unit": "UNIT",
+          "@sap.label": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "day5_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Date",
+          "type": "cds.Date"
+        },
+        "day6_CATSHOURS": {
+          "@sap.unit": "UNIT",
+          "@sap.label": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "day6_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Date",
+          "type": "cds.Date"
+        },
+        "day7_CATSHOURS": {
+          "@sap.unit": "UNIT",
+          "@sap.label": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "day7_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Date",
+          "type": "cds.Date"
         },
         "ACTTYPE": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Activity Type",
           "type": "cds.String",
           "length": 6
-        },
-        "SERVICE": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Activity number",
-          "@sap.quickinfo": "Activity Number",
-          "type": "cds.String",
-          "length": 18
         },
         "REC_CCTR": {
           "@sap.display.format": "UpperCase",
@@ -5852,6 +6053,19 @@
           "type": "cds.String",
           "length": 12
         },
+        "SEND_CCTR": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sender Cost Center",
+          "type": "cds.String",
+          "length": 10
+        },
+        "SERVICE": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Activity number",
+          "@sap.quickinfo": "Activity Number",
+          "type": "cds.String",
+          "length": 18
+        },
         "WBS_ELEMENT": {
           "type": "cds.String",
           "length": 24
@@ -5859,90 +6073,6 @@
         "WBS_ELEMENT_DESC": {
           "type": "cds.String",
           "length": 24
-        },
-        "day1_date": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "type": "cds.Date"
-        },
-        "day1_CATSHOURS": {
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2
-        },
-        "day2_date": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "type": "cds.Date"
-        },
-        "day2_CATSHOURS": {
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2
-        },
-        "day3_date": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "type": "cds.Date"
-        },
-        "day3_CATSHOURS": {
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2
-        },
-        "day4_date": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "type": "cds.Date"
-        },
-        "day4_CATSHOURS": {
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2
-        },
-        "day5_date": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "type": "cds.Date"
-        },
-        "day5_CATSHOURS": {
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2
-        },
-        "day6_date": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "type": "cds.Date"
-        },
-        "day6_CATSHOURS": {
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2
-        },
-        "day7_date": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "type": "cds.Date"
-        },
-        "day7_CATSHOURS": {
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2
         },
         "UNIT": {
           "@sap.label": "Display Unit/Measure",
