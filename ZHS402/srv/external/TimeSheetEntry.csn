@@ -1,6 +1,6 @@
 {
   "meta": {
-    "creator": "cds-dk 6.3.1"
+    "creator": "cds-dk 6.6.2"
   },
   "$version": "2.0",
   "definitions": {
@@ -33,15 +33,13 @@
           "type": "cds.String",
           "length": 2,
           "@sap.label": "Language",
-          "@sap.quickinfo": "Language Key",
-          "notNull": false
+          "@sap.quickinfo": "Language Key"
         },
         "AcctIndDescription": {
           "type": "cds.String",
           "length": 25,
           "@sap.label": "Description",
-          "@sap.quickinfo": "Accounting Indicator Description",
-          "notNull": false
+          "@sap.quickinfo": "Accounting Indicator Description"
         }
       }
     },
@@ -77,22 +75,19 @@
           "type": "cds.String",
           "length": 40,
           "@sap.label": "Item Description",
-          "@sap.quickinfo": "Product Description",
-          "notNull": false
+          "@sap.quickinfo": "Product Description"
         },
         "ac_indicator": {
           "type": "cds.String",
           "length": 2,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Accounting Indicator",
-          "notNull": false
+          "@sap.label": "Accounting Indicator"
         },
         "InternalOrder": {
           "type": "cds.String",
           "length": 70,
           "@sap.label": "Internal Order",
-          "@sap.quickinfo": "Object key",
-          "notNull": false
+          "@sap.quickinfo": "Object key"
         }
       }
     },
@@ -119,8 +114,7 @@
           "type": "cds.String",
           "length": 40,
           "@sap.label": "Description",
-          "@sap.quickinfo": "Transaction Description",
-          "notNull": false
+          "@sap.quickinfo": "Transaction Description"
         }
       }
     },
@@ -146,8 +140,7 @@
           "type": "cds.String",
           "length": 40,
           "@sap.label": "Statistical Key Figure",
-          "@sap.quickinfo": "Statistical Key Figure Name",
-          "notNull": false
+          "@sap.quickinfo": "Statistical Key Figure Name"
         }
       }
     },
@@ -173,8 +166,7 @@
           "type": "cds.String",
           "length": 20,
           "@sap.label": "Name",
-          "@sap.quickinfo": "General Name",
-          "notNull": false
+          "@sap.quickinfo": "General Name"
         }
       }
     },
@@ -194,11 +186,10 @@
           "@sap.quickinfo": "Personnel Number",
           "notNull": true
         },
-        "WeekFirstDate": {
+        "WEEKNUMBER": {
           "key": true,
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
-          "@sap.label": "Start Date",
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
           "notNull": true
         },
         "COUNTER": {
@@ -214,155 +205,133 @@
           "type": "cds.String",
           "length": 10,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Sender Cost Center",
-          "notNull": false
+          "@sap.label": "Sender Cost Center"
         },
         "ACTTYPE": {
           "type": "cds.String",
           "length": 6,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Activity Type",
-          "notNull": false
+          "@sap.label": "Activity Type"
         },
         "SERVICE": {
           "type": "cds.String",
           "length": 18,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Activity number",
-          "@sap.quickinfo": "Activity Number",
-          "notNull": false
+          "@sap.quickinfo": "Activity Number"
         },
         "REC_CCTR": {
           "type": "cds.String",
           "length": 10,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Receiver cost center",
-          "@sap.quickinfo": "Receiver Cost Center",
-          "notNull": false
+          "@sap.quickinfo": "Receiver Cost Center"
         },
         "REC_ORDER": {
           "type": "cds.String",
           "length": 12,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Receiver order",
-          "@sap.quickinfo": "Receiver Order",
-          "notNull": false
+          "@sap.quickinfo": "Receiver Order"
         },
         "WBS_ELEMENT": {
           "type": "cds.String",
-          "length": 24,
-          "notNull": false
+          "length": 24
         },
         "WBS_ELEMENT_DESC": {
           "type": "cds.String",
-          "length": 24,
-          "notNull": false
+          "length": 24
         },
         "day1_date": {
           "type": "cds.Date",
           "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "notNull": false
+          "@sap.label": "Date"
         },
         "day1_CATSHOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2,
           "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "notNull": false
+          "@sap.label": "Hours"
         },
         "day2_date": {
           "type": "cds.Date",
           "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "notNull": false
+          "@sap.label": "Date"
         },
         "day2_CATSHOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2,
           "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "notNull": false
+          "@sap.label": "Hours"
         },
         "day3_date": {
           "type": "cds.Date",
           "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "notNull": false
+          "@sap.label": "Date"
         },
         "day3_CATSHOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2,
           "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "notNull": false
+          "@sap.label": "Hours"
         },
         "day4_date": {
           "type": "cds.Date",
           "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "notNull": false
+          "@sap.label": "Date"
         },
         "day4_CATSHOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2,
           "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "notNull": false
+          "@sap.label": "Hours"
         },
         "day5_date": {
           "type": "cds.Date",
           "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "notNull": false
+          "@sap.label": "Date"
         },
         "day5_CATSHOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2,
           "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "notNull": false
+          "@sap.label": "Hours"
         },
         "day6_date": {
           "type": "cds.Date",
           "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "notNull": false
+          "@sap.label": "Date"
         },
         "day6_CATSHOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2,
           "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "notNull": false
+          "@sap.label": "Hours"
         },
         "day7_date": {
           "type": "cds.Date",
           "@sap.display.format": "Date",
-          "@sap.label": "Date",
-          "notNull": false
+          "@sap.label": "Date"
         },
         "day7_CATSHOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2,
           "@sap.unit": "UNIT",
-          "@sap.label": "Hours",
-          "notNull": false
+          "@sap.label": "Hours"
         },
         "UNIT": {
           "type": "cds.String",
           "length": 3,
           "@sap.label": "Display Unit/Measure",
           "@sap.quickinfo": "Unit of Measure for Display",
-          "@sap.semantics": "unit-of-measure",
-          "notNull": false
+          "@sap.semantics": "unit-of-measure"
         }
       }
     },
@@ -388,67 +357,58 @@
           "length": 30,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Global ID",
-          "@sap.quickinfo": "Communication Identification/Number",
-          "notNull": false
+          "@sap.quickinfo": "Communication Identification/Number"
         },
         "EmployeeId": {
           "type": "cds.String",
           "length": 60,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Employee ID",
-          "@sap.quickinfo": "Identification Number",
-          "notNull": false
+          "@sap.quickinfo": "Identification Number"
         },
         "EmployeeName": {
           "type": "cds.String",
           "length": 30,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Employee Name",
-          "@sap.quickinfo": "Employee's Name (Sortable by LAST NAME FIRST NAME)",
-          "notNull": false
+          "@sap.quickinfo": "Employee's Name (Sortable by LAST NAME FIRST NAME)"
         },
         "CostCenter": {
           "type": "cds.String",
           "length": 10,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Cost Center",
-          "@sap.quickinfo": "Sender Cost Center",
-          "notNull": false
+          "@sap.quickinfo": "Sender Cost Center"
         },
         "Designation": {
           "type": "cds.String",
           "length": 25,
           "@sap.label": "Designation",
-          "@sap.quickinfo": "Short Text of Position",
-          "notNull": false
+          "@sap.quickinfo": "Short Text of Position"
         },
         "ActivityType": {
           "type": "cds.String",
           "length": 6,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Activity Type",
-          "notNull": false
+          "@sap.label": "Activity Type"
         },
         "ActivityTypeName": {
           "type": "cds.String",
           "length": 20,
           "@sap.label": "Activity Type Name",
-          "@sap.quickinfo": "General Name",
-          "notNull": false
+          "@sap.quickinfo": "General Name"
         },
         "CostCenterName": {
           "type": "cds.String",
           "length": 40,
           "@sap.label": "Cost Center Name",
-          "@sap.quickinfo": "Description",
-          "notNull": false
+          "@sap.quickinfo": "Description"
         },
         "CompanyCode": {
           "type": "cds.String",
           "length": 4,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Company Code",
-          "notNull": false
+          "@sap.label": "Company Code"
         }
       }
     },
@@ -488,41 +448,35 @@
           "type": "cds.String",
           "length": 40,
           "@sap.label": "Parent Project Description",
-          "@sap.quickinfo": "PS: Short description (1st text line)",
-          "notNull": false
+          "@sap.quickinfo": "PS: Short description (1st text line)"
         },
         "LevelInHierarchy": {
           "type": "cds.Integer",
           "@odata.Type": "Edm.Byte",
           "@sap.label": "Level",
-          "@sap.quickinfo": "Level in Project Hierarchy",
-          "notNull": false
+          "@sap.quickinfo": "Level in Project Hierarchy"
         },
         "ParentCompanyCode": {
           "type": "cds.String",
           "length": 4,
-          "@sap.label": "ParentCompanyCode",
-          "notNull": false
+          "@sap.label": "ParentCompanyCode"
         },
         "projectType": {
           "type": "cds.String",
           "length": 2,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Project Type",
-          "notNull": false
+          "@sap.label": "Project Type"
         },
         "IhpaObjFound": {
           "type": "cds.String",
           "length": 1,
-          "@sap.label": "IHPA Object Found",
-          "notNull": false
+          "@sap.label": "IHPA Object Found"
         },
         "UserStatus": {
           "type": "cds.String",
           "length": 20,
           "@sap.label": "User Status",
-          "@sap.quickinfo": "User field with 20 characters",
-          "notNull": false
+          "@sap.quickinfo": "User field with 20 characters"
         }
       }
     },
@@ -549,8 +503,7 @@
           "type": "cds.String",
           "length": 40,
           "@sap.label": "Internal Order Description",
-          "@sap.quickinfo": "Description",
-          "notNull": false
+          "@sap.quickinfo": "Description"
         }
       }
     },
@@ -574,44 +527,38 @@
         "ProjectId": {
           "type": "cds.String",
           "length": 24,
-          "@sap.label": "Project ID",
-          "notNull": false
+          "@sap.label": "Project ID"
         },
         "ProjectDesc": {
           "type": "cds.String",
           "length": 40,
           "@sap.label": "Receiver Project Description",
-          "@sap.quickinfo": "PS: Short description (1st text line)",
-          "notNull": false
+          "@sap.quickinfo": "PS: Short description (1st text line)"
         },
         "Profile": {
           "type": "cds.String",
           "length": 7,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Profile",
-          "@sap.quickinfo": "Project Profile",
-          "notNull": false
+          "@sap.quickinfo": "Project Profile"
         },
         "UserStatus": {
           "type": "cds.String",
           "length": 20,
           "@sap.label": "User Status",
-          "@sap.quickinfo": "User field with 20 characters",
-          "notNull": false
+          "@sap.quickinfo": "User field with 20 characters"
         },
         "LevelInHierarchy": {
           "type": "cds.Integer",
           "@odata.Type": "Edm.Byte",
           "@sap.label": "Level",
-          "@sap.quickinfo": "Level in Project Hierarchy",
-          "notNull": false
+          "@sap.quickinfo": "Level in Project Hierarchy"
         },
         "ProjectType": {
           "type": "cds.String",
           "length": 2,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Project Type",
-          "notNull": false
+          "@sap.label": "Project Type"
         }
       }
     },
@@ -636,65 +583,56 @@
           "length": 30,
           "@sap.display.format": "UpperCase",
           "@sap.label": "System ID",
-          "@sap.quickinfo": "Communication Identification/Number",
-          "notNull": false
+          "@sap.quickinfo": "Communication Identification/Number"
         },
         "EmployeeId": {
           "type": "cds.String",
           "length": 60,
           "@sap.display.format": "UpperCase",
           "@sap.label": "ID number",
-          "@sap.quickinfo": "Identification Number",
-          "notNull": false
+          "@sap.quickinfo": "Identification Number"
         },
         "EmployeeName": {
           "type": "cds.String",
           "length": 30,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Last name First name",
-          "@sap.quickinfo": "Employee's Name (Sortable by LAST NAME FIRST NAME)",
-          "notNull": false
+          "@sap.quickinfo": "Employee's Name (Sortable by LAST NAME FIRST NAME)"
         },
         "CostCenter": {
           "type": "cds.String",
           "length": 10,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Sender Cost Center",
-          "notNull": false
+          "@sap.label": "Sender Cost Center"
         },
         "Designation": {
           "type": "cds.String",
           "length": 25,
           "@sap.label": "Position Short Text",
-          "@sap.quickinfo": "Short Text of Position",
-          "notNull": false
+          "@sap.quickinfo": "Short Text of Position"
         },
         "CostCenterName": {
           "type": "cds.String",
           "length": 40,
-          "@sap.label": "Description",
-          "notNull": false
+          "@sap.label": "Description"
         },
         "ActivityType": {
           "type": "cds.String",
           "length": 6,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Activity Type",
-          "notNull": false
+          "@sap.label": "Activity Type"
         },
         "ActivityTypeName": {
           "type": "cds.String",
           "length": 20,
           "@sap.label": "Name",
-          "@sap.quickinfo": "General Name",
-          "notNull": false
+          "@sap.quickinfo": "General Name"
         },
         "CompanyCode": {
           "type": "cds.String",
           "length": 4,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Company Code",
-          "notNull": false
+          "@sap.label": "Company Code"
         }
       }
     }

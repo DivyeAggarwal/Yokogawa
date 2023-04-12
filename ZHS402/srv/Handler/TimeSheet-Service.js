@@ -82,7 +82,8 @@ var registerTimeSheetHandler = function (that, cds) {
 
     });
     that.on('READ', 's4TimeSheet', async req => {
-        const db = await cds.connect.to('TimeSheetAPI');
+        const db = await cds.connect.to('TimeSheetEntry');
+        
         var oData = await db.run(req.query);
         return oData;
     })

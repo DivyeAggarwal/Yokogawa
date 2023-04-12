@@ -120,14 +120,7 @@ service ZCDSEHBTC0003
             UserStatus
     }
     entity LoggedInUser as projection on TimeSheetEntry.CurrentLoginUser;
-    entity s4TimeSheet as projection on TimeSheetAPI.TimeEntryCollection {
-        key EmploymentInternalID,
-        key Counter,
-        Refcounter,
-        WorkDate,
-        Status
-            
-    };
+    entity s4TimeSheet as projection on TimeSheetEntry.ZCDSEHPSB0030;
    
    entity ZTHBT0019 as
         select from db.ZTHBT0019 as _assignment
