@@ -781,5 +781,16 @@ service ZCDSEHBTC0014 {
 
 service ZCDSEHBTC0015 {
     entity ZTHBT0029 as projection on db.ZTHBT0029;
+    @cds.persistence.skip
+    entity OrderPartInformation {
+        key Product: String(40)  @title : 'Material' @Common.QuickInfo : 'Material'; 
+        DWERK         : String(4)  @title: 'Plant';
+        BTYPECAT      : String(1)  @title: 'By-Order Category';
+        MRPCONT       : String(12) @title: 'MRP Controller';
+        PLNUM         : String(10) @title: 'Parts Planned Order';
+        GSTRP         : Date       @title: 'Basic start date';
+        GLTRP         : Date       @title: 'Basic finish date';
+        CHNAGEDATE    : Date       @title: 'Change date'; 
+    }
 }
 

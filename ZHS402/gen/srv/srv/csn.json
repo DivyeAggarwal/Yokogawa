@@ -3505,6 +3505,201 @@
         }
       }
     },
+    "ZHS402.ZTHBT0029": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "BTYPEORDER": {
+          "@title": "B-type Prod. No",
+          "key": true,
+          "type": "cds.String",
+          "length": 13
+        },
+        "BTYPEITEM": {
+          "@title": "B-type Prod. Item No",
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "DWERK": {
+          "@title": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "LEVELINGGROUP": {
+          "@title": "Leveling group",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ARBPL": {
+          "@title": "Parts Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "BTYPECAT": {
+          "@title": "By-Order Category",
+          "type": "cds.String",
+          "length": 1
+        },
+        "BTYPESTATUS": {
+          "@title": "By-Order Parts Status",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRDSTNO": {
+          "@title": "Prod. Start No.",
+          "type": "cds.String",
+          "length": 8
+        },
+        "AUFNR": {
+          "@title": "Prod. Order",
+          "type": "cds.String",
+          "length": 12
+        },
+        "KDAUF": {
+          "@title": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "KDPOS": {
+          "@title": "Sales Order Item",
+          "type": "cds.Integer"
+        },
+        "COMPNO": {
+          "@title": "Comp No.",
+          "type": "cds.String",
+          "length": 4
+        },
+        "MSCODE": {
+          "@title": "MS Code",
+          "type": "cds.String",
+          "length": 40
+        },
+        "GSTRP": {
+          "@title": "Basic start date",
+          "type": "cds.Date"
+        },
+        "GLTRP": {
+          "@title": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "MATNR": {
+          "@title": "Parts Material",
+          "type": "cds.String",
+          "length": 40
+        },
+        "GSMNG": {
+          "@title": "Order quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "MEINS": {
+          "@title": "Base Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PSTTR": {
+          "@title": "Parts Planned start date",
+          "type": "cds.Date"
+        },
+        "PLNUM": {
+          "@title": "Parts Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "PAUFNR": {
+          "@title": "Parts Production Order",
+          "type": "cds.String",
+          "length": 12
+        },
+        "PEBELN": {
+          "@title": "Parts PO",
+          "type": "cds.String",
+          "length": 10
+        },
+        "PEBELP": {
+          "@title": "Parts PO Item",
+          "type": "cds.String",
+          "length": 5
+        },
+        "BTYPENOTE": {
+          "@title": "By-Order Parts Note",
+          "type": "cds.String",
+          "length": 20
+        },
+        "SYDATS": {
+          "@title": "Printed Date",
+          "type": "cds.Date"
+        },
+        "SYTIME": {
+          "@title": "Printed Time",
+          "type": "cds.Time"
+        },
+        "STARTTIME": {
+          "@title": "Parts Planned start time",
+          "type": "cds.Time"
+        },
+        "UUSR": {
+          "@title": "Changed by",
+          "type": "cds.String",
+          "length": 12
+        },
+        "UREPID": {
+          "@title": "PROGRAMM",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
     "PUBLIC.DUMMY": {
       "kind": "entity",
       "@cds.persistence.exists": true,
@@ -11050,6 +11245,205 @@
         "DAY7_HOUR": {
           "@title": "Hours for Day7",
           "type": "cds.Integer"
+        }
+      }
+    },
+    "ZCDS_ALL_ENTITIES.ZTHBT0029": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0029"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "BTYPEORDER": {
+          "@title": "B-type Prod. No",
+          "key": true,
+          "type": "cds.String",
+          "length": 13
+        },
+        "BTYPEITEM": {
+          "@title": "B-type Prod. Item No",
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "DWERK": {
+          "@title": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "LEVELINGGROUP": {
+          "@title": "Leveling group",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ARBPL": {
+          "@title": "Parts Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "BTYPECAT": {
+          "@title": "By-Order Category",
+          "type": "cds.String",
+          "length": 1
+        },
+        "BTYPESTATUS": {
+          "@title": "By-Order Parts Status",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRDSTNO": {
+          "@title": "Prod. Start No.",
+          "type": "cds.String",
+          "length": 8
+        },
+        "AUFNR": {
+          "@title": "Prod. Order",
+          "type": "cds.String",
+          "length": 12
+        },
+        "KDAUF": {
+          "@title": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "KDPOS": {
+          "@title": "Sales Order Item",
+          "type": "cds.Integer"
+        },
+        "COMPNO": {
+          "@title": "Comp No.",
+          "type": "cds.String",
+          "length": 4
+        },
+        "MSCODE": {
+          "@title": "MS Code",
+          "type": "cds.String",
+          "length": 40
+        },
+        "GSTRP": {
+          "@title": "Basic start date",
+          "type": "cds.Date"
+        },
+        "GLTRP": {
+          "@title": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "MATNR": {
+          "@title": "Parts Material",
+          "type": "cds.String",
+          "length": 40
+        },
+        "GSMNG": {
+          "@title": "Order quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "MEINS": {
+          "@title": "Base Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PSTTR": {
+          "@title": "Parts Planned start date",
+          "type": "cds.Date"
+        },
+        "PLNUM": {
+          "@title": "Parts Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "PAUFNR": {
+          "@title": "Parts Production Order",
+          "type": "cds.String",
+          "length": 12
+        },
+        "PEBELN": {
+          "@title": "Parts PO",
+          "type": "cds.String",
+          "length": 10
+        },
+        "PEBELP": {
+          "@title": "Parts PO Item",
+          "type": "cds.String",
+          "length": 5
+        },
+        "BTYPENOTE": {
+          "@title": "By-Order Parts Note",
+          "type": "cds.String",
+          "length": 20
+        },
+        "SYDATS": {
+          "@title": "Printed Date",
+          "type": "cds.Date"
+        },
+        "SYTIME": {
+          "@title": "Printed Time",
+          "type": "cds.Time"
+        },
+        "STARTTIME": {
+          "@title": "Parts Planned start time",
+          "type": "cds.Time"
+        },
+        "UUSR": {
+          "@title": "Changed by",
+          "type": "cds.String",
+          "length": 12
+        },
+        "UREPID": {
+          "@title": "PROGRAMM",
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -22603,6 +22997,209 @@
           },
           "target": "API_PRODUCT_SRV.A_ProductValuation",
           "keys": []
+        }
+      }
+    },
+    "ZCDSEHBTC0015": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZCDSEHBTC0015.ZTHBT0029": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0029"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "BTYPEORDER": {
+          "@title": "B-type Prod. No",
+          "key": true,
+          "type": "cds.String",
+          "length": 13
+        },
+        "BTYPEITEM": {
+          "@title": "B-type Prod. Item No",
+          "key": true,
+          "type": "cds.Integer"
+        },
+        "DWERK": {
+          "@title": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "LEVELINGGROUP": {
+          "@title": "Leveling group",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ARBPL": {
+          "@title": "Parts Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "BTYPECAT": {
+          "@title": "By-Order Category",
+          "type": "cds.String",
+          "length": 1
+        },
+        "BTYPESTATUS": {
+          "@title": "By-Order Parts Status",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRDSTNO": {
+          "@title": "Prod. Start No.",
+          "type": "cds.String",
+          "length": 8
+        },
+        "AUFNR": {
+          "@title": "Prod. Order",
+          "type": "cds.String",
+          "length": 12
+        },
+        "KDAUF": {
+          "@title": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "KDPOS": {
+          "@title": "Sales Order Item",
+          "type": "cds.Integer"
+        },
+        "COMPNO": {
+          "@title": "Comp No.",
+          "type": "cds.String",
+          "length": 4
+        },
+        "MSCODE": {
+          "@title": "MS Code",
+          "type": "cds.String",
+          "length": 40
+        },
+        "GSTRP": {
+          "@title": "Basic start date",
+          "type": "cds.Date"
+        },
+        "GLTRP": {
+          "@title": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "MATNR": {
+          "@title": "Parts Material",
+          "type": "cds.String",
+          "length": 40
+        },
+        "GSMNG": {
+          "@title": "Order quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "MEINS": {
+          "@title": "Base Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PSTTR": {
+          "@title": "Parts Planned start date",
+          "type": "cds.Date"
+        },
+        "PLNUM": {
+          "@title": "Parts Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "PAUFNR": {
+          "@title": "Parts Production Order",
+          "type": "cds.String",
+          "length": 12
+        },
+        "PEBELN": {
+          "@title": "Parts PO",
+          "type": "cds.String",
+          "length": 10
+        },
+        "PEBELP": {
+          "@title": "Parts PO Item",
+          "type": "cds.String",
+          "length": 5
+        },
+        "BTYPENOTE": {
+          "@title": "By-Order Parts Note",
+          "type": "cds.String",
+          "length": 20
+        },
+        "SYDATS": {
+          "@title": "Printed Date",
+          "type": "cds.Date"
+        },
+        "SYTIME": {
+          "@title": "Printed Time",
+          "type": "cds.Time"
+        },
+        "STARTTIME": {
+          "@title": "Parts Planned start time",
+          "type": "cds.Time"
+        },
+        "UUSR": {
+          "@title": "Changed by",
+          "type": "cds.String",
+          "length": 12
+        },
+        "UREPID": {
+          "@title": "PROGRAMM",
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
