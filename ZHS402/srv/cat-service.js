@@ -115,9 +115,18 @@ module.exports = cds.service.impl(async function (srv) {
 
     this.on('UpdatePOItem', async (req) => {
         const bupa = await cds.connect.to('TimeSheetEntry');
-        if (req.data.input.update.length > 0) {
-            await UPSERT.into('ZHS402.ZTHBT0027').entries(req.data.input.update);
-        }
+        var inserEntries = []; 
+        req.data.input.update.forEach(async function(oInput){
+            var oInputResults = await SELECT.from('ZHS402.ZTHBT0027').where({ MBLNR: { '=': oInput.MBLNR }, ZEILE: { '=': oInput.ZEILE }, MJAHR: { '=': oInput.MJAHR }, SERNR: { '=': oInput.SERNR } });
+            if(oInputResults.length === 0){
+                inserEntries.push(oInput);
+            }else{
+                UPDATE('ZHS402.ZTHBT0027').with(oInput);
+            }
+        });
+        if (inserEntries.length > 0) {
+            await INSERT.into('ZHS402.ZTHBT0027').entries(inserEntries);
+        } 
         for (let oDelete of req.data.input.delete) {
             await DELETE.from('ZHS402.ZTHBT0027').where({ MBLNR: { '=': oDelete.MBLNR }, ZEILE: { '=': oDelete.ZEILE }, MJAHR: { '=': oDelete.MJAHR }, SERNR: { '=': oDelete.SERNR } });
         }
