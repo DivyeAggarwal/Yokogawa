@@ -304,6 +304,7 @@ service ZCDS_ALL_ENTITIES {
     entity ZTHBT0018 as projection on db.ZTHBT0018;
     entity ZTHBT0056 as projection on db.ZTHBT0056;
     entity ZTHBT0051 as projection on db.ZTHBT0051;
+    entity ZTHBT0029 as projection on db.ZTHBT0029;
 }
 
 service ZCDSEHBTC0006 {
@@ -776,5 +777,9 @@ service ZCDSEHBTC0014 {
     entity ZCDSEHPPP0004 as projection on ZSRVBHPP0014.ZCDSEHPPP0004;
     entity A_ProductDescription as projection on API_PRODUCT_SRV.A_ProductDescription;
     entity A_Product as projection on API_PRODUCT_SRV.A_Product;
+}
+
+service ZCDSEHBTC0015 {
+    entity ZTHBT0029 as projection on db.ZTHBT0029;
 }
 
