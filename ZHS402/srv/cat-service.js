@@ -114,22 +114,26 @@ module.exports = cds.service.impl(async function (srv) {
 
 
     this.on('UpdatePOItem', async (req) => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
         var inserEntries = []; 
-        req.data.input.update.forEach(async function(oInput){
-            var oInputResults = await SELECT.from('ZHS402.ZTHBT0027').where({ MBLNR: { '=': oInput.MBLNR }, ZEILE: { '=': oInput.ZEILE }, MJAHR: { '=': oInput.MJAHR }, SERNR: { '=': oInput.SERNR } });
-            if(oInputResults.length === 0){
-                inserEntries.push(oInput);
+        for (let index = 0; index < req.data.input.update.length; index++) {
+            const oInput = req.data.input.update[index];
+            var oInputQuery = SELECT.from('ZHS402.ZTHBT0027').where({ MBLNR: { '=': oInput.MBLNR }, ZEILE: { '=': oInput.ZEILE }, MJAHR: { '=': oInput.MJAHR }, SERNR: { '=': oInput.SERNR } });
+            var oInputResults = await srv.run(oInputQuery); 
+            if(oInputResults.length == 0){
+                inserEntries.push(req.data.input.update[index]);
             }else{
-                UPDATE('ZHS402.ZTHBT0027').with(oInput);
+              const updateQuery =  UPDATE.entity('ZHS402.ZTHBT0027').data(oInput).where({ MBLNR: { '=': oInput.MBLNR }, ZEILE: { '=': oInput.ZEILE }, MJAHR: { '=': oInput.MJAHR }, SERNR: { '=': oInput.SERNR } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+              await srv.run(updateQuery);
             }
-        });
+        } 
         if (inserEntries.length > 0) {
-            await INSERT.into('ZHS402.ZTHBT0027').entries(inserEntries);
+            const insertQuery = INSERT.into('ZHS402.ZTHBT0027').entries(inserEntries); 
+            await srv.run(insertQuery);
         } 
         for (let oDelete of req.data.input.delete) {
             await DELETE.from('ZHS402.ZTHBT0027').where({ MBLNR: { '=': oDelete.MBLNR }, ZEILE: { '=': oDelete.ZEILE }, MJAHR: { '=': oDelete.MJAHR }, SERNR: { '=': oDelete.SERNR } });
         }
+        
         return {
             acknowledge: "Success", message: "Deleted " + req.data.input.delete.length + " entries \n"
                 + "Updated " + req.data.input.update.length + " entries \n"
