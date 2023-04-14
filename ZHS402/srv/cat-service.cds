@@ -781,6 +781,7 @@ service ZCDSEHBTC0014 {
 
 service ZCDSEHBTC0015 {
     entity ZTHBT0029 as projection on db.ZTHBT0029;
+    entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
     @cds.persistence.skip
     entity OrderPartInformation {
         key Product: String(40)  @title : 'Material' @Common.QuickInfo : 'Material'; 

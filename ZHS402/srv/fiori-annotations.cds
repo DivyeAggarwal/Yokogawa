@@ -1499,3 +1499,24 @@ annotate ZCDSEHBTC0011.ManBOMUpload @(Capabilities.FilterRestrictions : {
         }
     ]
 });
+
+annotate ZCDSEHBTC0015.OrderPartInformation {
+	    @(Common : {
+	        Label     : 'Plant',
+	        ValueList : {
+	        CollectionPath : 'VL_SH_H_T001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : DWERK,
+                    ValueListProperty : 'BUKRS'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'BUTXT'
+                }
+            ]
+	        }
+	    })
+	    DWERK;
+}
