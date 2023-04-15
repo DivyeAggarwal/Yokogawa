@@ -23203,6 +23203,117 @@
         }
       }
     },
+    "ZCDSEHBTC0015.VL_SH_H_T001": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.countable": "true",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "PlantAPI.VL_SH_H_T001"
+          ]
+        }
+      },
+      "elements": {
+        "BUKRS": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company Code",
+          "@sap.sortable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "BUTXT": {
+          "@sap.label": "Company Name",
+          "@sap.sortable": "false",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        },
+        "ORT01": {
+          "@sap.label": "City",
+          "@sap.sortable": "false",
+          "type": "cds.String",
+          "length": 25,
+          "notNull": false
+        },
+        "WAERS": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Currency",
+          "@sap.sortable": "false",
+          "@sap.semantics": "currency-code",
+          "type": "cds.String",
+          "length": 5,
+          "notNull": false
+        }
+      }
+    },
+    "ZCDSEHBTC0015.OrderPartInformation": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Product": {
+          "@title": "Material",
+          "@Common.QuickInfo": "Material",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "DWERK": {
+          "@title": "Plant",
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "VL_SH_H_T001",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "DWERK"
+              },
+              "ValueListProperty": "BUKRS"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "BUTXT"
+            }
+          ],
+          "type": "cds.String",
+          "length": 4
+        },
+        "BTYPECAT": {
+          "@title": "By-Order Category",
+          "type": "cds.String",
+          "length": 1
+        },
+        "MRPCONT": {
+          "@title": "MRP Controller",
+          "type": "cds.String",
+          "length": 12
+        },
+        "PLNUM": {
+          "@title": "Parts Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "GSTRP": {
+          "@title": "Basic start date",
+          "type": "cds.Date"
+        },
+        "GLTRP": {
+          "@title": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "CHNAGEDATE": {
+          "@title": "Change date",
+          "type": "cds.Date"
+        }
+      }
+    },
     "external.PublicSynonymsService": {
       "@source": "srv/public-synonym.cds",
       "kind": "service"

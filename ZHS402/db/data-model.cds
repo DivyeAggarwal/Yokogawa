@@ -455,3 +455,20 @@ entity ZTHBT0029 : managed {
         UUSR          : String(12) @title: 'Changed by';
         UREPID        : String(40) @title: 'PROGRAMM';
 }
+
+entity ZTHBT0057 : managed {
+    key WERKS: String(14) @title : 'Plant';
+    key E_DOC_NO  : String(18) @title : 'Document No​r';
+    key E_REV_NO: String(5) @title 'Technical renewal REV No.';
+    key PS_GROUP_NO: String(3) @title : 'PS group No.';
+    key PS_ITEM_NO: String(3) @title : 'PS Item No.';
+    key MODEL: String(10) @title : 'Model name​';
+    key MATNR: String(40) @title : 'Material code at MS code level';
+    key SEQ_NO: String(3) @title : 'Sequence No';
+    ERROR_SEQ_NO: String(3) @title : 'Error Sequence No';
+    FORMALIZE_DATE: Date @title : 'Formalization date​';
+    ERROR_MSG: String(40) @title : 'Error Message​';
+    PROCESS_MODE: String(1) @title : 'Process Mode';
+    Processed_Status: String(1) @title : 'Process Status';
+
+}
