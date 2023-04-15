@@ -459,7 +459,7 @@ entity ZTHBT0029 : managed {
 entity ZTHBT0057 : managed {
     key WERKS: String(14) @title : 'Plant';
     key E_DOC_NO  : String(18) @title : 'Document No​r';
-    key E_REV_NO: String(5) @title 'Technical renewal REV No.';
+    key E_REV_NO: String(5) @title : 'Technical renewal REV No.';
     key PS_GROUP_NO: String(3) @title : 'PS group No.';
     key PS_ITEM_NO: String(3) @title : 'PS Item No.';
     key MODEL: String(10) @title : 'Model name​';
