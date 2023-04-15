@@ -469,6 +469,6 @@ entity ZTHBT0057 : managed {
     FORMALIZE_DATE: Date @title : 'Formalization date​';
     ERROR_MSG: String(40) @title : 'Error Message​';
     PROCESS_MODE: String(1) @title : 'Process Mode';
-    Processed_Status: String(1) @title : 'Process Status';
+    PROCESSED_STATUS: String(1) @title : 'Process Status';
 
 }
