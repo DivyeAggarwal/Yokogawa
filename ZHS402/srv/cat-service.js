@@ -485,8 +485,49 @@ module.exports = cds.service.impl(async function (srv) {
 
     //BOM Table Update
     this.on('CREATE', 'ManBOMUpload', async req => {
-        const bupa = await cds.connect.to('ZSRVBHPP0012');
-        return bupa.run(req.query);
+        const api = await cds.connect.to('ZSRVBHPP0012');
+        var queries = [];
+        req.data.UploadFile.forEach(e => {
+            let query =  SELECT.from("ZSRVBHPP0012.ZCDSEHPPB0071").where([ 
+                { ref: ["e_doc_type"] }, '=', { val: e.e_doc_type }, 'and', 
+                { ref: ["e_doc_no"] }, '=', { val: e.e_doc_no }, 'and', 
+                { ref: ["e_rev_no"] }, '=', { val: e.e_rev_no }, 'and', 
+                { ref: ["e_doc_n"] }, '=', { val: e.e_doc_n }, 'and', 
+                { ref: ["ps_group_no"] }, '=', { val: e.ps_group_no }, 'and', 
+                { ref: ["ps_item_no"] }, '=', { val: e.ps_item_no }, 'and', 
+                { ref: ["model1_parts"] }, '=', { val: e.model1_parts }, 'and', 
+                { ref: ["e_parts_no"] }, '=', { val: e.e_parts_no }, 'and', 
+                { ref: ["comp_parts_no"] }, '=', { val: e.comp_parts_no }, 'and', 
+                { ref: ["Parts_No_ext_sign"] }, '=', { val: e.Parts_No_ext_sign }, 'and', 
+                { ref: ["parts_qty"] }, '=', { val: e.parts_qty }, 'and', 
+                { ref: ["parts_qty_unit"] }, '=', { val: e.parts_qty_unit }, 'and', 
+                { ref: ["select_sign"] }, '=', { val: e.select_sign }, 'and', 
+                { ref: ["parts_use_ratio"] }, '=', { val: e.parts_use_ratio }, 'and', 
+                { ref: ["ps_note"] }, '=', { val: e.ps_note }, 'and', 
+                { ref: ["or_sign"] }, '=', { val: e.or_sign }, 'and', 
+                { ref: ["sfix_digit_ptn"] }, '=', { val: e.sfix_digit_ptn }, 'and', 
+                { ref: ["sfix_ptn"] }, '=', { val: e.sfix_ptn }, 'and', 
+                { ref: ["option_ptn"] }, '=', { val: e.option_ptn }, 'and', 
+                { ref: ["prod_career"] }, '=', { val: e.prod_career }, 'and', 
+                { ref: ["e_tr_type"] }, '=', { val: e.e_tr_type }, 'and', 
+                { ref: ["ps_symbol"] }, '=', { val: e.ps_symbol }, 'and', 
+                { ref: ["valid_frm"] }, '=', { val: e.valid_frm }
+            ]);
+            queries.push(query);
+        });
+        return api.tx(req).run(queries).then((response, res) => {
+            return {
+                "Plant":"5800",
+                "UploadFile":response
+            };
+        });
+        // return bupa.run(req.query);
+    });
+
+    
+    this.on('READ', 'ZCDSEHPPB0071', async req => {
+        const product = await cds.connect.to('ZSRVBHPP0012');
+        return product.run(req.query);
     });
 
 });
