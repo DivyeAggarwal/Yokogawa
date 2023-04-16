@@ -515,7 +515,11 @@ module.exports = cds.service.impl(async function (srv) {
             ]);
             queries.push(query);
         });
-        return api.tx(req).run(queries).then((response, res) => {
+        return api.tx(req).run(queries).then(async (response) => {
+            for (let index = 0; index < response.length; index++) {
+                const element = response[index];
+                
+            }
             return {
                 "Plant":"5800",
                 "UploadFile":response
@@ -532,7 +536,122 @@ module.exports = cds.service.impl(async function (srv) {
 
 });
 
+const mapZTHBT0037 = async (finalData) => {
+    var aZTHBT0037 = [];
+    finalData.forEach(element => {
+        var object = {};
+        object.WERKS = element.Plant;
+        object.E_DOC_TYPE = element.e_doc_type;
+        object.E_DOC_NO = element.e_doc_no;
+        object.E_REV_NO = element.e_rev_no;
+        object.PS_GROUP_NO = element.ps_group_no;
+        object.PS_ITEM_NO = element.ps_item_no;
+        object.MODEL = element.model1_parts;
+        object.E_SEQUENCE_NO = '001';
+        object.PS_SYMBOL = element.ps_symbol;
+        object.E_PART_NO = element.e_parts_no;
+        // object.TEN_DIGIT_SIGN = element.Plant;
+        object.COMP_PART_NO = element.comp_parts_no;
+        object.PARTS_QTY = element.parts_qty;
+        object.PARTS_QTY_UNIT = element.parts_qty_unit;
+        object.SELECT_SIGN = element.select_sign;
+        object.PARTS_USE_RATIO = element.parts_use_ratio;
+        object.PS_NOTE = element.ps_note;
+        object.OR_SIGN = element.or_sign;
+        object.SFIX_DIGIT_PTN = element.sfix_digit_ptn;
+        object.SFIX_PTN = element.sfix_ptn;
+        object.OPTION_PTN = element.option_ptn;
+        object.PROD_CARRER = element.prod_career;
+        object.EFFECT_D = element.valid_frm;
+        // object.INVALID_D = element.Plant;
+        object.E_TR_TYPE = element.e_tr_type;
+        object.PARTS_NO_EXT_SIGN = element.Parts_No_ext_sign; 
+        aZTHBT0037.push(object);
+    });
+    return aZTHBT0037;
+}
 
+const bomFileDuplicateCheck = async (finalData) => {
+    var sDupsFound = true;
+    finalData.forEach(element => {
+        var aObject = finalData.filter(function name(params) {
+            return params.e_doc_no === element.e_doc_no &&
+            params.e_rev_no === element.e_rev_no &&
+            params.ps_group_no === element.ps_group_no &&
+            params.ps_item_no === element.ps_item_no
+        });
+        if(aObject.length > 0){
+            aObject.forEach(element => {
+                element.error_cod += "Key Field Duplicate in file. ";
+            });
+            sDupsFound = false;
+        }
+    });
+    return sDupsFound;
+}
+
+const itemMasterCheck = async (finalData) => {
+    for (let index = 0; index < finalData.length; index++) {
+        const element = finalData[index];
+        if(element.e_tr_type !== "A" && element.e_tr_type !== "C" && element.e_tr_type !== "D"){
+            element.error_cod += "E_TR_TYPE  is  other than 'A'  or 'C'  or  'D'. ";
+        }
+        var results = await SELECT.from('ZHS402.ZTHBT0006').where({
+            E_PARTS_NO: element.e_parts_no
+        });
+        if(results.length === 0){
+            element.error_cod += "Item Master does not exist. ";
+        }else{
+         var aPARTS_TYPE = await SELECT.from('ZHS402.ZTHBT0015').where({
+                PARTS_TYPE: results[0].PARTS_TYPE
+            });
+            if(aPARTS_TYPE.length === 0){
+                element.error_cod += "PARTS_TYPE does not exist . ";
+            }else if(aPARTS_TYPE[0].PARTS_NO_EXT_SIGN === "1"){
+                finalData.Parts_No_ext_sign = "1";
+            }else{
+                finalData.Parts_No_ext_sign = "0";
+            }
+        }        
+    }
+}
+
+const mapZTHBT0008 = async (finalData) => {
+    var aZTHBT0008 = [];
+    finalData.forEach(element => {
+        var object = {};
+        object.YEOS_MODEL_GROUP = element.MainModel;
+        object.FZ2_NO = element.FZ2No; 
+        object.YEOS_MODEL_GROUP_N = element.MainModelName; 
+        object.REV_SBJCT = element.Title; 
+        // object.E_EMP_NO = element.e_doc_type; //Execution User ID  
+        // object.E_EMP_NAME = element.e_doc_type; //Execution User Name
+        object.E_DEPT_IN = element.OperationDept; 
+        object.E_AUTHORIZED_D = element.ApprovedDate; 
+        object.APPLY_DATE_CD = element.RevisionReason; 
+        object.MODIFY_CAUSE = element.ExecutionSchedule; 
+        object.TRIAL_TYPE = null; 
+        aZTHBT0008.push(object);
+    });
+    return aZTHBT0008;
+}
+
+const mapZTHBT0009 = async (finalData) => {
+    var aZTHBT0009 = [];
+    finalData.forEach(element => {
+        var object = {};
+        object.YEOS_MODEL_GROUP = element.MainModel;
+        object.FZ2_NO = element.FZ2No;
+        // object.FZ2_NO_SFIX = element.e_doc_no;
+        object.E_DOC_TYPE = element.e_doc_type;
+        object.E_DOC_NO = element.e_doc_no;
+        object.E_REV_NO = element.e_rev_no;
+        object.E_DOC_N = element.e_doc_n;
+        object.MEDAI_TYPE = 'P'; 
+        aZTHBT0009.push(object);
+    });
+    return aZTHBT0009;
+}
 
 
 const PrepareWherUsedObject = async (arrayInput, objectAddMSCode) => {
