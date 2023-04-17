@@ -1645,3 +1645,23 @@ annotate ZCDSEHBTC0016.ZTHBT0057 with @(
      }
 ){
 };
+annotate ZCDSEHBTC0016.ZTHBT0057 {
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'VL_SH_H_T001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : WERKS,
+                    ValueListProperty : 'BUKRS'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'BUTXT'
+                }
+            ]
+        }
+    })
+    WERKS;
+}
