@@ -819,5 +819,20 @@ service ZCDSEHBTC0016 {
         on ZTHBT0008.MODIFY_CAUSE = ZTHBT0017.MODIFY_CAUSE
         join db.ZTHBT0018 
         on ZTHBT0008.APPLY_DATE_CD = ZTHBT0018.APPLY_DATE_CD; 
+
+    type UpdateBOMRegistration {
+        acknowledge : UpdateBOMRegistration.acknowledge;
+        message     : String;
+    }
+
+    @open
+    type Object {}
+
+    action UpdateBOMStatus(input : Object) returns UpdateBOMRegistration;
+
+    type UpdateBOMRegistration.acknowledge : String enum {
+        succeeded;
+        failed;
+    }
 }
 

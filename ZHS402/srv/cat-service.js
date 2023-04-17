@@ -2,6 +2,7 @@
 const SequenceHelper = require("./lib/SequenceHelper");
 const registerTimeSheetHandler = require("./Handler/TimeSheet-Service");
 const registerProductionOrderPrint = require("./Handler/ProductionOrderPrint");
+const registerBomRegisterError = require("./Handler/BomRegistrationErrorUpdate");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql
@@ -11,6 +12,7 @@ module.exports = cds.service.impl(async function (srv) {
     const db = await cds.connect.to("db");
     registerTimeSheetHandler(this, cds);
     registerProductionOrderPrint(this,cds);
+    registerBomRegisterError(this,cds);
     
     this.on('READ', 'ZCDSEHPSB0004', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
