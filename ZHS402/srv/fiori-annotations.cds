@@ -1666,4 +1666,9 @@ annotate ZCDSEHBTC0016.ZTHBT0057 {
     WERKS;
 }
 
-annotate ZCDSEHBTC0016.ZTHBT0057 with @( UI.CreateHidden: true);
+// annotate ZCDSEHBTC0016.ZTHBT0057 with @( UI.CreateHidden: true);
+annotate ZCDSEHBTC0016.ZTHBT0057 with @(
+    UI.UpdateHidden : true,
+    UI.DeleteHidden : true,
+    UI.CreateHidden : true
+);

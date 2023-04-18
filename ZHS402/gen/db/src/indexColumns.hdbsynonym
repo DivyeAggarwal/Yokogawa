@@ -1,8 +1,0 @@
-{
-    "PUBLIC_INDEX_COLUMNS" : {
-      "target": {
-        "object" : "INDEX_COLUMNS",
-        "schema": "SYS"
-      }
-    }
-  }
