@@ -1302,20 +1302,20 @@ annotate ZCDSEHBTC0012.materialWhereUsed {
     })
     WERKS;
 }
-annotate ZCDSEHBTC0013.ZTHBT0059 @(Capabilities : {
-    // SearchRestrictions : {
-    //     $Type      : 'Capabilities.SearchRestrictionsType',
-    //     Searchable : false
-    // },
-    // // InsertRestrictions : {
-    // //     $Type : 'Capabilities.InsertRestrictionsType',
-    // //     Insertable: false
-    // // },
-    // DeleteRestrictions : {
-    //     $Type : 'Capabilities.DeleteRestrictionsType',
-    //     Deletable: false
-    // }
-});
+// annotate ZCDSEHBTC0013.ZTHBT0059 @(Capabilities : {
+//     // SearchRestrictions : {
+//     //     $Type      : 'Capabilities.SearchRestrictionsType',
+//     //     Searchable : false
+//     // },
+//     // // InsertRestrictions : {
+//     // //     $Type : 'Capabilities.InsertRestrictionsType',
+//     // //     Insertable: false
+//     // // },
+//     // DeleteRestrictions : {
+//     //     $Type : 'Capabilities.DeleteRestrictionsType',
+//     //     Deletable: false
+//     // }
+// });
 annotate ZCDSEHBTC0013.ZTHBT0059 with {
 ZSD_GRPSUPP @UI.HiddenFilter: true;
 }
@@ -1624,6 +1624,27 @@ annotate ZCDSEHBTC0016.ZTHBT0057 {
     })
     E_DOC_NO;
 }
+annotate ZCDSEHBTC0016.processData with @(
+    
+    UI : { 
+        SelectionFields  : [
+            WERKS,E_DOC_NO,FORMALIZE_DATE,MATNR
+        ],
+        LineItem  : [
+            { Value : WERKS },
+            { Value : E_DOC_NO },
+            { Value : E_REV_NO }, 
+            { Value : PS_GROUP_NO },
+            { Value : PS_ITEM_NO },
+            { Value : SEQ_NO },
+            { Value : MATNR },
+            { Value : MODEL },
+            { Value : FORMALIZE_DATE },   
+            { Value : ERROR_MSG }                                    
+        ],
+     }
+){
+};
 annotate ZCDSEHBTC0016.ZTHBT0057 with @(
     
     UI : { 
@@ -1666,7 +1687,6 @@ annotate ZCDSEHBTC0016.ZTHBT0057 {
     WERKS;
 }
 
-// annotate ZCDSEHBTC0016.ZTHBT0057 with @( UI.CreateHidden: true);
 annotate ZCDSEHBTC0016.ZTHBT0057 with @(
     UI.UpdateHidden : true,
     UI.DeleteHidden : true,
