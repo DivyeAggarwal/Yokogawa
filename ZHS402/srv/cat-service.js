@@ -485,6 +485,54 @@ module.exports = cds.service.impl(async function (srv) {
         return results;
     });
 
+    this.on('READ', 'materialWhereUsedMaster', async req => {
+        const materialWhereUsed = await cds.connect.to('ZSRVBHPP0011');
+        const results = await materialWhereUsed.run(req.query);
+        // const bupa = await cds.connect.to('ProductionOrder');
+        // return materialWhereUsed.run(req.query);
+        /* Prepare array of Model by which Addiional status is going to be 
+        Read from the Cloud Table */
+        let arrayInput = [];
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                arrayInput.push(result.ZZ1_MSCODE_PRD);
+            }
+        }
+        else {
+            arrayInput.push(results.ZZ1_MSCODE_PRD);
+        }
+        let objectAddMSCode = {};
+        objectAddMSCode = await PrepareWherUsedObject(arrayInput, objectAddMSCode);
+
+        let objectAddModel = {};
+        objectAddModel = await PrepareModelData(arrayInput, objectAddModel);
+
+        /*Manipulate the result from cloud and On Premise */
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                let DataFromObject = objectAddMSCode[result.ZZ1_MSCODE_PRD];
+                let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
+                if (DataFromObject) {
+                    result.MOD_CODE = DataFromObject;
+                } else if(DataFromModTable) {
+                    result.MOD_CODE = DataFromModTable;
+                }
+
+            }
+        }
+        else {
+            let DataFromObject = objectAddStatus[results.ZZ1_MSCODE_PRD];
+            let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
+            if (DataFromObject) {
+                results.MOD_CODE = DataFromObject;
+            } else if(DataFromModTable) {
+                results.MOD_CODE = DataFromModTable;
+            }
+        }
+
+        return results;
+    });
+
     //BOM Table Update
     this.on('CREATE', 'ManBOMUpload', async req => {
         const api = await cds.connect.to('ZSRVBHPP0012');

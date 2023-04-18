@@ -765,7 +765,52 @@ service ZCDSEHBTC0012 {
             LIST_TYPE,
             MASTER_DATA,
     };
-
+    entity materialWhereUsedMaster as projection on ZSRVBHPP0011.ZCDSEHPPB0070 {
+        key WERKS,
+        key MATNR_COM,
+        key MATNR,
+            MAKTX_COM,
+            MTART_COM,
+            POTX1_0,
+            POSNR,
+            SORTF,
+            POTX1_19,
+            MOD_CODE,
+            MAKTX,
+            ZZ1_MSCODE_PRD,
+            MTART,
+            EMENG,
+            @Semantics.unitOfMeasure
+            BMEIN,
+            ASM,
+            POTX1_22,
+            SCHGT,
+            POTX1_24,
+            ARBPL,
+            VGW01,
+            @Semantics.unitOfMeasure
+            VGE01,
+            VMSTD,
+            LEVEL_BOM,
+            SEARCH_FROM,
+            SCHGT_TO,
+            BESKZ_TO,
+            SOBSL_TO,
+            LVORM_TO,
+            WERKS_FROM,
+            UMLGO,
+            SCHGT_FROM,
+            BESKZ_FROM,
+            SOBSL_FROM,
+            LVORM_FROM,
+            @Semantics.unitOfMeasure
+            BSTME,
+            MEINS,
+            MMSTD,
+            MESSAGE,
+            LIST_TYPE,
+            MASTER_DATA,
+    };
     
 }
 
@@ -821,19 +866,19 @@ service ZCDSEHBTC0016 {
         join db.ZTHBT0018 
         on ZTHBT0008.APPLY_DATE_CD = ZTHBT0018.APPLY_DATE_CD; 
 
-    type UpdateBOMRegistration {
-        acknowledge : UpdateBOMRegistration.acknowledge;
-        message     : String;
-    }
+    // type UpdateBOMRegistration {
+    //     acknowledge : UpdateBOMRegistration.acknowledge;
+    //     message     : String;
+    // }
 
-    @open
-    type Object {}
+    // @open
+    // type Object {}
 
-    action UpdateBOMStatus(input : Object) returns UpdateBOMRegistration;
+    // action UpdateBOMStatus(input : Object) returns UpdateBOMRegistration;
 
-    type UpdateBOMRegistration.acknowledge : String enum {
-        succeeded;
-        failed;
-    }
+    // type UpdateBOMRegistration.acknowledge : String enum {
+    //     succeeded;
+    //     failed;
+    // }
 }
 

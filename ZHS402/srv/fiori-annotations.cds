@@ -1282,6 +1282,66 @@ annotate ZCDSEHBTC0012.materialWhereUsed with @(
 ){
 };
 
+annotate ZCDSEHBTC0012.materialWhereUsedMaster with @(
+    UI : { 
+        SelectionFields  : [
+            WERKS,
+            MATNR_COM,MMSTD
+        ],
+        LineItem  : [
+            { Value : WERKS }, 
+            { Value : MATNR_COM },
+            { Value : MATNR },
+            { Value : MATNR },
+            { Value : MTART_COM },
+            { Value : POTX1_0 }, 
+            { Value : POSNR },
+            { Value : POTX1_19 },
+            { Value : MOD_CODE },
+            { Value : MAKTX },
+            { Value : ZZ1_MSCODE_PRD }, 
+            { Value : MTART },
+            { Value : EMENG },
+            { Value : BMEIN },
+            { Value : ASM },
+            { Value : POTX1_22 }, 
+            { Value : SCHGT },
+            { Value : POTX1_24 },
+            { Value : ARBPL },
+            { Value : VGW01 },
+            { Value : VGE01 }, 
+            { Value : LEVEL_BOM },
+            { Value : SEARCH_FROM },
+            { Value : SCHGT_TO },
+            { Value : BESKZ_TO }, 
+            { Value : SOBSL_TO },
+            { Value : LVORM_TO },
+            { Value : WERKS_FROM },
+            { Value : UMLGO },
+            { Value : SCHGT_FROM }, 
+            { Value : BESKZ_FROM },
+            { Value : SOBSL_FROM },
+            { Value : SOBSL_FROM },
+            { Value : BSTME },
+            { Value : MEINS }, 
+            { Value : MESSAGE }                                                
+        ],
+     }
+){
+};
+
+annotate ZCDSEHBTC0012.materialWhereUsed with @(
+  UI.SelectionVariant #List1 : {
+    Text : ''
+  }
+);
+
+annotate ZCDSEHBTC0012.materialWhereUsedMaster with @(
+  UI.SelectionVariant #List2 : {
+    Text : ''
+  }
+);
+
 annotate ZCDSEHBTC0012.materialWhereUsed {
     @(Common : {
         Label     : 'Plant',
@@ -1690,5 +1750,5 @@ annotate ZCDSEHBTC0016.ZTHBT0057 {
 annotate ZCDSEHBTC0016.ZTHBT0057 with @(
     UI.UpdateHidden : true,
     UI.DeleteHidden : true,
-    UI.CreateHidden : true
+    UI.CreateHidden : true,
 );
