@@ -1752,3 +1752,153 @@ annotate ZCDSEHBTC0016.ZTHBT0057 with @(
     UI.DeleteHidden : true,
     UI.CreateHidden : true,
 );
+
+annotate ZCDSEHBTC0007.specificationChange {
+    @(Common : {
+        Label     : 'Document number',
+        ValueList : {
+            Label: 'DOC Type/Doc No',
+            CollectionPath : 'DOC_NO_HELP',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : E_DOC_NO,
+                    ValueListProperty : 'E_DOC_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_TYPE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_REV_NO'
+                }
+                ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_N'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MEDAI_TYPE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'YEOS_MODEL_GROUP'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'FZ2_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'REV_SBJCT'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MODIFY_CAUSE_N'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'APPLY_DATE_N'
+                }
+
+
+            ]
+        },
+        ValueList #MainModel : {
+            Label: 'Main Model/FZ2 No',
+            CollectionPath : 'MAIN_MODEL_HELP',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : E_DOC_NO,
+                    ValueListProperty : 'FZ2_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'YEOS_MODEL_GROUP'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_TYPE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_REV_NO'
+                }
+                ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_N'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MEDAI_TYPE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'REV_SBJCT'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MODIFY_CAUSE_N'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'APPLY_DATE_N'
+                }
+            ]
+        }
+    })
+    E_DOC_NO;
+}
+
+annotate ZCDSEHBTC0007.specificationChange with @(
+    
+    UI : { 
+        SelectionFields  : [
+            WERKS,E_DOC_NO,FORMALIZE_DATE,MATNR
+        ],
+        LineItem  : [
+            { Value : WERKS },
+            { Value : E_DOC_NO },
+            { Value : E_REV_NO }, 
+            { Value : PS_GROUP_NO },
+            { Value : PS_ITEM_NO },
+            { value : TEN_DIGIT_SIGN}
+            { Value : COMP_PART_NO },
+            { Value : PARTS_QTY },
+            { Value : PARTS_QTY_UNIT },
+            { Value : SELECT_SIGN },   
+            { Value : EFFECT_D },
+            { Value : INVALID_D },
+            { value : E_TR_TYPE}                                  
+        ],
+     }
+){
+};
+annotate ZCDSEHBTC0007.specificationChange {
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'VL_SH_H_T001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : WERKS,
+                    ValueListProperty : 'BUKRS'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'BUTXT'
+                }
+            ]
+        }
+    })
+    WERKS;
+}

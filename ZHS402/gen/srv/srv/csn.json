@@ -21955,6 +21955,7 @@
           }
         }
       ],
+      "@UI.SelectionVariant#List2.Text": "",
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.updatable": "false",
@@ -54123,10 +54124,6 @@
           "@title": "Makers Code"
         }
       }
-    },
-    {
-      "annotate": "ZCDSEHBTC0012.materialWhereUsedMastert",
-      "@UI.SelectionVariant#List2.Text": ""
     }
   ],
   "meta": {
