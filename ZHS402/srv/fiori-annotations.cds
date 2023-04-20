@@ -1291,6 +1291,7 @@ annotate ZCDSEHBTC0012.materialWhereUsedMaster with @(
         LineItem  : [
             { Value : WERKS }, 
             { Value : MATNR_COM },
+            { Value : MAKTX_COM },
             { Value : MATNR },
             { Value : MATNR },
             { Value : MTART_COM },
@@ -1323,7 +1324,8 @@ annotate ZCDSEHBTC0012.materialWhereUsedMaster with @(
             { Value : SOBSL_FROM },
             { Value : BSTME },
             { Value : MEINS }, 
-            { Value : VMSTD }                                                
+            { Value : VMSTD },
+            { Value : LVORM_FROM }                                                
         ],
      }
 ){
