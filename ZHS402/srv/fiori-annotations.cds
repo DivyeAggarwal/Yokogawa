@@ -1310,7 +1310,6 @@ annotate ZCDSEHBTC0012.materialWhereUsedMaster with @(
             { Value : ARBPL },
             { Value : VGW01 },
             { Value : VGE01 }, 
-            { Value : LEVEL_BOM },
             { Value : SEARCH_FROM },
             { Value : SCHGT_TO },
             { Value : BESKZ_TO }, 
@@ -1324,7 +1323,7 @@ annotate ZCDSEHBTC0012.materialWhereUsedMaster with @(
             { Value : SOBSL_FROM },
             { Value : BSTME },
             { Value : MEINS }, 
-            { Value : MESSAGE }                                                
+            { Value : VMSTD }                                                
         ],
      }
 ){
@@ -1862,7 +1861,7 @@ annotate ZCDSEHBTC0007.specificationChange with @(
     
     UI : { 
         SelectionFields  : [
-            WERKS,E_DOC_NO,FORMALIZE_DATE,MATNR
+            WERKS,E_DOC_NO,E_PART_NO
         ],
         LineItem  : [
             { Value : WERKS },
@@ -1870,14 +1869,15 @@ annotate ZCDSEHBTC0007.specificationChange with @(
             { Value : E_REV_NO }, 
             { Value : PS_GROUP_NO },
             { Value : PS_ITEM_NO },
-            { value : TEN_DIGIT_SIGN}
+            { Value : E_PART_NO },
+            { Value : TEN_DIGIT_SIGN },
             { Value : COMP_PART_NO },
             { Value : PARTS_QTY },
             { Value : PARTS_QTY_UNIT },
             { Value : SELECT_SIGN },   
             { Value : EFFECT_D },
             { Value : INVALID_D },
-            { value : E_TR_TYPE}                                  
+            { Value : E_TR_TYPE }                                  
         ],
      }
 ){
