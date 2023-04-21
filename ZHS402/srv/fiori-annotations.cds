@@ -1881,9 +1881,27 @@ annotate ZCDSEHBTC0007.specificationChange with @(
             { Value : INVALID_D },
             { Value : E_TR_TYPE }                                  
         ],
+        
+        Facets: [
+            {
+                $Type: 'UI.ReferenceFacet',
+                Label: 'Parts Structure Specification',
+                Target: '@UI.FieldGroup#MainAs'
+            }
+        ],        
+        FieldGroup#MainAs: {
+            Data: [
+               { Value: TEN_DIGIT_SIGN },
+            { Value: E_PART_NO },
+            { Value: SELECT_SIGN }.
+            { Value: PARTS_QTY },
+            { Value: EFFECT_D }              
+            ]
+        }
      }
 ){
 };
+
 annotate ZCDSEHBTC0007.specificationChange {
     @(Common : {
         Label     : 'Plant',

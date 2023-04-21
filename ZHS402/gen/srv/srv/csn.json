@@ -22174,6 +22174,11 @@
         },
         {
           "Value": {
+            "=": "MAKTX_COM"
+          }
+        },
+        {
+          "Value": {
             "=": "MATNR"
           }
         },
@@ -22269,11 +22274,6 @@
         },
         {
           "Value": {
-            "=": "LEVEL_BOM"
-          }
-        },
-        {
-          "Value": {
             "=": "SEARCH_FROM"
           }
         },
@@ -22339,7 +22339,12 @@
         },
         {
           "Value": {
-            "=": "MESSAGE"
+            "=": "VMSTD"
+          }
+        },
+        {
+          "Value": {
+            "=": "LVORM_FROM"
           }
         }
       ],
