@@ -1893,7 +1893,7 @@ annotate ZCDSEHBTC0007.specificationChange with @(
             Data: [
                { Value: TEN_DIGIT_SIGN },
             { Value: E_PART_NO },
-            { Value: SELECT_SIGN }.
+            { Value: SELECT_SIGN },
             { Value: PARTS_QTY },
             { Value: EFFECT_D }              
             ]
