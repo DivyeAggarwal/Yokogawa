@@ -564,7 +564,7 @@ module.exports = cds.service.impl(async function (srv) {
                 { ref: ["valid_frm"] }, '=', { val: e.valid_frm }
             ]);
             queries.push(query);
-        });
+        }); 
         return api.tx(req).run(queries).then(async (response) => {
             var output = [];
             for (let index = 0; index < response.length; index++) {
@@ -588,7 +588,6 @@ module.exports = cds.service.impl(async function (srv) {
              
            
         });
-        // return bupa.run(req.query);
     });
 
     
@@ -768,8 +767,15 @@ const mapZTHBT0008 = async (finalData, req) => {
         object.APPLY_DATE_CD = element.RevisionReason; 
         object.MODIFY_CAUSE = element.ExecutionSchedule; 
         object.TRIAL_TYPE = null; 
-        aZTHBT0008.push(object); 
-        if(aZTHBT0008.length > 0){
+        aZTHBT0008.push(object);  
+        var noError = false;
+        finalData.forEach(element => {
+            var object = {};        
+            if(!element.error_cod){ 
+                noError = true;
+            }
+        }); 
+        if(noError){
            await INSERT.into('ZHS402.ZTHBT0008').entries(aZTHBT0008);
         }       
 }
