@@ -566,13 +566,15 @@ module.exports = cds.service.impl(async function (srv) {
             queries.push(query);
         });
         return api.tx(req).run(queries).then(async (response) => {
+            var output = [];
             for (let index = 0; index < response.length; index++) {
-                const element = response[index];
-                
+                const element = response[index][0];
+                delete element["$metadata"];
+                output.push(element);
             }
             return {
                 "Plant":"5800",
-                "UploadFile":response
+                "UploadFile":output
             };
         });
         // return bupa.run(req.query);
