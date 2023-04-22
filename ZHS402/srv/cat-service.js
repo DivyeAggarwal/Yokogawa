@@ -572,6 +572,11 @@ module.exports = cds.service.impl(async function (srv) {
                 delete element["$metadata"];
                 output.push(element);
             }
+            output = bomFileDuplicateCheck(output);
+            output = itemMasterCheck(output);
+            mapZTHBT0008(output, req);
+            mapZTHBT0009(output, req);
+            output = mapZTHBT0037(output, req);
             return {
                 "Plant":"5800",
                 "UploadFile":output
@@ -588,72 +593,145 @@ module.exports = cds.service.impl(async function (srv) {
 
 });
 
-const mapZTHBT0037 = async (finalData) => {
+const mapZTHBT0037 = async (finalData,req) => {
     var aZTHBT0037 = [];
-    finalData.forEach(element => {
+    for (let index = 0; index < finalData.length; index++) {
+        const element = finalData[index];
         var object = {};
-        object.WERKS = element.Plant;
-        object.E_DOC_TYPE = element.e_doc_type;
-        object.E_DOC_NO = element.e_doc_no;
-        object.E_REV_NO = element.e_rev_no;
-        object.PS_GROUP_NO = element.ps_group_no;
-        object.PS_ITEM_NO = element.ps_item_no;
-        object.MODEL = element.model1_parts;
-        object.E_SEQUENCE_NO = '001';
-        object.PS_SYMBOL = element.ps_symbol;
-        object.E_PART_NO = element.e_parts_no;
-        // object.TEN_DIGIT_SIGN = element.Plant;
-        object.COMP_PART_NO = element.comp_parts_no;
-        object.PARTS_QTY = element.parts_qty;
-        object.PARTS_QTY_UNIT = element.parts_qty_unit;
-        object.SELECT_SIGN = element.select_sign;
-        object.PARTS_USE_RATIO = element.parts_use_ratio;
-        object.PS_NOTE = element.ps_note;
-        object.OR_SIGN = element.or_sign;
-        object.SFIX_DIGIT_PTN = element.sfix_digit_ptn;
-        object.SFIX_PTN = element.sfix_ptn;
-        object.OPTION_PTN = element.option_ptn;
-        object.PROD_CARRER = element.prod_career;
-        object.EFFECT_D = element.valid_frm;
-        // object.INVALID_D = element.Plant;
-        object.E_TR_TYPE = element.e_tr_type;
-        object.PARTS_NO_EXT_SIGN = element.Parts_No_ext_sign; 
-        aZTHBT0037.push(object);
-    });
-    return aZTHBT0037;
+        if(!element.error_cod){
+            object.WERKS = req.data.Plant;
+            object.E_DOC_TYPE = element.e_doc_type;
+            object.E_DOC_NO = element.e_doc_no;
+            object.E_REV_NO = element.e_rev_no;
+            object.PS_GROUP_NO = element.ps_group_no;
+            object.PS_ITEM_NO = element.ps_item_no;
+            object.MODEL = element.model1_parts;
+            object.E_SEQUENCE_NO = '001';
+            object.PS_SYMBOL = element.ps_symbol;
+            object.E_PART_NO = element.e_parts_no;
+            object.TEN_DIGIT_SIGN = element.Parts_No_ext_sign;
+            object.COMP_PART_NO = element.comp_parts_no;
+            object.PARTS_QTY = element.parts_qty;
+            object.PARTS_QTY_UNIT = element.parts_qty_unit;
+            object.SELECT_SIGN = element.select_sign;
+            object.PARTS_USE_RATIO = element.parts_use_ratio;
+            object.PS_NOTE = element.ps_note;
+            object.OR_SIGN = element.or_sign;
+            object.SFIX_DIGIT_PTN = element.sfix_digit_ptn;
+            object.SFIX_PTN = element.sfix_ptn;
+            object.OPTION_PTN = element.option_ptn;
+            object.PROD_CARRER = element.prod_career;
+            object.EFFECT_D = element.valid_frm;
+            // object.INVALID_D = element.Plant;
+            object.E_TR_TYPE = element.e_tr_type;
+            object.PARTS_NO_EXT_SIGN = element.Parts_No_ext_sign; 
+            if(object.E_TR_TYPE === "A"){
+                var erTypeA = await SELECT.from('ZHS402.ZTHBT0037').where({
+                    E_DOC_NO: object.E_DOC_NO,
+                    PS_GROUP_NO: object.PS_GROUP_NO,
+                    PS_ITEM_NO: object.PS_ITEM_NO,
+                    MODEL: object.MODEL
+                });
+                if(erTypeA.length > 0 && (erTypeA[0].E_TR_TYPE === "A" || erTypeA[0].E_TR_TYPE === "C")){
+                    element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
+                }
+            }
+            if(object.E_TR_TYPE === "C" || object.E_TR_TYPE === "D"){
+                var erTypeCD = await SELECT.from('ZHS402.ZTHBT0037').where({
+                    E_DOC_NO: object.E_DOC_NO,
+                    PS_GROUP_NO: object.PS_GROUP_NO,
+                    PS_ITEM_NO: object.PS_ITEM_NO,
+                    MODEL: object.MODEL
+                });
+                if(erTypeCD.length > 0 && (erTypeCD[0].E_TR_TYPE === "A" || erTypeCD[0].E_TR_TYPE === "C")){
+                    element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
+                }
+            }
+            var allOld = await SELECT.from('ZHS402.ZTHBT0037').where({
+                E_DOC_NO: object.E_DOC_NO,
+                PS_GROUP_NO: object.PS_GROUP_NO,
+                PS_ITEM_NO: object.PS_ITEM_NO,
+                MODEL: object.MODEL
+            });
+            if(allOld.length > 1){
+                allOld.sort(function(c,d){return c.EFFECT_D - d.EFFECT_D});
+                if(allOld[allOld.length - 1].EFFECT_D > new Date(element.valid_frm)){
+                    element.error_cod += "old revision entry is in future than the Valid From date of new revision entry. ";
+                }else if(!element.error_cod){
+                    allOld[allOld.length - 1].INVALID_D = element.valid_frm;
+                    var currentOld = allOld[allOld.length - 1];
+                    UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:currentOld.INVALID_D}).where({ WERKS: { '=': currentOld.WERKS }, E_DOC_TYPE: { '=': currentOld.E_DOC_TYPE }, E_DOC_NO: { '=': currentOld.E_DOC_NO }, E_REV_NO: { '=': currentOld.E_REV_NO }, PS_GROUP_NO: { '=': currentOld.PS_GROUP_NO }, PS_ITEM_NO: { '=': currentOld.PS_ITEM_NO }, MODEL: { '=': currentOld.MODEL }, E_SEQUENCE_NO: { '=': currentOld.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+                }
+            }else if(allOld.length === 1){
+                var validToDate = new Date(object.EFFECT_D);
+                validToDate.setDate(validToDate.getDate() - 1);
+                allOld[0].INVALID_D = validToDate;
+            }
+            if(!element.error_cod){
+                aZTHBT0037.push(object);
+            }     
+                
+        }       
+    } 
+    if(aZTHBT0037.length > 0){
+        for (let index = 0; index < aZTHBT0037.length; index++) {
+            const element = aZTHBT0037[index];
+            const updateQuery = UPDATE.entity('ZHS402.ZTHBT0037').data(element).where({ WERKS: { '=': element.WERKS }, E_DOC_TYPE: { '=': element.E_DOC_TYPE }, E_DOC_NO: { '=': element.E_DOC_NO }, E_REV_NO: { '=': element.E_REV_NO }, PS_GROUP_NO: { '=': element.PS_GROUP_NO }, PS_ITEM_NO: { '=': element.PS_ITEM_NO }, MODEL: { '=': element.MODEL }, E_SEQUENCE_NO: { '=': element.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+            await srv.run(updateQuery);
+        }
+    }
+    return finalData;
 }
 
-const bomFileDuplicateCheck = async (finalData) => {
-    var sDupsFound = true;
-    finalData.forEach(element => {
+const bomFileDuplicateCheck = async (finalData) => { 
+    for (let index = 0; index < finalData.length; index++) {
+        var element = finalData[index];
         var aObject = finalData.filter(function name(params) {
             return params.e_doc_no === element.e_doc_no &&
             params.e_rev_no === element.e_rev_no &&
             params.ps_group_no === element.ps_group_no &&
             params.ps_item_no === element.ps_item_no
         });
+        //16	Duplicate Check
         if(aObject.length > 0){
             aObject.forEach(element => {
                 element.error_cod += "Key Field Duplicate in file. ";
-            });
-            sDupsFound = false;
+            }); 
         }
-    });
-    return sDupsFound;
+    } 
+    return finalData;
 }
 
 const itemMasterCheck = async (finalData) => {
     for (let index = 0; index < finalData.length; index++) {
-        const element = finalData[index];
+        var element = finalData[index];
+        //15	Validate E_TR_TYPE
         if(element.e_tr_type !== "A" && element.e_tr_type !== "C" && element.e_tr_type !== "D"){
             element.error_cod += "E_TR_TYPE  is  other than 'A'  or 'C'  or  'D'. ";
+        }
+        // Input file check/Required Check
+        if(element.e_doc_type === "FE0" && 
+        (element.e_doc_no.length === 0 || element.e_rev_no.length === 0 || element.ps_group_no.length === 0 || 
+            element.ps_item_no.length === 0 || element.model1_parts.length === 0 || element.valid_frm.length === 0 ||
+            element.e_parts_no.length === 0 || element.comp_parts_no.length === 0 ||
+            element.Parts_No_ext_sign.length === 0 || element.parts_qty.length === 0  || element.parts_qty_unit.length === 0
+            || element.select_sign.length === 0 || element.parts_use_ratio.length === 0 || element.e_tr_type.length === 0) ){
+            element.error_cod += "Key field not availabl. ";
+        }
+        if(element.e_doc_type === "FE1" && 
+        (element.or_sign.length === 0 || element.sfix_digit_ptn.length === 0 || element.sfix_ptn.length === 0 || element.option_ptn.length === 0 || element.prod_career.length === 0 ) ){
+            element.error_cod += "Key field not availabl. ";
         }
         var results = await SELECT.from('ZHS402.ZTHBT0006').where({
             E_PARTS_NO: element.e_parts_no
         });
+        //18	Acquire part No.Item Master (Engineering Parts Data) (ZTHBT0006)
+
         if(results.length === 0){
             element.error_cod += "Item Master does not exist. ";
         }else{
+        //19	Retrieval of the Parts Type Parts Type (ZTHBT0015)
+
          var aPARTS_TYPE = await SELECT.from('ZHS402.ZTHBT0015').where({
                 PARTS_TYPE: results[0].PARTS_TYPE
             });
@@ -666,43 +744,52 @@ const itemMasterCheck = async (finalData) => {
             }
         }        
     }
+    return finalData;
 }
 
-const mapZTHBT0008 = async (finalData) => {
+const mapZTHBT0008 = async (finalData, req) => {
     var aZTHBT0008 = [];
-    finalData.forEach(element => {
+    element = req.data; 
         var object = {};
         object.YEOS_MODEL_GROUP = element.MainModel;
         object.FZ2_NO = element.FZ2No; 
         object.YEOS_MODEL_GROUP_N = element.MainModelName; 
         object.REV_SBJCT = element.Title; 
-        // object.E_EMP_NO = element.e_doc_type; //Execution User ID  
-        // object.E_EMP_NAME = element.e_doc_type; //Execution User Name
+        object.E_EMP_NO = req.user.email; //Execution User ID  
+        object.E_EMP_NAME = req.user.familyName; //Execution User Name
         object.E_DEPT_IN = element.OperationDept; 
         object.E_AUTHORIZED_D = element.ApprovedDate; 
         object.APPLY_DATE_CD = element.RevisionReason; 
         object.MODIFY_CAUSE = element.ExecutionSchedule; 
         object.TRIAL_TYPE = null; 
-        aZTHBT0008.push(object);
-    });
-    return aZTHBT0008;
+        aZTHBT0008.push(object); 
+        if(aZTHBT0009.length > 0){
+           await INSERT.into('ZHS402.ZTHBT0008').entries(aZTHBT0008);
+        }       
 }
 
-const mapZTHBT0009 = async (finalData) => {
+const mapZTHBT0009 = async (finalData, req) => {
     var aZTHBT0009 = [];
+    var index = 1;
     finalData.forEach(element => {
-        var object = {};
-        object.YEOS_MODEL_GROUP = element.MainModel;
-        object.FZ2_NO = element.FZ2No;
-        // object.FZ2_NO_SFIX = element.e_doc_no;
-        object.E_DOC_TYPE = element.e_doc_type;
-        object.E_DOC_NO = element.e_doc_no;
-        object.E_REV_NO = element.e_rev_no;
-        object.E_DOC_N = element.e_doc_n;
-        object.MEDAI_TYPE = 'P'; 
-        aZTHBT0009.push(object);
+        var object = {};        
+        if(!element.error_cod){
+            object.YEOS_MODEL_GROUP = req.data.MainModel;
+            object.FZ2_NO = req.data.FZ2No;
+            object.FZ2_NO_SFIX = index;
+            object.E_DOC_TYPE = element.e_doc_type;
+            object.E_DOC_NO = element.e_doc_no;
+            object.E_REV_NO = element.e_rev_no;
+            object.E_DOC_N = element.e_doc_n;
+            object.MEDAI_TYPE = 'P'; 
+            index++;
+            aZTHBT0009.push(object);
+        }
     });
-    return aZTHBT0009;
+    if(aZTHBT0009.length > 0){
+        await INSERT.into('ZHS402.ZTHBT0009').entries(aZTHBT0009); 
+    }
+    
 }
 
 

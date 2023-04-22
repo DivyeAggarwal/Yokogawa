@@ -711,7 +711,7 @@ service ZCDSEHBTC0011 {
             Title  : String(18)  @title : 'Title' @Common.QuickInfo : 'Title'; 
             ExecutionSchedule  : String(2)  @title : 'Execution Schedule' @Common.QuickInfo : 'Execution Schedule'; 
             RevisionReason  : String(2)  @title : 'Revision Reason' @Common.QuickInfo : 'Revision Reason'; 
-            ErrorFile  : String(128)  @title : 'Error file' @Common.QuickInfo : 'Error file'; 
+            ErrorFile  : String(800)  @title : 'Error file' @Common.QuickInfo : 'Error file'; 
             UploadFileName  : String(128)  @title : 'Upload file' @Common.QuickInfo : 'Upload file'; 
             UploadFile  : Association to many  ZCDSEHPPB0071;
     }
