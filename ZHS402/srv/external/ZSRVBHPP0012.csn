@@ -1,6 +1,6 @@
 {
   "meta": {
-    "creator": "cds-dk 6.6.2"
+    "creator": "cds-dk 6.7.0"
   },
   "$version": "2.0",
   "definitions": {
@@ -183,9 +183,9 @@
         },
         "error_cod": {
           "type": "cds.String",
-          "length": 25,
-          "@sap.label": "Proxy Data Element (Generated)",
-          "@sap.heading": ""
+          "length": 452,
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Text (452 characters)"
         }
       }
     }
