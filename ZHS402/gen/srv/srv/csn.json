@@ -13099,6 +13099,12 @@
     },
     "ZCDSEHBTC0007.specificationChange": {
       "kind": "entity",
+      "@Capabilities.Insertable": false,
+      "@Capabilities.Deletable": false,
+      "@Capabilities.Updatable": true,
+      "@UI.UpdateHidden": false,
+      "@UI.DeleteHidden": true,
+      "@UI.CreateHidden": false,
       "@UI.SelectionFields": [
         {
           "=": "WERKS"
@@ -13189,6 +13195,7 @@
           "Target": "@UI.FieldGroup#MainAs"
         }
       ],
+      "@UI.FieldGroup#MainAs.$Type": "UI.FieldGroupType",
       "@UI.FieldGroup#MainAs.Data": [
         {
           "Value": {
@@ -13196,8 +13203,26 @@
           }
         },
         {
+          "$Type": "UI.DataField",
           "Value": {
             "=": "E_PART_NO"
+          },
+          "Label": "Mat",
+          "@Common.FieldControl": {
+            "$edmJson": {
+              "$If": [
+                {
+                  "$Eq": [
+                    {
+                      "$Path": "TEN_DIGIT_SIGN"
+                    },
+                    "0"
+                  ]
+                },
+                3,
+                1
+              ]
+            }
           }
         },
         {
@@ -13442,6 +13467,13 @@
           "length": 18
         },
         "TEN_DIGIT_SIGN": {
+          "@UI.Hidden.$edmJson.$Eq": [
+            {
+              "$Path": "SELECT_SIGN"
+            },
+            "1"
+          ],
+          "@FieldControl": 1,
           "@title": "10 Digit Sign",
           "type": "cds.String",
           "length": 1
@@ -13462,6 +13494,9 @@
           "length": 3
         },
         "SELECT_SIGN": {
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          },
           "@title": "Select sign",
           "type": "cds.String",
           "length": 1

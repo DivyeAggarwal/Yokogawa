@@ -1858,10 +1858,39 @@ annotate ZCDSEHBTC0007.specificationChange {
     })
     E_DOC_NO;
 }
+annotate ZCDSEHBTC0007.specificationChange with {
+    TEN_DIGIT_SIGN          @(
+        UI.Hidden : {$edmJson : {$Eq : [{$Path : 'SELECT_SIGN'}, '1']}}
+    );
+    TEN_DIGIT_SIGN @(
+        FieldControl : 1
+    );
+//    TEN_DIGIT_SIGN @readonly;
+//    E_PART_NO      @(
+//         Common : {
+//             FieldControl    : {$edmJson: {$If: [{$Eq: [{$Path: 'PARTS_QTY'}, 't']}, 1, 7]}}
+//         }
+//     );
+    
+   SELECT_SIGN      @(
+        Common : {
+            FieldControl    : #ReadOnly
+        }
+    );
+}
 
+annotate ZCDSEHBTC0007.specificationChange @(Capabilities : {
+    Insertable : false,
+    Deletable  : false,
+    Updatable  : true,
+});
 annotate ZCDSEHBTC0007.specificationChange with @(
     
     UI : { 
+        UpdateHidden        : false,
+        DeleteHidden        : true,
+        CreateHidden        : false,
+
         SelectionFields  : [
             WERKS,E_DOC_NO,E_PART_NO
         ],
@@ -1887,12 +1916,20 @@ annotate ZCDSEHBTC0007.specificationChange with @(
                 $Type: 'UI.ReferenceFacet',
                 Label: 'Parts Structure Specification',
                 Target: '@UI.FieldGroup#MainAs'
+                
             }
         ],        
-        FieldGroup#MainAs: {
+        FieldGroup #MainAs: {
+            $Type : 'UI.FieldGroupType',
             Data: [
                { Value: TEN_DIGIT_SIGN },
-            { Value: E_PART_NO },
+            
+            {
+                $Type : 'UI.DataField',
+                Value : E_PART_NO,
+                Label : 'Mat',
+                ![@Common.FieldControl] : { $edmJson : {$If : [ { $Eq : [ { $Path : 'TEN_DIGIT_SIGN'}, '0' ]}, 3, 1 ]}}
+            },
             { Value: SELECT_SIGN },
             { Value: PARTS_QTY },
             { Value: EFFECT_D }              
