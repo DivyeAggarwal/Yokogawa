@@ -572,15 +572,21 @@ module.exports = cds.service.impl(async function (srv) {
                 delete element["$metadata"];
                 output.push(element);
             }
-            output = bomFileDuplicateCheck(output);
-            output = itemMasterCheck(output);
-            mapZTHBT0008(output, req);
-            mapZTHBT0009(output, req);
-            output = mapZTHBT0037(output, req);
-            return {
-                "Plant":"5800",
-                "UploadFile":output
-            };
+            bomFileDuplicateCheck(output);
+            return itemMasterCheck(output).then(() =>{
+                return mapZTHBT0008(output, req).then(() =>{
+                    return mapZTHBT0009(output, req).then(() =>{
+                        return mapZTHBT0037(output, req).then(() =>{
+                            return {
+                                "Plant":"5800",
+                                "UploadFile":output
+                            };
+                        });
+                    });
+                });
+            });
+             
+           
         });
         // return bupa.run(req.query);
     });
@@ -683,7 +689,7 @@ const mapZTHBT0037 = async (finalData,req) => {
     return finalData;
 }
 
-const bomFileDuplicateCheck = async (finalData) => { 
+const bomFileDuplicateCheck = (finalData) => { 
     for (let index = 0; index < finalData.length; index++) {
         var element = finalData[index];
         var aObject = finalData.filter(function name(params) {
@@ -758,12 +764,12 @@ const mapZTHBT0008 = async (finalData, req) => {
         object.E_EMP_NO = req.user.email; //Execution User ID  
         object.E_EMP_NAME = req.user.familyName; //Execution User Name
         object.E_DEPT_IN = element.OperationDept; 
-        object.E_AUTHORIZED_D = element.ApprovedDate; 
+        object.E_AUTHORIZED_D = element.ApprovedDate.toString().replace(/-/g,""); 
         object.APPLY_DATE_CD = element.RevisionReason; 
         object.MODIFY_CAUSE = element.ExecutionSchedule; 
         object.TRIAL_TYPE = null; 
         aZTHBT0008.push(object); 
-        if(aZTHBT0009.length > 0){
+        if(aZTHBT0008.length > 0){
            await INSERT.into('ZHS402.ZTHBT0008').entries(aZTHBT0008);
         }       
 }
