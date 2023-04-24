@@ -67,7 +67,7 @@
           "@sap.label": "Character Field with Length 10",
           "@sap.heading": ""
         },
-        "model1_parts": {
+        "model1": {
           "type": "cds.String",
           "length": 19,
           "@sap.display.format": "UpperCase",
