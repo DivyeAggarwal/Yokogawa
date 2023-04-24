@@ -11893,6 +11893,102 @@
       "@source": "srv/cat-service.cds",
       "kind": "service"
     },
+    "ZCDSEHBTC0007.ZTHBT0001": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0001"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "PARTS_NO": {
+          "@title": "Parts  Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_PARTS_NO": {
+          "@title": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "SOURCE_CD": {
+          "@title": "Source  Code",
+          "type": "cds.String",
+          "length": 2
+        },
+        "YEOS_MNF_NO": {
+          "@title": "Maker Model Number",
+          "type": "cds.String",
+          "length": 5
+        },
+        "YEOS_MNF_MODEL": {
+          "@title": "Maker Model Name",
+          "type": "cds.String",
+          "length": 80
+        },
+        "PCKG_CD": {
+          "@title": "Packing Code",
+          "type": "cds.String",
+          "length": 1
+        },
+        "IND_DEMAND_SIGN": {
+          "@title": "Ind Demand Sign",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
     "ZCDSEHBTC0007.ZTHBT0010": {
       "kind": "entity",
       "@Identification": [
@@ -13114,6 +13210,9 @@
         },
         {
           "=": "E_PART_NO"
+        },
+        {
+          "=": "COMP_PART_NO"
         }
       ],
       "@UI.LineItem": [
@@ -13207,7 +13306,6 @@
           "Value": {
             "=": "E_PART_NO"
           },
-          "Label": "Mat",
           "@Common.FieldControl": {
             "$edmJson": {
               "$If": [
@@ -13479,6 +13577,28 @@
           "length": 1
         },
         "COMP_PART_NO": {
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "ZTHBT0001",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "COMP_PART_NO"
+              },
+              "ValueListProperty": "PARTS_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterIn",
+              "LocalDataProperty": {
+                "=": "E_PART_NO"
+              },
+              "ValueListProperty": "E_PARTS_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_PARTS_NO"
+            }
+          ],
           "@title": "Part No",
           "type": "cds.String",
           "length": 18
@@ -21066,10 +21186,10 @@
           "type": "cds.Date"
         },
         "error_cod": {
-          "@sap.label": "Proxy Data Element (Generated)",
-          "@sap.heading": "",
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Text (452 characters)",
           "type": "cds.String",
-          "length": 25
+          "length": 452
         }
       }
     },
@@ -21457,6 +21577,11 @@
         },
         {
           "Value": {
+            "=": "MAKTX_COM"
+          }
+        },
+        {
+          "Value": {
             "=": "MATNR"
           }
         },
@@ -21478,6 +21603,11 @@
         {
           "Value": {
             "=": "POSNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "SORTF"
           }
         },
         {
@@ -21552,7 +21682,7 @@
         },
         {
           "Value": {
-            "=": "LEVEL_BOM"
+            "=": "VMSTD"
           }
         },
         {
@@ -21617,13 +21747,25 @@
         },
         {
           "Value": {
-            "=": "MEINS"
+            "=": "LVORM_FROM"
           }
         },
         {
           "Value": {
-            "=": "MESSAGE"
+            "=": "MEINS"
           }
+        }
+      ],
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "WERKS"
+        },
+        {
+          "=": "MATNR_COM"
+        },
+        {
+          "=": "MMSTD"
         }
       ],
       "@UI.SelectionVariant#List1.Text": "",
@@ -22408,12 +22550,7 @@
         },
         {
           "Value": {
-            "=": "VMSTD"
-          }
-        },
-        {
-          "Value": {
-            "=": "LVORM_FROM"
+            "=": "MESSAGE"
           }
         }
       ],
@@ -51622,10 +51759,10 @@
           "type": "cds.Date"
         },
         "error_cod": {
-          "@sap.label": "Proxy Data Element (Generated)",
-          "@sap.heading": "",
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Text (452 characters)",
           "type": "cds.String",
-          "length": 25
+          "length": 452
         }
       }
     },

@@ -316,6 +316,7 @@ service ZCDSEHBTC0006 {
 }
 
 service ZCDSEHBTC0007 {
+    entity ZTHBT0001 as projection on db.ZTHBT0001;
     entity ZTHBT0010 as projection on db.ZTHBT0010;
     entity ZTHBT0014 as projection on db.ZTHBT0014;
     entity ZTHBT0037 as projection on db.ZTHBT0037;

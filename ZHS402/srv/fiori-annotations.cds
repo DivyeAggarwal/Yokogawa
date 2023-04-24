@@ -1333,6 +1333,17 @@ annotate ZCDSEHBTC0012.materialWhereUsed with @(
 ){
 };
 
+annotate ZCDSEHBTC0012.materialWhereUsed with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            WERKS,
+            MATNR_COM,
+            MMSTD
+        ],
+    }
+});
+
 annotate ZCDSEHBTC0012.materialWhereUsed with @(
   UI.SelectionVariant #List1 : {
     Text : ''
@@ -1894,7 +1905,7 @@ annotate ZCDSEHBTC0007.specificationChange with @(
         CreateHidden        : false,
 
         SelectionFields  : [
-            WERKS,E_DOC_NO,E_PART_NO
+            WERKS,E_DOC_NO,E_PART_NO,COMP_PART_NO
         ],
         LineItem  : [
             { Value : WERKS },
@@ -1929,7 +1940,6 @@ annotate ZCDSEHBTC0007.specificationChange with @(
             {
                 $Type : 'UI.DataField',
                 Value : E_PART_NO,
-                Label : 'Mat',
                 ![@Common.FieldControl] : { $edmJson : {$If : [ { $Eq : [ { $Path : 'TEN_DIGIT_SIGN'}, '0' ]}, 3, 1 ]}}
             },
             { Value: SELECT_SIGN },
@@ -1960,4 +1970,29 @@ annotate ZCDSEHBTC0007.specificationChange {
         }
     })
     WERKS;
+}
+annotate ZCDSEHBTC0007.specificationChange {
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'ZTHBT0001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : COMP_PART_NO,
+                    ValueListProperty : 'PARTS_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : E_PART_NO,
+                    ValueListProperty : 'E_PARTS_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_PARTS_NO'
+                }
+            ]
+        }
+    })
+    COMP_PART_NO;
 }
