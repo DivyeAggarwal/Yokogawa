@@ -21551,6 +21551,457 @@
         }
       }
     },
+    "ZCDSEHBTC0012.A_ProductPlant": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant Data",
+      "projection": {
+        "from": {
+          "ref": [
+            "API_PRODUCT_SRV.A_ProductPlant"
+          ]
+        }
+      },
+      "elements": {
+        "Product": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PurchasingGroup": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purchasing Group",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "CountryOfOrigin": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cntry/Reg of Origin",
+          "@sap.quickinfo": "Country/Region of Origin of Material (Non-Preferential Ori.)",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "RegionOfOrigin": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Region of Origin",
+          "@sap.quickinfo": "Region of Origin of Material (Non-Preferential Origin)",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "ProductionInvtryManagedLoc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prod. stor. location",
+          "@sap.quickinfo": "Issue Storage Location",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "ProfileCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant-Sp.Matl Status",
+          "@sap.quickinfo": "Plant-Specific Material Status",
+          "type": "cds.String",
+          "length": 2,
+          "notNull": false
+        },
+        "ProfileValidityStartDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid From",
+          "@sap.quickinfo": "Date from Which the Plant-Specific Material Status Is Valid",
+          "type": "cds.Date",
+          "notNull": false
+        },
+        "AvailabilityCheckType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Availability check",
+          "@sap.quickinfo": "Checking Group for Availability Check",
+          "type": "cds.String",
+          "length": 2,
+          "notNull": false
+        },
+        "FiscalYearVariant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Fiscal Year Variant",
+          "type": "cds.String",
+          "length": 2,
+          "notNull": false
+        },
+        "PeriodType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Period Indicator",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "ProfitCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Profit Center",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": false
+        },
+        "Commodity": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Commodity Code",
+          "type": "cds.String",
+          "length": 17,
+          "notNull": false
+        },
+        "GoodsReceiptDuration": {
+          "@sap.label": "GR processing time",
+          "@sap.quickinfo": "Goods receipt processing time in days",
+          "type": "cds.Decimal",
+          "precision": 3,
+          "scale": 0,
+          "notNull": false
+        },
+        "MaintenanceStatusName": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Maintenance status",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": false
+        },
+        "IsMarkedForDeletion": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "DF at plant level",
+          "@sap.quickinfo": "Flag Material for Deletion at Plant Level",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "MRPType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Type",
+          "type": "cds.String",
+          "length": 2,
+          "notNull": false
+        },
+        "MRPResponsible": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "ABCIndicator": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ABC Indicator",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "MinimumLotSizeQuantity": {
+          "@sap.unit": "BaseUnit",
+          "@sap.label": "Minimum Lot Size",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "MaximumLotSizeQuantity": {
+          "@sap.unit": "BaseUnit",
+          "@sap.label": "Maximum Lot Size",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "FixedLotSizeQuantity": {
+          "@sap.unit": "BaseUnit",
+          "@sap.label": "Fixed lot size",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "ConsumptionTaxCtrlCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control code",
+          "@sap.quickinfo": "Control code for consumption taxes in foreign trade",
+          "type": "cds.String",
+          "length": 16,
+          "notNull": false
+        },
+        "IsCoProduct": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Co-product",
+          "@sap.quickinfo": "Indicator: Material can be co-product",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "ProductIsConfigurable": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ConfigurableProduct",
+          "@sap.quickinfo": "Configurable Product",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "StockDeterminationGroup": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Stock det. grp",
+          "@sap.quickinfo": "Stock determination group",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "StockInTransferQuantity": {
+          "@sap.unit": "BaseUnit",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "StockInTransitQuantity": {
+          "@sap.unit": "BaseUnit",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "HasPostToInspectionStock": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Post to insp. stock",
+          "@sap.quickinfo": "Has Post to Inspection Stock",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "IsBatchManagementRequired": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Batch Mgmt Rqt(Plnt)",
+          "@sap.quickinfo": "Batch Management Requirement Indicator for Plant",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "SerialNumberProfile": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial No. Profile",
+          "@sap.quickinfo": "Serial Number Profile",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "IsNegativeStockAllowed": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Neg. stocks in plant",
+          "@sap.quickinfo": "Negative stocks allowed in plant",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "GoodsReceiptBlockedStockQty": {
+          "@sap.unit": "BaseUnit",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": false
+        },
+        "HasConsignmentCtrl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Consign.Control",
+          "@sap.quickinfo": "Consignment Control",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "FiscalYearCurrentPeriod": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "FiscalMonthCurrentPeriod": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 2,
+          "notNull": false
+        },
+        "ProcurementType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Procurement Type",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "IsInternalBatchManaged": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Batch Management",
+          "@sap.quickinfo": "Batch management indicator (internal)",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "ProductCFOPCategory": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Mat. CFOP category",
+          "@sap.quickinfo": "Material CFOP category",
+          "type": "cds.String",
+          "length": 2,
+          "notNull": false
+        },
+        "ProductIsExciseTaxRelevant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Is Excise Tax Relevant",
+          "@sap.quickinfo": "Excise Tax Relevance Indicator",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "BaseUnit": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "ConfigurableProduct": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "ConfigurableMaterial",
+          "@sap.quickinfo": "Configurable material",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "GoodsIssueUnit": {
+          "@sap.label": "Unit of issue",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": false
+        },
+        "MaterialFreightGroup": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material freight grp",
+          "@sap.quickinfo": "Material freight group",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": false
+        },
+        "OriginalBatchReferenceMaterial": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "OB Reference Materl",
+          "@sap.quickinfo": "Reference Material for Original Batches",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": false
+        },
+        "OriglBatchManagementIsRequired": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "OB Management",
+          "@sap.quickinfo": "Indicator for Original Batch Management",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": false
+        },
+        "ProductIsCriticalPrt": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Critical Part",
+          "@sap.quickinfo": "Indicator: Critical part",
+          "type": "cds.Boolean",
+          "notNull": false
+        },
+        "ProductLogisticsHandlingGroup": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Log. handling group",
+          "@sap.quickinfo": "Logistics handling group for workload calculation",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": false
+        },
+        "to_PlantMRPArea": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "API_PRODUCT_SRV.A_ProductPlantMRPArea",
+          "keys": []
+        },
+        "to_PlantQualityMgmt": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantQualityMgmt",
+          "keys": []
+        },
+        "to_PlantSales": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantSales",
+          "keys": []
+        },
+        "to_PlantStorage": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantStorage",
+          "keys": []
+        },
+        "to_PlantText": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantText",
+          "keys": []
+        },
+        "to_ProdPlantInternationalTrade": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantIntlTrd",
+          "keys": []
+        },
+        "to_ProductPlantCosting": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantCosting",
+          "keys": []
+        },
+        "to_ProductPlantForecast": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantForecasting",
+          "keys": []
+        },
+        "to_ProductPlantProcurement": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductPlantProcurement",
+          "keys": []
+        },
+        "to_ProductSupplyPlanning": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductSupplyPlanning",
+          "keys": []
+        },
+        "to_ProductWorkScheduling": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "API_PRODUCT_SRV.A_ProductWorkScheduling",
+          "keys": []
+        },
+        "to_StorageLocation": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "API_PRODUCT_SRV.A_ProductStorageLocation",
+          "keys": []
+        }
+      }
+    },
     "ZCDSEHBTC0012.materialWhereUsed": {
       "kind": "entity",
       "@UI.SelectionFields": [
@@ -22018,6 +22469,28 @@
           "notNull": true
         },
         "MATNR_COM": {
+          "@Common.Label": "Component Material",
+          "@Common.ValueList.CollectionPath": "A_ProductPlant",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "MATNR_COM"
+              },
+              "ValueListProperty": "Product"
+            },
+            {
+              "$Type": "Common.ValueListParameterIn",
+              "LocalDataProperty": {
+                "=": "WERKS"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Plant"
+            }
+          ],
           "@title": "Component Material",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",

@@ -1358,6 +1358,31 @@ annotate ZCDSEHBTC0012.materialWhereUsedMaster with @(
 
 annotate ZCDSEHBTC0012.materialWhereUsed {
     @(Common : {
+        Label     : 'Component Material',
+        ValueList : {
+            CollectionPath : 'A_ProductPlant',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : MATNR_COM,
+                    ValueListProperty : 'Product'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : WERKS,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Plant'
+                }
+            ]
+        }
+    })
+    MATNR_COM;
+}
+annotate ZCDSEHBTC0012.materialWhereUsed {
+    @(Common : {
         Label     : 'Plant',
         ValueList : {
             CollectionPath : 'VL_SH_H_T001',
