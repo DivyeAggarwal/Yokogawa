@@ -537,6 +537,32 @@ module.exports = cds.service.impl(async function (srv) {
         return results;
     });
 
+    this.on('READ', 'checkProductionPart', async req => {
+        if (req._query) {
+            var prodPart = req._query.prodPart;
+
+            const parts = await product.get('ZHS402.ZTHBT0001').where({ PARTS_NO: prodPart });
+            if (parts.length > 0) {
+                const product = await cds.connect.to('API_PRODUCT_SRV');
+                const productPlant = await product.get('ZCDSEHBTC0007.A_ProductPlant').where({ Product: prodPart });
+                if (productPlant.length > 0) {
+                    var results = {
+                        "flag": true
+                    }
+                } else {
+                    var results = {
+                        "flag": false
+                    }
+                }
+            } else {
+                var results = {
+                    "flag": false
+                }
+            }
+            return results;
+        }
+    });
+
     //BOM Table Update
     this.on('CREATE', 'ManBOMUpload', async req => {
         const api = await cds.connect.to('ZSRVBHPP0012');
@@ -549,7 +575,7 @@ module.exports = cds.service.impl(async function (srv) {
                 { ref: ["e_doc_n"] }, '=', { val: e.e_doc_n }, 'and', 
                 { ref: ["ps_group_no"] }, '=', { val: e.ps_group_no }, 'and', 
                 { ref: ["ps_item_no"] }, '=', { val: e.ps_item_no }, 'and', 
-                { ref: ["model1_parts"] }, '=', { val: e.model1_parts }, 'and', 
+                { ref: ["model1"] }, '=', { val: e.model1 }, 'and', 
                 { ref: ["e_parts_no"] }, '=', { val: e.e_parts_no }, 'and', 
                 { ref: ["comp_parts_no"] }, '=', { val: e.comp_parts_no }, 'and', 
                 { ref: ["Parts_No_ext_sign"] }, '=', { val: e.Parts_No_ext_sign }, 'and', 
@@ -614,7 +640,7 @@ const mapZTHBT0037 = async (finalData,req) => {
             object.E_REV_NO = element.e_rev_no;
             object.PS_GROUP_NO = element.ps_group_no;
             object.PS_ITEM_NO = element.ps_item_no;
-            object.MODEL = element.model1_parts;
+            object.MODEL = element.model1;
             object.E_SEQUENCE_NO = '001';
             object.PS_SYMBOL = element.ps_symbol;
             object.E_PART_NO = element.e_parts_no;
@@ -721,7 +747,7 @@ const itemMasterCheck = async (finalData) => {
         // Input file check/Required Check
         if(element.e_doc_type === "FE0" && 
         (element.e_doc_no.length === 0 || element.e_rev_no.length === 0 || element.ps_group_no.length === 0 || 
-            element.ps_item_no.length === 0 || element.model1_parts.length === 0 || element.valid_frm.length === 0 ||
+            element.ps_item_no.length === 0 || element.model1.length === 0 || element.valid_frm.length === 0 ||
             element.e_parts_no.length === 0 || element.comp_parts_no.length === 0 ||
             element.Parts_No_ext_sign.length === 0 || element.parts_qty.length === 0  || element.parts_qty_unit.length === 0
             || element.select_sign.length === 0 || element.parts_use_ratio.length === 0 || element.e_tr_type.length === 0) ){

@@ -537,6 +537,32 @@ module.exports = cds.service.impl(async function (srv) {
         return results;
     });
 
+    this.on('READ', 'checkProductionPart', async req => {
+        if (req._query) {
+            var prodPart = req._query.prodPart;
+
+            const parts = await product.get('ZHS402.ZTHBT0001').where({ PARTS_NO: prodPart });
+            if (parts.length > 0) {
+                const product = await cds.connect.to('API_PRODUCT_SRV');
+                const productPlant = await product.get('ZCDSEHBTC0007.A_ProductPlant').where({ Product: prodPart });
+                if (productPlant.length > 0) {
+                    var results = {
+                        "flag": true
+                    }
+                } else {
+                    var results = {
+                        "flag": false
+                    }
+                }
+            } else {
+                var results = {
+                    "flag": false
+                }
+            }
+            return results;
+        }
+    });
+
     //BOM Table Update
     this.on('CREATE', 'ManBOMUpload', async req => {
         const api = await cds.connect.to('ZSRVBHPP0012');

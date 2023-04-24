@@ -325,7 +325,12 @@ service ZCDSEHBTC0007 {
     entity ZTHBT0017 as projection on db.ZTHBT0014;
     entity ZTHBT0018 as projection on db.ZTHBT0018;
     entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
+    entity A_ProductPlant as projection on API_PRODUCT_SRV.A_ProductPlant;
     entity specificationChange as projection on db.ZTHBT0037;
+    @cds.persistence.skip
+    entity checkProductionPart {
+        flag: Boolean;
+    }
 
     entity DOC_NO_HELP as select ZTHBT0009.E_DOC_TYPE, ZTHBT0009.E_DOC_NO, ZTHBT0009.E_REV_NO, ZTHBT0009.E_DOC_N, ZTHBT0009.MEDAI_TYPE, ZTHBT0009.YEOS_MODEL_GROUP, ZTHBT0009.FZ2_NO, ZTHBT0008.REV_SBJCT, ZTHBT0017.MODIFY_CAUSE_N, ZTHBT0018.APPLY_DATE_N  from db.ZTHBT0009 join db.ZTHBT0008 
         on ZTHBT0009.YEOS_MODEL_GROUP = ZTHBT0008.YEOS_MODEL_GROUP
