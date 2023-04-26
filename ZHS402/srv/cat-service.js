@@ -541,7 +541,7 @@ module.exports = cds.service.impl(async function (srv) {
         if (req._query) {
             var prodPart = req._query.prodPart;
 
-            const parts = await product.get('ZHS402.ZTHBT0001').where({ PARTS_NO: prodPart });
+            const parts = await SELECT.from('ZHS402.ZTHBT0001').where({ PARTS_NO: prodPart });
             if (parts.length > 0) {
                 const product = await cds.connect.to('API_PRODUCT_SRV');
                 const productPlant = await product.get('ZCDSEHBTC0007.A_ProductPlant').where({ Product: prodPart });

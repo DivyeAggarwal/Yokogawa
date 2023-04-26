@@ -513,7 +513,7 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 {
 annotate ZCDSEHBTC0007.BOMDisplay with @(
     UI : { 
         SelectionFields  : [
-            E_DOC_TYPE,WERKS,E_DOC_NO,E_REV_NO,PS_GROUP_NO
+            WERKS,E_DOC_NO,E_REV_NO,PS_GROUP_NO
         ],
         LineItem  : [
             { Value : E_DOC_TYPE },
@@ -526,9 +526,9 @@ annotate ZCDSEHBTC0007.BOMDisplay with @(
      }
 ){
 };
-// annotate ZCDSEHBTC0007.BOMDisplay with {
-// E_DOC_NO @UI.HiddenFilter: true;
-// }
+annotate ZCDSEHBTC0007.BOMDisplay with {
+E_DOC_TYPE @UI.HiddenFilter: true;
+}
 // annotate ZCDSEHBTC0007.BOMDisplay with {
 //     WERKS @(
 //            Common.ValueList : {
