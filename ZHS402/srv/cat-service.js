@@ -578,7 +578,7 @@ module.exports = cds.service.impl(async function (srv) {
                 { ref: ["model1"] }, '=', { val: e.model1 }, 'and', 
                 { ref: ["e_parts_no"] }, '=', { val: e.e_parts_no }, 'and', 
                 { ref: ["comp_parts_no"] }, '=', { val: e.comp_parts_no }, 'and', 
-                { ref: ["Parts_No_ext_sign"] }, '=', { val: e.Parts_No_ext_sign }, 'and', 
+                { ref: ["ten_digit_sign"] }, '=', { val: e.ten_digit_sign }, 'and', 
                 { ref: ["parts_qty"] }, '=', { val: e.parts_qty }, 'and', 
                 { ref: ["parts_qty_unit"] }, '=', { val: e.parts_qty_unit }, 'and', 
                 { ref: ["select_sign"] }, '=', { val: e.select_sign }, 'and', 
@@ -607,6 +607,10 @@ module.exports = cds.service.impl(async function (srv) {
                 return mapZTHBT0008(output, req).then(() =>{
                     return mapZTHBT0009(output, req).then(() =>{
                         return mapZTHBT0037(output, req).then(() =>{
+                            for (let index = 0; index < output.length; index++) {
+                                const element = output[index][0];
+                                delete element.Parts_No_ext_sign; 
+                            }
                             return {
                                 "Plant":"5800",
                                 "UploadFile":output
@@ -644,7 +648,7 @@ const mapZTHBT0037 = async (finalData,req) => {
             object.E_SEQUENCE_NO = '001';
             object.PS_SYMBOL = element.ps_symbol;
             object.E_PART_NO = element.e_parts_no;
-            object.TEN_DIGIT_SIGN = element.Parts_No_ext_sign;
+            object.TEN_DIGIT_SIGN = element.ten_digit_sign;
             object.COMP_PART_NO = element.comp_parts_no;
             object.PARTS_QTY = element.parts_qty;
             object.PARTS_QTY_UNIT = element.parts_qty_unit;
@@ -749,7 +753,7 @@ const itemMasterCheck = async (finalData) => {
         (element.e_doc_no.length === 0 || element.e_rev_no.length === 0 || element.ps_group_no.length === 0 || 
             element.ps_item_no.length === 0 || element.model1.length === 0 || element.valid_frm.length === 0 ||
             element.e_parts_no.length === 0 || element.comp_parts_no.length === 0 ||
-            element.Parts_No_ext_sign.length === 0 || element.parts_qty.length === 0  || element.parts_qty_unit.length === 0
+            element.ten_digit_sign.length === 0 || element.parts_qty.length === 0  || element.parts_qty_unit.length === 0
             || element.select_sign.length === 0 || element.parts_use_ratio.length === 0 || element.e_tr_type.length === 0) ){
             element.error_cod += "Key field not availabl. ";
         }

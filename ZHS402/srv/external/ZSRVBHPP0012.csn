@@ -88,11 +88,11 @@
           "@sap.label": "19 Characters",
           "@sap.heading": ""
         },
-        "Parts_No_ext_sign": {
+        "ten_digit_sign": {
           "type": "cds.String",
-          "length": 19,
+          "length": 1,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "19 Characters",
+          "@sap.label": "Single-Character Flag",
           "@sap.heading": ""
         },
         "parts_qty": {
