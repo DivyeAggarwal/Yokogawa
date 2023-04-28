@@ -847,7 +847,7 @@ service ZAPIBPS0001 {
         ProjDesc,
         ApproverPM
     };
-    entity ZCDSEBPS0003 as projection on db.ZTHBT0055{
+    entity ZCDSEBPS0003 as select from db.ZTHBT0055  {
         ZCABNUM,
         PBUKR,
         PS_PSPNR,
@@ -862,6 +862,7 @@ service ZAPIBPS0001 {
         null as CustomerFullName: String(100),
         null as ProjDesc: String(50)
     }
+    
     actions {
         action pgi();
     }   

@@ -25719,7 +25719,7 @@
       "@UI.LineItem": [
         {
           "$Type": "UI.DataFieldForAction",
-          "Action": "ZAPIBPS0001.EntityContainer/ZCDSEBPS0003_pgi",
+          "Action": "ZAPIBPS0001.pgi",
           "Label": "Post Good Issue"
         },
         {
@@ -25873,83 +25873,90 @@
           }
         }
       ],
-      "projection": {
-        "from": {
-          "ref": [
-            "ZHS402.ZTHBT0055"
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "ZCDSEBPS0004"
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "ZCABNUM"
+              ]
+            },
+            {
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            {
+              "ref": [
+                "PS_PSPNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZMSCODE"
+              ]
+            },
+            {
+              "ref": [
+                "ZQTY"
+              ]
+            },
+            {
+              "ref": [
+                "ZUT"
+              ]
+            },
+            {
+              "ref": [
+                "ZSHTP"
+              ]
+            },
+            {
+              "ref": [
+                "ZDONUM"
+              ]
+            },
+            {
+              "ref": [
+                "ZDESCRIP"
+              ]
+            },
+            {
+              "ref": [
+                "ZSHPSTAT"
+              ]
+            },
+            {
+              "val": null,
+              "as": "ProjectManager",
+              "cast": {
+                "type": "cds.String",
+                "length": 50
+              }
+            },
+            {
+              "val": null,
+              "as": "CustomerFullName",
+              "cast": {
+                "type": "cds.String",
+                "length": 100
+              }
+            },
+            {
+              "val": null,
+              "as": "ProjDesc",
+              "cast": {
+                "type": "cds.String",
+                "length": 50
+              }
+            }
           ]
-        },
-        "columns": [
-          {
-            "ref": [
-              "ZCABNUM"
-            ]
-          },
-          {
-            "ref": [
-              "PBUKR"
-            ]
-          },
-          {
-            "ref": [
-              "PS_PSPNR"
-            ]
-          },
-          {
-            "ref": [
-              "ZMSCODE"
-            ]
-          },
-          {
-            "ref": [
-              "ZQTY"
-            ]
-          },
-          {
-            "ref": [
-              "ZUT"
-            ]
-          },
-          {
-            "ref": [
-              "ZSHTP"
-            ]
-          },
-          {
-            "ref": [
-              "ZDONUM"
-            ]
-          },
-          {
-            "ref": [
-              "ZDESCRIP"
-            ]
-          },
-          {
-            "val": null,
-            "as": "ProjectManager",
-            "cast": {
-              "type": "cds.String",
-              "length": 50
-            }
-          },
-          {
-            "val": null,
-            "as": "CustomerFullName",
-            "cast": {
-              "type": "cds.String",
-              "length": 100
-            }
-          },
-          {
-            "val": null,
-            "as": "ProjDesc",
-            "cast": {
-              "type": "cds.String",
-              "length": 50
-            }
-          }
-        ]
+        }
       },
       "elements": {
         "ZCABNUM": {
@@ -25998,6 +26005,11 @@
           "@title": "Material Description",
           "type": "cds.String",
           "length": 50
+        },
+        "ZSHPSTAT": {
+          "@title": "Shipping Status",
+          "type": "cds.String",
+          "length": 1
         },
         "ProjectManager": {
           "@Core.Computed": true,
@@ -27812,6 +27824,135 @@
           "@title": "Apply date Name",
           "type": "cds.String",
           "length": 40
+        }
+      }
+    },
+    "ZCDSEBPS0004": {
+      "kind": "entity",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "ZHS402.ZTHBT0055"
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "ZCABNUM"
+              ]
+            },
+            {
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            {
+              "ref": [
+                "PS_PSPNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZMSCODE"
+              ]
+            },
+            {
+              "ref": [
+                "ZQTY"
+              ]
+            },
+            {
+              "ref": [
+                "ZUT"
+              ]
+            },
+            {
+              "ref": [
+                "ZSHTP"
+              ]
+            },
+            {
+              "ref": [
+                "ZDONUM"
+              ]
+            },
+            {
+              "ref": [
+                "ZDESCRIP"
+              ]
+            },
+            {
+              "ref": [
+                "ZSHPSTAT"
+              ]
+            }
+          ],
+          "where": [
+            {
+              "ref": [
+                "ZSHPSTAT"
+              ]
+            },
+            "=",
+            {
+              "val": "P"
+            }
+          ]
+        }
+      },
+      "elements": {
+        "ZCABNUM": {
+          "@title": "Cabinet number",
+          "key": true,
+          "type": "cds.String",
+          "length": 20
+        },
+        "PBUKR": {
+          "@title": "Company code",
+          "type": "cds.String",
+          "length": 4
+        },
+        "PS_PSPNR": {
+          "@title": "Project Definition",
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZMSCODE": {
+          "@title": "MS Code",
+          "type": "cds.String",
+          "length": 50
+        },
+        "ZQTY": {
+          "@title": "Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ZUT": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 5
+        },
+        "ZSHTP": {
+          "@title": "Ship to Party",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ZDONUM": {
+          "@title": "DO Number Title",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ZDESCRIP": {
+          "@title": "Material Description",
+          "type": "cds.String",
+          "length": 50
+        },
+        "ZSHPSTAT": {
+          "@title": "Shipping Status",
+          "type": "cds.String",
+          "length": 1
         }
       }
     },
