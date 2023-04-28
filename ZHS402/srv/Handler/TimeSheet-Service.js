@@ -178,8 +178,14 @@ const ValidateAssignment = async (req) => {
 
     let savedData = await SELECT.from('ZCDSEHBTC0003.ZTHBT0019').where({ZPNAME : req.data.ZPNAME});
     let savingData = {};
-    savingData = {...savedData[0],...req.data};
-    if (savingData.ZPS_IDENTIFIER === 'P') {
+    if(savedData.length > 0) {
+        savingData.data = {...savedData[0],...req.data};
+    }
+    else {
+        savingData.data = req.data;
+    }
+    
+    if (savingData.data.ZPS_IDENTIFIER === 'P') {
         await validateAssignmentProject(savingData, bupa);
     }
 }
