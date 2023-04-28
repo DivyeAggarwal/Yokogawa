@@ -2,6 +2,7 @@
 const SequenceHelper = require("./lib/SequenceHelper");
 const registerTimeSheetHandler = require("./Handler/TimeSheet-Service");
 const registerProductionOrderPrint = require("./Handler/ProductionOrderPrint");
+const registerBomRegisterError = require("./Handler/BomRegistrationErrorUpdate");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql
@@ -11,6 +12,7 @@ module.exports = cds.service.impl(async function (srv) {
     const db = await cds.connect.to("db");
     registerTimeSheetHandler(this, cds);
     registerProductionOrderPrint(this,cds);
+    registerBomRegisterError(this,cds);
     
     this.on('READ', 'ZCDSEHPSB0004', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
@@ -46,6 +48,10 @@ module.exports = cds.service.impl(async function (srv) {
         return plant.run(req.query);
     });
     this.on('READ', 'A_ProductDescription', async req => {
+        const product = await cds.connect.to('API_PRODUCT_SRV');
+        return product.run(req.query);
+    });
+    this.on('READ', 'A_ProductPlant', async req => {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
@@ -114,13 +120,26 @@ module.exports = cds.service.impl(async function (srv) {
 
 
     this.on('UpdatePOItem', async (req) => {
-        const bupa = await cds.connect.to('TimeSheetEntry');
-        if (req.data.input.update.length > 0) {
-            await UPSERT.into('ZHS402.ZTHBT0027').entries(req.data.input.update);
-        }
+        var inserEntries = []; 
+        for (let index = 0; index < req.data.input.update.length; index++) {
+            const oInput = req.data.input.update[index];
+            var oInputQuery = SELECT.from('ZHS402.ZTHBT0027').where({ MBLNR: { '=': oInput.MBLNR }, ZEILE: { '=': oInput.ZEILE }, MJAHR: { '=': oInput.MJAHR }, SERNR: { '=': oInput.SERNR } });
+            var oInputResults = await srv.run(oInputQuery); 
+            if(oInputResults.length == 0){
+                inserEntries.push(req.data.input.update[index]);
+            }else{
+              const updateQuery =  UPDATE.entity('ZHS402.ZTHBT0027').data(oInput).where({ MBLNR: { '=': oInput.MBLNR }, ZEILE: { '=': oInput.ZEILE }, MJAHR: { '=': oInput.MJAHR }, SERNR: { '=': oInput.SERNR } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+              await srv.run(updateQuery);
+            }
+        } 
+        if (inserEntries.length > 0) {
+            const insertQuery = INSERT.into('ZHS402.ZTHBT0027').entries(inserEntries); 
+            await srv.run(insertQuery);
+        } 
         for (let oDelete of req.data.input.delete) {
             await DELETE.from('ZHS402.ZTHBT0027').where({ MBLNR: { '=': oDelete.MBLNR }, ZEILE: { '=': oDelete.ZEILE }, MJAHR: { '=': oDelete.MJAHR }, SERNR: { '=': oDelete.SERNR } });
         }
+        
         return {
             acknowledge: "Success", message: "Deleted " + req.data.input.delete.length + " entries \n"
                 + "Updated " + req.data.input.update.length + " entries \n"
@@ -470,15 +489,350 @@ module.exports = cds.service.impl(async function (srv) {
         return results;
     });
 
+    this.on('READ', 'materialWhereUsedMaster', async req => {
+        const materialWhereUsed = await cds.connect.to('ZSRVBHPP0011');
+        const results = await materialWhereUsed.run(req.query);
+        // const bupa = await cds.connect.to('ProductionOrder');
+        // return materialWhereUsed.run(req.query);
+        /* Prepare array of Model by which Addiional status is going to be 
+        Read from the Cloud Table */
+        let arrayInput = [];
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                arrayInput.push(result.ZZ1_MSCODE_PRD);
+            }
+        }
+        else {
+            arrayInput.push(results.ZZ1_MSCODE_PRD);
+        }
+        let objectAddMSCode = {};
+        objectAddMSCode = await PrepareWherUsedObject(arrayInput, objectAddMSCode);
+
+        let objectAddModel = {};
+        objectAddModel = await PrepareModelData(arrayInput, objectAddModel);
+
+        /*Manipulate the result from cloud and On Premise */
+        if (Array.isArray(results)) {
+            for (let result of results) {
+                let DataFromObject = objectAddMSCode[result.ZZ1_MSCODE_PRD];
+                let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
+                if (DataFromObject) {
+                    result.MOD_CODE = DataFromObject;
+                } else if(DataFromModTable) {
+                    result.MOD_CODE = DataFromModTable;
+                }
+
+            }
+        }
+        else {
+            let DataFromObject = objectAddStatus[results.ZZ1_MSCODE_PRD];
+            let DataFromModTable = objectAddModel[result.ZZ1_MSCODE_PRD];
+            if (DataFromObject) {
+                results.MOD_CODE = DataFromObject;
+            } else if(DataFromModTable) {
+                results.MOD_CODE = DataFromModTable;
+            }
+        }
+
+        return results;
+    });
+
+    this.on('READ', 'checkProductionPart', async req => {
+        if (req._query) {
+            var prodPart = req._query.prodPart;
+
+            const parts = await SELECT.from('ZHS402.ZTHBT0001').where({ PARTS_NO: prodPart });
+            if (parts.length > 0) {
+                const product = await cds.connect.to('API_PRODUCT_SRV');
+                const productPlant = await product.get('ZCDSEHBTC0007.A_ProductPlant').where({ Product: prodPart });
+                if (productPlant.length > 0) {
+                    var results = {
+                        "flag": true
+                    }
+                } else {
+                    var results = {
+                        "flag": false
+                    }
+                }
+            } else {
+                var results = {
+                    "flag": false
+                }
+            }
+            return results;
+        }
+    });
+
     //BOM Table Update
     this.on('CREATE', 'ManBOMUpload', async req => {
-        const bupa = await cds.connect.to('ZSRVBHPP0012');
-        return bupa.run(req.query);
+        const api = await cds.connect.to('ZSRVBHPP0012');
+        var queries = [];
+        req.data.UploadFile.forEach(e => {
+            let query =  SELECT.from("ZSRVBHPP0012.ZCDSEHPPB0071").where([ 
+                { ref: ["e_doc_type"] }, '=', { val: e.e_doc_type }, 'and', 
+                { ref: ["e_doc_no"] }, '=', { val: e.e_doc_no }, 'and', 
+                { ref: ["e_rev_no"] }, '=', { val: e.e_rev_no }, 'and', 
+                { ref: ["e_doc_n"] }, '=', { val: e.e_doc_n }, 'and', 
+                { ref: ["ps_group_no"] }, '=', { val: e.ps_group_no }, 'and', 
+                { ref: ["ps_item_no"] }, '=', { val: e.ps_item_no }, 'and', 
+                { ref: ["model1"] }, '=', { val: e.model1 }, 'and', 
+                { ref: ["e_parts_no"] }, '=', { val: e.e_parts_no }, 'and', 
+                { ref: ["comp_parts_no"] }, '=', { val: e.comp_parts_no }, 'and', 
+                { ref: ["Parts_No_ext_sign"] }, '=', { val: e.Parts_No_ext_sign }, 'and', 
+                { ref: ["parts_qty"] }, '=', { val: e.parts_qty }, 'and', 
+                { ref: ["parts_qty_unit"] }, '=', { val: e.parts_qty_unit }, 'and', 
+                { ref: ["select_sign"] }, '=', { val: e.select_sign }, 'and', 
+                { ref: ["parts_use_ratio"] }, '=', { val: e.parts_use_ratio }, 'and', 
+                { ref: ["ps_note"] }, '=', { val: e.ps_note }, 'and', 
+                { ref: ["or_sign"] }, '=', { val: e.or_sign }, 'and', 
+                { ref: ["sfix_digit_ptn"] }, '=', { val: e.sfix_digit_ptn }, 'and', 
+                { ref: ["sfix_ptn"] }, '=', { val: e.sfix_ptn }, 'and', 
+                { ref: ["option_ptn"] }, '=', { val: e.option_ptn }, 'and', 
+                { ref: ["prod_career"] }, '=', { val: e.prod_career }, 'and', 
+                { ref: ["e_tr_type"] }, '=', { val: e.e_tr_type }, 'and', 
+                { ref: ["ps_symbol"] }, '=', { val: e.ps_symbol }, 'and', 
+                { ref: ["valid_frm"] }, '=', { val: e.valid_frm }
+            ]);
+            queries.push(query);
+        }); 
+        return api.tx(req).run(queries).then(async (response) => {
+            var output = [];
+            for (let index = 0; index < response.length; index++) {
+                const element = response[index][0];
+                delete element["$metadata"];
+                output.push(element);
+            }
+            bomFileDuplicateCheck(output);
+            return itemMasterCheck(output).then(() =>{
+                return mapZTHBT0008(output, req).then(() =>{
+                    return mapZTHBT0009(output, req).then(() =>{
+                        return mapZTHBT0037(output, req).then(() =>{
+                            return {
+                                "Plant":"5800",
+                                "UploadFile":output
+                            };
+                        });
+                    });
+                });
+            });
+             
+           
+        });
+    });
+
+    
+    this.on('READ', 'ZCDSEHPPB0071', async req => {
+        const product = await cds.connect.to('ZSRVBHPP0012');
+        return product.run(req.query);
     });
 
 });
 
+const mapZTHBT0037 = async (finalData,req) => {
+    var aZTHBT0037 = [];
+    for (let index = 0; index < finalData.length; index++) {
+        const element = finalData[index];
+        var object = {};
+        if(!element.error_cod){
+            object.WERKS = req.data.Plant;
+            object.E_DOC_TYPE = element.e_doc_type;
+            object.E_DOC_NO = element.e_doc_no;
+            object.E_REV_NO = element.e_rev_no;
+            object.PS_GROUP_NO = element.ps_group_no;
+            object.PS_ITEM_NO = element.ps_item_no;
+            object.MODEL = element.model1;
+            object.E_SEQUENCE_NO = '001';
+            object.PS_SYMBOL = element.ps_symbol;
+            object.E_PART_NO = element.e_parts_no;
+            object.TEN_DIGIT_SIGN = element.Parts_No_ext_sign;
+            object.COMP_PART_NO = element.comp_parts_no;
+            object.PARTS_QTY = element.parts_qty;
+            object.PARTS_QTY_UNIT = element.parts_qty_unit;
+            object.SELECT_SIGN = element.select_sign;
+            object.PARTS_USE_RATIO = element.parts_use_ratio;
+            object.PS_NOTE = element.ps_note;
+            object.OR_SIGN = element.or_sign;
+            object.SFIX_DIGIT_PTN = element.sfix_digit_ptn;
+            object.SFIX_PTN = element.sfix_ptn;
+            object.OPTION_PTN = element.option_ptn;
+            object.PROD_CARRER = element.prod_career;
+            object.EFFECT_D = element.valid_frm;
+            // object.INVALID_D = element.Plant;
+            object.E_TR_TYPE = element.e_tr_type;
+            object.PARTS_NO_EXT_SIGN = element.Parts_No_ext_sign; 
+            if(object.E_TR_TYPE === "A"){
+                var erTypeA = await SELECT.from('ZHS402.ZTHBT0037').where({
+                    E_DOC_NO: object.E_DOC_NO,
+                    PS_GROUP_NO: object.PS_GROUP_NO,
+                    PS_ITEM_NO: object.PS_ITEM_NO,
+                    MODEL: object.MODEL
+                });
+                if(erTypeA.length > 0 && (erTypeA[0].E_TR_TYPE === "A" || erTypeA[0].E_TR_TYPE === "C")){
+                    element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
+                }
+            }
+            if(object.E_TR_TYPE === "C" || object.E_TR_TYPE === "D"){
+                var erTypeCD = await SELECT.from('ZHS402.ZTHBT0037').where({
+                    E_DOC_NO: object.E_DOC_NO,
+                    PS_GROUP_NO: object.PS_GROUP_NO,
+                    PS_ITEM_NO: object.PS_ITEM_NO,
+                    MODEL: object.MODEL
+                });
+                if(erTypeCD.length > 0 && (erTypeCD[0].E_TR_TYPE === "A" || erTypeCD[0].E_TR_TYPE === "C")){
+                    element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
+                }
+            }
+            var allOld = await SELECT.from('ZHS402.ZTHBT0037').where({
+                E_DOC_NO: object.E_DOC_NO,
+                PS_GROUP_NO: object.PS_GROUP_NO,
+                PS_ITEM_NO: object.PS_ITEM_NO,
+                MODEL: object.MODEL
+            });
+            if(allOld.length > 1){
+                allOld.sort(function(c,d){return c.EFFECT_D - d.EFFECT_D});
+                if(allOld[allOld.length - 1].EFFECT_D > new Date(element.valid_frm)){
+                    element.error_cod += "old revision entry is in future than the Valid From date of new revision entry. ";
+                }else if(!element.error_cod){
+                    allOld[allOld.length - 1].INVALID_D = element.valid_frm;
+                    var currentOld = allOld[allOld.length - 1];
+                    UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:currentOld.INVALID_D}).where({ WERKS: { '=': currentOld.WERKS }, E_DOC_TYPE: { '=': currentOld.E_DOC_TYPE }, E_DOC_NO: { '=': currentOld.E_DOC_NO }, E_REV_NO: { '=': currentOld.E_REV_NO }, PS_GROUP_NO: { '=': currentOld.PS_GROUP_NO }, PS_ITEM_NO: { '=': currentOld.PS_ITEM_NO }, MODEL: { '=': currentOld.MODEL }, E_SEQUENCE_NO: { '=': currentOld.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+                }
+            }else if(allOld.length === 1){
+                var validToDate = new Date(object.EFFECT_D);
+                validToDate.setDate(validToDate.getDate() - 1);
+                allOld[0].INVALID_D = validToDate;
+            }
+            if(!element.error_cod){
+                aZTHBT0037.push(object);
+            }     
+                
+        }       
+    } 
+    if(aZTHBT0037.length > 0){
+        for (let index = 0; index < aZTHBT0037.length; index++) {
+            const element = aZTHBT0037[index];
+            const updateQuery = UPDATE.entity('ZHS402.ZTHBT0037').data(element).where({ WERKS: { '=': element.WERKS }, E_DOC_TYPE: { '=': element.E_DOC_TYPE }, E_DOC_NO: { '=': element.E_DOC_NO }, E_REV_NO: { '=': element.E_REV_NO }, PS_GROUP_NO: { '=': element.PS_GROUP_NO }, PS_ITEM_NO: { '=': element.PS_ITEM_NO }, MODEL: { '=': element.MODEL }, E_SEQUENCE_NO: { '=': element.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+            await srv.run(updateQuery);
+        }
+    }
+    return finalData;
+}
 
+const bomFileDuplicateCheck = (finalData) => { 
+    for (let index = 0; index < finalData.length; index++) {
+        var element = finalData[index];
+        var aObject = finalData.filter(function name(params) {
+            return params.e_doc_no === element.e_doc_no &&
+            params.e_rev_no === element.e_rev_no &&
+            params.ps_group_no === element.ps_group_no &&
+            params.ps_item_no === element.ps_item_no
+        });
+        //16	Duplicate Check
+        if(aObject.length > 0){
+            aObject.forEach(element => {
+                element.error_cod += "Key Field Duplicate in file. ";
+            }); 
+        }
+    } 
+    return finalData;
+}
+
+const itemMasterCheck = async (finalData) => {
+    for (let index = 0; index < finalData.length; index++) {
+        var element = finalData[index];
+        //15	Validate E_TR_TYPE
+        if(element.e_tr_type !== "A" && element.e_tr_type !== "C" && element.e_tr_type !== "D"){
+            element.error_cod += "E_TR_TYPE  is  other than 'A'  or 'C'  or  'D'. ";
+        }
+        // Input file check/Required Check
+        if(element.e_doc_type === "FE0" && 
+        (element.e_doc_no.length === 0 || element.e_rev_no.length === 0 || element.ps_group_no.length === 0 || 
+            element.ps_item_no.length === 0 || element.model1.length === 0 || element.valid_frm.length === 0 ||
+            element.e_parts_no.length === 0 || element.comp_parts_no.length === 0 ||
+            element.Parts_No_ext_sign.length === 0 || element.parts_qty.length === 0  || element.parts_qty_unit.length === 0
+            || element.select_sign.length === 0 || element.parts_use_ratio.length === 0 || element.e_tr_type.length === 0) ){
+            element.error_cod += "Key field not availabl. ";
+        }
+        if(element.e_doc_type === "FE1" && 
+        (element.or_sign.length === 0 || element.sfix_digit_ptn.length === 0 || element.sfix_ptn.length === 0 || element.option_ptn.length === 0 || element.prod_career.length === 0 ) ){
+            element.error_cod += "Key field not availabl. ";
+        }
+        var results = await SELECT.from('ZHS402.ZTHBT0006').where({
+            E_PARTS_NO: element.e_parts_no
+        });
+        //18	Acquire part No.Item Master (Engineering Parts Data) (ZTHBT0006)
+
+        if(results.length === 0){
+            element.error_cod += "Item Master does not exist. ";
+        }else{
+        //19	Retrieval of the Parts Type Parts Type (ZTHBT0015)
+
+         var aPARTS_TYPE = await SELECT.from('ZHS402.ZTHBT0015').where({
+                PARTS_TYPE: results[0].PARTS_TYPE
+            });
+            if(aPARTS_TYPE.length === 0){
+                element.error_cod += "PARTS_TYPE does not exist . ";
+            }else if(aPARTS_TYPE[0].PARTS_NO_EXT_SIGN === "1"){
+                finalData.Parts_No_ext_sign = "1";
+            }else{
+                finalData.Parts_No_ext_sign = "0";
+            }
+        }        
+    }
+    return finalData;
+}
+
+const mapZTHBT0008 = async (finalData, req) => {
+    var aZTHBT0008 = [];
+    element = req.data; 
+        var object = {};
+        object.YEOS_MODEL_GROUP = element.MainModel;
+        object.FZ2_NO = element.FZ2No; 
+        object.YEOS_MODEL_GROUP_N = element.MainModelName; 
+        object.REV_SBJCT = element.Title; 
+        object.E_EMP_NO = req.user.email; //Execution User ID  
+        object.E_EMP_NAME = req.user.familyName; //Execution User Name
+        object.E_DEPT_IN = element.OperationDept; 
+        object.E_AUTHORIZED_D = element.ApprovedDate.toString().replace(/-/g,""); 
+        object.APPLY_DATE_CD = element.RevisionReason; 
+        object.MODIFY_CAUSE = element.ExecutionSchedule; 
+        object.TRIAL_TYPE = null; 
+        aZTHBT0008.push(object);  
+        var noError = false;
+        finalData.forEach(element => {
+            var object = {};        
+            if(!element.error_cod){ 
+                noError = true;
+            }
+        }); 
+        if(noError){
+           await INSERT.into('ZHS402.ZTHBT0008').entries(aZTHBT0008);
+        }       
+}
+
+const mapZTHBT0009 = async (finalData, req) => {
+    var aZTHBT0009 = [];
+    var index = 1;
+    finalData.forEach(element => {
+        var object = {};        
+        if(!element.error_cod){
+            object.YEOS_MODEL_GROUP = req.data.MainModel;
+            object.FZ2_NO = req.data.FZ2No;
+            object.FZ2_NO_SFIX = index;
+            object.E_DOC_TYPE = element.e_doc_type;
+            object.E_DOC_NO = element.e_doc_no;
+            object.E_REV_NO = element.e_rev_no;
+            object.E_DOC_N = element.e_doc_n;
+            object.MEDAI_TYPE = 'P'; 
+            index++;
+            aZTHBT0009.push(object);
+        }
+    });
+    if(aZTHBT0009.length > 0){
+        await INSERT.into('ZHS402.ZTHBT0009').entries(aZTHBT0009); 
+    }
+    
+}
 
 
 const PrepareWherUsedObject = async (arrayInput, objectAddMSCode) => {

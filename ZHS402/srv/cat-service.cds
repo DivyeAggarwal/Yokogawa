@@ -308,6 +308,7 @@ service ZCDS_ALL_ENTITIES {
     entity ZTHBT0018 as projection on db.ZTHBT0018;
     entity ZTHBT0056 as projection on db.ZTHBT0056;
     entity ZTHBT0051 as projection on db.ZTHBT0051;
+    entity ZTHBT0029 as projection on db.ZTHBT0029;
 }
 
 service ZCDSEHBTC0006 {
@@ -319,6 +320,7 @@ service ZCDSEHBTC0006 {
 }
 
 service ZCDSEHBTC0007 {
+    entity ZTHBT0001 as projection on db.ZTHBT0001;
     entity ZTHBT0010 as projection on db.ZTHBT0010;
     entity ZTHBT0014 as projection on db.ZTHBT0014;
     entity ZTHBT0037 as projection on db.ZTHBT0037;
@@ -327,6 +329,12 @@ service ZCDSEHBTC0007 {
     entity ZTHBT0017 as projection on db.ZTHBT0014;
     entity ZTHBT0018 as projection on db.ZTHBT0018;
     entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
+    entity A_ProductPlant as projection on API_PRODUCT_SRV.A_ProductPlant;
+    entity specificationChange as projection on db.ZTHBT0037;
+    @cds.persistence.skip
+    entity checkProductionPart {
+        flag: Boolean;
+    }
 
     entity DOC_NO_HELP as select ZTHBT0009.E_DOC_TYPE, ZTHBT0009.E_DOC_NO, ZTHBT0009.E_REV_NO, ZTHBT0009.E_DOC_N, ZTHBT0009.MEDAI_TYPE, ZTHBT0009.YEOS_MODEL_GROUP, ZTHBT0009.FZ2_NO, ZTHBT0008.REV_SBJCT, ZTHBT0017.MODIFY_CAUSE_N, ZTHBT0018.APPLY_DATE_N  from db.ZTHBT0009 join db.ZTHBT0008 
         on ZTHBT0009.YEOS_MODEL_GROUP = ZTHBT0008.YEOS_MODEL_GROUP
@@ -714,6 +722,7 @@ service ZCDSEHBTC0011 {
             ExecutionSchedule  : String(2)  @title : 'Execution Schedule' @Common.QuickInfo : 'Execution Schedule'; 
             RevisionReason  : String(2)  @title : 'Revision Reason' @Common.QuickInfo : 'Revision Reason'; 
             ErrorFile  : String(128)  @title : 'Error file' @Common.QuickInfo : 'Error file'; 
+            UploadFileName  : String(128)  @title : 'Upload file' @Common.QuickInfo : 'Upload file'; 
             UploadFile  : Association to many  ZCDSEHPPB0071;
     }
 }
@@ -721,6 +730,7 @@ service ZCDSEHBTC0011 {
 service ZCDSEHBTC0012 {
     entity ZTHBT0056  as projection on db.ZTHBT0056;
     entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
+    entity A_ProductPlant as projection on API_PRODUCT_SRV.A_ProductPlant;
     entity materialWhereUsed as projection on ZSRVBHPP0011.ZCDSEHPPB0070 {
         key WERKS,
         key MATNR_COM,
@@ -767,7 +777,52 @@ service ZCDSEHBTC0012 {
             LIST_TYPE,
             MASTER_DATA,
     };
-
+    entity materialWhereUsedMaster as projection on ZSRVBHPP0011.ZCDSEHPPB0070 {
+        key WERKS,
+        key MATNR_COM,
+        key MATNR,
+            MAKTX_COM,
+            MTART_COM,
+            POTX1_0,
+            POSNR,
+            SORTF,
+            POTX1_19,
+            MOD_CODE,
+            MAKTX,
+            ZZ1_MSCODE_PRD,
+            MTART,
+            EMENG,
+            @Semantics.unitOfMeasure
+            BMEIN,
+            ASM,
+            POTX1_22,
+            SCHGT,
+            POTX1_24,
+            ARBPL,
+            VGW01,
+            @Semantics.unitOfMeasure
+            VGE01,
+            VMSTD,
+            LEVEL_BOM,
+            SEARCH_FROM,
+            SCHGT_TO,
+            BESKZ_TO,
+            SOBSL_TO,
+            LVORM_TO,
+            WERKS_FROM,
+            UMLGO,
+            SCHGT_FROM,
+            BESKZ_FROM,
+            SOBSL_FROM,
+            LVORM_FROM,
+            @Semantics.unitOfMeasure
+            BSTME,
+            MEINS,
+            MMSTD,
+            MESSAGE,
+            LIST_TYPE,
+            MASTER_DATA,
+    };
     
 }
 
@@ -807,6 +862,62 @@ service ZAPIBPS0001 {
         null as CustomerFullName: String(100),
         null as ProjDesc: String(50)
     }
+}
 
+service ZCDSEHBTC0015 {
+    entity ZTHBT0029 as projection on db.ZTHBT0029;
+    entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
+    @cds.persistence.skip
+    entity OrderPartInformation {
+        key Product: String(40)  @title : 'Material' @Common.QuickInfo : 'Material'; 
+        DWERK         : String(4)  @title: 'Plant';
+        BTYPECAT      : String(1)  @title: 'By-Order Category';
+        MRPCONT       : String(12) @title: 'MRP Controller';
+        PLNUM         : String(10) @title: 'Parts Planned Order';
+        GSTRP         : Date       @title: 'Basic start date';
+        GLTRP         : Date       @title: 'Basic finish date';
+        CHNAGEDATE    : Date       @title: 'Change date'; 
+    }
+}
+
+service ZCDSEHBTC0016 {
+    entity ZTHBT0057 as projection on db.ZTHBT0057;
+    entity ZTHBT0008 as projection on db.ZTHBT0048;
+    entity ZTHBT0009 as projection on db.ZTHBT0010;
+    entity ZTHBT0017 as projection on db.ZTHBT0014;
+    entity ZTHBT0018 as projection on db.ZTHBT0018;
+    entity VL_SH_H_T001 as projection on external.VL_SH_H_T001; 
+    entity processData as projection on db.ZTHBT0057;
+
+    entity DOC_NO_HELP as select ZTHBT0009.E_DOC_TYPE, ZTHBT0009.E_DOC_NO, ZTHBT0009.E_REV_NO, ZTHBT0009.E_DOC_N, ZTHBT0009.MEDAI_TYPE, ZTHBT0009.YEOS_MODEL_GROUP, ZTHBT0009.FZ2_NO, ZTHBT0008.REV_SBJCT, ZTHBT0017.MODIFY_CAUSE_N, ZTHBT0018.APPLY_DATE_N  from db.ZTHBT0009 join db.ZTHBT0008 
+        on ZTHBT0009.YEOS_MODEL_GROUP = ZTHBT0008.YEOS_MODEL_GROUP
+        and ZTHBT0009.FZ2_NO = ZTHBT0008.FZ2_NO
+        join db.ZTHBT0017
+        on ZTHBT0008.MODIFY_CAUSE = ZTHBT0017.MODIFY_CAUSE
+        join db.ZTHBT0018 
+        on ZTHBT0008.APPLY_DATE_CD = ZTHBT0018.APPLY_DATE_CD;
+
+    entity MAIN_MODEL_HELP as select ZTHBT0009.E_DOC_TYPE, ZTHBT0009.E_DOC_NO, ZTHBT0009.E_REV_NO, ZTHBT0009.E_DOC_N, ZTHBT0009.MEDAI_TYPE, ZTHBT0009.YEOS_MODEL_GROUP, ZTHBT0009.FZ2_NO, ZTHBT0008.REV_SBJCT, ZTHBT0017.MODIFY_CAUSE_N, ZTHBT0018.APPLY_DATE_N  from db.ZTHBT0009 join db.ZTHBT0008 
+        on ZTHBT0009.YEOS_MODEL_GROUP = ZTHBT0008.YEOS_MODEL_GROUP
+        and ZTHBT0009.FZ2_NO = ZTHBT0008.FZ2_NO
+        join db.ZTHBT0017
+        on ZTHBT0008.MODIFY_CAUSE = ZTHBT0017.MODIFY_CAUSE
+        join db.ZTHBT0018 
+        on ZTHBT0008.APPLY_DATE_CD = ZTHBT0018.APPLY_DATE_CD; 
+
+    // type UpdateBOMRegistration {
+    //     acknowledge : UpdateBOMRegistration.acknowledge;
+    //     message     : String;
+    // }
+
+    // @open
+    // type Object {}
+
+    // action UpdateBOMStatus(input : Object) returns UpdateBOMRegistration;
+
+    // type UpdateBOMRegistration.acknowledge : String enum {
+    //     succeeded;
+    //     failed;
+    // }
 }
 

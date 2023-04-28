@@ -424,6 +424,54 @@ entity ZTHBT0059 : managed {
         ZSD_ERROR             : String     @title : 'Error Message';
 
 }
+entity ZTHBT0029 : managed {
+    key BTYPEORDER    : String(13) @title: 'B-type Prod. No';
+    key BTYPEITEM     : Integer    @title: 'B-type Prod. Item No';
+        DWERK         : String(4)  @title: 'Plant';
+        LEVELINGGROUP : String(8)  @title: 'Leveling group';
+        ARBPL         : String(8)  @title: 'Parts Work Center';
+        BTYPECAT      : String(1)  @title: 'By-Order Category';
+        BTYPESTATUS   : String(1)  @title: 'By-Order Parts Status';
+        PRDSTNO       : String(8)  @title: 'Prod. Start No.';
+        AUFNR         : String(12) @title: 'Prod. Order';
+        KDAUF         : String(10) @title: 'Sales Order';
+        KDPOS         : Integer    @title: 'Sales Order Item';
+        COMPNO        : String(4)  @title: 'Comp No.';
+        MSCODE        : String(40) @title: 'MS Code';
+        GSTRP         : Date       @title: 'Basic start date';
+        GLTRP         : Date       @title: 'Basic finish date';
+        MATNR         : String(40) @title: 'Parts Material';
+        GSMNG         : String(13) @title: 'Order quantity'; //check
+        MEINS         : String(3)  @title: 'Base Unit';
+        PSTTR         : Date       @title: 'Parts Planned start date';
+        PLNUM         : String(10) @title: 'Parts Planned Order';
+        PAUFNR        : String(12) @title: 'Parts Production Order';
+        PEBELN        : String(10) @title: 'Parts PO';
+        PEBELP        : String(5)  @title: 'Parts PO Item';
+        BTYPENOTE     : String(20) @title: 'By-Order Parts Note';
+        SYDATS        : Date       @title: 'Printed Date';
+        SYTIME        : Time       @title: 'Printed Time';
+        STARTTIME     : Time       @title: 'Parts Planned start time';
+        UUSR          : String(12) @title: 'Changed by';
+        UREPID        : String(40) @title: 'PROGRAMM';
+}
+
+entity ZTHBT0057 : managed {
+    key WERKS: String(14) @title : 'Plant';
+    key E_DOC_NO  : String(18) @title : 'Document No​r';
+    key E_REV_NO: String(5) @title : 'Technical renewal REV No.';
+    key PS_GROUP_NO: String(3) @title : 'PS group No.';
+    key PS_ITEM_NO: String(3) @title : 'PS Item No.';
+    key MODEL: String(10) @title : 'Model name​';
+    key MATNR: String(40) @title : 'Material code at MS code level';
+    key SEQ_NO: String(3) @title : 'Sequence No';
+    ERROR_SEQ_NO: String(3) @title : 'Error Sequence No';
+    FORMALIZE_DATE: Date @title : 'Formalization date​';
+    ERROR_MSG: String(40) @title : 'Error Message​';
+    PROCESS_MODE: String(1) @title : 'Process Mode';
+    PROCESSED_STATUS: String(1) @title : 'Process Status';
+
+}
 
 entity ZTHBT0055 : managed {
     key ZCABNUM:String(20) @title : 'Cabinet number';
@@ -452,5 +500,5 @@ entity ZTHBT0055 : managed {
     ZDOPDATE:Date @title : 'DO Plan Date';		
     ZDOADATE:Date @title : 'DO Actual Date';	
     ZDELFLAG:String(1) @title : 'Deletion Flag';
-    ZSHPSTAT:String(1) @title : 'Shipping Status';		
+    ZSHPSTAT:String(1) @title : 'Shipping Status';
 }
