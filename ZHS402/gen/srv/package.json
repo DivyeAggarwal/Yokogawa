@@ -178,6 +178,22 @@
           "csrf": true,
           "csrfInBatch": true
         }
+      },
+      "BusinessPartner": {
+        "kind": "odata-v2",
+        "model": "srv/external/BusinessPartner",
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_BUSINESS_PARTNER",
+          "destination": "s4003-ap-https_ZSRVBHPS0008"
+        }
+      },
+      "ProjectDetails": {
+        "kind": "odata-v2",
+        "model": "srv/external/ProjectDetails",
+        "credentials": {
+          "path": "/sap/opu/odata/sap/ZCDSEHPSC0002_CDS",
+          "destination": "s4003-ap-https_ZSRVBHPS0008"
+        }
       }
     },
     "hana": {
