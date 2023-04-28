@@ -608,7 +608,7 @@ module.exports = cds.service.impl(async function (srv) {
                     return mapZTHBT0009(output, req).then(() =>{
                         return mapZTHBT0037(output, req).then(() =>{
                             for (let index = 0; index < output.length; index++) {
-                                const element = output[index][0];
+                                const element = output[index];
                                 delete element.Parts_No_ext_sign; 
                             }
                             return {
