@@ -852,8 +852,6 @@ service ZAPIBPS0001 {
         PBUKR,
         PS_PSPNR,
         ZMSCODE,
-        ZIDEX,
-        ZVMCODE,
         ZQTY,
         ZUT,
         ZSHTP,
@@ -862,6 +860,9 @@ service ZAPIBPS0001 {
         null as CustomerFullName: String(100),
         null as ProjDesc: String(50)
     }
+    actions {
+        action pgi();
+    }   
 }
 
 service ZCDSEHBTC0015 {

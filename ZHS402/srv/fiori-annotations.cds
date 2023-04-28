@@ -1,6 +1,8 @@
 using ZCDSEHBTC0001 from './cat-service';
 using ZCDSEHBTC0002 from './cat-service';
 using ZCDSEHBTC0003 from './cat-service';
+using ZAPIBPS0001 from './cat-service';
+
 using { CatalogService.ZCDSEHCSC0003 as ZCDSEHCSC0003} from './cat-service';
 
 
@@ -2021,3 +2023,87 @@ annotate ZCDSEHBTC0007.specificationChange {
     })
     COMP_PART_NO;
 }
+
+// annotate ZAPIBPS0001.ZCDSEBPS0003{
+     
+//          @(Common : {
+//            Label        : 'Parent WBS',
+//             ValueList    : {
+//                 CollectionPath : 'ParentWBS',
+//                 Parameters     : [
+//                 {
+//                     $Type             : 'Common.ValueListParameterInOut',
+//                     LocalDataProperty : PWBS,
+//                     ValueListProperty : 'ParentWBS'
+//                 },
+//                 {
+//                     $Type             : 'Common.ValueListParameterDisplayOnly',
+//                     ValueListProperty : 'ReceiverProjDesc'
+//                 },
+//                 {
+//                     $Type             : 'Common.ValueListParameterInOut',
+//                     LocalDataProperty : PARENTWBSDESC,
+//                     ValueListProperty : 'ParentProjDesc'
+//                 },
+//                 {
+//                     $Type             : 'Common.ValueListParameterIn',
+//                     ValueListProperty : 'ReceiverWBS',
+//                     LocalDataProperty : RWBS,
+//                 }
+//                 ]
+//             }
+//         })
+//         PWBS;
+// }
+
+
+annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
+    UI: {
+        HeaderInfo: {
+            TypeName: '',
+            TypeNamePlural: 'Cabinets',
+            Title: { Value: ZCABNUM },
+            Description: { Value: ZDESCRIP }
+        },
+
+        SelectionFields: [ PBUKR,PS_PSPNR,ZDONUM ],
+        LineItem: [
+             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0001.EntityContainer/ZCDSEBPS0003_pgi', Label: 'Post Good Issue',  Visible:true, Enabled:true},
+            { Value: PS_PSPNR },
+            { Value: ProjDesc },
+            { Value: ZDONUM },
+            { Value: ZSHTP },
+            { Value: CustomerFullName },
+            { Value: ProjectManager },
+            { Value: ZCABNUM },
+            { Value: ZMSCODE },
+            { Value: ZQTY },
+            { Value: ZUT }         
+        ],
+        Facets: [
+            {
+                $Type: 'UI.CollectionFacet',
+                Label: 'Cabinets',
+                Facets: [
+                    {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Cabinet'}
+                ]
+            }
+        ],        
+        FieldGroup#MainAs: {
+            Data: [
+              { Value: PS_PSPNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ProjDesc,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDONUM,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHTP,![@Common.FieldControl] : #ReadOnly },
+            { Value: CustomerFullName,![@Common.FieldControl] : #ReadOnly },
+            { Value: ProjectManager,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZCABNUM,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZMSCODE,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZQTY,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZUT,![@Common.FieldControl] : #ReadOnly }           
+            ]
+        }
+    }
+){
+    
+};
