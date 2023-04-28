@@ -856,6 +856,8 @@ service ZAPIBPS0001 {
         ZUT,
         ZSHTP,
         ZDONUM,
+        ZDESCRIP,
+        ZSHPSTAT,
         null as ProjectManager: String(50),
         null as CustomerFullName: String(100),
         null as ProjDesc: String(50)

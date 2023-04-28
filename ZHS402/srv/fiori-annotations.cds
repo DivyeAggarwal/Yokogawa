@@ -2068,7 +2068,7 @@ annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
 
         SelectionFields: [ PBUKR,PS_PSPNR,ZDONUM ],
         LineItem: [
-             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0001.EntityContainer/ZCDSEBPS0003_pgi', Label: 'Post Good Issue',  Visible:true, Enabled:true},
+             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0001.pgi', Label: 'Post Good Issue'},
             { Value: PS_PSPNR },
             { Value: ProjDesc },
             { Value: ZDONUM },
@@ -2078,7 +2078,8 @@ annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
             { Value: ZCABNUM },
             { Value: ZMSCODE },
             { Value: ZQTY },
-            { Value: ZUT }         
+            { Value: ZUT } ,
+            { Value: ZDESCRIP }        
         ],
         Facets: [
             {

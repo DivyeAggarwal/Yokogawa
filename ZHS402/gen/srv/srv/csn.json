@@ -25697,6 +25697,182 @@
     },
     "ZAPIBPS0001.ZCDSEBPS0003": {
       "kind": "entity",
+      "@UI.HeaderInfo.TypeName": "",
+      "@UI.HeaderInfo.TypeNamePlural": "Cabinets",
+      "@UI.HeaderInfo.Title.Value": {
+        "=": "ZCABNUM"
+      },
+      "@UI.HeaderInfo.Description.Value": {
+        "=": "ZDESCRIP"
+      },
+      "@UI.SelectionFields": [
+        {
+          "=": "PBUKR"
+        },
+        {
+          "=": "PS_PSPNR"
+        },
+        {
+          "=": "ZDONUM"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "$Type": "UI.DataFieldForAction",
+          "Action": "ZAPIBPS0001.EntityContainer/ZCDSEBPS0003_pgi",
+          "Label": "Post Good Issue"
+        },
+        {
+          "Value": {
+            "=": "PS_PSPNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "ProjDesc"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZDONUM"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZSHTP"
+          }
+        },
+        {
+          "Value": {
+            "=": "CustomerFullName"
+          }
+        },
+        {
+          "Value": {
+            "=": "ProjectManager"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZCABNUM"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZMSCODE"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZQTY"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZUT"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZDESCRIP"
+          }
+        }
+      ],
+      "@UI.Facets": [
+        {
+          "$Type": "UI.CollectionFacet",
+          "Label": "Cabinets",
+          "Facets": [
+            {
+              "$Type": "UI.ReferenceFacet",
+              "Target": "@UI.FieldGroup#MainAs",
+              "Label": "Cabinet"
+            }
+          ]
+        }
+      ],
+      "@UI.FieldGroup#MainAs.Data": [
+        {
+          "Value": {
+            "=": "PS_PSPNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ProjDesc"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZDONUM"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZSHTP"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "CustomerFullName"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ProjectManager"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZCABNUM"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZMSCODE"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZQTY"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZUT"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        }
+      ],
       "projection": {
         "from": {
           "ref": [
@@ -25726,16 +25902,6 @@
           },
           {
             "ref": [
-              "ZIDEX"
-            ]
-          },
-          {
-            "ref": [
-              "ZVMCODE"
-            ]
-          },
-          {
-            "ref": [
               "ZQTY"
             ]
           },
@@ -25752,6 +25918,11 @@
           {
             "ref": [
               "ZDONUM"
+            ]
+          },
+          {
+            "ref": [
+              "ZDESCRIP"
             ]
           },
           {
@@ -25802,16 +25973,6 @@
           "type": "cds.String",
           "length": 50
         },
-        "ZIDEX": {
-          "@title": "Material Type Code Description",
-          "type": "cds.String",
-          "length": 40
-        },
-        "ZVMCODE": {
-          "@title": "Vendor Material code",
-          "type": "cds.String",
-          "length": 50
-        },
         "ZQTY": {
           "@title": "Quantity",
           "type": "cds.Decimal",
@@ -25833,6 +25994,11 @@
           "type": "cds.String",
           "length": 10
         },
+        "ZDESCRIP": {
+          "@title": "Material Description",
+          "type": "cds.String",
+          "length": 50
+        },
         "ProjectManager": {
           "@Core.Computed": true,
           "type": "cds.String",
@@ -25847,6 +26013,11 @@
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
+        }
+      },
+      "actions": {
+        "pgi": {
+          "kind": "action"
         }
       }
     },

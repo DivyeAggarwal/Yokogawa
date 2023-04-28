@@ -12,8 +12,17 @@ var registerZAPIBPS0001Handler = function (that, cds) {
         var oData = await db.run(req.query);
         var oDataWithCustomer = await populateCustomerFullName(oData);
         var oDataWithManager = await populateManager(oDataWithCustomer);
+        return oDataWithManager;
         
     });
+    that.on ('pgi', async (req)=> {
+        console.log(req);
+        // await UPSERT.into('ZHS402.ZTHBT0051').entries(req.data.input);
+        // const n = await UPDATE(Inquiries).set({ 
+        //     status_code:'2',
+        //     startedAt: Date.now()
+        // }).where ({ID:id}).and({status_code:'1'})
+    })
     
 }
 
