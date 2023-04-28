@@ -10,6 +10,10 @@ using ZSRVBHMM0004 from './external/ZSRVBHMM0004';
 using ZSRVBHPS0010 from './external/ZSRVBHPS0010';
 using ZSRVBHPP0014 from './external/ZSRVBHPP0014';
 using TimeSheetAPI from './external/TimeSheetAPI';
+using BusinessPartner from './external/BusinessPartner';
+using ProjectDetails from './external/ProjectDetails';
+
+
 
 service CatalogService {
     entity ZCDSEHCSC0003 as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -776,5 +780,33 @@ service ZCDSEHBTC0014 {
     entity ZCDSEHPPP0004 as projection on ZSRVBHPP0014.ZCDSEHPPP0004;
     entity A_ProductDescription as projection on API_PRODUCT_SRV.A_ProductDescription;
     entity A_Product as projection on API_PRODUCT_SRV.A_Product;
+}
+
+service ZAPIBPS0001 {
+    entity ZCDSEBPS0001 as projection on BusinessPartner.A_Customer {
+        Customer,
+        CustomerFullName
+    }
+    entity ZCDSEBPS0002 as projection on ProjectDetails.ZCDSEHPSC0002 {
+        ProjectId,
+        ProjDesc,
+        ApproverPM
+    };
+    entity ZCDSEBPS0003 as projection on db.ZTHBT0055{
+        ZCABNUM,
+        PBUKR,
+        PS_PSPNR,
+        ZMSCODE,
+        ZIDEX,
+        ZVMCODE,
+        ZQTY,
+        ZUT,
+        ZSHTP,
+        ZDONUM,
+        null as ProjectManager: String(50),
+        null as CustomerFullName: String(100),
+        null as ProjDesc: String(50)
+    }
+
 }
 

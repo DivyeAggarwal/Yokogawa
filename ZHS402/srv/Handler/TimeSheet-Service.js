@@ -175,8 +175,12 @@ const ValidateAssignment = async (req) => {
             message: 'Valid from Date cant be greater than Valid To Date'
         })
     }
-    if (req.data.ZPS_IDENTIFIER === 'P') {
-        await validateAssignmentProject(req, bupa);
+
+    let savedData = await SELECT.from('ZCDSEHBTC0003.ZTHBT0019').where({ZPNAME : req.data.ZPNAME});
+    let savingData = {};
+    savingData = {...savedData[0],...req.data};
+    if (savingData.ZPS_IDENTIFIER === 'P') {
+        await validateAssignmentProject(savingData, bupa);
     }
 }
 const validateAssignmentProject = async (req, bupa) => {
