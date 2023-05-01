@@ -477,7 +477,7 @@ entity ZTHBT0055 : managed {
     key ZCABNUM:String(20) @title : 'Cabinet number';
     PBUKR: String(4) @title: 'Company code';
     PS_PSPNR: String(24) @title: 'Project Definition';
-    ZMSCODE:String(50) @title : 'MS Code';	
+    ZMSCODE:String(50) @title : '   ';	
     PS_POSNR : String(24) @title : 'WBS Element';		
     MATNR:String(40) @title : 'SAP MATERIAL';	
     ZZ1_MSCODE:String(3) @title : 'Material Type Code';

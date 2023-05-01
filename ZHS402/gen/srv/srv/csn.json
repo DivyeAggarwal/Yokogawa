@@ -26012,16 +26012,19 @@
           "length": 1
         },
         "ProjectManager": {
+          "@title": "Project Manager",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
         },
         "CustomerFullName": {
+          "@title": "Ship To Party Name",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 100
         },
         "ProjDesc": {
+          "@title": "Project Description",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
