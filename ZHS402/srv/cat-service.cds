@@ -858,9 +858,9 @@ service ZAPIBPS0001 {
         ZDONUM,
         ZDESCRIP,
         ZSHPSTAT,
-        null as ProjectManager: String(50),
-        null as CustomerFullName: String(100),
-        null as ProjDesc: String(50)
+        null as ProjectManager: String(50) @title : 'Project Manager',
+        null as CustomerFullName: String(100) @title : 'Ship To Party Name',
+        null as ProjDesc: String(50) @title : 'Project Description'
     }
     
     actions {

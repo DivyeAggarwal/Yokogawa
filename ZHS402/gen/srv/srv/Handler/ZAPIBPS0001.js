@@ -9,24 +9,19 @@ var registerZAPIBPS0001Handler = function (that, cds) {
     });
     that.on('READ', 'ZCDSEBPS0003', async req => {
         const db = await cds.connect.to('db');
-        if(!req.query.SELECT.from.ref[0].where) {
-            req.query.SELECT.from.ref[0].where = [{ ref: ['ZSHPSTAT'] }, '<>', { val: 'P' }];
-        }
-        else {
-            req.query.SELECT.from.ref[0].where.push(...['and',{ ref: ['ZSHPSTAT'] }, '<>', { val: 'P' }]);
-        }
-        
         var oData = await db.run(req.query);
+        // if(oData instanceof Array){
+        //     oData = oData.filter(function(item)
+        //     {
+        //         return item.ZSHPSTAT !== 'P';
+        //     });
+        // }
         var oDataWithCustomer = await populateCustomerFullName(oData);
         var oDataWithManager = await populateManager(oDataWithCustomer);
         return oDataWithManager;
 
     });
     that.on('pgi', async (req) => {
-        // const db = await cds.connect.to('db');
-        // var oData = await db.run(req.query);
-        // oData[0].ZSHPSTAT = 'P';
-        // db.send('ZCDSEBPS0003',oData[0]);
         let oData = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
         oData[0].ZSHPSTAT = 'P';
         await UPSERT.into('ZHS402.ZTHBT0055').entries(oData[0]);

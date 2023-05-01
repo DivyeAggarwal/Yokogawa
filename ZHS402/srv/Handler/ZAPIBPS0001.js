@@ -10,11 +10,15 @@ var registerZAPIBPS0001Handler = function (that, cds) {
     that.on('READ', 'ZCDSEBPS0003', async req => {
         const db = await cds.connect.to('db');
         var oData = await db.run(req.query);
+        //var oDataFiltered;
         // if(oData instanceof Array){
-        //     oData = oData.filter(function(item)
+        //     oDataFiltered = oData.filter(function(item)
         //     {
         //         return item.ZSHPSTAT !== 'P';
         //     });
+        // }
+        // else {
+        //     oDataFiltered = oData;
         // }
         var oDataWithCustomer = await populateCustomerFullName(oData);
         var oDataWithManager = await populateManager(oDataWithCustomer);
@@ -98,7 +102,7 @@ var populateManager = async (oData) => {
         arrayPSPNR.push(oData.PS_PSPNR);
     }
     try {
-        if (arrayKunnr.length > 0) {
+        if (arrayPSPNR.length > 0) {
             const projects = await BusinessPartner.get('ZAPIBPS0001.ZCDSEBPS0002').where({ ProjectId: { in: arrayPSPNR } });
             if (projects.length > 0) {
                 for (let project of projects) {

@@ -2079,7 +2079,7 @@ annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
             { Value: ZMSCODE },
             { Value: ZQTY },
             { Value: ZUT } ,
-            { Value: ZDESCRIP }        
+            { Value: ZDESCRIP }  
         ],
         Facets: [
             {
