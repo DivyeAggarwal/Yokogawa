@@ -800,8 +800,8 @@ const mapZTHBT0008 = async (finalData, req) => {
         object.E_EMP_NAME = req.user.familyName; //Execution User Name
         object.E_DEPT_IN = element.OperationDept; 
         object.E_AUTHORIZED_D = element.ApprovedDate.toString().replace(/-/g,""); 
-        object.APPLY_DATE_CD = element.RevisionReason; 
-        object.MODIFY_CAUSE = element.ExecutionSchedule; 
+        object.APPLY_DATE_CD = element.ExecutionSchedule; 
+        object.MODIFY_CAUSE = element.RevisionReason; 
         object.TRIAL_TYPE = null; 
         aZTHBT0008.push(object);  
         var noError = false;
