@@ -52,7 +52,7 @@ var registerTimeSheetHandler = function (that, cds) {
             where = {};
         }
         var limit = req.query.SELECT.limit;
-        return await readParentWBSCombined(where, limit);
+        return await readParentWBSCombined(where, limit,req);
     });
     that.on('READ', 'LoggedInUser', async req => {
 
@@ -69,7 +69,7 @@ var registerTimeSheetHandler = function (that, cds) {
             where = {};
         }
         var limit = req.query.SELECT.limit;
-        return await readReceiverWBSCombined(where, limit);
+        return await readReceiverWBSCombined(where, limit,req);
     });
     that.on('READ', 'ReceiverCostCenter', async req => {
         const db = await cds.connect.to('TimeSheetEntry');
@@ -190,7 +190,7 @@ const ValidateAssignment = async (req) => {
     }
 }
 const validateAssignmentProject = async (req, bupa) => {
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({globalID: req.user.id});
     if (LoggUser.length > 0) {
         if ((!LoggUser[0].ActivityType && !LoggUser[0].CostCenter) || LoggUser[0].CostCenter === req.data.EKOSTL) {
             req.reject({
@@ -211,7 +211,7 @@ const validateAssignmentProject = async (req, bupa) => {
         if (req.data.RWBS) {
             const whereRWB = [{ ref: ['WBSId'] }, '=', { val: req.data.RWBS }];
 
-            const data = await readReceiverWBSCombined(whereRWB);
+            const data = await readReceiverWBSCombined(whereRWB,null,req);
             //const data = await bupa.get('ZCDSEHBTC0003.ReceiverWBS').where({ WBSId: req.data.RWBS });
             if (data.length === 0) {
                 req.reject({
@@ -279,7 +279,7 @@ const validateAssignmentProject = async (req, bupa) => {
     //Validate Existance of Parent WBS
     if (req.data.PWBS) {
         const wherePWBS = [{ ref: ['ParentWBS'] }, '=', { val: req.data.PWBS }, 'and', { ref: ['ReceiverWBS'] }, '=', { val: req.data.RWBS }];
-        parentWBSdata = await readParentWBSCombined(wherePWBS);
+        parentWBSdata = await readParentWBSCombined(wherePWBS,null,req);
         //const parentWBSdata = await bupa.get('ZCDSEHBTC0003.ParentWBS').where({ ParentWBS: req.data.PWBS });
         if (parentWBSdata.length == 0) {
             req.reject({
@@ -396,9 +396,9 @@ const prepareFilterAsObject = async (where, obj) => {
     }
 }
 
-const readReceiverWBSCombined = async (where, limit) => {
+const readReceiverWBSCombined = async (where, limit,req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({globalID:req.user.id});
 
     var oData = [];
     if (LoggUser.length > 0) {
@@ -430,9 +430,9 @@ const readReceiverWBSCombined = async (where, limit) => {
     return oData;
 }
 
-const readParentWBSCombined = async (where, limit) => {
+const readParentWBSCombined = async (where, limit,req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({globalID: req.user.id});
     var oData = [];
     if (LoggUser.length > 0) {
         const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });

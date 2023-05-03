@@ -192,6 +192,8 @@ service ZCDSEHBTC0003
         key _TimeSheetTemplate.PERNR,
         key _TimeSheetTemplate.WEEK_NUMBER,
         key _TimeSheetTemplate.ZPNAME.ZPNAME as ZPNAME_ZPNAME,
+            _TimeSheetTemplate.ZPNAME.ZPFDT,
+            _TimeSheetTemplate.ZPNAME.ZPTDT,
             _TimeSheetTemplate.ZPNAME.RWBS,
             _TimeSheetTemplate.ZPNAME.RWBSDESC,
             _TimeSheetTemplate.ZPNAME.OBJECT_ID,

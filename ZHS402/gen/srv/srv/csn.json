@@ -3899,7 +3899,7 @@
           "length": 24
         },
         "ZMSCODE": {
-          "@title": "MS Code",
+          "@title": "   ",
           "type": "cds.String",
           "length": 50
         },
@@ -25976,7 +25976,7 @@
           "length": 24
         },
         "ZMSCODE": {
-          "@title": "MS Code",
+          "@title": "   ",
           "type": "cds.String",
           "length": 50
         },

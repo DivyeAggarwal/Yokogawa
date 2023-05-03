@@ -27,8 +27,18 @@ var registerZAPIBPS0001Handler = function (that, cds) {
     });
     that.on('pgi', async (req) => {
         let oData = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
+        if(oData[0].ZSHPSTAT === 'P') {
+            req.reject({
+                code: 403,
+                message: 'Goods Issued already completed for this Combination'
+            });
+        }
         oData[0].ZSHPSTAT = 'P';
         await UPSERT.into('ZHS402.ZTHBT0055').entries(oData[0]);
+        req.info({
+            code: 200,
+            message: 'Goods Issued successfully'
+        });
 
     })
     
