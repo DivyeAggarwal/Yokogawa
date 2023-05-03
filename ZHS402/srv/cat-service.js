@@ -734,7 +734,7 @@ const bomFileDuplicateCheck = (finalData) => {
             params.ps_item_no === element.ps_item_no
         });
         //16	Duplicate Check
-        if(aObject.length > 0){
+        if(aObject.length > 1){
             aObject.forEach(element => {
                 element.error_cod += "Key Field Duplicate in file. ";
             }); 
