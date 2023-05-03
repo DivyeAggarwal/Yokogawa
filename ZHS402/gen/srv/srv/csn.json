@@ -7645,6 +7645,20 @@
               "ref": [
                 "_TimeSheetTemplate",
                 "ZPNAME",
+                "ZPFDT"
+              ]
+            },
+            {
+              "ref": [
+                "_TimeSheetTemplate",
+                "ZPNAME",
+                "ZPTDT"
+              ]
+            },
+            {
+              "ref": [
+                "_TimeSheetTemplate",
+                "ZPNAME",
                 "RWBS"
               ]
             },
@@ -7851,6 +7865,14 @@
           "key": true,
           "type": "cds.String",
           "length": 40
+        },
+        "ZPFDT": {
+          "@title": "Assignment Validity From Date",
+          "type": "cds.Date"
+        },
+        "ZPTDT": {
+          "@title": "Assignment Validity To Date",
+          "type": "cds.Date"
         },
         "RWBS": {
           "@title": "Receiver WBS",
