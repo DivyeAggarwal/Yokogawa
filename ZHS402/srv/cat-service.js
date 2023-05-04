@@ -309,11 +309,11 @@ module.exports = cds.service.impl(async function (srv) {
 
     this.on('READ', 'BOMDisplay', async req => {
         const db = await cds.connect.to('db');
-        // if (req._query) {
-            // const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
-            // if (doc_type_idx >= 0) {
-            //     var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
-            // }
+        if (req.query) {
+            const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
+            if (doc_type_idx >= 0) {
+                var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
+            }
             // const WERKS_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "WERKS"));
             // if (WERKS_idx >= 0) {
             //     var WERKS = req.query.SELECT.where[WERKS_idx + 2].val
@@ -367,7 +367,7 @@ module.exports = cds.service.impl(async function (srv) {
             }
             return aData;
         }
-        // }
+        }
 
         // return oData;
     });

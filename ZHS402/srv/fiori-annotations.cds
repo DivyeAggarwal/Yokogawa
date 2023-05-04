@@ -528,9 +528,9 @@ annotate ZCDSEHBTC0007.BOMDisplay with @(
      }
 ){
 };
-annotate ZCDSEHBTC0007.BOMDisplay with {
-E_DOC_TYPE @UI.HiddenFilter: true;
-}
+// annotate ZCDSEHBTC0007.BOMDisplay with {
+// E_DOC_TYPE @UI.HiddenFilter: true;
+// }
 // annotate ZCDSEHBTC0007.BOMDisplay with {
 //     WERKS @(
 //            Common.ValueList : {
@@ -719,36 +719,36 @@ annotate ZCDSEHBTC0007.MAIN_MODEL_HELP with @(
      }
 ){
 };
-annotate ZCDSEHBTC0007.BOMDisplay {
-    @Common.ValueListWithFixedValues : true
-    @(Common : {
-        Label     : 'Doc Type',
-        ValueList : {
-            $Type : 'Common.ValueListType',
-            CollectionPath : 'Doc_Type',
-            Parameters     : [
-                {
-                    $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : E_DOC_TYPE,
-                    ValueListProperty : 'DOC_TYPE'
-                }
-            ]
-        }
-    })
-    E_DOC_TYPE;
-}
-annotate ZCDSEHBTC0007.BOMDisplay @(Capabilities.FilterRestrictions : {
-   FilterExpressionRestrictions : [
-        {
-            Property : E_DOC_TYPE,
-            AllowedExpressions : 'SingleValue'
-        }
-    ]
-});
-annotate ZCDSEHBTC0007.BOMDisplay with {
-    @Common.FilterDefaultValue : 'FE0'
-    E_DOC_TYPE
-};
+// annotate ZCDSEHBTC0007.BOMDisplay {
+//     @Common.ValueListWithFixedValues : true
+//     @(Common : {
+//         Label     : 'Doc Type',
+//         ValueList : {
+//             $Type : 'Common.ValueListType',
+//             CollectionPath : 'Doc_Type',
+//             Parameters     : [
+//                 {
+//                     $Type             : 'Common.ValueListParameterInOut',
+//                     LocalDataProperty : E_DOC_TYPE,
+//                     ValueListProperty : 'DOC_TYPE'
+//                 }
+//             ]
+//         }
+//     })
+//     E_DOC_TYPE;
+// }
+// annotate ZCDSEHBTC0007.BOMDisplay @(Capabilities.FilterRestrictions : {
+//    FilterExpressionRestrictions : [
+//         {
+//             Property : E_DOC_TYPE,
+//             AllowedExpressions : 'SingleValue'
+//         }
+//     ]
+// });
+// annotate ZCDSEHBTC0007.BOMDisplay with {
+//     @Common.FilterDefaultValue : 'FE0'
+//     E_DOC_TYPE
+// };
 annotate ZCDSEHBTC0009.MakersList with @(
   UI.SelectionPresentationVariant #makerlist : {
     Text : 'Maker List',
@@ -783,6 +783,15 @@ annotate ZCDSEHBTC0009.PackingList with @(
     Text : 'PackingList'
   }
 );
+annotate ZCDSEHBTC0009.MakersList with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            E_PARTS_NO,
+            
+        ],
+    }
+});v
 
 annotate ZCDSEHBTC0009.MakersList with @(
     UI : { 
@@ -826,7 +835,8 @@ annotate ZCDSEHBTC0009.PackingList with @(
             { Value : SUPPLY_STYLE },
             { Value : PCKG_TYPE_N }, 
             { Value : PCKG_STYLE_N }, 
-            { Value : SUPPLY_STYLE_N }                                       
+            { Value : SUPPLY_STYLE_N },
+            { Value : PCKG_UNIT_QTY }                                       
         ],
      }
 ){
