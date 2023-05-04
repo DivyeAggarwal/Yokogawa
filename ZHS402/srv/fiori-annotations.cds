@@ -791,7 +791,7 @@ annotate ZCDSEHBTC0009.MakersList with @(Capabilities : {
             
         ],
     }
-});v
+});
 
 annotate ZCDSEHBTC0009.MakersList with @(
     UI : { 
