@@ -824,7 +824,7 @@ const mapZTHBT0009 = async (finalData, req) => {
         if(!element.error_cod){
             object.YEOS_MODEL_GROUP = req.data.MainModel;
             object.FZ2_NO = req.data.FZ2No;
-            object.FZ2_NO_SFIX = index;
+            object.FZ2_NO_SFIX = index.toString();
             object.E_DOC_TYPE = element.e_doc_type;
             object.E_DOC_NO = element.e_doc_no;
             object.E_REV_NO = element.e_rev_no;
