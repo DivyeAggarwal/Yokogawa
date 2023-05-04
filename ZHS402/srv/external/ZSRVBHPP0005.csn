@@ -1,0 +1,505 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.7.0"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHPP0005": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0005.ZCDSEHPPB0060": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Projection View for KANBAN Piking List",
+      "elements": {
+        "pkkey": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "notNull": true
+        },
+        "pkbst": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Kanban Status",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "pkstu": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Stock Transfer",
+          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "Scan_Start1_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Scan_Start2_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Scan_Start3_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Signal_Start1_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Signal_Start2_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Signal_Start3_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Signal_Start4_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step1_GoodsIssue1_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step1_GoodsIssue2_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step1_Requires1_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step1_Requires2_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step2_GoodsIssue1_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step2_GoodsIssue2_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step2_GoodsReceipt1_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step2_GoodsReceipt2_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step2_Requires1_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "Step2_Requires2_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        }
+      },
+      "actions": {
+        "Scan_Start1": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Scan_Start2": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Scan_Start3": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Signal_Start1": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Signal_Start2": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Signal_Start3": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Signal_Start4": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step1_GoodsIssue1": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step1_GoodsIssue2": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step1_Requires1": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step1_Requires2": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step2_GoodsIssue1": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step2_GoodsIssue2": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step2_GoodsReceipt1": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step2_GoodsReceipt2": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step2_Requires1": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        },
+        "Step2_Requires2": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0060"
+          }
+        }
+      }
+    },
+    "ZSRVBHPP0005.ZCDSEHPPB0083": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Projection of Picking list scan",
+      "elements": {
+        "pkngnubr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 11,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Picking Number",
+          "notNull": true
+        },
+        "pkngitnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Picking Item Number",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "Picking_List_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "bdmng": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "meins",
+          "@sap.label": "Requirement Quantity"
+        },
+        "meins": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "matnr": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number"
+        },
+        "werks_fr": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant (Issue from)"
+        },
+        "lgort_fr": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Location (Issuefrom)",
+          "@sap.quickinfo": "Storage Location (Issue from)"
+        },
+        "werks_to": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant (Issue to)"
+        },
+        "lgort_to": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Location (Issue to)",
+          "@sap.quickinfo": "Storage Location (Issue to)"
+        },
+        "scandate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Scanned Date"
+        },
+        "set_type": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Set Type"
+        },
+        "scantime": {
+          "type": "cds.Time",
+          "@sap.label": "Scanned Time"
+        },
+        "zzh_udats": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Change Date"
+        },
+        "zzh_uuzeit": {
+          "type": "cds.Time",
+          "@sap.label": "Change Time"
+        },
+        "zzh_uusr": {
+          "type": "cds.String",
+          "length": 12,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Changed by"
+        },
+        "zzh_urepid": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Changed Program"
+        },
+        "ind_type": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Individual Type"
+        }
+      },
+      "actions": {
+        "Picking_List": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0005.ZCDSEHPPB0083"
+          }
+        }
+      }
+    },
+    "ZSRVBHPP0005.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.label": "Short text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPP0005.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "ExternalCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Commercial",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "UoM Text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@sap.label": "Decimal Places"
+        }
+      }
+    }
+  }
+}

@@ -66,6 +66,96 @@ module.exports = cds.service.impl(async function (srv) {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
+
+    
+ this.on('READ', 'ZCDSEHPPB0060', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+
+this.on('READ', 'ZCDSEHPPB0083', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Picking_List', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_Requires2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_Requires1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_GoodsReceipt2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_GoodsReceipt1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_GoodsIssue2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_GoodsIssue1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step1_Requires2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step1_Requires1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step1_GoodsIssue2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step1_GoodsIssue1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Signal_Start4', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Signal_Start3', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Signal_Start2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Signal_Start1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Scan_Start3', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Scan_Start2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Scan_Start1', async (req) => {
+    const api = await cds.connect.to('ZSRVBHPP0005');
+    var response = await api.tx(req).post("/Scan_Start1",req.data);
+    return response;
+    // return kandanListScanSrv.run(req.query);
+});
+
+this.on('READ', 'ZCDSEHPPB0085', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
+    return kandanListScanSrv.run(req.query);
+});
     this.on('CREATE', 'TenDigitsParts', async req => {
         const api = await cds.connect.to('API_PRODUCT_SRV');
         var dulicate = Object.assign({}, req.data);

@@ -9,6 +9,8 @@ using ZSRVBHPP0012 from './external/ZSRVBHPP0012';
 using ZSRVBHMM0004 from './external/ZSRVBHMM0004';
 using ZSRVBHPS0010 from './external/ZSRVBHPS0010';
 using ZSRVBHPP0014 from './external/ZSRVBHPP0014';
+using ZSRVBHPP0005 from './external/ZSRVBHPP0005';
+using ZSRVBHPP0015 from './external/ZSRVBHPP0015';
 using TimeSheetAPI from './external/TimeSheetAPI';
 using BusinessPartner from './external/BusinessPartner';
 using ProjectDetails from './external/ProjectDetails';
@@ -927,3 +929,63 @@ service ZCDSEHBTC0016 {
     // }
 }
 
+//Scan Kanban picking list
+service ZCDSEHBTC0017 {
+    entity ZTHBT0030 as projection on db.ZTHBT0030; 
+    entity ZCDSEHPPB0060 as projection on ZSRVBHPP0005.ZCDSEHPPB0060; 
+    entity ZCDSEHPPB0083 as projection on ZSRVBHPP0005.ZCDSEHPPB0083
+    @cds.persistence.skip
+    entity PickingDetails {
+        key PickingNumber  : String(11)  @title : 'Picking Number' @Common.QuickInfo : 'Picking Number'; 
+            RecyclingKanban  : String(40)  @title : 'Recycling Kanban(1Scan/2Scan)' @Common.QuickInfo : 'Recycling Kanban(1Scan/2Scan)'; 
+            PartsRequestKanban1  : String(5)  @title : 'Parts Request Kanban (1 Step)' @Common.QuickInfo : 'Parts Request Kanban (1 Step)'; 
+            PartsRequestKanban2  : String(5)  @title : 'Parts Request Kanban (2 Step)' @Common.QuickInfo : 'Parts Request Kanban (2 Step)'; 
+            ProducOrdering  : String(40)  @title : 'Production ordering/Signal Kanban' @Common.QuickInfo : 'Production ordering/Signal Kanban'; 
+            ZCDSEHPPB0060Type  : Association to many  ZCDSEHPPB0060;
+            ZCDSEHPPB0083Type  : Association to many  ZCDSEHPPB0083;
+    }
+    @open
+    type Object {}
+    action Picking_List(pkngnubr : String(11), pkngitnr: String(4)) returns Object;
+    action Step2_Requires2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Step2_Requires1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Step2_GoodsReceipt2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Step2_GoodsReceipt1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Step2_GoodsIssue2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Step2_GoodsIssue1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Step1_Requires2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Step1_Requires1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Step1_GoodsIssue2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Step1_GoodsIssue1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Signal_Start4(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Signal_Start3(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Signal_Start2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Signal_Start1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Scan_Start3(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Scan_Start2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Scan_Start1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+}
+
+
+//Print Kanban
+service ZCDSEHBTC0018 {
+    entity ZTHBT0030 as projection on db.ZTHBT0030; 
+    entity ZTHBT0006 as projection on db.ZTHBT0006; 
+    entity ZCDSEHPPB0085 as projection on ZSRVBHPP0015.ZCDSEHPPB0085;  
+    @cds.persistence.skip
+    entity PickingDetails {
+        key ProcessFlag  : String(11)  @title : 'Process Flag' @Common.QuickInfo : 'Process Flag'; 
+            IssueType  : String(40)  @title : 'Issue Type' @Common.QuickInfo : 'Issue Type'; 
+            Plantissuedfrom  : String(10)  @title : 'Plant issued from' @Common.QuickInfo : 'Plant issued from'; 
+            StorageLocationssuedfrom    : String(01)  @title : 'Storage Location issued from' @Common.QuickInfo : 'Storage Location issued from'; 
+            Plantissuedto  : String(10)  @title : 'Plant issued to' @Common.QuickInfo : 'Plant issued to'; 
+            StorageLocationissuedto  : String(10)  @title : 'Storage Location issued to' @Common.QuickInfo : 'Storage Location issued to'; 
+            supplyAreaissuedto  : String(10)  @title : 'supply Area issued to' @Common.QuickInfo : 'supply Area issued to'; 
+            MaterialNumber  : String(40)  @title : 'Material Number' @Common.QuickInfo : 'Material Number'; 
+            KanbanID  : String(10)  @title : 'Kanban ID' @Common.QuickInfo : 'Kanban ID'; 
+            KanbanType  : String(10)  @title : 'Kanban Type' @Common.QuickInfo : 'Kanban Type'; 
+            PrintedTime  : String(10)  @title : 'Printed Time' @Common.QuickInfo : 'Printed Time'; 
+            PrintedDate  : String(10)  @title : 'Printed Date' @Common.QuickInfo : 'Printed Date'; 
+            ZCDSEHPPB0085  : Association to many  ZCDSEHPPB0085;
+    } 
+}
