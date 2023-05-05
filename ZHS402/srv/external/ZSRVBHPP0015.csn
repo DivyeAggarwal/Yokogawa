@@ -1,0 +1,258 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.7.0"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHPP0015": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0015.I_MaterialStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Material",
+      "@sap.value.list": "true",
+      "elements": {
+        "Material": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "Material_Text",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "notNull": true
+        },
+        "Material_Text": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        }
+      }
+    },
+    "ZSRVBHPP0015.ZCDSEHPPB0085": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom entity for kanban print",
+      "elements": {
+        "rep_strategy": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Stock Transfer",
+          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer",
+          "notNull": true
+        },
+        "plt_issfrm": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issuing Plant",
+          "@sap.quickinfo": "Issuing Plant in Kanban Processing"
+        },
+        "sloc_issfrm": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Receiving stor. loc.",
+          "@sap.quickinfo": "Receiving/issuing storage location"
+        },
+        "sloc_binfrm": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin"
+        },
+        "material": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "@sap.value.list": "standard"
+        },
+        "quantity": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "unit",
+          "@sap.label": "Container Quantity"
+        },
+        "unit": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "plant_issto": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant"
+        },
+        "sloc_issto": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location"
+        },
+        "supp_areaissto": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supply Area",
+          "@sap.quickinfo": "Production Supply Area"
+        },
+        "status": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Kanban Status"
+        },
+        "kanbanid": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number"
+        },
+        "printdt": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Current Date",
+          "@sap.quickinfo": "ABAP system field: Current date of application server"
+        },
+        "printtm": {
+          "type": "cds.Integer",
+          "@sap.label": "Time Zone Difference",
+          "@sap.quickinfo": "ABAP System Field: Time Zone"
+        },
+        "boxtyp_cod": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description"
+        },
+        "boxtyp_text": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description"
+        },
+        "language": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.label": "Language Key"
+        },
+        "selectflag": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": ""
+        },
+        "trafic_light": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": ""
+        },
+        "message": {
+          "type": "cds.String",
+          "length": 452,
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Text (452 characters)"
+        }
+      }
+    },
+    "ZSRVBHPP0015.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.label": "Short text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPP0015.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "ExternalCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Commercial",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "UoM Text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@sap.label": "Decimal Places"
+        }
+      }
+    }
+  }
+}

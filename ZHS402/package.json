@@ -208,6 +208,30 @@
           "path": "/sap/opu/odata/sap/ZCDSEHPSC0002_CDS",
           "destination": "s4003-ap-https_ZSRVBHPS0008"
         }
+      },
+      "ZSRVBHPP0005": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVBHPP0005",
+        "csrf": true,
+        "csrfInBatch": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_PRODUCT_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
+      },
+      "ZSRVBHPP0015": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVBHPP0015",
+        "csrf": true,
+        "csrfInBatch": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_PRODUCT_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
       }
     },
     "hana": {

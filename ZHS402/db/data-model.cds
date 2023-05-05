@@ -502,3 +502,15 @@ entity ZTHBT0055 : managed {
     ZDELFLAG:String(1) @title : 'Deletion Flag';
     ZSHPSTAT:String(1) @title : 'Shipping Status';
 }
+
+
+entity ZTHBT0030 : managed {
+    key REVNR         : Int16  @title : 'Revision number';
+    key PDATS      : Date @title : 'Toku Parts Delivery Date';
+    key PZEIT      : Time @title : 'Printed Local Time';
+        PRVNR : Int16  @title : 'Revision number which is regular printed';
+}
+
+
+
+

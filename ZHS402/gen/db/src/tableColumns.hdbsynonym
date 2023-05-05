@@ -1,8 +1,0 @@
-{
-    "PUBLIC_TABLE_COLUMNS" : {
-      "target": {
-        "object" : "TABLE_COLUMNS",
-        "schema": "SYS"
-      }
-    }
-  }
