@@ -151,7 +151,8 @@ service ZCDSEHBTC0003
             SERVICE,
             WBS_ELEMENT,
             WBS_ELEMENT_DESC,
-            UNIT
+            UNIT,
+            ZPNAME
     }
     @cds.persistence.skip
     entity UserInfo {

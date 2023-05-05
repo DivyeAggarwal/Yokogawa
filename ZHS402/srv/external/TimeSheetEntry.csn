@@ -1,6 +1,6 @@
 {
   "meta": {
-    "creator": "cds-dk 6.6.2"
+    "creator": "cds-dk 6.7.0"
   },
   "$version": "2.0",
   "definitions": {
@@ -332,6 +332,10 @@
           "@sap.label": "Display Unit/Measure",
           "@sap.quickinfo": "Unit of Measure for Display",
           "@sap.semantics": "unit-of-measure"
+        },
+        "ZPNAME": {
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
