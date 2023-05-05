@@ -399,17 +399,14 @@ const prepareFilterAsObject = async (where, obj) => {
 const readReceiverWBSCombined = async (where, limit,req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
     let globalId;
-    // if(req.user.id === 'Anonymous') {
-    //     globalId = '30055996';
-    // }
-    // else {
-    //     const btpUsers = await SCIMUsersShadowUsersApi.getAllUsersUsingGet().execute({ destinationName: 'bt003-uaa' });
-    //     let loggedInUserBTP = btpUsers.resources.find(function(element) {
-    //         element.id === req.user.id
-    //     });
-    //     globalId = loggedInUserBTP.externalId;
+    if(req.user.id === 'Anonymous') {
+        globalId = '30055996';
+    }
+    else {
+        const btpUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
+        globalId = btpUser[0].id;
         
-    // }
+    }
     const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({globalID:globalId});
 
     var oData = [];

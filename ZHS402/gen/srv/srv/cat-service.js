@@ -7,12 +7,28 @@ const registerZAPIBPS0001Handler = require("./Handler/ZAPIBPS0001");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql;
-import { SCIMUsersShadowUsersApi} from "./generated/PlatformAPI";
+// import { SCIMUsersShadowUsersApi} from "./generated/PlatformAPI";
+//var SCIMUsersShadowUsersApi = require("./generated/PlatformAPI");
 
 module.exports = cds.service.impl(async function (srv) {
-    
+    const api = 'xsuaa_api';
+    const xsuaa_bind = JSON.parse(process.env.VCAP_SERVICES).xsuaa[0];
+    const api_def = cds.env.requires[api];
+    api_def.credentials.url = xsuaa_bind.credentials.url;
+    const xsuaa = await cds.connect.to(api_def);
+    this.on('READ', 'UserInfo', req => {
+        const user = {
+            id: req.user.id,
+            tenant:req.user.tenant
+        }
+        return user;
+    });
+    this.on('READ', 'userInfoUAA', async () => {
+        return await xsuaa.get("/userinfo");
+    })
+
     const db = await cds.connect.to("db");
-    registerTimeSheetHandler(this, cds,SCIMUsersShadowUsersApi);
+    registerTimeSheetHandler(this, cds);
     registerProductionOrderPrint(this,cds);
     registerBomRegisterError(this,cds);
     registerZAPIBPS0001Handler(this,cds);
@@ -67,6 +83,96 @@ module.exports = cds.service.impl(async function (srv) {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
     });
+
+    
+ this.on('READ', 'ZCDSEHPPB0060', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+
+this.on('READ', 'ZCDSEHPPB0083', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Picking_List', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_Requires2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_Requires1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_GoodsReceipt2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_GoodsReceipt1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_GoodsIssue2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step2_GoodsIssue1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step1_Requires2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step1_Requires1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step1_GoodsIssue2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Step1_GoodsIssue1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Signal_Start4', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Signal_Start3', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Signal_Start2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Signal_Start1', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Scan_Start3', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Scan_Start2', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('Scan_Start1', async (req) => {
+    const api = await cds.connect.to('ZSRVBHPP0005');
+    var response = await api.tx(req).post("/Scan_Start1",req.data);
+    return response;
+    // return kandanListScanSrv.run(req.query);
+});
+
+this.on('READ', 'ZCDSEHPPB0085', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
+    return kandanListScanSrv.run(req.query);
+});
     this.on('CREATE', 'TenDigitsParts', async req => {
         const api = await cds.connect.to('API_PRODUCT_SRV');
         var dulicate = Object.assign({}, req.data);
@@ -310,11 +416,11 @@ module.exports = cds.service.impl(async function (srv) {
 
     this.on('READ', 'BOMDisplay', async req => {
         const db = await cds.connect.to('db');
-        // if (req._query) {
-            // const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
-            // if (doc_type_idx >= 0) {
-            //     var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
-            // }
+        if (req.query) {
+            const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
+            if (doc_type_idx >= 0) {
+                var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
+            }
             // const WERKS_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "WERKS"));
             // if (WERKS_idx >= 0) {
             //     var WERKS = req.query.SELECT.where[WERKS_idx + 2].val
@@ -368,7 +474,7 @@ module.exports = cds.service.impl(async function (srv) {
             }
             return aData;
         }
-        // }
+        }
 
         // return oData;
     });
@@ -801,8 +907,8 @@ const mapZTHBT0008 = async (finalData, req) => {
         object.E_EMP_NAME = req.user.familyName; //Execution User Name
         object.E_DEPT_IN = element.OperationDept; 
         object.E_AUTHORIZED_D = element.ApprovedDate.toString().replace(/-/g,""); 
-        object.APPLY_DATE_CD = element.RevisionReason; 
-        object.MODIFY_CAUSE = element.ExecutionSchedule; 
+        object.APPLY_DATE_CD = element.ExecutionSchedule; 
+        object.MODIFY_CAUSE = element.RevisionReason; 
         object.TRIAL_TYPE = null; 
         aZTHBT0008.push(object);  
         var noError = false;
@@ -825,7 +931,7 @@ const mapZTHBT0009 = async (finalData, req) => {
         if(!element.error_cod){
             object.YEOS_MODEL_GROUP = req.data.MainModel;
             object.FZ2_NO = req.data.FZ2No;
-            object.FZ2_NO_SFIX = index;
+            object.FZ2_NO_SFIX = index.toString();
             object.E_DOC_TYPE = element.e_doc_type;
             object.E_DOC_NO = element.e_doc_no;
             object.E_REV_NO = element.e_rev_no;

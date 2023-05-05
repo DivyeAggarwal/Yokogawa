@@ -1,0 +1,8 @@
+{
+    "PUBLIC_M_TABLES" : {
+      "target": {
+        "object" : "M_TABLES",
+        "schema": "SYS"
+      }
+    }
+  }
