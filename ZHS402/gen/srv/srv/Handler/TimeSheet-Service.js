@@ -1,4 +1,4 @@
-var registerTimeSheetHandler = function (that, cds) {
+var registerTimeSheetHandler = function (that, cds,SCIMUsersShadowUsersApi) {
     that.on('READ', 'AccountingIndicator', async req => {
         const bupa = await cds.connect.to('TimeSheetEntry');
         return bupa.run(req.query);
@@ -398,7 +398,19 @@ const prepareFilterAsObject = async (where, obj) => {
 
 const readReceiverWBSCombined = async (where, limit,req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({globalID:req.user.id});
+    let globalId;
+    if(req.user.id === 'Anonymous') {
+        globalId = '30055996';
+    }
+    else {
+        const btpUsers = await SCIMUsersShadowUsersApi.getAllUsersUsingGet().execute({ destinationName: 'bt003-uaa' });
+        let loggedInUserBTP = btpUsers.resources.find(function(element) {
+            element.id === req.user.id
+        });
+        globalId = loggedInUserBTP.externalId;
+        
+    }
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({globalID:globalId});
 
     var oData = [];
     if (LoggUser.length > 0) {

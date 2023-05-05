@@ -6,12 +6,13 @@ const registerBomRegisterError = require("./Handler/BomRegistrationErrorUpdate")
 const registerZAPIBPS0001Handler = require("./Handler/ZAPIBPS0001");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
-const { SELECT, INSERT, UPDATE } = cds.ql
+const { SELECT, INSERT, UPDATE } = cds.ql;
+import { SCIMUsersShadowUsersApi} from "./generated/PlatformAPI";
 
 module.exports = cds.service.impl(async function (srv) {
-
+    
     const db = await cds.connect.to("db");
-    registerTimeSheetHandler(this, cds);
+    registerTimeSheetHandler(this, cds,SCIMUsersShadowUsersApi);
     registerProductionOrderPrint(this,cds);
     registerBomRegisterError(this,cds);
     registerZAPIBPS0001Handler(this,cds);
@@ -734,7 +735,7 @@ const bomFileDuplicateCheck = (finalData) => {
             params.ps_item_no === element.ps_item_no
         });
         //16	Duplicate Check
-        if(aObject.length > 0){
+        if(aObject.length > 1){
             aObject.forEach(element => {
                 element.error_cod += "Key Field Duplicate in file. ";
             }); 

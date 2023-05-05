@@ -151,6 +151,21 @@ service ZCDSEHBTC0003
             WBS_ELEMENT_DESC,
             UNIT
     }
+    @cds.persistence.skip
+    entity UserInfo {
+        id:String(16);
+        tenant:String(100);
+
+    }
+
+    @cds.persistence.skip
+    entity userInfoUAA {
+        user_id:String(16);
+        user_name:String(100);
+        email:String(150);
+
+    }
+
    
    entity ZTHBT0019 as
         select from db.ZTHBT0019 as _assignment

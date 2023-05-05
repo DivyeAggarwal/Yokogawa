@@ -6,9 +6,26 @@ const registerBomRegisterError = require("./Handler/BomRegistrationErrorUpdate")
 const registerZAPIBPS0001Handler = require("./Handler/ZAPIBPS0001");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
-const { SELECT, INSERT, UPDATE } = cds.ql
+const { SELECT, INSERT, UPDATE } = cds.ql;
+// import { SCIMUsersShadowUsersApi} from "./generated/PlatformAPI";
+//var SCIMUsersShadowUsersApi = require("./generated/PlatformAPI");
 
 module.exports = cds.service.impl(async function (srv) {
+    const api = 'xsuaa_api';
+    const xsuaa_bind = JSON.parse(process.env.VCAP_SERVICES).xsuaa[0];
+    const api_def = cds.env.requires[api];
+    api_def.credentials.url = xsuaa_bind.credentials.url;
+    const xsuaa = await cds.connect.to(api_def);
+    this.on('READ', 'UserInfo', req => {
+        const user = {
+            id: req.user.id,
+            tenant:req.user.tenant
+        }
+        return user;
+    });
+    this.on('READ', 'userInfoUAA', async () => {
+        return await xsuaa.get("/userinfo");
+    })
 
     const db = await cds.connect.to("db");
     registerTimeSheetHandler(this, cds);
