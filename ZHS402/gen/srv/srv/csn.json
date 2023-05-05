@@ -15053,6 +15053,15 @@
           }
         }
       ],
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "WERKS"
+        },
+        {
+          "=": "E_DOC_NO"
+        }
+      ],
       "elements": {
         "E_DOC_TYPE": {
           "@title": "Document Type7",
@@ -16561,12 +16570,6 @@
     },
     "ZCDSEHBTC0009.ZTHBT0001": {
       "kind": "entity",
-      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
-      "@Capabilities.FilterRestrictions.RequiredProperties": [
-        {
-          "=": "E_PARTS_NO"
-        }
-      ],
       "@UI.SelectionFields": [
         {
           "=": "E_PARTS_NO"
@@ -18043,6 +18046,12 @@
       "kind": "entity",
       "@cds.persistence.skip": true,
       "@UI.SelectionVariant#DigitPartList.Text": "10 Digit Part List",
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "E_PARTS_NO"
+        }
+      ],
       "@UI.SelectionFields": [
         {
           "=": "E_PARTS_NO"
@@ -18070,6 +18079,12 @@
           }
         }
       ],
+      "@Capabilities.SearchRestrictions.$Type": "Capabilities.SearchRestrictionsType",
+      "@Capabilities.SearchRestrictions.Searchable": false,
+      "@Capabilities.InsertRestrictions.$Type": "Capabilities.InsertRestrictionsType",
+      "@Capabilities.InsertRestrictions.Insertable": false,
+      "@Capabilities.DeleteRestrictions.$Type": "Capabilities.DeleteRestrictionsType",
+      "@Capabilities.DeleteRestrictions.Deletable": false,
       "@UI.UpdateHidden": true,
       "@UI.DeleteHidden": true,
       "elements": {
@@ -18080,6 +18095,17 @@
         },
         "E_PARTS_NO": {
           "@title": "Material Number",
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "MaterialInput",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "E_PARTS_NO"
+              },
+              "ValueListProperty": "E_PARTS_NO"
+            }
+          ],
           "type": "cds.String",
           "length": 40
         },
