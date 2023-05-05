@@ -16561,6 +16561,12 @@
     },
     "ZCDSEHBTC0009.ZTHBT0001": {
       "kind": "entity",
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "E_PARTS_NO"
+        }
+      ],
       "@UI.SelectionFields": [
         {
           "=": "E_PARTS_NO"
@@ -18816,12 +18822,6 @@
             "=": "E_PARTS_NO"
           },
           "Descending": false
-        }
-      ],
-      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
-      "@Capabilities.FilterRestrictions.RequiredProperties": [
-        {
-          "=": "E_PARTS_NO"
         }
       ],
       "@UI.SelectionFields": [

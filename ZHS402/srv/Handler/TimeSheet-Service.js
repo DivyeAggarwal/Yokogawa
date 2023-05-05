@@ -190,7 +190,14 @@ const ValidateAssignment = async (req) => {
     }
 }
 const validateAssignmentProject = async (req, bupa) => {
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({globalID: req.user.id});
+    if(req.user.id === 'Anonymous') {
+        emailId = 'arun.dev@yokogawa.com';
+    }
+    else {   
+        emailId =req.user.id;
+    }
+    emailId = emailId.toUpperCase();
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:emailId});
     if (LoggUser.length > 0) {
         if ((!LoggUser[0].ActivityType && !LoggUser[0].CostCenter) || LoggUser[0].CostCenter === req.data.EKOSTL) {
             req.reject({
@@ -398,16 +405,15 @@ const prepareFilterAsObject = async (where, obj) => {
 
 const readReceiverWBSCombined = async (where, limit,req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
-    let globalId;
+    let emailId;
     if(req.user.id === 'Anonymous') {
-        globalId = '30055996';
+        emailId = 'arun.dev@yokogawa.com';
     }
-    else {
-        const btpUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser');
-        globalId = btpUser[0].id;
-        
+    else {   
+        emailId =req.user.id;
     }
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({globalID:globalId});
+    emailId = emailId.toUpperCase();
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:emailId});
 
     var oData = [];
     if (LoggUser.length > 0) {
@@ -441,7 +447,15 @@ const readReceiverWBSCombined = async (where, limit,req) => {
 
 const readParentWBSCombined = async (where, limit,req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({globalID: req.user.id});
+    let emailId;
+    if(req.user.id === 'Anonymous') {
+        emailId = 'arun.dev@yokogawa.com';
+    }
+    else {   
+        emailId =req.user.id;
+    }
+    emailId = emailId.toUpperCase();
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:emailId});
     var oData = [];
     if (LoggUser.length > 0) {
         const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
