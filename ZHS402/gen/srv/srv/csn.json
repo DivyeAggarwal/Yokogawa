@@ -16561,12 +16561,6 @@
     },
     "ZCDSEHBTC0009.ZTHBT0001": {
       "kind": "entity",
-      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
-      "@Capabilities.FilterRestrictions.RequiredProperties": [
-        {
-          "=": "E_PARTS_NO"
-        }
-      ],
       "@UI.SelectionFields": [
         {
           "=": "E_PARTS_NO"
@@ -18043,6 +18037,12 @@
       "kind": "entity",
       "@cds.persistence.skip": true,
       "@UI.SelectionVariant#DigitPartList.Text": "10 Digit Part List",
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "E_PARTS_NO"
+        }
+      ],
       "@UI.SelectionFields": [
         {
           "=": "E_PARTS_NO"
@@ -28782,6 +28782,26 @@
       }
     },
     "ZCDSEHBTC0017.Scan_Start1": {
+      "kind": "action",
+      "params": {
+        "pkkey": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "pkbst": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "pkstu": {
+          "type": "cds.String",
+          "length": 4
+        }
+      },
+      "returns": {
+        "type": "ZCDSEHBTC0017.Object"
+      }
+    },
+    "ZCDSEHBTC0017.Find_Scan": {
       "kind": "action",
       "params": {
         "pkkey": {

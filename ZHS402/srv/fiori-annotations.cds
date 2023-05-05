@@ -849,6 +849,22 @@ annotate ZCDSEHBTC0009.ZTHBT0001 with @(
      }
 ){
 };
+annotate ZCDSEHBTC0009.DigitPartList {
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'MaterialInput',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : E_PARTS_NO,
+                    ValueListProperty : 'E_PARTS_NO'
+                }
+            ]
+        }
+    })
+    E_PARTS_NO;
+}
 annotate ZCDSEHBTC0009.ZTHBT0001 {
     @(Common : {
         Label     : 'Material',
