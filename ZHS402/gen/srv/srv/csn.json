@@ -28801,6 +28801,26 @@
         "type": "ZCDSEHBTC0017.Object"
       }
     },
+    "ZCDSEHBTC0017.Find_Scan": {
+      "kind": "action",
+      "params": {
+        "pkkey": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "pkbst": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "pkstu": {
+          "type": "cds.String",
+          "length": 4
+        }
+      },
+      "returns": {
+        "type": "ZCDSEHBTC0017.Object"
+      }
+    },
     "ZCDSEHBTC0018": {
       "@source": "srv/cat-service.cds",
       "kind": "service"

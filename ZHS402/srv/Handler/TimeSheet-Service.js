@@ -148,7 +148,7 @@ const populateSubmittedFlag = async (oData) => {
         for (let reqData of oData) {
             let dataFound = s4TimeSheets.find(function(element) {
                 //const workDate = new Date(element.WorkDate).toDateString();
-                return element.EMPLOYEENUMBER === reqData.PERNR && element.WEEKNUMBER === reqData.WEEK_NUMBER && element.WBS_ELEMENT === reqData.RWBS
+                return element.EMPLOYEENUMBER === reqData.PERNR && element.WEEKNUMBER === reqData.WEEK_NUMBER && element.ZPNAME === reqData.ZPNAME
                 //  && ( workDate === new Date(reqData.DAY1_DATE).toDateString() ||
                 // workDate === new Date(reqData.DAY2_DATE).toDateString() || workDate === new Date(reqData.DAY3_DATE).toDateString() ||
                 // workDate === new Date(reqData.DAY4_DATE).toDateString() || workDate === new Date(reqData.DAY5_DATE).toDateString() ||
@@ -156,8 +156,11 @@ const populateSubmittedFlag = async (oData) => {
                 //  )
                 });
             if (dataFound) {
-                if (dataFound.Status === '30') {
+                if (dataFound.Status === '10') {
                     reqData.SUBMITTED = true;
+                }
+                else if(dataFound.Status === '20') {
+                    reqData.RELEASED = true;
                 }
             }
         }

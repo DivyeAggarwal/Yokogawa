@@ -239,7 +239,8 @@ service ZCDSEHBTC0003
             _TimeSheetTemplate.DAY6_HOUR,
             _TimeSheetTemplate.DAY7_DATE,
             _TimeSheetTemplate.DAY7_HOUR,
-            null as SUBMITTED: Boolean
+            null as SUBMITTED: Boolean,
+            null as RELEASED: Boolean
     };
     type timeSheetData {
         PERNR: String;
