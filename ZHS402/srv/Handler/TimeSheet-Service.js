@@ -119,16 +119,43 @@ const populateSubmittedFlag = async (oData) => {
         for (let reqData of oData) {
             reqData.SUBMITTED = false;
             reqData.RELEASED = false;
-            let dataFound = s4TimeSheets.find(function (element) {
-                return element.EMPLOYEENUMBER === reqData.PERNR && element.WEEKNUMBER === reqData.WEEK_NUMBER && element.ZPNAME === reqData.ZPNAME
-            });
-            if (dataFound) {
-                if (dataFound.Status === '10') {
-                    reqData.SUBMITTED = true;
-                }
-                else if (dataFound.Status === '20') {
-                    reqData.RELEASED = true;
-                }
+            for (let s4TimeSheet of s4TimeSheets) {
+                if(s4TimeSheet.EMPLOYEENUMBER === reqData.PERNR && s4TimeSheet.WEEKNUMBER === reqData.WEEK_NUMBER
+                && s4TimeSheet.ZPNAME === reqData.ZPNAME_ZPNAME)
+                {
+                    if (!reqData.SUBMITTED && s4TimeSheet.Status === '10') {
+                        reqData.SUBMITTED = true;
+                    }
+                    else if (!reqData.RELEASED && s4TimeSheet.Status === '20') {
+                        reqData.RELEASED = true;
+                    }
+
+                    switch (s4TimeSheet.WORKDATE) {
+                        case reqData.DAY1_DATE:
+                            reqData.DAY1_COUNTER = s4TimeSheet.COUNTER;
+                            break;
+                        case reqData.DAY2_DATE:
+                            reqData.DAY2_COUNTER = s4TimeSheet.COUNTER;
+                            break;
+                        case reqData.DAY3_DATE:
+                            reqData.DAY3_COUNTER = s4TimeSheet.COUNTER;
+                            break;
+                        case reqData.DAY4_DATE:
+                            reqData.DAY4_COUNTER = s4TimeSheet.COUNTER;
+                            break;
+                        case reqData.DAY5_DATE:
+                            reqData.DAY5_COUNTER = s4TimeSheet.COUNTER;
+                            break;
+                        case reqData.DAY6_DATE:
+                            reqData.DAY6_COUNTER = s4TimeSheet.COUNTER;
+                            break;
+                        case reqData.DAY7_DATE:
+                            reqData.DAY7_COUNTER = s4TimeSheet.COUNTER;
+                            break;
+                        default:
+                            break;
+                    }
+                }  
             }
         }
         return oData;

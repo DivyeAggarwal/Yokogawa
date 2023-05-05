@@ -7748,6 +7748,14 @@
               ]
             },
             {
+              "val": null,
+              "as": "DAY1_COUNTER",
+              "cast": {
+                "type": "cds.String",
+                "length": 12
+              }
+            },
+            {
               "ref": [
                 "_TimeSheetTemplate",
                 "DAY2_DATE"
@@ -7758,6 +7766,14 @@
                 "_TimeSheetTemplate",
                 "DAY2_HOUR"
               ]
+            },
+            {
+              "val": null,
+              "as": "DAY2_COUNTER",
+              "cast": {
+                "type": "cds.String",
+                "length": 12
+              }
             },
             {
               "ref": [
@@ -7772,6 +7788,14 @@
               ]
             },
             {
+              "val": null,
+              "as": "DAY3_COUNTER",
+              "cast": {
+                "type": "cds.String",
+                "length": 12
+              }
+            },
+            {
               "ref": [
                 "_TimeSheetTemplate",
                 "DAY4_DATE"
@@ -7782,6 +7806,14 @@
                 "_TimeSheetTemplate",
                 "DAY4_HOUR"
               ]
+            },
+            {
+              "val": null,
+              "as": "DAY4_COUNTER",
+              "cast": {
+                "type": "cds.String",
+                "length": 12
+              }
             },
             {
               "ref": [
@@ -7796,6 +7828,14 @@
               ]
             },
             {
+              "val": null,
+              "as": "DAY5_COUNTER",
+              "cast": {
+                "type": "cds.String",
+                "length": 12
+              }
+            },
+            {
               "ref": [
                 "_TimeSheetTemplate",
                 "DAY6_DATE"
@@ -7808,6 +7848,14 @@
               ]
             },
             {
+              "val": null,
+              "as": "DAY6_COUNTER",
+              "cast": {
+                "type": "cds.String",
+                "length": 12
+              }
+            },
+            {
               "ref": [
                 "_TimeSheetTemplate",
                 "DAY7_DATE"
@@ -7818,6 +7866,14 @@
                 "_TimeSheetTemplate",
                 "DAY7_HOUR"
               ]
+            },
+            {
+              "val": null,
+              "as": "DAY7_COUNTER",
+              "cast": {
+                "type": "cds.String",
+                "length": 12
+              }
             },
             {
               "val": null,
@@ -7948,6 +8004,11 @@
           "@title": "Hours for Day1",
           "type": "cds.Integer"
         },
+        "DAY1_COUNTER": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 12
+        },
         "DAY2_DATE": {
           "@title": "Date of Day2",
           "type": "cds.Date"
@@ -7955,6 +8016,11 @@
         "DAY2_HOUR": {
           "@title": "Hours for Day2",
           "type": "cds.Integer"
+        },
+        "DAY2_COUNTER": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 12
         },
         "DAY3_DATE": {
           "@title": "Date of Day3",
@@ -7964,6 +8030,11 @@
           "@title": "Hours for Day3",
           "type": "cds.Integer"
         },
+        "DAY3_COUNTER": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 12
+        },
         "DAY4_DATE": {
           "@title": "Date of Day4",
           "type": "cds.Date"
@@ -7971,6 +8042,11 @@
         "DAY4_HOUR": {
           "@title": "Hours for Day4",
           "type": "cds.Integer"
+        },
+        "DAY4_COUNTER": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 12
         },
         "DAY5_DATE": {
           "@title": "Date of Day5",
@@ -7980,6 +8056,11 @@
           "@title": "Hours for Day5",
           "type": "cds.Integer"
         },
+        "DAY5_COUNTER": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 12
+        },
         "DAY6_DATE": {
           "@title": "Date of Day6",
           "type": "cds.Date"
@@ -7988,6 +8069,11 @@
           "@title": "Hours for Day6",
           "type": "cds.Integer"
         },
+        "DAY6_COUNTER": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 12
+        },
         "DAY7_DATE": {
           "@title": "Date of Day7",
           "type": "cds.Date"
@@ -7995,6 +8081,11 @@
         "DAY7_HOUR": {
           "@title": "Hours for Day7",
           "type": "cds.Integer"
+        },
+        "DAY7_COUNTER": {
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 12
         },
         "SUBMITTED": {
           "@Core.Computed": true,

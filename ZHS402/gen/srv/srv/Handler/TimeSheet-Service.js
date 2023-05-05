@@ -117,6 +117,8 @@ const populateSubmittedFlag = async (oData) => {
     try {
         const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({ EMPLOYEENUMBER: { in: arrayPernr }, and: { WEEKNUMBER: { in: arrayWeekNumber } } });
         for (let reqData of oData) {
+            reqData.SUBMITTED = false;
+            reqData.RELEASED = false;
             let dataFound = s4TimeSheets.find(function (element) {
                 return element.EMPLOYEENUMBER === reqData.PERNR && element.WEEKNUMBER === reqData.WEEK_NUMBER && element.ZPNAME === reqData.ZPNAME
             });
