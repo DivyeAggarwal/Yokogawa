@@ -181,9 +181,6 @@
           "key": true,
           "type": "cds.String",
           "length": 8,
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Personnel number",
-          "@sap.quickinfo": "Personnel Number",
           "notNull": true
         },
         "WEEKNUMBER": {
@@ -242,84 +239,12 @@
           "type": "cds.String",
           "length": 24
         },
-        "day1_date": {
+        "WORKDATE": {
           "type": "cds.Date",
           "@sap.display.format": "Date",
           "@sap.label": "Date"
         },
-        "day1_CATSHOURS": {
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2,
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours"
-        },
-        "day2_date": {
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
-          "@sap.label": "Date"
-        },
-        "day2_CATSHOURS": {
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2,
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours"
-        },
-        "day3_date": {
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
-          "@sap.label": "Date"
-        },
-        "day3_CATSHOURS": {
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2,
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours"
-        },
-        "day4_date": {
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
-          "@sap.label": "Date"
-        },
-        "day4_CATSHOURS": {
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2,
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours"
-        },
-        "day5_date": {
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
-          "@sap.label": "Date"
-        },
-        "day5_CATSHOURS": {
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2,
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours"
-        },
-        "day6_date": {
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
-          "@sap.label": "Date"
-        },
-        "day6_CATSHOURS": {
-          "type": "cds.Decimal",
-          "precision": 4,
-          "scale": 2,
-          "@sap.unit": "UNIT",
-          "@sap.label": "Hours"
-        },
-        "day7_date": {
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
-          "@sap.label": "Date"
-        },
-        "day7_CATSHOURS": {
+        "CATSHOURS": {
           "type": "cds.Decimal",
           "precision": 4,
           "scale": 2,

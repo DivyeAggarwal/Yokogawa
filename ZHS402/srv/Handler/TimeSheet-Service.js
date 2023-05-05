@@ -52,7 +52,7 @@ var registerTimeSheetHandler = function (that, cds) {
             where = {};
         }
         var limit = req.query.SELECT.limit;
-        return await readParentWBSCombined(where, limit,req);
+        return await readParentWBSCombined(where, limit, req);
     });
     that.on('READ', 'LoggedInUser', async req => {
 
@@ -69,7 +69,7 @@ var registerTimeSheetHandler = function (that, cds) {
             where = {};
         }
         var limit = req.query.SELECT.limit;
-        return await readReceiverWBSCombined(where, limit,req);
+        return await readReceiverWBSCombined(where, limit, req);
     });
     that.on('READ', 'ReceiverCostCenter', async req => {
         const db = await cds.connect.to('TimeSheetEntry');
@@ -83,7 +83,7 @@ var registerTimeSheetHandler = function (that, cds) {
     });
     that.on('READ', 's4TimeSheet', async req => {
         const db = await cds.connect.to('TimeSheetEntry');
-        
+
         var oData = await db.run(req.query);
         return oData;
     })
@@ -104,62 +104,29 @@ var registerTimeSheetHandler = function (that, cds) {
 }
 const populateSubmittedFlag = async (oData) => {
     var arrayPernr = [];
-    var arrayDate = [];
     var arrayWeekNumber = [];
     for (let reqData of oData) {
-        if(!arrayPernr.includes(reqData.PERNR)) {
+        if (!arrayPernr.includes(reqData.PERNR)) {
             arrayPernr.push(reqData.PERNR);
         }
-        
-        // if (reqData.DAY1_DATE) {
-        //     arrayDate.push(new Date(reqData.DAY1_DATE).toISOString());
-        // }
-        // if (reqData.DAY2_DATE) {
-        //     arrayDate.push(new Date(reqData.DAY2_DATE).toISOString());
-        // }
-        // if (reqData.DAY3_DATE) {
-        //     arrayDate.push(new Date(reqData.DAY3_DATE).toISOString());
-        // }
-        // if (reqData.DAY4_DATE) {
-        //     arrayDate.push(new Date(reqData.DAY4_DATE).toISOString());
-        // }
-        // if (reqData.DAY5_DATE) {
-        //     arrayDate.push(new Date(reqData.DAY5_DATE).toISOString());
-        // }
-        // if (reqData.DAY6_DATE) {
-        //     arrayDate.push(new Date(reqData.DAY6_DATE).toISOString());
-        // }
-        // if (reqData.DAY7_DATE) {
-        //     arrayDate.push(new Date(reqData.DAY7_DATE).toISOString());
-        // }
-        if(!arrayWeekNumber.includes(reqData.WEEK_NUMBER)) {
+        if (!arrayWeekNumber.includes(reqData.WEEK_NUMBER)) {
             arrayWeekNumber.push(reqData.WEEK_NUMBER);
         }
-        
-        
-
     }
     const db = await cds.connect.to('TimeSheetEntry');
-//   , and: { WorkDate: { in: arrayDate } }
     try {
-        // ,and:{WEEKNUMBER:{in: arrayWeekNumber}}
-        const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({ EMPLOYEENUMBER: { in: arrayPernr },and:{WEEKNUMBER:{in: arrayWeekNumber}} });
-
+        const s4TimeSheets = await db.get('ZCDSEHBTC0003.s4TimeSheet').where({ EMPLOYEENUMBER: { in: arrayPernr }, and: { WEEKNUMBER: { in: arrayWeekNumber } } });
         for (let reqData of oData) {
-            let dataFound = s4TimeSheets.find(function(element) {
-                //const workDate = new Date(element.WorkDate).toDateString();
+            reqData.SUBMITTED = false;
+            reqData.RELEASED = false;
+            let dataFound = s4TimeSheets.find(function (element) {
                 return element.EMPLOYEENUMBER === reqData.PERNR && element.WEEKNUMBER === reqData.WEEK_NUMBER && element.ZPNAME === reqData.ZPNAME
-                //  && ( workDate === new Date(reqData.DAY1_DATE).toDateString() ||
-                // workDate === new Date(reqData.DAY2_DATE).toDateString() || workDate === new Date(reqData.DAY3_DATE).toDateString() ||
-                // workDate === new Date(reqData.DAY4_DATE).toDateString() || workDate === new Date(reqData.DAY5_DATE).toDateString() ||
-                // workDate === new Date(reqData.DAY6_DATE).toDateString() || workDate === new Date(reqData.DAY7_DATE).toDateString()
-                //  )
-                });
+            });
             if (dataFound) {
                 if (dataFound.Status === '10') {
                     reqData.SUBMITTED = true;
                 }
-                else if(dataFound.Status === '20') {
+                else if (dataFound.Status === '20') {
                     reqData.RELEASED = true;
                 }
             }
@@ -179,23 +146,23 @@ const ValidateAssignment = async (req) => {
         })
     }
 
-    let savedData = await SELECT.from('ZCDSEHBTC0003.ZTHBT0019').where({ZPNAME : req.data.ZPNAME});
+    let savedData = await SELECT.from('ZCDSEHBTC0003.ZTHBT0019').where({ ZPNAME: req.data.ZPNAME });
     let savingData = {};
-    if(savedData.length > 0) {
-        req.data = {...savedData[0],...req.data};
+    if (savedData.length > 0) {
+        req.data = { ...savedData[0], ...req.data };
     }
     else {
         req.data = req.data;
     }
-    
+
     if (req.data.ZPS_IDENTIFIER === 'P') {
         await validateAssignmentProject(req, bupa);
     }
 }
 const validateAssignmentProject = async (req, bupa) => {
-    let loggedinId =req.user.id;
+    let loggedinId = req.user.id;
     loggedinId = loggedinId.toUpperCase();
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:loggedinId, or:{globalID:loggedinId}});
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({ email_Address: loggedinId, or: { globalID: loggedinId } });
     if (LoggUser.length > 0) {
         if ((!LoggUser[0].ActivityType && !LoggUser[0].CostCenter) || LoggUser[0].CostCenter === req.data.EKOSTL) {
             req.reject({
@@ -216,7 +183,7 @@ const validateAssignmentProject = async (req, bupa) => {
         if (req.data.RWBS) {
             const whereRWB = [{ ref: ['WBSId'] }, '=', { val: req.data.RWBS }];
 
-            const data = await readReceiverWBSCombined(whereRWB,null,req);
+            const data = await readReceiverWBSCombined(whereRWB, null, req);
             //const data = await bupa.get('ZCDSEHBTC0003.ReceiverWBS').where({ WBSId: req.data.RWBS });
             if (data.length === 0) {
                 req.reject({
@@ -284,7 +251,7 @@ const validateAssignmentProject = async (req, bupa) => {
     //Validate Existance of Parent WBS
     if (req.data.PWBS) {
         const wherePWBS = [{ ref: ['ParentWBS'] }, '=', { val: req.data.PWBS }, 'and', { ref: ['ReceiverWBS'] }, '=', { val: req.data.RWBS }];
-        parentWBSdata = await readParentWBSCombined(wherePWBS,null,req);
+        parentWBSdata = await readParentWBSCombined(wherePWBS, null, req);
         //const parentWBSdata = await bupa.get('ZCDSEHBTC0003.ParentWBS').where({ ParentWBS: req.data.PWBS });
         if (parentWBSdata.length == 0) {
             req.reject({
@@ -401,11 +368,11 @@ const prepareFilterAsObject = async (where, obj) => {
     }
 }
 
-const readReceiverWBSCombined = async (where, limit,req) => {
+const readReceiverWBSCombined = async (where, limit, req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
-    let loggedinId =req.user.id;
+    let loggedinId = req.user.id;
     loggedinId = loggedinId.toUpperCase();
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:loggedinId, or:{globalID:loggedinId}});
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({ email_Address: loggedinId, or: { globalID: loggedinId } });
 
     var oData = [];
     if (LoggUser.length > 0) {
@@ -437,11 +404,11 @@ const readReceiverWBSCombined = async (where, limit,req) => {
     return oData;
 }
 
-const readParentWBSCombined = async (where, limit,req) => {
+const readParentWBSCombined = async (where, limit, req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
-    let loggedinId =req.user.id;
+    let loggedinId = req.user.id;
     loggedinId = loggedinId.toUpperCase();
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:loggedinId, or:{globalID:loggedinId}});
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({ email_Address: loggedinId, or: { globalID: loggedinId } });
     var oData = [];
     if (LoggUser.length > 0) {
         const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
