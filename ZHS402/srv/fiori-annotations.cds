@@ -783,7 +783,7 @@ annotate ZCDSEHBTC0009.PackingList with @(
     Text : 'PackingList'
   }
 );
-annotate ZCDSEHBTC0009.ZTHBT0001 with @(Capabilities : {
+annotate ZCDSEHBTC0009.DigitPartList with @(Capabilities : {
     FilterRestrictions : {
         $Type              : 'Capabilities.FilterRestrictionsType',
         RequiredProperties : [
