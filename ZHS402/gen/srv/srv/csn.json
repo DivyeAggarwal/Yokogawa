@@ -6510,6 +6510,11 @@
             "ref": [
               "UNIT"
             ]
+          },
+          {
+            "ref": [
+              "ZPNAME"
+            ]
           }
         ]
       },
@@ -6669,6 +6674,10 @@
           "@sap.semantics": "unit-of-measure",
           "type": "cds.String",
           "length": 3
+        },
+        "ZPNAME": {
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -7951,6 +7960,13 @@
               "cast": {
                 "type": "cds.Boolean"
               }
+            },
+            {
+              "val": null,
+              "as": "RELEASED",
+              "cast": {
+                "type": "cds.Boolean"
+              }
             }
           ]
         }
@@ -8116,6 +8132,10 @@
           "type": "cds.Integer"
         },
         "SUBMITTED": {
+          "@Core.Computed": true,
+          "type": "cds.Boolean"
+        },
+        "RELEASED": {
           "@Core.Computed": true,
           "type": "cds.Boolean"
         }
@@ -30248,6 +30268,10 @@
           "@sap.semantics": "unit-of-measure",
           "type": "cds.String",
           "length": 3
+        },
+        "ZPNAME": {
+          "type": "cds.String",
+          "length": 40
         }
       }
     },

@@ -193,14 +193,9 @@ const ValidateAssignment = async (req) => {
     }
 }
 const validateAssignmentProject = async (req, bupa) => {
-    if(req.user.id === 'Anonymous') {
-        emailId = 'arun.dev@yokogawa.com';
-    }
-    else {   
-        emailId =req.user.id;
-    }
-    emailId = emailId.toUpperCase();
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:emailId});
+    let loggedinId =req.user.id;
+    loggedinId = loggedinId.toUpperCase();
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:loggedinId, or:{globalID:loggedinId}});
     if (LoggUser.length > 0) {
         if ((!LoggUser[0].ActivityType && !LoggUser[0].CostCenter) || LoggUser[0].CostCenter === req.data.EKOSTL) {
             req.reject({
@@ -408,15 +403,9 @@ const prepareFilterAsObject = async (where, obj) => {
 
 const readReceiverWBSCombined = async (where, limit,req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
-    let emailId;
-    if(req.user.id === 'Anonymous') {
-        emailId = 'arun.dev@yokogawa.com';
-    }
-    else {   
-        emailId =req.user.id;
-    }
-    emailId = emailId.toUpperCase();
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:emailId});
+    let loggedinId =req.user.id;
+    loggedinId = loggedinId.toUpperCase();
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:loggedinId, or:{globalID:loggedinId}});
 
     var oData = [];
     if (LoggUser.length > 0) {
@@ -450,15 +439,9 @@ const readReceiverWBSCombined = async (where, limit,req) => {
 
 const readParentWBSCombined = async (where, limit,req) => {
     const bupa = await cds.connect.to('TimeSheetEntry');
-    let emailId;
-    if(req.user.id === 'Anonymous') {
-        emailId = 'arun.dev@yokogawa.com';
-    }
-    else {   
-        emailId =req.user.id;
-    }
-    emailId = emailId.toUpperCase();
-    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:emailId});
+    let loggedinId =req.user.id;
+    loggedinId = loggedinId.toUpperCase();
+    const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({email_Address:loggedinId, or:{globalID:loggedinId}});
     var oData = [];
     if (LoggUser.length > 0) {
         const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
