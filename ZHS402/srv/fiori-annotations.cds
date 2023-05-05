@@ -528,6 +528,15 @@ annotate ZCDSEHBTC0007.BOMDisplay with @(
      }
 ){
 };
+annotate ZCDSEHBTC0007.BOMDisplay with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            WERKS,
+            E_DOC_NO
+        ],
+    }
+});
 // annotate ZCDSEHBTC0007.BOMDisplay with {
 // E_DOC_TYPE @UI.HiddenFilter: true;
 // }
@@ -886,6 +895,20 @@ annotate ZCDSEHBTC0009.ZTHBT0001 {
 //     Insertable : false,
 //   }
 // );
+annotate ZCDSEHBTC0009.DigitPartList @(Capabilities : {
+    SearchRestrictions : {
+        $Type      : 'Capabilities.SearchRestrictionsType',
+        Searchable : false
+    },
+    InsertRestrictions : {
+        $Type : 'Capabilities.InsertRestrictionsType',
+        Insertable: false
+    },
+    DeleteRestrictions : {
+        $Type : 'Capabilities.DeleteRestrictionsType',
+        Deletable: false
+    }
+});
 annotate ZCDSEHBTC0009.ZTHBT0001 @(Capabilities : {
     SearchRestrictions : {
         $Type      : 'Capabilities.SearchRestrictionsType',
