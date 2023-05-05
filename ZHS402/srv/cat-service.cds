@@ -979,6 +979,7 @@ service ZCDSEHBTC0017 {
     action Scan_Start3(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
     action Scan_Start2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
     action Scan_Start1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
+    action Find_Scan(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
 }
 
 
