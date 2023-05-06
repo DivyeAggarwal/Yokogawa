@@ -261,6 +261,10 @@
         "ZPNAME": {
           "type": "cds.String",
           "length": 40
+        },
+        "STATUS": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },

@@ -6455,6 +6455,11 @@
             "ref": [
               "ZPNAME"
             ]
+          },
+          {
+            "ref": [
+              "STATUS"
+            ]
           }
         ]
       },
@@ -6543,6 +6548,10 @@
         "ZPNAME": {
           "type": "cds.String",
           "length": 40
+        },
+        "STATUS": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },
@@ -30153,6 +30162,10 @@
         "ZPNAME": {
           "type": "cds.String",
           "length": 40
+        },
+        "STATUS": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },
