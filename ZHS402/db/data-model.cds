@@ -57,7 +57,7 @@ entity ZTHBT0007: managed {
     key E_PARTS_NO: String(18) @title : 'Material Number';
     key SOURCE_CD: String(2) @title : 'Source Code';
         DATA_ST: String(1) @title : 'Data status';
-        YEOS_MNF_NO: String(5) @title : 'Maker Model Number';
+        YEOS_MNF_NO: String(5) @title : 'Maker Code';
         YEOS_MNF_MODEL: String(90) @title : 'Maker Model Name';
         Y_LEVEL: String(2) @title : 'level';
         PARTS_NO_EXT_SIGN: Decimal(13, 3) @title : 'Parts No ext sign';
