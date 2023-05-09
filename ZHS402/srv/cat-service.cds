@@ -945,39 +945,6 @@ service ZCDSEHBTC0016 {
 //Scan Kanban picking list
 service ZCDSEHBTC0017 {
     entity ZTHBT0030 as projection on db.ZTHBT0030; 
-    entity ZCDSEHPPB0060 as projection on ZSRVBHPP0005.ZCDSEHPPB0060; 
-    entity ZCDSEHPPB0083 as projection on ZSRVBHPP0005.ZCDSEHPPB0083
-    @cds.persistence.skip
-    entity PickingDetails {
-        key PickingNumber  : String(11)  @title : 'Picking Number' @Common.QuickInfo : 'Picking Number'; 
-            RecyclingKanban  : String(40)  @title : 'Recycling Kanban(1Scan/2Scan)' @Common.QuickInfo : 'Recycling Kanban(1Scan/2Scan)'; 
-            PartsRequestKanban1  : String(5)  @title : 'Parts Request Kanban (1 Step)' @Common.QuickInfo : 'Parts Request Kanban (1 Step)'; 
-            PartsRequestKanban2  : String(5)  @title : 'Parts Request Kanban (2 Step)' @Common.QuickInfo : 'Parts Request Kanban (2 Step)'; 
-            ProducOrdering  : String(40)  @title : 'Production ordering/Signal Kanban' @Common.QuickInfo : 'Production ordering/Signal Kanban'; 
-            ZCDSEHPPB0060Type  : Association to many  ZCDSEHPPB0060;
-            ZCDSEHPPB0083Type  : Association to many  ZCDSEHPPB0083;
-    }
-    @open
-    type Object {}
-    action Picking_List(pkngnubr : String(11), pkngitnr: String(4)) returns Object;
-    action Step2_Requires2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Step2_Requires1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Step2_GoodsReceipt2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Step2_GoodsReceipt1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Step2_GoodsIssue2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Step2_GoodsIssue1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Step1_Requires2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Step1_Requires1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Step1_GoodsIssue2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Step1_GoodsIssue1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Signal_Start4(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Signal_Start3(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Signal_Start2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Signal_Start1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Scan_Start3(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Scan_Start2(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Scan_Start1(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
-    action Find_Scan(pkkey : String(10), pkbst: String(1), pkstu: String(4)) returns Object;
 }
 
 
