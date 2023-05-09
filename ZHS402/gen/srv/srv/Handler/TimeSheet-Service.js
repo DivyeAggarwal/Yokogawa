@@ -123,10 +123,11 @@ const populateSubmittedFlag = async (oData) => {
                 if(s4TimeSheet.EMPLOYEENUMBER === reqData.PERNR && s4TimeSheet.WEEKNUMBER === reqData.WEEK_NUMBER
                 && s4TimeSheet.ZPNAME === reqData.ZPNAME_ZPNAME)
                 {
-                    if (!reqData.SUBMITTED && s4TimeSheet.Status === '10') {
+                    if (!reqData.SUBMITTED && s4TimeSheet.STATUS === '10') {
                         reqData.SUBMITTED = true;
                     }
-                    else if (!reqData.RELEASED && s4TimeSheet.Status === '30') {
+                    else if (!reqData.RELEASED && s4TimeSheet.STATUS === '30') {
+                        reqData.SUBMITTED = true;
                         reqData.RELEASED = true;
                     }
 
