@@ -38,7 +38,7 @@ entity ZCDSEBPS0005 as select from db.ZTHBT0027 {
     MATNR,
     IDNLF,
     @Semantics.quantity.unitOfMeasure: 'ERFME'
-    SUM(ERFMG) as ERFMG,
+    CAST(SUM( ERFMG ) as Decimal(13,2) ) as ERFMG,
     ERFME,
     CONFIRM_STATUS,
     REASON_DIFF
@@ -51,7 +51,7 @@ entity ZCDSEBPS0006 as select from db.ZTHBT0055 {
     PS_POSNR,
     ZMSCODE,
     MATNR,
-    SUM(ZQTY) as ZQTY,
+    CAST(SUM(ZQTY) as Decimal(15, 2)) as USEDQTY,
     ZUT
 }
 group by PBUKR, PS_PSPNR,  PS_POSNR, ZMSCODE, MATNR,ZUT;
@@ -998,7 +998,6 @@ service ZCDSEHBTC0018 {
 }
 
 service ZAPIBPS0002 {
-    @odata.draft.enabled
     entity ZCDSEBPS0004 as select from ZCDSEBPS0005
     left outer join ZCDSEBPS0006 
         on ZCDSEBPS0006.PBUKR = $projection.PBUKR
@@ -1008,17 +1007,16 @@ service ZAPIBPS0002 {
         and ZCDSEBPS0006.MATNR = $projection.MATNR
 
     {
-        ZCDSEBPS0005.PBUKR,
-        ZCDSEBPS0005.PSPHI,
-        ZCDSEBPS0005.PS_PSP_PNR,
-        ZCDSEBPS0005.ZZ1_MSCODE_PRD,
+        key ZCDSEBPS0005.PBUKR,
+        key ZCDSEBPS0005.PSPHI,
+        key ZCDSEBPS0005.PS_PSP_PNR,
+        key ZCDSEBPS0005.ZZ1_MSCODE_PRD,
         ZCDSEBPS0005.IDNLF,
-        ZCDSEBPS0005.MATNR,
+        key ZCDSEBPS0005.MATNR,
         @Semantics.quantity.unitOfMeasure: 'ERFME'
         ZCDSEBPS0005.ERFMG,
         ZCDSEBPS0005.ERFME,
-        ZCDSEBPS0006.ZQTY,
-         @Semantics.quantity.unitOfMeasure: 'ZUT'
+        ZCDSEBPS0006.USEDQTY,
         ZCDSEBPS0006.ZUT,
         ZCDSEBPS0005.CONFIRM_STATUS,
         ZCDSEBPS0005.REASON_DIFF

@@ -4421,6 +4421,312 @@
         }
       }
     },
+    "ZCDSEBPS0005": {
+      "kind": "entity",
+      "@title": "{i18n>CreatepurchaseItemRecord}",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "ZHS402.ZTHBT0027"
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            {
+              "ref": [
+                "PSPHI"
+              ]
+            },
+            {
+              "ref": [
+                "PS_PSP_PNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZZ1_MSCODE_PRD"
+              ]
+            },
+            {
+              "ref": [
+                "MATNR"
+              ]
+            },
+            {
+              "ref": [
+                "IDNLF"
+              ]
+            },
+            {
+              "xpr": [
+                {
+                  "func": "SUM",
+                  "args": [
+                    {
+                      "ref": [
+                        "ERFMG"
+                      ]
+                    }
+                  ],
+                  "cast": {
+                    "type": "cds.Decimal",
+                    "precision": 13,
+                    "scale": 2
+                  }
+                }
+              ],
+              "as": "ERFMG"
+            },
+            {
+              "ref": [
+                "ERFME"
+              ]
+            },
+            {
+              "ref": [
+                "CONFIRM_STATUS"
+              ]
+            },
+            {
+              "ref": [
+                "REASON_DIFF"
+              ]
+            }
+          ],
+          "groupBy": [
+            {
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            {
+              "ref": [
+                "PSPHI"
+              ]
+            },
+            {
+              "ref": [
+                "PS_PSP_PNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZZ1_MSCODE_PRD"
+              ]
+            },
+            {
+              "ref": [
+                "MATNR"
+              ]
+            },
+            {
+              "ref": [
+                "IDNLF"
+              ]
+            },
+            {
+              "ref": [
+                "ERFME"
+              ]
+            },
+            {
+              "ref": [
+                "CONFIRM_STATUS"
+              ]
+            },
+            {
+              "ref": [
+                "REASON_DIFF"
+              ]
+            }
+          ]
+        }
+      },
+      "elements": {
+        "PBUKR": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "PSPHI": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "PS_PSP_PNR": {
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZZ1_MSCODE_PRD": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "MATNR": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "IDNLF": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "ERFMG": {
+          "@Semantics.quantity.unitOfMeasure": "ERFME",
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ERFME": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "CONFIRM_STATUS": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "REASON_DIFF": {
+          "type": "cds.String",
+          "length": 200
+        }
+      }
+    },
+    "ZCDSEBPS0006": {
+      "kind": "entity",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "ZHS402.ZTHBT0055"
+            ]
+          },
+          "columns": [
+            {
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            {
+              "ref": [
+                "PS_PSPNR"
+              ]
+            },
+            {
+              "ref": [
+                "PS_POSNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZMSCODE"
+              ]
+            },
+            {
+              "ref": [
+                "MATNR"
+              ]
+            },
+            {
+              "xpr": [
+                {
+                  "func": "SUM",
+                  "args": [
+                    {
+                      "ref": [
+                        "ZQTY"
+                      ]
+                    }
+                  ],
+                  "cast": {
+                    "type": "cds.Decimal",
+                    "precision": 15,
+                    "scale": 2
+                  }
+                }
+              ],
+              "as": "USEDQTY"
+            },
+            {
+              "ref": [
+                "ZUT"
+              ]
+            }
+          ],
+          "groupBy": [
+            {
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            {
+              "ref": [
+                "PS_PSPNR"
+              ]
+            },
+            {
+              "ref": [
+                "PS_POSNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZMSCODE"
+              ]
+            },
+            {
+              "ref": [
+                "MATNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZUT"
+              ]
+            }
+          ]
+        }
+      },
+      "elements": {
+        "PBUKR": {
+          "@title": "Company code",
+          "type": "cds.String",
+          "length": 4
+        },
+        "PS_PSPNR": {
+          "@title": "Project Definition",
+          "type": "cds.String",
+          "length": 24
+        },
+        "PS_POSNR": {
+          "@title": "WBS Element",
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZMSCODE": {
+          "@title": "   ",
+          "type": "cds.String",
+          "length": 50
+        },
+        "MATNR": {
+          "@title": "SAP MATERIAL",
+          "type": "cds.String",
+          "length": 40
+        },
+        "USEDQTY": {
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "ZUT": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 5
+        }
+      }
+    },
     "ZCDSEHBTC0001": {
       "@source": "srv/cat-service.cds",
       "kind": "service"
@@ -28393,10 +28699,10 @@
         },
         "selectflag": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Single-Character Flag",
+          "@sap.label": "Component of the Version Number",
           "@sap.heading": "",
           "type": "cds.String",
-          "length": 1
+          "length": 2
         },
         "trafic_light": {
           "@sap.display.format": "UpperCase",
@@ -28410,6 +28716,41 @@
           "@sap.quickinfo": "Text (452 characters)",
           "type": "cds.String",
           "length": 452
+        },
+        "Printhist": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Print History",
+          "@sap.quickinfo": "19 Characters",
+          "type": "cds.String",
+          "length": 19
+        },
+        "Printmed": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Print Media",
+          "@sap.quickinfo": "19 Characters",
+          "type": "cds.String",
+          "length": 19
+        },
+        "Process_flag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Process flag",
+          "@sap.quickinfo": "30 Characters",
+          "type": "cds.String",
+          "length": 30
+        },
+        "issue_flag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issue flag",
+          "@sap.quickinfo": "30 Characters",
+          "type": "cds.String",
+          "length": 30
+        },
+        "Kanban_type": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Kanban type",
+          "@sap.quickinfo": "30 Characters",
+          "type": "cds.String",
+          "length": 30
         }
       }
     },
@@ -28503,6 +28844,435 @@
               ]
             }
           ]
+        }
+      }
+    },
+    "ZAPIBPS0002": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZAPIBPS0002.ZCDSEBPS0004": {
+      "kind": "entity",
+      "@UI.HeaderInfo.TypeName": "",
+      "@UI.HeaderInfo.TypeNamePlural": "Project Goods Management",
+      "@UI.HeaderInfo.Title.Value": "Project Goods Management",
+      "@UI.HeaderInfo.Description.Value": "Project Goods Management",
+      "@UI.SelectionFields": [
+        {
+          "=": "PBUKR"
+        },
+        {
+          "=": "PSPHI"
+        },
+        {
+          "=": "PS_PSP_PNR"
+        },
+        {
+          "=": "ZZ1_MSCODE_PRD"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "PBUKR"
+          }
+        },
+        {
+          "Value": {
+            "=": "PSPHI"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_PSP_PNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZZ1_MSCODE_PRD"
+          }
+        },
+        {
+          "Value": {
+            "=": "IDNLF"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFMG"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFME"
+          }
+        },
+        {
+          "Value": {
+            "=": "USEDQTY"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZUT"
+          }
+        },
+        {
+          "Value": {
+            "=": "CONFIRM_STATUS"
+          }
+        },
+        {
+          "Value": {
+            "=": "REASON_DIFF"
+          }
+        }
+      ],
+      "@UI.Facets": [
+        {
+          "$Type": "UI.CollectionFacet",
+          "Label": "Project Goods Management",
+          "Facets": [
+            {
+              "$Type": "UI.ReferenceFacet",
+              "Target": "@UI.FieldGroup#MainAs",
+              "Label": "Details"
+            }
+          ]
+        }
+      ],
+      "@UI.FieldGroup#MainAs.Data": [
+        {
+          "Value": {
+            "=": "PBUKR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "PSPHI"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_PSP_PNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZZ1_MSCODE_PRD"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "IDNLF"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFMG"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFME"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "USEDQTY"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZUT"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "CONFIRM_STATUS"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "REASON_DIFF"
+          },
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          }
+        }
+      ],
+      "@title": "{i18n>CreatepurchaseItemRecord}",
+      "query": {
+        "SELECT": {
+          "from": {
+            "join": "left",
+            "args": [
+              {
+                "ref": [
+                  "ZCDSEBPS0005"
+                ]
+              },
+              {
+                "ref": [
+                  "ZCDSEBPS0006"
+                ]
+              }
+            ],
+            "on": [
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "PBUKR"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "PBUKR"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "PS_PSPNR"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "PS_PSP_PNR"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "PS_POSNR"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "PSPHI"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "ZMSCODE"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "ZZ1_MSCODE_PRD"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "MATNR"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "MATNR"
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "PBUKR"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "PSPHI"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "PS_PSP_PNR"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "ZZ1_MSCODE_PRD"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "IDNLF"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "MATNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "ERFMG"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "ERFME"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0006",
+                "USEDQTY"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0006",
+                "ZUT"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "CONFIRM_STATUS"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "REASON_DIFF"
+              ]
+            }
+          ]
+        }
+      },
+      "elements": {
+        "PBUKR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "PSPHI": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "PS_PSP_PNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZZ1_MSCODE_PRD": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "IDNLF": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "MATNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "ERFMG": {
+          "@Semantics.quantity.unitOfMeasure": "ERFME",
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ERFME": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "USEDQTY": {
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "ZUT": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 5
+        },
+        "CONFIRM_STATUS": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "REASON_DIFF": {
+          "type": "cds.String",
+          "length": 200
         }
       }
     },
@@ -62331,10 +63101,10 @@
         },
         "selectflag": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Single-Character Flag",
+          "@sap.label": "Component of the Version Number",
           "@sap.heading": "",
           "type": "cds.String",
-          "length": 1
+          "length": 2
         },
         "trafic_light": {
           "@sap.display.format": "UpperCase",
@@ -62348,6 +63118,41 @@
           "@sap.quickinfo": "Text (452 characters)",
           "type": "cds.String",
           "length": 452
+        },
+        "Printhist": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Print History",
+          "@sap.quickinfo": "19 Characters",
+          "type": "cds.String",
+          "length": 19
+        },
+        "Printmed": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Print Media",
+          "@sap.quickinfo": "19 Characters",
+          "type": "cds.String",
+          "length": 19
+        },
+        "Process_flag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Process flag",
+          "@sap.quickinfo": "30 Characters",
+          "type": "cds.String",
+          "length": 30
+        },
+        "issue_flag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issue flag",
+          "@sap.quickinfo": "30 Characters",
+          "type": "cds.String",
+          "length": 30
+        },
+        "Kanban_type": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Kanban type",
+          "@sap.quickinfo": "30 Characters",
+          "type": "cds.String",
+          "length": 30
         }
       }
     },

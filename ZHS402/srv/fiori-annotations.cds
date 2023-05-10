@@ -2177,7 +2177,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
             { Value: MATNR },
             { Value: ERFMG },
             { Value: ERFME },
-            { Value: ZQTY },
+            { Value: USEDQTY },
             { Value: ZUT } ,
             { Value: CONFIRM_STATUS } ,
             { Value: REASON_DIFF }   
@@ -2201,7 +2201,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
             { Value: MATNR,![@Common.FieldControl] : #ReadOnly },
             { Value: ERFMG,![@Common.FieldControl] : #ReadOnly },
             { Value: ERFME,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZQTY,![@Common.FieldControl] : #ReadOnly },
+            { Value: USEDQTY,![@Common.FieldControl] : #ReadOnly },
             { Value: ZUT,![@Common.FieldControl] : #ReadOnly } ,
             { Value: CONFIRM_STATUS,![@Common.FieldControl] : #ReadOnly } ,
             { Value: REASON_DIFF,![@Common.FieldControl] : #Mandatory }           
