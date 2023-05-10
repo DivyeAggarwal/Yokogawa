@@ -162,9 +162,9 @@
         },
         "selectflag": {
           "type": "cds.String",
-          "length": 1,
+          "length": 2,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Single-Character Flag",
+          "@sap.label": "Component of the Version Number",
           "@sap.heading": ""
         },
         "trafic_light": {
@@ -179,6 +179,41 @@
           "length": 452,
           "@sap.label": "Text",
           "@sap.quickinfo": "Text (452 characters)"
+        },
+        "Printhist": {
+          "type": "cds.String",
+          "length": 19,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Print History",
+          "@sap.quickinfo": "19 Characters"
+        },
+        "Printmed": {
+          "type": "cds.String",
+          "length": 19,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Print Media",
+          "@sap.quickinfo": "19 Characters"
+        },
+        "Process_flag": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Process flag",
+          "@sap.quickinfo": "30 Characters"
+        },
+        "issue_flag": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issue flag",
+          "@sap.quickinfo": "30 Characters"
+        },
+        "Kanban_type": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Kanban type",
+          "@sap.quickinfo": "30 Characters"
         }
       }
     },
