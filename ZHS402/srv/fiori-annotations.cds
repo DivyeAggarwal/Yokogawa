@@ -2157,3 +2157,57 @@ annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
 ){
     
 };
+
+annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
+    UI: {
+        HeaderInfo: {
+            TypeName: '',
+            TypeNamePlural: 'Project Goods Management',
+            Title: { Value: 'Project Goods Management' },
+            Description: { Value: 'Project Goods Management' }
+        },
+
+        SelectionFields: [ PBUKR,PSPHI,PS_PSP_PNR,ZZ1_MSCODE_PRD],
+        LineItem: [
+            { Value: PBUKR },
+            { Value: PSPHI },
+            { Value: PS_PSP_PNR },
+            { Value: ZZ1_MSCODE_PRD },
+            { Value: IDNLF },
+            { Value: MATNR },
+            { Value: ERFMG },
+            { Value: ERFME },
+            { Value: ZQTY },
+            { Value: ZUT } ,
+            { Value: CONFIRM_STATUS } ,
+            { Value: REASON_DIFF }   
+        ],
+        Facets: [
+            {
+                $Type: 'UI.CollectionFacet',
+                Label: 'Project Goods Management',
+                Facets: [
+                    {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'}
+                ]
+            }
+        ],        
+        FieldGroup#MainAs: {
+            Data: [
+              { Value: PBUKR,![@Common.FieldControl] : #ReadOnly },
+            { Value: PSPHI,![@Common.FieldControl] : #ReadOnly },
+            { Value: PS_PSP_PNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZZ1_MSCODE_PRD,![@Common.FieldControl] : #ReadOnly },
+            { Value: IDNLF,![@Common.FieldControl] : #ReadOnly },
+            { Value: MATNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ERFMG,![@Common.FieldControl] : #ReadOnly },
+            { Value: ERFME,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZQTY,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZUT,![@Common.FieldControl] : #ReadOnly } ,
+            { Value: CONFIRM_STATUS,![@Common.FieldControl] : #ReadOnly } ,
+            { Value: REASON_DIFF,![@Common.FieldControl] : #Mandatory }           
+            ]
+        }
+    }
+){
+    
+};

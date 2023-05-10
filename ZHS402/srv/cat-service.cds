@@ -30,6 +30,32 @@ type messageType : String enum {
         W = 'Warning';
     }
 
+entity ZCDSEBPS0005 as select from db.ZTHBT0027 {
+    PBUKR,
+    PSPHI,
+    PS_PSP_PNR,
+    ZZ1_MSCODE_PRD,
+    MATNR,
+    IDNLF,
+    @Semantics.quantity.unitOfMeasure: 'ERFME'
+    SUM(ERFMG) as ERFMG,
+    ERFME,
+    CONFIRM_STATUS,
+    REASON_DIFF
+}
+group by PBUKR, PSPHI, PS_PSP_PNR, ZZ1_MSCODE_PRD, MATNR,IDNLF, ERFME,CONFIRM_STATUS,REASON_DIFF;
+
+entity ZCDSEBPS0006 as select from db.ZTHBT0055 {
+    PBUKR,
+    PS_PSPNR,
+    PS_POSNR,
+    ZMSCODE,
+    MATNR,
+    SUM(ZQTY) as ZQTY,
+    ZUT
+}
+group by PBUKR, PS_PSPNR,  PS_POSNR, ZMSCODE, MATNR,ZUT;
+
 service ZCDSEHBTC0001 {
     entity ZTHBT0001    as projection on db.ZTHBT0001;
     entity ZTHBT0002    as projection on db.ZTHBT0002;
@@ -970,3 +996,32 @@ service ZCDSEHBTC0018 {
             ZCDSEHPPB0085  : Association to many  ZCDSEHPPB0085;
     } 
 }
+
+service ZAPIBPS0002 {
+    @odata.draft.enabled
+    entity ZCDSEBPS0004 as select from ZCDSEBPS0005
+    left outer join ZCDSEBPS0006 
+        on ZCDSEBPS0006.PBUKR = $projection.PBUKR
+        and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
+        and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
+        and ZCDSEBPS0006.ZMSCODE = $projection.ZZ1_MSCODE_PRD
+        and ZCDSEBPS0006.MATNR = $projection.MATNR
+
+    {
+        ZCDSEBPS0005.PBUKR,
+        ZCDSEBPS0005.PSPHI,
+        ZCDSEBPS0005.PS_PSP_PNR,
+        ZCDSEBPS0005.ZZ1_MSCODE_PRD,
+        ZCDSEBPS0005.IDNLF,
+        ZCDSEBPS0005.MATNR,
+        @Semantics.quantity.unitOfMeasure: 'ERFME'
+        ZCDSEBPS0005.ERFMG,
+        ZCDSEBPS0005.ERFME,
+        ZCDSEBPS0006.ZQTY,
+         @Semantics.quantity.unitOfMeasure: 'ZUT'
+        ZCDSEBPS0006.ZUT,
+        ZCDSEBPS0005.CONFIRM_STATUS,
+        ZCDSEBPS0005.REASON_DIFF
+    }
+}
+
