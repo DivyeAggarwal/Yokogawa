@@ -2184,7 +2184,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
         ],
         Facets: [
             {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'},
-             {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: 'ZCDSEBPS0007@UI.PresentationVariant'}
+             {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_ReceivedQuantities/@UI.LineItem'}
         ],        
         FieldGroup#MainAs: {
             Data: [
