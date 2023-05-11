@@ -1205,9 +1205,11 @@ service ZAPIBPS0002 {
                                       and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
                                       and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
                                       and                                             _UsedQuantities.MATNR    = MATNR,
-        };
-
-    action updateDiffSM(ReasonForDiff : String @Common.Label: 'Reason For Difference' ) returns ZCDSEBPS0004;
+        }
+    actions {
+        action updateDiffSM(ReasonForDiff : String @Common.Label: 'Reason For Difference' ) returns ZCDSEBPS0004;
+    };
+    
 
     entity ZCDSEBPS0011                 as
         select from ZCDSEBPS0005
@@ -1260,9 +1262,11 @@ service ZAPIBPS0002 {
                                       and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
                                       and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
                                       and                                             _UsedQuantities.MATNR    = MATNR,
-        };
-
-    action updateDiff(ReasonForDiff : String @Common.Label: 'Reason For Difference' )   returns ZCDSEBPS0011;
+        }
+    actions {
+        action updateDiff(ReasonForDiff : String @Common.Label: 'Reason For Difference' )   returns ZCDSEBPS0011;
+    }
+    
 
 
 }
