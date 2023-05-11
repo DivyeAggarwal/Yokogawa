@@ -2183,18 +2183,8 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
             { Value: REASON_DIFF }   
         ],
         Facets: [
-            {
-                $Type: 'UI.CollectionFacet',
-                Label: 'Project Goods Management',
-                Facets: [
-                    {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'},
-                    {
-                $Type: 'UI.ReferenceFacet',
-                Label: 'Received Quantities',
-                Target: 'ZCDSEBPS0007@UI.LineItem'
-            }
-                ]
-            }
+            {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'},
+             {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: 'ZCDSEBPS0007@UI.PresentationVariant'}
         ],        
         FieldGroup#MainAs: {
             Data: [
@@ -2230,6 +2220,9 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
 
 annotate  ZAPIBPS0002.ZCDSEBPS0009 with @(
     UI: {
+        PresentationVariant:{
+            Visualizations:['@UI.LineItem']
+        },
         HeaderInfo: {
             TypeName: '',
             TypeNamePlural: 'Received Quantities',

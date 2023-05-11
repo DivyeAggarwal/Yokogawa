@@ -4610,144 +4610,6 @@
     },
     "ZCDSEBPS0007": {
       "kind": "entity",
-      "@UI.HeaderInfo.TypeName": "",
-      "@UI.HeaderInfo.TypeNamePlural": "Received Quantities",
-      "@UI.HeaderInfo.Title.Value": "Received Quantities",
-      "@UI.HeaderInfo.Description.Value": "Received Quantities",
-      "@UI.LineItem": [
-        {
-          "Value": {
-            "=": "PBUKR"
-          }
-        },
-        {
-          "Value": {
-            "=": "PSPHI"
-          }
-        },
-        {
-          "Value": {
-            "=": "PS_PSP_PNR"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZZ1_MSCODE_PRD"
-          }
-        },
-        {
-          "Value": {
-            "=": "MATNR"
-          }
-        },
-        {
-          "Value": {
-            "=": "ERFMG"
-          }
-        },
-        {
-          "Value": {
-            "=": "ERFME"
-          }
-        },
-        {
-          "Value": {
-            "=": "KDAUF"
-          }
-        },
-        {
-          "Value": {
-            "=": "KDPOS"
-          }
-        }
-      ],
-      "@UI.Facets": [
-        {
-          "$Type": "UI.CollectionFacet",
-          "Label": "Project Goods Management",
-          "Facets": [
-            {
-              "$Type": "UI.ReferenceFacet",
-              "Target": "@UI.FieldGroup#MainAs",
-              "Label": "Details"
-            }
-          ]
-        }
-      ],
-      "@UI.FieldGroup#MainAs.Data": [
-        {
-          "Value": {
-            "=": "PBUKR"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
-          }
-        },
-        {
-          "Value": {
-            "=": "PSPHI"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
-          }
-        },
-        {
-          "Value": {
-            "=": "PS_PSP_PNR"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZZ1_MSCODE_PRD"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
-          }
-        },
-        {
-          "Value": {
-            "=": "MATNR"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
-          }
-        },
-        {
-          "Value": {
-            "=": "ERFMG"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
-          }
-        },
-        {
-          "Value": {
-            "=": "ERFME"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
-          }
-        },
-        {
-          "Value": {
-            "=": "KDAUF"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
-          }
-        },
-        {
-          "Value": {
-            "=": "KDPOS"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
-          }
-        }
-      ],
       "@title": "{i18n>CreatepurchaseItemRecord}",
       "query": {
         "SELECT": {
@@ -4822,54 +4684,45 @@
       },
       "elements": {
         "PBUKR": {
-          "@title": "Company Code",
           "key": true,
           "type": "cds.String",
           "length": 4
         },
         "PSPHI": {
-          "@title": "Project Definition",
           "key": true,
           "type": "cds.String",
           "length": 10
         },
         "PS_PSP_PNR": {
-          "@title": "WBS Element",
           "key": true,
           "type": "cds.String",
           "length": 24
         },
         "ZZ1_MSCODE_PRD": {
-          "@title": "MS Code",
           "key": true,
           "type": "cds.String",
           "length": 80
         },
         "MATNR": {
-          "@title": "SAP Material",
           "key": true,
           "type": "cds.String",
           "length": 40
         },
         "ERFMG": {
-          "@title": "Recieved Quantity",
           "@Core.Computed": true,
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 2
         },
         "ERFME": {
-          "@title": "Unit",
           "type": "cds.String",
           "length": 3
         },
         "KDAUF": {
-          "@title": "Sales Order",
           "type": "cds.String",
           "length": 10
         },
         "KDPOS": {
-          "@title": "Sales Order Item",
           "type": "cds.String",
           "length": 6
         }
@@ -29251,6 +29104,270 @@
       "@source": "srv/cat-service.cds",
       "kind": "service"
     },
+    "ZAPIBPS0002.ZCDSEBPS0009": {
+      "kind": "entity",
+      "@UI.PresentationVariant.Visualizations": [
+        "@UI.LineItem"
+      ],
+      "@UI.HeaderInfo.TypeName": "",
+      "@UI.HeaderInfo.TypeNamePlural": "Received Quantities",
+      "@UI.HeaderInfo.Title.Value": "Received Quantities",
+      "@UI.HeaderInfo.Description.Value": "Received Quantities",
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "PBUKR"
+          }
+        },
+        {
+          "Value": {
+            "=": "PSPHI"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_PSP_PNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZZ1_MSCODE_PRD"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFMG"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFME"
+          }
+        },
+        {
+          "Value": {
+            "=": "KDAUF"
+          }
+        },
+        {
+          "Value": {
+            "=": "KDPOS"
+          }
+        }
+      ],
+      "@UI.Facets": [
+        {
+          "$Type": "UI.CollectionFacet",
+          "Label": "Project Goods Management",
+          "Facets": [
+            {
+              "$Type": "UI.ReferenceFacet",
+              "Target": "@UI.FieldGroup#MainAs",
+              "Label": "Details"
+            }
+          ]
+        }
+      ],
+      "@UI.FieldGroup#MainAs.Data": [
+        {
+          "Value": {
+            "=": "PBUKR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "PSPHI"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_PSP_PNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZZ1_MSCODE_PRD"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFMG"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFME"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "KDAUF"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "KDPOS"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        }
+      ],
+      "@title": "{i18n>CreatepurchaseItemRecord}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZCDSEBPS0007"
+          ]
+        }
+      },
+      "elements": {
+        "PBUKR": {
+          "@title": "Company Code",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "PSPHI": {
+          "@title": "Project Definition",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "PS_PSP_PNR": {
+          "@title": "WBS Element",
+          "key": true,
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZZ1_MSCODE_PRD": {
+          "@title": "MS Code",
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "MATNR": {
+          "@title": "SAP Material",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "ERFMG": {
+          "@title": "Recieved Quantity",
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ERFME": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "KDAUF": {
+          "@title": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "KDPOS": {
+          "@title": "Sales Order Item",
+          "type": "cds.String",
+          "length": 6
+        }
+      }
+    },
+    "ZAPIBPS0002.ZCDSEBPS0010": {
+      "kind": "entity",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZCDSEBPS0008"
+          ]
+        }
+      },
+      "elements": {
+        "PBUKR": {
+          "@title": "Company code",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "PS_PSPNR": {
+          "@title": "Project Definition",
+          "key": true,
+          "type": "cds.String",
+          "length": 24
+        },
+        "PS_POSNR": {
+          "@title": "WBS Element",
+          "key": true,
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZMSCODE": {
+          "@title": "   ",
+          "key": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "MATNR": {
+          "@title": "SAP MATERIAL",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "USEDQTY": {
+          "@title": "Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ZUT": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 5
+        },
+        "ZCABNUM": {
+          "@title": "Cabinet number",
+          "type": "cds.String",
+          "length": 20
+        }
+      }
+    },
     "ZAPIBPS0002.ZCDSEBPS0004": {
       "kind": "entity",
       "@UI.HeaderInfo.TypeName": "",
@@ -29335,20 +29452,14 @@
       ],
       "@UI.Facets": [
         {
-          "$Type": "UI.CollectionFacet",
-          "Label": "Project Goods Management",
-          "Facets": [
-            {
-              "$Type": "UI.ReferenceFacet",
-              "Target": "@UI.FieldGroup#MainAs",
-              "Label": "Details"
-            },
-            {
-              "$Type": "UI.ReferenceFacet",
-              "Label": "Received Quantities",
-              "Target": "ZCDSEBPS0007@UI.LineItem"
-            }
-          ]
+          "$Type": "UI.ReferenceFacet",
+          "Target": "@UI.FieldGroup#MainAs",
+          "Label": "Details"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Received Quantities",
+          "Target": "ZCDSEBPS0007@UI.PresentationVariant"
         }
       ],
       "@UI.FieldGroup#MainAs.Data": [
@@ -29619,7 +29730,7 @@
             {
               "as": "_ReceivedQuantities",
               "cast": {
-                "target": "ZCDSEBPS0007",
+                "target": "ZAPIBPS0002.ZCDSEBPS0009",
                 "cardinality": {
                   "max": "*"
                 },
@@ -29700,7 +29811,7 @@
             {
               "as": "_UsedQuantities",
               "cast": {
-                "target": "ZCDSEBPS0008",
+                "target": "ZAPIBPS0002.ZCDSEBPS0010",
                 "cardinality": {
                   "max": "*"
                 },
@@ -29857,7 +29968,7 @@
           "cardinality": {
             "max": "*"
           },
-          "target": "ZCDSEBPS0007",
+          "target": "ZAPIBPS0002.ZCDSEBPS0009",
           "on": [
             {
               "ref": [
@@ -29935,7 +30046,7 @@
           "cardinality": {
             "max": "*"
           },
-          "target": "ZCDSEBPS0008",
+          "target": "ZAPIBPS0002.ZCDSEBPS0010",
           "on": [
             {
               "ref": [
