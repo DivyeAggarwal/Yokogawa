@@ -29459,7 +29459,7 @@
         {
           "$Type": "UI.ReferenceFacet",
           "Label": "Received Quantities",
-          "Target": "_ReceivedQuantities@UI.LineItem"
+          "Target": "_ReceivedQuantities/@UI.LineItem"
         }
       ],
       "@UI.FieldGroup#MainAs.Data": [

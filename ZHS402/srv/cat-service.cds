@@ -1046,16 +1046,18 @@ service ZAPIBPS0002 {
         ZCDSEBPS0006.ZUT,
         ZCDSEBPS0005.CONFIRM_STATUS,
         ZCDSEBPS0005.REASON_DIFF,
-        _ReceivedQuantities: Association to many ZCDSEBPS0009 on _ReceivedQuantities.PBUKR = $projection.PBUKR
-                                                              and _ReceivedQuantities.PSPHI = $projection.PSPHI
-                                                              and _ReceivedQuantities.PS_PSP_PNR = $projection.PS_PSP_PNR
-                                                              and _ReceivedQuantities.ZZ1_MSCODE_PRD = $projection.ZZ1_MSCODE_PRD
-                                                              and _ReceivedQuantities.MATNR = $projection.MATNR,
-        _UsedQuantities: Association to many ZCDSEBPS0010 on _UsedQuantities.PBUKR = $projection.PBUKR
-                                                          and _UsedQuantities.PS_PSPNR = $projection.PSPHI
-                                                          and _UsedQuantities.PS_POSNR = $projection.PS_PSP_PNR
-                                                          and _UsedQuantities.ZMSCODE = $projection.ZZ1_MSCODE_PRD
-                                                          and _UsedQuantities.MATNR = $projection.MATNR,
+        _ReceivedQuantities : Association [*] to ZAPIBPS0002.ZCDSEBPS0009 
+                    on _ReceivedQuantities.PBUKR = PBUKR
+                    and _ReceivedQuantities.PSPHI = PSPHI
+                    and _ReceivedQuantities.PS_PSP_PNR = PS_PSP_PNR
+                    and _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
+                    and _ReceivedQuantities.MATNR = MATNR,
+        _UsedQuantities: Association [*] to ZAPIBPS0002.ZCDSEBPS0010
+                    on _UsedQuantities.PBUKR = PBUKR
+                    and _UsedQuantities.PS_PSPNR = PSPHI
+                    and _UsedQuantities.PS_POSNR = PS_PSP_PNR
+                    and _UsedQuantities.ZMSCODE = ZZ1_MSCODE_PRD
+                    and _UsedQuantities.MATNR = MATNR,
     }
 }
 

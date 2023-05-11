@@ -1157,7 +1157,7 @@ annotate  ZCDSEHBTC0007.DATAFE0 with @(
             {
                 $Type: 'UI.ReferenceFacet',
                 Label: 'Details',
-                Target: 'ZTHBT0010@UI.LineItem'
+                Target: 'ZTHBT0010/@UI.LineItem'
             }
         ],        
         FieldGroup#MainAs: {
@@ -1203,7 +1203,7 @@ annotate  ZCDSEHBTC0007.DATAFE1 with @(
             {
                 $Type: 'UI.ReferenceFacet',
                 Label: 'Details',
-                Target: 'ZTHBT0014@UI.LineItem'
+                Target: 'ZTHBT0014/@UI.LineItem'
             }
         ],        
         FieldGroup#MainAs: {
@@ -2184,7 +2184,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
         ],
         Facets: [
             {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'},
-             {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_ReceivedQuantities/@UI.LineItem'}
+            {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_ReceivedQuantities/@UI.LineItem'}
         ],        
         FieldGroup#MainAs: {
             Data: [
@@ -2245,11 +2245,11 @@ annotate  ZAPIBPS0002.ZCDSEBPS0009 with @(
                 $Type: 'UI.CollectionFacet',
                 Label: 'Project Goods Management',
                 Facets: [
-                    {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'}
+                    {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs1', Label: 'Details'}
                 ]
             }
         ],        
-        FieldGroup#MainAs: {
+        FieldGroup#MainAs1: {
             Data: [
               { Value: PBUKR,![@Common.FieldControl] : #ReadOnly },
             { Value: PSPHI,![@Common.FieldControl] : #ReadOnly },
@@ -2273,4 +2273,58 @@ annotate  ZAPIBPS0002.ZCDSEBPS0009 with @(
     ERFME @title: 'Unit';
     KDAUF @title: 'Sales Order';
     KDPOS @title: 'Sales Order Item';
+};
+
+annotate  ZAPIBPS0002.ZCDSEBPS0010 with @(
+    UI: {
+        PresentationVariant:{
+            Visualizations:['@UI.LineItem']
+        },
+        HeaderInfo: {
+            TypeName: '',
+            TypeNamePlural: 'Used Quantities',
+            Title: { Value: 'Used Quantities' },
+            Description: { Value: 'Used Quantities' }
+        },
+        LineItem: [
+            { Value: PBUKR },
+            { Value: PS_PSPNR },
+            { Value: PS_POSNR },
+            { Value: ZCABNUM },
+            { Value: MATNR },
+            { Value: USEDQTY },
+            { Value: ZUT },
+            { Value: ZCABNUM }
+        ],
+        Facets: [
+            {
+                $Type: 'UI.CollectionFacet',
+                Label: 'Project Goods Management',
+                Facets: [
+                    {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs1', Label: 'Details'}
+                ]
+            }
+        ],        
+        FieldGroup#MainAs1: {
+            Data: [
+              { Value: PBUKR,![@Common.FieldControl] : #ReadOnly },
+            { Value: PS_PSPNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: PS_POSNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZMSCODE,![@Common.FieldControl] : #ReadOnly },
+            { Value: MATNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: USEDQTY,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZUT,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZCABNUM,![@Common.FieldControl] : #ReadOnly }         
+            ]
+        }
+    }
+){
+    PBUKR @title: 'Company Code';
+    PS_PSPNR @title: 'Project Definition';
+    PS_POSNR @title: 'WBS Element';
+    ZMSCODE @title: 'MS Code';
+    MATNR @title: 'SAP Material';
+    USEDQTY @title: 'Used Quantity';
+    ZUT @title: 'Unit';
+    ZCABNUM @title: 'Cabinet Number';
 };
