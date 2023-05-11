@@ -31,30 +31,55 @@ type messageType : String enum {
     }
 
 entity ZCDSEBPS0005 as select from db.ZTHBT0027 {
-    PBUKR,
-    PSPHI,
-    PS_PSP_PNR,
-    ZZ1_MSCODE_PRD,
-    MATNR,
+    key PBUKR,
+    key PSPHI,
+    key PS_PSP_PNR,
+    key ZZ1_MSCODE_PRD,
+    key MATNR,
     IDNLF,
     @Semantics.quantity.unitOfMeasure: 'ERFME'
-    CAST(SUM( ERFMG ) as Decimal(13,2) ) as ERFMG,
+    CAST(SUM( CAST(ERFMG as Decimal(13,2)) ) as Decimal(13,2) ) as ERFMG,
     ERFME,
     CONFIRM_STATUS,
     REASON_DIFF
 }
 group by PBUKR, PSPHI, PS_PSP_PNR, ZZ1_MSCODE_PRD, MATNR,IDNLF, ERFME,CONFIRM_STATUS,REASON_DIFF;
 
+entity ZCDSEBPS0007 as select from db.ZTHBT0027 {
+    key PBUKR,
+    key PSPHI,
+    key PS_PSP_PNR,
+    key ZZ1_MSCODE_PRD,
+    key MATNR,
+    CAST(ERFMG as Decimal(13,2)) as ERFMG,
+    ERFME,
+    KDAUF,
+    KDPOS
+};
+
+
 entity ZCDSEBPS0006 as select from db.ZTHBT0055 {
-    PBUKR,
-    PS_PSPNR,
-    PS_POSNR,
-    ZMSCODE,
-    MATNR,
+    key PBUKR,
+    key PS_PSPNR,
+    key PS_POSNR,
+    key ZMSCODE,
+    key MATNR,
     CAST(SUM(ZQTY) as Decimal(15, 2)) as USEDQTY,
     ZUT
 }
 group by PBUKR, PS_PSPNR,  PS_POSNR, ZMSCODE, MATNR,ZUT;
+entity ZCDSEBPS0008 as select from db.ZTHBT0055 {
+    key PBUKR,
+    key PS_PSPNR,
+    key PS_POSNR,
+    key ZMSCODE,
+    key MATNR,
+    ZQTY as USEDQTY,
+    ZUT,
+    ZCABNUM
+}
+group by PBUKR, PS_PSPNR,  PS_POSNR, ZMSCODE, MATNR,ZUT;
+
 
 service ZCDSEHBTC0001 {
     entity ZTHBT0001    as projection on db.ZTHBT0001;
@@ -1007,7 +1032,7 @@ service ZAPIBPS0002 {
         and ZCDSEBPS0006.MATNR = $projection.MATNR
 
     {
-        key ZCDSEBPS0005.PBUKR,
+        key ZCDSEBPS0005.PBUKR ,
         key ZCDSEBPS0005.PSPHI,
         key ZCDSEBPS0005.PS_PSP_PNR,
         key ZCDSEBPS0005.ZZ1_MSCODE_PRD,
@@ -1019,7 +1044,17 @@ service ZAPIBPS0002 {
         ZCDSEBPS0006.USEDQTY,
         ZCDSEBPS0006.ZUT,
         ZCDSEBPS0005.CONFIRM_STATUS,
-        ZCDSEBPS0005.REASON_DIFF
+        ZCDSEBPS0005.REASON_DIFF,
+        _ReceivedQuantities: Association to many ZCDSEBPS0007 on _ReceivedQuantities.PBUKR = $projection.PBUKR
+                                                              and _ReceivedQuantities.PSPHI = $projection.PSPHI
+                                                              and _ReceivedQuantities.PS_PSP_PNR = $projection.PS_PSP_PNR
+                                                              and _ReceivedQuantities.ZZ1_MSCODE_PRD = $projection.ZZ1_MSCODE_PRD
+                                                              and _ReceivedQuantities.MATNR = $projection.MATNR,
+        _UsedQuantities: Association to many ZCDSEBPS0008 on _UsedQuantities.PBUKR = $projection.PBUKR
+                                                          and _UsedQuantities.PS_PSPNR = $projection.PSPHI
+                                                          and _UsedQuantities.PS_POSNR = $projection.PS_PSP_PNR
+                                                          and _UsedQuantities.ZMSCODE = $projection.ZZ1_MSCODE_PRD
+                                                          and _UsedQuantities.MATNR = $projection.MATNR,
     }
 }
 

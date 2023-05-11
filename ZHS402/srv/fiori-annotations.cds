@@ -2209,5 +2209,16 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
         }
     }
 ){
-    
+    PBUKR @title: 'Company Code';
+    PSPHI @title: 'Project Definition';
+    PS_PSP_PNR @title: 'WBS Element';
+    ZZ1_MSCODE_PRD @title: 'MS Code';
+    IDNLF @title: 'Vendor Material Code';
+    MATNR @title: 'SAP Material';
+    ERFMG @title: 'Recieved Quantity';
+    ERFME @title: 'Unit';
+    USEDQTY @title: 'Used Quantity';
+    ZUT @title: 'Unit';
+    CONFIRM_STATUS @title: 'Confirm Status';
+    REASON_DIFF @title: 'Reason for Difference';
 };
