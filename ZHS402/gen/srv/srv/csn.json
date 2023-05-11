@@ -5075,38 +5075,6 @@
                 "ZCABNUM"
               ]
             }
-          ],
-          "groupBy": [
-            {
-              "ref": [
-                "PBUKR"
-              ]
-            },
-            {
-              "ref": [
-                "PS_PSPNR"
-              ]
-            },
-            {
-              "ref": [
-                "PS_POSNR"
-              ]
-            },
-            {
-              "ref": [
-                "ZMSCODE"
-              ]
-            },
-            {
-              "ref": [
-                "MATNR"
-              ]
-            },
-            {
-              "ref": [
-                "ZUT"
-              ]
-            }
           ]
         }
       },

@@ -2228,7 +2228,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
     REASON_DIFF @title: 'Reason for Difference';
 };
 
-annotate  ZCDSEBPS0007 with @(
+annotate  ZAPIBPS0002.ZCDSEBPS0009 with @(
     UI: {
         HeaderInfo: {
             TypeName: '',
