@@ -1044,6 +1044,13 @@ service ZAPIBPS0002 {
         ZCDSEBPS0005.ERFME,
         ZCDSEBPS0006.USEDQTY,
         ZCDSEBPS0006.ZUT,
+        case ZCDSEBPS0005.REASON_DIFF
+            when ''
+                then case when ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
+                    then 3
+                else 1 end
+            else 2
+        end as criticality,
         ZCDSEBPS0005.CONFIRM_STATUS,
         ZCDSEBPS0005.REASON_DIFF,
         _ReceivedQuantities : Association [*] to ZAPIBPS0002.ZCDSEBPS0009 
@@ -1059,5 +1066,8 @@ service ZAPIBPS0002 {
                     and _UsedQuantities.ZMSCODE = ZZ1_MSCODE_PRD
                     and _UsedQuantities.MATNR = MATNR,
     }
+    actions {
+        action updateDiff( ReasonForDiff: String @Common.Label : 'Reason For Difference') returns ZCDSEBPS0004;
+    } 
 }
 

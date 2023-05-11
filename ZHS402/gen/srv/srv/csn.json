@@ -15827,7 +15827,7 @@
         {
           "$Type": "UI.ReferenceFacet",
           "Label": "Details",
-          "Target": "ZTHBT0010@UI.LineItem"
+          "Target": "ZTHBT0010/@UI.LineItem"
         }
       ],
       "@UI.FieldGroup#MainAs.Data": [
@@ -16170,7 +16170,7 @@
         {
           "$Type": "UI.ReferenceFacet",
           "Label": "Details",
-          "Target": "ZTHBT0014@UI.LineItem"
+          "Target": "ZTHBT0014/@UI.LineItem"
         }
       ],
       "@UI.FieldGroup#MainAs.Data": [
@@ -29167,13 +29167,13 @@
           "Facets": [
             {
               "$Type": "UI.ReferenceFacet",
-              "Target": "@UI.FieldGroup#MainAs",
+              "Target": "@UI.FieldGroup#MainAs1",
               "Label": "Details"
             }
           ]
         }
       ],
-      "@UI.FieldGroup#MainAs.Data": [
+      "@UI.FieldGroup#MainAs1.Data": [
         {
           "Value": {
             "=": "PBUKR"
@@ -29312,6 +29312,134 @@
     },
     "ZAPIBPS0002.ZCDSEBPS0010": {
       "kind": "entity",
+      "@UI.PresentationVariant.Visualizations": [
+        "@UI.LineItem"
+      ],
+      "@UI.HeaderInfo.TypeName": "",
+      "@UI.HeaderInfo.TypeNamePlural": "Used Quantities",
+      "@UI.HeaderInfo.Title.Value": "Used Quantities",
+      "@UI.HeaderInfo.Description.Value": "Used Quantities",
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "PBUKR"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_PSPNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_POSNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZCABNUM"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "USEDQTY"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZUT"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZCABNUM"
+          }
+        }
+      ],
+      "@UI.Facets": [
+        {
+          "$Type": "UI.CollectionFacet",
+          "Label": "Project Goods Management",
+          "Facets": [
+            {
+              "$Type": "UI.ReferenceFacet",
+              "Target": "@UI.FieldGroup#MainAs1",
+              "Label": "Details"
+            }
+          ]
+        }
+      ],
+      "@UI.FieldGroup#MainAs1.Data": [
+        {
+          "Value": {
+            "=": "PBUKR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_PSPNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_POSNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZMSCODE"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "USEDQTY"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZUT"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZCABNUM"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        }
+      ],
       "projection": {
         "from": {
           "ref": [
@@ -29321,7 +29449,7 @@
       },
       "elements": {
         "PBUKR": {
-          "@title": "Company code",
+          "@title": "Company Code",
           "key": true,
           "type": "cds.String",
           "length": 4
@@ -29339,19 +29467,19 @@
           "length": 24
         },
         "ZMSCODE": {
-          "@title": "   ",
+          "@title": "MS Code",
           "key": true,
           "type": "cds.String",
           "length": 50
         },
         "MATNR": {
-          "@title": "SAP MATERIAL",
+          "@title": "SAP Material",
           "key": true,
           "type": "cds.String",
           "length": 40
         },
         "USEDQTY": {
-          "@title": "Quantity",
+          "@title": "Used Quantity",
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 2
@@ -29362,7 +29490,7 @@
           "length": 5
         },
         "ZCABNUM": {
-          "@title": "Cabinet number",
+          "@title": "Cabinet Number",
           "type": "cds.String",
           "length": 20
         }
@@ -29745,7 +29873,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "PBUKR"
                     ]
                   },
@@ -29759,7 +29886,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "PSPHI"
                     ]
                   },
@@ -29773,7 +29899,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "PS_PSP_PNR"
                     ]
                   },
@@ -29787,7 +29912,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "ZZ1_MSCODE_PRD"
                     ]
                   },
@@ -29801,7 +29925,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "MATNR"
                     ]
                   }
@@ -29826,7 +29949,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "PBUKR"
                     ]
                   },
@@ -29840,7 +29962,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "PSPHI"
                     ]
                   },
@@ -29854,7 +29975,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "PS_PSP_PNR"
                     ]
                   },
@@ -29868,7 +29988,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "ZZ1_MSCODE_PRD"
                     ]
                   },
@@ -29882,7 +30001,6 @@
                   "=",
                   {
                     "ref": [
-                      "$projection",
                       "MATNR"
                     ]
                   }
@@ -29979,7 +30097,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "PBUKR"
               ]
             },
@@ -29993,7 +30110,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "PSPHI"
               ]
             },
@@ -30007,7 +30123,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "PS_PSP_PNR"
               ]
             },
@@ -30021,7 +30136,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "ZZ1_MSCODE_PRD"
               ]
             },
@@ -30035,7 +30149,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "MATNR"
               ]
             }
@@ -30057,7 +30170,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "PBUKR"
               ]
             },
@@ -30071,7 +30183,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "PSPHI"
               ]
             },
@@ -30085,7 +30196,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "PS_PSP_PNR"
               ]
             },
@@ -30099,7 +30209,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "ZZ1_MSCODE_PRD"
               ]
             },
@@ -30113,7 +30222,6 @@
             "=",
             {
               "ref": [
-                "$projection",
                 "MATNR"
               ]
             }

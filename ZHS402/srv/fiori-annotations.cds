@@ -2117,7 +2117,7 @@ annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
 
         SelectionFields: [ PBUKR,PS_PSPNR,ZDONUM ],
         LineItem: [
-             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0001.pgi', Label: 'Post Good Issue'},
+            { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0001.pgi', Label: 'Post Good Issue'},
             { Value: PS_PSPNR },
             { Value: ProjDesc },
             { Value: ZDONUM },
@@ -2169,7 +2169,8 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
 
         SelectionFields: [ PBUKR,PSPHI,PS_PSP_PNR,ZZ1_MSCODE_PRD],
         LineItem: [
-            { Value: PBUKR },
+            { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0002.updateDiff', Label: 'Save Reason For Difference'},
+            { Value: PBUKR},
             { Value: PSPHI },
             { Value: PS_PSP_PNR },
             { Value: ZZ1_MSCODE_PRD },
@@ -2180,11 +2181,12 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
             { Value: USEDQTY },
             { Value: ZUT } ,
             { Value: CONFIRM_STATUS } ,
-            { Value: REASON_DIFF }   
+            { Value: REASON_DIFF,![@Common.FieldControl]: #Mandatory }   
         ],
         Facets: [
             {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'},
-            {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_ReceivedQuantities/@UI.LineItem'}
+            {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_ReceivedQuantities/@UI.LineItem'},
+            {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_UsedQuantities/@UI.LineItem'}
         ],        
         FieldGroup#MainAs: {
             Data: [
