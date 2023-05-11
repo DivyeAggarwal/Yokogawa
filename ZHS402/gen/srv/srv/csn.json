@@ -29518,6 +29518,11 @@
       ],
       "@UI.LineItem": [
         {
+          "$Type": "UI.DataFieldForAction",
+          "Action": "ZAPIBPS0002.updateDiff",
+          "Label": "Save Reason For Difference"
+        },
+        {
           "Value": {
             "=": "PBUKR"
           }
@@ -29575,6 +29580,9 @@
         {
           "Value": {
             "=": "REASON_DIFF"
+          },
+          "@Common.FieldControl": {
+            "#": "Mandatory"
           }
         }
       ],
@@ -29588,6 +29596,11 @@
           "$Type": "UI.ReferenceFacet",
           "Label": "Received Quantities",
           "Target": "_ReceivedQuantities/@UI.LineItem"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Received Quantities",
+          "Target": "_UsedQuantities/@UI.LineItem"
         }
       ],
       "@UI.FieldGroup#MainAs.Data": [
@@ -29844,6 +29857,52 @@
               ]
             },
             {
+              "xpr": [
+                "case",
+                {
+                  "ref": [
+                    "ZCDSEBPS0005",
+                    "REASON_DIFF"
+                  ]
+                },
+                "when",
+                {
+                  "val": ""
+                },
+                "then",
+                "case",
+                "when",
+                {
+                  "ref": [
+                    "ZCDSEBPS0005",
+                    "ERFMG"
+                  ]
+                },
+                "=",
+                {
+                  "ref": [
+                    "ZCDSEBPS0006",
+                    "USEDQTY"
+                  ]
+                },
+                "then",
+                {
+                  "val": 3
+                },
+                "else",
+                {
+                  "val": 1
+                },
+                "end",
+                "else",
+                {
+                  "val": 2
+                },
+                "end"
+              ],
+              "as": "criticality"
+            },
+            {
               "ref": [
                 "ZCDSEBPS0005",
                 "CONFIRM_STATUS"
@@ -30071,6 +30130,9 @@
           "type": "cds.String",
           "length": 5
         },
+        "criticality": {
+          "@Core.Computed": true
+        },
         "CONFIRM_STATUS": {
           "@title": "Confirm Status",
           "type": "cds.String",
@@ -30226,6 +30288,20 @@
               ]
             }
           ]
+        }
+      },
+      "actions": {
+        "updateDiff": {
+          "kind": "action",
+          "params": {
+            "ReasonForDiff": {
+              "@Common.Label": "Reason For Difference",
+              "type": "cds.String"
+            }
+          },
+          "returns": {
+            "type": "ZAPIBPS0002.ZCDSEBPS0004"
+          }
         }
       }
     },

@@ -2180,7 +2180,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
             { Value: ERFME },
             { Value: USEDQTY },
             { Value: ZUT } ,
-            { Value: CONFIRM_STATUS } ,
+            { Value: CONFIRM_STATUS, Criticality : Criticality } ,
             { Value: REASON_DIFF,![@Common.FieldControl]: #Mandatory }   
         ],
         Facets: [
