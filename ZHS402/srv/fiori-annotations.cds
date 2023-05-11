@@ -2187,7 +2187,12 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
                 $Type: 'UI.CollectionFacet',
                 Label: 'Project Goods Management',
                 Facets: [
-                    {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'}
+                    {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'},
+                    {
+                $Type: 'UI.ReferenceFacet',
+                Label: 'Received Quantities',
+                Target: 'ZCDSEBPS0007@UI.LineItem'
+            }
                 ]
             }
         ],        
@@ -2221,4 +2226,58 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
     ZUT @title: 'Unit';
     CONFIRM_STATUS @title: 'Confirm Status';
     REASON_DIFF @title: 'Reason for Difference';
+};
+
+annotate  ZCDSEBPS0007 with @(
+    UI: {
+        HeaderInfo: {
+            TypeName: '',
+            TypeNamePlural: 'Received Quantities',
+            Title: { Value: 'Received Quantities' },
+            Description: { Value: 'Received Quantities' }
+        },
+        LineItem: [
+            { Value: PBUKR },
+            { Value: PSPHI },
+            { Value: PS_PSP_PNR },
+            { Value: ZZ1_MSCODE_PRD },
+            { Value: MATNR },
+            { Value: ERFMG },
+            { Value: ERFME },
+            { Value: KDAUF },
+            { Value: KDPOS }   
+        ],
+        Facets: [
+            {
+                $Type: 'UI.CollectionFacet',
+                Label: 'Project Goods Management',
+                Facets: [
+                    {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'}
+                ]
+            }
+        ],        
+        FieldGroup#MainAs: {
+            Data: [
+              { Value: PBUKR,![@Common.FieldControl] : #ReadOnly },
+            { Value: PSPHI,![@Common.FieldControl] : #ReadOnly },
+            { Value: PS_PSP_PNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZZ1_MSCODE_PRD,![@Common.FieldControl] : #ReadOnly },
+            { Value: MATNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ERFMG,![@Common.FieldControl] : #ReadOnly },
+            { Value: ERFME,![@Common.FieldControl] : #ReadOnly },
+            { Value: KDAUF,![@Common.FieldControl] : #ReadOnly },
+            { Value: KDPOS,![@Common.FieldControl] : #ReadOnly }          
+            ]
+        }
+    }
+){
+    PBUKR @title: 'Company Code';
+    PSPHI @title: 'Project Definition';
+    PS_PSP_PNR @title: 'WBS Element';
+    ZZ1_MSCODE_PRD @title: 'MS Code';
+    MATNR @title: 'SAP Material';
+    ERFMG @title: 'Recieved Quantity';
+    ERFME @title: 'Unit';
+    KDAUF @title: 'Sales Order';
+    KDPOS @title: 'Sales Order Item';
 };
