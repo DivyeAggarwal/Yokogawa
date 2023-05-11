@@ -2160,6 +2160,7 @@ annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
 
 annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
     UI: {
+        DeleteHidden        : true,
         PresentationVariant #DSM:{
             Visualizations:['@UI.LineItem'],
             Text : 'Display By SAP Material'
@@ -2172,9 +2173,8 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
         },
 
         SelectionFields: [ PBUKR,PSPHI,PS_PSP_PNR,ZZ1_MSCODE_PRD],
-        LineItem: [
-            { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0002.updateDiff', Label: 'Save Reason For Difference'},
-            { Value: PBUKR},
+        LineItem: [ {$Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0002.updateDiff', Label: 'Save Reason For Difference'},
+             { Value: PBUKR},
             { Value: PSPHI },
             { Value: PS_PSP_PNR },
             { Value: ZZ1_MSCODE_PRD },
@@ -2337,6 +2337,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0010 with @(
 
 annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
     UI: {
+        DeleteHidden        : true,
         PresentationVariant #DC:{
             Visualizations:['@UI.LineItem'],
             Text : 'Display By Component'
@@ -2349,9 +2350,8 @@ annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
         },
 
         SelectionFields: [ PBUKR,PSPHI,PS_PSP_PNR,ZZ1_MSCODE_PRD],
-        LineItem: [
-            { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0002.updateDiff', Label: 'Save Reason For Difference'},
-            { Value: PBUKR},
+        LineItem: [ { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0002.updateDiff', Label: 'Save Reason For Difference'},
+             { Value: PBUKR},
             { Value: PSPHI },
             { Value: PS_PSP_PNR },
             { Value: ZZ1_MSCODE_PRD },
