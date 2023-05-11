@@ -2161,7 +2161,8 @@ annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
 annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
     UI: {
         PresentationVariant #DSM:{
-            Visualizations:['@UI.LineItem']
+            Visualizations:['@UI.LineItem'],
+            Text : 'Display By SAP Material'
         },
         HeaderInfo: {
             TypeName: '',
@@ -2226,8 +2227,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
 annotate  ZAPIBPS0002.ZCDSEBPS0009 with @(
     UI: {
         PresentationVariant:{
-            Visualizations:['@UI.LineItem'],
-            Text : 'Display By SAP Material'
+            Visualizations:['@UI.LineItem']
         },
         HeaderInfo: {
             TypeName: '',

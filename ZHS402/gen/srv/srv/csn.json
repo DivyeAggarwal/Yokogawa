@@ -4468,6 +4468,11 @@
               ]
             },
             {
+              "ref": [
+                "SERNR"
+              ]
+            },
+            {
               "xpr": [
                 {
                   "func": "SUM",
@@ -4536,6 +4541,11 @@
             },
             {
               "ref": [
+                "SERNR"
+              ]
+            },
+            {
+              "ref": [
                 "IDNLF"
               ]
             },
@@ -4586,6 +4596,10 @@
         "IDNLF": {
           "type": "cds.String",
           "length": 35
+        },
+        "SERNR": {
+          "type": "cds.String",
+          "length": 18
         },
         "ERFMG": {
           "@Semantics.quantity.unitOfMeasure": "ERFME",
@@ -29109,6 +29123,7 @@
       "@UI.PresentationVariant.Visualizations": [
         "@UI.LineItem"
       ],
+      "@UI.PresentationVariant.Text": "Display By SAP Material",
       "@UI.HeaderInfo.TypeName": "",
       "@UI.HeaderInfo.TypeNamePlural": "Received Quantities",
       "@UI.HeaderInfo.Title.Value": "Received Quantities",
@@ -29498,6 +29513,9 @@
     },
     "ZAPIBPS0002.ZCDSEBPS0004": {
       "kind": "entity",
+      "@UI.PresentationVariant#DSM.Visualizations": [
+        "@UI.LineItem"
+      ],
       "@UI.HeaderInfo.TypeName": "",
       "@UI.HeaderInfo.TypeNamePlural": "Project Goods Management",
       "@UI.HeaderInfo.Title.Value": "Project Goods Management",
@@ -30114,6 +30132,840 @@
           "key": true,
           "type": "cds.String",
           "length": 40
+        },
+        "ERFMG": {
+          "@Semantics.quantity.unitOfMeasure": "ERFME",
+          "@title": "Recieved Quantity",
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ERFME": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "USEDQTY": {
+          "@title": "Used Quantity",
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 2
+        },
+        "ZUT": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 5
+        },
+        "Criticality": {
+          "@Core.Computed": true,
+          "type": "cds.Integer"
+        },
+        "CONFIRM_STATUS": {
+          "@title": "Confirm Status",
+          "type": "cds.String",
+          "length": 100
+        },
+        "REASON_DIFF": {
+          "@title": "Reason for Difference",
+          "type": "cds.String",
+          "length": 200
+        },
+        "_ReceivedQuantities": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZAPIBPS0002.ZCDSEBPS0009",
+          "on": [
+            {
+              "ref": [
+                "_ReceivedQuantities",
+                "PBUKR"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "_ReceivedQuantities",
+                "PSPHI"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PSPHI"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "_ReceivedQuantities",
+                "PS_PSP_PNR"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PS_PSP_PNR"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "_ReceivedQuantities",
+                "ZZ1_MSCODE_PRD"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "ZZ1_MSCODE_PRD"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "_ReceivedQuantities",
+                "MATNR"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "MATNR"
+              ]
+            }
+          ]
+        },
+        "_UsedQuantities": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZAPIBPS0002.ZCDSEBPS0010",
+          "on": [
+            {
+              "ref": [
+                "_UsedQuantities",
+                "PBUKR"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "_UsedQuantities",
+                "PS_PSPNR"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PSPHI"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "_UsedQuantities",
+                "PS_POSNR"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "PS_PSP_PNR"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "_UsedQuantities",
+                "ZMSCODE"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "ZZ1_MSCODE_PRD"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "_UsedQuantities",
+                "MATNR"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "MATNR"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ZAPIBPS0002.ZCDSEBPS0011": {
+      "kind": "entity",
+      "@UI.PresentationVariant#DC.Visualizations": [
+        "@UI.LineItem"
+      ],
+      "@UI.PresentationVariant#DC.Text": "Display By Component",
+      "@UI.HeaderInfo.TypeName": "",
+      "@UI.HeaderInfo.TypeNamePlural": "Project Goods Management",
+      "@UI.HeaderInfo.Title.Value": "Project Goods Management",
+      "@UI.HeaderInfo.Description.Value": "Project Goods Management",
+      "@UI.SelectionFields": [
+        {
+          "=": "PBUKR"
+        },
+        {
+          "=": "PSPHI"
+        },
+        {
+          "=": "PS_PSP_PNR"
+        },
+        {
+          "=": "ZZ1_MSCODE_PRD"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "$Type": "UI.DataFieldForAction",
+          "Action": "ZAPIBPS0002.updateDiff",
+          "Label": "Save Reason For Difference"
+        },
+        {
+          "Value": {
+            "=": "PBUKR"
+          }
+        },
+        {
+          "Value": {
+            "=": "PSPHI"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_PSP_PNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZZ1_MSCODE_PRD"
+          }
+        },
+        {
+          "Value": {
+            "=": "IDNLF"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "SERNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFMG"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFME"
+          }
+        },
+        {
+          "Value": {
+            "=": "USEDQTY"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZUT"
+          }
+        },
+        {
+          "Value": {
+            "=": "CONFIRM_STATUS"
+          },
+          "Criticality": {
+            "=": "Criticality"
+          }
+        },
+        {
+          "Value": {
+            "=": "REASON_DIFF"
+          },
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          }
+        }
+      ],
+      "@UI.Facets": [
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Target": "@UI.FieldGroup#MainAs",
+          "Label": "Details"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Received Quantities",
+          "Target": "_ReceivedQuantities/@UI.LineItem"
+        },
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Label": "Received Quantities",
+          "Target": "_UsedQuantities/@UI.LineItem"
+        }
+      ],
+      "@UI.FieldGroup#MainAs.Data": [
+        {
+          "Value": {
+            "=": "PBUKR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "PSPHI"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_PSP_PNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZZ1_MSCODE_PRD"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "IDNLF"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "SERNR"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFMG"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ERFME"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "USEDQTY"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZUT"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "CONFIRM_STATUS"
+          },
+          "@Common.FieldControl": {
+            "#": "ReadOnly"
+          }
+        },
+        {
+          "Value": {
+            "=": "REASON_DIFF"
+          },
+          "@Common.FieldControl": {
+            "#": "Mandatory"
+          }
+        }
+      ],
+      "@title": "{i18n>CreatepurchaseItemRecord}",
+      "query": {
+        "SELECT": {
+          "from": {
+            "join": "left",
+            "args": [
+              {
+                "ref": [
+                  "ZCDSEBPS0005"
+                ]
+              },
+              {
+                "ref": [
+                  "ZCDSEBPS0006"
+                ]
+              }
+            ],
+            "on": [
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "PBUKR"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "PBUKR"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "PS_PSPNR"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "PS_PSP_PNR"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "PS_POSNR"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "PSPHI"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "ZMSCODE"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "ZZ1_MSCODE_PRD"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "ZCDSEBPS0006",
+                  "MATNR"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "$projection",
+                  "MATNR"
+                ]
+              }
+            ]
+          },
+          "columns": [
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "PBUKR"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "PSPHI"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "PS_PSP_PNR"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "ZZ1_MSCODE_PRD"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "IDNLF"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "ZCDSEBPS0005",
+                "MATNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "SERNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "ERFMG"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "ERFME"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0006",
+                "USEDQTY"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0006",
+                "ZUT"
+              ]
+            },
+            {
+              "xpr": [
+                {
+                  "xpr": [
+                    "case",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0005",
+                        "REASON_DIFF"
+                      ]
+                    },
+                    "when",
+                    {
+                      "val": " "
+                    },
+                    "then",
+                    "case",
+                    "when",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0005",
+                        "ERFMG"
+                      ]
+                    },
+                    "=",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0006",
+                        "USEDQTY"
+                      ]
+                    },
+                    "then",
+                    {
+                      "val": 3
+                    },
+                    "else",
+                    {
+                      "val": 1
+                    },
+                    "end",
+                    "else",
+                    {
+                      "val": 2
+                    },
+                    "end"
+                  ],
+                  "cast": {
+                    "type": "cds.Integer"
+                  }
+                }
+              ],
+              "as": "Criticality"
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "CONFIRM_STATUS"
+              ]
+            },
+            {
+              "ref": [
+                "ZCDSEBPS0005",
+                "REASON_DIFF"
+              ]
+            },
+            {
+              "as": "_ReceivedQuantities",
+              "cast": {
+                "target": "ZAPIBPS0002.ZCDSEBPS0009",
+                "cardinality": {
+                  "max": "*"
+                },
+                "type": "cds.Association",
+                "on": [
+                  {
+                    "ref": [
+                      "_ReceivedQuantities",
+                      "PBUKR"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "PBUKR"
+                    ]
+                  },
+                  "and",
+                  {
+                    "ref": [
+                      "_ReceivedQuantities",
+                      "PSPHI"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "PSPHI"
+                    ]
+                  },
+                  "and",
+                  {
+                    "ref": [
+                      "_ReceivedQuantities",
+                      "PS_PSP_PNR"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "PS_PSP_PNR"
+                    ]
+                  },
+                  "and",
+                  {
+                    "ref": [
+                      "_ReceivedQuantities",
+                      "ZZ1_MSCODE_PRD"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "ZZ1_MSCODE_PRD"
+                    ]
+                  },
+                  "and",
+                  {
+                    "ref": [
+                      "_ReceivedQuantities",
+                      "MATNR"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "MATNR"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "as": "_UsedQuantities",
+              "cast": {
+                "target": "ZAPIBPS0002.ZCDSEBPS0010",
+                "cardinality": {
+                  "max": "*"
+                },
+                "type": "cds.Association",
+                "on": [
+                  {
+                    "ref": [
+                      "_UsedQuantities",
+                      "PBUKR"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "PBUKR"
+                    ]
+                  },
+                  "and",
+                  {
+                    "ref": [
+                      "_UsedQuantities",
+                      "PS_PSPNR"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "PSPHI"
+                    ]
+                  },
+                  "and",
+                  {
+                    "ref": [
+                      "_UsedQuantities",
+                      "PS_POSNR"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "PS_PSP_PNR"
+                    ]
+                  },
+                  "and",
+                  {
+                    "ref": [
+                      "_UsedQuantities",
+                      "ZMSCODE"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "ZZ1_MSCODE_PRD"
+                    ]
+                  },
+                  "and",
+                  {
+                    "ref": [
+                      "_UsedQuantities",
+                      "MATNR"
+                    ]
+                  },
+                  "=",
+                  {
+                    "ref": [
+                      "MATNR"
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "elements": {
+        "PBUKR": {
+          "@title": "Company Code",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "PSPHI": {
+          "@title": "Project Definition",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "PS_PSP_PNR": {
+          "@title": "WBS Element",
+          "key": true,
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZZ1_MSCODE_PRD": {
+          "@title": "MS Code",
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "IDNLF": {
+          "@title": "Vendor Material Code",
+          "type": "cds.String",
+          "length": 35
+        },
+        "MATNR": {
+          "@title": "SAP Material",
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "SERNR": {
+          "@title": "Serial Number",
+          "type": "cds.String",
+          "length": 18
         },
         "ERFMG": {
           "@Semantics.quantity.unitOfMeasure": "ERFME",
