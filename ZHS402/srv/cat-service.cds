@@ -37,13 +37,14 @@ entity ZCDSEBPS0005 as select from db.ZTHBT0027 {
     key ZZ1_MSCODE_PRD,
     key MATNR,
     IDNLF,
+    SERNR,
     @Semantics.quantity.unitOfMeasure: 'ERFME'
     CAST(SUM( CAST(ERFMG as Decimal(13,2)) ) as Decimal(13,2) ) as ERFMG,
     ERFME,
     CONFIRM_STATUS,
     REASON_DIFF
 }
-group by PBUKR, PSPHI, PS_PSP_PNR, ZZ1_MSCODE_PRD, MATNR,IDNLF, ERFME,CONFIRM_STATUS,REASON_DIFF;
+group by PBUKR, PSPHI, PS_PSP_PNR, ZZ1_MSCODE_PRD, MATNR,SERNR,IDNLF, ERFME,CONFIRM_STATUS,REASON_DIFF;
 
 entity ZCDSEBPS0007 as select from db.ZTHBT0027 {
     key PBUKR,
@@ -1045,7 +1046,50 @@ service ZAPIBPS0002 {
         ZCDSEBPS0006.USEDQTY,
         ZCDSEBPS0006.ZUT,
         cast(case ZCDSEBPS0005.REASON_DIFF
-            when ''
+            when ' '
+                then case when ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
+                    then 3
+                else 1 end
+            else 2 
+        end as Integer) as Criticality ,
+        ZCDSEBPS0005.CONFIRM_STATUS,
+        ZCDSEBPS0005.REASON_DIFF,
+        _ReceivedQuantities : Association [*] to ZAPIBPS0002.ZCDSEBPS0009 
+                    on _ReceivedQuantities.PBUKR = PBUKR
+                    and _ReceivedQuantities.PSPHI = PSPHI
+                    and _ReceivedQuantities.PS_PSP_PNR = PS_PSP_PNR
+                    and _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
+                    and _ReceivedQuantities.MATNR = MATNR,
+        _UsedQuantities: Association [*] to ZAPIBPS0002.ZCDSEBPS0010
+                    on _UsedQuantities.PBUKR = PBUKR
+                    and _UsedQuantities.PS_PSPNR = PSPHI
+                    and _UsedQuantities.PS_POSNR = PS_PSP_PNR
+                    and _UsedQuantities.ZMSCODE = ZZ1_MSCODE_PRD
+                    and _UsedQuantities.MATNR = MATNR,
+    };
+        entity ZCDSEBPS0011 as select from ZCDSEBPS0005
+        left outer join ZCDSEBPS0006 
+            on ZCDSEBPS0006.PBUKR = $projection.PBUKR
+            and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
+            and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
+            and ZCDSEBPS0006.ZMSCODE = $projection.ZZ1_MSCODE_PRD
+            and ZCDSEBPS0006.MATNR = $projection.MATNR
+
+    {
+        key ZCDSEBPS0005.PBUKR ,
+        key ZCDSEBPS0005.PSPHI,
+        key ZCDSEBPS0005.PS_PSP_PNR,
+        key ZCDSEBPS0005.ZZ1_MSCODE_PRD,
+        ZCDSEBPS0005.IDNLF,
+        key ZCDSEBPS0005.MATNR,
+            ZCDSEBPS0005.SERNR,
+        @Semantics.quantity.unitOfMeasure: 'ERFME'
+        ZCDSEBPS0005.ERFMG,
+        ZCDSEBPS0005.ERFME,
+        ZCDSEBPS0006.USEDQTY,
+        ZCDSEBPS0006.ZUT,
+        cast(case ZCDSEBPS0005.REASON_DIFF
+            when ' '
                 then case when ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
                     then 3
                 else 1 end
@@ -1066,6 +1110,7 @@ service ZAPIBPS0002 {
                     and _UsedQuantities.ZMSCODE = ZZ1_MSCODE_PRD
                     and _UsedQuantities.MATNR = MATNR,
     }
+
     actions {
         action updateDiff( ReasonForDiff: String @Common.Label : 'Reason For Difference') returns ZCDSEBPS0004;
     } 

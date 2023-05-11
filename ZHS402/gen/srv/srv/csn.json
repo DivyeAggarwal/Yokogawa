@@ -29575,6 +29575,9 @@
         {
           "Value": {
             "=": "CONFIRM_STATUS"
+          },
+          "Criticality": {
+            "=": "Criticality"
           }
         },
         {
@@ -29858,49 +29861,56 @@
             },
             {
               "xpr": [
-                "case",
                 {
-                  "ref": [
-                    "ZCDSEBPS0005",
-                    "REASON_DIFF"
-                  ]
-                },
-                "when",
-                {
-                  "val": ""
-                },
-                "then",
-                "case",
-                "when",
-                {
-                  "ref": [
-                    "ZCDSEBPS0005",
-                    "ERFMG"
-                  ]
-                },
-                "=",
-                {
-                  "ref": [
-                    "ZCDSEBPS0006",
-                    "USEDQTY"
-                  ]
-                },
-                "then",
-                {
-                  "val": 3
-                },
-                "else",
-                {
-                  "val": 1
-                },
-                "end",
-                "else",
-                {
-                  "val": 2
-                },
-                "end"
+                  "xpr": [
+                    "case",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0005",
+                        "REASON_DIFF"
+                      ]
+                    },
+                    "when",
+                    {
+                      "val": " "
+                    },
+                    "then",
+                    "case",
+                    "when",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0005",
+                        "ERFMG"
+                      ]
+                    },
+                    "=",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0006",
+                        "USEDQTY"
+                      ]
+                    },
+                    "then",
+                    {
+                      "val": 3
+                    },
+                    "else",
+                    {
+                      "val": 1
+                    },
+                    "end",
+                    "else",
+                    {
+                      "val": 2
+                    },
+                    "end"
+                  ],
+                  "cast": {
+                    "type": "cds.Integer"
+                  }
+                }
               ],
-              "as": "criticality"
+              "as": "Criticality"
             },
             {
               "ref": [
@@ -30130,8 +30140,9 @@
           "type": "cds.String",
           "length": 5
         },
-        "criticality": {
-          "@Core.Computed": true
+        "Criticality": {
+          "@Core.Computed": true,
+          "type": "cds.Integer"
         },
         "CONFIRM_STATUS": {
           "@title": "Confirm Status",

@@ -2160,6 +2160,9 @@ annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
 
 annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
     UI: {
+        PresentationVariant #DSM:{
+            Visualizations:['@UI.LineItem']
+        },
         HeaderInfo: {
             TypeName: '',
             TypeNamePlural: 'Project Goods Management',
@@ -2223,7 +2226,8 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
 annotate  ZAPIBPS0002.ZCDSEBPS0009 with @(
     UI: {
         PresentationVariant:{
-            Visualizations:['@UI.LineItem']
+            Visualizations:['@UI.LineItem'],
+            Text : 'Display By SAP Material'
         },
         HeaderInfo: {
             TypeName: '',
@@ -2329,4 +2333,73 @@ annotate  ZAPIBPS0002.ZCDSEBPS0010 with @(
     USEDQTY @title: 'Used Quantity';
     ZUT @title: 'Unit';
     ZCABNUM @title: 'Cabinet Number';
+};
+
+annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
+    UI: {
+        PresentationVariant #DC:{
+            Visualizations:['@UI.LineItem'],
+            Text : 'Display By Component'
+        },
+        HeaderInfo: {
+            TypeName: '',
+            TypeNamePlural: 'Project Goods Management',
+            Title: { Value: 'Project Goods Management' },
+            Description: { Value: 'Project Goods Management' }
+        },
+
+        SelectionFields: [ PBUKR,PSPHI,PS_PSP_PNR,ZZ1_MSCODE_PRD],
+        LineItem: [
+            { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0002.updateDiff', Label: 'Save Reason For Difference'},
+            { Value: PBUKR},
+            { Value: PSPHI },
+            { Value: PS_PSP_PNR },
+            { Value: ZZ1_MSCODE_PRD },
+            { Value: IDNLF },
+            { Value: MATNR },
+            { Value: SERNR },
+            { Value: ERFMG },
+            { Value: ERFME },
+            { Value: USEDQTY },
+            { Value: ZUT } ,
+            { Value: CONFIRM_STATUS, Criticality : Criticality } ,
+            { Value: REASON_DIFF,![@Common.FieldControl]: #Mandatory }   
+        ],
+        Facets: [
+            {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'},
+            {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_ReceivedQuantities/@UI.LineItem'},
+            {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_UsedQuantities/@UI.LineItem'}
+        ],        
+        FieldGroup#MainAs: {
+            Data: [
+              { Value: PBUKR,![@Common.FieldControl] : #ReadOnly },
+            { Value: PSPHI,![@Common.FieldControl] : #ReadOnly },
+            { Value: PS_PSP_PNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZZ1_MSCODE_PRD,![@Common.FieldControl] : #ReadOnly },
+            { Value: IDNLF,![@Common.FieldControl] : #ReadOnly },
+            { Value: MATNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: SERNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ERFMG,![@Common.FieldControl] : #ReadOnly },
+            { Value: ERFME,![@Common.FieldControl] : #ReadOnly },
+            { Value: USEDQTY,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZUT,![@Common.FieldControl] : #ReadOnly } ,
+            { Value: CONFIRM_STATUS,![@Common.FieldControl] : #ReadOnly } ,
+            { Value: REASON_DIFF,![@Common.FieldControl] : #Mandatory }           
+            ]
+        }
+    }
+){
+    PBUKR @title: 'Company Code';
+    PSPHI @title: 'Project Definition';
+    PS_PSP_PNR @title: 'WBS Element';
+    ZZ1_MSCODE_PRD @title: 'MS Code';
+    IDNLF @title: 'Vendor Material Code';
+    MATNR @title: 'SAP Material';
+    SERNR @title: 'Serial Number';
+    ERFMG @title: 'Recieved Quantity';
+    ERFME @title: 'Unit';
+    USEDQTY @title: 'Used Quantity';
+    ZUT @title: 'Unit';
+    CONFIRM_STATUS @title: 'Confirm Status';
+    REASON_DIFF @title: 'Reason for Difference';
 };
