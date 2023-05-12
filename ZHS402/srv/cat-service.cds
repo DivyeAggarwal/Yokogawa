@@ -1045,7 +1045,32 @@ service ZAPIBPS0001 {
         ProjDesc,
         ApproverPM
     };
-    entity ZCDSEBPS0011 as projection on db.ZTHBT0055;
+    // entity ZCDSEBPS0011 as projection on db.ZTHBT0055;
+    entity ZCDSEBPS0011                 as
+        select from db.ZTHBT0055 {
+            ZCABNUM,
+            PBUKR,
+            PS_PSPNR,
+            ZMSCODE,
+            ZQTY,
+            ZUT,
+            ZSHTP,
+            ZDONUM,
+            ZDESCRIP,
+            ZSHPSTAT,
+            ZDOITEM,
+            MATNR,
+            ZVMCODE,
+            ZCONTACTTEL,
+            ZSHPNAME1,
+            ZSHPNAME2,
+            ZSHPNAME3,
+            ZSHPNAME4,
+            null as ProjectManager   : String(50)  @title: 'Project Manager',
+            null as CustomerFullName : String(100) @title: 'Ship To Party Name',
+            null as ProjDesc         : String(50)  @title: 'Project Description'
+        };
+
     entity ZCDSEBPS0003                 as
         select from db.ZTHBT0055 {
             ZCABNUM,
