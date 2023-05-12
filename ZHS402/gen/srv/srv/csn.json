@@ -3284,6 +3284,7 @@
         },
         "CATEGORY": {
           "@title": "Category",
+          "key": true,
           "type": "cds.String",
           "length": 3
         }
