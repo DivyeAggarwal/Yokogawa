@@ -404,22 +404,51 @@ const readReceiverWBSCombined = async (where, limit, req) => {
 
     var oData = [];
     if (LoggUser.length > 0) {
-        const AssignmentByPassData = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
-        if (AssignmentByPassData && AssignmentByPassData.length > 0) {
-            switch (AssignmentByPassData[0].CATEGORY) {
-                case 'PJT':
-                    await prepareFilterAsObject(where, { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } })
-
+        const AssignmentByPassDataResults = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
+        if (AssignmentByPassDataResults && AssignmentByPassDataResults.length > 0) {
+            let whereAdditionnalPJT;
+            let whereAdditionnalOPP;
+            let whereAdditionnalcctw;
+            let whereAdditional;
+            for(let AssignmentByPassData of AssignmentByPassDataResults ){
+                switch (AssignmentByPassData.CATEGORY) {
+                    case 'PJT':
+                    whereAdditionnalPJT = { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } };
                     break;
                 case 'OPP':
-                    await prepareFilterAsObject(where, { Profile: 'YD00001', and: { LevelInHierarchy: { '>=': 002 }, and: { ProjectType: 'D1' } } })
-
-                    break;
+                    whereAdditionnalOPP = { Profile: 'YD00001', and: { LevelInHierarchy: { '>=': 002 }, and: { ProjectType: 'D1' } } };
+                     break;
                 default:
-                    await prepareFilterAsObject(where, { UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } });
-
+                    whereAdditionnalcctw = { UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } };
                     break;
+                }     
             }
+            if(whereAdditionnalPJT){
+                whereAdditional = whereAdditionnalPJT;
+            }
+            if(whereAdditionnalOPP) {
+                if(whereAdditional){
+                    Object.assign(whereAdditional.and.and,{or: whereAdditionnalOPP})
+                }
+                else {
+                    whereAdditional = whereAdditionnalOPP;
+                }
+            }
+            if(whereAdditionnalcctw){
+                if(whereAdditional){
+                    if(whereAdditionnalOPP && whereAdditionnalPJT){
+                        Object.assign(whereAdditional.and.and.or.and.and,{or:whereAdditionnalcctw});
+                    }
+                    else {
+                        Object.assign(whereAdditional.and.and,{or:whereAdditionnalcctw});
+                    }
+                }
+                else {
+                    whereAdditional = whereAdditionnalcctw;
+                }
+                
+            }         
+            await prepareFilterAsObject(where, whereAdditional);
             if (limit) {
                 oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where).limit(limit);
             }

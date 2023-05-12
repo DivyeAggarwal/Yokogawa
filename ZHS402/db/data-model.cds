@@ -395,7 +395,7 @@ entity ZTHBT0058: managed {
 
 entity ZTHBT0052: managed {
     key BUKRS: String(4) @title: 'Company Code';
-        CATEGORY: String(3) @title: 'Category'
+    key CATEGORY: String(3) @title: 'Category'
 }
 
 entity ZTHBT0056 : managed {

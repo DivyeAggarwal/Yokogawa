@@ -3284,6 +3284,7 @@
         },
         "CATEGORY": {
           "@title": "Category",
+          "key": true,
           "type": "cds.String",
           "length": 3
         }
@@ -4422,6 +4423,193 @@
       }
     },
     "ZCDSEBPS0005": {
+      "kind": "entity",
+      "@title": "{i18n>CreatepurchaseItemRecord}",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "ZHS402.ZTHBT0027"
+            ]
+          },
+          "columns": [
+            {
+              "key": true,
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "PSPHI"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "PS_PSP_PNR"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "ZZ1_MSCODE_PRD"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "MATNR"
+              ]
+            },
+            {
+              "ref": [
+                "IDNLF"
+              ]
+            },
+            {
+              "xpr": [
+                {
+                  "func": "SUM",
+                  "args": [
+                    {
+                      "ref": [
+                        "ERFMG"
+                      ],
+                      "cast": {
+                        "type": "cds.Decimal",
+                        "precision": 13,
+                        "scale": 2
+                      }
+                    }
+                  ],
+                  "cast": {
+                    "type": "cds.Decimal",
+                    "precision": 13,
+                    "scale": 2
+                  }
+                }
+              ],
+              "as": "ERFMG"
+            },
+            {
+              "ref": [
+                "ERFME"
+              ]
+            },
+            {
+              "ref": [
+                "CONFIRM_STATUS"
+              ]
+            },
+            {
+              "ref": [
+                "REASON_DIFF"
+              ]
+            }
+          ],
+          "groupBy": [
+            {
+              "ref": [
+                "PBUKR"
+              ]
+            },
+            {
+              "ref": [
+                "PSPHI"
+              ]
+            },
+            {
+              "ref": [
+                "PS_PSP_PNR"
+              ]
+            },
+            {
+              "ref": [
+                "ZZ1_MSCODE_PRD"
+              ]
+            },
+            {
+              "ref": [
+                "MATNR"
+              ]
+            },
+            {
+              "ref": [
+                "IDNLF"
+              ]
+            },
+            {
+              "ref": [
+                "ERFME"
+              ]
+            },
+            {
+              "ref": [
+                "CONFIRM_STATUS"
+              ]
+            },
+            {
+              "ref": [
+                "REASON_DIFF"
+              ]
+            }
+          ]
+        }
+      },
+      "elements": {
+        "PBUKR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "PSPHI": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "PS_PSP_PNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZZ1_MSCODE_PRD": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "MATNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "IDNLF": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "ERFMG": {
+          "@Semantics.quantity.unitOfMeasure": "ERFME",
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ERFME": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "CONFIRM_STATUS": {
+          "type": "cds.String",
+          "length": 100
+        },
+        "REASON_DIFF": {
+          "type": "cds.String",
+          "length": 200
+        }
+      }
+    },
+    "ZCDSEBPS0012": {
       "kind": "entity",
       "@title": "{i18n>CreatepurchaseItemRecord}",
       "query": {
@@ -30569,7 +30757,7 @@
             "args": [
               {
                 "ref": [
-                  "ZCDSEBPS0005"
+                  "ZCDSEBPS0012"
                 ]
               },
               {
@@ -30654,59 +30842,59 @@
             {
               "key": true,
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "PBUKR"
               ]
             },
             {
               "key": true,
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "PSPHI"
               ]
             },
             {
               "key": true,
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "PS_PSP_PNR"
               ]
             },
             {
               "key": true,
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "ZZ1_MSCODE_PRD"
               ]
             },
             {
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "IDNLF"
               ]
             },
             {
               "key": true,
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "MATNR"
               ]
             },
             {
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "SERNR"
               ]
             },
             {
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "ERFMG"
               ]
             },
             {
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "ERFME"
               ]
             },
@@ -30729,7 +30917,7 @@
                     "case",
                     {
                       "ref": [
-                        "ZCDSEBPS0005",
+                        "ZCDSEBPS0012",
                         "REASON_DIFF"
                       ]
                     },
@@ -30742,7 +30930,7 @@
                     "when",
                     {
                       "ref": [
-                        "ZCDSEBPS0005",
+                        "ZCDSEBPS0012",
                         "ERFMG"
                       ]
                     },
@@ -30777,13 +30965,13 @@
             },
             {
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "CONFIRM_STATUS"
               ]
             },
             {
               "ref": [
-                "ZCDSEBPS0005",
+                "ZCDSEBPS0012",
                 "REASON_DIFF"
               ]
             },
