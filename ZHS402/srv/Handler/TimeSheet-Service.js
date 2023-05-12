@@ -401,64 +401,38 @@ const readReceiverWBSCombined = async (where, limit, req) => {
     let loggedinId = req.user.id;
     loggedinId = loggedinId.toUpperCase();
     const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({ email_Address: loggedinId, or: { globalID: loggedinId } });
-
     var oData = [];
+    var oDataFinal = [];
     if (LoggUser.length > 0) {
         const AssignmentByPassDataResults = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
         if (AssignmentByPassDataResults && AssignmentByPassDataResults.length > 0) {
-            let whereAdditionnalPJT;
-            let whereAdditionnalOPP;
-            let whereAdditionnalcctw;
-            let whereAdditional;
+             let whereAdditional = {};
             for(let AssignmentByPassData of AssignmentByPassDataResults ){
+                whereAdditional = {};
                 switch (AssignmentByPassData.CATEGORY) {
                     case 'PJT':
-                    whereAdditionnalPJT = { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } };
-                    break;
-                case 'OPP':
-                    whereAdditionnalOPP = { Profile: 'YD00001', and: { LevelInHierarchy: { '>=': 002 }, and: { ProjectType: 'D1' } } };
-                     break;
-                default:
-                    whereAdditionnalcctw = { UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } };
-                    break;
-                }     
-            }
-            if(whereAdditionnalPJT){
-                whereAdditional = whereAdditionnalPJT;
-            }
-            if(whereAdditionnalOPP) {
-                if(whereAdditional){
-                    Object.assign(whereAdditional.and.and,{or: whereAdditionnalOPP})
+                        whereAdditional = { Profile: 'YE00001', and: { LevelInHierarchy: { '>=': 006 }, and: { ProjectType: 'E1' } } };
+                        break;
+                    case 'OPP':
+                        whereAdditional = { Profile: 'YD00001', and: { LevelInHierarchy: { '>=': 002 }, and: { ProjectType: 'D1' } } };
+                        break;
+                    default:
+                        whereAdditional = { UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } };
+                        break;
+                }   
+                Object.assign(whereAdditional,where);  
+                if (limit) {
+                    oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(whereAdditional).limit(limit);
                 }
                 else {
-                    whereAdditional = whereAdditionnalOPP;
+                    oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(whereAdditional);
                 }
-            }
-            if(whereAdditionnalcctw){
-                if(whereAdditional){
-                    if(whereAdditionnalOPP && whereAdditionnalPJT){
-                        Object.assign(whereAdditional.and.and.or.and.and,{or:whereAdditionnalcctw});
-                    }
-                    else {
-                        Object.assign(whereAdditional.and.and,{or:whereAdditionnalcctw});
-                    }
-                }
-                else {
-                    whereAdditional = whereAdditionnalcctw;
-                }
+                oDataFinal.push(...oData);
                 
-            }         
-            await prepareFilterAsObject(where, whereAdditional);
-            if (limit) {
-                oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where).limit(limit);
-            }
-            else {
-                oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(where);
-            }
-
+            }   
         }
     }
-    return oData;
+    return oDataFinal;
 }
 
 const readParentWBSCombined = async (where, limit, req) => {
