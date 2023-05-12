@@ -1207,7 +1207,7 @@ service ZAPIBPS0002 {
                                       and                                             _UsedQuantities.MATNR    = MATNR,
         }
     actions {
-        action updateDiffSM(ReasonForDiff : String @Common.Label: 'Reason For Difference' ) returns ZCDSEBPS0004;
+        action updateDiffSM(ReasonForDiffSM : String @Common.Label: 'Reason For Difference' ) returns ZCDSEBPS0004;
     };
     
 

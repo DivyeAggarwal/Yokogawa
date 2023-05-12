@@ -2173,7 +2173,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
         },
 
         SelectionFields: [ PBUKR,PSPHI,PS_PSP_PNR,ZZ1_MSCODE_PRD],
-        LineItem: [ {$Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0002.updateDiff', Label: 'Save Reason For Difference'},
+        LineItem: [ {$Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0002.updateDiffSM', Label: 'Save Reason For Difference'},
              { Value: PBUKR},
             { Value: PSPHI },
             { Value: PS_PSP_PNR },

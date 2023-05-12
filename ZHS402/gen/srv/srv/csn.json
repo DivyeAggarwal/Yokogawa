@@ -29538,7 +29538,7 @@
       "@UI.LineItem": [
         {
           "$Type": "UI.DataFieldForAction",
-          "Action": "ZAPIBPS0002.updateDiff",
+          "Action": "ZAPIBPS0002.updateDiffSM",
           "Label": "Save Reason For Difference"
         },
         {
@@ -30319,18 +30319,20 @@
             }
           ]
         }
-      }
-    },
-    "ZAPIBPS0002.updateDiffSM": {
-      "kind": "action",
-      "params": {
-        "ReasonForDiff": {
-          "@Common.Label": "Reason For Difference",
-          "type": "cds.String"
-        }
       },
-      "returns": {
-        "type": "ZAPIBPS0002.ZCDSEBPS0004"
+      "actions": {
+        "updateDiffSM": {
+          "kind": "action",
+          "params": {
+            "ReasonForDiffSM": {
+              "@Common.Label": "Reason For Difference",
+              "type": "cds.String"
+            }
+          },
+          "returns": {
+            "type": "ZAPIBPS0002.ZCDSEBPS0004"
+          }
+        }
       }
     },
     "ZAPIBPS0002.ZCDSEBPS0011": {
@@ -31166,18 +31168,20 @@
             }
           ]
         }
-      }
-    },
-    "ZAPIBPS0002.updateDiff": {
-      "kind": "action",
-      "params": {
-        "ReasonForDiff": {
-          "@Common.Label": "Reason For Difference",
-          "type": "cds.String"
-        }
       },
-      "returns": {
-        "type": "ZAPIBPS0002.ZCDSEBPS0011"
+      "actions": {
+        "updateDiff": {
+          "kind": "action",
+          "params": {
+            "ReasonForDiff": {
+              "@Common.Label": "Reason For Difference",
+              "type": "cds.String"
+            }
+          },
+          "returns": {
+            "type": "ZAPIBPS0002.ZCDSEBPS0011"
+          }
+        }
       }
     },
     "external.PublicSynonymsService": {
