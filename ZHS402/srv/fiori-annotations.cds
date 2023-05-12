@@ -2285,7 +2285,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0010 with @(
     UI: {
         PresentationVariant:{
             Visualizations:['@UI.LineItem']
-        },
+        },.
         HeaderInfo: {
             TypeName: '',
             TypeNamePlural: 'Used Quantities',
@@ -2384,7 +2384,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
             { Value: USEDQTY,![@Common.FieldControl] : #ReadOnly },
             { Value: ZUT,![@Common.FieldControl] : #ReadOnly } ,
             { Value: CONFIRM_STATUS,![@Common.FieldControl] : #ReadOnly } ,
-            { Value: REASON_DIFF,![@Common.FieldControl] : #Mandatory }           
+           . { Value: REASON_DIFF,![@Common.FieldControl] : #Mandatory }           
             ]
         }
     }
@@ -2402,4 +2402,30 @@ annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
     ZUT @title: 'Unit';
     CONFIRM_STATUS @title: 'Confirm Status';
     REASON_DIFF @title: 'Reason for Difference';
+};
+
+annotate ZAPIBPS0001.ZCDSEBPS0011 with @(
+    
+    UI : { 
+        SelectionFields  : [
+            PBUKR,PS_PSPNR,ZDONUM,ZSHPSTAT
+        ],
+        LineItem  : [
+            { Value : ZDONUM },
+            { Value : ZDOITEM },
+            { Value : ZSHPSTAT }, 
+            { Value : ZSHTP },
+            { Value : MATNR },
+            { Value : ZMSCODE },
+            { Value : ZVMCODE },
+            { Value : ZQTY },
+            { Value : ZDESCRIP },   
+            { Value : ZCONTACTTEL },
+            { Value : ZSHPNAME1 },
+            { Value : ZSHPNAME2 },
+            { Value : ZSHPNAME3 },
+            { Value : ZSHPNAME4 }                                   
+        ],
+     }
+){
 };
