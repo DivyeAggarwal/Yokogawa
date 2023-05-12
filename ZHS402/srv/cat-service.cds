@@ -1045,7 +1045,7 @@ service ZAPIBPS0001 {
         ProjDesc,
         ApproverPM
     };
-
+    entity ZCDSEBPS0011 as projection on db.ZTHBT0055;
     entity ZCDSEBPS0003                 as
         select from db.ZTHBT0055 {
             ZCABNUM,
