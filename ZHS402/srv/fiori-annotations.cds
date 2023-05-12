@@ -2285,7 +2285,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0010 with @(
     UI: {
         PresentationVariant:{
             Visualizations:['@UI.LineItem']
-        },.
+        },
         HeaderInfo: {
             TypeName: '',
             TypeNamePlural: 'Used Quantities',
@@ -2384,7 +2384,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
             { Value: USEDQTY,![@Common.FieldControl] : #ReadOnly },
             { Value: ZUT,![@Common.FieldControl] : #ReadOnly } ,
             { Value: CONFIRM_STATUS,![@Common.FieldControl] : #ReadOnly } ,
-           . { Value: REASON_DIFF,![@Common.FieldControl] : #Mandatory }           
+            { Value: REASON_DIFF,![@Common.FieldControl] : #Mandatory }           
             ]
         }
     }
