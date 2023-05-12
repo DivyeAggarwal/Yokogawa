@@ -403,11 +403,13 @@ const readReceiverWBSCombined = async (where, limit, req) => {
     const LoggUser = await bupa.get('ZCDSEHBTC0003.LoggedInUser').where({ email_Address: loggedinId, or: { globalID: loggedinId } });
     var oData = [];
     var oDataFinal = [];
+    let whereOriginal = Object.assign(where.length ? []: {},where);
     if (LoggUser.length > 0) {
         const AssignmentByPassDataResults = await SELECT.from('ZHS402.ZTHBT0052').where({ BUKRS: LoggUser[0].CompanyCode });
         if (AssignmentByPassDataResults && AssignmentByPassDataResults.length > 0) {
-             let whereAdditional = {};
+             let whereAdditional = {};     
             for(let AssignmentByPassData of AssignmentByPassDataResults ){
+                where = Object.assign(whereOriginal.length ? []: {},whereOriginal);
                 whereAdditional = {};
                 switch (AssignmentByPassData.CATEGORY) {
                     case 'PJT':
@@ -419,8 +421,8 @@ const readReceiverWBSCombined = async (where, limit, req) => {
                     default:
                         whereAdditional = { UserStatus: 'CCTW', and: { LevelInHierarchy: { '>=': 006 } } };
                         break;
-                }   
-                Object.assign(whereAdditional,where);  
+                }  
+                await prepareFilterAsObject(where,whereAdditional)  ;
                 if (limit) {
                     oData = await bupa.get('ZCDSEHBTC0003.ReceiverWBSExt').where(whereAdditional).limit(limit);
                 }
