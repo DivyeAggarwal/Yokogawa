@@ -227,7 +227,7 @@
         "csrf": true,
         "csrfInBatch": true,
         "credentials": {
-          "path": "/sap/opu/odata/sap/API_PRODUCT_SRV",
+          "path": "/sap/opu/odata/sap/ZSRVBHPP0015",
           "destination": "s4003-ap-https_ZSRVBHPS0008",
           "csrf": true,
           "csrfInBatch": true
@@ -237,7 +237,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZSRVBHPP0008",
         "credentials": {
-          "path": "/sap/opu/odata/sap/HCM_CATS_MANAGE",
+          "path": "/sap/opu/odata/sap/ZSRVBHPP0008",
           "destination": "s4003-ap-https_ZSRVBHPS0008",
           "csrf": true,
           "csrfInBatch": true
@@ -247,7 +247,7 @@
         "kind": "odata-v2",
         "model": "srv/external/ZSRVBHPP0007",
         "credentials": {
-          "path": "/sap/opu/odata/sap/HCM_CATS_MANAGE",
+          "path": "/sap/opu/odata/sap/ZSRVBHPP0007",
           "destination": "s4003-ap-https_ZSRVBHPS0008",
           "csrf": true,
           "csrfInBatch": true
