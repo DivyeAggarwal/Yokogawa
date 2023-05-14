@@ -10,6 +10,8 @@ using ZSRVBHMM0004 from './external/ZSRVBHMM0004';
 using ZSRVBHPS0010 from './external/ZSRVBHPS0010';
 using ZSRVBHPP0014 from './external/ZSRVBHPP0014';
 using ZSRVBHPP0005 from './external/ZSRVBHPP0005';
+using ZSRVBHPP0007 from './external/ZSRVBHPP0007';
+using ZSRVBHPP0008 from './external/ZSRVBHPP0008';
 using ZSRVBHPP0015 from './external/ZSRVBHPP0015';
 using TimeSheetAPI from './external/TimeSheetAPI';
 using BusinessPartner from './external/BusinessPartner';
@@ -1188,23 +1190,8 @@ service ZCAPIH0018 {
     entity ZTHBT0030                    as projection on db.ZTHBT0030;
     entity ZTHBT0006                    as projection on db.ZTHBT0006;
     entity ZCDSEHPPB0085                as projection on ZSRVBHPP0015.ZCDSEHPPB0085;
-
-    @cds.persistence.skip
-    entity PickingDetails {
-        key ProcessFlag              : String(11)  @title: 'Process Flag'                  @Common.QuickInfo: 'Process Flag';
-            IssueType                : String(40)  @title: 'Issue Type'                    @Common.QuickInfo: 'Issue Type';
-            Plantissuedfrom          : String(10)  @title: 'Plant issued from'             @Common.QuickInfo: 'Plant issued from';
-            StorageLocationssuedfrom : String(01)  @title: 'Storage Location issued from'  @Common.QuickInfo: 'Storage Location issued from';
-            Plantissuedto            : String(10)  @title: 'Plant issued to'               @Common.QuickInfo: 'Plant issued to';
-            StorageLocationissuedto  : String(10)  @title: 'Storage Location issued to'    @Common.QuickInfo: 'Storage Location issued to';
-            supplyAreaissuedto       : String(10)  @title: 'supply Area issued to'         @Common.QuickInfo: 'supply Area issued to';
-            MaterialNumber           : String(40)  @title: 'Material Number'               @Common.QuickInfo: 'Material Number';
-            KanbanID                 : String(10)  @title: 'Kanban ID'                     @Common.QuickInfo: 'Kanban ID';
-            KanbanType               : String(10)  @title: 'Kanban Type'                   @Common.QuickInfo: 'Kanban Type';
-            PrintedTime              : String(10)  @title: 'Printed Time'                  @Common.QuickInfo: 'Printed Time';
-            PrintedDate              : String(10)  @title: 'Printed Date'                  @Common.QuickInfo: 'Printed Date';
-            ZCDSEHPPB0085            : Association to many ZCDSEHPPB0085;
-    }
+    entity ZCDSEHPPB0068                as projection on ZSRVBHPP0007.ZCDSEHPPB0068;
+    entity ZCDSEHPPB0069                as projection on ZSRVBHPP0008.ZCDSEHPPB0069;
 }
 
 service ZAPIBPS0002 {

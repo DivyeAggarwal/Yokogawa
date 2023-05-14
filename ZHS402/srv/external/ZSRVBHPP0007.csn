@@ -1,0 +1,205 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.7.0"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHPP0007": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0007.ZCDSEHPPB0068": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "custom entity for Kanban",
+      "elements": {
+        "kanbanid": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "notNull": true
+        },
+        "plant": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant"
+        },
+        "materialnumber": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number"
+        },
+        "materialdescription": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description"
+        },
+        "rawmaterial": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component",
+          "@sap.quickinfo": "BOM component"
+        },
+        "cyclestoringposition": {
+          "type": "cds.String",
+          "length": 25,
+          "@sap.label": "Storing Position"
+        },
+        "materialstoragebin": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin"
+        },
+        "qrcodefirst": {
+          "type": "cds.String",
+          "length": 14,
+          "@sap.label": "KANBAN QR Code",
+          "@sap.quickinfo": "KANBAN QR Code First"
+        },
+        "qrcodesecond": {
+          "type": "cds.String",
+          "length": 14,
+          "@sap.label": "KANBAN QR Code",
+          "@sap.quickinfo": "KANBAN QR Code Second"
+        },
+        "ZEIWN": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Min. Queue Time Unit",
+          "@sap.quickinfo": "Unit for the Minimum Queue Time",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "sumoflt": {
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3,
+          "@sap.unit": "ZEIWN",
+          "@sap.label": "Standard Queue Time"
+        },
+        "quantity": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "baseunitofmeasure",
+          "@sap.label": "Container Quantity"
+        },
+        "boxtype": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description"
+        },
+        "numberofkanban": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char15",
+          "@sap.quickinfo": "Char 15"
+        },
+        "areastoragelocation": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location"
+        },
+        "areastoringposition": {
+          "type": "cds.String",
+          "length": 25,
+          "@sap.label": "Storing Position"
+        },
+        "areastoragebin": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin"
+        },
+        "contmatdescr": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description"
+        },
+        "stglocdescr": {
+          "type": "cds.String",
+          "length": 16,
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Description of Storage Location"
+        },
+        "process": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40"
+        },
+        "printdate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Current Date",
+          "@sap.quickinfo": "ABAP system field: Current date of application server"
+        },
+        "notes": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40"
+        },
+        "reportid": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Report ID"
+        },
+        "scannumber": {
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reserve",
+          "@sap.quickinfo": "Character field of length 6"
+        },
+        "baseunitofmeasure": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "behmg": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "baseunitofmeasure",
+          "@sap.label": "Container Quantity"
+        },
+        "pkstu": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Stock Transfer",
+          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer"
+        },
+        "elpro": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issue Stor. Location",
+          "@sap.quickinfo": "Proposed Issue Storage Location for Components"
+        }
+      }
+    }
+  }
+}
