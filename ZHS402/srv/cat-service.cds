@@ -1050,7 +1050,7 @@ service ZAPIBPS0001 {
     // entity ZCDSEBPS0011 as projection on db.ZTHBT0055;
     entity ZCDSEBPS0011                 as
         select from db.ZTHBT0055 {
-            ZCABNUM,
+         key   ZCABNUM,
             PBUKR,
             PS_PSPNR,
             ZMSCODE,
@@ -1059,6 +1059,7 @@ service ZAPIBPS0001 {
             ZSHTP,
             ZDONUM,
             ZDESCRIP,
+            ZDOPDATE,
             ZSHPSTAT,
             ZDOITEM,
             MATNR,
