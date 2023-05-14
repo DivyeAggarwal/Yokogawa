@@ -1184,7 +1184,7 @@ service ZCDSEHBTC0017 {
 
 
 //Print Kanban
-service ZCDSEHBTC0018 {
+service ZCAPIH0018 {
     entity ZTHBT0030                    as projection on db.ZTHBT0030;
     entity ZTHBT0006                    as projection on db.ZTHBT0006;
     entity ZCDSEHPPB0085                as projection on ZSRVBHPP0015.ZCDSEHPPB0085;

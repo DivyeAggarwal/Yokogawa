@@ -11,37 +11,6 @@
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
     },
-    "ZSRVBHPP0015.I_MaterialStdVH": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.searchable": "true",
-      "@sap.content.version": "1",
-      "@sap.label": "Material",
-      "@sap.value.list": "true",
-      "elements": {
-        "Material": {
-          "key": true,
-          "type": "cds.String",
-          "length": 40,
-          "@sap.display.format": "UpperCase",
-          "@sap.text": "Material_Text",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
-          "notNull": true
-        },
-        "Material_Text": {
-          "type": "cds.String",
-          "length": 40,
-          "@sap.label": "Material Description",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false"
-        }
-      }
-    },
     "ZSRVBHPP0015.ZCDSEHPPB0085": {
       "kind": "entity",
       "@cds.external": true,
