@@ -1842,7 +1842,18 @@ annotate ZCDSEHBTC0016.ZTHBT0057 with @(
     UI.DeleteHidden : true,
     UI.CreateHidden : true,
 );
-
+annotate ZCDSEHBTC0007.specificationChange with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            WERKS
+        ],
+    }
+});
+annotate ZCDSEHBTC0007.specificationChange with {
+    E_PART_NO       @title : 'Design Parts';
+    COMP_PART_NO       @title : 'Production Parts';
+}
 annotate ZCDSEHBTC0007.specificationChange {
     @(Common : {
         Label     : 'Document number',
@@ -2408,7 +2419,7 @@ annotate ZAPIBPS0001.ZCDSEBPS0011 with @(
     
     UI : { 
         SelectionFields  : [
-            PBUKR,PS_PSPNR,ZDONUM,ZSHPSTAT
+            PBUKR,PS_PSPNR,ZDONUM
         ],
         LineItem  : [
             { Value : ZDONUM },
@@ -2419,7 +2430,9 @@ annotate ZAPIBPS0001.ZCDSEBPS0011 with @(
             { Value : ZMSCODE },
             { Value : ZVMCODE },
             { Value : ZQTY },
-            { Value : ZDESCRIP },   
+            { Value : ZDESCRIP },  
+            { Value : ZDOPDATE },
+            { Value : CustomerFullName },  
             { Value : ZCONTACTTEL },
             { Value : ZSHPNAME1 },
             { Value : ZSHPNAME2 },
@@ -2429,3 +2442,65 @@ annotate ZAPIBPS0001.ZCDSEBPS0011 with @(
      }
 ){
 };
+annotate ZAPIBPS0001.ZCDSEBPS0011 with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            PBUKR,
+            PS_PSPNR,
+            ZDONUM
+        ],
+    }
+});
+
+annotate ZAPIBPS0001.ZCDSEBPS0011 {
+    @(Common : {
+        Label     : 'Company Code',
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0011',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PBUKR,
+                    ValueListProperty : 'PBUKR'
+                }
+            ]
+        }
+    })
+    PBUKR;
+}
+annotate ZAPIBPS0001.ZCDSEBPS0011 {
+    @(Common : {
+        Label     : 'Project Definition',
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0011',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PS_PSPNR,
+                    ValueListProperty : 'PS_PSPNR'
+                }
+            ]
+        }
+    })
+    PS_PSPNR;
+}
+annotate ZAPIBPS0001.ZCDSEBPS0011 {
+    @(Common : {
+        Label     : 'Doc Number',
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0011',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ZDONUM,
+                    ValueListProperty : 'ZDONUM'
+                }
+            ]
+        }
+    })
+    ZDONUM;
+}
+annotate ZAPIBPS0001.ZCDSEBPS0011 with {
+ZSHPSTAT @UI.HiddenFilter: true;
+}

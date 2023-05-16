@@ -63,6 +63,10 @@ module.exports = cds.service.impl(async function (srv) {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
         return bupa.run(req.query);
     });
+    this.on('READ', 'ZCDSEHPSC0013', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0011');
+        return bupa.run(req.query);
+    });
 
     this.on('READ', 'VL_SH_H_T001', async req => {
         const plant = await cds.connect.to('PlantAPI');
@@ -189,6 +193,14 @@ this.on('Find_Scan', async (req) => {
 
 this.on('READ', 'ZCDSEHPPB0085', async req => {
     const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'ZCDSEHPPB0068', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0007');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'ZCDSEHPPB0069', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0008');
     return kandanListScanSrv.run(req.query);
 });
     this.on('CREATE', 'TenDigitsParts', async req => {

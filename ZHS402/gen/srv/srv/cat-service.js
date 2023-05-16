@@ -191,6 +191,14 @@ this.on('READ', 'ZCDSEHPPB0085', async req => {
     const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
     return kandanListScanSrv.run(req.query);
 });
+this.on('READ', 'ZCDSEHPPB0068', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0007');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'ZCDSEHPPB0069', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0008');
+    return kandanListScanSrv.run(req.query);
+});
     this.on('CREATE', 'TenDigitsParts', async req => {
         const api = await cds.connect.to('API_PRODUCT_SRV');
         var dulicate = Object.assign({}, req.data);

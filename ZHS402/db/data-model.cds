@@ -477,7 +477,7 @@ entity ZTHBT0055 : managed {
     key ZCABNUM:String(20) @title : 'Cabinet number';
     PBUKR: String(4) @title: 'Company code';
     PS_PSPNR: String(24) @title: 'Project Definition';
-    ZMSCODE:String(50) @title : '   ';	
+    ZMSCODE:String(50) @title : 'MS Code';	
     PS_POSNR : String(24) @title : 'WBS Element';		
     MATNR:String(40) @title : 'SAP MATERIAL';	
     ZZ1_MSCODE:String(3) @title : 'Material Type Code';
@@ -505,10 +505,12 @@ entity ZTHBT0055 : managed {
 
 
 entity ZTHBT0030 : managed {
-    key REVNR         : Int16  @title : 'Revision number';
-    key PDATS      : Date @title : 'Toku Parts Delivery Date';
-    key PZEIT      : Time @title : 'Printed Local Time';
-        PRVNR : Int16  @title : 'Revision number which is regular printed';
+    key PKNUM   : Date @title : 'Control Cycle';
+        PKKEY  : Date @title : 'Kanban Identification Number';
+        REVNR   : Int16  @title : 'Revision number'; 
+        PDATS   : Date @title : 'Toku Parts Delivery Date';
+        PZEIT   : Time @title : 'Printed Local Time';
+        PRVNR   : Int16  @title : 'Revision number which is regular printed';
 }
 
 

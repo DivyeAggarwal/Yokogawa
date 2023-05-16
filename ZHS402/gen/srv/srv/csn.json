@@ -3900,7 +3900,7 @@
           "length": 24
         },
         "ZMSCODE": {
-          "@title": "   ",
+          "@title": "MS Code",
           "type": "cds.String",
           "length": 50
         },
@@ -4074,19 +4074,25 @@
           "type": "User",
           "length": 255
         },
+        "PKNUM": {
+          "@title": "Control Cycle",
+          "key": true,
+          "type": "cds.Date"
+        },
+        "PKKEY": {
+          "@title": "Kanban Identification Number",
+          "type": "cds.Date"
+        },
         "REVNR": {
           "@title": "Revision number",
-          "key": true,
           "type": "cds.Int16"
         },
         "PDATS": {
           "@title": "Toku Parts Delivery Date",
-          "key": true,
           "type": "cds.Date"
         },
         "PZEIT": {
           "@title": "Printed Local Time",
-          "key": true,
           "type": "cds.Time"
         },
         "PRVNR": {
@@ -5050,7 +5056,7 @@
           "length": 24
         },
         "ZMSCODE": {
-          "@title": "   ",
+          "@title": "MS Code",
           "key": true,
           "type": "cds.String",
           "length": 50
@@ -5153,7 +5159,7 @@
           "length": 24
         },
         "ZMSCODE": {
-          "@title": "   ",
+          "@title": "MS Code",
           "key": true,
           "type": "cds.String",
           "length": 50
@@ -14712,6 +14718,12 @@
     },
     "ZCDSEHBTC0007.specificationChange": {
       "kind": "entity",
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "WERKS"
+        }
+      ],
       "@Capabilities.Insertable": false,
       "@Capabilities.Deletable": false,
       "@Capabilities.Updatable": true,
@@ -15077,7 +15089,7 @@
           "length": 10
         },
         "E_PART_NO": {
-          "@title": "Material number",
+          "@title": "Design Parts",
           "type": "cds.String",
           "length": 18
         },
@@ -15094,6 +15106,7 @@
           "length": 1
         },
         "COMP_PART_NO": {
+          "@title": "Production Parts",
           "@Common.Label": "Material",
           "@Common.ValueList.CollectionPath": "ZTHBT0001",
           "@Common.ValueList.Parameters": [
@@ -15116,7 +15129,6 @@
               "ValueListProperty": "E_PARTS_NO"
             }
           ],
-          "@title": "Part No",
           "type": "cds.String",
           "length": 18
         },
@@ -26607,9 +26619,6 @@
         },
         {
           "=": "ZDONUM"
-        },
-        {
-          "=": "ZSHPSTAT"
         }
       ],
       "@UI.LineItem": [
@@ -26660,6 +26669,16 @@
         },
         {
           "Value": {
+            "=": "ZDOPDATE"
+          }
+        },
+        {
+          "Value": {
+            "=": "CustomerFullName"
+          }
+        },
+        {
+          "Value": {
             "=": "ZCONTACTTEL"
           }
         },
@@ -26684,6 +26703,18 @@
           }
         }
       ],
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "PBUKR"
+        },
+        {
+          "=": "PS_PSPNR"
+        },
+        {
+          "=": "ZDONUM"
+        }
+      ],
       "query": {
         "SELECT": {
           "from": {
@@ -26693,6 +26724,7 @@
           },
           "columns": [
             {
+              "key": true,
               "ref": [
                 "ZCABNUM"
               ]
@@ -26735,6 +26767,11 @@
             {
               "ref": [
                 "ZDESCRIP"
+              ]
+            },
+            {
+              "ref": [
+                "ZDOPDATE"
               ]
             },
             {
@@ -26817,17 +26854,39 @@
           "length": 20
         },
         "PBUKR": {
+          "@Common.Label": "Company Code",
+          "@Common.ValueList.CollectionPath": "ZCDSEBPS0011",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PBUKR"
+              },
+              "ValueListProperty": "PBUKR"
+            }
+          ],
           "@title": "Company code",
           "type": "cds.String",
           "length": 4
         },
         "PS_PSPNR": {
+          "@Common.Label": "Project Definition",
+          "@Common.ValueList.CollectionPath": "ZCDSEBPS0011",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PS_PSPNR"
+              },
+              "ValueListProperty": "PS_PSPNR"
+            }
+          ],
           "@title": "Project Definition",
           "type": "cds.String",
           "length": 24
         },
         "ZMSCODE": {
-          "@title": "   ",
+          "@title": "MS Code",
           "type": "cds.String",
           "length": 50
         },
@@ -26848,6 +26907,17 @@
           "length": 20
         },
         "ZDONUM": {
+          "@Common.Label": "Doc Number",
+          "@Common.ValueList.CollectionPath": "ZCDSEBPS0011",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "ZDONUM"
+              },
+              "ValueListProperty": "ZDONUM"
+            }
+          ],
           "@title": "DO Number Title",
           "type": "cds.String",
           "length": 10
@@ -26857,7 +26927,12 @@
           "type": "cds.String",
           "length": 50
         },
+        "ZDOPDATE": {
+          "@title": "DO Plan Date",
+          "type": "cds.Date"
+        },
         "ZSHPSTAT": {
+          "@UI.HiddenFilter": true,
           "@title": "Shipping Status",
           "type": "cds.String",
           "length": 1
@@ -27203,7 +27278,7 @@
           "length": 24
         },
         "ZMSCODE": {
-          "@title": "   ",
+          "@title": "MS Code",
           "type": "cds.String",
           "length": 50
         },
@@ -29119,19 +29194,25 @@
           "type": "User",
           "length": 255
         },
+        "PKNUM": {
+          "@title": "Control Cycle",
+          "key": true,
+          "type": "cds.Date"
+        },
+        "PKKEY": {
+          "@title": "Kanban Identification Number",
+          "type": "cds.Date"
+        },
         "REVNR": {
           "@title": "Revision number",
-          "key": true,
           "type": "cds.Int16"
         },
         "PDATS": {
           "@title": "Toku Parts Delivery Date",
-          "key": true,
           "type": "cds.Date"
         },
         "PZEIT": {
           "@title": "Printed Local Time",
-          "key": true,
           "type": "cds.Time"
         },
         "PRVNR": {
@@ -29140,11 +29221,11 @@
         }
       }
     },
-    "ZCDSEHBTC0018": {
+    "ZCAPIH0018": {
       "@source": "srv/cat-service.cds",
       "kind": "service"
     },
-    "ZCDSEHBTC0018.ZTHBT0030": {
+    "ZCAPIH0018.ZTHBT0030": {
       "kind": "entity",
       "projection": {
         "from": {
@@ -29202,19 +29283,25 @@
           "type": "User",
           "length": 255
         },
+        "PKNUM": {
+          "@title": "Control Cycle",
+          "key": true,
+          "type": "cds.Date"
+        },
+        "PKKEY": {
+          "@title": "Kanban Identification Number",
+          "type": "cds.Date"
+        },
         "REVNR": {
           "@title": "Revision number",
-          "key": true,
           "type": "cds.Int16"
         },
         "PDATS": {
           "@title": "Toku Parts Delivery Date",
-          "key": true,
           "type": "cds.Date"
         },
         "PZEIT": {
           "@title": "Printed Local Time",
-          "key": true,
           "type": "cds.Time"
         },
         "PRVNR": {
@@ -29223,7 +29310,7 @@
         }
       }
     },
-    "ZCDSEHBTC0018.ZTHBT0006": {
+    "ZCAPIH0018.ZTHBT0006": {
       "kind": "entity",
       "projection": {
         "from": {
@@ -29354,7 +29441,7 @@
         }
       }
     },
-    "ZCDSEHBTC0018.ZCDSEHPPB0085": {
+    "ZCAPIH0018.ZCDSEHPPB0085": {
       "kind": "entity",
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
@@ -29535,96 +29622,448 @@
         }
       }
     },
-    "ZCDSEHBTC0018.PickingDetails": {
+    "ZCAPIH0018.ZCDSEHPPB0068": {
       "kind": "entity",
       "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "custom entity for Kanban",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0007.ZCDSEHPPB0068"
+          ]
+        }
+      },
       "elements": {
-        "ProcessFlag": {
-          "@title": "Process Flag",
-          "@Common.QuickInfo": "Process Flag",
+        "kanbanid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
           "key": true,
           "type": "cds.String",
-          "length": 11
+          "length": 10,
+          "notNull": true
         },
-        "IssueType": {
-          "@title": "Issue Type",
-          "@Common.QuickInfo": "Issue Type",
+        "plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "materialnumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
           "type": "cds.String",
           "length": 40
         },
-        "Plantissuedfrom": {
-          "@title": "Plant issued from",
-          "@Common.QuickInfo": "Plant issued from",
+        "materialdescription": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "rawmaterial": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component",
+          "@sap.quickinfo": "BOM component",
+          "type": "cds.String",
+          "length": 40
+        },
+        "cyclestoringposition": {
+          "@sap.label": "Storing Position",
+          "type": "cds.String",
+          "length": 25
+        },
+        "materialstoragebin": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
           "type": "cds.String",
           "length": 10
         },
-        "StorageLocationssuedfrom": {
-          "@title": "Storage Location issued from",
-          "@Common.QuickInfo": "Storage Location issued from",
+        "qrcodefirst": {
+          "@sap.label": "KANBAN QR Code",
+          "@sap.quickinfo": "KANBAN QR Code First",
+          "type": "cds.String",
+          "length": 14
+        },
+        "qrcodesecond": {
+          "@sap.label": "KANBAN QR Code",
+          "@sap.quickinfo": "KANBAN QR Code Second",
+          "type": "cds.String",
+          "length": 14
+        },
+        "ZEIWN": {
+          "@sap.label": "Min. Queue Time Unit",
+          "@sap.quickinfo": "Unit for the Minimum Queue Time",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "sumoflt": {
+          "@sap.unit": "ZEIWN",
+          "@sap.label": "Standard Queue Time",
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3
+        },
+        "quantity": {
+          "@sap.unit": "baseunitofmeasure",
+          "@sap.label": "Container Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "boxtype": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "numberofkanban": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char15",
+          "@sap.quickinfo": "Char 15",
+          "type": "cds.String",
+          "length": 15
+        },
+        "areastoragelocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "areastoringposition": {
+          "@sap.label": "Storing Position",
+          "type": "cds.String",
+          "length": 25
+        },
+        "areastoragebin": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10
+        },
+        "contmatdescr": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "stglocdescr": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Description of Storage Location",
+          "type": "cds.String",
+          "length": 16
+        },
+        "process": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "printdate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Current Date",
+          "@sap.quickinfo": "ABAP system field: Current date of application server",
+          "type": "cds.Date"
+        },
+        "notes": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "reportid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Report ID",
+          "type": "cds.String",
+          "length": 4
+        },
+        "scannumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reserve",
+          "@sap.quickinfo": "Character field of length 6",
+          "type": "cds.String",
+          "length": 6
+        },
+        "baseunitofmeasure": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "behmg": {
+          "@sap.unit": "baseunitofmeasure",
+          "@sap.label": "Container Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "pkstu": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Stock Transfer",
+          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer",
+          "type": "cds.String",
+          "length": 4
+        },
+        "elpro": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issue Stor. Location",
+          "@sap.quickinfo": "Proposed Issue Storage Location for Components",
+          "type": "cds.String",
+          "length": 4
+        }
+      }
+    },
+    "ZCAPIH0018.ZCDSEHPPB0069": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom entity for part list kanban",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0008.ZCDSEHPPB0069"
+          ]
+        }
+      },
+      "elements": {
+        "kanbanid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "language": {
+          "@sap.label": "Language Key",
+          "type": "cds.String",
+          "length": 2
+        },
+        "revnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Revision number",
+          "type": "cds.String",
+          "length": 2
+        },
+        "storage_locto": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "storage_locfrom": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Receiving stor. loc.",
+          "@sap.quickinfo": "Receiving/issuing storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Supp_Area_iss": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Quantityunit": {
+          "@sap.label": "Unit of issue",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Kanbanqun": {
+          "@sap.unit": "meins",
+          "@sap.label": "Container Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "Material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Boxtype": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Not used",
+          "@sap.quickinfo": "Three-digit character field for IDocs",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Materialdesc": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "QRkanbannum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char13",
+          "@sap.quickinfo": "Character field 13 digits",
+          "type": "cds.String",
+          "length": 13
+        },
+        "Storagebiniss": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10
+        },
+        "address": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Note": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Field",
+          "@sap.quickinfo": "User field for cluster PC (national)",
+          "type": "cds.String",
+          "length": 25
+        },
+        "n_x": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "R/2 table",
+          "type": "cds.String",
+          "length": 5
+        },
+        "s_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Local Date",
+          "@sap.quickinfo": "ABAP System Field: Local Date of Current User",
+          "type": "cds.Date"
+        },
+        "s_time": {
+          "@sap.label": "Local Time",
+          "@sap.quickinfo": "ABAP System Field: Local Time of Current User",
+          "type": "cds.Time"
+        },
+        "Companycode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company Code",
+          "type": "cds.String",
+          "length": 4
+        },
+        "scan1_2": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 10
+        },
+        "batchflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
           "type": "cds.String",
           "length": 1
         },
-        "Plantissuedto": {
-          "@title": "Plant issued to",
-          "@Common.QuickInfo": "Plant issued to",
-          "type": "cds.String",
-          "length": 10
-        },
-        "StorageLocationissuedto": {
-          "@title": "Storage Location issued to",
-          "@Common.QuickInfo": "Storage Location issued to",
-          "type": "cds.String",
-          "length": 10
-        },
-        "supplyAreaissuedto": {
-          "@title": "supply Area issued to",
-          "@Common.QuickInfo": "supply Area issued to",
-          "type": "cds.String",
-          "length": 10
-        },
-        "MaterialNumber": {
-          "@title": "Material Number",
-          "@Common.QuickInfo": "Material Number",
+        "MaterialQR": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
           "type": "cds.String",
           "length": 40
         },
-        "KanbanID": {
-          "@title": "Kanban ID",
-          "@Common.QuickInfo": "Kanban ID",
+        "Reportid": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "3-Byte field",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 3
+        },
+        "storage_loc_step12": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reserve",
+          "@sap.quickinfo": "Character field of length 6",
+          "type": "cds.String",
+          "length": 6
+        },
+        "Supp_Area_iss_step12": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
           "type": "cds.String",
           "length": 10
         },
-        "KanbanType": {
-          "@title": "Kanban Type",
-          "@Common.QuickInfo": "Kanban Type",
+        "buildingcode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "DataNo": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Control Cycle Item",
+          "@sap.quickinfo": "Kanban Control Cycle Item",
+          "type": "cds.String",
+          "length": 3
+        },
+        "TotalNo": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "No. of Kanbans",
+          "@sap.quickinfo": "Number of Kanban Containers",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Plantabb": {
+          "@sap.label": "Name 1",
+          "@sap.quickinfo": "Name",
+          "type": "cds.String",
+          "length": 30
+        },
+        "Bulkinfo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Storetext": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "30 Characters",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 30
+        },
+        "preprocess10": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
           "type": "cds.String",
           "length": 10
         },
-        "PrintedTime": {
-          "@title": "Printed Time",
-          "@Common.QuickInfo": "Printed Time",
+        "preprocess20": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
           "type": "cds.String",
           "length": 10
         },
-        "PrintedDate": {
-          "@title": "Printed Date",
-          "@Common.QuickInfo": "Printed Date",
+        "description": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
           "type": "cds.String",
-          "length": 10
-        },
-        "ZCDSEHPPB0085": {
-          "type": "cds.Association",
-          "cardinality": {
-            "max": "*"
-          },
-          "target": "ZCDSEHBTC0018.ZCDSEHPPB0085",
-          "keys": [
-            {
-              "ref": [
-                "rep_strategy"
-              ]
-            }
-          ]
+          "length": 40
         }
       }
     },
@@ -65373,37 +65812,6 @@
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
     },
-    "ZSRVBHPP0015.I_MaterialStdVH": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.searchable": "true",
-      "@sap.content.version": "1",
-      "@sap.label": "Material",
-      "@sap.value.list": "true",
-      "elements": {
-        "Material": {
-          "@sap.display.format": "UpperCase",
-          "@sap.text": "Material_Text",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
-          "key": true,
-          "type": "cds.String",
-          "length": 40,
-          "notNull": true
-        },
-        "Material_Text": {
-          "@sap.label": "Material Description",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "type": "cds.String",
-          "length": 40
-        }
-      }
-    },
     "ZSRVBHPP0015.ZCDSEHPPB0085": {
       "kind": "entity",
       "@cds.external": true,
@@ -65648,6 +66056,455 @@
         "DecimalPlaces": {
           "@sap.label": "Decimal Places",
           "type": "cds.Integer"
+        }
+      }
+    },
+    "ZSRVBHPP0008": {
+      "@source": "srv/external/ZSRVBHPP0008.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0008.ZCDSEHPPB0069": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom entity for part list kanban",
+      "elements": {
+        "kanbanid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "language": {
+          "@sap.label": "Language Key",
+          "type": "cds.String",
+          "length": 2
+        },
+        "revnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Revision number",
+          "type": "cds.String",
+          "length": 2
+        },
+        "storage_locto": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "storage_locfrom": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Receiving stor. loc.",
+          "@sap.quickinfo": "Receiving/issuing storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Supp_Area_iss": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Quantityunit": {
+          "@sap.label": "Unit of issue",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Kanbanqun": {
+          "@sap.unit": "meins",
+          "@sap.label": "Container Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "Material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Boxtype": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Not used",
+          "@sap.quickinfo": "Three-digit character field for IDocs",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Materialdesc": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "QRkanbannum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char13",
+          "@sap.quickinfo": "Character field 13 digits",
+          "type": "cds.String",
+          "length": 13
+        },
+        "Storagebiniss": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10
+        },
+        "address": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Note": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Field",
+          "@sap.quickinfo": "User field for cluster PC (national)",
+          "type": "cds.String",
+          "length": 25
+        },
+        "n_x": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "R/2 table",
+          "type": "cds.String",
+          "length": 5
+        },
+        "s_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Local Date",
+          "@sap.quickinfo": "ABAP System Field: Local Date of Current User",
+          "type": "cds.Date"
+        },
+        "s_time": {
+          "@sap.label": "Local Time",
+          "@sap.quickinfo": "ABAP System Field: Local Time of Current User",
+          "type": "cds.Time"
+        },
+        "Companycode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company Code",
+          "type": "cds.String",
+          "length": 4
+        },
+        "scan1_2": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 10
+        },
+        "batchflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 1
+        },
+        "MaterialQR": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Reportid": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "3-Byte field",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 3
+        },
+        "storage_loc_step12": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reserve",
+          "@sap.quickinfo": "Character field of length 6",
+          "type": "cds.String",
+          "length": 6
+        },
+        "Supp_Area_iss_step12": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 10
+        },
+        "buildingcode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "DataNo": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Control Cycle Item",
+          "@sap.quickinfo": "Kanban Control Cycle Item",
+          "type": "cds.String",
+          "length": 3
+        },
+        "TotalNo": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "No. of Kanbans",
+          "@sap.quickinfo": "Number of Kanban Containers",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Plantabb": {
+          "@sap.label": "Name 1",
+          "@sap.quickinfo": "Name",
+          "type": "cds.String",
+          "length": 30
+        },
+        "Bulkinfo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Storetext": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "30 Characters",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 30
+        },
+        "preprocess10": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 10
+        },
+        "preprocess20": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "type": "cds.String",
+          "length": 10
+        },
+        "description": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZSRVBHPP0007": {
+      "@source": "srv/external/ZSRVBHPP0007.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0007.ZCDSEHPPB0068": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "custom entity for Kanban",
+      "elements": {
+        "kanbanid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "materialnumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "materialdescription": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "rawmaterial": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component",
+          "@sap.quickinfo": "BOM component",
+          "type": "cds.String",
+          "length": 40
+        },
+        "cyclestoringposition": {
+          "@sap.label": "Storing Position",
+          "type": "cds.String",
+          "length": 25
+        },
+        "materialstoragebin": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10
+        },
+        "qrcodefirst": {
+          "@sap.label": "KANBAN QR Code",
+          "@sap.quickinfo": "KANBAN QR Code First",
+          "type": "cds.String",
+          "length": 14
+        },
+        "qrcodesecond": {
+          "@sap.label": "KANBAN QR Code",
+          "@sap.quickinfo": "KANBAN QR Code Second",
+          "type": "cds.String",
+          "length": 14
+        },
+        "ZEIWN": {
+          "@sap.label": "Min. Queue Time Unit",
+          "@sap.quickinfo": "Unit for the Minimum Queue Time",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "sumoflt": {
+          "@sap.unit": "ZEIWN",
+          "@sap.label": "Standard Queue Time",
+          "type": "cds.Decimal",
+          "precision": 9,
+          "scale": 3
+        },
+        "quantity": {
+          "@sap.unit": "baseunitofmeasure",
+          "@sap.label": "Container Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "boxtype": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "numberofkanban": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char15",
+          "@sap.quickinfo": "Char 15",
+          "type": "cds.String",
+          "length": 15
+        },
+        "areastoragelocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "areastoringposition": {
+          "@sap.label": "Storing Position",
+          "type": "cds.String",
+          "length": 25
+        },
+        "areastoragebin": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin",
+          "type": "cds.String",
+          "length": 10
+        },
+        "contmatdescr": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "stglocdescr": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Description of Storage Location",
+          "type": "cds.String",
+          "length": 16
+        },
+        "process": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "printdate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Current Date",
+          "@sap.quickinfo": "ABAP system field: Current date of application server",
+          "type": "cds.Date"
+        },
+        "notes": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
+        "reportid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Report ID",
+          "type": "cds.String",
+          "length": 4
+        },
+        "scannumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reserve",
+          "@sap.quickinfo": "Character field of length 6",
+          "type": "cds.String",
+          "length": 6
+        },
+        "baseunitofmeasure": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "behmg": {
+          "@sap.unit": "baseunitofmeasure",
+          "@sap.label": "Container Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "pkstu": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Stock Transfer",
+          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer",
+          "type": "cds.String",
+          "length": 4
+        },
+        "elpro": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issue Stor. Location",
+          "@sap.quickinfo": "Proposed Issue Storage Location for Components",
+          "type": "cds.String",
+          "length": 4
         }
       }
     },
