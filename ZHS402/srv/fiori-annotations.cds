@@ -1842,7 +1842,14 @@ annotate ZCDSEHBTC0016.ZTHBT0057 with @(
     UI.DeleteHidden : true,
     UI.CreateHidden : true,
 );
-
+annotate ZCDSEHBTC0007.specificationChange with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            WERKS
+        ],
+    }
+});
 annotate ZCDSEHBTC0007.specificationChange {
     @(Common : {
         Label     : 'Document number',
