@@ -1,4 +1,5 @@
 var registerZAPIBPS0002Handler = function (that, cds) {
+    
     that.on('UPDATE', 'ZCDSEBPS0004', async req => {
         const bupa = await cds.connect.to('db');
         return bupa.run(req.query);
@@ -13,6 +14,7 @@ var registerZAPIBPS0002Handler = function (that, cds) {
                 });
             }
             oData.REASON_DIFF = req.data.ReasonForDiff;
+            oData.CONFIRM_STATUS = 1;
             await UPSERT.into('ZHS402.ZTHBT0027').entries(oData);  
         }
         req.info({
@@ -33,6 +35,7 @@ var registerZAPIBPS0002Handler = function (that, cds) {
                 });
             }
             oData.REASON_DIFF = req.data.ReasonForDiff;
+            oData.CONFIRM_STATUS = 1;
             await UPSERT.into('ZHS402.ZTHBT0027').entries(oData);  
         }
         req.info({

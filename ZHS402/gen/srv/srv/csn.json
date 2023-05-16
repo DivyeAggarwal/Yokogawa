@@ -30615,6 +30615,7 @@
       "elements": {
         "PBUKR": {
           "@title": "Company Code",
+          "@mandatory": true,
           "key": true,
           "type": "cds.String",
           "length": 4
