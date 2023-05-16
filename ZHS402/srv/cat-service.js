@@ -63,6 +63,10 @@ module.exports = cds.service.impl(async function (srv) {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
         return bupa.run(req.query);
     });
+    this.on('READ', 'ZCDSEHPSC0013', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0011');
+        return bupa.run(req.query);
+    });
 
     this.on('READ', 'VL_SH_H_T001', async req => {
         const plant = await cds.connect.to('PlantAPI');

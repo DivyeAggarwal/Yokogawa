@@ -15089,7 +15089,7 @@
           "length": 10
         },
         "E_PART_NO": {
-          "@title": "Material number",
+          "@title": "Design Parts",
           "type": "cds.String",
           "length": 18
         },
@@ -15106,6 +15106,7 @@
           "length": 1
         },
         "COMP_PART_NO": {
+          "@title": "Production Parts",
           "@Common.Label": "Material",
           "@Common.ValueList.CollectionPath": "ZTHBT0001",
           "@Common.ValueList.Parameters": [
@@ -15128,7 +15129,6 @@
               "ValueListProperty": "E_PARTS_NO"
             }
           ],
-          "@title": "Part No",
           "type": "cds.String",
           "length": 18
         },

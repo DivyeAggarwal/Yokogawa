@@ -16,6 +16,7 @@ using ZSRVBHPP0015 from './external/ZSRVBHPP0015';
 using TimeSheetAPI from './external/TimeSheetAPI';
 using BusinessPartner from './external/BusinessPartner';
 using ProjectDetails from './external/ProjectDetails';
+using ZSRVBHPS0011 from './external/ZSRVBHPS0011';
 
 
 service CatalogService {
@@ -1313,4 +1314,7 @@ service ZAPIBPS0002 {
     
 
 
+}
+service ZAPIBPS0003 {
+    entity ZCDSEHPSC0013 as projection on ZSRVBHPS0011.ZCDSEHPSC0013;
 }
