@@ -14718,6 +14718,12 @@
     },
     "ZCDSEHBTC0007.specificationChange": {
       "kind": "entity",
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "WERKS"
+        }
+      ],
       "@Capabilities.Insertable": false,
       "@Capabilities.Deletable": false,
       "@Capabilities.Updatable": true,

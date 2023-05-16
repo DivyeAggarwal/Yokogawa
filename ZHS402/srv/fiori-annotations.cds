@@ -1850,6 +1850,10 @@ annotate ZCDSEHBTC0007.specificationChange with @(Capabilities : {
         ],
     }
 });
+annotate ZCDSEHBTC0007.specificationChange with {
+    E_PART_NO       @title : 'Design Parts';
+    COMP_PART_NO       @title : 'Production Parts';
+}
 annotate ZCDSEHBTC0007.specificationChange {
     @(Common : {
         Label     : 'Document number',
