@@ -2221,7 +2221,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
         }
     }
 ){
-    PBUKR @title: 'Company Code';
+    PBUKR @title: 'Company Code' @mandatory;
     PSPHI @title: 'Project Definition';
     PS_PSP_PNR @title: 'WBS Element';
     ZZ1_MSCODE_PRD @title: 'MS Code';
