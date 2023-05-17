@@ -586,14 +586,14 @@ service ZCDSEHBTC0007 {
             and A.PS_ITEM_NO  = B.PS_ITEM_NO
         {
 
-            key A.E_DOC_NO    as E_DOC_NO,
-            key A.E_REV_NO    as E_REV_NO,
-            key A.PS_GROUP_NO as PS_GROUP_NO,
-            key A.PS_ITEM_NO  as PS_ITEM_NO,
+            key B.E_DOC_NO    as E_DOC_NO,
+            key B.E_REV_NO    as E_REV_NO,
+            key B.PS_GROUP_NO as PS_GROUP_NO,
+            key B.PS_ITEM_NO  as PS_ITEM_NO,
                 B.E_DOC_TYPE  as E_DOC_TYPE,
                 B.WERKS       as WERKS,
-                A.EFFECT_D    as EFFECT_D,
-                A.INVALID_D   as INVALID_D,
+                B.EFFECT_D    as EFFECT_D,
+                B.INVALID_D   as INVALID_D,
                 ZTHBT0014 : Association[ * ] to ZCDSEHBTC0007.ZTHBT0014 on ZTHBT0014.E_DOC_NO = E_DOC_NO
         }
         where
