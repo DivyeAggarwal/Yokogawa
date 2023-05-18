@@ -807,6 +807,7 @@ service ZCDSEHBTC0010 {
             EndDate,
             StorageLocation,
             Reprint,
+            IssueDate,
             to_Components : Association to many ProductionOrder.ZCDSEHPPB0020 on ProductionOrderNo = $projection.ProductionOrderNo
     }
 
@@ -1318,3 +1319,4 @@ service ZAPIBPS0002 {
 service ZAPIBPS0003 {
     entity ZCDSEHPSC0013 as projection on ZSRVBHPS0011.ZCDSEHPSC0013;
 }
+

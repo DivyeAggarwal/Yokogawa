@@ -32138,6 +32138,80 @@
         }
       }
     },
+    "ZAPIBPS0003": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZAPIBPS0003.ZCDSEHPSC0013": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Timesheet data IF to Fieldglass",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0011.ZCDSEHPSC0013"
+          ]
+        }
+      },
+      "elements": {
+        "batch_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Batch Date",
+          "@sap.quickinfo": "Field of type DATS",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "personnalno": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Personnal Number",
+          "@sap.quickinfo": "Personnel Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "to_ITEM": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZAPIBPS0003.ZCDSEHPSC0012",
+          "on": [
+            {
+              "ref": [
+                "to_ITEM",
+                "batch_date"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "batch_date"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "to_ITEM",
+                "personnalno"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "personnalno"
+              ]
+            }
+          ]
+        }
+      }
+    },
     "external.PublicSynonymsService": {
       "@source": "srv/public-synonym.cds",
       "kind": "service"
@@ -66508,6 +66582,273 @@
         }
       }
     },
+    "ZSRVBHPS0011": {
+      "@source": "srv/external/ZSRVBHPS0011.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPS0011.ZCDSEHPSC0012": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Timesheet data IF to Fieldglass",
+      "elements": {
+        "batch_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Batch Date",
+          "@sap.quickinfo": "Field of type DATS",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "personnalno": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Personnal Number",
+          "@sap.quickinfo": "Personnel Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "week_start_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Week Start Date",
+          "@sap.quickinfo": "Date",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "work_order_id": {
+          "@sap.label": "Work Order Id",
+          "@sap.quickinfo": "Work Order ID",
+          "type": "cds.String",
+          "length": 16
+        },
+        "last_name": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Last Name",
+          "@sap.quickinfo": "Last Name (Field for Search Help)",
+          "type": "cds.String",
+          "length": 25
+        },
+        "first_name": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "First Name",
+          "@sap.quickinfo": "First Name (Field for Search Help)",
+          "type": "cds.String",
+          "length": 25
+        },
+        "workdate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Date",
+          "type": "cds.Date"
+        },
+        "cost_center_code": {
+          "@sap.label": "Cost Center Code",
+          "type": "cds.String",
+          "length": 200
+        },
+        "cost_center_name": {
+          "@sap.label": "Cost Center Name",
+          "type": "cds.String",
+          "length": 200
+        },
+        "task_code": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Task Code",
+          "@sap.quickinfo": "Accounting Indicator",
+          "type": "cds.String",
+          "length": 2
+        },
+        "task_name": {
+          "@sap.label": "Task Name",
+          "type": "cds.String",
+          "length": 100
+        },
+        "gl_account_code": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "GL Account Code",
+          "@sap.quickinfo": "Allocation Cost Element",
+          "type": "cds.String",
+          "length": 10
+        },
+        "gl_account_name": {
+          "@sap.label": "GL Account Name",
+          "type": "cds.String",
+          "length": 100
+        },
+        "location": {
+          "@sap.label": "Location",
+          "type": "cds.String",
+          "length": 100
+        },
+        "rate_category_code": {
+          "@sap.label": "Rate Category Code",
+          "type": "cds.String",
+          "length": 15
+        },
+        "rate_category_name": {
+          "@sap.label": "Rate Category Name",
+          "type": "cds.String",
+          "length": 15
+        },
+        "UOM": {
+          "@sap.label": "UOM",
+          "type": "cds.String",
+          "length": 2
+        },
+        "shift_code": {
+          "@sap.label": "Shift Code",
+          "type": "cds.String",
+          "length": 15
+        },
+        "shift_name": {
+          "@sap.label": "Shift Name",
+          "type": "cds.String",
+          "length": 15
+        },
+        "sun_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Sunday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "mon_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Monday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "tue_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Tuesday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "wed_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Wednesday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "thu_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Thursday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "fri_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Friday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "sat_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Saturday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "Unit": {
+          "@sap.label": "Unit",
+          "@sap.quickinfo": "Unit of Measure for Display",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "to_Header": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ZSRVBHPS0011.ZCDSEHPSC0013",
+          "keys": []
+        }
+      }
+    },
+    "ZSRVBHPS0011.ZCDSEHPSC0013": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Timesheet data IF to Fieldglass",
+      "elements": {
+        "batch_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Batch Date",
+          "@sap.quickinfo": "Field of type DATS",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "personnalno": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Personnal Number",
+          "@sap.quickinfo": "Personnel Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "to_ITEM": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Composition",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZSRVBHPS0011.ZCDSEHPSC0012",
+          "on": [
+            {
+              "ref": [
+                "to_ITEM",
+                "batch_date"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "batch_date"
+              ]
+            },
+            "and",
+            {
+              "ref": [
+                "to_ITEM",
+                "personnalno"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "personnalno"
+              ]
+            }
+          ]
+        }
+      }
+    },
     "Language": {
       "kind": "type",
       "@title": "{i18n>Language}",
@@ -67057,6 +67398,208 @@
           "key": true,
           "type": "cds.String",
           "length": 3
+        }
+      }
+    },
+    "ZAPIBPS0003.ZCDSEHPSC0012": {
+      "kind": "entity",
+      "@cds.autoexposed": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Timesheet data IF to Fieldglass",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0011.ZCDSEHPSC0012"
+          ]
+        }
+      },
+      "elements": {
+        "batch_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Batch Date",
+          "@sap.quickinfo": "Field of type DATS",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "personnalno": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Personnal Number",
+          "@sap.quickinfo": "Personnel Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "week_start_date": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Week Start Date",
+          "@sap.quickinfo": "Date",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "work_order_id": {
+          "@sap.label": "Work Order Id",
+          "@sap.quickinfo": "Work Order ID",
+          "type": "cds.String",
+          "length": 16
+        },
+        "last_name": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Last Name",
+          "@sap.quickinfo": "Last Name (Field for Search Help)",
+          "type": "cds.String",
+          "length": 25
+        },
+        "first_name": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "First Name",
+          "@sap.quickinfo": "First Name (Field for Search Help)",
+          "type": "cds.String",
+          "length": 25
+        },
+        "workdate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Date",
+          "type": "cds.Date"
+        },
+        "cost_center_code": {
+          "@sap.label": "Cost Center Code",
+          "type": "cds.String",
+          "length": 200
+        },
+        "cost_center_name": {
+          "@sap.label": "Cost Center Name",
+          "type": "cds.String",
+          "length": 200
+        },
+        "task_code": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Task Code",
+          "@sap.quickinfo": "Accounting Indicator",
+          "type": "cds.String",
+          "length": 2
+        },
+        "task_name": {
+          "@sap.label": "Task Name",
+          "type": "cds.String",
+          "length": 100
+        },
+        "gl_account_code": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "GL Account Code",
+          "@sap.quickinfo": "Allocation Cost Element",
+          "type": "cds.String",
+          "length": 10
+        },
+        "gl_account_name": {
+          "@sap.label": "GL Account Name",
+          "type": "cds.String",
+          "length": 100
+        },
+        "location": {
+          "@sap.label": "Location",
+          "type": "cds.String",
+          "length": 100
+        },
+        "rate_category_code": {
+          "@sap.label": "Rate Category Code",
+          "type": "cds.String",
+          "length": 15
+        },
+        "rate_category_name": {
+          "@sap.label": "Rate Category Name",
+          "type": "cds.String",
+          "length": 15
+        },
+        "UOM": {
+          "@sap.label": "UOM",
+          "type": "cds.String",
+          "length": 2
+        },
+        "shift_code": {
+          "@sap.label": "Shift Code",
+          "type": "cds.String",
+          "length": 15
+        },
+        "shift_name": {
+          "@sap.label": "Shift Name",
+          "type": "cds.String",
+          "length": 15
+        },
+        "sun_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Sunday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "mon_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Monday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "tue_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Tuesday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "wed_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Wednesday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "thu_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Thursday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "fri_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Friday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "sat_catshours": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Saturday Hours",
+          "@sap.quickinfo": "Hours",
+          "type": "cds.Decimal",
+          "precision": 4,
+          "scale": 2
+        },
+        "Unit": {
+          "@sap.label": "Unit",
+          "@sap.quickinfo": "Unit of Measure for Display",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "to_Header": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ZAPIBPS0003.ZCDSEHPSC0013",
+          "keys": []
         }
       }
     }
