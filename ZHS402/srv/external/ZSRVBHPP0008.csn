@@ -169,6 +169,12 @@
           "@sap.label": "Char",
           "@sap.quickinfo": "Character field of length 40"
         },
+        "adrnum": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Address"
+        },
         "Reportid": {
           "type": "cds.String",
           "length": 3,

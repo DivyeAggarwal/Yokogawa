@@ -512,6 +512,10 @@ annotate ZSRVBHPS0008Service.ZCDSEHPSC0005 {
     })
     zz1_mscode_prd;
 }
+annotate ZCDSEHBTC0007.BOMDisplay with {
+            E_REV_NO  @title : 'Document Revision';
+            PS_GROUP_NO  @title : 'Group Number';
+}
 annotate ZCDSEHBTC0007.BOMDisplay with @(
     UI : { 
         SelectionFields  : [
@@ -2414,7 +2418,9 @@ annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
     CONFIRM_STATUS @title: 'Confirm Status';
     REASON_DIFF @title: 'Reason for Difference';
 };
-
+annotate ZAPIBPS0001.ZCDSEBPS0011 with {
+    ZDONUM  @title : 'DO Number';
+}
 annotate ZAPIBPS0001.ZCDSEBPS0011 with @(
     
     UI : { 
