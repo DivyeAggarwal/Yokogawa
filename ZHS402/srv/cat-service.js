@@ -627,19 +627,7 @@ this.on('READ', 'ZCDSEHPPB0069', async req => {
 
         return results;
     });
-    this.after('READ', 'ZCDSEBPS0013', async req => {
-        // for (let result of req) {
-            var updated = Object.values(req.reduce((obj, item) => {
-                var key = item.exercise + item.date
-                if (!obj[key]) {
-                  obj[key] = Object.assign(item)
-                } else {
-                  obj[key].reps += item.reps
-                }
-                return obj
-              }, {}))
-        // } 
-    });
+
     this.on('READ', 'materialWhereUsedMaster', async req => {
         const materialWhereUsed = await cds.connect.to('ZSRVBHPP0011');
         const results = await materialWhereUsed.run(req.query);
