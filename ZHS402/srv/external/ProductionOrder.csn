@@ -1467,10 +1467,8 @@
           "@sap.quickinfo": "Order Number"
         },
         "BackFlush": {
-          "type": "cds.Boolean",
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Backflush",
-          "@sap.quickinfo": "Indicator: Backflush"
+          "type": "cds.String",
+          "length": 1
         },
         "PartDescription": {
           "type": "cds.String",
@@ -1507,16 +1505,23 @@
           "@sap.label": "Special procurement",
           "@sap.quickinfo": "Special procurement type"
         },
-        "ztext": {
+        "Dimension": {
           "type": "cds.String",
           "length": 40,
           "@sap.label": "BOM Description"
         },
-        "potx2": {
+        "MaterialQty": {
           "type": "cds.String",
           "length": 40,
           "@sap.label": "Item Text 2",
           "@sap.quickinfo": "BOM Item Text (Line 2)"
+        },
+        "SupplyArea": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supply Area",
+          "@sap.quickinfo": "Production Supply Area"
         },
         "to_Storage": {
           "@cds.ambiguous": "missing on condition?",
