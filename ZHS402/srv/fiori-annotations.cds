@@ -2062,6 +2062,12 @@ annotate ZCDSEHBTC0007.specificationChange {
     })
     WERKS;
 }
+annotate ZCDSEHBTC0009.DigitPartList with {
+MATERIALDESC @UI.HiddenFilter: true;
+SOURCE_CD @UI.HiddenFilter: true;
+PARTS_NO @UI.HiddenFilter: true;
+YEOS_MNF_NO @UI.HiddenFilter: true;
+}
 annotate ZCDSEHBTC0007.specificationChange {
     @(Common : {
         Label     : 'Material',
