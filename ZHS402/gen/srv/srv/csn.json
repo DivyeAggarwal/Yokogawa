@@ -26521,6 +26521,111 @@
     },
     "ZAPIBPS0001.ZCDSEBPS0013": {
       "kind": "entity",
+      "@UI.SelectionFields": [
+        {
+          "=": "PBUKR"
+        },
+        {
+          "=": "PS_PSPNR"
+        },
+        {
+          "=": "ZDONUM"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "ZDONUM"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZDOITEM"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZSHPSTAT"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZSHTP"
+          }
+        },
+        {
+          "Value": {
+            "=": "MATNR"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZMSCODE"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZVMCODE"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZQTY"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZDESCRIP"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZDOPDATE"
+          }
+        },
+        {
+          "Value": {
+            "=": "CustomerFullName"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZCONTACTTEL"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZSHPNAME1"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZSHPNAME2"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZSHPNAME3"
+          }
+        },
+        {
+          "Value": {
+            "=": "ZSHPNAME4"
+          }
+        }
+      ],
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "PBUKR"
+        },
+        {
+          "=": "PS_PSPNR"
+        },
+        {
+          "=": "ZDONUM"
+        }
+      ],
       "query": {
         "SELECT": {
           "from": {
@@ -26660,11 +26765,33 @@
           "length": 20
         },
         "PBUKR": {
+          "@Common.Label": "Company Code",
+          "@Common.ValueList.CollectionPath": "ZCDSEBPS0013",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PBUKR"
+              },
+              "ValueListProperty": "PBUKR"
+            }
+          ],
           "@title": "Company code",
           "type": "cds.String",
           "length": 4
         },
         "PS_PSPNR": {
+          "@Common.Label": "Project Definition",
+          "@Common.ValueList.CollectionPath": "ZCDSEBPS0013",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PS_PSPNR"
+              },
+              "ValueListProperty": "PS_PSPNR"
+            }
+          ],
           "@title": "Project Definition",
           "type": "cds.String",
           "length": 24
@@ -26691,7 +26818,18 @@
           "length": 20
         },
         "ZDONUM": {
-          "@title": "DO Number Title",
+          "@title": "DO Number",
+          "@Common.Label": "Doc Number",
+          "@Common.ValueList.CollectionPath": "ZCDSEBPS0013",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "ZDONUM"
+              },
+              "ValueListProperty": "ZDONUM"
+            }
+          ],
           "type": "cds.String",
           "length": 10
         },
@@ -26705,6 +26843,7 @@
           "type": "cds.Date"
         },
         "ZSHPSTAT": {
+          "@UI.HiddenFilter": true,
           "@title": "Shipping Status",
           "type": "cds.String",
           "length": 1
@@ -67449,159 +67588,6 @@
     }
   },
   "extensions": [
-    {
-      "annotate": "ZAPIBPS0001.ZCDSEBPS0011",
-      "@UI.SelectionFields": [
-        {
-          "=": "PBUKR"
-        },
-        {
-          "=": "PS_PSPNR"
-        },
-        {
-          "=": "ZDONUM"
-        }
-      ],
-      "@UI.LineItem": [
-        {
-          "Value": {
-            "=": "ZDONUM"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZDOITEM"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZSHPSTAT"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZSHTP"
-          }
-        },
-        {
-          "Value": {
-            "=": "MATNR"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZMSCODE"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZVMCODE"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZQTY"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZDESCRIP"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZDOPDATE"
-          }
-        },
-        {
-          "Value": {
-            "=": "CustomerFullName"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZCONTACTTEL"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZSHPNAME1"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZSHPNAME2"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZSHPNAME3"
-          }
-        },
-        {
-          "Value": {
-            "=": "ZSHPNAME4"
-          }
-        }
-      ],
-      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
-      "@Capabilities.FilterRestrictions.RequiredProperties": [
-        {
-          "=": "PBUKR"
-        },
-        {
-          "=": "PS_PSPNR"
-        },
-        {
-          "=": "ZDONUM"
-        }
-      ],
-      "elements": {
-        "ZDONUM": {
-          "@title": "DO Number",
-          "@Common.Label": "Doc Number",
-          "@Common.ValueList.CollectionPath": "ZCDSEBPS0011",
-          "@Common.ValueList.Parameters": [
-            {
-              "$Type": "Common.ValueListParameterInOut",
-              "LocalDataProperty": {
-                "=": "ZDONUM"
-              },
-              "ValueListProperty": "ZDONUM"
-            }
-          ]
-        },
-        "PBUKR": {
-          "@Common.Label": "Company Code",
-          "@Common.ValueList.CollectionPath": "ZCDSEBPS0011",
-          "@Common.ValueList.Parameters": [
-            {
-              "$Type": "Common.ValueListParameterInOut",
-              "LocalDataProperty": {
-                "=": "PBUKR"
-              },
-              "ValueListProperty": "PBUKR"
-            }
-          ]
-        },
-        "PS_PSPNR": {
-          "@Common.Label": "Project Definition",
-          "@Common.ValueList.CollectionPath": "ZCDSEBPS0011",
-          "@Common.ValueList.Parameters": [
-            {
-              "$Type": "Common.ValueListParameterInOut",
-              "LocalDataProperty": {
-                "=": "PS_PSPNR"
-              },
-              "ValueListProperty": "PS_PSPNR"
-            }
-          ]
-        },
-        "ZSHPSTAT": {
-          "@UI.HiddenFilter": true
-        }
-      }
-    },
     {
       "annotate": "ZCDSEHBTC0001.ZSCREEN1",
       "elements": {

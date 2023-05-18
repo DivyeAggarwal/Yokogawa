@@ -2499,7 +2499,7 @@ annotate ZAPIBPS0001.ZCDSEBPS0013 {
 }
 annotate ZAPIBPS0001.ZCDSEBPS0013 {
     @(Common : {
-        Label     : 'Doc Number',
+        Label     : 'Do Number',
         ValueList : {
             CollectionPath : 'ZCDSEBPS0013',
             Parameters     : [
