@@ -2424,10 +2424,10 @@ annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
     CONFIRM_STATUS @title: 'Confirm Status';
     REASON_DIFF @title: 'Reason for Difference';
 };
-annotate ZAPIBPS0001.ZCDSEBPS0011 with {
+annotate ZAPIBPS0001.ZCDSEBPS0013 with {
     ZDONUM  @title : 'DO Number';
 }
-annotate ZAPIBPS0001.ZCDSEBPS0011 with @(
+annotate ZAPIBPS0001.ZCDSEBPS0013 with @(
     
     UI : { 
         SelectionFields  : [
@@ -2454,7 +2454,7 @@ annotate ZAPIBPS0001.ZCDSEBPS0011 with @(
      }
 ){
 };
-annotate ZAPIBPS0001.ZCDSEBPS0011 with @(Capabilities : {
+annotate ZAPIBPS0001.ZCDSEBPS0013 with @(Capabilities : {
     FilterRestrictions : {
         $Type              : 'Capabilities.FilterRestrictionsType',
         RequiredProperties : [
@@ -2465,11 +2465,11 @@ annotate ZAPIBPS0001.ZCDSEBPS0011 with @(Capabilities : {
     }
 });
 
-annotate ZAPIBPS0001.ZCDSEBPS0011 {
+annotate ZAPIBPS0001.ZCDSEBPS0013 {
     @(Common : {
         Label     : 'Company Code',
         ValueList : {
-            CollectionPath : 'ZCDSEBPS0011',
+            CollectionPath : 'ZCDSEBPS0013',
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
@@ -2481,11 +2481,11 @@ annotate ZAPIBPS0001.ZCDSEBPS0011 {
     })
     PBUKR;
 }
-annotate ZAPIBPS0001.ZCDSEBPS0011 {
+annotate ZAPIBPS0001.ZCDSEBPS0013 {
     @(Common : {
         Label     : 'Project Definition',
         ValueList : {
-            CollectionPath : 'ZCDSEBPS0011',
+            CollectionPath : 'ZCDSEBPS0013',
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
@@ -2497,11 +2497,11 @@ annotate ZAPIBPS0001.ZCDSEBPS0011 {
     })
     PS_PSPNR;
 }
-annotate ZAPIBPS0001.ZCDSEBPS0011 {
+annotate ZAPIBPS0001.ZCDSEBPS0013 {
     @(Common : {
         Label     : 'Doc Number',
         ValueList : {
-            CollectionPath : 'ZCDSEBPS0011',
+            CollectionPath : 'ZCDSEBPS0013',
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
@@ -2513,6 +2513,6 @@ annotate ZAPIBPS0001.ZCDSEBPS0011 {
     })
     ZDONUM;
 }
-annotate ZAPIBPS0001.ZCDSEBPS0011 with {
+annotate ZAPIBPS0001.ZCDSEBPS0013 with {
 ZSHPSTAT @UI.HiddenFilter: true;
 }
