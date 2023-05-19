@@ -1456,24 +1456,29 @@ annotate ZCDSEHBTC0012.materialWhereUsed {
     })
     WERKS;
 }
-// annotate ZCDSEHBTC0013.ZTHBT0059 @(Capabilities : {
-//     // SearchRestrictions : {
-//     //     $Type      : 'Capabilities.SearchRestrictionsType',
-//     //     Searchable : false
-//     // },
-//     // // InsertRestrictions : {
-//     // //     $Type : 'Capabilities.InsertRestrictionsType',
-//     // //     Insertable: false
-//     // // },
-//     // DeleteRestrictions : {
-//     //     $Type : 'Capabilities.DeleteRestrictionsType',
-//     //     Deletable: false
-//     // }
-// });
-annotate ZCDSEHBTC0013.ZTHBT0059 with {
+annotate ZCDSEHBTC0013.ZCDSEBPS0014 @(Capabilities : {
+    SearchRestrictions : {
+        $Type      : 'Capabilities.SearchRestrictionsType',
+        Searchable : false
+    },
+    // InsertRestrictions : {
+    //     $Type : 'Capabilities.InsertRestrictionsType',
+    //     Insertable: false
+    // },
+    DeleteRestrictions : {
+        $Type : 'Capabilities.DeleteRestrictionsType',
+        Deletable: false
+    }
+});
+annotate ZCDSEHBTC0013.ZCDSEBPS0014 with @(
+    UI.UpdateHidden : true,
+    UI.DeleteHidden : true,
+    UI.CreateHidden : true,
+);
+annotate ZCDSEHBTC0013.ZCDSEBPS0014 with {
 ZSD_GRPSUPP @UI.HiddenFilter: true;
 }
-annotate ZCDSEHBTC0013.ZTHBT0059 with @(
+annotate ZCDSEHBTC0013.ZCDSEBPS0014 with @(
     
     UI : { 
         SelectionFields  : [

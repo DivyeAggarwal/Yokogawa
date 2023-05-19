@@ -26819,7 +26819,7 @@
         },
         "ZDONUM": {
           "@title": "DO Number",
-          "@Common.Label": "Doc Number",
+          "@Common.Label": "Do Number",
           "@Common.ValueList.CollectionPath": "ZCDSEBPS0013",
           "@Common.ValueList.Parameters": [
             {
