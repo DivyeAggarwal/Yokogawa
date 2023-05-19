@@ -506,7 +506,7 @@ entity ZTHBT0055 : managed {
 
 entity ZTHBT0030 : managed {
     key PKNUM   : Date @title : 'Control Cycle';
-        PKKEY  : Date @title : 'Kanban Identification Number';
+    key PKKEY  : Date @title : 'Kanban Identification Number';
         REVNR   : Int16  @title : 'Revision number'; 
         PDATS   : Date @title : 'Toku Parts Delivery Date';
         PZEIT   : Time @title : 'Printed Local Time';
