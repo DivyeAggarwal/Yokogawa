@@ -1482,7 +1482,7 @@ annotate ZCDSEHBTC0013.ZCDSEBPS0014 with @(
     
     UI : { 
         SelectionFields  : [
-            ZWBS_ELEMENT
+            ZWBS_ELEMENT,ZSD_INV_SUBMIT_DATE,ZSD_STATUS
         ],
         LineItem  : [
             { Value : ZWBS_ELEMENT },
