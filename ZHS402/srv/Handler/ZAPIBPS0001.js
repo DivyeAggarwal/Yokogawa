@@ -25,12 +25,23 @@ var registerZAPIBPS0001Handler = function (that, cds) {
         return oDataWithManager;
 
     });
-    that.on('READ', 'ZCDSEBPS0011', async req => {
+    that.on('READ', 'ZCDSEBPS0013', async req => {
         const db = await cds.connect.to('db');
         var oData = await db.run(req.query);
         var oDataWithCustomer = await populateCustomerFullName(oData);
         var oDataWithManager = await populateManager(oDataWithCustomer);
-        return oDataWithManager;
+        // return oDataWithManager;
+        var updated = Object.values(oDataWithManager.reduce((obj, item) => {
+            var key = item.ZDONUM + item.ZSHTP
+            if (!obj[key]) {
+              obj[key] = Object.assign(item)
+            } else {
+                
+              obj[key].ZQTY  += Number(item.ZQTY)
+            }
+            return obj
+          }, {}))
+          return updated;
 
     });
     that.on('pgi', async (req) => {
