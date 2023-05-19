@@ -268,6 +268,60 @@
         }
       }
     },
+    "TimeSheetEntry.ZCDSEHPSB0032": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for WBS",
+      "elements": {
+        "wbsElementExt": {
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        },
+        "wsElementDesc": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Description",
+          "@sap.quickinfo": "PS: Short description (1st text line)"
+        },
+        "projectId": {
+          "type": "cds.String",
+          "length": 24
+        },
+        "ProjectDesc": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Description",
+          "@sap.quickinfo": "PS: Short description (1st text line)"
+        },
+        "CompanyCode": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for the project"
+        },
+        "levelInHierarchy": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Level",
+          "@sap.quickinfo": "Level in Project Hierarchy"
+        },
+        "vbukr": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company code",
+          "@sap.quickinfo": "Company code for the project"
+        }
+      }
+    },
     "TimeSheetEntry.ZCDSEHPSC0004": {
       "kind": "entity",
       "@cds.external": true,

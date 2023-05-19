@@ -2510,3 +2510,5 @@ annotate ZAPIBPS0001.ZCDSEBPS0011 {
 annotate ZAPIBPS0001.ZCDSEBPS0011 with {
 ZSHPSTAT @UI.HiddenFilter: true;
 }
+
+annotate ZAPIBPS0004.ZCDSEBPS0011 with  @odata.draft.enabled;

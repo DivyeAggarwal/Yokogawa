@@ -20234,10 +20234,8 @@
           "length": 12
         },
         "BackFlush": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Backflush",
-          "@sap.quickinfo": "Indicator: Backflush",
-          "type": "cds.Boolean"
+          "type": "cds.String",
+          "length": 1
         },
         "PartDescription": {
           "@sap.label": "Material Description",
@@ -20274,16 +20272,23 @@
           "type": "cds.String",
           "length": 2
         },
-        "ztext": {
+        "Dimension": {
           "@sap.label": "BOM Description",
           "type": "cds.String",
           "length": 40
         },
-        "potx2": {
+        "MaterialQty": {
           "@sap.label": "Item Text 2",
           "@sap.quickinfo": "BOM Item Text (Line 2)",
           "type": "cds.String",
           "length": 40
+        },
+        "SupplyArea": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supply Area",
+          "@sap.quickinfo": "Production Supply Area",
+          "type": "cds.String",
+          "length": 10
         },
         "to_Storage": {
           "@cds.ambiguous": "missing on condition?",
@@ -56224,10 +56229,8 @@
           "length": 12
         },
         "BackFlush": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Backflush",
-          "@sap.quickinfo": "Indicator: Backflush",
-          "type": "cds.Boolean"
+          "type": "cds.String",
+          "length": 1
         },
         "PartDescription": {
           "@sap.label": "Material Description",
@@ -56264,16 +56267,23 @@
           "type": "cds.String",
           "length": 2
         },
-        "ztext": {
+        "Dimension": {
           "@sap.label": "BOM Description",
           "type": "cds.String",
           "length": 40
         },
-        "potx2": {
+        "MaterialQty": {
           "@sap.label": "Item Text 2",
           "@sap.quickinfo": "BOM Item Text (Line 2)",
           "type": "cds.String",
           "length": 40
+        },
+        "SupplyArea": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supply Area",
+          "@sap.quickinfo": "Production Supply Area",
+          "type": "cds.String",
+          "length": 10
         },
         "to_Storage": {
           "@cds.ambiguous": "missing on condition?",

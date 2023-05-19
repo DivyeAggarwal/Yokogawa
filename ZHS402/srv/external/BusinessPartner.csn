@@ -2335,6 +2335,74 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "County Code"
         },
+        "name1": {
+          "type": "cds.String",
+          "length": 35,
+          "@sap.label": "Name",
+          "@sap.quickinfo": "Name 1"
+        },
+        "name2": {
+          "type": "cds.String",
+          "length": 35,
+          "@sap.label": "Name 2"
+        },
+        "mcod3": {
+          "type": "cds.String",
+          "length": 25,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "City",
+          "@sap.quickinfo": "Search term for matchcode search"
+        },
+        "BusinessPartnerName3": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Name 3"
+        },
+        "BusinessPartnerName4": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Name 4"
+        },
+        "StreetPrefixName": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Street 2"
+        },
+        "AdditionalStreetPrefixName": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Street 3"
+        },
+        "PostalCode": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Postal Code"
+        },
+        "Region": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Region",
+          "@sap.quickinfo": "Region (State, Province, County)"
+        },
+        "CityName": {
+          "type": "cds.String",
+          "length": 35,
+          "@sap.label": "City"
+        },
+        "StreetName": {
+          "type": "cds.String",
+          "length": 35,
+          "@sap.label": "Street",
+          "@sap.quickinfo": "Street and House Number"
+        },
+        "TelephoneNumber1": {
+          "type": "cds.String",
+          "length": 16,
+          "@sap.label": "Telephone 1",
+          "@sap.quickinfo": "First telephone number"
+        },
         "ZZ1_EnglishName_cus": {
           "type": "cds.String",
           "length": 80,

@@ -46,10 +46,6 @@ var registerZAPIBPS0002Handler = function (that, cds) {
         return oData;
 
     })
-    
-
-    
-
 }
 
 module.exports = registerZAPIBPS0002Handler;

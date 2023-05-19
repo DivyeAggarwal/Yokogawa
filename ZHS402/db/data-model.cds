@@ -513,6 +513,10 @@ entity ZTHBT0030 : managed {
         PRVNR   : Int16  @title : 'Revision number which is regular printed';
 }
 
+entity ZTHBT0072: managed {
+    key USERID: String(100) @title: 'User Id';
+        COPIEDGUID: UUID @title: 'Copied UUID of row in ZTHBT0052 table'
+}
 
 
 

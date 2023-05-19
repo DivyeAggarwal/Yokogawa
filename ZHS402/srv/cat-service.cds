@@ -1320,3 +1320,78 @@ service ZAPIBPS0003 {
     entity ZCDSEHPSC0013 as projection on ZSRVBHPS0011.ZCDSEHPSC0013;
 }
 
+service ZAPIBPS0004 {
+    entity Customer as projection on BusinessPartner.A_Customer {
+        key Customer,
+        name1,
+        name2,
+        PostalCode,
+        Region,
+        mcod3 as City,
+        StreetName,
+        TelephoneNumber1,
+        BusinessPartnerName3,
+        BusinessPartnerName4,
+        StreetPrefixName,
+        AdditionalStreetPrefixName
+
+    }
+    entity Project as projection on TimeSheetEntry.ZCDSEHPSB0032 {
+        key projectId,
+            CompanyCode,
+            wbsElementExt
+    }
+    
+    entity ZCDSEBPS0012 as select from db.ZTHBT0055
+           left outer join db.ZTHBT0027 as ZTHBT0027
+           on ZTHBT0027.PBUKR = ZTHBT0055.PBUKR
+           and ZTHBT0027.MATNR = ZTHBT0055.MATNR
+           and ZTHBT0027.PSPHI = ZTHBT0055.PS_PSPNR {
+        key ZCABNUM,
+            ZTHBT0055.PBUKR,
+            PS_PSPNR,
+            ZMSCODE,
+            PS_POSNR,	
+            ZTHBT0055.MATNR,
+            ZZ1_MSCODE,
+            ZIDEX,
+            ZVMCODE,
+            ZQTY,
+            ZUT,
+            ZDESCRIP,				
+            ZSER,	
+            ZSHTP,	
+            ZSHPNAME1,
+            ZSHPNAME2,	
+            ZSHPNAME3,
+            ZSHPNAME4,
+            ZCONTACTTEL,	
+            ZDELNOTE1,
+            ZDELNOTE2,
+            ZDONUM,
+            ZDOITEM,
+            ZDOPDATE,	
+            ZDOADATE,	
+            ZDELFLAG,
+            ZSHPSTAT,
+            null as PostalCode:String(10),
+            null as Region:String(5),
+            null as City:String(25),
+            null as StreetName: String(35),
+            null as TelephoneNumber1:String(16),
+            null as BusinessPartnerName3:String(40),
+            null as BusinessPartnerName4:String(40),
+            null as StreetPrefixName: String(40),
+            null as AdditionalStreetPrefixName: String(40),
+            null as criticality:Integer,
+            null as Error:String(200)
+    }
+    actions {
+        action DeleteSet() returns ZCDSEBPS0012;
+        action split() returns ZCDSEBPS0012;
+        action copy() returns ZCDSEBPS0012;
+        action paste() returns ZCDSEBPS0012;
+
+    }
+}
+
