@@ -2476,7 +2476,7 @@ annotate ZAPIBPS0001.ZCDSEBPS0013 {
     @(Common : {
         Label     : 'Company Code',
         ValueList : {
-            CollectionPath : 'ZCDSEBPS0013',
+            CollectionPath : 'ZTHBT0055',
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
@@ -2492,7 +2492,7 @@ annotate ZAPIBPS0001.ZCDSEBPS0013 {
     @(Common : {
         Label     : 'Project Definition',
         ValueList : {
-            CollectionPath : 'ZCDSEBPS0013',
+            CollectionPath : 'ZTHBT0055',
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
@@ -2508,7 +2508,7 @@ annotate ZAPIBPS0001.ZCDSEBPS0013 {
     @(Common : {
         Label     : 'Do Number',
         ValueList : {
-            CollectionPath : 'ZCDSEBPS0013',
+            CollectionPath : 'ZTHBT0055',
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
