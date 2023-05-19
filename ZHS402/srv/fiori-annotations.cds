@@ -1456,6 +1456,7 @@ annotate ZCDSEHBTC0012.materialWhereUsed {
     })
     WERKS;
 }
+
 annotate ZCDSEHBTC0013.ZCDSEBPS0014 @(Capabilities : {
     SearchRestrictions : {
         $Type      : 'Capabilities.SearchRestrictionsType',
@@ -1477,12 +1478,13 @@ annotate ZCDSEHBTC0013.ZCDSEBPS0014 with @(
 );
 annotate ZCDSEHBTC0013.ZCDSEBPS0014 with {
 ZSD_GRPSUPP @UI.HiddenFilter: true;
+ZSD_STATUS @UI.HiddenFilter: true;
 }
 annotate ZCDSEHBTC0013.ZCDSEBPS0014 with @(
     
     UI : { 
         SelectionFields  : [
-            ZWBS_ELEMENT,ZSD_INV_SUBMIT_DATE,ZSD_STATUS
+            ZWBS_ELEMENT,ZSD_INV_SUBMIT_DATE
         ],
         LineItem  : [
             { Value : ZWBS_ELEMENT },
