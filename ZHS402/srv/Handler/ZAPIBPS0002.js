@@ -32,7 +32,7 @@ var registerZAPIBPS0002Handler = function (that, cds) {
 
     });
     that.on('updateDiffSM', async (req) => {
-        if(!req.data.ReasonForDiff){
+        if(!req.data.ReasonForDiffSM){
             req.reject({
                 code: 403,
                 message: 'please provide the reason for difference'
@@ -46,7 +46,7 @@ var registerZAPIBPS0002Handler = function (that, cds) {
                     message: 'Reason is Already updated'
                 });
             }
-            oData.REASON_DIFF = req.data.ReasonForDiff;
+            oData.REASON_DIFF = req.data.ReasonForDiffSM;
             oData.CONFIRM_STATUS = 2;
             
             await UPSERT.into('ZHS402.ZTHBT0027').entries(oData);  
