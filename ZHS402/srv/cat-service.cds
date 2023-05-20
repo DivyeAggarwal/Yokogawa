@@ -1336,12 +1336,19 @@ service ZAPIBPS0004 {
         StreetPrefixName,
         AdditionalStreetPrefixName
 
-    }
+    };
+    @cds.persistence.skip
+    @odata.singleton
+    entity ExcelUpload {
+        @Core.MediaType : 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+        excel : LargeBinary;
+    };
+
     entity Project as projection on TimeSheetEntry.ZCDSEHPSB0032 {
         key projectId,
             CompanyCode,
             wbsElementExt
-    }
+    };
     
     entity ZCDSEBPS0012 as select from db.ZTHBT0055
            left outer join db.ZTHBT0027 as ZTHBT0027
@@ -1387,6 +1394,7 @@ service ZAPIBPS0004 {
             null as criticality:Integer,
             null as Error:String(200)
     }
+    where ZDELFLAG != 'X'
     actions {
         action DeleteSet() returns ZCDSEBPS0012;
         action split() returns ZCDSEBPS0012;

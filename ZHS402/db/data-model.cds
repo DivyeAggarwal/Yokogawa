@@ -222,7 +222,7 @@ entity ZTHBT0027 : managed {
         CPUDT_MKPF          : Date;
         ERFMG               : String(18);
         ERFME               : String(3);
-        CONFIRM_STATUS      : String(100);
+        CONFIRM_STATUS      : Integer;
         REASON_DIFF         : String(200);
     key SERNR               : String(18);
 } 

@@ -5,6 +5,7 @@ const registerProductionOrderPrint = require("./Handler/ProductionOrderPrint");
 const registerBomRegisterError = require("./Handler/BomRegistrationErrorUpdate");
 const registerZAPIBPS0001Handler = require("./Handler/ZAPIBPS0001");
 const registerZAPIBPS0002Handler = require("./Handler/ZAPIBPS0002");
+const registerZAPIBPS0004Handler = require("./Handler/ZAPIBPS0004");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql;
@@ -34,7 +35,7 @@ module.exports = cds.service.impl(async function (srv) {
     registerBomRegisterError(this,cds);
     registerZAPIBPS0001Handler(this,cds);
     registerZAPIBPS0002Handler(this,cds);
-    
+    registerZAPIBPS0004Handler(this,cds);
     this.on('READ', 'ZCDSEHPSB0004', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
         return bupa.run(req.query);

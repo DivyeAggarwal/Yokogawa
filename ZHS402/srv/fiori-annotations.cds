@@ -2218,7 +2218,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
         Facets: [
             {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'},
             {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_ReceivedQuantities/@UI.LineItem'},
-            {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_UsedQuantities/@UI.LineItem'}
+            {$Type: 'UI.ReferenceFacet',Label: 'Used Quantities',Target: '_UsedQuantities/@UI.LineItem'}
         ],        
         FieldGroup#MainAs: {
             Data: [
@@ -2396,7 +2396,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
         Facets: [
             {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'},
             {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_ReceivedQuantities/@UI.LineItem'},
-            {$Type: 'UI.ReferenceFacet',Label: 'Received Quantities',Target: '_UsedQuantities/@UI.LineItem'}
+            {$Type: 'UI.ReferenceFacet',Label: 'Used Quantities',Target: '_UsedQuantities/@UI.LineItem'}
         ],        
         FieldGroup#MainAs: {
             Data: [
@@ -2524,4 +2524,146 @@ annotate ZAPIBPS0001.ZCDSEBPS0013 with {
 ZSHPSTAT @UI.HiddenFilter: true;
 }
 
-annotate ZAPIBPS0004.ZCDSEBPS0011 with  @odata.draft.enabled;
+annotate ZAPIBPS0004.ZCDSEBPS0012 with  @fiori.draft.enabled;
+annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
+    UI: {
+        DeleteHidden        : true,
+        HeaderInfo: {
+            TypeName: '',
+            TypeNamePlural: 'Cabinet Component & Shipping Status',
+            Title: { Value: 'Cabinet Component & Shipping Status' },
+            Description: { Value: 'Cabinet Component & Shipping Status' }
+        },
+
+        SelectionFields: [ PBUKR,PS_PSPNR,PS_POSNR,ZDOPDATE,ZSHPSTAT],
+        LineItem: [ { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.DeleteSet', Label: 'Delete'},
+            { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.split', Label: 'Split'},
+            { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.copy', Label: 'Copy'},
+            { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.paste', Label: 'Paste'},
+             { Value: ZCABNUM},
+            { Value: PBUKR },
+            { Value: PS_PSPNR },
+            { Value: ZMSCODE},
+            { Value: PS_POSNR },
+            { Value: MATNR },
+            { Value: ZZ1_MSCODE },
+            { Value: ZIDEX },
+            { Value: ZVMCODE },
+            { Value: ZQTY},
+            { Value: ZUT},
+            { Value: ZDESCRIP               },
+            { Value: ZSER   },
+            { Value: ZSHTP  },
+            { Value: ZSHPNAME1},
+            { Value: ZSHPNAME2  },
+            { Value: ZSHPNAME3},
+            { Value: ZSHPNAME4},
+            { Value: ZCONTACTTEL    },
+            { Value: ZDELNOTE1},
+            { Value: ZDELNOTE2},
+            { Value: ZDONUM},
+            { Value: ZDOITEM},
+            { Value: ZDOPDATE   },
+            { Value: ZDOADATE   },
+            { Value: ZDELFLAG},
+            { Value: ZSHPSTAT},
+            { Value: PostalCode},
+            { Value: Region},
+            { Value: City},
+            { Value: StreetName},
+            { Value: TelephoneNumber1},
+            { Value: BusinessPartnerName3},
+            { Value: BusinessPartnerName4},
+            { Value: StreetPrefixName},
+            { Value: AdditionalStreetPrefixName},
+            { Value: criticality},
+            { Value: Error},
+
+        ],
+        Facets: [
+            {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'}
+        ],        
+        FieldGroup#MainAs: {
+            Data: [
+              { Value: ZCABNUM,![@Common.FieldControl] : #ReadOnly },
+            { Value: PBUKR,![@Common.FieldControl] : #ReadOnly },
+            { Value: PS_PSPNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZMSCODE,![@Common.FieldControl] : #ReadOnly },
+            { Value: PS_POSNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: MATNR,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZZ1_MSCODE,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZIDEX,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZVMCODE,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZQTY,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZUT,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDESCRIP               ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSER   ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHTP  ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHPNAME1,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHPNAME2  ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHPNAME3,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHPNAME4,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZCONTACTTEL    ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDELNOTE1,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDELNOTE2,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDONUM,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDOITEM,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDOPDATE   ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDOADATE   ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDELFLAG,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHPSTAT,![@Common.FieldControl] : #ReadOnly },
+            { Value: PostalCode,![@Common.FieldControl] : #ReadOnly },
+            { Value: Region,![@Common.FieldControl] : #ReadOnly },
+            { Value: City,![@Common.FieldControl] : #ReadOnly },
+            { Value: StreetName,![@Common.FieldControl] : #ReadOnly },
+            { Value: TelephoneNumber1,![@Common.FieldControl] : #ReadOnly },
+            { Value: BusinessPartnerName3,![@Common.FieldControl] : #ReadOnly },
+            { Value: BusinessPartnerName4,![@Common.FieldControl] : #ReadOnly },
+            { Value: StreetPrefixName,![@Common.FieldControl] : #ReadOnly },
+            { Value: AdditionalStreetPrefixName,![@Common.FieldControl] : #ReadOnly },
+            { Value: criticality,![@Common.FieldControl] : #ReadOnly },
+            { Value: Error,![@Common.FieldControl] : #ReadOnly }
+         
+            ]
+        }
+    }
+){
+    ZCABNUM @title: '';
+            PBUKR @title: '';
+            PS_PSPNR @title: '';
+            ZMSCODE @title: '';
+            PS_POSNR @title: '';
+            MATNR @title: '';
+            ZZ1_MSCODE @title: '';
+            ZIDEX @title: '';
+            ZVMCODE @title: '';
+            ZQTY @title: '';
+            ZUT @title: '';
+            ZDESCRIP @title: '';			
+            ZSER @title: '';
+            ZSHTP @title: '';	
+            ZSHPNAME1 @title: '';
+            ZSHPNAME2 @title: '';
+            ZSHPNAME3 @title: '';
+            ZSHPNAME4 @title: '';
+            ZCONTACTTEL @title: '';	
+            ZDELNOTE1 @title: '';
+            ZDELNOTE2 @title: '';
+            ZDONUM @title: '';
+            ZDOITEM @title: '';
+            ZDOPDATE @title: '';
+            ZDOADATE @title: '';	
+            ZDELFLAG @title: '';
+            ZSHPSTAT @title: '';
+            PostalCode @title: '';
+            Region @title: '';
+            City @title: '';
+            StreetName @title: '';
+            TelephoneNumber1 @title: '';
+            BusinessPartnerName3 @title: '';
+            BusinessPartnerName4 @title: '';
+            StreetPrefixName @title: '';
+            AdditionalStreetPrefixName @title: '';
+            criticality @title: '';
+            Error @title: '';
+};
