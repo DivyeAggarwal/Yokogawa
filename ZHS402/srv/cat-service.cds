@@ -1224,20 +1224,29 @@ service ZAPIBPS0002 {
                 ZCDSEBPS0006.USEDQTY,
                 ZCDSEBPS0006.ZUT,
                 cast(
-                    case ZCDSEBPS0005.REASON_DIFF
-                        when
-                            ' '
-                        then
-                            case
-                                when
-                                    ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
-                                then
-                                    3
-                                else
-                                    1
-                            end
-                        else
-                            2
+                    case ZCDSEBPS0005.CONFIRM_STATUS
+                    when 1 
+                        then ZCDSEBPS0005.CONFIRM_STATUS
+                    when 2
+                        then ZCDSEBPS0005.CONFIRM_STATUS
+                    when 3 
+                        then ZCDSEBPS0005.CONFIRM_STATUS
+                    else 
+                        case ZCDSEBPS0005.REASON_DIFF
+                            when
+                                ' '
+                            then
+                                case
+                                    when
+                                        ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
+                                    then
+                                        3
+                                    else
+                                        1
+                                end
+                            else
+                                2
+                        end
                     end as            Integer
                 ) as Criticality,
                 ZCDSEBPS0005.CONFIRM_STATUS,
@@ -1281,20 +1290,29 @@ service ZAPIBPS0002 {
                 ZCDSEBPS0006.USEDQTY,
                 ZCDSEBPS0006.ZUT,
                 cast(
-                    case ZCDSEBPS0012.REASON_DIFF
-                        when
-                            ' '
-                        then
-                            case
-                                when
-                                    ZCDSEBPS0012.ERFMG = ZCDSEBPS0006.USEDQTY
-                                then
-                                    3
-                                else
-                                    1
-                            end
-                        else
-                            2
+                    case ZCDSEBPS0012.CONFIRM_STATUS
+                    when 1 
+                        then ZCDSEBPS0012.CONFIRM_STATUS
+                    when 2
+                        then ZCDSEBPS0012.CONFIRM_STATUS
+                    when 3 
+                        then ZCDSEBPS0012.CONFIRM_STATUS
+                    else 
+                        case ZCDSEBPS0012.REASON_DIFF
+                            when
+                                ' '
+                            then
+                                case
+                                    when
+                                        ZCDSEBPS0012.ERFMG = ZCDSEBPS0006.USEDQTY
+                                    then
+                                        3
+                                    else
+                                        1
+                                end
+                            else
+                                2
+                        end
                     end as            Integer
                 ) as Criticality,
                 ZCDSEBPS0012.CONFIRM_STATUS,

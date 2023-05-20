@@ -21,7 +21,7 @@ var registerZAPIBPS0002Handler = function (that, cds) {
             code: 200,
             message: 'Reason For Difference is updated successfully'
         });
-
+        oData.Criticality = 1;
         return oData;
 
     });
@@ -36,13 +36,14 @@ var registerZAPIBPS0002Handler = function (that, cds) {
             }
             oData.REASON_DIFF = req.data.ReasonForDiff;
             oData.CONFIRM_STATUS = 1;
+            
             await UPSERT.into('ZHS402.ZTHBT0027').entries(oData);  
         }
         req.info({
             code: 200,
             message: 'Reason For Difference is updated successfully'
         });
-
+        oData.Criticality = 1;
         return oData;
 
     })
