@@ -1232,21 +1232,14 @@ service ZAPIBPS0002 {
                     when 3 
                         then ZCDSEBPS0005.CONFIRM_STATUS
                     else 
-                        case ZCDSEBPS0005.REASON_DIFF
+                        case
                             when
-                                ' '
+                                ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
                             then
-                                case
-                                    when
-                                        ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
-                                    then
-                                        3
-                                    else
-                                        1
-                                end
+                                3
                             else
-                                2
-                        end
+                                1
+                        end     
                     end as            Integer
                 ) as Criticality,
                 ZCDSEBPS0005.CONFIRM_STATUS,
@@ -1298,21 +1291,14 @@ service ZAPIBPS0002 {
                     when 3 
                         then ZCDSEBPS0012.CONFIRM_STATUS
                     else 
-                        case ZCDSEBPS0012.REASON_DIFF
+                        case
                             when
-                                ' '
+                                ZCDSEBPS0012.ERFMG = ZCDSEBPS0006.USEDQTY
                             then
-                                case
-                                    when
-                                        ZCDSEBPS0012.ERFMG = ZCDSEBPS0006.USEDQTY
-                                    then
-                                        3
-                                    else
-                                        1
-                                end
+                                3
                             else
-                                2
-                        end
+                                1
+                        end    
                     end as            Integer
                 ) as Criticality,
                 ZCDSEBPS0012.CONFIRM_STATUS,
@@ -1329,7 +1315,7 @@ service ZAPIBPS0002 {
                                       and                                             _UsedQuantities.MATNR    = MATNR,
         }
     actions {
-        action updateDiff(ReasonForDiff : String @Common.Label: 'Reason For Difference' )   returns ZCDSEBPS0011;
+        action updateDiff(ReasonForDiff : String @Common.Label: 'Reason For Difference' @mandatory)   returns ZCDSEBPS0011;
     }
     
 

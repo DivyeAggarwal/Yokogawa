@@ -1896,8 +1896,7 @@
           "length": 3
         },
         "CONFIRM_STATUS": {
-          "type": "cds.String",
-          "length": 100
+          "type": "cds.Integer"
         },
         "REASON_DIFF": {
           "type": "cds.String",
@@ -4674,8 +4673,7 @@
           "length": 3
         },
         "CONFIRM_STATUS": {
-          "type": "cds.String",
-          "length": 100
+          "type": "cds.Integer"
         },
         "REASON_DIFF": {
           "type": "cds.String",
@@ -4875,8 +4873,7 @@
           "length": 3
         },
         "CONFIRM_STATUS": {
-          "type": "cds.String",
-          "length": 100
+          "type": "cds.Integer"
         },
         "REASON_DIFF": {
           "type": "cds.String",
@@ -9232,8 +9229,7 @@
           "length": 3
         },
         "CONFIRM_STATUS": {
-          "type": "cds.String",
-          "length": 100
+          "type": "cds.Integer"
         },
         "REASON_DIFF": {
           "type": "cds.String",
@@ -11015,8 +11011,7 @@
           "length": 3
         },
         "CONFIRM_STATUS": {
-          "type": "cds.String",
-          "length": 100
+          "type": "cds.Integer"
         },
         "REASON_DIFF": {
           "type": "cds.String",
@@ -31175,14 +31170,43 @@
                     {
                       "ref": [
                         "ZCDSEBPS0005",
-                        "REASON_DIFF"
+                        "CONFIRM_STATUS"
                       ]
                     },
                     "when",
                     {
-                      "val": " "
+                      "val": 1
                     },
                     "then",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0005",
+                        "CONFIRM_STATUS"
+                      ]
+                    },
+                    "when",
+                    {
+                      "val": 2
+                    },
+                    "then",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0005",
+                        "CONFIRM_STATUS"
+                      ]
+                    },
+                    "when",
+                    {
+                      "val": 3
+                    },
+                    "then",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0005",
+                        "CONFIRM_STATUS"
+                      ]
+                    },
+                    "else",
                     "case",
                     "when",
                     {
@@ -31207,10 +31231,6 @@
                       "val": 1
                     },
                     "end",
-                    "else",
-                    {
-                      "val": 2
-                    },
                     "end"
                   ],
                   "cast": {
@@ -31455,8 +31475,7 @@
         },
         "CONFIRM_STATUS": {
           "@title": "Confirm Status",
-          "type": "cds.String",
-          "length": 100
+          "type": "cds.Integer"
         },
         "REASON_DIFF": {
           "@title": "Reason for Difference",
@@ -32020,14 +32039,43 @@
                     {
                       "ref": [
                         "ZCDSEBPS0012",
-                        "REASON_DIFF"
+                        "CONFIRM_STATUS"
                       ]
                     },
                     "when",
                     {
-                      "val": " "
+                      "val": 1
                     },
                     "then",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0012",
+                        "CONFIRM_STATUS"
+                      ]
+                    },
+                    "when",
+                    {
+                      "val": 2
+                    },
+                    "then",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0012",
+                        "CONFIRM_STATUS"
+                      ]
+                    },
+                    "when",
+                    {
+                      "val": 3
+                    },
+                    "then",
+                    {
+                      "ref": [
+                        "ZCDSEBPS0012",
+                        "CONFIRM_STATUS"
+                      ]
+                    },
+                    "else",
                     "case",
                     "when",
                     {
@@ -32052,10 +32100,6 @@
                       "val": 1
                     },
                     "end",
-                    "else",
-                    {
-                      "val": 2
-                    },
                     "end"
                   ],
                   "cast": {
@@ -32304,8 +32348,7 @@
         },
         "CONFIRM_STATUS": {
           "@title": "Confirm Status",
-          "type": "cds.String",
-          "length": 100
+          "type": "cds.Integer"
         },
         "REASON_DIFF": {
           "@title": "Reason for Difference",
@@ -32465,6 +32508,7 @@
           "params": {
             "ReasonForDiff": {
               "@Common.Label": "Reason For Difference",
+              "@mandatory": true,
               "type": "cds.String"
             }
           },

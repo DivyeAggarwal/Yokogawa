@@ -5,6 +5,12 @@ var registerZAPIBPS0002Handler = function (that, cds) {
         return bupa.run(req.query);
     });
     that.on('updateDiff', async (req) => {
+        if(!req.data.ReasonForDiff){
+            req.reject({
+                code: 403,
+                message: 'please provide the reason for difference'
+            });
+        }
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0027").where(req.query.SELECT.from.ref[0].where);
         for(oData of oDataResults){
             if(oData.REASON_DIFF) {
@@ -14,18 +20,24 @@ var registerZAPIBPS0002Handler = function (that, cds) {
                 });
             }
             oData.REASON_DIFF = req.data.ReasonForDiff;
-            oData.CONFIRM_STATUS = 1;
+            oData.CONFIRM_STATUS = 2;
             await UPSERT.into('ZHS402.ZTHBT0027').entries(oData);  
         }
         req.info({
             code: 200,
             message: 'Reason For Difference is updated successfully'
         });
-        oData.Criticality = 1;
+        oData.Criticality = 2;
         return oData;
 
     });
     that.on('updateDiffSM', async (req) => {
+        if(!req.data.ReasonForDiff){
+            req.reject({
+                code: 403,
+                message: 'please provide the reason for difference'
+            });
+        }
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0027").where(req.query.SELECT.from.ref[0].where);
         for(oData of oDataResults){
             if(oData.REASON_DIFF) {
@@ -35,7 +47,7 @@ var registerZAPIBPS0002Handler = function (that, cds) {
                 });
             }
             oData.REASON_DIFF = req.data.ReasonForDiff;
-            oData.CONFIRM_STATUS = 1;
+            oData.CONFIRM_STATUS = 2;
             
             await UPSERT.into('ZHS402.ZTHBT0027').entries(oData);  
         }
@@ -43,7 +55,7 @@ var registerZAPIBPS0002Handler = function (that, cds) {
             code: 200,
             message: 'Reason For Difference is updated successfully'
         });
-        oData.Criticality = 1;
+        oData.Criticality = 2;
         return oData;
 
     })
