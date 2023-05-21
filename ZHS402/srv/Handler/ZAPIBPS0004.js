@@ -25,7 +25,7 @@ var registerZAPIBPS0004Handler = function (that, cds) {
             }
         }
         let objectCustomer = {};
-        await PrepareResultObject(arrayInput, objectCustomer);
+        //await PrepareResultObject(arrayInput, objectCustomer);
 
         /*Manipulate the result from cloud and On Premise */
         if (Array.isArray(results)) {

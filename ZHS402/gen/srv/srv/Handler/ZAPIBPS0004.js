@@ -136,7 +136,7 @@ var registerZAPIBPS0004Handler = function (that, cds) {
                         const temp = XLSX.utils.sheet_to_json(
                             workbook.Sheets[workbook.SheetNames[i]], { cellText: true, cellDates: true, dateNF: 'dd"."mm"."yyyy', rawNumbers: false })
                         temp.forEach((res, index) => {
-                            if (index === 0) return;
+                            if (index === 0 || index === 1 || index === 2) return;
                             data.push(JSON.parse(JSON.stringify(res)))
                         })
                     }
