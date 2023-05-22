@@ -33,11 +33,12 @@ var registerZAPIBPS0001Handler = function (that, cds) {
         // return oDataWithManager;
         var updated = Object.values(oDataWithManager.reduce((obj, item) => {
             var key = item.ZDONUM + item.ZSHTP
+            var sum = 0;
             if (!obj[key]) {
               obj[key] = Object.assign(item)
             } else {
-                
-              obj[key].ZQTY  += Number(item.ZQTY)
+                 sum += Number(item.ZQTY)
+              obj[key].ZQTY = sum
             }
             return obj
           }, {}))
