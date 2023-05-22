@@ -2555,6 +2555,7 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.copy', Label: 'Copy'},
             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.paste', Label: 'Paste'},
             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.DOCreate', Label: 'DO Create'},
+            { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.MassEdit', Label: 'MassEdit'},  
              { Value: ZCABNUM},
             { Value: PBUKR },
             { Value: PS_PSPNR },

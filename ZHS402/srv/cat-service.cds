@@ -1329,6 +1329,13 @@ service ZAPIBPS0003 {
 }
 
 service ZAPIBPS0004 {
+    type massEditInput {
+        ZSHTP: String;
+        ZSHPNAME1: String;
+        ZSHPNAME2: String;
+        ZSHPNAME3: String;
+        ZSHPNAME4: String;
+    }
     entity Customer as projection on BusinessPartner.A_Customer {
         key Customer,
         name1,
@@ -1408,6 +1415,7 @@ service ZAPIBPS0004 {
         action copy() returns ZCDSEBPS0012;
         action paste() returns ZCDSEBPS0012;
         action DOCreate() returns ZCDSEBPS0012;
+        action MassEdit(input: massEditInput) returns ZCDSEBPS0012;
     }
 }
 
