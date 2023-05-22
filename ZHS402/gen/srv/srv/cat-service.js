@@ -9,6 +9,8 @@ const registerZAPIBPS0004Handler = require("./Handler/ZAPIBPS0004");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql;
+const { Readable, PassThrough } = require('stream');
+const  XLSX  = require('xlsx');
 // import { SCIMUsersShadowUsersApi} from "./generated/PlatformAPI";
 //var SCIMUsersShadowUsersApi = require("./generated/PlatformAPI");
 
@@ -35,7 +37,7 @@ module.exports = cds.service.impl(async function (srv) {
     registerBomRegisterError(this,cds);
     registerZAPIBPS0001Handler(this,cds);
     registerZAPIBPS0002Handler(this,cds);
-    registerZAPIBPS0004Handler(this,cds);
+    registerZAPIBPS0004Handler(this,cds,Readable, PassThrough,XLSX);
     this.on('READ', 'ZCDSEHPSB0004', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
         return bupa.run(req.query);
@@ -193,6 +195,18 @@ this.on('Find_Scan', async (req) => {
 });
 
 this.on('READ', 'ZCDSEHPPB0085', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'I_MaterialStdVH', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'I_PlantStdVH', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'I_StorageLocationStdVH', async req => {
     const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
     return kandanListScanSrv.run(req.query);
 });

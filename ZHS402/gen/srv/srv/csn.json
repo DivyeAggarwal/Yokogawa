@@ -4162,9 +4162,10 @@
           "type": "cds.String",
           "length": 100
         },
-        "COPIEDGUID": {
-          "@title": "Copied UUID of row in ZTHBT0052 table",
-          "type": "cds.UUID"
+        "COPIEDDATA": {
+          "@title": "Copied Data in stringified format of selected row in ZTHBT0052 table",
+          "type": "cds.String",
+          "length": 1000
         }
       }
     },
@@ -17795,7 +17796,7 @@
           "length": 255
         },
         "E_PARTS_NO": {
-          "@title": "Material Number",
+          "@title": "Material Name",
           "key": true,
           "type": "cds.String",
           "length": 40
@@ -26931,6 +26932,12 @@
     },
     "ZAPIBPS0001.ZCDSEBPS0013": {
       "kind": "entity",
+      "@Capabilities.SearchRestrictions.$Type": "Capabilities.SearchRestrictionsType",
+      "@Capabilities.SearchRestrictions.Searchable": false,
+      "@Capabilities.InsertRestrictions.$Type": "Capabilities.InsertRestrictionsType",
+      "@Capabilities.InsertRestrictions.Insertable": false,
+      "@Capabilities.DeleteRestrictions.$Type": "Capabilities.DeleteRestrictionsType",
+      "@Capabilities.DeleteRestrictions.Deletable": false,
       "@UI.SelectionFields": [
         {
           "=": "PBUKR"
@@ -29768,6 +29775,20 @@
     },
     "ZCAPIH0018.ZCDSEHPPB0085": {
       "kind": "entity",
+      "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+        {
+          "Property": {
+            "=": "plt_issfrm"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "plant_issto"
+          },
+          "AllowedExpressions": "SingleValue"
+        }
+      ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.updatable": "false",
@@ -29782,16 +29803,90 @@
         }
       },
       "elements": {
+        "material": {
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "I_MaterialStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "material"
+              },
+              "ValueListProperty": "Material"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Material_Text"
+            }
+          ],
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "kanbanid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "kanbannum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control Cycle",
+          "key": true,
+          "type": "cds.String",
+          "length": 7,
+          "notNull": true
+        },
+        "selectflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component of the Version Number",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "notNull": true
+        },
+        "Scan_Start1_ac": {
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.Boolean"
+        },
         "rep_strategy": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Stock Transfer",
           "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer",
-          "key": true,
           "type": "cds.String",
-          "length": 4,
-          "notNull": true
+          "length": 4
         },
         "plt_issfrm": {
+          "@Common.Label": "Plant Issued From",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plt_issfrm"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Issuing Plant",
           "@sap.quickinfo": "Issuing Plant in Kanban Processing",
@@ -29799,6 +29894,25 @@
           "length": 4
         },
         "sloc_issfrm": {
+          "@Common.Label": "Storage Location From",
+          "@Common.ValueList.CollectionPath": "I_StorageLocationStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "sloc_issfrm"
+              },
+              "ValueListProperty": "StorageLocation"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "StorageLocationName"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Plant"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Receiving stor. loc.",
           "@sap.quickinfo": "Receiving/issuing storage location",
@@ -29810,14 +29924,6 @@
           "@sap.label": "Storage Bin",
           "type": "cds.String",
           "length": 10
-        },
-        "material": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
-          "@sap.value.list": "standard",
-          "type": "cds.String",
-          "length": 40
         },
         "quantity": {
           "@sap.unit": "unit",
@@ -29833,14 +29939,50 @@
           "length": 3
         },
         "plant_issto": {
+          "@Common.Label": "Plant Issued To",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plant_issto"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Plant",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 4
         },
         "sloc_issto": {
+          "@Common.Label": "Storage Location To",
+          "@Common.ValueList.CollectionPath": "I_StorageLocationStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "sloc_issto"
+              },
+              "ValueListProperty": "StorageLocation"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "StorageLocationName"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Plant"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Storage location",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 4
         },
@@ -29856,13 +29998,6 @@
           "@sap.label": "Kanban Status",
           "type": "cds.String",
           "length": 1
-        },
-        "kanbanid": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Kanban ID",
-          "@sap.quickinfo": "Kanban Identification Number",
-          "type": "cds.String",
-          "length": 10
         },
         "printdt": {
           "@sap.display.format": "Date",
@@ -29887,13 +30022,6 @@
         },
         "language": {
           "@sap.label": "Language Key",
-          "type": "cds.String",
-          "length": 2
-        },
-        "selectflag": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Component of the Version Number",
-          "@sap.heading": "",
           "type": "cds.String",
           "length": 2
         },
@@ -29944,6 +30072,128 @@
           "@sap.quickinfo": "30 Characters",
           "type": "cds.String",
           "length": 30
+        }
+      }
+    },
+    "ZCAPIH0018.I_MaterialStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Material",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0015.I_MaterialStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "Material_Text",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Material_Text": {
+          "@sap.label": "Material Description",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZCAPIH0018.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0015.I_PlantStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PlantName": {
+          "@sap.label": "Plant Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZCAPIH0018.I_StorageLocationStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Storage Location",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0015.I_StorageLocationStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "StorageLocationName",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocationName": {
+          "@sap.label": "Storage Loc. Name",
+          "@sap.quickinfo": "Storage Location Name",
+          "type": "cds.String",
+          "length": 16
+        },
+        "ConfigDeprecationCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
+          "type": "cds.String",
+          "length": 1
         }
       }
     },
@@ -32860,6 +33110,11 @@
           "Label": "Paste"
         },
         {
+          "$Type": "UI.DataFieldForAction",
+          "Action": "ZAPIBPS0004.DOCreate",
+          "Label": "DO Create"
+        },
+        {
           "Value": {
             "=": "ZCABNUM"
           }
@@ -33886,6 +34141,12 @@
           }
         },
         "paste": {
+          "kind": "action",
+          "returns": {
+            "type": "ZAPIBPS0004.ZCDSEBPS0012"
+          }
+        },
+        "DOCreate": {
           "kind": "action",
           "returns": {
             "type": "ZAPIBPS0004.ZCDSEBPS0012"
@@ -67749,6 +68010,79 @@
         }
       }
     },
+    "ZSRVBHPP0015.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PlantName": {
+          "@sap.label": "Plant Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZSRVBHPP0015.I_StorageLocationStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Storage Location",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "StorageLocationName",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocationName": {
+          "@sap.label": "Storage Loc. Name",
+          "@sap.quickinfo": "Storage Location Name",
+          "type": "cds.String",
+          "length": 16
+        },
+        "ConfigDeprecationCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
     "ZSRVBHPP0015.ZCDSEHPPB0085": {
       "kind": "entity",
       "@cds.external": true,
@@ -67759,14 +68093,58 @@
       "@sap.content.version": "1",
       "@sap.label": "Custom entity for kanban print",
       "elements": {
+        "material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "kanbanid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "kanbannum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control Cycle",
+          "key": true,
+          "type": "cds.String",
+          "length": 7,
+          "notNull": true
+        },
+        "selectflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component of the Version Number",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "notNull": true
+        },
+        "Scan_Start1_ac": {
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.Boolean"
+        },
         "rep_strategy": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Stock Transfer",
           "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer",
-          "key": true,
           "type": "cds.String",
-          "length": 4,
-          "notNull": true
+          "length": 4
         },
         "plt_issfrm": {
           "@sap.display.format": "UpperCase",
@@ -67788,14 +68166,6 @@
           "type": "cds.String",
           "length": 10
         },
-        "material": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
-          "@sap.value.list": "standard",
-          "type": "cds.String",
-          "length": 40
-        },
         "quantity": {
           "@sap.unit": "unit",
           "@sap.label": "Container Quantity",
@@ -67812,12 +68182,14 @@
         "plant_issto": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Plant",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 4
         },
         "sloc_issto": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Storage location",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 4
         },
@@ -67833,13 +68205,6 @@
           "@sap.label": "Kanban Status",
           "type": "cds.String",
           "length": 1
-        },
-        "kanbanid": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Kanban ID",
-          "@sap.quickinfo": "Kanban Identification Number",
-          "type": "cds.String",
-          "length": 10
         },
         "printdt": {
           "@sap.display.format": "Date",
@@ -67864,13 +68229,6 @@
         },
         "language": {
           "@sap.label": "Language Key",
-          "type": "cds.String",
-          "length": 2
-        },
-        "selectflag": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Component of the Version Number",
-          "@sap.heading": "",
           "type": "cds.String",
           "length": 2
         },
@@ -67921,6 +68279,14 @@
           "@sap.quickinfo": "30 Characters",
           "type": "cds.String",
           "length": 30
+        }
+      },
+      "actions": {
+        "Scan_Start1": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0015.ZCDSEHPPB0085"
+          }
         }
       }
     },
