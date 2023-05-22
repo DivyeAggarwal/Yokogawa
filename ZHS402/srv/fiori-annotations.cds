@@ -2434,6 +2434,20 @@ annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
 annotate ZAPIBPS0001.ZCDSEBPS0013 with {
     ZDONUM  @title : 'DO Number';
 }
+annotate ZAPIBPS0001.ZCDSEBPS0013 @(Capabilities : {
+    SearchRestrictions : {
+        $Type      : 'Capabilities.SearchRestrictionsType',
+        Searchable : false
+    },
+    InsertRestrictions : {
+        $Type : 'Capabilities.InsertRestrictionsType',
+        Insertable: false
+    },
+    DeleteRestrictions : {
+        $Type : 'Capabilities.DeleteRestrictionsType',
+        Deletable: false
+    }
+});
 annotate ZAPIBPS0001.ZCDSEBPS0013 with @(
     
     UI : { 
