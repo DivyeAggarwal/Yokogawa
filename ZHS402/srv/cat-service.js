@@ -196,6 +196,18 @@ this.on('READ', 'ZCDSEHPPB0085', async req => {
     const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
     return kandanListScanSrv.run(req.query);
 });
+this.on('READ', 'I_MaterialStdVH', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'I_PlantStdVH', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'I_StorageLocationStdVH', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
+    return kandanListScanSrv.run(req.query);
+});
 this.on('READ', 'ZCDSEHPPB0068', async req => {
     const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0007');
     return kandanListScanSrv.run(req.query);

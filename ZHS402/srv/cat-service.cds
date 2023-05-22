@@ -1194,6 +1194,9 @@ service ZCAPIH0018 {
     entity ZTHBT0030                    as projection on db.ZTHBT0030;
     entity ZTHBT0006                    as projection on db.ZTHBT0006;
     entity ZCDSEHPPB0085                as projection on ZSRVBHPP0015.ZCDSEHPPB0085;
+    entity I_MaterialStdVH                as projection on ZSRVBHPP0015.I_MaterialStdVH;
+    entity I_PlantStdVH                as projection on ZSRVBHPP0015.I_PlantStdVH;
+    entity I_StorageLocationStdVH                as projection on ZSRVBHPP0015.I_StorageLocationStdVH;
     entity ZCDSEHPPB0068                as projection on ZSRVBHPP0007.ZCDSEHPPB0068;
     entity ZCDSEHPPB0069                as projection on ZSRVBHPP0008.ZCDSEHPPB0069; 
 }

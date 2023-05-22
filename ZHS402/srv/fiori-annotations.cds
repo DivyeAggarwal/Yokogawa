@@ -2680,3 +2680,105 @@ annotate ZCAPIH0018.ZCDSEHPPB0085 @(Capabilities.FilterRestrictions : {
         }
     ]
 });
+
+
+annotate ZCAPIH0018.ZCDSEHPPB0085 {
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'I_MaterialStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : material,
+                    ValueListProperty : 'Material'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Material_Text'
+                }
+            ]
+        }
+    })
+    material;
+    @(Common : {
+        Label     : 'Plant Issued From',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plt_issfrm,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                }
+            ]
+        }
+    })
+    plt_issfrm;
+    @(Common : {
+        Label     : 'Plant Issued To',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plant_issto,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                }
+            ]
+        }
+    })
+    plant_issto;
+    @(Common : {
+        Label     : 'Storage Location From',
+        ValueList : {
+            CollectionPath : 'I_StorageLocationStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : sloc_issfrm,
+                    ValueListProperty : 'StorageLocation'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'StorageLocationName'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Plant'
+                }
+            ]
+        }
+    })
+    sloc_issfrm;
+    @(Common : {
+        Label     : 'Storage Location To',
+        ValueList : {
+            CollectionPath : 'I_StorageLocationStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : sloc_issto,
+                    ValueListProperty : 'StorageLocation'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'StorageLocationName'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Plant'
+                }
+            ]
+        }
+    })
+    sloc_issto;
+}
