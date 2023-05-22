@@ -973,7 +973,7 @@ annotate ZCDSEHBTC0009.ZTHBT0004 with {
 }
 
 annotate ZCDSEHBTC0009.ZTHBT0005 with {
-    E_PARTS_NO      @title : 'Material Number';
+    E_PARTS_NO      @title : 'Material Name';
     PCKG_CD       @title : 'Packing Code';
     PCKG_TYPE     @title : 'Packing Type';
     PCKG_STYLE    @title : 'Packing Style';
