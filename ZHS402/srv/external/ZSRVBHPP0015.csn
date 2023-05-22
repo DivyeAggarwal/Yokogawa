@@ -42,6 +42,79 @@
         }
       }
     },
+    "ZSRVBHPP0015.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "notNull": true
+        },
+        "PlantName": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "Plant Name"
+        }
+      }
+    },
+    "ZSRVBHPP0015.I_StorageLocationStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Storage Location",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "notNull": true
+        },
+        "StorageLocation": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "StorageLocationName",
+          "@sap.label": "Storage location",
+          "notNull": true
+        },
+        "StorageLocationName": {
+          "type": "cds.String",
+          "length": 16,
+          "@sap.label": "Storage Loc. Name",
+          "@sap.quickinfo": "Storage Location Name"
+        },
+        "ConfigDeprecationCode": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries"
+        }
+      }
+    },
     "ZSRVBHPP0015.ZCDSEHPPB0085": {
       "kind": "entity",
       "@cds.external": true,
@@ -52,14 +125,58 @@
       "@sap.content.version": "1",
       "@sap.label": "Custom entity for kanban print",
       "elements": {
-        "rep_strategy": {
+        "material": {
           "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "@sap.value.list": "standard",
+          "notNull": true
+        },
+        "kanbanid": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "kanbannum": {
+          "key": true,
+          "type": "cds.String",
+          "length": 7,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control Cycle",
+          "notNull": true
+        },
+        "selectflag": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component of the Version Number",
+          "@sap.heading": "",
+          "notNull": true
+        },
+        "Scan_Start1_ac": {
+          "type": "cds.Boolean",
+          "@sap.label": "Dyn. Action Control",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "rep_strategy": {
           "type": "cds.String",
           "length": 4,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Stock Transfer",
-          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer",
-          "notNull": true
+          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer"
         },
         "plt_issfrm": {
           "type": "cds.String",
@@ -81,14 +198,6 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Storage Bin"
         },
-        "material": {
-          "type": "cds.String",
-          "length": 40,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
-          "@sap.value.list": "standard"
-        },
         "quantity": {
           "type": "cds.Decimal",
           "precision": 13,
@@ -106,13 +215,15 @@
           "type": "cds.String",
           "length": 4,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Plant"
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard"
         },
         "sloc_issto": {
           "type": "cds.String",
           "length": 4,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage location"
+          "@sap.label": "Storage location",
+          "@sap.value.list": "standard"
         },
         "supp_areaissto": {
           "type": "cds.String",
@@ -126,13 +237,6 @@
           "length": 1,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Kanban Status"
-        },
-        "kanbanid": {
-          "type": "cds.String",
-          "length": 10,
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Kanban ID",
-          "@sap.quickinfo": "Kanban Identification Number"
         },
         "printdt": {
           "type": "cds.Date",
@@ -159,13 +263,6 @@
           "type": "cds.String",
           "length": 2,
           "@sap.label": "Language Key"
-        },
-        "selectflag": {
-          "type": "cds.String",
-          "length": 2,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Component of the Version Number",
-          "@sap.heading": ""
         },
         "trafic_light": {
           "type": "cds.String",
@@ -214,6 +311,14 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Kanban type",
           "@sap.quickinfo": "30 Characters"
+        }
+      },
+      "actions": {
+        "Scan_Start1": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0015.ZCDSEHPPB0085"
+          }
         }
       }
     },
