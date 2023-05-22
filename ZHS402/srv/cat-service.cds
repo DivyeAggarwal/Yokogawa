@@ -1404,7 +1404,7 @@ service ZAPIBPS0004 {
         action split() returns ZCDSEBPS0012;
         action copy() returns ZCDSEBPS0012;
         action paste() returns ZCDSEBPS0012;
-
+        action DOCreate() returns ZCDSEBPS0012;
     }
 }
 

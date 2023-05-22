@@ -515,7 +515,7 @@ entity ZTHBT0030 : managed {
 
 entity ZTHBT0072: managed {
     key USERID: String(100) @title: 'User Id';
-        COPIEDGUID: UUID @title: 'Copied UUID of row in ZTHBT0052 table'
+        COPIEDDATA: String(1000) @title: 'Copied Data in stringified format of selected row in ZTHBT0052 table'
 }
 
 

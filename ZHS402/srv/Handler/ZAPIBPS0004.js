@@ -1,4 +1,4 @@
-var registerZAPIBPS0004Handler = function (that, cds) {
+var registerZAPIBPS0004Handler = function (that, cds,Readable, PassThrough,XLSX) {
 
     that.on('READ', 'Customer', async req => {
         const bupa = await cds.connect.to('BusinessPartner');
@@ -25,7 +25,7 @@ var registerZAPIBPS0004Handler = function (that, cds) {
             }
         }
         let objectCustomer = {};
-        //await PrepareResultObject(arrayInput, objectCustomer);
+        await PrepareResultObject(arrayInput, objectCustomer);
 
         /*Manipulate the result from cloud and On Premise */
         if (Array.isArray(results)) {
@@ -81,10 +81,10 @@ var registerZAPIBPS0004Handler = function (that, cds) {
             });
         }
         let oData = oDataResults[0];
-        if (!oData.ZQTY || oData.ZQTY === 1) {
+        if ((!oData.ZQTY || oData.ZQTY === 1) && oData.ZZ1_MSCODE === '020') {
             req.reject({
                 code: 403,
-                message: 'Split can be done only when quantity is more than 1'
+                message: 'Split can be done only when quantity is more than 1 and Material Type is Built-in Cabinet'
             });
         }
         while (oData.ZQTY > 1) {
@@ -105,8 +105,18 @@ var registerZAPIBPS0004Handler = function (that, cds) {
 
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
         if (oDataResults) {
-
-            let data = { USERID: req.user.id, COPIEDGUID: oDataResults[0].UUID };
+            let copiedData = {
+                ZSHTP:oDataResults[0].ZSHTP,
+                ZSHPNAME1:oDataResults[0].SHPNAME1,
+                ZSHPNAME2:oDataResults[0].ZSHPNAME2,
+                ZSHPNAME3:oDataResults[0].ZSHPNAME3,
+                ZSHPNAME4:oDataResults[0].ZSHPNAME4,
+                ZCONTACTTEL:oDataResults[0].ZCONTACTTEL,
+                ZDELNOTE1:oDataResults[0].ZDELNOTE1,
+                ZDELNOTE2:oDataResults[0].ZDELNOTE2,
+                ZDOPDATE:oDataResults[0].ZDOPDATE
+            }
+            let data = { USERID: req.user.id, COPIEDDATA: JSON.stringify(copiedData)};
             await UPSERT.into('ZHS402.ZTHBT0072').entries(data);
             req.info({
                 code: 200,
@@ -119,7 +129,8 @@ var registerZAPIBPS0004Handler = function (that, cds) {
     });
     that.on('PUT', 'ExcelUpload', async (req, next) => {
         if (req.data.excel) {
-            var entity = req.headers.slug;
+            var entity = req.headers.slug ? req.headers.slog : 'ZCDSEBPS0012';
+            var whollyupload = req.headers.WhollyUplaod !== null ? req.headers.WhollyUplaod: false;
             const stream = new PassThrough();
             var buffers = [];
             req.data.excel.pipe(stream);
@@ -130,42 +141,155 @@ var registerZAPIBPS0004Handler = function (that, cds) {
                 stream.on('end', async () => {
                     var buffer = Buffer.concat(buffers);
                     var workbook = XLSX.read(buffer, { type: "buffer", cellText: true, cellDates: true, dateNF: 'dd"."mm"."yyyy', cellNF: true, rawNumbers: false });
-                    let data = []
+                    let data = [];
+                    let companyCodes = [];
+                    let projectDefinitions = [];
                     const sheets = workbook.SheetNames
                     for (let i = 0; i < sheets.length; i++) {
                         const temp = XLSX.utils.sheet_to_json(
                             workbook.Sheets[workbook.SheetNames[i]], { cellText: true, cellDates: true, dateNF: 'dd"."mm"."yyyy', rawNumbers: false })
                         temp.forEach((res, index) => {
                             if (index === 0 || index === 1 || index === 2) return;
-                            data.push(JSON.parse(JSON.stringify(res)))
+                            data.push(JSON.parse(JSON.stringify(res)));
+                            let projectAdded = projectDefinitions.find(res['Project Definition']);
+                            if(!projectAdded) {
+                                projectDefinitions.push(res['Project Definition']);
+                            }
+                            let compCodeAdded = companyCodes.find(res['Company code']);
+                            if(!compCodeAdded) {
+                                compCodeAdded.push(res['Company code']);
+                            }
+                            
                         })
                     }
                     if (data) {
-                            const responseCall = await CallEntity(entity, data);
-                            if (responseCall == -1)
-                                reject(req.error(400, JSON.stringify(data)));
-                            else {
-                                resolve(req.notify({
-                                    message: 'Upload Successful',
-                                    status: 200
-                                }));   
-                        }
+                        return await CallEntity(entity, data,req,projectDefinitions,companyCodes,whollyupload);
                     }
                 });
             });
-        } else {
-            return next();
         }
+        //  else {
+        //     return next();
+        // }
     });
+    that.on('paste', async (req) => {
+
+        let oDataCopy = await SELECT.from("ZHS402.ZTHBT0072").where({USERID: req.user.id});
+        if(!oDataCopy) {
+            req.reject({
+                code: 403,
+                message: 'No Data is availble in clipboard for paste. Kindly Copy before Paste'
+            });
+        }
+        let oDataSelectedData = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
+        if (oDataResults) {
+            let copiedData = JSON.parse(oDataCopy[0].COPIEDDATA);
+            for(let selectedData of oDataSelectedData) {
+                selectedData.ZSHTP = copiedData.ZSHTP,
+                selectedData.ZSHPNAME1 = copiedData.SHPNAME1,
+                selectedData.ZSHPNAME2 =copiedData.ZSHPNAME2,
+                selectedData.ZSHPNAME3 =copiedData.ZSHPNAME3,
+                selectedData.ZSHPNAME4 = copiedData.ZSHPNAME4,
+                selectedData.ZCONTACTTEL = copiedData.ZCONTACTTEL,
+                selectedData.ZDELNOTE1 = copiedData.ZDELNOTE1,
+                selectedData.ZDELNOTE2 = copiedData.ZDELNOTE2,
+                selectedData.ZDOPDATE = copiedData.ZDOPDATE
+            }
+        }
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
+        let srv = await cds.connect.to('ZAPIBPS0004');
+        req.info({
+            code: 200,
+            message: 'Data is been pasted successfully from clipboard'
+        });
+        return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
+    });
+    that.on('DOCreate', async (req) => {
+        let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
+        const DoNumSeqHelper = new SequenceHelper({
+            db: db,
+            sequence: "ZTHBT005_DONUM",
+            table: "ZTHBT0055",
+            field: "ZDONUM"
+        });
+        for (oData of oDataResults) {
+            oData.ZDONUM = await DoNumSeqHelper.getNextNumber();
+        }
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(oData);
+        req.info({
+            code: 200,
+            message: 'DO number is generated and updated successfully'
+        });
+        return oData;
+    });
+    
 }
 
- async function CallEntity(entity, data) {
-    const insertQuery = INSERT.into(entity).entries(data);  
+ async function CallEntity(entity, data,req,arrayProjectDefinitions,arrayCompanyCodes,whollyupload) {
+    let existingCabs = await getExistingCabinets(arrayProjectDefinitions,arrayCompanyCodes);
+    let dataForInsert = [];
+    for(let dataFromExcel of data) {
+        if(!dataFromExcel['Cabinet Number'] ||
+           !dataFromExcel['Company code'] ||
+           !dataFromExcel['Material type code'] ||
+           !dataFromExcel['Material type code  desc'] ||
+           !dataFromExcel['Project Definition'] ||
+           !dataFromExcel['MS code'] ||
+           !dataFromExcel['Vendor material code'] ||
+           !dataFromExcel['Quantity'] ||
+           !dataFromExcel['UNIT']) {
+            req.reject({
+                code: 403,
+                message: 'Mandatory Parameter is missing'
+            });
+           }
+        dataForInsert.push({
+            ZCABNUM : dataFromExcel['Cabinet Number'],
+            PBUKR: dataFromExcel['Company code'],
+            PS_PSPNR: dataFromExcel['Project Definition'],
+            ZMSCODE: dataFromExcel['MS code'],
+            PS_POSNR: dataFromExcel['WBS element'],	
+            MATNR: dataFromExcel['SAP Material'],
+            ZZ1_MSCODE: dataFromExcel['Material type code'],
+            ZIDEX: dataFromExcel['Material type code  desc'],
+            ZVMCODE: dataFromExcel['Vendor material code'],
+            ZQTY: dataFromExcel['Quantity'],
+            ZUT: dataFromExcel['UNIT'],
+            ZDESCRIP: dataFromExcel['Material Description'],				
+            ZSER: dataFromExcel['Serial number'],	
+            ZSHTP: dataFromExcel['Ship-to party'],	
+            ZSHPNAME1: dataFromExcel['Contact ship Name 1'],
+            ZSHPNAME2: dataFromExcel['Contact ship Name 2'],	
+            ZSHPNAME3: dataFromExcel['Contact ship Name 3'],
+            ZSHPNAME4: dataFromExcel['Contact ship Name 4'],
+            ZCONTACTTEL: dataFromExcel['Contact ship telephone'],	
+            ZDELNOTE1: dataFromExcel['Delivery note1'],
+            ZDELNOTE2: dataFromExcel['Delivery note2'],
+            ZDONUM: dataFromExcel['Do Number Title'],
+            ZDOITEM: dataFromExcel['Do Number Item'],
+            ZDOPDATE: dataFromExcel['Do Plan Date']
+        })
+    }
+    if(whollyupload){
+        for(let existingCab of existingCabs )
+        {
+            let dataFoundInExcel = dataForInsert.find(ZCABNUM === existingCab.ZCABNUM &&
+                                                 PBUKR === existingCab.PBUKR && PS_PSPNR === existingCab.PS_PSPNR);                                   
+            if(!dataFoundInExcel)
+            {
+                existingCab.ZDELFLAG = 'X';
+                dataForInsert.push(existingCab);
+            }
+        }
+    }
+
+    await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForInsert);
     let srv = await cds.connect.to('ZAPIBPS0004');
-    const insertResult = await srv.run(insertQuery);
-    let query = SELECT.from(entity);
-    await srv.run(query);
-    return insertResult; //returns response to excel upload entity
+    req.info({
+        code: 200,
+        message: 'Data is been uploaded successfull'
+    });
+    return await srv.get('ZAPIBPS0004.ZCDSEBPS0012');
    
 };
 
@@ -181,6 +305,10 @@ const PrepareResultObject = async (arrayInput, objectCustomer) => {
             objectCustomer[customer.Customer] = customer;
         }
     }
+}
+
+const getExistingCabinets = async (arrayProjectDefinitions,arrayCompanyCodes) => {
+    return await SELECT.from("ZHS402.ZTHBT0055").where({PBUKR:{in: arrayCompanyCodes}, and:{PS_PSPNR: {in: arrayProjectDefinitions}}});
 }
 
 module.exports = registerZAPIBPS0004Handler;
