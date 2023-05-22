@@ -2667,3 +2667,16 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             criticality @title: '';
             Error @title: '';
 };
+
+annotate ZCAPIH0018.ZCDSEHPPB0085 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : plt_issfrm,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : plant_issto,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
