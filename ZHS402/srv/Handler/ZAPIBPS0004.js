@@ -84,7 +84,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             });
         }
         let oData = oDataResults[0];
-        if ((!oData.ZQTY || oData.ZQTY === 1) && oData.ZZ1_MSCODE === '020') {
+        if ((!oData.ZQTY || oData.ZQTY === 1) && oData.ZZ1_MSCODE !== '020') {
             req.reject({
                 code: 403,
                 message: 'Split can be done only when quantity is more than 1 and Material Type is Built-in Cabinet'
@@ -219,7 +219,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
         const DoNumSeqHelper = new SequenceHelper({
             db: db,
-            sequence: "ZTHBT005_DONUM",
+            sequence: "ZTHBT005_ZDONUM",
             table: "ZTHBT0055",
             field: "ZDONUM"
         });
@@ -290,8 +290,9 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
             criticality = 1;
         }
         
-        let dataFoundInDB = existingCabs.find(ZCABNUM === dataFromExcel['Cabinet Number'] &&
-            PBUKR === dataFromExcel['Company code'] && PS_PSPNR === dataFromExcel['Project Definition']);
+        let dataFoundInDB = existingCabs.find((data) => {
+            return data.ZCABNUM === dataFromExcel['Cabinet Number'] &&
+            data.PBUKR === dataFromExcel['Company code'] && data.PS_PSPNR === dataFromExcel['Project Definition']});
         if(enteredQuantity === 0){
             criticality = 1;
         }   
@@ -400,8 +401,9 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
 
     if (whollyupload) {
         for (let existingCab of existingCabs) {
-            let dataFoundInExcel = dataForInsert.find(ZCABNUM === existingCab.ZCABNUM &&
-                PBUKR === existingCab.PBUKR && PS_PSPNR === existingCab.PS_PSPNR);
+            let dataFoundInExcel = dataForInsert.find((dataDb) => {
+                return dataDb.ZCABNUM === existingCab.ZCABNUM &&
+                dataDb.PBUKR === existingCab.PBUKR && dataDb.PS_PSPNR === existingCab.PS_PSPNR });
             if (!dataFoundInExcel) {
                 existingCab.ZDELFLAG = 'X';
                 dataForUpdate.push(existingCab);

@@ -1,4 +1,4 @@
-var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLSX) {
+var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLSX,SequenceHelper) {
 
     that.on('READ', 'Customer', async req => {
         const bupa = await cds.connect.to('BusinessPartner');
@@ -6,6 +6,10 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
     });
     that.on('READ', 'Project', async req => {
         const bupa = await cds.connect.to('TimeSheetEntry');
+        return bupa.run(req.query);
+    });
+    that.on('READ', 'ZCDSEBPS0015', async req => {
+        const bupa = await cds.connect.to('ProjectDetails');
         return bupa.run(req.query);
     });
     that.on('READ', 'ZCDSEBPS0012', async req => {
@@ -34,8 +38,6 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                     let dataFromObject = objectCustomer[result.ZSHTP];
                     if (dataFromObject) {
                         delete dataFromObject.Customer;
-                        delete dataFromObject.name1;
-                        delete dataFromObject.name2;
                         Object.assign(result, dataFromObject);
 
                     }
@@ -88,16 +90,23 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                 message: 'Split can be done only when quantity is more than 1 and Material Type is Built-in Cabinet'
             });
         }
+        let dataForInsert = [];
         while (oData.ZQTY > 1) {
             let newRow = Object.assign({}, oData);
             newRow.ZQTY = 1;
+            delete newRow.ID;
+            delete newRow.createdAt;
+            delete newRow.createdBy;
+            delete newRow.modifiedAt;
+            delete newRow.modifiedBy;
             oData.ZQTY = oData.ZQTY - 1;
-            oDataResults.push(newRow);
+            dataForInsert.push(newRow);
         }
-        await UPSERT.into('ZHS402.ZTHBT0055').entries(oData);
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForInsert);
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
         req.info({
             code: 200,
-            message: 'Split is successfully completed'
+            message: 'Split is successfully completed. Refresh / click on GO button to fetch the new data.'
         });
 
         return oDataResults;
@@ -187,7 +196,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             let copiedData = JSON.parse(oDataCopy[0].COPIEDDATA);
             for (let selectedData of oDataSelectedData) {
                 selectedData.ZSHTP = copiedData.ZSHTP,
-                    selectedData.ZSHPNAME1 = copiedData.SHPNAME1,
+                    selectedData.ZSHPNAME1 = copiedData.ZSHPNAME1,
                     selectedData.ZSHPNAME2 = copiedData.ZSHPNAME2,
                     selectedData.ZSHPNAME3 = copiedData.ZSHPNAME3,
                     selectedData.ZSHPNAME4 = copiedData.ZSHPNAME4,
@@ -206,6 +215,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
     });
     that.on('DOCreate', async (req) => {
+        const db = await cds.connect.to("db");
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
         const DoNumSeqHelper = new SequenceHelper({
             db: db,
@@ -232,7 +242,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                 oData.ZSHTP = req.data.ZSHTP;
             }
             if (req.data.ZSHPNAME1) {
-                oData.ZSHPNAME1 = req.data.SHPNAME1;
+                oData.ZSHPNAME1 = req.data.ZSHPNAME1;
             }
             if (req.data.ZSHPNAME2) {
                 oData.ZSHPNAME2 = req.data.ZSHPNAME2;
@@ -260,7 +270,12 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
 async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompanyCodes, whollyupload) {
     let existingCabs = await getExistingCabinets(arrayProjectDefinitions, arrayCompanyCodes);
     let dataForInsert = [];
+    let dataForUpdate = [];
+    let criticality = 3;
     for (let dataFromExcel of data) {
+        let remark = '';
+        let deletionFlag = '';
+        let enteredQuantity = dataFromExcel['Quantity'];
         if (!dataFromExcel['Cabinet Number'] ||
             !dataFromExcel['Company code'] ||
             !dataFromExcel['Material type code'] ||
@@ -268,52 +283,134 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
             !dataFromExcel['Project Definition'] ||
             !dataFromExcel['MS code'] ||
             !dataFromExcel['Vendor material code'] ||
-            !dataFromExcel['Quantity'] ||
+            enteredQuantity === null  ||
+            enteredQuantity === undefined ||
             !dataFromExcel['UNIT']) {
-            req.reject({
-                code: 403,
-                message: 'Mandatory Parameter is missing'
-            });
+            remark = 'Mandatory Parameter is missing.';
+            criticality = 1;
         }
-        dataForInsert.push({
-            ZCABNUM: dataFromExcel['Cabinet Number'],
-            PBUKR: dataFromExcel['Company code'],
-            PS_PSPNR: dataFromExcel['Project Definition'],
-            ZMSCODE: dataFromExcel['MS code'],
-            PS_POSNR: dataFromExcel['WBS element'],
-            MATNR: dataFromExcel['SAP Material'],
-            ZZ1_MSCODE: dataFromExcel['Material type code'],
-            ZIDEX: dataFromExcel['Material type code  desc'],
-            ZVMCODE: dataFromExcel['Vendor material code'],
-            ZQTY: dataFromExcel['Quantity'],
-            ZUT: dataFromExcel['UNIT'],
-            ZDESCRIP: dataFromExcel['Material Description'],
-            ZSER: dataFromExcel['Serial number'],
-            ZSHTP: dataFromExcel['Ship-to party'],
-            ZSHPNAME1: dataFromExcel['Contact ship Name 1'],
-            ZSHPNAME2: dataFromExcel['Contact ship Name 2'],
-            ZSHPNAME3: dataFromExcel['Contact ship Name 3'],
-            ZSHPNAME4: dataFromExcel['Contact ship Name 4'],
-            ZCONTACTTEL: dataFromExcel['Contact ship telephone'],
-            ZDELNOTE1: dataFromExcel['Delivery note1'],
-            ZDELNOTE2: dataFromExcel['Delivery note2'],
-            ZDONUM: dataFromExcel['Do Number Title'],
-            ZDOITEM: dataFromExcel['Do Number Item'],
-            ZDOPDATE: dataFromExcel['Do Plan Date']
-        })
+        
+        let dataFoundInDB = existingCabs.find(ZCABNUM === dataFromExcel['Cabinet Number'] &&
+            PBUKR === dataFromExcel['Company code'] && PS_PSPNR === dataFromExcel['Project Definition']);
+        if(enteredQuantity === 0){
+            criticality = 1;
+        }   
+        if(enteredQuantity < dataFoundInDB.ZQTY) {
+            deletionFlag = 'X';
+            remark += 'System will delete this line, please check';
+        }
+        if ( enteredQuantity === 0 && dataFoundInDB.ZQTY ){
+            deletionFlag = 'X';
+            remark += 'System will delete this line, please check';
+        }
+        if(dataFoundInDB){
+            dataForUpdate.push({
+                ID:dataFoundInDB.ID,
+                ZCABNUM: dataFromExcel['Cabinet Number'],
+                PBUKR: dataFromExcel['Company code'],
+                PS_PSPNR: dataFromExcel['Project Definition'],
+                ZMSCODE: dataFromExcel['MS code'],
+                PS_POSNR: dataFromExcel['WBS element'],
+                MATNR: dataFromExcel['SAP Material'],
+                ZZ1_MSCODE: dataFromExcel['Material type code'],
+                ZIDEX: dataFromExcel['Material type code  desc'],
+                ZVMCODE: dataFromExcel['Vendor material code'],
+                ZQTY: dataFoundInDB.ZQTY,
+                ZUT: enteredQuantity,
+                ZDESCRIP: dataFromExcel['Material Description'],
+                ZSER: dataFromExcel['Serial number'],
+                ZSHTP: dataFromExcel['Ship-to party'],
+                ZSHPNAME1: dataFromExcel['Contact ship Name 1'],
+                ZSHPNAME2: dataFromExcel['Contact ship Name 2'],
+                ZSHPNAME3: dataFromExcel['Contact ship Name 3'],
+                ZSHPNAME4: dataFromExcel['Contact ship Name 4'],
+                ZCONTACTTEL: dataFromExcel['Contact ship telephone'],
+                ZDELNOTE1: dataFromExcel['Delivery note1'],
+                ZDELNOTE2: dataFromExcel['Delivery note2'],
+                ZDONUM: dataFromExcel['Do Number Title'],
+                ZDOITEM: dataFromExcel['Do Number Item'],
+                ZDOPDATE: dataFromExcel['Do Plan Date'],
+                ZDELFLAG : deletionFlag ? 'X':dataFoundInDB.ZDELFLAG,
+                ZSHPSTAT: dataFoundInDB.ZSHPSTAT,
+                ZDOADATE: dataFoundInDB.ZDOADATE,
+                REMARKS: remark,
+                CRITICALITY:criticality
+            });
+            if(enteredQuantity > dataFoundInDB.ZQTY && !remark && !deletionFlag) {
+                dataForInsert.push({
+                    ZCABNUM: dataFromExcel['Cabinet Number'],
+                    PBUKR: dataFromExcel['Company code'],
+                    PS_PSPNR: dataFromExcel['Project Definition'],
+                    ZMSCODE: dataFromExcel['MS code'],
+                    PS_POSNR: dataFromExcel['WBS element'],
+                    MATNR: dataFromExcel['SAP Material'],
+                    ZZ1_MSCODE: dataFromExcel['Material type code'],
+                    ZIDEX: dataFromExcel['Material type code  desc'],
+                    ZVMCODE: dataFromExcel['Vendor material code'],
+                    ZQTY: enteredQuantity - dataFoundInDB.ZQTY,
+                    ZUT: dataFromExcel['UNIT'],
+                    ZDESCRIP: dataFromExcel['Material Description'],
+                    ZSER: dataFromExcel['Serial number'],
+                    ZSHTP: dataFromExcel['Ship-to party'],
+                    ZSHPNAME1: dataFromExcel['Contact ship Name 1'],
+                    ZSHPNAME2: dataFromExcel['Contact ship Name 2'],
+                    ZSHPNAME3: dataFromExcel['Contact ship Name 3'],
+                    ZSHPNAME4: dataFromExcel['Contact ship Name 4'],
+                    ZCONTACTTEL: dataFromExcel['Contact ship telephone'],
+                    ZDELNOTE1: dataFromExcel['Delivery note1'],
+                    ZDELNOTE2: dataFromExcel['Delivery note2'],
+                    ZDONUM: dataFromExcel['Do Number Title'],
+                    ZDOITEM: dataFromExcel['Do Number Item'],
+                    ZDOPDATE: dataFromExcel['Do Plan Date']
+                });
+            }
+        }
+        else {
+            dataForInsert.push({
+                ZCABNUM: dataFromExcel['Cabinet Number'],
+                PBUKR: dataFromExcel['Company code'],
+                PS_PSPNR: dataFromExcel['Project Definition'],
+                ZMSCODE: dataFromExcel['MS code'],
+                PS_POSNR: dataFromExcel['WBS element'],
+                MATNR: dataFromExcel['SAP Material'],
+                ZZ1_MSCODE: dataFromExcel['Material type code'],
+                ZIDEX: dataFromExcel['Material type code  desc'],
+                ZVMCODE: dataFromExcel['Vendor material code'],
+                ZQTY: dataFromExcel['Quantity'],
+                ZUT: dataFromExcel['UNIT'],
+                ZDESCRIP: dataFromExcel['Material Description'],
+                ZSER: dataFromExcel['Serial number'],
+                ZSHTP: dataFromExcel['Ship-to party'],
+                ZSHPNAME1: dataFromExcel['Contact ship Name 1'],
+                ZSHPNAME2: dataFromExcel['Contact ship Name 2'],
+                ZSHPNAME3: dataFromExcel['Contact ship Name 3'],
+                ZSHPNAME4: dataFromExcel['Contact ship Name 4'],
+                ZCONTACTTEL: dataFromExcel['Contact ship telephone'],
+                ZDELNOTE1: dataFromExcel['Delivery note1'],
+                ZDELNOTE2: dataFromExcel['Delivery note2'],
+                ZDONUM: dataFromExcel['Do Number Title'],
+                ZDOITEM: dataFromExcel['Do Number Item'],
+                ZDOPDATE: dataFromExcel['Do Plan Date'],
+                REMARKS: remark,
+                CRITICALITY:criticality,
+                ZDELFLAG: deletionFlag
+            })
+        }   
     }
+
     if (whollyupload) {
         for (let existingCab of existingCabs) {
             let dataFoundInExcel = dataForInsert.find(ZCABNUM === existingCab.ZCABNUM &&
                 PBUKR === existingCab.PBUKR && PS_PSPNR === existingCab.PS_PSPNR);
             if (!dataFoundInExcel) {
                 existingCab.ZDELFLAG = 'X';
-                dataForInsert.push(existingCab);
+                dataForUpdate.push(existingCab);
             }
         }
     }
 
     await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForInsert);
+    await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpdate);
     let srv = await cds.connect.to('ZAPIBPS0004');
     req.info({
         code: 200,

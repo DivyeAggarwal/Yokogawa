@@ -32890,26 +32890,6 @@
       "@source": "srv/cat-service.cds",
       "kind": "service"
     },
-    "ZAPIBPS0004.massEditInput": {
-      "kind": "type",
-      "elements": {
-        "ZSHTP": {
-          "type": "cds.String"
-        },
-        "ZSHPNAME1": {
-          "type": "cds.String"
-        },
-        "ZSHPNAME2": {
-          "type": "cds.String"
-        },
-        "ZSHPNAME3": {
-          "type": "cds.String"
-        },
-        "ZSHPNAME4": {
-          "type": "cds.String"
-        }
-      }
-    },
     "ZAPIBPS0004.Customer": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -33063,6 +33043,60 @@
         }
       }
     },
+    "ZAPIBPS0004.ZCDSEBPS0015": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumption view for WBS Workflow",
+      "projection": {
+        "from": {
+          "ref": [
+            "ProjectDetails.ZCDSEHPSC0002"
+          ]
+        },
+        "columns": [
+          {
+            "ref": [
+              "ProjectId"
+            ]
+          },
+          {
+            "ref": [
+              "ProjDesc"
+            ]
+          },
+          {
+            "ref": [
+              "ApproverPM"
+            ]
+          }
+        ]
+      },
+      "elements": {
+        "ProjectId": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Project definition",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 24
+        },
+        "ProjDesc": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "PS: Short description (1st text line)",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ApproverPM": {
+          "@sap.label": "Employee/app.name",
+          "@sap.quickinfo": "Formatted Name of Employee or Applicant",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
     "ZAPIBPS0004.ExcelUpload": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -33104,6 +33138,11 @@
             "ref": [
               "wbsElementExt"
             ]
+          },
+          {
+            "ref": [
+              "ProjectDesc"
+            ]
           }
         ]
       },
@@ -33124,6 +33163,12 @@
           "type": "cds.String",
           "length": 24,
           "notNull": true
+        },
+        "ProjectDesc": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "PS: Short description (1st text line)",
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -33182,11 +33227,6 @@
           "$Type": "UI.DataFieldForAction",
           "Action": "ZAPIBPS0004.MassEdit",
           "Label": "MassEdit"
-        },
-        {
-          "Value": {
-            "=": "ZCABNUM"
-          }
         },
         {
           "Value": {
@@ -33365,12 +33405,12 @@
         },
         {
           "Value": {
-            "=": "criticality"
+            "=": "CRITICALITY"
           }
         },
         {
           "Value": {
-            "=": "Error"
+            "=": "REMARKS"
           }
         }
       ],
@@ -33672,7 +33712,7 @@
         },
         {
           "Value": {
-            "=": "criticality"
+            "=": "CRITICALITY"
           },
           "@Common.FieldControl": {
             "#": "ReadOnly"
@@ -33680,7 +33720,7 @@
         },
         {
           "Value": {
-            "=": "Error"
+            "=": "REMARKS"
           },
           "@Common.FieldControl": {
             "#": "ReadOnly"
@@ -33893,6 +33933,32 @@
               ]
             },
             {
+              "ref": [
+                "CRITICALITY"
+              ]
+            },
+            {
+              "ref": [
+                "REMARKS"
+              ]
+            },
+            {
+              "val": null,
+              "as": "name1",
+              "cast": {
+                "type": "cds.String",
+                "length": 40
+              }
+            },
+            {
+              "val": null,
+              "as": "name2",
+              "cast": {
+                "type": "cds.String",
+                "length": 40
+              }
+            },
+            {
               "val": null,
               "as": "PostalCode",
               "cast": {
@@ -33963,21 +34029,6 @@
                 "type": "cds.String",
                 "length": 40
               }
-            },
-            {
-              "val": null,
-              "as": "criticality",
-              "cast": {
-                "type": "cds.Integer"
-              }
-            },
-            {
-              "val": null,
-              "as": "Error",
-              "cast": {
-                "type": "cds.String",
-                "length": 200
-              }
             }
           ]
         }
@@ -33988,202 +34039,243 @@
           "type": "cds.UUID"
         },
         "ZCABNUM": {
-          "@title": "",
+          "@title": "Cabinet number",
           "type": "cds.String",
           "length": 20
         },
         "PBUKR": {
-          "@title": "",
+          "@title": "Company code",
           "type": "cds.String",
           "length": 4
         },
         "PS_PSPNR": {
-          "@title": "",
+          "@title": "Project Definition",
+          "@Common.ValueList.CollectionPath": "ZCDSEBPS0015",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PS_PSPNR"
+              },
+              "ValueListProperty": "ProjectId"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "ProjDesc"
+            }
+          ],
           "type": "cds.String",
           "length": 24
         },
         "ZMSCODE": {
-          "@title": "",
+          "@title": "MS Code",
           "type": "cds.String",
           "length": 50
         },
         "PS_POSNR": {
-          "@title": "",
+          "@title": "WBS Element",
+          "@Common.ValueList.CollectionPath": "Project",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PS_POSNR"
+              },
+              "ValueListProperty": "wbsElementExt"
+            },
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "PS_PSPNR"
+              },
+              "ValueListProperty": "projectId"
+            }
+          ],
           "type": "cds.String",
           "length": 24
         },
         "MATNR": {
-          "@title": "",
+          "@title": "SAP Material",
           "type": "cds.String",
           "length": 40
         },
         "ZZ1_MSCODE": {
-          "@title": "",
+          "@title": "Material Type code",
           "type": "cds.String",
           "length": 3
         },
         "ZIDEX": {
-          "@title": "",
+          "@title": "Material type code description",
           "type": "cds.String",
           "length": 40
         },
         "ZVMCODE": {
-          "@title": "",
+          "@title": "Vendor Material Code",
           "type": "cds.String",
           "length": 50
         },
         "ZQTY": {
-          "@title": "",
+          "@title": "Quantity",
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 2
         },
         "ZUT": {
-          "@title": "",
+          "@title": "UNIT",
           "type": "cds.String",
           "length": 5
         },
         "ZDESCRIP": {
-          "@title": "",
+          "@title": "Material Description",
           "type": "cds.String",
           "length": 50
         },
         "ZSER": {
-          "@title": "",
+          "@title": "Serial Number",
           "type": "cds.String",
           "length": 20
         },
         "ZSHTP": {
-          "@title": "",
+          "@title": "Ship-to-Party",
           "type": "cds.String",
           "length": 20
         },
         "ZSHPNAME1": {
-          "@title": "",
+          "@title": "Contact Ship to Name1",
           "type": "cds.String",
           "length": 40
         },
         "ZSHPNAME2": {
-          "@title": "",
+          "@title": "Contact Ship to Name2",
           "type": "cds.String",
           "length": 40
         },
         "ZSHPNAME3": {
-          "@title": "",
+          "@title": "Contact Ship to Name3",
           "type": "cds.String",
           "length": 40
         },
         "ZSHPNAME4": {
-          "@title": "",
+          "@title": "Contact Ship to Name4",
           "type": "cds.String",
           "length": 40
         },
         "ZCONTACTTEL": {
-          "@title": "",
+          "@title": "Contact ship to telephone",
           "type": "cds.String",
           "length": 30
         },
         "ZDELNOTE1": {
-          "@title": "",
+          "@title": "Delivery notes 1",
           "type": "cds.String",
           "length": 50
         },
         "ZDELNOTE2": {
-          "@title": "",
+          "@title": "Delivery notes 2",
           "type": "cds.String",
           "length": 50
         },
         "ZDONUM": {
-          "@title": "",
+          "@title": "Do number",
           "type": "cds.Integer"
         },
         "ZDOITEM": {
-          "@title": "",
+          "@title": "Do number Item",
           "type": "cds.String",
           "length": 7
         },
         "ZDOPDATE": {
-          "@title": "",
+          "@title": "DO plan date",
           "type": "cds.Date"
         },
         "ZDOADATE": {
-          "@title": "",
+          "@title": "DO Actual date",
           "type": "cds.Date"
         },
         "ZDELFLAG": {
-          "@title": "",
+          "@title": "Deletion flag",
           "type": "cds.String",
           "length": 1
         },
         "ZSHPSTAT": {
-          "@title": "",
+          "@title": "Shipping status",
           "type": "cds.String",
           "length": 1
         },
+        "CRITICALITY": {
+          "@title": "Confirm status",
+          "type": "cds.Integer"
+        },
+        "REMARKS": {
+          "@title": "Remark",
+          "type": "cds.String",
+          "length": 1000
+        },
+        "name1": {
+          "@title": "Name1",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "name2": {
+          "@title": "Name2",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 40
+        },
         "PostalCode": {
-          "@title": "",
+          "@title": "Postal Code",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 10
         },
         "Region": {
-          "@title": "",
+          "@title": "Region",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 5
         },
         "City": {
-          "@title": "",
+          "@title": "Cit",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 25
         },
         "StreetName": {
-          "@title": "",
+          "@title": "Street1",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 35
         },
         "TelephoneNumber1": {
-          "@title": "",
+          "@title": "Telephone",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 16
         },
         "BusinessPartnerName3": {
-          "@title": "",
+          "@title": "Name3",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 40
         },
         "BusinessPartnerName4": {
-          "@title": "",
+          "@title": "Name4",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 40
         },
         "StreetPrefixName": {
-          "@title": "",
+          "@title": "Street2",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 40
         },
         "AdditionalStreetPrefixName": {
-          "@title": "",
+          "@title": "Street3",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 40
-        },
-        "criticality": {
-          "@title": "",
-          "@Core.Computed": true,
-          "type": "cds.Integer"
-        },
-        "Error": {
-          "@title": "",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 200
         }
       },
       "actions": {
