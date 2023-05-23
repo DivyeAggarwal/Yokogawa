@@ -1416,10 +1416,10 @@ service ZAPIBPS0004 {
         action paste() returns ZCDSEBPS0012;
         action DOCreate() returns ZCDSEBPS0012;
         action MassEdit(ZSHTP: String @Common.Label: 'Ship to Party',
-        ZSHPNAME1: String @Common.Label: 'Contact Ship to Name 1',
-        ZSHPNAME2: String @Common.Label: 'Contact Ship to Name 2',
-        ZSHPNAME3: String @Common.Label: 'Contact Ship to Name 3',
-        ZSHPNAME4: String @Common.Label: 'Contact Ship to Name 4') returns ZCDSEBPS0012;
+                        ZSHPNAME1: String @Common.Label: 'Contact Ship to Name 1',
+                        ZSHPNAME2: String @Common.Label: 'Contact Ship to Name 2',
+                        ZSHPNAME3: String @Common.Label: 'Contact Ship to Name 3',
+                        ZSHPNAME4: String @Common.Label: 'Contact Ship to Name 4') returns ZCDSEBPS0012;
     }
 }
 
