@@ -732,6 +732,29 @@ annotate ZCDSEHBTC0007.MAIN_MODEL_HELP with @(
      }
 ){
 };
+annotate ZCDSEHBTC0007.DOC_NO_HELP with {
+E_REV_NO @UI.HiddenFilter: true;
+E_DOC_N @UI.HiddenFilter: true;
+MEDAI_TYPE @UI.HiddenFilter: true;
+YEOS_MODEL_GROUP @UI.HiddenFilter: true;
+FZ2_NO @UI.HiddenFilter: true;
+REV_SBJCT @UI.HiddenFilter: true;
+MODIFY_CAUSE_N @UI.HiddenFilter: true;
+APPLY_DATE_N @UI.HiddenFilter: true;
+}
+
+
+
+annotate ZCDSEHBTC0007.MAIN_MODEL_HELP with {
+E_REV_NO @UI.HiddenFilter: true;
+E_DOC_N @UI.HiddenFilter: true;
+MEDAI_TYPE @UI.HiddenFilter: true;
+E_DOC_NO @UI.HiddenFilter: true;
+E_DOC_TYPE @UI.HiddenFilter: true;
+REV_SBJCT @UI.HiddenFilter: true;
+MODIFY_CAUSE_N @UI.HiddenFilter: true;
+APPLY_DATE_N @UI.HiddenFilter: true;
+}
 // annotate ZCDSEHBTC0007.BOMDisplay {
 //     @Common.ValueListWithFixedValues : true
 //     @(Common : {
