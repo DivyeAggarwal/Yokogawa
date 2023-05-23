@@ -1203,123 +1203,123 @@ service ZCAPIH0018 {
 
 service ZAPIBPS0002 {
     entity ZCDSEBPS0009                 as projection on ZCDSEBPS0007;
-    entity ZCDSEBPS0010                 as projection on ZCDSEBPS0008;
+    // entity ZCDSEBPS0010                 as projection on ZCDSEBPS0008;
 
-    entity ZCDSEBPS0004                 as
-        select from ZCDSEBPS0005
-        left outer join ZCDSEBPS0006
-            on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
-            and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
-            and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
-            and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
-            and ZCDSEBPS0006.MATNR    = $projection.MATNR
+    // entity ZCDSEBPS0004                 as
+    //     select from ZCDSEBPS0005
+    //     left outer join ZCDSEBPS0006
+    //         on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
+    //         and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
+    //         and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
+    //         and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
+    //         and ZCDSEBPS0006.MATNR    = $projection.MATNR
 
-        {
-            key ZCDSEBPS0005.PBUKR,
-            key ZCDSEBPS0005.PSPHI,
-            key ZCDSEBPS0005.PS_PSP_PNR,
-            key ZCDSEBPS0005.ZZ1_MSCODE_PRD,
-                ZCDSEBPS0005.IDNLF,
-            key ZCDSEBPS0005.MATNR,
-                @Semantics.quantity.unitOfMeasure: 'ERFME'
-                ZCDSEBPS0005.ERFMG,
-                ZCDSEBPS0005.ERFME,
-                ZCDSEBPS0006.USEDQTY,
-                ZCDSEBPS0006.ZUT,
-                cast(
-                    case ZCDSEBPS0005.CONFIRM_STATUS
-                    when 1 
-                        then ZCDSEBPS0005.CONFIRM_STATUS
-                    when 2
-                        then ZCDSEBPS0005.CONFIRM_STATUS
-                    when 3 
-                        then ZCDSEBPS0005.CONFIRM_STATUS
-                    else 
-                        case
-                            when
-                                ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
-                            then
-                                3
-                            else
-                                1
-                        end     
-                    end as            Integer
-                ) as Criticality,
-                ZCDSEBPS0005.CONFIRM_STATUS,
-                ZCDSEBPS0005.REASON_DIFF,
-                _ReceivedQuantities : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0009 on _ReceivedQuantities.PBUKR          = PBUKR
-                                      and                                             _ReceivedQuantities.PSPHI          = PSPHI
-                                      and                                             _ReceivedQuantities.PS_PSP_PNR     = PS_PSP_PNR
-                                      and                                             _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
-                                      and                                             _ReceivedQuantities.MATNR          = MATNR,
-                _UsedQuantities     : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0010 on _UsedQuantities.PBUKR    = PBUKR
-                                      and                                             _UsedQuantities.PS_PSPNR = PSPHI
-                                      and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
-                                      and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
-                                      and                                             _UsedQuantities.MATNR    = MATNR,
-        }
-    actions {
-        action updateDiffSM(ReasonForDiffSM : String @Common.Label: 'Reason For Difference' ) returns ZCDSEBPS0004;
-    };
+    //     {
+    //         key ZCDSEBPS0005.PBUKR,
+    //         key ZCDSEBPS0005.PSPHI,
+    //         key ZCDSEBPS0005.PS_PSP_PNR,
+    //         key ZCDSEBPS0005.ZZ1_MSCODE_PRD,
+    //             ZCDSEBPS0005.IDNLF,
+    //         key ZCDSEBPS0005.MATNR,
+    //             @Semantics.quantity.unitOfMeasure: 'ERFME'
+    //             ZCDSEBPS0005.ERFMG,
+    //             ZCDSEBPS0005.ERFME,
+    //             ZCDSEBPS0006.USEDQTY,
+    //             ZCDSEBPS0006.ZUT,
+    //             cast(
+    //                 case ZCDSEBPS0005.CONFIRM_STATUS
+    //                 when 1 
+    //                     then ZCDSEBPS0005.CONFIRM_STATUS
+    //                 when 2
+    //                     then ZCDSEBPS0005.CONFIRM_STATUS
+    //                 when 3 
+    //                     then ZCDSEBPS0005.CONFIRM_STATUS
+    //                 else 
+    //                     case
+    //                         when
+    //                             ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
+    //                         then
+    //                             3
+    //                         else
+    //                             1
+    //                     end     
+    //                 end as            Integer
+    //             ) as Criticality,
+    //             ZCDSEBPS0005.CONFIRM_STATUS,
+    //             ZCDSEBPS0005.REASON_DIFF,
+    //             _ReceivedQuantities : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0009 on _ReceivedQuantities.PBUKR          = PBUKR
+    //                                   and                                             _ReceivedQuantities.PSPHI          = PSPHI
+    //                                   and                                             _ReceivedQuantities.PS_PSP_PNR     = PS_PSP_PNR
+    //                                   and                                             _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
+    //                                   and                                             _ReceivedQuantities.MATNR          = MATNR,
+    //             _UsedQuantities     : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0010 on _UsedQuantities.PBUKR    = PBUKR
+    //                                   and                                             _UsedQuantities.PS_PSPNR = PSPHI
+    //                                   and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
+    //                                   and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
+    //                                   and                                             _UsedQuantities.MATNR    = MATNR,
+    //     }
+    // actions {
+    //     action updateDiffSM(ReasonForDiffSM : String @Common.Label: 'Reason For Difference' ) returns ZCDSEBPS0004;
+    // };
     
 
-    entity ZCDSEBPS0011                 as
-        select from ZCDSEBPS0012
-        left outer join ZCDSEBPS0006
-            on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
-            and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
-            and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
-            and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
-            and ZCDSEBPS0006.MATNR    = $projection.MATNR
+    // entity ZCDSEBPS0011                 as
+    //     select from ZCDSEBPS0012
+    //     left outer join ZCDSEBPS0006
+    //         on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
+    //         and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
+    //         and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
+    //         and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
+    //         and ZCDSEBPS0006.MATNR    = $projection.MATNR
 
-        {
-            key ZCDSEBPS0012.PBUKR,
-            key ZCDSEBPS0012.PSPHI,
-            key ZCDSEBPS0012.PS_PSP_PNR,
-            key ZCDSEBPS0012.ZZ1_MSCODE_PRD,
-                ZCDSEBPS0012.IDNLF,
-            key ZCDSEBPS0012.MATNR,
-                ZCDSEBPS0012.SERNR,
-                @Semantics.quantity.unitOfMeasure: 'ERFME'
-                ZCDSEBPS0012.ERFMG,
-                ZCDSEBPS0012.ERFME,
-                ZCDSEBPS0006.USEDQTY,
-                ZCDSEBPS0006.ZUT,
-                cast(
-                    case ZCDSEBPS0012.CONFIRM_STATUS
-                    when 1 
-                        then ZCDSEBPS0012.CONFIRM_STATUS
-                    when 2
-                        then ZCDSEBPS0012.CONFIRM_STATUS
-                    when 3 
-                        then ZCDSEBPS0012.CONFIRM_STATUS
-                    else 
-                        case
-                            when
-                                ZCDSEBPS0012.ERFMG = ZCDSEBPS0006.USEDQTY
-                            then
-                                3
-                            else
-                                1
-                        end    
-                    end as            Integer
-                ) as Criticality,
-                ZCDSEBPS0012.CONFIRM_STATUS,
-                ZCDSEBPS0012.REASON_DIFF,
-                _ReceivedQuantities : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0009 on _ReceivedQuantities.PBUKR          = PBUKR
-                                      and                                             _ReceivedQuantities.PSPHI          = PSPHI
-                                      and                                             _ReceivedQuantities.PS_PSP_PNR     = PS_PSP_PNR
-                                      and                                             _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
-                                      and                                             _ReceivedQuantities.MATNR          = MATNR,
-                _UsedQuantities     : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0010 on _UsedQuantities.PBUKR    = PBUKR
-                                      and                                             _UsedQuantities.PS_PSPNR = PSPHI
-                                      and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
-                                      and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
-                                      and                                             _UsedQuantities.MATNR    = MATNR,
-        }
-    actions {
-        action updateDiff(ReasonForDiff : String @Common.Label: 'Reason For Difference' @mandatory)   returns ZCDSEBPS0011;
-    }
+    //     {
+    //         key ZCDSEBPS0012.PBUKR,
+    //         key ZCDSEBPS0012.PSPHI,
+    //         key ZCDSEBPS0012.PS_PSP_PNR,
+    //         key ZCDSEBPS0012.ZZ1_MSCODE_PRD,
+    //             ZCDSEBPS0012.IDNLF,
+    //         key ZCDSEBPS0012.MATNR,
+    //             ZCDSEBPS0012.SERNR,
+    //             @Semantics.quantity.unitOfMeasure: 'ERFME'
+    //             ZCDSEBPS0012.ERFMG,
+    //             ZCDSEBPS0012.ERFME,
+    //             ZCDSEBPS0006.USEDQTY,
+    //             ZCDSEBPS0006.ZUT,
+    //             cast(
+    //                 case ZCDSEBPS0012.CONFIRM_STATUS
+    //                 when 1 
+    //                     then ZCDSEBPS0012.CONFIRM_STATUS
+    //                 when 2
+    //                     then ZCDSEBPS0012.CONFIRM_STATUS
+    //                 when 3 
+    //                     then ZCDSEBPS0012.CONFIRM_STATUS
+    //                 else 
+    //                     case
+    //                         when
+    //                             ZCDSEBPS0012.ERFMG = ZCDSEBPS0006.USEDQTY
+    //                         then
+    //                             3
+    //                         else
+    //                             1
+    //                     end    
+    //                 end as            Integer
+    //             ) as Criticality,
+    //             ZCDSEBPS0012.CONFIRM_STATUS,
+    //             ZCDSEBPS0012.REASON_DIFF,
+    //             _ReceivedQuantities : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0009 on _ReceivedQuantities.PBUKR          = PBUKR
+    //                                   and                                             _ReceivedQuantities.PSPHI          = PSPHI
+    //                                   and                                             _ReceivedQuantities.PS_PSP_PNR     = PS_PSP_PNR
+    //                                   and                                             _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
+    //                                   and                                             _ReceivedQuantities.MATNR          = MATNR,
+    //             _UsedQuantities     : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0010 on _UsedQuantities.PBUKR    = PBUKR
+    //                                   and                                             _UsedQuantities.PS_PSPNR = PSPHI
+    //                                   and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
+    //                                   and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
+    //                                   and                                             _UsedQuantities.MATNR    = MATNR,
+    //     }
+    // actions {
+    //     action updateDiff(ReasonForDiff : String @Common.Label: 'Reason For Difference' @mandatory)   returns ZCDSEBPS0011;
+    // }
     
 
 
