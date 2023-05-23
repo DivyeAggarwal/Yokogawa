@@ -501,7 +501,8 @@ entity ZTHBT0055 : managed,cuid {
     ZDOADATE:Date @title : 'DO Actual Date';	
     ZDELFLAG:String(1) @title : 'Deletion Flag';
     ZSHPSTAT:String(1) @title : 'Shipping Status';
-    Comment
+    REMARKS: String(1000) @title : 'Shipping Status';
+    CRITICALITY:Integer @title : 'Confirm Status'
 }
 
 
