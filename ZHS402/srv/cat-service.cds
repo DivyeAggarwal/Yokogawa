@@ -1417,7 +1417,25 @@ service ZAPIBPS0004 {
         action copy() returns ZCDSEBPS0012;
         action paste() returns ZCDSEBPS0012;
         action DOCreate() returns ZCDSEBPS0012;
-        action MassEdit(ZSHTP: String @Common.Label: 'Ship to Party',
+        action MassEdit(ZSHTP: String @Common: { Label: 'Ship to Party',
+                                                 ValueList : {
+                                                    CollectionPath : 'Customer',
+                                                    Parameters     : [
+                                                        {
+                                                            $Type             : 'Common.ValueListParameterInOut',
+                                                            LocalDataProperty : ZSHTP,
+                                                            ValueListProperty : 'Customer'
+                                                        },
+                                                        {
+                                                            $Type             : 'Common.ValueListParameterDisplayOnly',
+                                                            ValueListProperty : 'name1'
+                                                        },
+                                                        {
+                                                            $Type             : 'Common.ValueListParameterDisplayOnly',
+                                                            ValueListProperty : 'name2'
+                                                        }
+                                                    ]
+                                                }},
                         ZSHPNAME1: String @Common.Label: 'Contact Ship to Name 1',
                         ZSHPNAME2: String @Common.Label: 'Contact Ship to Name 2',
                         ZSHPNAME3: String @Common.Label: 'Contact Ship to Name 3',
