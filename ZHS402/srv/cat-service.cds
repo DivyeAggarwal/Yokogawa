@@ -113,37 +113,37 @@ entity ZCDSEBPS0007                     as
     };
 
 
-// entity ZCDSEBPS0006                     as
-//     select from db.ZTHBT0055 {
-//         key PBUKR,
-//         key PS_PSPNR,
-//         key PS_POSNR,
-//         key ZMSCODE,
-//         key MATNR,
-//             cast(
-//                 SUM(ZQTY) as Decimal(15, 2)
-//             ) as USEDQTY,
-//             ZUT
-//     }
-//     group by
-//         PBUKR,
-//         PS_PSPNR,
-//         PS_POSNR,
-//         ZMSCODE,
-//         MATNR,
-//         ZUT;
+entity ZCDSEBPS0006                     as
+    select from db.ZTHBT0055 {
+        key PBUKR,
+        key PS_PSPNR,
+        key PS_POSNR,
+        key ZMSCODE,
+        key MATNR,
+            cast(
+                SUM(ZQTY) as Decimal(15, 2)
+            ) as USEDQTY,
+            ZUT
+    }
+    group by
+        PBUKR,
+        PS_PSPNR,
+        PS_POSNR,
+        ZMSCODE,
+        MATNR,
+        ZUT;
 
-// entity ZCDSEBPS0008                     as
-//     select from db.ZTHBT0055 {
-//         key PBUKR,
-//         key PS_PSPNR,
-//         key PS_POSNR,
-//         key ZMSCODE,
-//         key MATNR,
-//             ZQTY as USEDQTY,
-//             ZUT,
-//             ZCABNUM
-//     };
+entity ZCDSEBPS0008                     as
+    select from db.ZTHBT0055 {
+        key PBUKR,
+        key PS_PSPNR,
+        key PS_POSNR,
+        key ZMSCODE,
+        key MATNR,
+            ZQTY as USEDQTY,
+            ZUT,
+            ZCABNUM
+    };
 
 
 service ZCDSEHBTC0001 {
@@ -1050,53 +1050,54 @@ service ZAPIBPS0001 {
         ProjDesc,
         ApproverPM
     };
-    //entity ZTHBT0055 as projection on db.ZTHBT0055;
-    // entity ZCDSEBPS0013                 as
-    //     select from db.ZTHBT0055 {
-    //      key   ZCABNUM,
-    //         PBUKR,
-    //         PS_PSPNR,
-    //         ZMSCODE,
-    //         ZQTY,
-    //         ZUT,
-    //         ZSHTP,
-    //         ZDONUM,
-    //         ZDESCRIP,
-    //         ZDOPDATE,
-    //         ZSHPSTAT,
-    //         ZDOITEM,
-    //         MATNR,
-    //         ZVMCODE,
-    //         ZCONTACTTEL,
-    //         ZSHPNAME1,
-    //         ZSHPNAME2,
-    //         ZSHPNAME3,
-    //         ZSHPNAME4,
-    //         null as ProjectManager   : String(50)  @title: 'Project Manager',
-    //         null as CustomerFullName : String(100) @title: 'Ship To Party Name',
-    //         null as ProjDesc         : String(50)  @title: 'Project Description'
-    //     };
+    entity ZTHBT0055 as projection on db.ZTHBT0055;
+    entity ZCDSEBPS0013                 as
+        select from db.ZTHBT0055 {
+         key ID,
+             ZCABNUM,
+            PBUKR,
+            PS_PSPNR,
+            ZMSCODE,
+            ZQTY,
+            ZUT,
+            ZSHTP,
+            ZDONUM,
+            ZDESCRIP,
+            ZDOPDATE,
+            ZSHPSTAT,
+            ZDOITEM,
+            MATNR,
+            ZVMCODE,
+            ZCONTACTTEL,
+            ZSHPNAME1,
+            ZSHPNAME2,
+            ZSHPNAME3,
+            ZSHPNAME4,
+            null as ProjectManager   : String(50)  @title: 'Project Manager',
+            null as CustomerFullName : String(100) @title: 'Ship To Party Name',
+            null as ProjDesc         : String(50)  @title: 'Project Description'
+        };
 
-    // entity ZCDSEBPS0003                 as
-    //     select from db.ZTHBT0055 {
-    //         ZCABNUM,
-    //         PBUKR,
-    //         PS_PSPNR,
-    //         ZMSCODE,
-    //         ZQTY,
-    //         ZUT,
-    //         ZSHTP,
-    //         ZDONUM,
-    //         ZDESCRIP,
-    //         ZSHPSTAT,
-    //         null as ProjectManager   : String(50)  @title: 'Project Manager',
-    //         null as CustomerFullName : String(100) @title: 'Ship To Party Name',
-    //         null as ProjDesc         : String(50)  @title: 'Project Description'
-    //     }
+    entity ZCDSEBPS0003                 as
+        select from db.ZTHBT0055 {
+            ZCABNUM,
+            PBUKR,
+            PS_PSPNR,
+            ZMSCODE,
+            ZQTY,
+            ZUT,
+            ZSHTP,
+            ZDONUM,
+            ZDESCRIP,
+            ZSHPSTAT,
+            null as ProjectManager   : String(50)  @title: 'Project Manager',
+            null as CustomerFullName : String(100) @title: 'Ship To Party Name',
+            null as ProjDesc         : String(50)  @title: 'Project Description'
+        }
 
-    //     actions {
-    //         action pgi();
-    //     }
+        actions {
+            action pgi();
+        }
 }
 
 service ZCDSEHBTC0015 {
@@ -1203,123 +1204,123 @@ service ZCAPIH0018 {
 
 service ZAPIBPS0002 {
     entity ZCDSEBPS0009                 as projection on ZCDSEBPS0007;
-    // entity ZCDSEBPS0010                 as projection on ZCDSEBPS0008;
+    entity ZCDSEBPS0010                 as projection on ZCDSEBPS0008;
 
-    // entity ZCDSEBPS0004                 as
-    //     select from ZCDSEBPS0005
-    //     left outer join ZCDSEBPS0006
-    //         on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
-    //         and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
-    //         and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
-    //         and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
-    //         and ZCDSEBPS0006.MATNR    = $projection.MATNR
+    entity ZCDSEBPS0004                 as
+        select from ZCDSEBPS0005
+        left outer join ZCDSEBPS0006
+            on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
+            and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
+            and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
+            and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
+            and ZCDSEBPS0006.MATNR    = $projection.MATNR
 
-    //     {
-    //         key ZCDSEBPS0005.PBUKR,
-    //         key ZCDSEBPS0005.PSPHI,
-    //         key ZCDSEBPS0005.PS_PSP_PNR,
-    //         key ZCDSEBPS0005.ZZ1_MSCODE_PRD,
-    //             ZCDSEBPS0005.IDNLF,
-    //         key ZCDSEBPS0005.MATNR,
-    //             @Semantics.quantity.unitOfMeasure: 'ERFME'
-    //             ZCDSEBPS0005.ERFMG,
-    //             ZCDSEBPS0005.ERFME,
-    //             ZCDSEBPS0006.USEDQTY,
-    //             ZCDSEBPS0006.ZUT,
-    //             cast(
-    //                 case ZCDSEBPS0005.CONFIRM_STATUS
-    //                 when 1 
-    //                     then ZCDSEBPS0005.CONFIRM_STATUS
-    //                 when 2
-    //                     then ZCDSEBPS0005.CONFIRM_STATUS
-    //                 when 3 
-    //                     then ZCDSEBPS0005.CONFIRM_STATUS
-    //                 else 
-    //                     case
-    //                         when
-    //                             ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
-    //                         then
-    //                             3
-    //                         else
-    //                             1
-    //                     end     
-    //                 end as            Integer
-    //             ) as Criticality,
-    //             ZCDSEBPS0005.CONFIRM_STATUS,
-    //             ZCDSEBPS0005.REASON_DIFF,
-    //             _ReceivedQuantities : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0009 on _ReceivedQuantities.PBUKR          = PBUKR
-    //                                   and                                             _ReceivedQuantities.PSPHI          = PSPHI
-    //                                   and                                             _ReceivedQuantities.PS_PSP_PNR     = PS_PSP_PNR
-    //                                   and                                             _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
-    //                                   and                                             _ReceivedQuantities.MATNR          = MATNR,
-    //             _UsedQuantities     : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0010 on _UsedQuantities.PBUKR    = PBUKR
-    //                                   and                                             _UsedQuantities.PS_PSPNR = PSPHI
-    //                                   and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
-    //                                   and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
-    //                                   and                                             _UsedQuantities.MATNR    = MATNR,
-    //     }
-    // actions {
-    //     action updateDiffSM(ReasonForDiffSM : String @Common.Label: 'Reason For Difference' ) returns ZCDSEBPS0004;
-    // };
+        {
+            key ZCDSEBPS0005.PBUKR,
+            key ZCDSEBPS0005.PSPHI,
+            key ZCDSEBPS0005.PS_PSP_PNR,
+            key ZCDSEBPS0005.ZZ1_MSCODE_PRD,
+                ZCDSEBPS0005.IDNLF,
+            key ZCDSEBPS0005.MATNR,
+                @Semantics.quantity.unitOfMeasure: 'ERFME'
+                ZCDSEBPS0005.ERFMG,
+                ZCDSEBPS0005.ERFME,
+                ZCDSEBPS0006.USEDQTY,
+                ZCDSEBPS0006.ZUT,
+                cast(
+                    case ZCDSEBPS0005.CONFIRM_STATUS
+                    when 1 
+                        then ZCDSEBPS0005.CONFIRM_STATUS
+                    when 2
+                        then ZCDSEBPS0005.CONFIRM_STATUS
+                    when 3 
+                        then ZCDSEBPS0005.CONFIRM_STATUS
+                    else 
+                        case
+                            when
+                                ZCDSEBPS0005.ERFMG = ZCDSEBPS0006.USEDQTY
+                            then
+                                3
+                            else
+                                1
+                        end     
+                    end as            Integer
+                ) as Criticality,
+                ZCDSEBPS0005.CONFIRM_STATUS,
+                ZCDSEBPS0005.REASON_DIFF,
+                _ReceivedQuantities : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0009 on _ReceivedQuantities.PBUKR          = PBUKR
+                                      and                                             _ReceivedQuantities.PSPHI          = PSPHI
+                                      and                                             _ReceivedQuantities.PS_PSP_PNR     = PS_PSP_PNR
+                                      and                                             _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
+                                      and                                             _ReceivedQuantities.MATNR          = MATNR,
+                _UsedQuantities     : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0010 on _UsedQuantities.PBUKR    = PBUKR
+                                      and                                             _UsedQuantities.PS_PSPNR = PSPHI
+                                      and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
+                                      and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
+                                      and                                             _UsedQuantities.MATNR    = MATNR,
+        }
+    actions {
+        action updateDiffSM(ReasonForDiffSM : String @Common.Label: 'Reason For Difference' ) returns ZCDSEBPS0004;
+    };
     
 
-    // entity ZCDSEBPS0011                 as
-    //     select from ZCDSEBPS0012
-    //     left outer join ZCDSEBPS0006
-    //         on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
-    //         and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
-    //         and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
-    //         and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
-    //         and ZCDSEBPS0006.MATNR    = $projection.MATNR
+    entity ZCDSEBPS0011                 as
+        select from ZCDSEBPS0012
+        left outer join ZCDSEBPS0006
+            on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
+            and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
+            and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
+            and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
+            and ZCDSEBPS0006.MATNR    = $projection.MATNR
 
-    //     {
-    //         key ZCDSEBPS0012.PBUKR,
-    //         key ZCDSEBPS0012.PSPHI,
-    //         key ZCDSEBPS0012.PS_PSP_PNR,
-    //         key ZCDSEBPS0012.ZZ1_MSCODE_PRD,
-    //             ZCDSEBPS0012.IDNLF,
-    //         key ZCDSEBPS0012.MATNR,
-    //             ZCDSEBPS0012.SERNR,
-    //             @Semantics.quantity.unitOfMeasure: 'ERFME'
-    //             ZCDSEBPS0012.ERFMG,
-    //             ZCDSEBPS0012.ERFME,
-    //             ZCDSEBPS0006.USEDQTY,
-    //             ZCDSEBPS0006.ZUT,
-    //             cast(
-    //                 case ZCDSEBPS0012.CONFIRM_STATUS
-    //                 when 1 
-    //                     then ZCDSEBPS0012.CONFIRM_STATUS
-    //                 when 2
-    //                     then ZCDSEBPS0012.CONFIRM_STATUS
-    //                 when 3 
-    //                     then ZCDSEBPS0012.CONFIRM_STATUS
-    //                 else 
-    //                     case
-    //                         when
-    //                             ZCDSEBPS0012.ERFMG = ZCDSEBPS0006.USEDQTY
-    //                         then
-    //                             3
-    //                         else
-    //                             1
-    //                     end    
-    //                 end as            Integer
-    //             ) as Criticality,
-    //             ZCDSEBPS0012.CONFIRM_STATUS,
-    //             ZCDSEBPS0012.REASON_DIFF,
-    //             _ReceivedQuantities : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0009 on _ReceivedQuantities.PBUKR          = PBUKR
-    //                                   and                                             _ReceivedQuantities.PSPHI          = PSPHI
-    //                                   and                                             _ReceivedQuantities.PS_PSP_PNR     = PS_PSP_PNR
-    //                                   and                                             _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
-    //                                   and                                             _ReceivedQuantities.MATNR          = MATNR,
-    //             _UsedQuantities     : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0010 on _UsedQuantities.PBUKR    = PBUKR
-    //                                   and                                             _UsedQuantities.PS_PSPNR = PSPHI
-    //                                   and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
-    //                                   and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
-    //                                   and                                             _UsedQuantities.MATNR    = MATNR,
-    //     }
-    // actions {
-    //     action updateDiff(ReasonForDiff : String @Common.Label: 'Reason For Difference' @mandatory)   returns ZCDSEBPS0011;
-    // }
+        {
+            key ZCDSEBPS0012.PBUKR,
+            key ZCDSEBPS0012.PSPHI,
+            key ZCDSEBPS0012.PS_PSP_PNR,
+            key ZCDSEBPS0012.ZZ1_MSCODE_PRD,
+                ZCDSEBPS0012.IDNLF,
+            key ZCDSEBPS0012.MATNR,
+                ZCDSEBPS0012.SERNR,
+                @Semantics.quantity.unitOfMeasure: 'ERFME'
+                ZCDSEBPS0012.ERFMG,
+                ZCDSEBPS0012.ERFME,
+                ZCDSEBPS0006.USEDQTY,
+                ZCDSEBPS0006.ZUT,
+                cast(
+                    case ZCDSEBPS0012.CONFIRM_STATUS
+                    when 1 
+                        then ZCDSEBPS0012.CONFIRM_STATUS
+                    when 2
+                        then ZCDSEBPS0012.CONFIRM_STATUS
+                    when 3 
+                        then ZCDSEBPS0012.CONFIRM_STATUS
+                    else 
+                        case
+                            when
+                                ZCDSEBPS0012.ERFMG = ZCDSEBPS0006.USEDQTY
+                            then
+                                3
+                            else
+                                1
+                        end    
+                    end as            Integer
+                ) as Criticality,
+                ZCDSEBPS0012.CONFIRM_STATUS,
+                ZCDSEBPS0012.REASON_DIFF,
+                _ReceivedQuantities : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0009 on _ReceivedQuantities.PBUKR          = PBUKR
+                                      and                                             _ReceivedQuantities.PSPHI          = PSPHI
+                                      and                                             _ReceivedQuantities.PS_PSP_PNR     = PS_PSP_PNR
+                                      and                                             _ReceivedQuantities.ZZ1_MSCODE_PRD = ZZ1_MSCODE_PRD
+                                      and                                             _ReceivedQuantities.MATNR          = MATNR,
+                _UsedQuantities     : Association[ * ] to ZAPIBPS0002.ZCDSEBPS0010 on _UsedQuantities.PBUKR    = PBUKR
+                                      and                                             _UsedQuantities.PS_PSPNR = PSPHI
+                                      and                                             _UsedQuantities.PS_POSNR = PS_PSP_PNR
+                                      and                                             _UsedQuantities.ZMSCODE  = ZZ1_MSCODE_PRD
+                                      and                                             _UsedQuantities.MATNR    = MATNR,
+        }
+    actions {
+        action updateDiff(ReasonForDiff : String @Common.Label: 'Reason For Difference' @mandatory)   returns ZCDSEBPS0011;
+    }
     
 
 
@@ -1364,62 +1365,63 @@ service ZAPIBPS0004 {
             wbsElementExt
     };
     
-    // entity ZCDSEBPS0012 as select from db.ZTHBT0055
-    //        left outer join db.ZTHBT0027 as ZTHBT0027
-    //        on ZTHBT0027.PBUKR = ZTHBT0055.PBUKR
-    //        and ZTHBT0027.MATNR = ZTHBT0055.MATNR
-    //        and ZTHBT0027.PSPHI = ZTHBT0055.PS_PSPNR {
-    //     key ZCABNUM,
-    //         ZTHBT0055.PBUKR,
-    //         PS_PSPNR,
-    //         ZMSCODE,
-    //         PS_POSNR,	
-    //         ZTHBT0055.MATNR,
-    //         ZZ1_MSCODE,
-    //         ZIDEX,
-    //         ZVMCODE,
-    //         ZQTY,
-    //         ZUT,
-    //         ZDESCRIP,				
-    //         ZSER,	
-    //         ZSHTP,	
-    //         ZSHPNAME1,
-    //         ZSHPNAME2,	
-    //         ZSHPNAME3,
-    //         ZSHPNAME4,
-    //         ZCONTACTTEL,	
-    //         ZDELNOTE1,
-    //         ZDELNOTE2,
-    //         ZDONUM,
-    //         ZDOITEM,
-    //         ZDOPDATE,	
-    //         ZDOADATE,	
-    //         ZDELFLAG,
-    //         ZSHPSTAT,
-    //         null as PostalCode:String(10),
-    //         null as Region:String(5),
-    //         null as City:String(25),
-    //         null as StreetName: String(35),
-    //         null as TelephoneNumber1:String(16),
-    //         null as BusinessPartnerName3:String(40),
-    //         null as BusinessPartnerName4:String(40),
-    //         null as StreetPrefixName: String(40),
-    //         null as AdditionalStreetPrefixName: String(40),
-    //         null as criticality:Integer,
-    //         null as Error:String(200)
-    // }
-    // where ZDELFLAG != 'X'
-    // actions {
-    //     action DeleteSet() returns ZCDSEBPS0012;
-    //     action split() returns ZCDSEBPS0012;
-    //     action copy() returns ZCDSEBPS0012;
-    //     action paste() returns ZCDSEBPS0012;
-    //     action DOCreate() returns ZCDSEBPS0012;
-    //     action MassEdit(ZSHTP: String @Common.Label: 'Ship to Party',
-    //                     ZSHPNAME1: String @Common.Label: 'Contact Ship to Name 1',
-    //                     ZSHPNAME2: String @Common.Label: 'Contact Ship to Name 2',
-    //                     ZSHPNAME3: String @Common.Label: 'Contact Ship to Name 3',
-    //                     ZSHPNAME4: String @Common.Label: 'Contact Ship to Name 4') returns ZCDSEBPS0012;
-    // }
+    entity ZCDSEBPS0012 as select from db.ZTHBT0055
+           left outer join db.ZTHBT0027 as ZTHBT0027
+           on ZTHBT0027.PBUKR = ZTHBT0055.PBUKR
+           and ZTHBT0027.MATNR = ZTHBT0055.MATNR
+           and ZTHBT0027.PSPHI = ZTHBT0055.PS_PSPNR {
+        key ID,
+            ZCABNUM,
+            ZTHBT0055.PBUKR,
+            PS_PSPNR,
+            ZMSCODE,
+            PS_POSNR,	
+            ZTHBT0055.MATNR,
+            ZZ1_MSCODE,
+            ZIDEX,
+            ZVMCODE,
+            ZQTY,
+            ZUT,
+            ZDESCRIP,				
+            ZSER,	
+            ZSHTP,	
+            ZSHPNAME1,
+            ZSHPNAME2,	
+            ZSHPNAME3,
+            ZSHPNAME4,
+            ZCONTACTTEL,	
+            ZDELNOTE1,
+            ZDELNOTE2,
+            ZDONUM,
+            ZDOITEM,
+            ZDOPDATE,	
+            ZDOADATE,	
+            ZDELFLAG,
+            ZSHPSTAT,
+            null as PostalCode:String(10),
+            null as Region:String(5),
+            null as City:String(25),
+            null as StreetName: String(35),
+            null as TelephoneNumber1:String(16),
+            null as BusinessPartnerName3:String(40),
+            null as BusinessPartnerName4:String(40),
+            null as StreetPrefixName: String(40),
+            null as AdditionalStreetPrefixName: String(40),
+            null as criticality:Integer,
+            null as Error:String(200)
+    }
+    where ZDELFLAG != 'X'
+    actions {
+        action DeleteSet() returns ZCDSEBPS0012;
+        action split() returns ZCDSEBPS0012;
+        action copy() returns ZCDSEBPS0012;
+        action paste() returns ZCDSEBPS0012;
+        action DOCreate() returns ZCDSEBPS0012;
+        action MassEdit(ZSHTP: String @Common.Label: 'Ship to Party',
+                        ZSHPNAME1: String @Common.Label: 'Contact Ship to Name 1',
+                        ZSHPNAME2: String @Common.Label: 'Contact Ship to Name 2',
+                        ZSHPNAME3: String @Common.Label: 'Contact Ship to Name 3',
+                        ZSHPNAME4: String @Common.Label: 'Contact Ship to Name 4') returns ZCDSEBPS0012;
+    }
 }
 
