@@ -2579,7 +2579,6 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.paste', Label: 'Paste'},
             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.DOCreate', Label: 'DO Create'},
             { $Type: 'UI.DataFieldForAction', Action: 'ZAPIBPS0004.MassEdit', Label: 'MassEdit'},  
-             { Value: ZCABNUM},
             { Value: PBUKR },
             { Value: PS_PSPNR },
             { Value: ZMSCODE},
@@ -2590,20 +2589,20 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { Value: ZVMCODE },
             { Value: ZQTY},
             { Value: ZUT},
-            { Value: ZDESCRIP               },
-            { Value: ZSER   },
-            { Value: ZSHTP  },
+            { Value: ZDESCRIP },
+            { Value: ZSER },
+            { Value: ZSHTP },
             { Value: ZSHPNAME1},
-            { Value: ZSHPNAME2  },
+            { Value: ZSHPNAME2 },
             { Value: ZSHPNAME3},
             { Value: ZSHPNAME4},
-            { Value: ZCONTACTTEL    },
+            { Value: ZCONTACTTEL },
             { Value: ZDELNOTE1},
             { Value: ZDELNOTE2},
             { Value: ZDONUM},
             { Value: ZDOITEM},
-            { Value: ZDOPDATE   },
-            { Value: ZDOADATE   },
+            { Value: ZDOPDATE },
+            { Value: ZDOADATE },
             { Value: ZDELFLAG},
             { Value: ZSHPSTAT},
             { Value: PostalCode},
@@ -2615,8 +2614,8 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { Value: BusinessPartnerName4},
             { Value: StreetPrefixName},
             { Value: AdditionalStreetPrefixName},
-            { Value: criticality},
-            { Value: Error},
+            { Value: CRITICALITY},
+            { Value: REMARKS}
 
         ],
         Facets: [
@@ -2635,20 +2634,20 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { Value: ZVMCODE,![@Common.FieldControl] : #ReadOnly },
             { Value: ZQTY,![@Common.FieldControl] : #ReadOnly },
             { Value: ZUT,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZDESCRIP               ,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZSER   ,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZSHTP  ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDESCRIP ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSER ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHTP ,![@Common.FieldControl] : #ReadOnly },
             { Value: ZSHPNAME1,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZSHPNAME2  ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHPNAME2 ,![@Common.FieldControl] : #ReadOnly },
             { Value: ZSHPNAME3,![@Common.FieldControl] : #ReadOnly },
             { Value: ZSHPNAME4,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZCONTACTTEL    ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZCONTACTTEL ,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDELNOTE1,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDELNOTE2,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDONUM,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDOITEM,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZDOPDATE   ,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZDOADATE   ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDOPDATE ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDOADATE ,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDELFLAG,![@Common.FieldControl] : #ReadOnly },
             { Value: ZSHPSTAT,![@Common.FieldControl] : #ReadOnly },
             { Value: PostalCode,![@Common.FieldControl] : #ReadOnly },
@@ -2660,51 +2659,54 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { Value: BusinessPartnerName4,![@Common.FieldControl] : #ReadOnly },
             { Value: StreetPrefixName,![@Common.FieldControl] : #ReadOnly },
             { Value: AdditionalStreetPrefixName,![@Common.FieldControl] : #ReadOnly },
-            { Value: criticality,![@Common.FieldControl] : #ReadOnly },
-            { Value: Error,![@Common.FieldControl] : #ReadOnly }
+            { Value: CRITICALITY,![@Common.FieldControl] : #ReadOnly },
+            { Value: REMARKS,![@Common.FieldControl] : #ReadOnly }
          
             ]
         }
     }
 ){
-    ZCABNUM @title: '';
-            PBUKR @title: '';
-            PS_PSPNR @title: '';
-            ZMSCODE @title: '';
-            PS_POSNR @title: '';
-            MATNR @title: '';
-            ZZ1_MSCODE @title: '';
-            ZIDEX @title: '';
-            ZVMCODE @title: '';
-            ZQTY @title: '';
-            ZUT @title: '';
-            ZDESCRIP @title: '';			
-            ZSER @title: '';
-            ZSHTP @title: '';	
-            ZSHPNAME1 @title: '';
-            ZSHPNAME2 @title: '';
-            ZSHPNAME3 @title: '';
-            ZSHPNAME4 @title: '';
-            ZCONTACTTEL @title: '';	
-            ZDELNOTE1 @title: '';
-            ZDELNOTE2 @title: '';
-            ZDONUM @title: '';
-            ZDOITEM @title: '';
-            ZDOPDATE @title: '';
-            ZDOADATE @title: '';	
-            ZDELFLAG @title: '';
-            ZSHPSTAT @title: '';
-            PostalCode @title: '';
-            Region @title: '';
-            City @title: '';
-            StreetName @title: '';
-            TelephoneNumber1 @title: '';
-            BusinessPartnerName3 @title: '';
-            BusinessPartnerName4 @title: '';
-            StreetPrefixName @title: '';
-            AdditionalStreetPrefixName @title: '';
-            criticality @title: '';
-            Error @title: '';
+    
+            PBUKR @title: 'Company code';
+            PS_PSPNR @title: 'Project Definition';
+            PS_POSNR @title: 'WBS Element';
+            MATNR @title: 'SAP Material';
+            ZZ1_MSCODE @title: 'Material Type code';
+            ZIDEX @title: 'Material type code description';
+            ZCABNUM @title: 'Cabinet number';
+            ZMSCODE @title: 'MS Code';
+            ZVMCODE @title: 'Vendor Material Code';
+            ZQTY @title: 'Quantity';
+            ZUT @title: 'UNIT';
+            ZDESCRIP @title: 'Material Description';			
+            ZSER @title: 'Serial Number';
+            ZSHTP @title: 'Ship-to-Party';	
+            name1 @title: 'Name1';
+            name2 @title: 'Name2';
+            BusinessPartnerName3 @title: 'Name3';
+            BusinessPartnerName4 @title: 'Name4';
+            PostalCode @title: 'Postal Code';
+            Region @title: 'Region';
+            City @title: 'Cit';
+            StreetName @title: 'Street1';
+            StreetPrefixName @title: 'Street2';
+            AdditionalStreetPrefixName @title: 'Street3';
+            TelephoneNumber1 @title: 'Telephone';
+            ZDONUM @title: 'Do number';
+            ZDOITEM @title: 'Do number Item';
+            ZDOADATE @title: 'DO Actual date';
+            ZSHPSTAT @title: 'Shipping status';
+            ZSHPNAME1 @title: 'Contact Ship to Name1';
+            ZSHPNAME2 @title: 'Contact Ship to Name2';
+            ZSHPNAME3 @title: 'Contact Ship to Name3';
+            ZSHPNAME4 @title: 'Contact Ship to Name4';
+            ZCONTACTTEL @title: 'Contact ship to telephone';	
+            ZDOPDATE @title: 'DO plan date';
+            ZDELNOTE1 @title: 'Delivery notes 1';
+            ZDELNOTE2 @title: 'Delivery notes 2';	
+            ZDELFLAG @title: 'Deletion flag';
+            CRITICALITY @title: 'Confirm status';
+            REMARKS @title: 'Remark';
 };
 
 annotate ZCAPIH0018.ZCDSEHPPB0085 @(Capabilities.FilterRestrictions : {
@@ -2820,4 +2822,42 @@ annotate ZCAPIH0018.ZCDSEHPPB0085 {
         }
     })
     sloc_issto;
+}
+
+annotate ZAPIBPS0004.ZCDSEBPS0012 {
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0015',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PS_PSPNR,
+                    ValueListProperty : 'ProjectId'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ProjDesc'
+                }
+            ]
+        }
+    })
+    PS_PSPNR;
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'Project',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PS_POSNR,
+                    ValueListProperty : 'wbsElementExt'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PS_PSPNR,
+                    ValueListProperty : 'projectId'
+                },
+            ]
+        }
+    })
+    PS_POSNR;
 }

@@ -1330,13 +1330,6 @@ service ZAPIBPS0003 {
 }
 
 service ZAPIBPS0004 {
-    type massEditInput {
-        ZSHTP: String;
-        ZSHPNAME1: String;
-        ZSHPNAME2: String;
-        ZSHPNAME3: String;
-        ZSHPNAME4: String;
-    }
     entity Customer as projection on BusinessPartner.A_Customer {
         key Customer,
         name1,
@@ -1352,6 +1345,11 @@ service ZAPIBPS0004 {
         AdditionalStreetPrefixName
 
     };
+    entity ZCDSEBPS0015  as projection on ProjectDetails.ZCDSEHPSC0002 {
+        ProjectId,
+        ProjDesc,
+        ApproverPM
+    };
     @cds.persistence.skip
     @odata.singleton
     entity ExcelUpload {
@@ -1362,7 +1360,8 @@ service ZAPIBPS0004 {
     entity Project as projection on TimeSheetEntry.ZCDSEHPSB0032 {
         key projectId,
             CompanyCode,
-            wbsElementExt
+            wbsElementExt,
+            ProjectDesc
     };
     
     entity ZCDSEBPS0012 as select from db.ZTHBT0055
@@ -1398,6 +1397,10 @@ service ZAPIBPS0004 {
             ZDOADATE,	
             ZDELFLAG,
             ZSHPSTAT,
+            CRITICALITY,
+            REMARKS,
+            null as name1: String(40),
+            null as name2: String(40),
             null as PostalCode:String(10),
             null as Region:String(5),
             null as City:String(25),
@@ -1406,9 +1409,7 @@ service ZAPIBPS0004 {
             null as BusinessPartnerName3:String(40),
             null as BusinessPartnerName4:String(40),
             null as StreetPrefixName: String(40),
-            null as AdditionalStreetPrefixName: String(40),
-            null as criticality:Integer,
-            null as Error:String(200)
+            null as AdditionalStreetPrefixName: String(40)
     }
     actions {
         action DeleteSet() returns ZCDSEBPS0012;
