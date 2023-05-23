@@ -152,13 +152,13 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                         temp.forEach((res, index) => {
                             if (index === 0 || index === 1 || index === 2) return;
                             data.push(JSON.parse(JSON.stringify(res)));
-                            let projectAdded = projectDefinitions.find(res['Project Definition']);
+                            let projectAdded = projectDefinitions.includes(res['Project Definition']);
                             if (!projectAdded) {
                                 projectDefinitions.push(res['Project Definition']);
                             }
-                            let compCodeAdded = companyCodes.find(res['Company code']);
+                            let compCodeAdded = companyCodes.includes(res['Company code']);
                             if (!compCodeAdded) {
-                                compCodeAdded.push(res['Company code']);
+                                companyCodes.push(res['Company code']);
                             }
 
                         })
