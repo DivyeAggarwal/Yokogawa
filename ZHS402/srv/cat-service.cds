@@ -1410,7 +1410,6 @@ service ZAPIBPS0004 {
             null as criticality:Integer,
             null as Error:String(200)
     }
-    where ZDELFLAG != 'X'
     actions {
         action DeleteSet() returns ZCDSEBPS0012;
         action split() returns ZCDSEBPS0012;
