@@ -473,37 +473,37 @@ entity ZTHBT0057 : managed {
 
 }
 
-entity ZTHBT0055 : managed,cuid {
-    ZCABNUM:String(20) @title : 'Cabinet number';
-    PBUKR: String(4) @title: 'Company code';
-    PS_PSPNR: String(24) @title: 'Project Definition';
-    ZMSCODE:String(50) @title : 'MS Code';	
-    PS_POSNR : String(24) @title : 'WBS Element';		
-    MATNR:String(40) @title : 'SAP MATERIAL';	
-    ZZ1_MSCODE:String(3) @title : 'Material Type Code';
-    ZIDEX:String(40) @title : 'Material Type Code Description';
-    ZVMCODE:String(50) @title : 'Vendor Material code';	
-    ZQTY:Decimal(13,2) @title : 'Quantity';	
-    ZUT:String(5)  @title : 'Unit';		
-    ZDESCRIP:String(50) @title : 'Material Description';					
-    ZSER:String(20) @title : 'Serial number';		
-    ZSHTP:String(20) @title : 'Ship to Party';		
-    ZSHPNAME1:String(40) @title : 'Contact Ship to Name 1';	
-    ZSHPNAME2:String(40) @title : 'Contact Ship to Name 2';	
-    ZSHPNAME3:String(40) @title : 'Contact Ship to Name 3';	
-    ZSHPNAME4:String(40) @title : 'Contact Ship to Name 4';	
-    ZCONTACTTEL:String(30) @title : 'Contact ship to Telephone';		
-    ZDELNOTE1:String(50) @title : 'Delivery Note1';	
-    ZDELNOTE2:String(50) @title : 'Delivery Note2';	
-    ZDONUM:String(10) @title : 'DO Number Title';	
-    ZDOITEM:String(7) @title : 'DO Number Item';	
-    ZDOPDATE:Date @title : 'DO Plan Date';		
-    ZDOADATE:Date @title : 'DO Actual Date';	
-    ZDELFLAG:String(1) @title : 'Deletion Flag';
-    ZSHPSTAT:String(1) @title : 'Shipping Status';
-    REMARKS: String(1000) @title : 'Shipping Status';
-    CRITICALITY:Integer @title : 'Confirm Status'
-}
+// entity ZTHBT0055 : managed,cuid {
+//     ZCABNUM:String(20) @title : 'Cabinet number';
+//     PBUKR: String(4) @title: 'Company code';
+//     PS_PSPNR: String(24) @title: 'Project Definition';
+//     ZMSCODE:String(50) @title : 'MS Code';	
+//     PS_POSNR : String(24) @title : 'WBS Element';		
+//     MATNR:String(40) @title : 'SAP MATERIAL';	
+//     ZZ1_MSCODE:String(3) @title : 'Material Type Code';
+//     ZIDEX:String(40) @title : 'Material Type Code Description';
+//     ZVMCODE:String(50) @title : 'Vendor Material code';	
+//     ZQTY:Decimal(13,2) @title : 'Quantity';	
+//     ZUT:String(5)  @title : 'Unit';		
+//     ZDESCRIP:String(50) @title : 'Material Description';					
+//     ZSER:String(20) @title : 'Serial number';		
+//     ZSHTP:String(20) @title : 'Ship to Party';		
+//     ZSHPNAME1:String(40) @title : 'Contact Ship to Name 1';	
+//     ZSHPNAME2:String(40) @title : 'Contact Ship to Name 2';	
+//     ZSHPNAME3:String(40) @title : 'Contact Ship to Name 3';	
+//     ZSHPNAME4:String(40) @title : 'Contact Ship to Name 4';	
+//     ZCONTACTTEL:String(30) @title : 'Contact ship to Telephone';		
+//     ZDELNOTE1:String(50) @title : 'Delivery Note1';	
+//     ZDELNOTE2:String(50) @title : 'Delivery Note2';	
+//     ZDONUM:String(10) @title : 'DO Number Title';	
+//     ZDOITEM:String(7) @title : 'DO Number Item';	
+//     ZDOPDATE:Date @title : 'DO Plan Date';		
+//     ZDOADATE:Date @title : 'DO Actual Date';	
+//     ZDELFLAG:String(1) @title : 'Deletion Flag';
+//     ZSHPSTAT:String(1) @title : 'Shipping Status';
+//     REMARKS: String(1000) @title : 'Shipping Status';
+//     CRITICALITY:Integer @title : 'Confirm Status'
+// }
 
 
 entity ZTHBT0030 : managed {
