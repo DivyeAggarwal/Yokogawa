@@ -4102,6 +4102,73 @@
         }
       }
     },
+    "ZHS402.ZTHBT0072": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "USERID": {
+          "@title": "User Id",
+          "key": true,
+          "type": "cds.String",
+          "length": 100
+        },
+        "COPIEDDATA": {
+          "@title": "Copied Data in stringified format of selected row in ZTHBT0052 table",
+          "type": "cds.String",
+          "length": 1000
+        }
+      }
+    },
     "PUBLIC.DUMMY": {
       "kind": "entity",
       "@cds.persistence.exists": true,
@@ -15443,41 +15510,49 @@
           "length": 18
         },
         "E_REV_NO": {
+          "@UI.HiddenFilter": true,
           "@title": "Technical renewal REV No.",
           "type": "cds.String",
           "length": 5
         },
         "E_DOC_N": {
+          "@UI.HiddenFilter": true,
           "@title": "Engineering Doc Name",
           "type": "cds.String",
           "length": 20
         },
         "MEDAI_TYPE": {
+          "@UI.HiddenFilter": true,
           "@title": "Media Type",
           "type": "cds.String",
           "length": 1
         },
         "YEOS_MODEL_GROUP": {
+          "@UI.HiddenFilter": true,
           "@title": "Yeos Model Group",
           "type": "cds.String",
           "length": 18
         },
         "FZ2_NO": {
+          "@UI.HiddenFilter": true,
           "@title": "Fz2 Number",
           "type": "cds.String",
           "length": 5
         },
         "REV_SBJCT": {
+          "@UI.HiddenFilter": true,
           "@title": "Rev Sbjct",
           "type": "cds.String",
           "length": 80
         },
         "MODIFY_CAUSE_N": {
+          "@UI.HiddenFilter": true,
           "@title": "Modify Cause N",
           "type": "cds.String",
           "length": 40
         },
         "APPLY_DATE_N": {
+          "@UI.HiddenFilter": true,
           "@title": "Apply date Name",
           "type": "cds.String",
           "length": 40
@@ -15708,26 +15783,31 @@
       },
       "elements": {
         "E_DOC_TYPE": {
+          "@UI.HiddenFilter": true,
           "@title": "Engineering Doc Type",
           "type": "cds.String",
           "length": 5
         },
         "E_DOC_NO": {
+          "@UI.HiddenFilter": true,
           "@title": "Technical document No.",
           "type": "cds.String",
           "length": 18
         },
         "E_REV_NO": {
+          "@UI.HiddenFilter": true,
           "@title": "Technical renewal REV No.",
           "type": "cds.String",
           "length": 5
         },
         "E_DOC_N": {
+          "@UI.HiddenFilter": true,
           "@title": "Engineering Doc Name",
           "type": "cds.String",
           "length": 20
         },
         "MEDAI_TYPE": {
+          "@UI.HiddenFilter": true,
           "@title": "Media Type",
           "type": "cds.String",
           "length": 1
@@ -15743,16 +15823,19 @@
           "length": 5
         },
         "REV_SBJCT": {
+          "@UI.HiddenFilter": true,
           "@title": "Rev Sbjct",
           "type": "cds.String",
           "length": 80
         },
         "MODIFY_CAUSE_N": {
+          "@UI.HiddenFilter": true,
           "@title": "Modify Cause N",
           "type": "cds.String",
           "length": 40
         },
         "APPLY_DATE_N": {
+          "@UI.HiddenFilter": true,
           "@title": "Apply date Name",
           "type": "cds.String",
           "length": 40

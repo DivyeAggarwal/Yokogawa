@@ -183,7 +183,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             });
         }
         let oDataSelectedData = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
-        if (oDataResults) {
+        if (oDataSelectedData) {
             let copiedData = JSON.parse(oDataCopy[0].COPIEDDATA);
             for (let selectedData of oDataSelectedData) {
                 selectedData.ZSHTP = copiedData.ZSHTP,
@@ -197,7 +197,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                     selectedData.ZDOPDATE = copiedData.ZDOPDATE
             }
         }
-        await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataSelectedData);
         req.info({
             code: 200,
             message: 'Data is been pasted successfully from clipboard'
@@ -228,20 +228,20 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
 
         for (oData of oDataResults) {
-            if (req.data.input.ZSHTP) {
-                oData.ZSHTP = req.data.input.ZSHTP;
+            if (req.data.ZSHTP) {
+                oData.ZSHTP = req.data.ZSHTP;
             }
-            if (req.data.input.ZSHPNAME1) {
-                oData.ZSHPNAME1 = req.data.input.ZSHPNAME1;
+            if (req.data.ZSHPNAME1) {
+                oData.ZSHPNAME1 = req.data.SHPNAME1;
             }
-            if (req.data.input.ZSHPNAME2) {
-                oData.ZSHPNAME2 = req.data.input.ZSHPNAME2;
+            if (req.data.ZSHPNAME2) {
+                oData.ZSHPNAME2 = req.data.ZSHPNAME2;
             }
-            if (req.data.input.ZSHPNAME3) {
-                oData.ZSHPNAME3 = req.data.input.ZSHPNAME3;
+            if (req.data.ZSHPNAME3) {
+                oData.ZSHPNAME3 = req.data.ZSHPNAME3;
             }
-            if (req.data.input.ZSHPNAME4) {
-                oData.ZSHPNAME4 = req.data.input.ZSHPNAME4;
+            if (req.data.ZSHPNAME4) {
+                oData.ZSHPNAME4 = req.data.ZSHPNAME4;
             }
 
         }

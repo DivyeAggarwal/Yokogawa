@@ -473,8 +473,8 @@ entity ZTHBT0057 : managed {
 
 }
 
-entity ZTHBT0055 : managed {
-    key ZCABNUM:String(20) @title : 'Cabinet number';
+entity ZTHBT0055 : managed,cuid {
+    ZCABNUM:String(20) @title : 'Cabinet number';
     PBUKR: String(4) @title: 'Company code';
     PS_PSPNR: String(24) @title: 'Project Definition';
     ZMSCODE:String(50) @title : 'MS Code';	
@@ -501,6 +501,7 @@ entity ZTHBT0055 : managed {
     ZDOADATE:Date @title : 'DO Actual Date';	
     ZDELFLAG:String(1) @title : 'Deletion Flag';
     ZSHPSTAT:String(1) @title : 'Shipping Status';
+    Comment
 }
 
 
