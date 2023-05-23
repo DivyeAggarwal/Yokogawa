@@ -31,9 +31,10 @@ var registerZAPIBPS0001Handler = function (that, cds) {
         var oDataWithCustomer = await populateCustomerFullName(oData);
         var oDataWithManager = await populateManager(oDataWithCustomer);
         // return oDataWithManager;
+        var sum = 0;
         var updated = Object.values(oDataWithManager.reduce((obj, item) => {
             var key = item.ZDONUM + item.ZSHTP
-            var sum = 0;
+           
             if (!obj[key]) {
               obj[key] = Object.assign(item)
             } else {
