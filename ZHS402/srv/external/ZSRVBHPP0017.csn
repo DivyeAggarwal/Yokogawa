@@ -1,0 +1,177 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.8.1"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHPP0017": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0017.ZCDSEHPPB0093": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "custom cds entity completion and gr",
+      "elements": {
+        "ordconfrm": {
+          "key": true,
+          "type": "cds.String",
+          "length": 13,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char13",
+          "@sap.quickinfo": "Character field 13 digits",
+          "notNull": true
+        },
+        "plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "notNull": true
+        },
+        "material": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "notNull": true
+        },
+        "matgroup": {
+          "key": true,
+          "type": "cds.String",
+          "length": 9,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Group",
+          "notNull": true
+        },
+        "status": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.heading": "",
+          "notNull": true
+        },
+        "quantity": {
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "bunit",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "notNull": true
+        },
+        "ordernum": {
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "notNull": true
+        },
+        "partordnum": {
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "notNull": true
+        },
+        "bunit": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": true
+        },
+        "printedrev": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component of the Version Number",
+          "@sap.heading": "",
+          "notNull": true
+        },
+        "btypestatus": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char8",
+          "@sap.quickinfo": "Character field, 8 characters long",
+          "notNull": true
+        },
+        "msgerr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 452,
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Text (452 characters)",
+          "notNull": true
+        },
+        "completion": {
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "bunit",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "notNull": true
+        },
+        "job_flag": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "notNull": true
+        }
+      },
+      "actions": {
+        "b_type": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0017.ZCDSEHPPB0093"
+          }
+        },
+        "cutoff_act": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0017.ZCDSEHPPB0093"
+          }
+        },
+        "finish_prod": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0017.ZCDSEHPPB0093"
+          }
+        },
+        "inhouse_prod": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0017.ZCDSEHPPB0093"
+          }
+        }
+      }
+    }
+  }
+}

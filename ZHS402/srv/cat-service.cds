@@ -17,6 +17,7 @@ using TimeSheetAPI from './external/TimeSheetAPI';
 using BusinessPartner from './external/BusinessPartner';
 using ProjectDetails from './external/ProjectDetails';
 using ZSRVBHPS0011 from './external/ZSRVBHPS0011';
+using ZSRVBHPP0017 from './external/ZSRVBHPP0017';
 
 
 service CatalogService {
@@ -1191,7 +1192,7 @@ service ZCDSEHBTC0017 {
 
 
 //Print Kanban
-service ZCAPIH0018 {
+service ZCAPIH0018 { 
     entity ZTHBT0030                    as projection on db.ZTHBT0030;
     entity ZTHBT0006                    as projection on db.ZTHBT0006;
     entity ZCDSEHPPB0085                as projection on ZSRVBHPP0015.ZCDSEHPPB0085;
@@ -1443,3 +1444,18 @@ service ZAPIBPS0004 {
     }
 }
 
+
+//Completion and Goods Receipt
+service ZCAPIH0019 {
+    entity ZCDSEHPPB0093                as projection on ZSRVBHPP0017.ZCDSEHPPB0093;
+    entity ZTHBT0029                    as projection on db.ZTHBT0029;
+    entity ZTHBT0028                    as projection on db.ZTHBT0028;
+    
+    @open
+    type Object {}
+
+    action b_type(input : Object) returns ZCDSEHPPB0093; 
+    action cutoff_act(input : Object) returns ZCDSEHPPB0093; 
+    action finish_prod(input : Object) returns ZCDSEHPPB0093; 
+    action inhouse_prod(input : Object) returns ZCDSEHPPB0093; 
+}
