@@ -2565,6 +2565,29 @@ annotate ZAPIBPS0004.ZCDSEBPS0012 with  @fiori.draft.enabled;
 annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
     UI: {
         DeleteHidden        : true,
+        SelectionVariant #CAB:{
+            $Type : 'UI.SelectionVariantType',
+            SelectOptions : [
+                {
+                    $Type : 'UI.SelectOptionType',
+                    PropertyName : ZZ1_MSCODE,
+                    Ranges : [
+                        {
+                            $Type : 'UI.SelectionRangeType',
+                            Option : #EQ,
+                            Low : '010',
+                            High : '',
+                            Sign:#I
+                        }
+                    ]
+                }
+            ],
+            Text : 'Only Cabinet or Loose Items'
+        },
+        SelectionVariant #ALL:{
+            $Type : 'UI.SelectionVariantType',
+            Text : 'Include All item'
+        },
         HeaderInfo: {
             TypeName: '',
             TypeNamePlural: 'Cabinet Component & Shipping Status',
@@ -2614,7 +2637,7 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { Value: BusinessPartnerName4},
             { Value: StreetPrefixName},
             { Value: AdditionalStreetPrefixName},
-            { Value: CRITICALITY},
+            { Value: CRITICALITY, Criticality : CRITICALITY},
             { Value: REMARKS}
 
         ],
@@ -2708,6 +2731,7 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             CRITICALITY @title: 'Confirm status';
             REMARKS @title: 'Remark';
 };
+
 
 annotate ZCAPIH0018.ZCDSEHPPB0085 @(Capabilities.FilterRestrictions : {
    FilterExpressionRestrictions : [

@@ -1440,6 +1440,6 @@ service ZAPIBPS0004 {
                         ZSHPNAME2: String @Common.Label: 'Contact Ship to Name 2',
                         ZSHPNAME3: String @Common.Label: 'Contact Ship to Name 3',
                         ZSHPNAME4: String @Common.Label: 'Contact Ship to Name 4') returns ZCDSEBPS0012;
-    }
+    };
 }
 
