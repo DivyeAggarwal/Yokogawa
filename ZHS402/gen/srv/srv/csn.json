@@ -21298,6 +21298,11 @@
             ]
           },
           {
+            "ref": [
+              "Note"
+            ]
+          },
+          {
             "as": "to_OpertaionsListColumn1",
             "cast": {
               "target": "ProductionOrder.ZCDSEHPPB0031",
@@ -21631,6 +21636,10 @@
           "@sap.quickinfo": "Completion confirmation number for the operation",
           "type": "cds.String",
           "length": 10
+        },
+        "Note": {
+          "@sap.label": "Long Text",
+          "type": "cds.LargeString"
         },
         "to_OpertaionsListColumn1": {
           "type": "cds.Association",

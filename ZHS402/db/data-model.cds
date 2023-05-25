@@ -520,5 +520,10 @@ entity ZTHBT0072: managed {
         COPIEDDATA: String(1000) @title: 'Copied Data in stringified format of selected row in ZTHBT0052 table'
 }
 
+entity YARDTESTDB: managed,cuid {
+    name: String(40);
+    DOB: Date;
+}
+
 
 

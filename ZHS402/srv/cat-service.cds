@@ -1478,3 +1478,10 @@ service ZCAPIH0019 {
 
     }
 }
+
+service YAPIARD {
+@odata.draft.enabled
+entity yentard as projection on db.YARDTESTDB;
+
+
+}
