@@ -33176,6 +33176,31 @@
       "kind": "entity",
       "@fiori.draft.enabled": true,
       "@UI.DeleteHidden": true,
+      "@UI.SelectionVariant#CAB.$Type": "UI.SelectionVariantType",
+      "@UI.SelectionVariant#CAB.SelectOptions": [
+        {
+          "$Type": "UI.SelectOptionType",
+          "PropertyName": {
+            "=": "ZZ1_MSCODE"
+          },
+          "Ranges": [
+            {
+              "$Type": "UI.SelectionRangeType",
+              "Option": {
+                "#": "EQ"
+              },
+              "Low": "010",
+              "High": "",
+              "Sign": {
+                "#": "I"
+              }
+            }
+          ]
+        }
+      ],
+      "@UI.SelectionVariant#CAB.Text": "Only Cabinet or Loose Items",
+      "@UI.SelectionVariant#ALL.$Type": "UI.SelectionVariantType",
+      "@UI.SelectionVariant#ALL.Text": "Include All item",
       "@UI.HeaderInfo.TypeName": "",
       "@UI.HeaderInfo.TypeNamePlural": "Cabinet Component & Shipping Status",
       "@UI.HeaderInfo.Title.Value": "Cabinet Component & Shipping Status",
@@ -33405,6 +33430,9 @@
         },
         {
           "Value": {
+            "=": "CRITICALITY"
+          },
+          "Criticality": {
             "=": "CRITICALITY"
           }
         },
@@ -34314,6 +34342,24 @@
           "params": {
             "ZSHTP": {
               "@Common.Label": "Ship to Party",
+              "@Common.ValueList.CollectionPath": "Customer",
+              "@Common.ValueList.Parameters": [
+                {
+                  "$Type": "Common.ValueListParameterInOut",
+                  "LocalDataProperty": {
+                    "=": "ZSHTP"
+                  },
+                  "ValueListProperty": "Customer"
+                },
+                {
+                  "$Type": "Common.ValueListParameterDisplayOnly",
+                  "ValueListProperty": "name1"
+                },
+                {
+                  "$Type": "Common.ValueListParameterDisplayOnly",
+                  "ValueListProperty": "name2"
+                }
+              ],
               "type": "cds.String"
             },
             "ZSHPNAME1": {

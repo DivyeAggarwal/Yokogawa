@@ -217,14 +217,14 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
     that.on('DOCreate', async (req) => {
         const db = await cds.connect.to("db");
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
-        const DoNumSeqHelper = new SequenceHelper({
+        const productId = new SequenceHelper({
             db: db,
-            sequence: "ZTHBT005_ZDONUM",
-            table: "ZTHBT0055",
-            field: "ZDONUM"
+            sequence: "INVOICE_ID",
+            table: "ZTHBT0022",
+            field: "ID"
         });
         for (oData of oDataResults) {
-            oData.ZDONUM = await DoNumSeqHelper.getNextNumber();
+            oData.ZDONUM = await await productId.getNextNumber();
         }
         await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
         req.info({

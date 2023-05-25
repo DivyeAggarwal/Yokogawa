@@ -1365,6 +1365,7 @@ service ZAPIBPS0004 {
             ProjectDesc
     };
     
+    @odata.draft.enabled
     entity ZCDSEBPS0012 as select from db.ZTHBT0055
            left outer join db.ZTHBT0027 as ZTHBT0027
            on ZTHBT0027.PBUKR = ZTHBT0055.PBUKR
@@ -1441,7 +1442,7 @@ service ZAPIBPS0004 {
                         ZSHPNAME2: String @Common.Label: 'Contact Ship to Name 2',
                         ZSHPNAME3: String @Common.Label: 'Contact Ship to Name 3',
                         ZSHPNAME4: String @Common.Label: 'Contact Ship to Name 4') returns ZCDSEBPS0012;
-    }
+    };
 }
 
 
