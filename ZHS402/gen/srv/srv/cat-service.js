@@ -182,16 +182,11 @@ this.on('Find_Scan', async (req) => {
     return api.post("/Find_Scan?pkkey='" + req.data.pkkey + "'&pkbst='" + req.data.pkbst + "'&pkstu='" + req.data.pkstu + "'",{}).then((res, response, o) =>{
         return res;
     });
-    // var response = await api.tx(req).post("/Scan_Start1",req.data);
-    return api.tx(req).post("/Find_Scan?pkkey='" + req.data.pkkey + "'&pkbst='" + req.data.pkbst + "'&pkstu='" + req.data.pkstu + "'",{}).then((res, response, o) =>{
-        return response;
-    });
-    console.log(response.headers)
-   
-    // return kandanListScanSrv.run(req.query);
-    //Find_Scan?sap-client=120&pkkey='1'&pkbst='9'&pkstu='' Find_Scan?sap-client=120&pkkey='293'&pkbst='5'&pkstu='Y101'
-    //sap-message: {"code":"ZHPP00/079","message":"1","target":"","severity":"info","transition":true,"details":[]}
+});
 
+this.on('ZCDSEHPPB0093', async (req) => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0017');
+    return kandanListScanSrv.run(req.query);
 });
 
 this.on('READ', 'ZCDSEHPPB0085', async req => {

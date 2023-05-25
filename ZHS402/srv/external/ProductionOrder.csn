@@ -1,6 +1,6 @@
 {
   "meta": {
-    "creator": "cds-dk 6.7.0"
+    "creator": "cds-dk 6.8.1"
   },
   "$version": "2.0",
   "definitions": {
@@ -2069,6 +2069,22 @@
           "type": "cds.String",
           "length": 8
         },
+        "MfgOrderScheduledStartDateUF": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "MfgOrderScheduledEndDateUF": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
         "StorageLocation": {
           "type": "cds.String",
           "length": 4,
@@ -2202,9 +2218,12 @@
           "@sap.quickinfo": "Completion confirmation number for the operation"
         },
         "PrintDate": {
-          "type": "cds.Decimal",
-          "precision": 15,
-          "scale": 0
+          "type": "cds.String",
+          "length": 20,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
         },
         "RePrint": {
           "type": "cds.String",

@@ -848,7 +848,9 @@ service ZCDSEHBTC0010 {
             title,
             PrssType,
             MfgOrderScheduledStartDate,
+            MfgOrderScheduledStartDateUF,
             MfgOrderScheduledEndDate,
+            MfgOrderScheduledEndDateUF,
             StorageLocation,
             Material,
             MfgOrderPlannedTotalQty,
@@ -888,6 +890,7 @@ service ZCDSEHBTC0010 {
             TRWorkCenter,
             ReportId,
             Scanner,
+
             to_OpertaionsListColumn1 : Association to many ProductionOrder.ZCDSEHPPB0031 on OrderNumber = $projection.OrderNumber,
             to_OpertaionsListColumn2 : Association to many ProductionOrder.ZCDSEHPPB0031 on OrderNumber = $projection.OrderNumber,
             to_OpertaionsListColumn3 : Association to many ProductionOrder.ZCDSEHPPB0031 on OrderNumber = $projection.OrderNumber
