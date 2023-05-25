@@ -14,7 +14,16 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
     });
     that.on('READ', 'ZCDSEBPS0012', async req => {
         const bupa = await cds.connect.to('db');
+        // req.query.SELECT.columns.splice(5,1);
+        // req.query.SELECT.columns.splice(6,1);
+        // if(req.query.SELECT.where[0].hasOwnProperty('xpr') ){
+        //     req.query.SELECT.where.splice(0,1);
+        //     if(req.query.SELECT.where[0] === 'and') {
+        //         req.query.SELECT.where.splice(0,1);
+        //     }
+        // }
         let results = await bupa.run(req.query);
+        
         let arrayInput = [];
         if (Array.isArray(results)) {
             for (let result of results) {
@@ -84,7 +93,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             });
         }
         let oData = oDataResults[0];
-        if ((!oData.ZQTY || oData.ZQTY === 1) && oData.ZZ1_MSCODE !== '020') {
+        if ((!oData.ZQTY || oData.ZQTY === 1 || oData.ZQTY === '1' || oData.ZQTY === '1.00') && oData.ZZ1_MSCODE === '020') {
             req.reject({
                 code: 403,
                 message: 'Split can be done only when quantity is more than 1 and Material Type is Built-in Cabinet'
@@ -217,14 +226,14 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
     that.on('DOCreate', async (req) => {
         const db = await cds.connect.to("db");
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
-        const DoNumSeqHelper = new SequenceHelper({
+        const productId = new SequenceHelper({
             db: db,
-            sequence: "ZTHBT005_ZDONUM",
-            table: "ZTHBT0055",
-            field: "ZDONUM"
+            sequence: "INVOICE_ID",
+            table: "ZTHBT0022",
+            field: "ID"
         });
         for (oData of oDataResults) {
-            oData.ZDONUM = await DoNumSeqHelper.getNextNumber();
+            oData.ZDONUM = await await productId.getNextNumber();
         }
         await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
         req.info({
@@ -296,14 +305,17 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
         if(enteredQuantity === 0){
             criticality = 1;
         }   
-        if(enteredQuantity < dataFoundInDB.ZQTY) {
-            deletionFlag = 'X';
-            remark += 'System will delete this line, please check';
+        if(dataFoundInDB){
+            if(enteredQuantity < dataFoundInDB.ZQTY) {
+                deletionFlag = 'X';
+                remark += 'System will delete this line, please check';
+            }
+            if ( enteredQuantity === 0 && dataFoundInDB.ZQTY ){
+                deletionFlag = 'X';
+                remark += 'System will delete this line, please check';
+            }
         }
-        if ( enteredQuantity === 0 && dataFoundInDB.ZQTY ){
-            deletionFlag = 'X';
-            remark += 'System will delete this line, please check';
-        }
+        
         if(dataFoundInDB){
             dataForUpdate.push({
                 ID:dataFoundInDB.ID,
@@ -410,9 +422,14 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
             }
         }
     }
-
-    await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForInsert);
-    await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpdate);
+    if(dataForInsert){
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForInsert);
+    }
+    
+    if(dataForUpdate.length){
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpdate);
+    }
+   
     let srv = await cds.connect.to('ZAPIBPS0004');
     req.info({
         code: 200,

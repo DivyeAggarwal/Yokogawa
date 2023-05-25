@@ -1364,7 +1364,6 @@ service ZAPIBPS0004 {
             ProjectDesc
     };
     
-    @odata.draft.enabled
     entity ZCDSEBPS0012 as select from db.ZTHBT0055
            left outer join db.ZTHBT0027 as ZTHBT0027
            on ZTHBT0027.PBUKR = ZTHBT0055.PBUKR
