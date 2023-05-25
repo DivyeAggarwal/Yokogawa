@@ -405,10 +405,10 @@ entity ZTHBT0056 : managed {
         BOM_CRTE_FLAG : String(1)  @title : 'BOM creation Flag';
 }
 entity ZTHBT0059 : managed {
-    key ZSD_GRPSUPP           : String(20) @title : 'Group Supplier';
+        ZSD_GRPSUPP           : String(20) @title : 'Group Supplier';
     key ZWBS_ELEMENT          : String(20) @title : 'WBS Element';
         ZSD_SOWEVENT          : String(3)  @title : 'SOW Event Number';
-        ZSD_MILESTONE         : String(10) @title : 'MileStone Number';
+    key ZSD_MILESTONE         : String(10) @title : 'MileStone Number';
         ZSD_ACTUAL_DATE       : Date       @title : 'Actual Date';
         ZSD_BILLINGPLAN_VALUE : String(16) @title : 'Billing Plan Value';
         ZFG_INVOICE_ID        : String(20) @title : 'FG Invoice ID';
