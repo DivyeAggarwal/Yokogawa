@@ -2885,3 +2885,25 @@ annotate ZAPIBPS0004.ZCDSEBPS0012 {
     })
     PS_POSNR;
 }
+
+
+annotate ZCAPIH0019.CompletionGoodsReceipt {
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'VL_SH_H_T001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Plant,
+                    ValueListProperty : 'BUKRS'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'BUTXT'
+                }
+            ]
+        }
+    })
+    Plant;
+}
