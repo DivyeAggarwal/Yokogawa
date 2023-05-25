@@ -1461,4 +1461,19 @@ service ZCAPIH0019 {
     action cutoff_act(input : Object) returns ZCDSEHPPB0093; 
     action finish_prod(input : Object) returns ZCDSEHPPB0093; 
     action inhouse_prod(input : Object) returns ZCDSEHPPB0093; 
+    entity VL_SH_H_T001                 as projection on external.VL_SH_H_T001;
+
+        
+    @cds.persistence.skip
+    entity CompletionGoodsReceipt {
+        TargetConfirmation     : String(16) @title : 'Target of Confirmation';
+        ConfirmationNo     : String(13) @title : 'Confirmation No';
+        OperationQty     :Decimal(13, 2) @title : 'Operation Qty';
+        Completion      :Decimal(13, 2) @title : 'Completion';
+        CutOff      :String(1) @title : 'Cut Off';
+        Plant        :String(4) @title : 'Plant  ';
+        MaterialGroup      :String(9) @title : 'Material Group';
+        SpecifiedFinishedDate       : Date @title : 'Specified Finished Date';
+
+    }
 }
