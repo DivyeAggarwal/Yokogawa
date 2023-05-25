@@ -2561,7 +2561,6 @@ annotate ZAPIBPS0001.ZCDSEBPS0013 with {
 ZSHPSTAT @UI.HiddenFilter: true;
 }
 
-annotate ZAPIBPS0004.ZCDSEBPS0012 with  @fiori.draft.enabled;
 annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
     UI: {
         DeleteHidden        : true,
@@ -2906,4 +2905,34 @@ annotate ZCAPIH0019.CompletionGoodsReceipt {
         }
     })
     Plant;
+}
+
+annotate  YAPIARD.yentard with @(
+    UI: {
+        
+        HeaderInfo: {
+            TypeName: '',
+            TypeNamePlural: 'Cabinet Component & Shipping Status',
+            Title: { Value: 'Cabinet Component & Shipping Status' },
+            Description: { Value: 'Cabinet Component & Shipping Status' }
+        },
+
+        SelectionFields: [ name],
+        LineItem: [ 
+            { Value: name },
+            {Value: DOB}
+        ],
+        Facets: [
+            {$Type: 'UI.ReferenceFacet', Target: '@UI.FieldGroup#MainAs', Label: 'Details'}
+        ],        
+        FieldGroup#MainAs: {
+            Data: [
+              { Value: name },
+              { Value: DOB}
+            ]
+        }
+    }
+){
+            name @title: 'Name';
+            DOB @title: 'Date Of Birth';
 }

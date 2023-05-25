@@ -272,6 +272,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         let srv = await cds.connect.to('ZAPIBPS0004');
         return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
     });
+    
 
 
 }

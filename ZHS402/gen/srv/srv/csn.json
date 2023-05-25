@@ -4181,6 +4181,74 @@
         }
       }
     },
+    "ZHS402.YARDTESTDB": {
+      "kind": "entity",
+      "includes": [
+        "managed",
+        "cuid"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "name": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "DOB": {
+          "type": "cds.Date"
+        }
+      }
+    },
     "PUBLIC.DUMMY": {
       "kind": "entity",
       "@cds.persistence.exists": true,
@@ -33212,7 +33280,6 @@
     },
     "ZAPIBPS0004.ZCDSEBPS0012": {
       "kind": "entity",
-      "@fiori.draft.enabled": true,
       "@UI.DeleteHidden": true,
       "@UI.SelectionVariant#CAB.$Type": "UI.SelectionVariantType",
       "@UI.SelectionVariant#CAB.SelectOptions": [
@@ -35068,6 +35135,124 @@
         },
         "SpecifiedFinishedDate": {
           "@title": "Specified Finished Date",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "YAPIARD": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "YAPIARD.yentard": {
+      "kind": "entity",
+      "@odata.draft.enabled": true,
+      "@UI.HeaderInfo.TypeName": "",
+      "@UI.HeaderInfo.TypeNamePlural": "Cabinet Component & Shipping Status",
+      "@UI.HeaderInfo.Title.Value": "Cabinet Component & Shipping Status",
+      "@UI.HeaderInfo.Description.Value": "Cabinet Component & Shipping Status",
+      "@UI.SelectionFields": [
+        {
+          "=": "name"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        },
+        {
+          "Value": {
+            "=": "DOB"
+          }
+        }
+      ],
+      "@UI.Facets": [
+        {
+          "$Type": "UI.ReferenceFacet",
+          "Target": "@UI.FieldGroup#MainAs",
+          "Label": "Details"
+        }
+      ],
+      "@UI.FieldGroup#MainAs.Data": [
+        {
+          "Value": {
+            "=": "name"
+          }
+        },
+        {
+          "Value": {
+            "=": "DOB"
+          }
+        }
+      ],
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.YARDTESTDB"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
+        "name": {
+          "@title": "Name",
+          "type": "cds.String",
+          "length": 40
+        },
+        "DOB": {
+          "@title": "Date Of Birth",
           "type": "cds.Date"
         }
       }
