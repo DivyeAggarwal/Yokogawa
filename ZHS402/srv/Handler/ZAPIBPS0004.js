@@ -261,15 +261,23 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
     });
     that.on('DOCreate', async (req) => {
         const db = await cds.connect.to("db");
+        let DONumber;
+        let SavedNumber = await SELECT.from("ZHS402.ZTHBT0073").where({CHANGESETID: req.id});
+        if(!SavedNumber.length) {
+            const DOGenerator = new SequenceHelper({
+                db: db,
+                sequence: "INVOICE_ID",
+                table: "ZTHBT0022",
+                field: "ID"
+            });
+            DONumber =  await DOGenerator.getNextNumber();
+        }
+        else {
+            DONumber = SavedNumber[0].ZDONUM;
+        }
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
-        const productId = new SequenceHelper({
-            db: db,
-            sequence: "INVOICE_ID",
-            table: "ZTHBT0022",
-            field: "ID"
-        });
         for (oData of oDataResults) {
-            oData.ZDONUM = await await productId.getNextNumber();
+            oData.ZDONUM = DONumber; 
         }
         await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
         req.info({
@@ -278,6 +286,9 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         });
         let srv = await cds.connect.to('ZAPIBPS0004');
         return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
+        
+        
+        
     });
     that.on('MassEdit', async (req) => {
         let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);

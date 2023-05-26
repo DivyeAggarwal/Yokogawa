@@ -521,6 +521,10 @@ entity ZTHBT0072: managed {
     key USERID: String(100) @title: 'User Id';
         COPIEDDATA: String(1000) @title: 'Copied Data in stringified format of selected row in ZTHBT0052 table'
 }
+entity ZTHBT0073: managed {
+    key ZDONUM: Integer @title: 'Delivery Order Number';
+        CHANGESETID: UUID @title: 'Change Set Id from Odata Batch Call'
+}
 
 entity YARDTESTDB: managed,cuid {
     name: String(40);
