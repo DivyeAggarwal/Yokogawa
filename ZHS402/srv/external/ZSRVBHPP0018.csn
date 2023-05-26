@@ -1,0 +1,246 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.8.1"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHPP0018": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0018.PickingData": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom CDS View for Picking Data",
+      "elements": {
+        "Plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "notNull": true
+        },
+        "ProdOrd": {
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "notNull": true
+        },
+        "ProdStartDate": {
+          "key": true,
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Prod. Start Date",
+          "@sap.quickinfo": "Field of type DATS",
+          "notNull": true
+        },
+        "ProdStartTime": {
+          "key": true,
+          "type": "cds.Time",
+          "@sap.label": "Prod. Start Time",
+          "@sap.quickinfo": "Time",
+          "notNull": true
+        },
+        "ProdCreateDate": {
+          "key": true,
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Prod. Create Date",
+          "@sap.quickinfo": "Field of type DATS",
+          "notNull": true
+        },
+        "ProdCreateTime": {
+          "key": true,
+          "type": "cds.Time",
+          "@sap.label": "Prod. Create Time",
+          "@sap.quickinfo": "Time",
+          "notNull": true
+        },
+        "SalesDoc": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Document",
+          "notNull": true
+        },
+        "SalesDocItem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Document Item",
+          "notNull": true
+        },
+        "ReserCreDate": {
+          "key": true,
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Reservation Created Date",
+          "@sap.quickinfo": "Field of type DATS",
+          "notNull": true
+        },
+        "ReserCreTime": {
+          "key": true,
+          "type": "cds.Time",
+          "@sap.label": "Reservation Created Time",
+          "@sap.quickinfo": "Time",
+          "notNull": true
+        },
+        "ReserNo": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reservation Number",
+          "@sap.quickinfo": "Sales Document",
+          "notNull": true
+        },
+        "ReserItem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Reservation Item",
+          "@sap.quickinfo": "Sales Document Item",
+          "notNull": true
+        },
+        "issue": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Issue",
+          "@sap.value.list": "fixed-values"
+        },
+        "PickNo": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Picking Number",
+          "@sap.quickinfo": "Sales Document"
+        },
+        "PickItemNo": {
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Picking Item Number",
+          "@sap.quickinfo": "Sales Document Item"
+        },
+        "MSGID": {
+          "type": "cds.String",
+          "length": 20,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MessageClass",
+          "@sap.quickinfo": "Message Class"
+        },
+        "MSGNO": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "MessageNo.",
+          "@sap.quickinfo": "Message Number"
+        },
+        "MSGTP": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Message Type.",
+          "@sap.quickinfo": "Message Type"
+        },
+        "MSGTX": {
+          "type": "cds.String",
+          "length": 255,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Message Text",
+          "@sap.quickinfo": "Char255"
+        }
+      }
+    },
+    "ZSRVBHPP0018.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.label": "Short text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPP0018.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "ExternalCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Commercial",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "UoM Text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@sap.label": "Decimal Places"
+        }
+      }
+    }
+  }
+}

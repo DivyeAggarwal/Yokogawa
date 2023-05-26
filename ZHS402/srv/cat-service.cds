@@ -18,6 +18,7 @@ using BusinessPartner from './external/BusinessPartner';
 using ProjectDetails from './external/ProjectDetails';
 using ZSRVBHPS0011 from './external/ZSRVBHPS0011';
 using ZSRVBHPP0017 from './external/ZSRVBHPP0017';
+using ZSRVBHPP0018 from './external/ZSRVBHPP0018';
 
 
 service CatalogService {
@@ -1486,7 +1487,10 @@ service ZCAPIH0019 {
 
     }
 }
-
+//Create Parts Picking Data 23_0453 4519 
+service ZCAPIH0020 {
+    entity PickingData                as projection on ZSRVBHPP0018.PickingData;
+}
 service YAPIARD {
 @odata.draft.enabled
 entity yentard as projection on db.YARDTESTDB;
