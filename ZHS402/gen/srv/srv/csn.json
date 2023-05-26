@@ -33280,6 +33280,7 @@
     },
     "ZAPIBPS0004.ZCDSEBPS0012": {
       "kind": "entity",
+      "@odata.draft.enabled": true,
       "@UI.DeleteHidden": true,
       "@UI.SelectionVariant#CAB.$Type": "UI.SelectionVariantType",
       "@UI.SelectionVariant#CAB.SelectOptions": [

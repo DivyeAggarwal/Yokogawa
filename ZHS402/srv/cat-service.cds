@@ -1210,7 +1210,17 @@ service ZCAPIH0018 {
 service ZAPIBPS0002 {
     entity ZCDSEBPS0009                 as projection on ZCDSEBPS0007;
     entity ZCDSEBPS0010                 as projection on ZCDSEBPS0008;
-
+    entity ZCDSEBPS0015  as projection on ProjectDetails.ZCDSEHPSC0002 {
+        ProjectId,
+        ProjDesc,
+        ApproverPM
+    };
+    entity Project as projection on TimeSheetEntry.ZCDSEHPSB0032 {
+        key projectId,
+            CompanyCode,
+            wbsElementExt,
+            ProjectDesc
+    };
     entity ZCDSEBPS0004                 as
         select from ZCDSEBPS0005
         left outer join ZCDSEBPS0006
@@ -1368,12 +1378,10 @@ service ZAPIBPS0004 {
             wbsElementExt,
             ProjectDesc
     };
+    entity ZCDSEBPS0016 as projection on db.ZTHBT0027;
+    
     @odata.draft.enabled
-    entity ZCDSEBPS0012 as select from db.ZTHBT0055
-           left outer join db.ZTHBT0027 as ZTHBT0027
-           on ZTHBT0027.PBUKR = ZTHBT0055.PBUKR
-           and ZTHBT0027.MATNR = ZTHBT0055.MATNR
-           and ZTHBT0027.PSPHI = ZTHBT0055.PS_PSPNR {
+    entity ZCDSEBPS0012 as select from db.ZTHBT0055 {
         key ID,
             ZCABNUM,
             ZTHBT0055.PBUKR,

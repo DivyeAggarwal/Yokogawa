@@ -12,17 +12,18 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         const bupa = await cds.connect.to('ProjectDetails');
         return bupa.run(req.query);
     });
-    that.on('READ', 'ZCDSEBPS0012', async req => {
-        const bupa = await cds.connect.to('db');
-        // req.query.SELECT.columns.splice(5,1);
-        // req.query.SELECT.columns.splice(6,1);
-        // if(req.query.SELECT.where[0].hasOwnProperty('xpr') ){
-        //     req.query.SELECT.where.splice(0,1);
-        //     if(req.query.SELECT.where[0] === 'and') {
-        //         req.query.SELECT.where.splice(0,1);
-        //     }
-        // }
-        let results = await bupa.run(req.query);
+    that.after('READ', 'ZCDSEBPS0012', async req => {
+        // const bupa = await cds.connect.to('db');
+        // // req.query.SELECT.columns.splice(5,1);
+        // // req.query.SELECT.columns.splice(6,1);
+        // // if(req.query.SELECT.where[0].hasOwnProperty('xpr') ){
+        // //     req.query.SELECT.where.splice(0,1);
+        // //     if(req.query.SELECT.where[0] === 'and') {
+        // //         req.query.SELECT.where.splice(0,1);
+        // //     }
+        // // }
+         let results = req;
+        //  await bupa.run(req.query);
         
         let arrayInput = [];
         if (Array.isArray(results)) {

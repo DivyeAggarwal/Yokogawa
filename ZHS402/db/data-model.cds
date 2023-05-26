@@ -500,7 +500,9 @@ entity ZTHBT0055 : managed,cuid {
     ZDOPDATE:Date @title : 'DO Plan Date';		
     ZDOADATE:Date @title : 'DO Actual Date';	
     ZDELFLAG:String(1) @title : 'Deletion Flag';
-    ZSHPSTAT:String(1) @title : 'Shipping Status';
+    ZSHPSTAT:String(1) @title : 'Shipping Status' enum {
+        Shipped = 'X'
+    };
     REMARKS: String(1000) @title : 'Shipping Status';
     CRITICALITY:Integer @title : 'Confirm Status'
 }

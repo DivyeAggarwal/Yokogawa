@@ -778,10 +778,10 @@ this.on('READ', 'ZCDSEHPPB0069', async req => {
         const product = await cds.connect.to('ZSRVBHPP0012');
         return product.run(req.query);
     });
-    this.on('READ','yentard', async req => {
+    this.after('READ', 'yentard', async req => {
         const product = await cds.connect.to('YAPIARD');
         return product.run(req.query);
-    })
+    });
 
 });
 

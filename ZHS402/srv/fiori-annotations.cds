@@ -2208,6 +2208,49 @@ annotate  ZAPIBPS0001.ZCDSEBPS0003 with @(
 ){
     
 };
+annotate ZAPIBPS0001.ZCDSEBPS0003 {
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0002',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PS_PSPNR,
+                    ValueListProperty : 'ProjectId'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ProjDesc'
+                }
+            ]
+        }
+    })
+    PS_PSPNR;
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'ZTHBT0055',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PBUKR,
+                    ValueListProperty : 'PBUKR'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PS_PSPNR,
+                    ValueListProperty : 'PS_PSPNR'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ZDONUM,
+                    ValueListProperty : 'ZDONUM'
+                }
+            ]
+        }
+    })
+    ZDONUM;
+}
+
 
 annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
     UI: {
@@ -2261,7 +2304,7 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
         }
     }
 ){
-    PBUKR @title: 'Company Code' @mandatory;
+    PBUKR @title: 'Company Code' ;
     PSPHI @title: 'Project Definition';
     PS_PSP_PNR @title: 'WBS Element';
     ZZ1_MSCODE_PRD @title: 'MS Code';
@@ -2274,6 +2317,81 @@ annotate  ZAPIBPS0002.ZCDSEBPS0004 with @(
     CONFIRM_STATUS @title: 'Confirm Status';
     REASON_DIFF @title: 'Reason for Difference';
 };
+
+annotate ZAPIBPS0002.ZCDSEBPS0004 {
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0015',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PSPHI,
+                    ValueListProperty : 'ProjectId'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ProjDesc'
+                }
+            ]
+        }
+    })
+    PSPHI;
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'Project',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PS_PSP_PNR,
+                    ValueListProperty : 'wbsElementExt'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PSPHI,
+                    ValueListProperty : 'projectId'
+                },
+            ]
+        }
+    })
+    PS_PSP_PNR;
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0011',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PBUKR,
+                    ValueListProperty : 'PBUKR'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PSPHI,
+                    ValueListProperty : 'PSPHI'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PS_PSP_PNR,
+                    ValueListProperty : 'PS_PSP_PNR'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ZZ1_MSCODE_PRD,
+                    ValueListProperty : 'ZZ1_MSCODE_PRD'
+                }
+            ]
+        }
+    })
+    ZZ1_MSCODE_PRD;
+}
+annotate ZAPIBPS0002.ZCDSEBPS0004 with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            PBUKR
+        ],
+    }
+});
+
 
 annotate  ZAPIBPS0002.ZCDSEBPS0009 with @(
     UI: {
@@ -2454,6 +2572,80 @@ annotate  ZAPIBPS0002.ZCDSEBPS0011 with @(
     CONFIRM_STATUS @title: 'Confirm Status';
     REASON_DIFF @title: 'Reason for Difference';
 };
+annotate ZAPIBPS0002.ZCDSEBPS0011 {
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0015',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PSPHI,
+                    ValueListProperty : 'ProjectId'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'ProjDesc'
+                }
+            ]
+        }
+    })
+    PSPHI;
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'Project',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PS_PSP_PNR,
+                    ValueListProperty : 'wbsElementExt'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PSPHI,
+                    ValueListProperty : 'projectId'
+                },
+            ]
+        }
+    })
+    PS_PSP_PNR;
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0011',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PBUKR,
+                    ValueListProperty : 'PBUKR'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PSPHI,
+                    ValueListProperty : 'PSPHI'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PS_PSP_PNR,
+                    ValueListProperty : 'PS_PSP_PNR'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ZZ1_MSCODE_PRD,
+                    ValueListProperty : 'ZZ1_MSCODE_PRD'
+                }
+            ]
+        }
+    })
+    ZZ1_MSCODE_PRD;
+}
+annotate ZAPIBPS0002.ZCDSEBPS0011 with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            PBUKR
+        ],
+    }
+});
+
 annotate ZAPIBPS0001.ZCDSEBPS0013 with {
     ZDONUM  @title : 'DO Number';
 }
@@ -2564,6 +2756,7 @@ ZSHPSTAT @UI.HiddenFilter: true;
 annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
     UI: {
         DeleteHidden        : true,
+        CreateHidden        : true,
         SelectionVariant #CAB:{
             $Type : 'UI.SelectionVariantType',
             SelectOptions : [
@@ -2657,7 +2850,7 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { Value: ZQTY,![@Common.FieldControl] : #ReadOnly },
             { Value: ZUT,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDESCRIP ,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZSER ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSER },
             { Value: ZSHTP ,![@Common.FieldControl] : #ReadOnly },
             { Value: ZSHPNAME1,![@Common.FieldControl] : #ReadOnly },
             { Value: ZSHPNAME2 ,![@Common.FieldControl] : #ReadOnly },
@@ -2666,7 +2859,7 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { Value: ZCONTACTTEL ,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDELNOTE1,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDELNOTE2,![@Common.FieldControl] : #ReadOnly },
-            { Value: ZDONUM,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZDONUM},
             { Value: ZDOITEM,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDOPDATE ,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDOADATE ,![@Common.FieldControl] : #ReadOnly },
@@ -2689,7 +2882,7 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
     }
 ){
     
-            PBUKR @title: 'Company code';
+            PBUKR @title: 'Company code' ;
             PS_PSPNR @title: 'Project Definition';
             PS_POSNR @title: 'WBS Element';
             MATNR @title: 'SAP Material';
@@ -2730,6 +2923,15 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             CRITICALITY @title: 'Confirm status';
             REMARKS @title: 'Remark';
 };
+annotate ZAPIBPS0004.ZCDSEBPS0012 with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            PBUKR,
+            PS_PSPNR
+        ],
+    }
+});
 
 
 annotate ZCAPIH0018.ZCDSEHPPB0085 @(Capabilities.FilterRestrictions : {
@@ -2875,7 +3077,7 @@ annotate ZAPIBPS0004.ZCDSEBPS0012 {
                     ValueListProperty : 'wbsElementExt'
                 },
                 {
-                    $Type             : 'Common.ValueListParameterInOut',
+                    $Type             : 'Common.ValueListParameterIn',
                     LocalDataProperty : PS_PSPNR,
                     ValueListProperty : 'projectId'
                 },
@@ -2883,6 +3085,34 @@ annotate ZAPIBPS0004.ZCDSEBPS0012 {
         }
     })
     PS_POSNR;
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'ZCDSEBPS0016',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PBUKR,
+                    ValueListProperty : 'PBUKR'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : PS_PSPNR,
+                    ValueListProperty : 'PSPHI'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : MATNR,
+                    ValueListProperty : 'MATNR'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ZSER,
+                    ValueListProperty : 'SERNR'
+                }
+            ]
+        }
+    })
+    ZSER;
 }
 
 

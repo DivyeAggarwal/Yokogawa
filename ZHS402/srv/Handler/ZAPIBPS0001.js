@@ -7,19 +7,11 @@ var registerZAPIBPS0001Handler = function (that, cds) {
         const bupa = await cds.connect.to('ProjectDetails');
         return bupa.run(req.query);
     });
-    that.on('READ', 'ZCDSEBPS0003', async req => {
-        const db = await cds.connect.to('db');
-        var oData = await db.run(req.query);
-        //var oDataFiltered;
-        // if(oData instanceof Array){
-        //     oDataFiltered = oData.filter(function(item)
-        //     {
-        //         return item.ZSHPSTAT !== 'P';
-        //     });
-        // }
-        // else {
-        //     oDataFiltered = oData;
-        // }
+    that.before('READ','ZCDSEBPS0003', async req => {
+        console.log(req);
+    });
+    that.after('READ', 'ZCDSEBPS0003', async req => {
+        var oData = req;
         var oDataWithCustomer = await populateCustomerFullName(oData);
         var oDataWithManager = await populateManager(oDataWithCustomer);
         return oDataWithManager;
