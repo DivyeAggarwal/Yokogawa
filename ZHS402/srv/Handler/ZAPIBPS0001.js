@@ -8,7 +8,13 @@ var registerZAPIBPS0001Handler = function (that, cds) {
         return bupa.run(req.query);
     });
     that.before('READ','ZCDSEBPS0003', async req => {
-        console.log(req);
+        if(!req._queryOptions.$filter || (!req._queryOptions.$filter.includes('PS_PSPNR') && !req._queryOptions.$filter.includes('ZDONUM'))){
+            req.reject({
+                code: 403,
+                message: 'Either Project Definition or DO Number is mandatory'
+            });
+        }
+
     });
     that.after('READ', 'ZCDSEBPS0003', async req => {
         var oData = req;

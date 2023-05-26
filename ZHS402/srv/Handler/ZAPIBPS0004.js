@@ -71,22 +71,54 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         return results;
     })
     that.on('DeleteSet', async (req) => {
-        let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
+        let srv = await cds.connect.to('ZAPIBPS0004');
+        let oDataResults =  await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
+        let dataForUpsert = [];
         for (oData of oDataResults) {
-
-            oData.ZDELFLAG = 'X';
+            dataForUpsert.push({
+                ID:oData.ID,
+                ZCABNUM: oData.ZCABNUM,
+                PBUKR: oData.PBUKR,
+                PS_PSPNR: oData.PS_PSPNR,
+                ZMSCODE: oData.ZMSCODE,
+                PS_POSNR: oData.PS_POSNR,	
+                MATNR: oData.MATNR,
+                ZZ1_MSCODE: oData.ZZ1_MSCODE,
+                ZIDEX: oData.ZIDEX,
+                ZVMCODE: oData.ZVMCODE,
+                ZQTY: oData.ZQTY,
+                ZUT: oData.ZUT,
+                ZDESCRIP: oData.ZDESCRIP,				
+                ZSER: oData.ZSER,	
+                ZSHTP: oData.ZSHTP,	
+                ZSHPNAME1: oData.ZSHPNAME1,
+                ZSHPNAME2: oData.ZSHPNAME2,	
+                ZSHPNAME3: oData.ZSHPNAME3,
+                ZSHPNAME4: oData.ZSHPNAME4,
+                ZCONTACTTEL: oData.ZCONTACTTEL,	
+                ZDELNOTE1: oData.ZDELNOTE1,
+                ZDELNOTE2: oData.ZDELNOTE2,
+                ZDONUM: oData.ZDONUM,
+                ZDOITEM: oData.ZDOITEM,
+                ZDOPDATE: oData.ZDOPDATE,	
+                ZDOADATE: oData.ZDOADATE,	
+                ZDELFLAG: 'X',
+                ZSHPSTAT: oData.ZSHPSTAT,
+                CRITICALITY: oData.CRITICALITY,
+                REMARKS: oData.REMARKS
+            })
         }
-        await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpsert);
         req.info({
             code: 200,
             message: 'Deletion flag is set successfully'
         });
-        let srv = await cds.connect.to('ZAPIBPS0004');
         return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
 
     });
     that.on('split', async (req) => {
-        let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
+        let srv = await cds.connect.to('ZAPIBPS0004');
+        let oDataResults =  await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
         if (oDataResults.length > 1) {
             req.reject({
                 code: 403,
@@ -105,6 +137,9 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             let newRow = Object.assign({}, oData);
             newRow.ZQTY = 1;
             delete newRow.ID;
+            delete newRow.IsActiveEntity;     
+            delete newRow.HasActiveEntity;
+            delete newRow.HasDraftEntity;
             delete newRow.createdAt;
             delete newRow.createdBy;
             delete newRow.modifiedAt;

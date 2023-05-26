@@ -7,19 +7,17 @@ var registerZAPIBPS0001Handler = function (that, cds) {
         const bupa = await cds.connect.to('ProjectDetails');
         return bupa.run(req.query);
     });
-    that.on('READ', 'ZCDSEBPS0003', async req => {
-        const db = await cds.connect.to('db');
-        var oData = await db.run(req.query);
-        //var oDataFiltered;
-        // if(oData instanceof Array){
-        //     oDataFiltered = oData.filter(function(item)
-        //     {
-        //         return item.ZSHPSTAT !== 'P';
-        //     });
-        // }
-        // else {
-        //     oDataFiltered = oData;
-        // }
+    that.before('READ','ZCDSEBPS0003', async req => {
+        if(!req._queryOptions.$filter || (!req._queryOptions.$filter.includes('PS_PSPNR') && !req._queryOptions.$filter.includes('ZDONUM'))){
+            req.reject({
+                code: 403,
+                message: 'Either Project Definition or DO Number is mandatory'
+            });
+        }
+
+    });
+    that.after('READ', 'ZCDSEBPS0003', async req => {
+        var oData = req;
         var oDataWithCustomer = await populateCustomerFullName(oData);
         var oDataWithManager = await populateManager(oDataWithCustomer);
         return oDataWithManager;
