@@ -13,18 +13,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         return bupa.run(req.query);
     });
     that.after('READ', 'ZCDSEBPS0012', async req => {
-        // const bupa = await cds.connect.to('db');
-        // // req.query.SELECT.columns.splice(5,1);
-        // // req.query.SELECT.columns.splice(6,1);
-        // // if(req.query.SELECT.where[0].hasOwnProperty('xpr') ){
-        // //     req.query.SELECT.where.splice(0,1);
-        // //     if(req.query.SELECT.where[0] === 'and') {
-        // //         req.query.SELECT.where.splice(0,1);
-        // //     }
-        // // }
          let results = req;
-        //  await bupa.run(req.query);
-        
         let arrayInput = [];
         if (Array.isArray(results)) {
             for (let result of results) {
@@ -39,7 +28,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             }
         }
         let objectCustomer = {};
-        await PrepareResultObject(arrayInput, objectCustomer);
+        //await PrepareResultObject(arrayInput, objectCustomer);
 
         /*Manipulate the result from cloud and On Premise */
         if (Array.isArray(results)) {
@@ -49,10 +38,8 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                     if (dataFromObject) {
                         delete dataFromObject.Customer;
                         Object.assign(result, dataFromObject);
-
                     }
                 }
-
             }
         }
         else {
@@ -403,9 +390,6 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         });
         return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
     });
-    
-
-
 }
 
 async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompanyCodes, whollyupload) {
@@ -569,7 +553,6 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
     });
 
 };
-
 const PrepareResultObject = async (arrayInput, objectCustomer) => {
     const bupa = await cds.connect.to('BusinessPartner');
     const customers = await bupa.get('ZAPIBPS0004.Customer').where({ Customer: { in: arrayInput } });
@@ -583,11 +566,9 @@ const PrepareResultObject = async (arrayInput, objectCustomer) => {
         }
     }
 }
-
 const getExistingCabinets = async (arrayProjectDefinitions, arrayCompanyCodes) => {
     return await SELECT.from("ZHS402.ZTHBT0055").where({ PBUKR: { in: arrayCompanyCodes }, and: { PS_PSPNR: { in: arrayProjectDefinitions } } });
 }
-
 async function getGenerateNewNumber(that,req,SequenceHelper,db) {
     if(!that.DONumberMap){
         that.DONumberMap = {};
