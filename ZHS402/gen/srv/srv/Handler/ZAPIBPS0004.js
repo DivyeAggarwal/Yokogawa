@@ -567,6 +567,7 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
         code: 200,
         message: 'Data is been uploaded successfull'
     });
+    return await srv.get('ZAPIBPS0004.ZCDSEBPS0012');
 
 };
 
