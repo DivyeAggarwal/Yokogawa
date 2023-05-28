@@ -138,9 +138,34 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             delete newRow.createdBy;
             delete newRow.modifiedAt;
             delete newRow.modifiedBy;
+            delete newRow.name1;
+            delete newRow.name2;
+            delete newRow.PostalCode;
+            delete newRow.Region;
+            delete newRow.City;
+            delete newRow.StreetName;
+            delete newRow.TelephoneNumber1;
+            delete newRow.BusinessPartnerName3;
+            delete newRow.BusinessPartnerName4;
+            delete newRow.StreetPrefixName;
+            delete newRow.AdditionalStreetPrefixName;
             oData.ZQTY = oData.ZQTY - 1;
             dataForInsert.push(newRow);
         }
+        delete oData.name1;
+        delete oData.name2;
+        delete oData.PostalCode;
+        delete oData.Region;
+        delete oData.City;
+        delete oData.StreetName;
+        delete oData.TelephoneNumber1;
+        delete oData.BusinessPartnerName3;
+        delete oData.BusinessPartnerName4;
+        delete oData.StreetPrefixName;
+        delete oData.AdditionalStreetPrefixName;
+        delete oData.IsActiveEntity;
+        delete oData.HasActiveEntity;
+        delete oData.HasDraftEntity;
         await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForInsert);
         await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
         if (!this.isSplitMessageRaised) {
@@ -265,9 +290,9 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                     ZCONTACTTEL: copiedData.ZCONTACTTEL,
                     ZDELNOTE1: copiedData.ZDELNOTE1,
                     ZDELNOTE2: copiedData.ZDELNOTE2,
-                    ZDONUM: DONumber,
+                    ZDONUM: oData.ZDONUM,
                     ZDOITEM: oData.ZDOITEM,
-                    ZDOPDATE: oData.copiedData.ZDOPDATE,
+                    ZDOPDATE: copiedData.ZDOPDATE,
                     ZDOADATE: oData.ZDOADATE,
                     ZDELFLAG: oData.ZDELFLAG,
                     ZSHPSTAT: oData.ZSHPSTAT,
@@ -398,7 +423,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                 ZDELNOTE2: oData.ZDELNOTE2,
                 ZDONUM: oData.ZDONUM,
                 ZDOITEM: oData.ZDOITEM,
-                ZDOPDATE: oData.oData.ZDOPDATE,
+                ZDOPDATE: oData.ZDOPDATE,
                 ZDOADATE: oData.ZDOADATE,
                 ZDELFLAG: oData.ZDELFLAG,
                 ZSHPSTAT: oData.ZSHPSTAT,
@@ -406,7 +431,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                 REMARKS: oData.REMARKS
             })
         }
-        await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpsert);
         if (!this.isMassEditMessageRaised) {
             this.isMassEditMessageRaised = true;
             req.info({
