@@ -336,13 +336,11 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             that.DONumberMap[req.id].numberOfComponent = DONumberMap.numberOfComponent;
         }
         
-        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpsert);
-        if(DONumberMap.numberOfComponent === that.DONumberMap[req.id].numberOfComponent) {
-            req.info({
-                code: 200,
-                message: `DO number is generated and updated successfully against the ID ` + dataForUpsert[0].ID
-            });
-        }
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpsert);  
+        req.info({
+            code: 200,
+            message: `DO number is generated and updated successfully against the ID ` + dataForUpsert[0].ID
+        });
         return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);  
     });
     that.on('MassEdit', async (req) => {
@@ -598,9 +596,9 @@ async function getGenerateNewNumber(that,req,SequenceHelper,db) {
     if(!that.DONumberMap[req.id]){
         const DOGenerator = await new SequenceHelper({
             db: db,
-            sequence: "INVOICE_ID",
-            table: "ZTHBT0022",
-            field: "ID"
+            sequence: "ZTHBT0055_ZDONUM",
+            table: "ZTHBT0073",
+            field: "ZDONUM"
         });
         DONumber =  await DOGenerator.getNextNumber();
         if(!that.DONumberMap[req.id]) {
