@@ -157,8 +157,8 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         return oDataResults;
     });
     that.on('copy', async (req) => {
-
-        let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
+        let srv = await cds.connect.to('ZAPIBPS0004');
+        let oDataResults =  await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
         if (oDataResults) {
             let copiedData = {
                 ZSHTP: oDataResults[0].ZSHTP,
@@ -236,63 +236,119 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                 message: 'No Data is availble in clipboard for paste. Kindly Copy before Paste'
             });
         }
-        let oDataSelectedData = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
+        let srv = await cds.connect.to('ZAPIBPS0004');
+        let oDataSelectedData =  await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
+        let dataForUpsert = [];
         if (oDataSelectedData) {
             let copiedData = JSON.parse(oDataCopy[0].COPIEDDATA);
-            for (let selectedData of oDataSelectedData) {
-                selectedData.ZSHTP = copiedData.ZSHTP,
-                    selectedData.ZSHPNAME1 = copiedData.ZSHPNAME1,
-                    selectedData.ZSHPNAME2 = copiedData.ZSHPNAME2,
-                    selectedData.ZSHPNAME3 = copiedData.ZSHPNAME3,
-                    selectedData.ZSHPNAME4 = copiedData.ZSHPNAME4,
-                    selectedData.ZCONTACTTEL = copiedData.ZCONTACTTEL,
-                    selectedData.ZDELNOTE1 = copiedData.ZDELNOTE1,
-                    selectedData.ZDELNOTE2 = copiedData.ZDELNOTE2,
-                    selectedData.ZDOPDATE = copiedData.ZDOPDATE
+            for (let oData of oDataSelectedData) {
+                dataForUpsert.push({
+                    ID:oData.ID,
+                    ZCABNUM: oData.ZCABNUM,
+                    PBUKR: oData.PBUKR,
+                    PS_PSPNR: oData.PS_PSPNR,
+                    ZMSCODE: oData.ZMSCODE,
+                    PS_POSNR: oData.PS_POSNR,	
+                    MATNR: oData.MATNR,
+                    ZZ1_MSCODE: oData.ZZ1_MSCODE,
+                    ZIDEX: oData.ZIDEX,
+                    ZVMCODE: oData.ZVMCODE,
+                    ZQTY: oData.ZQTY,
+                    ZUT: oData.ZUT,
+                    ZDESCRIP: oData.ZDESCRIP,				
+                    ZSER: oData.ZSER,  
+                    ZSHTP : copiedData.ZSHTP,
+                    ZSHPNAME1 : copiedData.ZSHPNAME1,
+                    ZSHPNAME2 : copiedData.ZSHPNAME2,
+                    ZSHPNAME3 : copiedData.ZSHPNAME3,
+                    ZSHPNAME4 : copiedData.ZSHPNAME4,
+                    ZCONTACTTEL : copiedData.ZCONTACTTEL,
+                    ZDELNOTE1 : copiedData.ZDELNOTE1,
+                    ZDELNOTE2 : copiedData.ZDELNOTE2,
+                    ZDONUM: DONumber,
+                    ZDOITEM: oData.ZDOITEM,
+                    ZDOPDATE: oData.copiedData.ZDOPDATE,	
+                    ZDOADATE: oData.ZDOADATE,	
+                    ZDELFLAG: oData.ZDELFLAG,
+                    ZSHPSTAT: oData.ZSHPSTAT,
+                    CRITICALITY: oData.CRITICALITY,
+                    REMARKS: oData.REMARKS
+                })
             }
         }
-        await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataSelectedData);
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpsert);
         req.info({
             code: 200,
             message: 'Data is been pasted successfully from clipboard'
         });
-        let srv = await cds.connect.to('ZAPIBPS0004');
         return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
     });
+    that.before('DOCreate', async (req) => {
+        const db = await cds.connect.to("db");
+       let newNumber = await getGenerateNewNumber(that,req,SequenceHelper,db);
+    })
+    that.after('DOCreate', async (req) => {
+        if(that.DONumberMap[req.id])
+        {
+            delete that.DONumberMap[req.id];
+        }
+    })
     that.on('DOCreate', async (req) => {
         const db = await cds.connect.to("db");
-        let DONumber;
-        let SavedNumber = await SELECT.from("ZHS402.ZTHBT0073").where({CHANGESETID: req.id});
-        if(!SavedNumber.length) {
-            const DOGenerator = new SequenceHelper({
-                db: db,
-                sequence: "INVOICE_ID",
-                table: "ZTHBT0022",
-                field: "ID"
-            });
-            DONumber =  await DOGenerator.getNextNumber();
-        }
-        else {
-            DONumber = SavedNumber[0].ZDONUM;
-        }
-        let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
-        for (oData of oDataResults) {
-            oData.ZDONUM = DONumber; 
-        }
-        await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
-        req.info({
-            code: 200,
-            message: 'DO number is generated and updated successfully'
-        });
+        let DONumberMap  = await getGenerateNewNumber(that,req,SequenceHelper,db);
         let srv = await cds.connect.to('ZAPIBPS0004');
-        return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
+        let oDataResults =  await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
+        let dataForUpsert = [];
+        for (oData of oDataResults) {
+            dataForUpsert.push({
+                ID:oData.ID,
+                ZCABNUM: oData.ZCABNUM,
+                PBUKR: oData.PBUKR,
+                PS_PSPNR: oData.PS_PSPNR,
+                ZMSCODE: oData.ZMSCODE,
+                PS_POSNR: oData.PS_POSNR,	
+                MATNR: oData.MATNR,
+                ZZ1_MSCODE: oData.ZZ1_MSCODE,
+                ZIDEX: oData.ZIDEX,
+                ZVMCODE: oData.ZVMCODE,
+                ZQTY: oData.ZQTY,
+                ZUT: oData.ZUT,
+                ZDESCRIP: oData.ZDESCRIP,				
+                ZSER: oData.ZSER,	
+                ZSHTP: oData.ZSHTP,	
+                ZSHPNAME1: oData.ZSHPNAME1,
+                ZSHPNAME2: oData.ZSHPNAME2,	
+                ZSHPNAME3: oData.ZSHPNAME3,
+                ZSHPNAME4: oData.ZSHPNAME4,
+                ZCONTACTTEL: oData.ZCONTACTTEL,	
+                ZDELNOTE1: oData.ZDELNOTE1,
+                ZDELNOTE2: oData.ZDELNOTE2,
+                ZDONUM: DONumberMap.DONumber,
+                ZDOITEM: DONumberMap.numberOfCabinet.toString().padStart(3, '0') + DONumberMap.numberOfComponent.toString().padStart(4, '0'),
+                ZDOPDATE: oData.ZDOPDATE,	
+                ZDOADATE: oData.ZDOADATE,	
+                ZDELFLAG: oData.ZDELFLAG,
+                ZSHPSTAT: oData.ZSHPSTAT,
+                CRITICALITY: oData.CRITICALITY,
+                REMARKS: oData.REMARKS
+            })
+            DONumberMap.numberOfComponent = DONumberMap.numberOfComponent + 1;
+            that.DONumberMap[req.id].numberOfComponent = DONumberMap.numberOfComponent;
+        }
         
-        
-        
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpsert);
+        if(DONumberMap.numberOfComponent === that.DONumberMap[req.id].numberOfComponent) {
+            req.info({
+                code: 200,
+                message: `DO number is generated and updated successfully against the ID ` + dataForUpsert[0].ID
+            });
+        }
+        return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);  
     });
     that.on('MassEdit', async (req) => {
-        let oDataResults = await SELECT.from("ZHS402.ZTHBT0055").where(req.query.SELECT.from.ref[0].where);
-
+        let srv = await cds.connect.to('ZAPIBPS0004');
+        let oDataResults =  await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
+        let dataForUpsert = [];
         for (oData of oDataResults) {
             if (req.data.ZSHTP) {
                 oData.ZSHTP = req.data.ZSHTP;
@@ -309,14 +365,44 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             if (req.data.ZSHPNAME4) {
                 oData.ZSHPNAME4 = req.data.ZSHPNAME4;
             }
-
+            dataForUpsert.push({
+                ID:oData.ID,
+                ZCABNUM: oData.ZCABNUM,
+                PBUKR: oData.PBUKR,
+                PS_PSPNR: oData.PS_PSPNR,
+                ZMSCODE: oData.ZMSCODE,
+                PS_POSNR: oData.PS_POSNR,	
+                MATNR: oData.MATNR,
+                ZZ1_MSCODE: oData.ZZ1_MSCODE,
+                ZIDEX: oData.ZIDEX,
+                ZVMCODE: oData.ZVMCODE,
+                ZQTY: oData.ZQTY,
+                ZUT: oData.ZUT,
+                ZDESCRIP: oData.ZDESCRIP,				
+                ZSER: oData.ZSER,  
+                ZSHTP : oData.ZSHTP,
+                ZSHPNAME1 : oData.ZSHPNAME1,
+                ZSHPNAME2 : oData.ZSHPNAME2,
+                ZSHPNAME3 : oData.ZSHPNAME3,
+                ZSHPNAME4 : oData.ZSHPNAME4,
+                ZCONTACTTEL : oData.ZCONTACTTEL,
+                ZDELNOTE1 : oData.ZDELNOTE1,
+                ZDELNOTE2 : oData.ZDELNOTE2,
+                ZDONUM: oData.ZDONUM,
+                ZDOITEM: oData.ZDOITEM,
+                ZDOPDATE: oData.oData.ZDOPDATE,	
+                ZDOADATE: oData.ZDOADATE,	
+                ZDELFLAG: oData.ZDELFLAG,
+                ZSHPSTAT: oData.ZSHPSTAT,
+                CRITICALITY: oData.CRITICALITY,
+                REMARKS: oData.REMARKS
+            })
         }
         await UPSERT.into('ZHS402.ZTHBT0055').entries(oDataResults);
         req.info({
             code: 200,
             message: 'Successfully updated'
         });
-        let srv = await cds.connect.to('ZAPIBPS0004');
         return await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
     });
     
@@ -503,6 +589,29 @@ const PrepareResultObject = async (arrayInput, objectCustomer) => {
 
 const getExistingCabinets = async (arrayProjectDefinitions, arrayCompanyCodes) => {
     return await SELECT.from("ZHS402.ZTHBT0055").where({ PBUKR: { in: arrayCompanyCodes }, and: { PS_PSPNR: { in: arrayProjectDefinitions } } });
+}
+
+async function getGenerateNewNumber(that,req,SequenceHelper,db) {
+    if(!that.DONumberMap){
+        that.DONumberMap = {};
+    }
+    if(!that.DONumberMap[req.id]){
+        const DOGenerator = await new SequenceHelper({
+            db: db,
+            sequence: "INVOICE_ID",
+            table: "ZTHBT0022",
+            field: "ID"
+        });
+        DONumber =  await DOGenerator.getNextNumber();
+        if(!that.DONumberMap[req.id]) {
+            that.DONumberMap[req.id] = {DONumber, numberOfCabinet:1,numberOfComponent:1};
+            await UPSERT.into('ZHS402.ZTHBT0073').entries({CHANGESETID: req.id,ZDONUM:DONumber});
+        }
+        return DONumber
+    } 
+    else {
+        return that.DONumberMap[req.id];
+    }  
 }
 
 module.exports = registerZAPIBPS0004Handler;
