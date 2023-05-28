@@ -2819,7 +2819,7 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { Value: ZDOPDATE },
             { Value: ZDOADATE },
             { Value: ZDELFLAG},
-            { Value: ZSHPSTAT},
+            { Value: ZSHPSTAT.},
             { Value: PostalCode},
             { Value: Region},
             { Value: City},
@@ -2851,7 +2851,7 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             { Value: ZUT,![@Common.FieldControl] : #ReadOnly },
             { Value: ZDESCRIP ,![@Common.FieldControl] : #ReadOnly },
             { Value: ZSER },
-            { Value: ZSHTP ,![@Common.FieldControl] : #ReadOnly },
+            { Value: ZSHTP },
             { Value: ZSHPNAME1,![@Common.FieldControl] : #ReadOnly },
             { Value: ZSHPNAME2 ,![@Common.FieldControl] : #ReadOnly },
             { Value: ZSHPNAME3,![@Common.FieldControl] : #ReadOnly },
@@ -3113,9 +3113,75 @@ annotate ZAPIBPS0004.ZCDSEBPS0012 {
         }
     })
     ZSER;
-}
-
-
+    @(Common : {
+        ValueList : {
+            CollectionPath : 'Customer',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : ZSHTP,
+                    ValueListProperty : 'Customer'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : name1,
+                    ValueListProperty : 'name1'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : name2,
+                    ValueListProperty : 'name2'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : PostalCode,
+                    ValueListProperty : 'PostalCode'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : Region,
+                    ValueListProperty : 'Region'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : City,
+                    ValueListProperty : 'City'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : StreetName,
+                    ValueListProperty : 'StreetName'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : TelephoneNumber1,
+                    ValueListProperty : 'TelephoneNumber1'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : BusinessPartnerName3,
+                    ValueListProperty : 'BusinessPartnerName3'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : BusinessPartnerName4,
+                    ValueListProperty : 'BusinessPartnerName4'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : StreetPrefixName,
+                    ValueListProperty : 'StreetPrefixName'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterOut',
+                    LocalDataProperty : AdditionalStreetPrefixName,
+                    ValueListProperty : 'AdditionalStreetPrefixName'
+                }
+            ]
+        }
+    })
+    ZSHTP;
+};
 annotate ZCAPIH0019.CompletionGoodsReceipt {
     @(Common : {
         Label     : 'Plant',
