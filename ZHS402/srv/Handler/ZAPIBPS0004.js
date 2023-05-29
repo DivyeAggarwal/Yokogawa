@@ -243,14 +243,24 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                         })
                     }
                     if (data) {
-                        return await CallEntity(entity, data, req, projectDefinitions, companyCodes, whollyupload);
+                        let success;
+                        await CallEntity(entity, data, req, projectDefinitions, companyCodes, whollyupload,success);
+                        if(success){
+                            resolve(req.notify({
+                                message: 'Data has been uploaded successfully.',
+                                status: 200
+                            }));  
+                        }
+                        else {
+                            reject(req.error(400, 'Error while uploading the data. Kindly try again. Kindly notify the admin if the issue persists'));
+                        }
                     }
                 });
             });
         }
-        //  else {
-        //     return next();
-        // }
+         else {
+            return next();
+        }
     });
     that.on('paste', async (req) => {
 
@@ -446,7 +456,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
     });
 }
 
-async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompanyCodes, whollyupload) {
+async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompanyCodes, whollyupload,success) {
     let existingCabs = await getExistingCabinets(arrayProjectDefinitions, arrayCompanyCodes);
     let dataForInsert = [];
     let dataForUpdate = [];
@@ -601,12 +611,13 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
     if (dataForUpdate.length) {
         await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpdate);
     }
+    success = true;
 
-    let srv = await cds.connect.to('ZAPIBPS0004');
-    req.info({
-        code: 200,
-        message: 'Data is been uploaded successfull'
-    });
+    // let srv = await cds.connect.to('ZAPIBPS0004');
+    // req.info({
+    //     code: 200,
+    //     message: 'Data is been uploaded successfull'
+    // });
 
 };
 const PrepareResultObject = async (arrayInput, objectCustomer) => {

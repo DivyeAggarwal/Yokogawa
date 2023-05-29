@@ -33840,12 +33840,18 @@
         {
           "$Type": "UI.DataFieldForAction",
           "Action": "ZAPIBPS0004.DeleteSet",
-          "Label": "Delete"
+          "Label": "Delete",
+          "InvocationGrouping": {
+            "#": "ChangeSet"
+          }
         },
         {
           "$Type": "UI.DataFieldForAction",
           "Action": "ZAPIBPS0004.split",
-          "Label": "Split"
+          "Label": "Split",
+          "InvocationGrouping": {
+            "#": "ChangeSet"
+          }
         },
         {
           "$Type": "UI.DataFieldForAction",
@@ -33855,7 +33861,10 @@
         {
           "$Type": "UI.DataFieldForAction",
           "Action": "ZAPIBPS0004.paste",
-          "Label": "Paste"
+          "Label": "Paste",
+          "InvocationGrouping": {
+            "#": "ChangeSet"
+          }
         },
         {
           "$Type": "UI.DataFieldForAction",
@@ -33868,7 +33877,10 @@
         {
           "$Type": "UI.DataFieldForAction",
           "Action": "ZAPIBPS0004.MassEdit",
-          "Label": "MassEdit"
+          "Label": "MassEdit",
+          "InvocationGrouping": {
+            "#": "ChangeSet"
+          }
         },
         {
           "Value": {
@@ -34171,9 +34183,6 @@
         {
           "Value": {
             "=": "ZSHTP"
-          },
-          "@Common.FieldControl": {
-            "#": "ReadOnly"
           }
         },
         {
@@ -34762,6 +34771,93 @@
         },
         "ZSHTP": {
           "@title": "Ship-to-Party",
+          "@Common.ValueList.CollectionPath": "Customer",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "ZSHTP"
+              },
+              "ValueListProperty": "Customer"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "name1"
+              },
+              "ValueListProperty": "name1"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "name2"
+              },
+              "ValueListProperty": "name2"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "PostalCode"
+              },
+              "ValueListProperty": "PostalCode"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "Region"
+              },
+              "ValueListProperty": "Region"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "City"
+              },
+              "ValueListProperty": "City"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "StreetName"
+              },
+              "ValueListProperty": "StreetName"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "TelephoneNumber1"
+              },
+              "ValueListProperty": "TelephoneNumber1"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "BusinessPartnerName3"
+              },
+              "ValueListProperty": "BusinessPartnerName3"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "BusinessPartnerName4"
+              },
+              "ValueListProperty": "BusinessPartnerName4"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "StreetPrefixName"
+              },
+              "ValueListProperty": "StreetPrefixName"
+            },
+            {
+              "$Type": "Common.ValueListParameterOut",
+              "LocalDataProperty": {
+                "=": "AdditionalStreetPrefixName"
+              },
+              "ValueListProperty": "AdditionalStreetPrefixName"
+            }
+          ],
           "type": "cds.String",
           "length": 20
         },
