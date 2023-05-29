@@ -243,14 +243,23 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                         })
                     }
                     if (data) {
-                        return await CallEntity(entity, data, req, projectDefinitions, companyCodes, whollyupload);
+                        let success = await CallEntity(entity, data, req, projectDefinitions, companyCodes, whollyupload);
+                        if(success){
+                            resolve(req.notify({
+                                message: 'Data has been uploaded successfully.',
+                                status: 200
+                            }));  
+                        }
+                        else {
+                            reject(req.error(400, 'Error while uploading the data. Kindly try again. Kindly notify the admin if the issue persists'));
+                        }
                     }
                 });
             });
         }
-        //  else {
-        //     return next();
-        // }
+         else {
+            return next();
+        }
     });
     that.on('paste', async (req) => {
 
@@ -594,19 +603,20 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
             }
         }
     }
-    if (dataForInsert) {
+    if (dataForInsert.length) {
         await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForInsert);
     }
 
     if (dataForUpdate.length) {
         await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpdate);
     }
+    return true;
 
-    let srv = await cds.connect.to('ZAPIBPS0004');
-    req.info({
-        code: 200,
-        message: 'Data is been uploaded successfull'
-    });
+    // let srv = await cds.connect.to('ZAPIBPS0004');
+    // req.info({
+    //     code: 200,
+    //     message: 'Data is been uploaded successfull'
+    // });
 
 };
 const PrepareResultObject = async (arrayInput, objectCustomer) => {

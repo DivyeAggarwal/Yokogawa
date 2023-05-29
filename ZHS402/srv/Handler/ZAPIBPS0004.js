@@ -243,8 +243,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                         })
                     }
                     if (data) {
-                        let success;
-                        await CallEntity(entity, data, req, projectDefinitions, companyCodes, whollyupload,success);
+                        let success = await CallEntity(entity, data, req, projectDefinitions, companyCodes, whollyupload);
                         if(success){
                             resolve(req.notify({
                                 message: 'Data has been uploaded successfully.',
@@ -456,7 +455,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
     });
 }
 
-async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompanyCodes, whollyupload,success) {
+async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompanyCodes, whollyupload) {
     let existingCabs = await getExistingCabinets(arrayProjectDefinitions, arrayCompanyCodes);
     let dataForInsert = [];
     let dataForUpdate = [];
@@ -604,14 +603,14 @@ async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompa
             }
         }
     }
-    if (dataForInsert) {
+    if (dataForInsert.length) {
         await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForInsert);
     }
 
     if (dataForUpdate.length) {
         await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpdate);
     }
-    success = true;
+    return true;
 
     // let srv = await cds.connect.to('ZAPIBPS0004');
     // req.info({
