@@ -4879,6 +4879,7 @@
               ]
             },
             {
+              "key": true,
               "ref": [
                 "SERNR"
               ]
@@ -5009,6 +5010,7 @@
           "length": 35
         },
         "SERNR": {
+          "key": true,
           "type": "cds.String",
           "length": 18
         },
@@ -31331,6 +31333,71 @@
         }
       }
     },
+    "ZAPIBPS0002.ZCDSEBPS0017": {
+      "kind": "entity",
+      "@title": "{i18n>CreatepurchaseItemRecord}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZCDSEBPS0012"
+          ]
+        }
+      },
+      "elements": {
+        "PBUKR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "PSPHI": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "PS_PSP_PNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZZ1_MSCODE_PRD": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80
+        },
+        "MATNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40
+        },
+        "IDNLF": {
+          "type": "cds.String",
+          "length": 35
+        },
+        "SERNR": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "ERFMG": {
+          "@Semantics.quantity.unitOfMeasure": "ERFME",
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ERFME": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "CONFIRM_STATUS": {
+          "type": "cds.Integer"
+        },
+        "REASON_DIFF": {
+          "type": "cds.String",
+          "length": 200
+        }
+      }
+    },
     "ZAPIBPS0002.ZCDSEBPS0015": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -32730,6 +32797,7 @@
               ]
             },
             {
+              "key": true,
               "ref": [
                 "ZCDSEBPS0012",
                 "SERNR"
@@ -33104,6 +33172,7 @@
         },
         "SERNR": {
           "@title": "Serial Number",
+          "key": true,
           "type": "cds.String",
           "length": 18
         },

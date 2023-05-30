@@ -74,7 +74,7 @@ entity ZCDSEBPS0012                     as
         key ZZ1_MSCODE_PRD,
         key MATNR,
             IDNLF,
-            SERNR,
+        KEY SERNR,
             @Semantics.quantity.unitOfMeasure: 'ERFME'
             cast(
                 SUM(
@@ -1211,6 +1211,7 @@ service ZCAPIH0018 {
 service ZAPIBPS0002 {
     entity ZCDSEBPS0009                 as projection on ZCDSEBPS0007;
     entity ZCDSEBPS0010                 as projection on ZCDSEBPS0008;
+    entity ZCDSEBPS0017                 as projection on ZCDSEBPS0012;
     entity ZCDSEBPS0015  as projection on ProjectDetails.ZCDSEHPSC0002 {
         ProjectId,
         ProjDesc,
@@ -1296,7 +1297,7 @@ service ZAPIBPS0002 {
             key ZCDSEBPS0012.ZZ1_MSCODE_PRD,
                 ZCDSEBPS0012.IDNLF,
             key ZCDSEBPS0012.MATNR,
-                ZCDSEBPS0012.SERNR,
+            Key    ZCDSEBPS0012.SERNR,
                 @Semantics.quantity.unitOfMeasure: 'ERFME'
                 ZCDSEBPS0012.ERFMG,
                 ZCDSEBPS0012.ERFME,
