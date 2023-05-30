@@ -25698,59 +25698,73 @@
           "length": 24,
           "notNull": true
         },
+        "MileSton": {
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
         "InvDat": {
-          "@sap.display.format": "Date",
-          "type": "cds.Date",
-          "notNull": false
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
         },
         "ActDat": {
-          "@sap.display.format": "Date",
-          "type": "cds.Date",
-          "notNull": false
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
         },
         "BillVal": {
           "@sap.unit": "Currency",
           "@sap.variable.scale": "true",
           "@sap.label": "Net Value",
           "@sap.quickinfo": "Net Value of the Sales Order in Document Currency",
+          "key": true,
           "type": "cds.Decimal",
           "precision": 15,
           "scale": 3,
-          "notNull": false
+          "notNull": true
         },
         "Currency": {
           "@sap.label": "Document Currency",
           "@sap.quickinfo": "SD Document Currency",
           "@sap.semantics": "currency-code",
+          "key": true,
           "type": "cds.String",
           "length": 5,
-          "notNull": false
+          "notNull": true
         },
         "MainSo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales document",
           "@sap.quickinfo": "Sales Document",
+          "key": true,
           "type": "cds.String",
           "length": 10,
-          "notNull": false
+          "notNull": true
         },
         "DebitSo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales document",
           "@sap.quickinfo": "Sales Document",
+          "key": true,
           "type": "cds.String",
           "length": 10,
-          "notNull": false
+          "notNull": true
         },
         "Status": {
+          "key": true,
           "type": "cds.String",
           "length": 40,
-          "notNull": false
+          "notNull": true
         },
         "ErrMsg": {
+          "key": true,
           "type": "cds.String",
           "length": 200,
-          "notNull": false
+          "notNull": true
         }
       }
     },
@@ -31696,7 +31710,7 @@
               {
                 "ref": [
                   "$projection",
-                  "PS_PSP_PNR"
+                  "PSPHI"
                 ]
               },
               "and",
@@ -31710,7 +31724,7 @@
               {
                 "ref": [
                   "$projection",
-                  "PSPHI"
+                  "PS_PSP_PNR"
                 ]
               },
               "and",
@@ -32626,7 +32640,7 @@
               {
                 "ref": [
                   "$projection",
-                  "PS_PSP_PNR"
+                  "PSPHI"
                 ]
               },
               "and",
@@ -32640,7 +32654,7 @@
               {
                 "ref": [
                   "$projection",
-                  "PSPHI"
+                  "PS_PSP_PNR"
                 ]
               },
               "and",
@@ -61706,59 +61720,73 @@
           "length": 24,
           "notNull": true
         },
+        "MileSton": {
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
         "InvDat": {
-          "@sap.display.format": "Date",
-          "type": "cds.Date",
-          "notNull": false
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
         },
         "ActDat": {
-          "@sap.display.format": "Date",
-          "type": "cds.Date",
-          "notNull": false
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
         },
         "BillVal": {
           "@sap.unit": "Currency",
           "@sap.variable.scale": "true",
           "@sap.label": "Net Value",
           "@sap.quickinfo": "Net Value of the Sales Order in Document Currency",
+          "key": true,
           "type": "cds.Decimal",
           "precision": 15,
           "scale": 3,
-          "notNull": false
+          "notNull": true
         },
         "Currency": {
           "@sap.label": "Document Currency",
           "@sap.quickinfo": "SD Document Currency",
           "@sap.semantics": "currency-code",
+          "key": true,
           "type": "cds.String",
           "length": 5,
-          "notNull": false
+          "notNull": true
         },
         "MainSo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales document",
           "@sap.quickinfo": "Sales Document",
+          "key": true,
           "type": "cds.String",
           "length": 10,
-          "notNull": false
+          "notNull": true
         },
         "DebitSo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales document",
           "@sap.quickinfo": "Sales Document",
+          "key": true,
           "type": "cds.String",
           "length": 10,
-          "notNull": false
+          "notNull": true
         },
         "Status": {
+          "key": true,
           "type": "cds.String",
           "length": 40,
-          "notNull": false
+          "notNull": true
         },
         "ErrMsg": {
+          "key": true,
           "type": "cds.String",
           "length": 200,
-          "notNull": false
+          "notNull": true
         }
       }
     },
@@ -61830,8 +61858,7 @@
         },
         "DecimalPlaces": {
           "@sap.label": "Decimal Places",
-          "type": "cds.Integer",
-          "notNull": false
+          "type": "cds.Integer"
         }
       }
     },

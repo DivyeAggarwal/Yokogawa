@@ -261,6 +261,60 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             return next();
         }
     });
+    that.on('POST', 'ExcelUpload', async (req, next) => {
+        if (req.data.excel) {
+            var entity = req.headers.slug ? req.headers.slog : 'ZCDSEBPS0012';
+            var whollyupload = req.headers.WhollyUplaod !== null ? req.headers.WhollyUplaod : false;
+            const stream = new PassThrough();
+            var buffers = [];
+            req.data.excel.pipe(stream);
+            await new Promise((resolve, reject) => {
+                stream.on('data', dataChunk => {
+                    buffers.push(dataChunk);
+                });
+                stream.on('end', async () => {
+                    var buffer = Buffer.concat(buffers);
+                    var workbook = XLSX.read(buffer, { type: "buffer", cellText: true, cellDates: true, dateNF: 'dd"."mm"."yyyy', cellNF: true, rawNumbers: false });
+                    let data = [];
+                    let companyCodes = [];
+                    let projectDefinitions = [];
+                    const sheets = workbook.SheetNames
+                    for (let i = 0; i < sheets.length; i++) {
+                        const temp = XLSX.utils.sheet_to_json(
+                            workbook.Sheets[workbook.SheetNames[i]], { cellText: true, cellDates: true, dateNF: 'dd"."mm"."yyyy', rawNumbers: false })
+                        temp.forEach((res, index) => {
+                            if (index === 0 || index === 1 || index === 2) return;
+                            data.push(JSON.parse(JSON.stringify(res)));
+                            let projectAdded = projectDefinitions.includes(res['Project Definition']);
+                            if (!projectAdded) {
+                                projectDefinitions.push(res['Project Definition']);
+                            }
+                            let compCodeAdded = companyCodes.includes(res['Company code']);
+                            if (!compCodeAdded) {
+                                companyCodes.push(res['Company code']);
+                            }
+
+                        })
+                    }
+                    if (data) {
+                        let success = await CallEntity(entity, data, req, projectDefinitions, companyCodes, whollyupload);
+                        if(success){
+                            resolve(req.notify({
+                                message: 'Data has been uploaded successfully.',
+                                status: 200
+                            }));  
+                        }
+                        else {
+                            reject(req.error(400, 'Error while uploading the data. Kindly try again. Kindly notify the admin if the issue persists'));
+                        }
+                    }
+                });
+            });
+        }
+         else {
+            return next();
+        }
+    });
     that.on('paste', async (req) => {
 
         let oDataCopy = await SELECT.from("ZHS402.ZTHBT0072").where({ USERID: req.user.id });

@@ -1226,8 +1226,8 @@ service ZAPIBPS0002 {
         select from ZCDSEBPS0005
         left outer join ZCDSEBPS0006
             on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
-            and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
-            and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
+            and ZCDSEBPS0006.PS_PSPNR = $projection.PSPHI
+            and ZCDSEBPS0006.PS_POSNR = $projection.PS_PSP_PNR
             and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
             and ZCDSEBPS0006.MATNR    = $projection.MATNR
 
@@ -1284,8 +1284,8 @@ service ZAPIBPS0002 {
         select from ZCDSEBPS0012
         left outer join ZCDSEBPS0006
             on  ZCDSEBPS0006.PBUKR    = $projection.PBUKR
-            and ZCDSEBPS0006.PS_PSPNR = $projection.PS_PSP_PNR
-            and ZCDSEBPS0006.PS_POSNR = $projection.PSPHI
+            and ZCDSEBPS0006.PS_PSPNR = $projection.PSPHI
+            and ZCDSEBPS0006.PS_POSNR = $projection.PS_PSP_PNR
             and ZCDSEBPS0006.ZMSCODE  = $projection.ZZ1_MSCODE_PRD
             and ZCDSEBPS0006.MATNR    = $projection.MATNR
 
