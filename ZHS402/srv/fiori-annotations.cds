@@ -2946,11 +2946,7 @@ annotate ZCAPIH0018.ZCDSEHPPB0085 @(Capabilities.FilterRestrictions : {
         }
     ]
 });
-annotate ZCAPIH0018.ZCDSEHPPB0085 with {
-    Process_flag @UI.HiddenFilter: true;
-    issue_flag @UI.HiddenFilter: true;
-    Kanban_type @UI.HiddenFilter: true;
-} 
+
 
 annotate ZCAPIH0018.ZCDSEHPPB0085 {
     @(Common : {
