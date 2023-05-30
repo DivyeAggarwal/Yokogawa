@@ -199,7 +199,7 @@ this.on('READ', 'ZCDSEHPPB0085', async req => {
         }
         var output = [];
         for (let index = 0; index < response.length; index++) {
-            const element = response[index][0];
+            const element = response[index];
             const aZTHBT0030 = await SELECT.from('ZHS402.ZTHBT0030').where({
                 PKNUM: element.kanbannum,
                 PKKEY: element.kanbanid
