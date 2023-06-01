@@ -3439,17 +3439,17 @@
           "length": 3
         },
         "ZSD_MILESTONE": {
-          "@title": "MileStone Number",
+          "@title": "SAP MileStone Number",
           "key": true,
           "type": "cds.String",
           "length": 10
         },
         "ZSD_ACTUAL_DATE": {
-          "@title": "Actual Date",
+          "@title": "SAP Actual Date",
           "type": "cds.Date"
         },
         "ZSD_BILLINGPLAN_VALUE": {
-          "@title": "Billing Plan Value",
+          "@title": "SAP Billing Plan Value",
           "type": "cds.String",
           "length": 16
         },
@@ -3459,12 +3459,12 @@
           "length": 20
         },
         "ZSD_MAIN_SONUM": {
-          "@title": "Main SO Number",
+          "@title": "SAP Main SO Number",
           "type": "cds.String",
           "length": 10
         },
         "ZSD_SO_DEBIT_NUM": {
-          "@title": "SO Debit Memo Number",
+          "@title": "SAP SO Debit Memo Number",
           "type": "cds.String",
           "length": 10
         },
@@ -3478,19 +3478,19 @@
           "length": 16
         },
         "ZSD_BILLING_DATE": {
-          "@title": "SO Billing Date",
+          "@title": "SAP SO Debit Memo Billing Date",
           "type": "cds.Date"
         },
         "ZSD_PRICING_DATE": {
-          "@title": "SO Pricing Date",
+          "@title": "SAP SO Pricing Date",
           "type": "cds.Date"
         },
         "ZSD_DEBIT_DOC_DATE": {
-          "@title": "SO Debit Document Date",
+          "@title": "SAP SO Debit Document Date",
           "type": "cds.Date"
         },
         "ZSD_DEBIT_NET_VALUE": {
-          "@title": "SO Debit Net Value",
+          "@title": "SAP SO Debit Net Value",
           "type": "cds.String",
           "length": 16
         },
@@ -25384,17 +25384,17 @@
           "length": 3
         },
         "ZSD_MILESTONE": {
-          "@title": "MileStone Number",
+          "@title": "SAP MileStone Number",
           "key": true,
           "type": "cds.String",
           "length": 10
         },
         "ZSD_ACTUAL_DATE": {
-          "@title": "Actual Date",
+          "@title": "SAP Actual Date",
           "type": "cds.Date"
         },
         "ZSD_BILLINGPLAN_VALUE": {
-          "@title": "Billing Plan Value",
+          "@title": "SAP Billing Plan Value",
           "type": "cds.String",
           "length": 16
         },
@@ -25404,12 +25404,12 @@
           "length": 20
         },
         "ZSD_MAIN_SONUM": {
-          "@title": "Main SO Number",
+          "@title": "SAP Main SO Number",
           "type": "cds.String",
           "length": 10
         },
         "ZSD_SO_DEBIT_NUM": {
-          "@title": "SO Debit Memo Number",
+          "@title": "SAP SO Debit Memo Number",
           "type": "cds.String",
           "length": 10
         },
@@ -25423,19 +25423,19 @@
           "length": 16
         },
         "ZSD_BILLING_DATE": {
-          "@title": "SO Billing Date",
+          "@title": "SAP SO Debit Memo Billing Date",
           "type": "cds.Date"
         },
         "ZSD_PRICING_DATE": {
-          "@title": "SO Pricing Date",
+          "@title": "SAP SO Pricing Date",
           "type": "cds.Date"
         },
         "ZSD_DEBIT_DOC_DATE": {
-          "@title": "SO Debit Document Date",
+          "@title": "SAP SO Debit Document Date",
           "type": "cds.Date"
         },
         "ZSD_DEBIT_NET_VALUE": {
-          "@title": "SO Debit Net Value",
+          "@title": "SAP SO Debit Net Value",
           "type": "cds.String",
           "length": 16
         },
@@ -25608,17 +25608,17 @@
           "length": 3
         },
         "ZSD_MILESTONE": {
-          "@title": "MileStone Number",
+          "@title": "SAP MileStone Number",
           "key": true,
           "type": "cds.String",
           "length": 10
         },
         "ZSD_ACTUAL_DATE": {
-          "@title": "Actual Date",
+          "@title": "SAP Actual Date",
           "type": "cds.Date"
         },
         "ZSD_BILLINGPLAN_VALUE": {
-          "@title": "Billing Plan Value",
+          "@title": "SAP Billing Plan Value",
           "type": "cds.String",
           "length": 16
         },
@@ -25628,12 +25628,12 @@
           "length": 20
         },
         "ZSD_MAIN_SONUM": {
-          "@title": "Main SO Number",
+          "@title": "SAP Main SO Number",
           "type": "cds.String",
           "length": 10
         },
         "ZSD_SO_DEBIT_NUM": {
-          "@title": "SO Debit Memo Number",
+          "@title": "SAP SO Debit Memo Number",
           "type": "cds.String",
           "length": 10
         },
@@ -25647,19 +25647,19 @@
           "length": 16
         },
         "ZSD_BILLING_DATE": {
-          "@title": "SO Billing Date",
+          "@title": "SAP SO Debit Memo Billing Date",
           "type": "cds.Date"
         },
         "ZSD_PRICING_DATE": {
-          "@title": "SO Pricing Date",
+          "@title": "SAP SO Pricing Date",
           "type": "cds.Date"
         },
         "ZSD_DEBIT_DOC_DATE": {
-          "@title": "SO Debit Document Date",
+          "@title": "SAP SO Debit Document Date",
           "type": "cds.Date"
         },
         "ZSD_DEBIT_NET_VALUE": {
-          "@title": "SO Debit Net Value",
+          "@title": "SAP SO Debit Net Value",
           "type": "cds.String",
           "length": 16
         },

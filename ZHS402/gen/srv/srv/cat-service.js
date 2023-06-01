@@ -190,8 +190,38 @@ this.on('ZCDSEHPPB0093', async (req) => {
 });
 
 this.on('READ', 'ZCDSEHPPB0085', async req => {
-    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');
-    return kandanListScanSrv.run(req.query);
+    const api = await cds.connect.to('ZSRVBHPP0015');    
+    return api.tx(req).run(req.query).then(async (response) => {
+        var selectflag;
+        const selectflag_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "selectflag"));
+        if (selectflag_idx > 0) {
+            selectflag = req.query.SELECT.where[selectflag_idx + 2].val
+        }
+        var output = [];
+        for (let index = 0; index < response.length; index++) {
+            const element = response[index];
+            const aZTHBT0030 = await SELECT.from('ZHS402.ZTHBT0030').where({
+                PKNUM: element.kanbannum,
+                PKKEY: element.kanbanid
+            }).orderBy({ REVNR: "desc" });
+            //If its Display selectflag will be null
+            //If its not Reissue there should not be any entry in 30
+            //If its Reissue there should be any entry in 30 table
+            if(!selectflag || (selectflag && selectflag !== "Y2" && aZTHBT0030 && aZTHBT0030.length === 0) || (selectflag && selectflag === "Y2" && aZTHBT0030 && aZTHBT0030.length > 0)){                
+                if(aZTHBT0030.length > 0){
+                    var iREVNR = 1;
+                    if(Number(aZTHBT0030[0].REVNR) > 1 || Number(aZTHBT0030[0].REVNR) < 99){
+                        iREVNR = Number(aZTHBT0030[0].REVNR) + 1;
+                    }
+                    iREVNR = "000" + iREVNR;
+                    iREVNR = iREVNR.substr(iREVNR.length-2);
+                    element.Process_flag = iREVNR;
+                }                
+                output.push(element);
+            }            
+        }  
+        return output;
+    }); 
 });
 this.on('READ', 'I_MaterialStdVH', async req => {
     const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0015');

@@ -1512,6 +1512,7 @@ annotate ZCDSEHBTC0013.ZCDSEBPS0014 with @(
         LineItem  : [
             { Value : ZWBS_ELEMENT },
             { Value : ZFG_INVOICE_ID },
+            { Value : ZSD_MILESTONE },
             { Value : ZSD_MAIN_SONUM }, 
             { Value : ZSD_SO_DEBIT_NUM },
             { Value : ZSD_INV_SUBMIT_DATE },
