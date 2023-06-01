@@ -887,7 +887,7 @@ const mapZTHBT0037 = async (finalData,req) => {
                 }else if(!element.error_cod){
                     allOld[allOld.length - 1].INVALID_D = element.valid_frm;
                     var currentOld = allOld[allOld.length - 1];
-                    UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:currentOld.INVALID_D}).where({ WERKS: { '=': currentOld.WERKS }, E_DOC_TYPE: { '=': currentOld.E_DOC_TYPE }, E_DOC_NO: { '=': currentOld.E_DOC_NO }, E_REV_NO: { '=': currentOld.E_REV_NO }, PS_GROUP_NO: { '=': currentOld.PS_GROUP_NO }, PS_ITEM_NO: { '=': currentOld.PS_ITEM_NO }, MODEL: { '=': currentOld.MODEL }, E_SEQUENCE_NO: { '=': currentOld.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+                    await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:currentOld.INVALID_D}).where({ WERKS: { '=': currentOld.WERKS }, E_DOC_TYPE: { '=': currentOld.E_DOC_TYPE }, E_DOC_NO: { '=': currentOld.E_DOC_NO }, E_REV_NO: { '=': currentOld.E_REV_NO }, PS_GROUP_NO: { '=': currentOld.PS_GROUP_NO }, PS_ITEM_NO: { '=': currentOld.PS_ITEM_NO }, MODEL: { '=': currentOld.MODEL }, E_SEQUENCE_NO: { '=': currentOld.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
                 }
             }else if(allOld.length === 1){
                 var validToDate = new Date(object.EFFECT_D);
@@ -903,8 +903,7 @@ const mapZTHBT0037 = async (finalData,req) => {
     if(aZTHBT0037.length > 0){
         for (let index = 0; index < aZTHBT0037.length; index++) {
             const element = aZTHBT0037[index];
-            const updateQuery = UPDATE.entity('ZHS402.ZTHBT0037').data(element).where({ WERKS: { '=': element.WERKS }, E_DOC_TYPE: { '=': element.E_DOC_TYPE }, E_DOC_NO: { '=': element.E_DOC_NO }, E_REV_NO: { '=': element.E_REV_NO }, PS_GROUP_NO: { '=': element.PS_GROUP_NO }, PS_ITEM_NO: { '=': element.PS_ITEM_NO }, MODEL: { '=': element.MODEL }, E_SEQUENCE_NO: { '=': element.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
-            await srv.run(updateQuery);
+             await UPDATE.entity('ZHS402.ZTHBT0037').data(element).where({ WERKS: { '=': element.WERKS }, E_DOC_TYPE: { '=': element.E_DOC_TYPE }, E_DOC_NO: { '=': element.E_DOC_NO }, E_REV_NO: { '=': element.E_REV_NO }, PS_GROUP_NO: { '=': element.PS_GROUP_NO }, PS_ITEM_NO: { '=': element.PS_ITEM_NO }, MODEL: { '=': element.MODEL }, E_SEQUENCE_NO: { '=': element.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
         }
     }
     return finalData;
