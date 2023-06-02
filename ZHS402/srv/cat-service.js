@@ -282,11 +282,11 @@ this.on('READ', 'PickingData', async req => {
    
     this.on('CREATE', 'ZCDSEHPSC0011', async req => {
         const soapi = await cds.connect.to('ZSRVBHPS0010');
-        req.data.InvDat = req.data.InvDat.split('-').join('');
-        req.data.ActDat = req.data.ActDat.split('-').join('');
+        // req.data.InvDat = req.data.InvDat.split('-').join('');
+        // req.data.ActDat = req.data.ActDat.split('-').join('');
         var response = await soapi.tx(req).post("/ZCDSEHPSC0011",req.data);
-        response.InvDat = response.InvDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
-        response.ActDat = response.ActDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        // response.InvDat = response.InvDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        // response.ActDat = response.ActDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
         
         return response;
         // try {

@@ -25780,6 +25780,46 @@
         }
       }
     },
+    "ZCDSEHBTC0013.SAPCurrencies": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPS0010.SAP__Currencies"
+          ]
+        }
+      },
+      "elements": {
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
+        }
+      }
+    },
     "ZCDSEHBTC0014": {
       "@source": "srv/cat-service.cds",
       "kind": "service"
@@ -30569,6 +30609,13 @@
           "type": "cds.String",
           "length": 14
         },
+        "unit": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reserve",
+          "@sap.quickinfo": "Character field of length 6",
+          "type": "cds.String",
+          "length": 6
+        },
         "ZEIWN": {
           "@sap.label": "Min. Queue Time Unit",
           "@sap.quickinfo": "Unit for the Minimum Queue Time",
@@ -30656,6 +30703,13 @@
           "type": "cds.String",
           "length": 4
         },
+        "scan1_2": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
         "scannumber": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Reserve",
@@ -30678,8 +30732,8 @@
         },
         "pkstu": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Stock Transfer",
-          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer",
+          "@sap.label": "In-House Production",
+          "@sap.quickinfo": "Control Cycle Replenishment Strategy for In-House Production",
           "type": "cds.String",
           "length": 4
         },
@@ -70684,6 +70738,13 @@
           "type": "cds.String",
           "length": 14
         },
+        "unit": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reserve",
+          "@sap.quickinfo": "Character field of length 6",
+          "type": "cds.String",
+          "length": 6
+        },
         "ZEIWN": {
           "@sap.label": "Min. Queue Time Unit",
           "@sap.quickinfo": "Unit for the Minimum Queue Time",
@@ -70771,6 +70832,13 @@
           "type": "cds.String",
           "length": 4
         },
+        "scan1_2": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "type": "cds.String",
+          "length": 40
+        },
         "scannumber": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Reserve",
@@ -70793,8 +70861,8 @@
         },
         "pkstu": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Stock Transfer",
-          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer",
+          "@sap.label": "In-House Production",
+          "@sap.quickinfo": "Control Cycle Replenishment Strategy for In-House Production",
           "type": "cds.String",
           "length": 4
         },
