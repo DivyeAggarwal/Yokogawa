@@ -852,35 +852,41 @@ const mapZTHBT0037 = async (finalData,req) => {
             // object.INVALID_D = element.Plant;
             object.E_TR_TYPE = element.e_tr_type;
             object.PARTS_NO_EXT_SIGN = element.Parts_No_ext_sign; 
-            if(object.E_TR_TYPE === "A"){
-                var erTypeA = await SELECT.from('ZHS402.ZTHBT0037').where({
-                    E_DOC_NO: object.E_DOC_NO,
-                    PS_GROUP_NO: object.PS_GROUP_NO,
-                    PS_ITEM_NO: object.PS_ITEM_NO,
-                    MODEL: object.MODEL
-                });
-                if(erTypeA.length > 0 && (erTypeA[0].E_TR_TYPE === "A" || erTypeA[0].E_TR_TYPE === "C")){
-                    element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
-                }
-            }
-            if(object.E_TR_TYPE === "C" || object.E_TR_TYPE === "D"){
-                var erTypeCD = await SELECT.from('ZHS402.ZTHBT0037').where({
-                    E_DOC_NO: object.E_DOC_NO,
-                    PS_GROUP_NO: object.PS_GROUP_NO,
-                    PS_ITEM_NO: object.PS_ITEM_NO,
-                    MODEL: object.MODEL
-                });
-                if(erTypeCD.length > 0 && (erTypeCD[0].E_TR_TYPE === "A" || erTypeCD[0].E_TR_TYPE === "C")){
-                    element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
-                }
-            }
+            
             var allOld = await SELECT.from('ZHS402.ZTHBT0037').where({
                 E_DOC_NO: object.E_DOC_NO,
                 PS_GROUP_NO: object.PS_GROUP_NO,
                 PS_ITEM_NO: object.PS_ITEM_NO,
                 MODEL: object.MODEL
             });
-            if(allOld.length > 1){
+
+            if(object.E_TR_TYPE === "A"){
+                if(allOld.length > 0 ){
+                    for (let i = 0; i < allOld.length; i++) {
+                        const elementI = allOld[i];
+                        if(elementI.E_TR_TYPE === "A" || elementI.E_TR_TYPE === "C"){
+                            element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
+                            i = allOld.length;
+                        }                        
+                    }
+                } 
+            }
+            if(object.E_TR_TYPE === "C" || object.E_TR_TYPE === "D"){
+                if(allOld.length > 0 ){
+                    let cdCount = 0;
+                    for (let J = 0; J < allOld.length; J++) {
+                        const elementJ = allOld[J];
+                        if(elementJ.E_TR_TYPE === "A" || elementJ.E_TR_TYPE === "C"){
+                            cdCount++;
+                            J = allOld.length;
+                        }                        
+                    }
+                    if(cdCount === 0){
+                        element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
+                    }
+                }                 
+            }
+            if(allOld.length > 0){
                 allOld.sort(function(c,d){return c.EFFECT_D - d.EFFECT_D});
                 if(allOld[allOld.length - 1].EFFECT_D > new Date(element.valid_frm)){
                     element.error_cod += "old revision entry is in future than the Valid From date of new revision entry. ";
@@ -889,10 +895,6 @@ const mapZTHBT0037 = async (finalData,req) => {
                     var currentOld = allOld[allOld.length - 1];
                     await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:currentOld.INVALID_D}).where({ WERKS: { '=': currentOld.WERKS }, E_DOC_TYPE: { '=': currentOld.E_DOC_TYPE }, E_DOC_NO: { '=': currentOld.E_DOC_NO }, E_REV_NO: { '=': currentOld.E_REV_NO }, PS_GROUP_NO: { '=': currentOld.PS_GROUP_NO }, PS_ITEM_NO: { '=': currentOld.PS_ITEM_NO }, MODEL: { '=': currentOld.MODEL }, E_SEQUENCE_NO: { '=': currentOld.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
                 }
-            }else if(allOld.length === 1){
-                var validToDate = new Date(object.EFFECT_D);
-                validToDate.setDate(validToDate.getDate() - 1);
-                allOld[0].INVALID_D = validToDate;
             }
             if(!element.error_cod){
                 aZTHBT0037.push(object);
@@ -901,10 +903,11 @@ const mapZTHBT0037 = async (finalData,req) => {
         }       
     } 
     if(aZTHBT0037.length > 0){
-        for (let index = 0; index < aZTHBT0037.length; index++) {
-            const element = aZTHBT0037[index];
-             await UPDATE.entity('ZHS402.ZTHBT0037').data(element).where({ WERKS: { '=': element.WERKS }, E_DOC_TYPE: { '=': element.E_DOC_TYPE }, E_DOC_NO: { '=': element.E_DOC_NO }, E_REV_NO: { '=': element.E_REV_NO }, PS_GROUP_NO: { '=': element.PS_GROUP_NO }, PS_ITEM_NO: { '=': element.PS_ITEM_NO }, MODEL: { '=': element.MODEL }, E_SEQUENCE_NO: { '=': element.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
-        }
+        // for (let index = 0; index < aZTHBT0037.length; index++) {
+            // const element = aZTHBT0037[index];
+            //  await UPDATE.entity('ZHS402.ZTHBT0037').data(element).where({ WERKS: { '=': element.WERKS }, E_DOC_TYPE: { '=': element.E_DOC_TYPE }, E_DOC_NO: { '=': element.E_DOC_NO }, E_REV_NO: { '=': element.E_REV_NO }, PS_GROUP_NO: { '=': element.PS_GROUP_NO }, PS_ITEM_NO: { '=': element.PS_ITEM_NO }, MODEL: { '=': element.MODEL }, E_SEQUENCE_NO: { '=': element.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+        // }
+        await INSERT.into('ZHS402.ZTHBT0037').entries(aZTHBT0037);
     }
     return finalData;
 }
