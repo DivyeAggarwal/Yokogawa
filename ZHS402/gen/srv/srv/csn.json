@@ -25510,6 +25510,11 @@
         },
         {
           "Value": {
+            "=": "ZSD_PRICING_DATE"
+          }
+        },
+        {
+          "Value": {
             "=": "ZSD_DEBIT_DOC_DATE"
           }
         },

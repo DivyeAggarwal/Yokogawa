@@ -62,6 +62,10 @@ module.exports = cds.service.impl(async function (srv) {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
         return bupa.run(req.query);
     });
+    this.on('READ', 'SAPCurrencies', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0010');
+        return bupa.run(req.query);
+    });
     this.on('READ', 'SAP__UnitsOfMeasure', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
         return bupa.run(req.query);
