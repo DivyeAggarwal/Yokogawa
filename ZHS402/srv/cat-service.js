@@ -320,8 +320,8 @@ this.on('READ', 'PickingData', async req => {
     });
     this.on('READ', 'OrderPartInformation', async req => {
         const orderApi = await cds.connect.to('ZSRVBHMM0006');
-        const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': oInput.MBLNR }, plwrk: { '=': oInput.ZEILE }, paart: { '=': oInput.MJAHR }, dispo: { '=': oInput.SERNR } , psttr: { '=': oInput.SERNR } , pedtr: { '=': oInput.SERNR } , pertr: { '=': oInput.SERNR } });
-        
+        const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': oInput.MBLNR }, plwrk: { '=': oInput.ZEILE }, paart: { '=': oInput.MJAHR }, dispo: { '=': oInput.SERNR }, psttr: { '=': oInput.SERNR }, pedtr: { '=': oInput.SERNR }, pertr: { '=': oInput.SERNR } });
+
         let arrayInput = [];
         if (Array.isArray(plannedOrder)) {
             for (let result of plannedOrder) {
@@ -334,19 +334,22 @@ this.on('READ', 'PickingData', async req => {
         // const checkPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({ MSCODE: { in: arrayInput } });
         const checkPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({
             DWERK: { in: arrayInput.plwrk },
-            MATNR: { in: arrayInput.paart },
+            MATNR: { in: arrayInput.matnr },
             PLNUM: { in: arrayInput.plnum }
         })
 
+        for (let i = 0; i < checkPlannedOrder.length; i++) {
+            var element = checkPlannedOrder[i];
+            var aObjectIndex = plannedOrder.findIndex(function name(order) {
+                return order.plnum === element.PLNUM &&
+                    order.matnr === element.MATNR &&
+                    order.plwrk === element.DWERK
+            });
+            plannedOrder.splice(0, aObjectIndex);
+        }
 
-        let objectAddMSCode = {};
-        // objectAddMSCode = await PrepareWherUsedObject(arrayInput, objectAddMSCode);
-        
-        // for (let oDelete of checkPlannedOrder) {
-        //     await DELETE.from('ZHS402.ZTHBT0027').where({ MBLNR: { '=': oDelete.MBLNR }, ZEILE: { '=': oDelete.ZEILE }, MJAHR: { '=': oDelete.MJAHR }, SERNR: { '=': oDelete.SERNR } });
-        // }
         // var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",req.data);
-        
+
         return response;
 
     });
