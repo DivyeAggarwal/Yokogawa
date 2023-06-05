@@ -28259,6 +28259,262 @@
         }
       }
     },
+    "ZCDSEHBTC0015.ZCDSEHMMC0009": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumption Order Information get call",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHMM0006.ZCDSEHMMC0009"
+          ]
+        }
+      },
+      "elements": {
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Planning material",
+          "type": "cds.String",
+          "length": 40
+        },
+        "plwrk": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planning Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "paart": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "gsmng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "psttr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order Start Date",
+          "@sap.quickinfo": "Planned Order Start Date",
+          "type": "cds.Date"
+        },
+        "pedtr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order End Date",
+          "@sap.quickinfo": "Planned Order End Date",
+          "type": "cds.Date"
+        },
+        "pertr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order Opening Date",
+          "@sap.quickinfo": "Planned Opening Date in Planned Order",
+          "type": "cds.Date"
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "type": "cds.String",
+          "length": 3
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6
+        },
+        "kdein": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order schedule",
+          "@sap.quickinfo": "Delivery schedule for sales order",
+          "type": "cds.String",
+          "length": 4
+        },
+        "auffx": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Firming Indicator",
+          "@sap.quickinfo": "Firming Indicator for Planned Order Data",
+          "type": "cds.Boolean"
+        },
+        "vagrp": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planner Group",
+          "@sap.quickinfo": "Responsible Planner Group or Department",
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    },
+    "ZCDSEHBTC0015.ZCDSEHMMC0013": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Custom view Order parts Information",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHMM0006.ZCDSEHMMC0013"
+          ]
+        }
+      },
+      "elements": {
+        "plnum": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "matnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "plwrk": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "paart": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "gsmng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": true
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "psttr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order Start Date",
+          "@sap.quickinfo": "Planned Order Start Date",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "pedtr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order End Date",
+          "@sap.quickinfo": "Planned Order End Date",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "pertr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order Opening Date",
+          "@sap.quickinfo": "Planned Opening Date in Planned Order",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "dispo": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "kdauf": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "kdpos": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "notNull": true
+        },
+        "kdein": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "auffx": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "vagrp": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "status": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "errmsg": {
+          "key": true,
+          "type": "cds.String",
+          "length": 400,
+          "notNull": true
+        },
+        "updqty": {
+          "@sap.unit": "meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": true
+        }
+      }
+    },
     "ZCDSEHBTC0015.OrderPartInformation": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -71514,6 +71770,330 @@
       }
     },
     "ZSRVBHPP0018.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ExternalCode": {
+          "@sap.label": "Commercial",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "UoM Text",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@sap.label": "Decimal Places",
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "ZSRVBHMM0006": {
+      "@source": "srv/external/ZSRVBHMM0006.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHMM0006.ZCDSEHMMC0009": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumption Order Information get call",
+      "elements": {
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Planning material",
+          "type": "cds.String",
+          "length": 40
+        },
+        "plwrk": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planning Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "paart": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "gsmng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "psttr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order Start Date",
+          "@sap.quickinfo": "Planned Order Start Date",
+          "type": "cds.Date"
+        },
+        "pedtr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order End Date",
+          "@sap.quickinfo": "Planned Order End Date",
+          "type": "cds.Date"
+        },
+        "pertr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order Opening Date",
+          "@sap.quickinfo": "Planned Opening Date in Planned Order",
+          "type": "cds.Date"
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "type": "cds.String",
+          "length": 3
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6
+        },
+        "kdein": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order schedule",
+          "@sap.quickinfo": "Delivery schedule for sales order",
+          "type": "cds.String",
+          "length": 4
+        },
+        "auffx": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Firming Indicator",
+          "@sap.quickinfo": "Firming Indicator for Planned Order Data",
+          "type": "cds.Boolean"
+        },
+        "vagrp": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planner Group",
+          "@sap.quickinfo": "Responsible Planner Group or Department",
+          "type": "cds.String",
+          "length": 3
+        }
+      }
+    },
+    "ZSRVBHMM0006.ZCDSEHMMC0013": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Custom view Order parts Information",
+      "elements": {
+        "plnum": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "matnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "plwrk": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "paart": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "gsmng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": true
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "psttr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order Start Date",
+          "@sap.quickinfo": "Planned Order Start Date",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "pedtr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order End Date",
+          "@sap.quickinfo": "Planned Order End Date",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "pertr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order Opening Date",
+          "@sap.quickinfo": "Planned Opening Date in Planned Order",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "dispo": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "kdauf": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "kdpos": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "notNull": true
+        },
+        "kdein": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "auffx": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "vagrp": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "status": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "errmsg": {
+          "key": true,
+          "type": "cds.String",
+          "length": 400,
+          "notNull": true
+        },
+        "updqty": {
+          "@sap.unit": "meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHMM0006.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHMM0006.SAP__UnitsOfMeasure": {
       "kind": "entity",
       "@cds.external": true,
       "@cds.persistence.skip": true,

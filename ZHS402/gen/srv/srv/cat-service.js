@@ -97,6 +97,11 @@ module.exports = cds.service.impl(async function (srv) {
         return product.run(req.query);
     });
 
+    this.on('READ', 'ZCDSEHMMC0009', async req => {
+        const orderPart = await cds.connect.to('ZSRVBHMM0006');
+        return orderPart.run(req.query);
+    });
+
     
  this.on('READ', 'ZCDSEHPPB0060', async req => {
     const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');
@@ -306,7 +311,48 @@ this.on('READ', 'PickingData', async req => {
 
     });
 
+    this.on('CREATE', 'ZCDSEHMMC0013', async req => {
+        const soapi = await cds.connect.to('ZSRVBHMM0006');
+        var response = await soapi.tx(req).post("/ZCDSEHMMC0013",req.data);
+        
+        return response;
 
+    });
+    this.on('READ', 'OrderPartInformation', async req => {
+        const orderApi = await cds.connect.to('ZSRVBHMM0006');
+        const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': oInput.MBLNR }, plwrk: { '=': oInput.ZEILE }, paart: { '=': oInput.MJAHR }, dispo: { '=': oInput.SERNR }, psttr: { '=': oInput.SERNR }, pedtr: { '=': oInput.SERNR }, pertr: { '=': oInput.SERNR } });
+
+        let arrayInput = [];
+        if (Array.isArray(plannedOrder)) {
+            for (let result of plannedOrder) {
+                arrayInput.push(result);
+            }
+        }
+        else {
+            arrayInput.push(results);
+        }
+        // const checkPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({ MSCODE: { in: arrayInput } });
+        const checkPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({
+            DWERK: { in: arrayInput.plwrk },
+            MATNR: { in: arrayInput.matnr },
+            PLNUM: { in: arrayInput.plnum }
+        })
+
+        for (let i = 0; i < checkPlannedOrder.length; i++) {
+            var element = checkPlannedOrder[i];
+            var aObjectIndex = plannedOrder.findIndex(function name(order) {
+                return order.plnum === element.PLNUM &&
+                    order.matnr === element.MATNR &&
+                    order.plwrk === element.DWERK
+            });
+            plannedOrder.splice(0, aObjectIndex);
+        }
+
+        // var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",req.data);
+
+        return response;
+
+    });
 
     this.on('UpdatePOItem', async (req) => {
         var inserEntries = []; 
