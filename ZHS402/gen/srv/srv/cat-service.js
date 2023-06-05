@@ -282,11 +282,11 @@ this.on('READ', 'PickingData', async req => {
    
     this.on('CREATE', 'ZCDSEHPSC0011', async req => {
         const soapi = await cds.connect.to('ZSRVBHPS0010');
-        req.data.InvDat = req.data.InvDat.split('-').join('');
-        req.data.ActDat = req.data.ActDat.split('-').join('');
+        // req.data.InvDat = req.data.InvDat.split('-').join('');
+        // req.data.ActDat = req.data.ActDat.split('-').join('');
         var response = await soapi.tx(req).post("/ZCDSEHPSC0011",req.data);
-        response.InvDat = response.InvDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
-        response.ActDat = response.ActDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        // response.InvDat = response.InvDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        // response.ActDat = response.ActDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
         
         return response;
         // try {
@@ -758,29 +758,29 @@ this.on('READ', 'PickingData', async req => {
         var queries = [];
         req.data.UploadFile.forEach(e => {
             let query =  SELECT.from("ZSRVBHPP0012.ZCDSEHPPB0071").where([ 
-                { ref: ["e_doc_type"] }, '=', { val: e.e_doc_type }, 'and', 
-                { ref: ["e_doc_no"] }, '=', { val: e.e_doc_no }, 'and', 
-                { ref: ["e_rev_no"] }, '=', { val: e.e_rev_no }, 'and', 
-                { ref: ["e_doc_n"] }, '=', { val: e.e_doc_n }, 'and', 
-                { ref: ["ps_group_no"] }, '=', { val: e.ps_group_no }, 'and', 
-                { ref: ["ps_item_no"] }, '=', { val: e.ps_item_no }, 'and', 
-                { ref: ["model1"] }, '=', { val: e.model1 }, 'and', 
-                { ref: ["e_parts_no"] }, '=', { val: e.e_parts_no }, 'and', 
-                { ref: ["comp_parts_no"] }, '=', { val: e.comp_parts_no }, 'and', 
-                { ref: ["ten_digit_sign"] }, '=', { val: e.ten_digit_sign }, 'and', 
-                { ref: ["parts_qty"] }, '=', { val: e.parts_qty }, 'and', 
-                { ref: ["parts_qty_unit"] }, '=', { val: e.parts_qty_unit }, 'and', 
-                { ref: ["select_sign"] }, '=', { val: e.select_sign }, 'and', 
-                { ref: ["parts_use_ratio"] }, '=', { val: e.parts_use_ratio }, 'and', 
-                { ref: ["ps_note"] }, '=', { val: e.ps_note }, 'and', 
-                { ref: ["or_sign"] }, '=', { val: e.or_sign }, 'and', 
-                { ref: ["sfix_digit_ptn"] }, '=', { val: e.sfix_digit_ptn }, 'and', 
-                { ref: ["sfix_ptn"] }, '=', { val: e.sfix_ptn }, 'and', 
-                { ref: ["option_ptn"] }, '=', { val: e.option_ptn }, 'and', 
-                { ref: ["prod_career"] }, '=', { val: e.prod_career }, 'and', 
-                { ref: ["e_tr_type"] }, '=', { val: e.e_tr_type }, 'and', 
-                { ref: ["ps_symbol"] }, '=', { val: e.ps_symbol }, 'and', 
-                { ref: ["valid_frm"] }, '=', { val: e.valid_frm }
+                { ref: ["e_doc_type"] }, '=', { val: e.e_doc_type ? e.e_doc_type : ''  }, 'and', 
+                { ref: ["e_doc_no"] }, '=', { val: e.e_doc_no ? e.e_doc_no : ''  }, 'and', 
+                { ref: ["e_rev_no"] }, '=', { val: e.e_rev_no ? e.e_rev_no : ''  }, 'and', 
+                { ref: ["e_doc_n"] }, '=', { val: e.e_doc_n ? e.e_doc_n : ''  }, 'and', 
+                { ref: ["ps_group_no"] }, '=', { val: e.ps_group_no ? e.ps_group_no : ''  }, 'and', 
+                { ref: ["ps_item_no"] }, '=', { val: e.ps_item_no ? e.ps_item_no : ''  }, 'and', 
+                { ref: ["model1"] }, '=', { val: e.model1 ? e.model1 : ''  }, 'and', 
+                { ref: ["e_parts_no"] }, '=', { val: e.e_parts_no ? e.e_parts_no : ''  }, 'and', 
+                { ref: ["comp_parts_no"] }, '=', { val: e.comp_parts_no ? e.comp_parts_no : ''  }, 'and', 
+                { ref: ["ten_digit_sign"] }, '=', { val: e.ten_digit_sign ? e.ten_digit_sign : ''  }, 'and', 
+                { ref: ["parts_qty"] }, '=', { val: e.parts_qty ? e.parts_qty : ''  }, 'and', 
+                { ref: ["parts_qty_unit"] }, '=', { val: e.parts_qty_unit ? e.parts_qty_unit : ''  }, 'and', 
+                { ref: ["select_sign"] }, '=', { val: e.select_sign ? e.select_sign : ''  }, 'and', 
+                { ref: ["parts_use_ratio"] }, '=', { val: e.parts_use_ratio ? e.parts_use_ratio : ''  }, 'and', 
+                { ref: ["ps_note"] }, '=', { val: e.ps_note ? e.ps_note : ''  }, 'and', 
+                { ref: ["or_sign"] }, '=', { val: e.or_sign ? e.or_sign : ''  }, 'and', 
+                { ref: ["sfix_digit_ptn"] }, '=', { val: e.sfix_digit_ptn ? e.sfix_digit_ptn : ''  }, 'and', 
+                { ref: ["sfix_ptn"] }, '=', { val: e.sfix_ptn ? e.sfix_ptn : ''  }, 'and', 
+                { ref: ["option_ptn"] }, '=', { val: e.option_ptn ? e.option_ptn : ''  }, 'and', 
+                { ref: ["prod_career"] }, '=', { val: e.prod_career ? e.prod_career : ''  }, 'and', 
+                { ref: ["e_tr_type"] }, '=', { val: e.e_tr_type ? e.e_tr_type : ''  }, 'and', 
+                { ref: ["ps_symbol"] }, '=', { val: e.ps_symbol ? e.ps_symbol : ''  }, 'and', 
+                { ref: ["valid_frm"] }, '=', { val: e.valid_frm ? e.valid_frm : ''  }
             ]);
             queries.push(query);
         }); 

@@ -281,6 +281,16 @@
           "csrf": true,
           "csrfInBatch": true
         }
+      },
+      "ZSRVBHMM0006": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVBHMM0006",
+        "credentials": {
+          "path": "/sap/opu/odata/sap/ZSRVBHMM0006",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
       }
     },
     "hana": {

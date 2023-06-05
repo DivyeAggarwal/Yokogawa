@@ -19,6 +19,7 @@ using ProjectDetails from './external/ProjectDetails';
 using ZSRVBHPS0011 from './external/ZSRVBHPS0011';
 using ZSRVBHPP0017 from './external/ZSRVBHPP0017';
 using ZSRVBHPP0018 from './external/ZSRVBHPP0018';
+using ZSRVBHMM0006 from './external/ZSRVBHMM0006';
 
 
 service CatalogService {
