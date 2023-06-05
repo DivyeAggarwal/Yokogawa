@@ -311,7 +311,21 @@ this.on('READ', 'PickingData', async req => {
 
     });
 
+    this.on('CREATE', 'ZCDSEHMMC0013', async req => {
+        const soapi = await cds.connect.to('ZSRVBHMM0006');
+        var response = await soapi.tx(req).post("/ZCDSEHMMC0013",req.data);
+        
+        return response;
 
+    });
+    this.on('READ', 'OrderPartInformation', async req => {
+        const orderApi = await cds.connect.to('ZSRVBHMM0006');
+        const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': oInput.MBLNR }, plwrk: { '=': oInput.ZEILE }, paart: { '=': oInput.MJAHR }, dispo: { '=': oInput.SERNR } , psttr: { '=': oInput.SERNR } , pedtr: { '=': oInput.SERNR } , pertr: { '=': oInput.SERNR } });
+        var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",req.data);
+        
+        return response;
+
+    });
 
     this.on('UpdatePOItem', async (req) => {
         var inserEntries = []; 
