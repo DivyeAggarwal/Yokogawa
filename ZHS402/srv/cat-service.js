@@ -97,6 +97,11 @@ module.exports = cds.service.impl(async function (srv) {
         return product.run(req.query);
     });
 
+    this.on('READ', 'ZCDSEHMMC0009', async req => {
+        const orderPart = await cds.connect.to('ZSRVBHMM0006');
+        return orderPart.run(req.query);
+    });
+
     
  this.on('READ', 'ZCDSEHPPB0060', async req => {
     const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0005');

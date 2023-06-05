@@ -1111,6 +1111,8 @@ service ZAPIBPS0001 {
 service ZCDSEHBTC0015 {
     entity ZTHBT0029                    as projection on db.ZTHBT0029;
     entity VL_SH_H_T001                 as projection on external.VL_SH_H_T001;
+    entity ZCDSEHMMC0009                as projection on ZSRVBHMM0006.ZCDSEHMMC0009;
+    entity ZCDSEHMMC0013                as projection on ZSRVBHMM0006.ZCDSEHMMC0013;
 
     @cds.persistence.skip
     entity OrderPartInformation {
