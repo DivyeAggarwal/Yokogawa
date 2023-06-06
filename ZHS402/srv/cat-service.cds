@@ -1489,6 +1489,8 @@ service ZAPIBPS0004 {
                         ZSHPNAME3: String @Common.Label: 'Contact Ship to Name 3',
                         ZSHPNAME4: String @Common.Label: 'Contact Ship to Name 4') returns ZCDSEBPS0012;
     };
+
+    action Upload1(data: many ZCDSEBPS0012) returns ZCDSEBPS0012;
 }
 
 
