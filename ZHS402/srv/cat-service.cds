@@ -1460,7 +1460,7 @@ service ZAPIBPS0004 {
     }
     actions {
         action DeleteSet() returns ZCDSEBPS0012;
-        action Upload(data: array of ExcelData,whollyUpload:Boolean ) returns ZCDSEBPS0012;
+        action Upload(data: many ZCDSEBPS0012) returns ZCDSEBPS0012;
         action split() returns ZCDSEBPS0012;
         action copy() returns ZCDSEBPS0012;
         action paste() returns ZCDSEBPS0012;
