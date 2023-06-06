@@ -408,18 +408,18 @@ entity ZTHBT0059 : managed {
         ZSD_GRPSUPP           : String(20) @title : 'Group Supplier';
     key ZWBS_ELEMENT          : String(20) @title : 'WBS Element';
         ZSD_SOWEVENT          : String(3)  @title : 'SOW Event Number';
-    key ZSD_MILESTONE         : String(10) @title : 'MileStone Number';
-        ZSD_ACTUAL_DATE       : Date       @title : 'Actual Date';
-        ZSD_BILLINGPLAN_VALUE : String(16) @title : 'Billing Plan Value';
+    key ZSD_MILESTONE         : String(10) @title : 'SAP MileStone Number';
+        ZSD_ACTUAL_DATE       : Date       @title : 'SAP Actual Date';
+        ZSD_BILLINGPLAN_VALUE : String(16) @title : 'SAP Billing Plan Value';
         ZFG_INVOICE_ID        : String(20) @title : 'FG Invoice ID';
-        ZSD_MAIN_SONUM        : String(10) @title : 'Main SO Number';
-        ZSD_SO_DEBIT_NUM      : String(10) @title : 'SO Debit Memo Number';
+        ZSD_MAIN_SONUM        : String(10) @title : 'SAP Main SO Number';
+        ZSD_SO_DEBIT_NUM      : String(10) @title : 'SAP SO Debit Memo Number';
         ZSD_INV_SUBMIT_DATE   : Date       @title : 'Invoice Submit Date';
         ZSD_GROSS_VALUE       : String(16) @title : 'SO Gross Value';
-        ZSD_BILLING_DATE      : Date       @title : 'SO Billing Date';
-        ZSD_PRICING_DATE      : Date       @title : 'SO Pricing Date';
-        ZSD_DEBIT_DOC_DATE    : Date       @title : 'SO Debit Document Date';
-        ZSD_DEBIT_NET_VALUE   : String(16) @title : 'SO Debit Net Value';
+        ZSD_BILLING_DATE      : Date       @title : 'SAP SO Debit Memo Billing Date';
+        ZSD_PRICING_DATE      : Date       @title : 'SAP SO Pricing Date';
+        ZSD_DEBIT_DOC_DATE    : Date       @title : 'SAP SO Debit Document Date';
+        ZSD_DEBIT_NET_VALUE   : String(16) @title : 'SAP SO Debit Net Value';
         ZSD_STATUS            : String(40) @title : 'Status';
         ZSD_ERROR             : String     @title : 'Error Message';
 

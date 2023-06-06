@@ -19,6 +19,8 @@ using ProjectDetails from './external/ProjectDetails';
 using ZSRVBHPS0011 from './external/ZSRVBHPS0011';
 using ZSRVBHPP0017 from './external/ZSRVBHPP0017';
 using ZSRVBHPP0018 from './external/ZSRVBHPP0018';
+using ZSRVBHMM0006 from './external/ZSRVBHMM0006';
+using ZSRVBHSD0011 from './external/ZSRVBHSD0011';
 
 
 service CatalogService {
@@ -1036,6 +1038,7 @@ service ZCDSEHBTC0013 {
     entity ZTHBT0059                    as projection on db.ZTHBT0059;
     entity ZCDSEBPS0014                 as projection on db.ZTHBT0059;
     entity ZCDSEHPSC0011                as projection on ZSRVBHPS0010.ZCDSEHPSC0011;
+    entity SAPCurrencies              as projection on ZSRVBHPS0010.SAP__Currencies;
 }
 
 //8410 Reserve Stock
@@ -1109,6 +1112,8 @@ service ZAPIBPS0001 {
 service ZCDSEHBTC0015 {
     entity ZTHBT0029                    as projection on db.ZTHBT0029;
     entity VL_SH_H_T001                 as projection on external.VL_SH_H_T001;
+    entity ZCDSEHMMC0009                as projection on ZSRVBHMM0006.ZCDSEHMMC0009;
+    entity ZCDSEHMMC0013                as projection on ZSRVBHMM0006.ZCDSEHMMC0013;
 
     @cds.persistence.skip
     entity OrderPartInformation {
@@ -1526,4 +1531,9 @@ entity yentard as projection on db.YARDTESTDB;
 
 
 
+}
+
+
+service ZAPIBPS0005 {
+    entity ZCDSEHSDC0009 as projection on ZSRVBHSD0011.ZCDSEHSDC0009;
 }

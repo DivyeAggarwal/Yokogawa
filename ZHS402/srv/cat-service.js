@@ -6,6 +6,7 @@ const registerBomRegisterError = require("./Handler/BomRegistrationErrorUpdate")
 const registerZAPIBPS0001Handler = require("./Handler/ZAPIBPS0001");
 const registerZAPIBPS0002Handler = require("./Handler/ZAPIBPS0002");
 const registerZAPIBPS0004Handler = require("./Handler/ZAPIBPS0004");
+const registerZAPIBPS0005Handler = require("./Handler/ZAPIBPS0005");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql;
@@ -37,6 +38,7 @@ module.exports = cds.service.impl(async function (srv) {
     registerBomRegisterError(this,cds);
     registerZAPIBPS0001Handler(this,cds);
     registerZAPIBPS0002Handler(this,cds);
+    registerZAPIBPS0005Handler(this,cds);
     registerZAPIBPS0004Handler(this,cds,Readable, PassThrough,XLSX,SequenceHelper);
     this.on('READ', 'ZCDSEHPSB0004', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
@@ -60,6 +62,10 @@ module.exports = cds.service.impl(async function (srv) {
     });
     this.on('READ', 'SAP__Currencies', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
+        return bupa.run(req.query);
+    });
+    this.on('READ', 'SAPCurrencies', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPS0010');
         return bupa.run(req.query);
     });
     this.on('READ', 'SAP__UnitsOfMeasure', async req => {
@@ -91,6 +97,11 @@ module.exports = cds.service.impl(async function (srv) {
     this.on('READ', 'A_Product', async req => {
         const product = await cds.connect.to('API_PRODUCT_SRV');
         return product.run(req.query);
+    });
+
+    this.on('READ', 'ZCDSEHMMC0009', async req => {
+        const orderPart = await cds.connect.to('ZSRVBHMM0006');
+        return orderPart.run(req.query);
     });
 
     
@@ -199,7 +210,7 @@ this.on('READ', 'ZCDSEHPPB0085', async req => {
         }
         var output = [];
         for (let index = 0; index < response.length; index++) {
-            const element = response[index][0];
+            const element = response[index];
             const aZTHBT0030 = await SELECT.from('ZHS402.ZTHBT0030').where({
                 PKNUM: element.kanbannum,
                 PKKEY: element.kanbanid
@@ -278,11 +289,11 @@ this.on('READ', 'PickingData', async req => {
    
     this.on('CREATE', 'ZCDSEHPSC0011', async req => {
         const soapi = await cds.connect.to('ZSRVBHPS0010');
-        req.data.InvDat = req.data.InvDat.split('-').join('');
-        req.data.ActDat = req.data.ActDat.split('-').join('');
+        // req.data.InvDat = req.data.InvDat.split('-').join('');
+        // req.data.ActDat = req.data.ActDat.split('-').join('');
         var response = await soapi.tx(req).post("/ZCDSEHPSC0011",req.data);
-        response.InvDat = response.InvDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
-        response.ActDat = response.ActDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        // response.InvDat = response.InvDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
+        // response.ActDat = response.ActDat.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3');
         
         return response;
         // try {
@@ -302,7 +313,67 @@ this.on('READ', 'PickingData', async req => {
 
     });
 
+    this.on('CREATE', 'ZCDSEHMMC0013', async req => {
+        const soapi = await cds.connect.to('ZSRVBHMM0006');
+        var response = await soapi.tx(req).post("/ZCDSEHMMC0013",req.data);
+        
+        return response;
 
+    });
+    this.on('READ', 'OrderPartInformation', async req => {
+        const orderApi = await cds.connect.to('ZSRVBHMM0006');
+        // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': oInput.MBLNR }, plwrk: { '=': oInput.ZEILE }, paart: { '=': oInput.MJAHR }, dispo: { '=': oInput.SERNR }, psttr: { '=': oInput.SERNR }, pedtr: { '=': oInput.SERNR }, pertr: { '=': oInput.SERNR } });
+        const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009');
+        let checkPlannedOrder = [];
+        let payloadArray = [];
+        for (let result of plannedOrder) {
+            const btpPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({
+                DWERK: result.plwrk,
+                MATNR: result.matnr,
+                PLNUM: result.plnum
+            })
+            if (btpPlannedOrder.length == 0) {
+                var payload = {
+                    plnum: result.plnum,
+                    matnr: result.matnr,
+                    plwrk: result.plwrk,
+                    paart: result.paart,
+                    gsmng: result.gsmng,
+                    meins: result.meins,
+                    psttr: result.psttr,
+                    pedtr: result.pedtr,
+                    pertr: result.pertr,
+                    dispo: result.dispo,
+                    kdauf: result.kdauf,
+                    kdpos: result.kdpos,
+                    kdein: result.kdein,
+                    auffx: result.auffx,
+                    vagrp: result.vagrp,
+                    status: result.status,
+                    errmsg: result.errmsg,
+                    updqty: result.updqty
+                }
+                payloadArray.push(payload);
+                // checkPlannedOrder.push(btpPlannedOrder[0]);
+            }
+            
+        }
+        // for (let i = 0; i < checkPlannedOrder.length; i++) {
+        //     var element = checkPlannedOrder[i];
+        //     var aObjectIndex = plannedOrder.findIndex(function name(order) {
+        //         return order.plnum === element.PLNUM &&
+        //             order.matnr === element.MATNR &&
+        //             order.plwrk === element.DWERK
+        //     });
+        //     plannedOrder.splice(aObjectIndex, 1);
+        // }
+
+        var test = 1;
+        // var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+        var test1 = 1;
+        // return response;
+
+    });
 
     this.on('UpdatePOItem', async (req) => {
         var inserEntries = []; 
@@ -754,29 +825,29 @@ this.on('READ', 'PickingData', async req => {
         var queries = [];
         req.data.UploadFile.forEach(e => {
             let query =  SELECT.from("ZSRVBHPP0012.ZCDSEHPPB0071").where([ 
-                { ref: ["e_doc_type"] }, '=', { val: e.e_doc_type }, 'and', 
-                { ref: ["e_doc_no"] }, '=', { val: e.e_doc_no }, 'and', 
-                { ref: ["e_rev_no"] }, '=', { val: e.e_rev_no }, 'and', 
-                { ref: ["e_doc_n"] }, '=', { val: e.e_doc_n }, 'and', 
-                { ref: ["ps_group_no"] }, '=', { val: e.ps_group_no }, 'and', 
-                { ref: ["ps_item_no"] }, '=', { val: e.ps_item_no }, 'and', 
-                { ref: ["model1"] }, '=', { val: e.model1 }, 'and', 
-                { ref: ["e_parts_no"] }, '=', { val: e.e_parts_no }, 'and', 
-                { ref: ["comp_parts_no"] }, '=', { val: e.comp_parts_no }, 'and', 
-                { ref: ["ten_digit_sign"] }, '=', { val: e.ten_digit_sign }, 'and', 
-                { ref: ["parts_qty"] }, '=', { val: e.parts_qty }, 'and', 
-                { ref: ["parts_qty_unit"] }, '=', { val: e.parts_qty_unit }, 'and', 
-                { ref: ["select_sign"] }, '=', { val: e.select_sign }, 'and', 
-                { ref: ["parts_use_ratio"] }, '=', { val: e.parts_use_ratio }, 'and', 
-                { ref: ["ps_note"] }, '=', { val: e.ps_note }, 'and', 
-                { ref: ["or_sign"] }, '=', { val: e.or_sign }, 'and', 
-                { ref: ["sfix_digit_ptn"] }, '=', { val: e.sfix_digit_ptn }, 'and', 
-                { ref: ["sfix_ptn"] }, '=', { val: e.sfix_ptn }, 'and', 
-                { ref: ["option_ptn"] }, '=', { val: e.option_ptn }, 'and', 
-                { ref: ["prod_career"] }, '=', { val: e.prod_career }, 'and', 
-                { ref: ["e_tr_type"] }, '=', { val: e.e_tr_type }, 'and', 
-                { ref: ["ps_symbol"] }, '=', { val: e.ps_symbol }, 'and', 
-                { ref: ["valid_frm"] }, '=', { val: e.valid_frm }
+                { ref: ["e_doc_type"] }, '=', { val: e.e_doc_type ? e.e_doc_type : ''  }, 'and', 
+                { ref: ["e_doc_no"] }, '=', { val: e.e_doc_no ? e.e_doc_no : ''  }, 'and', 
+                { ref: ["e_rev_no"] }, '=', { val: e.e_rev_no ? e.e_rev_no : ''  }, 'and', 
+                { ref: ["e_doc_n"] }, '=', { val: e.e_doc_n ? e.e_doc_n : ''  }, 'and', 
+                { ref: ["ps_group_no"] }, '=', { val: e.ps_group_no ? e.ps_group_no : ''  }, 'and', 
+                { ref: ["ps_item_no"] }, '=', { val: e.ps_item_no ? e.ps_item_no : ''  }, 'and', 
+                { ref: ["model1"] }, '=', { val: e.model1 ? e.model1 : ''  }, 'and', 
+                { ref: ["e_parts_no"] }, '=', { val: e.e_parts_no ? e.e_parts_no : ''  }, 'and', 
+                { ref: ["comp_parts_no"] }, '=', { val: e.comp_parts_no ? e.comp_parts_no : ''  }, 'and', 
+                { ref: ["ten_digit_sign"] }, '=', { val: e.ten_digit_sign ? e.ten_digit_sign : ''  }, 'and', 
+                { ref: ["parts_qty"] }, '=', { val: e.parts_qty ? e.parts_qty : ''  }, 'and', 
+                { ref: ["parts_qty_unit"] }, '=', { val: e.parts_qty_unit ? e.parts_qty_unit : ''  }, 'and', 
+                { ref: ["select_sign"] }, '=', { val: e.select_sign ? e.select_sign : ''  }, 'and', 
+                { ref: ["parts_use_ratio"] }, '=', { val: e.parts_use_ratio ? e.parts_use_ratio : ''  }, 'and', 
+                { ref: ["ps_note"] }, '=', { val: e.ps_note ? e.ps_note : ''  }, 'and', 
+                { ref: ["or_sign"] }, '=', { val: e.or_sign ? e.or_sign : ''  }, 'and', 
+                { ref: ["sfix_digit_ptn"] }, '=', { val: e.sfix_digit_ptn ? e.sfix_digit_ptn : ''  }, 'and', 
+                { ref: ["sfix_ptn"] }, '=', { val: e.sfix_ptn ? e.sfix_ptn : ''  }, 'and', 
+                { ref: ["option_ptn"] }, '=', { val: e.option_ptn ? e.option_ptn : ''  }, 'and', 
+                { ref: ["prod_career"] }, '=', { val: e.prod_career ? e.prod_career : ''  }, 'and', 
+                { ref: ["e_tr_type"] }, '=', { val: e.e_tr_type ? e.e_tr_type : ''  }, 'and', 
+                { ref: ["ps_symbol"] }, '=', { val: e.ps_symbol ? e.ps_symbol : ''  }, 'and', 
+                { ref: ["valid_frm"] }, '=', { val: e.valid_frm ? e.valid_frm : ''  }
             ]);
             queries.push(query);
         }); 
@@ -852,47 +923,49 @@ const mapZTHBT0037 = async (finalData,req) => {
             // object.INVALID_D = element.Plant;
             object.E_TR_TYPE = element.e_tr_type;
             object.PARTS_NO_EXT_SIGN = element.Parts_No_ext_sign; 
-            if(object.E_TR_TYPE === "A"){
-                var erTypeA = await SELECT.from('ZHS402.ZTHBT0037').where({
-                    E_DOC_NO: object.E_DOC_NO,
-                    PS_GROUP_NO: object.PS_GROUP_NO,
-                    PS_ITEM_NO: object.PS_ITEM_NO,
-                    MODEL: object.MODEL
-                });
-                if(erTypeA.length > 0 && (erTypeA[0].E_TR_TYPE === "A" || erTypeA[0].E_TR_TYPE === "C")){
-                    element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
-                }
-            }
-            if(object.E_TR_TYPE === "C" || object.E_TR_TYPE === "D"){
-                var erTypeCD = await SELECT.from('ZHS402.ZTHBT0037').where({
-                    E_DOC_NO: object.E_DOC_NO,
-                    PS_GROUP_NO: object.PS_GROUP_NO,
-                    PS_ITEM_NO: object.PS_ITEM_NO,
-                    MODEL: object.MODEL
-                });
-                if(erTypeCD.length > 0 && (erTypeCD[0].E_TR_TYPE === "A" || erTypeCD[0].E_TR_TYPE === "C")){
-                    element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
-                }
-            }
+            
             var allOld = await SELECT.from('ZHS402.ZTHBT0037').where({
                 E_DOC_NO: object.E_DOC_NO,
                 PS_GROUP_NO: object.PS_GROUP_NO,
                 PS_ITEM_NO: object.PS_ITEM_NO,
                 MODEL: object.MODEL
             });
-            if(allOld.length > 1){
+
+            if(object.E_TR_TYPE === "A"){
+                if(allOld.length > 0 ){
+                    for (let i = 0; i < allOld.length; i++) {
+                        const elementI = allOld[i];
+                        if(elementI.E_TR_TYPE === "A" || elementI.E_TR_TYPE === "C"){
+                            element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
+                            i = allOld.length;
+                        }                        
+                    }
+                } 
+            }
+            if(object.E_TR_TYPE === "C" || object.E_TR_TYPE === "D"){
+                if(allOld.length > 0 ){
+                    let cdCount = 0;
+                    for (let J = 0; J < allOld.length; J++) {
+                        const elementJ = allOld[J];
+                        if(elementJ.E_TR_TYPE === "A" || elementJ.E_TR_TYPE === "C"){
+                            cdCount++;
+                            J = allOld.length;
+                        }                        
+                    }
+                    if(cdCount === 0){
+                        element.error_cod += "Add-on table updated error for E_TR_TYPE Not-match. ";
+                    }
+                }                 
+            }
+            if(allOld.length > 0){
                 allOld.sort(function(c,d){return c.EFFECT_D - d.EFFECT_D});
                 if(allOld[allOld.length - 1].EFFECT_D > new Date(element.valid_frm)){
                     element.error_cod += "old revision entry is in future than the Valid From date of new revision entry. ";
                 }else if(!element.error_cod){
                     allOld[allOld.length - 1].INVALID_D = element.valid_frm;
                     var currentOld = allOld[allOld.length - 1];
-                    UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:currentOld.INVALID_D}).where({ WERKS: { '=': currentOld.WERKS }, E_DOC_TYPE: { '=': currentOld.E_DOC_TYPE }, E_DOC_NO: { '=': currentOld.E_DOC_NO }, E_REV_NO: { '=': currentOld.E_REV_NO }, PS_GROUP_NO: { '=': currentOld.PS_GROUP_NO }, PS_ITEM_NO: { '=': currentOld.PS_ITEM_NO }, MODEL: { '=': currentOld.MODEL }, E_SEQUENCE_NO: { '=': currentOld.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+                    await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:currentOld.INVALID_D}).where({ WERKS: { '=': currentOld.WERKS }, E_DOC_TYPE: { '=': currentOld.E_DOC_TYPE }, E_DOC_NO: { '=': currentOld.E_DOC_NO }, E_REV_NO: { '=': currentOld.E_REV_NO }, PS_GROUP_NO: { '=': currentOld.PS_GROUP_NO }, PS_ITEM_NO: { '=': currentOld.PS_ITEM_NO }, MODEL: { '=': currentOld.MODEL }, E_SEQUENCE_NO: { '=': currentOld.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
                 }
-            }else if(allOld.length === 1){
-                var validToDate = new Date(object.EFFECT_D);
-                validToDate.setDate(validToDate.getDate() - 1);
-                allOld[0].INVALID_D = validToDate;
             }
             if(!element.error_cod){
                 aZTHBT0037.push(object);
@@ -901,11 +974,11 @@ const mapZTHBT0037 = async (finalData,req) => {
         }       
     } 
     if(aZTHBT0037.length > 0){
-        for (let index = 0; index < aZTHBT0037.length; index++) {
-            const element = aZTHBT0037[index];
-            const updateQuery = UPDATE.entity('ZHS402.ZTHBT0037').data(element).where({ WERKS: { '=': element.WERKS }, E_DOC_TYPE: { '=': element.E_DOC_TYPE }, E_DOC_NO: { '=': element.E_DOC_NO }, E_REV_NO: { '=': element.E_REV_NO }, PS_GROUP_NO: { '=': element.PS_GROUP_NO }, PS_ITEM_NO: { '=': element.PS_ITEM_NO }, MODEL: { '=': element.MODEL }, E_SEQUENCE_NO: { '=': element.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
-            await srv.run(updateQuery);
-        }
+        // for (let index = 0; index < aZTHBT0037.length; index++) {
+            // const element = aZTHBT0037[index];
+            //  await UPDATE.entity('ZHS402.ZTHBT0037').data(element).where({ WERKS: { '=': element.WERKS }, E_DOC_TYPE: { '=': element.E_DOC_TYPE }, E_DOC_NO: { '=': element.E_DOC_NO }, E_REV_NO: { '=': element.E_REV_NO }, PS_GROUP_NO: { '=': element.PS_GROUP_NO }, PS_ITEM_NO: { '=': element.PS_ITEM_NO }, MODEL: { '=': element.MODEL }, E_SEQUENCE_NO: { '=': element.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput); 
+        // }
+        await INSERT.into('ZHS402.ZTHBT0037').entries(aZTHBT0037);
     }
     return finalData;
 }

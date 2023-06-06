@@ -1,6 +1,6 @@
 {
   "meta": {
-    "creator": "cds-dk 6.7.0"
+    "creator": "cds-dk 6.8.1"
   },
   "$version": "2.0",
   "definitions": {
@@ -77,6 +77,13 @@
           "length": 14,
           "@sap.label": "KANBAN QR Code",
           "@sap.quickinfo": "KANBAN QR Code Second"
+        },
+        "unit": {
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reserve",
+          "@sap.quickinfo": "Character field of length 6"
         },
         "ZEIWN": {
           "type": "cds.String",
@@ -165,6 +172,13 @@
           "@sap.display.format": "NonNegative",
           "@sap.label": "Report ID"
         },
+        "scan1_2": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40"
+        },
         "scannumber": {
           "type": "cds.String",
           "length": 6,
@@ -189,8 +203,8 @@
           "type": "cds.String",
           "length": 4,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Stock Transfer",
-          "@sap.quickinfo": "Control Cycle Replenishment Strategy for Stock Transfer"
+          "@sap.label": "In-House Production",
+          "@sap.quickinfo": "Control Cycle Replenishment Strategy for In-House Production"
         },
         "elpro": {
           "type": "cds.String",

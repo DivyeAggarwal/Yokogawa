@@ -11,6 +11,213 @@
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
     },
+    "ZSRVBHPP0018.I_CompanyCode": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Company Code",
+      "@sap.value.list": "true",
+      "elements": {
+        "CompanyCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "CompanyCodeName",
+          "@sap.label": "Company Code",
+          "notNull": true
+        },
+        "CompanyCodeName": {
+          "type": "cds.String",
+          "length": 25,
+          "@sap.label": "Company Name",
+          "@sap.quickinfo": "Name of Company Code or Company"
+        },
+        "CityName": {
+          "type": "cds.String",
+          "length": 25,
+          "@sap.label": "City"
+        },
+        "Country": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Country/Region Key"
+        },
+        "Currency": {
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.semantics": "currency-code"
+        },
+        "Language": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.label": "Language Key"
+        },
+        "ChartOfAccounts": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Chart of Accounts"
+        },
+        "FiscalYearVariant": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Fiscal Year Variant"
+        },
+        "Company": {
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company"
+        },
+        "CreditControlArea": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "CreditControlArea_Text",
+          "@sap.label": "Credit control area"
+        },
+        "CreditControlArea_Text": {
+          "type": "cds.String",
+          "length": 35,
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Description of the credit control area",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "CountryChartOfAccounts": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Alternative COA",
+          "@sap.quickinfo": "Alternative Chart of Accounts"
+        },
+        "FinancialManagementArea": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "FM Area",
+          "@sap.quickinfo": "Financial Management Area"
+        },
+        "AddressID": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Address"
+        },
+        "TaxableEntity": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Taxes on Sls/Purc.",
+          "@sap.quickinfo": "Taxes on Sales/Purchases Group"
+        },
+        "VATRegistration": {
+          "type": "cds.String",
+          "length": 20,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "VAT Registration No.",
+          "@sap.quickinfo": "VAT Registration Number"
+        },
+        "ExtendedWhldgTaxIsActive": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Extended WTax Active",
+          "@sap.quickinfo": "Indicator: Extended Withholding Tax Active"
+        },
+        "ControllingArea": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "ControllingArea_Text",
+          "@sap.label": "Controlling Area"
+        },
+        "ControllingArea_Text": {
+          "type": "cds.String",
+          "length": 25,
+          "@sap.label": "Controlling Area Name",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "FieldStatusVariant": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Field status variant",
+          "@sap.quickinfo": "Field Status Variant"
+        },
+        "NonTaxableTransactionTaxCode": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Output Tax Code",
+          "@sap.quickinfo": "Output Tax Code for Non-Taxable Transactions"
+        },
+        "DocDateIsUsedForTaxDetn": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Determ.with Doc.Date",
+          "@sap.quickinfo": "Indicator: Document Date As the Basis for Tax Determination"
+        },
+        "TaxRptgDateIsActive": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tax Date",
+          "@sap.quickinfo": "Tax Reporting Date Active in Documents"
+        },
+        "CashDiscountBaseAmtIsNetAmt": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Net Discount Base",
+          "@sap.quickinfo": "Indicator: Discount base amount is the net value"
+        }
+      }
+    },
+    "ZSRVBHPP0018.ZCDSEHPPB0095": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for Issue",
+      "@sap.value.list": "true",
+      "elements": {
+        "DOMALANGU": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.label": "Lang.",
+          "@sap.quickinfo": "Language Key",
+          "notNull": true
+        },
+        "domvalue_l": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Lower Value",
+          "@sap.quickinfo": "Values for Domains: Single Value/Lower Limit",
+          "notNull": true
+        },
+        "Value": {
+          "type": "cds.String",
+          "length": 60,
+          "@sap.label": "Short Descript.",
+          "@sap.quickinfo": "Short Text for Fixed Values"
+        }
+      }
+    },
     "ZSRVBHPP0018.PickingData": {
       "kind": "entity",
       "@cds.external": true,
@@ -121,10 +328,12 @@
           "notNull": true
         },
         "issue": {
+          "key": true,
           "type": "cds.String",
           "length": 40,
           "@sap.label": "Issue",
-          "@sap.value.list": "fixed-values"
+          "@sap.value.list": "fixed-values",
+          "notNull": true
         },
         "PickNo": {
           "type": "cds.String",
