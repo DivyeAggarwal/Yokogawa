@@ -1010,7 +1010,7 @@ const itemMasterCheck = async (finalData) => {
             element.error_cod += "E_TR_TYPE  is  other than 'A'  or 'C'  or  'D'. ";
         }
         // Input file check/Required Check
-        if(element.e_doc_type === "FE0" && 
+        if((element.e_doc_type === "FE0" || element.e_doc_type === "FE1") &&  
         (element.e_doc_no.length === 0 || element.e_rev_no.length === 0 || element.ps_group_no.length === 0 || 
             element.ps_item_no.length === 0 || element.model1.length === 0 || element.valid_frm.length === 0 ||
             element.e_parts_no.length === 0 || element.comp_parts_no.length === 0 ||
@@ -1018,7 +1018,7 @@ const itemMasterCheck = async (finalData) => {
             || element.select_sign.length === 0 || element.parts_use_ratio.length === 0 || element.e_tr_type.length === 0) ){
             element.error_cod += "Key field not availabl. ";
         }
-        if(element.e_doc_type === "FE1" && 
+        if(element.e_doc_type === "FE0" && 
         (element.or_sign.length === 0 || element.sfix_digit_ptn.length === 0 || element.sfix_ptn.length === 0 || element.option_ptn.length === 0 || element.prod_career.length === 0 ) ){
             element.error_cod += "Key field not availabl. ";
         }
