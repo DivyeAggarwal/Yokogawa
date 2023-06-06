@@ -320,37 +320,56 @@ this.on('READ', 'PickingData', async req => {
     });
     this.on('READ', 'OrderPartInformation', async req => {
         const orderApi = await cds.connect.to('ZSRVBHMM0006');
-        const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': oInput.MBLNR }, plwrk: { '=': oInput.ZEILE }, paart: { '=': oInput.MJAHR }, dispo: { '=': oInput.SERNR }, psttr: { '=': oInput.SERNR }, pedtr: { '=': oInput.SERNR }, pertr: { '=': oInput.SERNR } });
-
-        let arrayInput = [];
-        if (Array.isArray(plannedOrder)) {
-            for (let result of plannedOrder) {
-                arrayInput.push(result);
+        // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': oInput.MBLNR }, plwrk: { '=': oInput.ZEILE }, paart: { '=': oInput.MJAHR }, dispo: { '=': oInput.SERNR }, psttr: { '=': oInput.SERNR }, pedtr: { '=': oInput.SERNR }, pertr: { '=': oInput.SERNR } });
+        const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009');
+        let checkPlannedOrder = [];
+        let payloadArray = [];
+        for (let result of plannedOrder) {
+            const btpPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({
+                DWERK: result.plwrk,
+                MATNR: result.matnr,
+                PLNUM: result.plnum
+            })
+            if (btpPlannedOrder.length == 0) {
+                var payload = {
+                    plnum: result.plnum,
+                    matnr: result.matnr,
+                    plwrk: result.plwrk,
+                    paart: result.paart,
+                    gsmng: result.gsmng,
+                    meins: result.meins,
+                    psttr: result.psttr,
+                    pedtr: result.pedtr,
+                    pertr: result.pertr,
+                    dispo: result.dispo,
+                    kdauf: result.kdauf,
+                    kdpos: result.kdpos,
+                    kdein: result.kdein,
+                    auffx: result.auffx,
+                    vagrp: result.vagrp,
+                    status: result.status,
+                    errmsg: result.errmsg,
+                    updqty: result.updqty
+                }
+                payloadArray.push(payload);
+                // checkPlannedOrder.push(btpPlannedOrder[0]);
             }
+            
         }
-        else {
-            arrayInput.push(results);
-        }
-        // const checkPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({ MSCODE: { in: arrayInput } });
-        const checkPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({
-            DWERK: { in: arrayInput.plwrk },
-            MATNR: { in: arrayInput.matnr },
-            PLNUM: { in: arrayInput.plnum }
-        })
+        // for (let i = 0; i < checkPlannedOrder.length; i++) {
+        //     var element = checkPlannedOrder[i];
+        //     var aObjectIndex = plannedOrder.findIndex(function name(order) {
+        //         return order.plnum === element.PLNUM &&
+        //             order.matnr === element.MATNR &&
+        //             order.plwrk === element.DWERK
+        //     });
+        //     plannedOrder.splice(aObjectIndex, 1);
+        // }
 
-        for (let i = 0; i < checkPlannedOrder.length; i++) {
-            var element = checkPlannedOrder[i];
-            var aObjectIndex = plannedOrder.findIndex(function name(order) {
-                return order.plnum === element.PLNUM &&
-                    order.matnr === element.MATNR &&
-                    order.plwrk === element.DWERK
-            });
-            plannedOrder.splice(0, aObjectIndex);
-        }
-
-        // var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",req.data);
-
-        return response;
+        var test = 1;
+        // var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+        var test1 = 1;
+        // return response;
 
     });
 

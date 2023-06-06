@@ -367,7 +367,7 @@ this.on('READ', 'PickingData', async req => {
         // }
 
         var test = 1;
-        var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+        // var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
         var test1 = 1;
         // return response;
 
