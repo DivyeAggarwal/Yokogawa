@@ -20,6 +20,7 @@ using ZSRVBHPS0011 from './external/ZSRVBHPS0011';
 using ZSRVBHPP0017 from './external/ZSRVBHPP0017';
 using ZSRVBHPP0018 from './external/ZSRVBHPP0018';
 using ZSRVBHMM0006 from './external/ZSRVBHMM0006';
+using ZSRVBHSD0011 from './external/ZSRVBHSD0011';
 
 
 service CatalogService {
@@ -1502,4 +1503,9 @@ entity yentard as projection on db.YARDTESTDB;
 
 
 
+}
+
+
+service ZAPIBPS0005 {
+    entity ZCDSEHSDC0009 as projection on ZSRVBHSD0011.ZCDSEHSDC0009;
 }
