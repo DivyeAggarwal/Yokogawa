@@ -36533,6 +36533,50 @@
         }
       }
     },
+    "ZAPIBPS0005": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZAPIBPS0005.ZCDSEHSDC0009": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Billing Interface File to CHI system",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHSD0011.ZCDSEHSDC0009"
+          ]
+        }
+      },
+      "elements": {
+        "VKORG": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Organization",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "VBELN": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Billing Document",
+          "type": "cds.String",
+          "length": 10
+        },
+        "FKDAT": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Billing Date",
+          "type": "cds.Date"
+        },
+        "tsv": {
+          "type": "cds.LargeBinary"
+        }
+      }
+    },
     "external.PublicSynonymsService": {
       "@source": "srv/public-synonym.cds",
       "kind": "service"
@@ -73433,6 +73477,120 @@
       }
     },
     "ZSRVBHMM0006.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ExternalCode": {
+          "@sap.label": "Commercial",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "UoM Text",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@sap.label": "Decimal Places",
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "ZSRVBHSD0011": {
+      "@source": "srv/external/ZSRVBHSD0011.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHSD0011.ZCDSEHSDC0009": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Billing Interface File to CHI system",
+      "elements": {
+        "VKORG": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Organization",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "VBELN": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Billing Document",
+          "type": "cds.String",
+          "length": 10
+        },
+        "FKDAT": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Billing Date",
+          "type": "cds.Date"
+        },
+        "tsv": {
+          "type": "cds.LargeBinary"
+        }
+      }
+    },
+    "ZSRVBHSD0011.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHSD0011.SAP__UnitsOfMeasure": {
       "kind": "entity",
       "@cds.external": true,
       "@cds.persistence.skip": true,
