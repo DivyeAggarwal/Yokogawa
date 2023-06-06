@@ -35507,19 +35507,6 @@
             "type": "ZAPIBPS0004.ZCDSEBPS0012"
           }
         },
-        "Upload": {
-          "kind": "action",
-          "params": {
-            "data": {
-              "items": {
-                "type": "ZAPIBPS0004.ZCDSEBPS0012"
-              }
-            }
-          },
-          "returns": {
-            "type": "ZAPIBPS0004.ZCDSEBPS0012"
-          }
-        },
         "split": {
           "kind": "action",
           "returns": {
@@ -35590,6 +35577,22 @@
             "type": "ZAPIBPS0004.ZCDSEBPS0012"
           }
         }
+      }
+    },
+    "ZAPIBPS0004.Upload1": {
+      "kind": "action",
+      "params": {
+        "data": {
+          "items": {
+            "type": "ZAPIBPS0004.ExcelData"
+          }
+        },
+        "whollyUpload": {
+          "type": "cds.Boolean"
+        }
+      },
+      "returns": {
+        "type": "ZAPIBPS0004.ZCDSEBPS0012"
       }
     },
     "ZCAPIH0019": {
