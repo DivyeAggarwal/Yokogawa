@@ -244,11 +244,11 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                     }
                     if (data) {
                         let success = await CallEntity(entity, data, req, projectDefinitions, companyCodes, whollyupload);
-                        if(success){
+                        if (success) {
                             resolve(req.notify({
                                 message: 'Data has been uploaded successfully.',
                                 status: 200
-                            }));  
+                            }));
                         }
                         else {
                             reject(req.error(400, 'Error while uploading the data. Kindly try again. Kindly notify the admin if the issue persists'));
@@ -257,7 +257,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                 });
             });
         }
-         else {
+        else {
             return next();
         }
     });
@@ -297,12 +297,12 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                         })
                     }
                     if (data) {
-                        let success = await CallEntity(entity, data, req, projectDefinitions, companyCodes, whollyupload);
-                        if(success){
+                        let success = await CallEntityTemp(entity, data, req, projectDefinitions, companyCodes, whollyupload);
+                        if (success) {
                             resolve(req.notify({
                                 message: 'Data has been uploaded successfully.',
                                 status: 200
-                            }));  
+                            }));
                         }
                         else {
                             reject(req.error(400, 'Error while uploading the data. Kindly try again. Kindly notify the admin if the issue persists'));
@@ -311,7 +311,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                 });
             });
         }
-         else {
+        else {
             return next();
         }
     });
@@ -507,9 +507,199 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
     that.after('MassEdit', async (req) => {
         this.isMassEditMessageRaised = false;
     });
+    that.on('Upload', async (req) => {
+        let companyCodes = [];
+        let projectDefinitions = [];
+        for (let res of req.data) {
+            let projectAdded = projectDefinitions.includes(res['PS_PSPNR']);
+            if (!projectAdded) {
+                projectDefinitions.push(res['PS_PSPNR']);
+            }
+            let compCodeAdded = companyCodes.includes(res['PBUKR']);
+            if (!compCodeAdded) {
+                companyCodes.push(res['PBUKR']);
+            }
+        }
+
+
+        let success = await CallEntity('ZCDSEBPS0012', req.data.data, req, projectDefinitions, companyCodes, req.data.whollyUpload);
+        if (success) {
+            resolve(req.notify({
+                message: 'Data has been uploaded successfully.',
+                status: 200
+            }));
+        }
+        else {
+            reject(req.error(400, 'Error while uploading the data. Kindly try again. Kindly notify the admin if the issue persists'));
+        }
+    });
 }
 
 async function CallEntity(entity, data, req, arrayProjectDefinitions, arrayCompanyCodes, whollyupload) {
+    let existingCabs = await getExistingCabinets(arrayProjectDefinitions, arrayCompanyCodes);
+    let dataForInsert = [];
+    let dataForUpdate = [];
+    let criticality = 3;
+    for (let dataFromExcel of data) {
+        let remark = '';
+        let deletionFlag = '';
+        let enteredQuantity = dataFromExcel['ZQTY'];
+        if (!dataFromExcel['ZCABNUM'] ||
+            !dataFromExcel['PBUKR'] ||
+            !dataFromExcel['Z1_MSCODE'] ||
+            !dataFromExcel['ZIDEX'] ||
+            !dataFromExcel['PS_PSPNR'] ||
+            !dataFromExcel['ZMSCODE'] ||
+            !dataFromExcel['ZVMCODE'] ||
+            enteredQuantity === null ||
+            enteredQuantity === undefined ||
+            !dataFromExcel['ZUT']) {
+            remark = 'Mandatory Parameter is missing.';
+            criticality = 1;
+        }
+
+        let dataFoundInDB = existingCabs.find((data) => {
+            return data.ZCABNUM === dataFromExcel['ZCABNUM'] &&
+                data.PBUKR === dataFromExcel['PBUKR'] && data.PS_PSPNR === dataFromExcel['PS_PSPNR']
+        });
+        if (enteredQuantity === 0) {
+            criticality = 1;
+        }
+        if (dataFoundInDB) {
+            if (enteredQuantity < dataFoundInDB.ZQTY) {
+                deletionFlag = 'X';
+                remark += 'System will delete this line, please check';
+            }
+            if (enteredQuantity === 0 && dataFoundInDB.ZQTY) {
+                deletionFlag = 'X';
+                remark += 'System will delete this line, please check';
+            }
+        }
+
+        if (dataFoundInDB) {
+            dataForUpdate.push({
+                ID: dataFoundInDB.ID,
+                ZCABNUM: dataFromExcel['ZCABNUM'],
+                PBUKR: dataFromExcel['PBUKR'],
+                PS_PSPNR: dataFromExcel['PS_PSPNR'],
+                ZMSCODE: dataFromExcel['ZMSCODE'],
+                PS_POSNR: dataFromExcel['PS_POSNR'],
+                MATNR: dataFromExcel['MATNR'],
+                ZZ1_MSCODE: dataFromExcel['ZZ1_MSCODE'],
+                ZIDEX: dataFromExcel['ZIDEX'],
+                ZVMCODE: dataFromExcel['ZVMCODE'],
+                ZQTY: dataFoundInDB.ZQTY,
+                ZUT: enteredQuantity,
+                ZDESCRIP: dataFromExcel['ZDESCRIP'],
+                ZSER: dataFromExcel['ZSER'],
+                ZSHTP: dataFromExcel['ZSHTP'],
+                ZSHPNAME1: dataFromExcel['ZSHPNAME1'],
+                ZSHPNAME2: dataFromExcel['ZSHPNAME2'],
+                ZSHPNAME3: dataFromExcel['ZSHPNAME3'],
+                ZSHPNAME4: dataFromExcel['ZSHPNAME4'],
+                ZCONTACTTEL: dataFromExcel['ZCONTACTTEL'],
+                ZDELNOTE1: dataFromExcel['ZDELNOTE1'],
+                ZDELNOTE2: dataFromExcel['ZDELNOTE2'],
+                ZDONUM: dataFromExcel['ZDONUM'],
+                ZDOITEM: dataFromExcel['ZDOITEM'],
+                ZDOPDATE: dataFromExcel['ZDOPDATE'],
+                ZDELFLAG: deletionFlag ? 'X' : dataFoundInDB.ZDELFLAG,
+                ZSHPSTAT: dataFoundInDB.ZSHPSTAT,
+                ZDOADATE: dataFoundInDB.ZDOADATE,
+                REMARKS: remark,
+                CRITICALITY: criticality
+            });
+            if (enteredQuantity > dataFoundInDB.ZQTY && !remark && !deletionFlag) {
+                dataForInsert.push({
+                    ZCABNUM: dataFromExcel['ZCABNUM'],
+                    PBUKR: dataFromExcel['PBUKR'],
+                    PS_PSPNR: dataFromExcel['PS_PSPNR'],
+                    ZMSCODE: dataFromExcel['ZMSCODE'],
+                    PS_POSNR: dataFromExcel['PS_POSNR'],
+                    MATNR: dataFromExcel['MATNR'],
+                    ZZ1_MSCODE: dataFromExcel['ZZ1_MSCODE'],
+                    ZIDEX: dataFromExcel['ZIDEX'],
+                    ZVMCODE: dataFromExcel['ZVMCODE'],
+                    ZQTY: enteredQuantity - dataFoundInDB.ZQTY,
+                    ZUT: dataFromExcel['ZUT'],
+                    ZDESCRIP: dataFromExcel['ZDESCRIP'],
+                    ZSER: dataFromExcel['ZSER'],
+                    ZSHTP: dataFromExcel['ZSHTP'],
+                    ZSHPNAME1: dataFromExcel['ZSHPNAME1'],
+                    ZSHPNAME2: dataFromExcel['ZSHPNAME2'],
+                    ZSHPNAME3: dataFromExcel['ZSHPNAME3'],
+                    ZSHPNAME4: dataFromExcel['ZSHPNAME4'],
+                    ZCONTACTTEL: dataFromExcel['ZCONTACTTEL'],
+                    ZDELNOTE1: dataFromExcel['ZDELNOTE1'],
+                    ZDELNOTE2: dataFromExcel['ZDELNOTE2'],
+                    ZDONUM: dataFromExcel['ZDONUM'],
+                    ZDOITEM: dataFromExcel['ZDOITEM'],
+                    ZDOPDATE: dataFromExcel['ZDOPDATE']
+                });
+            }
+        }
+        else {
+            dataForInsert.push({
+                ZCABNUM: dataFromExcel['ZCABNUM'],
+                PBUKR: dataFromExcel['PBUKR'],
+                PS_PSPNR: dataFromExcel['PS_PSPNR'],
+                ZMSCODE: dataFromExcel['ZMSCODE'],
+                PS_POSNR: dataFromExcel['PS_POSNR'],
+                MATNR: dataFromExcel['MATNR'],
+                ZZ1_MSCODE: dataFromExcel['ZZ1_MSCODE'],
+                ZIDEX: dataFromExcel['ZIDEX'],
+                ZVMCODE: dataFromExcel['ZVMCODE'],
+                ZQTY: dataFromExcel['ZQTY'],
+                ZUT: dataFromExcel['ZUT'],
+                ZDESCRIP: dataFromExcel['ZDESCRIP'],
+                ZSER: dataFromExcel['ZSER'],
+                ZSHTP: dataFromExcel['ZSHTP'],
+                ZSHPNAME1: dataFromExcel['ZSHPNAME1'],
+                ZSHPNAME2: dataFromExcel['ZSHPNAME2'],
+                ZSHPNAME3: dataFromExcel['ZSHPNAME3'],
+                ZSHPNAME4: dataFromExcel['ZSHPNAME4'],
+                ZCONTACTTEL: dataFromExcel['ZCONTACTTEL'],
+                ZDELNOTE1: dataFromExcel['ZDELNOTE1'],
+                ZDELNOTE2: dataFromExcel['ZDELNOTE2'],
+                ZDONUM: dataFromExcel['ZDONUM'],
+                ZDOITEM: dataFromExcel['ZDOITEM'],
+                ZDOPDATE: dataFromExcel['ZDOPDATE'],
+                REMARKS: remark,
+                CRITICALITY: criticality,
+                ZDELFLAG: deletionFlag
+            })
+        }
+    }
+
+    if (whollyupload) {
+        for (let existingCab of existingCabs) {
+            let dataFoundInExcel = dataForInsert.find((dataDb) => {
+                return dataDb.ZCABNUM === existingCab.ZCABNUM &&
+                    dataDb.PBUKR === existingCab.PBUKR && dataDb.PS_PSPNR === existingCab.PS_PSPNR
+            });
+            if (!dataFoundInExcel) {
+                existingCab.ZDELFLAG = 'X';
+                dataForUpdate.push(existingCab);
+            }
+        }
+    }
+    if (dataForInsert.length) {
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForInsert);
+    }
+
+    if (dataForUpdate.length) {
+        await UPSERT.into('ZHS402.ZTHBT0055').entries(dataForUpdate);
+    }
+    return true;
+
+    // let srv = await cds.connect.to('ZAPIBPS0004');
+    // req.info({
+    //     code: 200,
+    //     message: 'Data is been uploaded successfull'
+    // });
+
+};
+async function CallEntityTemp(entity, data, req, arrayProjectDefinitions, arrayCompanyCodes, whollyupload) {
     let existingCabs = await getExistingCabinets(arrayProjectDefinitions, arrayCompanyCodes);
     let dataForInsert = [];
     let dataForUpdate = [];

@@ -33737,6 +33737,131 @@
         }
       }
     },
+    "ZAPIBPS0004.ExcelData": {
+      "kind": "entity",
+      "@open": true,
+      "elements": {
+        "ZCABNUM": {
+          "@title": "Cabinet number",
+          "type": "cds.String",
+          "length": 20
+        },
+        "PBUKR": {
+          "@title": "Company code",
+          "type": "cds.String",
+          "length": 4
+        },
+        "PS_PSPNR": {
+          "@title": "Project Definition",
+          "type": "cds.String",
+          "length": 24
+        },
+        "ZMSCODE": {
+          "@title": "MS Code",
+          "type": "cds.String",
+          "length": 50
+        },
+        "PS_POSNR": {
+          "@title": "WBS Element",
+          "type": "cds.String",
+          "length": 24
+        },
+        "MATNR": {
+          "@title": "SAP MATERIAL",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ZZ1_MSCODE": {
+          "@title": "Material Type Code",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ZIDEX": {
+          "@title": "Material Type Code Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ZVMCODE": {
+          "@title": "Vendor Material code",
+          "type": "cds.String",
+          "length": 50
+        },
+        "ZQTY": {
+          "@title": "Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "ZUT": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 5
+        },
+        "ZDESCRIP": {
+          "@title": "Material Description",
+          "type": "cds.String",
+          "length": 50
+        },
+        "ZSER": {
+          "@title": "Serial number",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ZSHTP": {
+          "@title": "Ship to Party",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ZSHPNAME1": {
+          "@title": "Contact Ship to Name 1",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ZSHPNAME2": {
+          "@title": "Contact Ship to Name 2",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ZSHPNAME3": {
+          "@title": "Contact Ship to Name 3",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ZSHPNAME4": {
+          "@title": "Contact Ship to Name 4",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ZCONTACTTEL": {
+          "@title": "Contact ship to Telephone",
+          "type": "cds.String",
+          "length": 30
+        },
+        "ZDELNOTE1": {
+          "@title": "Delivery Note1",
+          "type": "cds.String",
+          "length": 50
+        },
+        "ZDELNOTE2": {
+          "@title": "Delivery Note2",
+          "type": "cds.String",
+          "length": 50
+        },
+        "ZDONUM": {
+          "@title": "DO Number Title",
+          "type": "cds.Integer"
+        },
+        "ZDOITEM": {
+          "@title": "DO Number Item",
+          "type": "cds.String",
+          "length": 7
+        },
+        "ZDOPDATE": {
+          "@title": "DO Plan Date",
+          "type": "cds.Date"
+        }
+      }
+    },
     "ZAPIBPS0004.ZCDSEBPS0016": {
       "kind": "entity",
       "@title": "{i18n>CreatepurchaseItemRecord}",
@@ -35090,6 +35215,22 @@
       "actions": {
         "DeleteSet": {
           "kind": "action",
+          "returns": {
+            "type": "ZAPIBPS0004.ZCDSEBPS0012"
+          }
+        },
+        "Upload": {
+          "kind": "action",
+          "params": {
+            "data": {
+              "items": {
+                "type": "ZAPIBPS0004.ExcelData"
+              }
+            },
+            "whollyUpload": {
+              "type": "cds.Boolean"
+            }
+          },
           "returns": {
             "type": "ZAPIBPS0004.ZCDSEBPS0012"
           }

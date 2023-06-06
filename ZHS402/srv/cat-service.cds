@@ -1380,6 +1380,33 @@ service ZAPIBPS0004 {
             wbsElementExt,
             ProjectDesc
     };
+    @open
+    entity ExcelData {
+        ZCABNUM:String(20) @title : 'Cabinet number';
+        PBUKR: String(4) @title: 'Company code';
+        PS_PSPNR: String(24) @title: 'Project Definition';
+        ZMSCODE:String(50) @title : 'MS Code';	
+        PS_POSNR : String(24) @title : 'WBS Element';		
+        MATNR:String(40) @title : 'SAP MATERIAL';	
+        ZZ1_MSCODE:String(3) @title : 'Material Type Code';
+        ZIDEX:String(40) @title : 'Material Type Code Description';
+        ZVMCODE:String(50) @title : 'Vendor Material code';	
+        ZQTY:Decimal(13,2) @title : 'Quantity';	
+        ZUT:String(5)  @title : 'Unit';		
+        ZDESCRIP:String(50) @title : 'Material Description';					
+        ZSER:String(20) @title : 'Serial number';		
+        ZSHTP:String(20) @title : 'Ship to Party';		
+        ZSHPNAME1:String(40) @title : 'Contact Ship to Name 1';	
+        ZSHPNAME2:String(40) @title : 'Contact Ship to Name 2';	
+        ZSHPNAME3:String(40) @title : 'Contact Ship to Name 3';	
+        ZSHPNAME4:String(40) @title : 'Contact Ship to Name 4';	
+        ZCONTACTTEL:String(30) @title : 'Contact ship to Telephone';		
+        ZDELNOTE1:String(50) @title : 'Delivery Note1';	
+        ZDELNOTE2:String(50) @title : 'Delivery Note2';	
+        ZDONUM:Integer @title : 'DO Number Title';	
+        ZDOITEM:String(7) @title : 'DO Number Item';	
+        ZDOPDATE:Date @title : 'DO Plan Date';		
+    };
     entity ZCDSEBPS0016 as projection on db.ZTHBT0027;
     
     @odata.draft.enabled
@@ -1428,6 +1455,7 @@ service ZAPIBPS0004 {
     }
     actions {
         action DeleteSet() returns ZCDSEBPS0012;
+        action Upload(data: array of ExcelData,whollyUpload:Boolean ) returns ZCDSEBPS0012;
         action split() returns ZCDSEBPS0012;
         action copy() returns ZCDSEBPS0012;
         action paste() returns ZCDSEBPS0012;
