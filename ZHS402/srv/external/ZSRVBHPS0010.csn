@@ -11,6 +11,30 @@
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
     },
+    "ZSRVBHPS0010.ZCDSEHPSB0055": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "CDS Basic View for project miletone",
+      "elements": {
+        "WbsElmt": {
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        },
+        "mlst_zaehl": {
+          "type": "cds.String",
+          "length": 12,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Milestone number"
+        }
+      }
+    },
     "ZSRVBHPS0010.ZCDSEHPSC0011": {
       "kind": "entity",
       "@cds.external": true,
