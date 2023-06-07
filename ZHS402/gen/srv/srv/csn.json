@@ -35579,7 +35579,7 @@
         }
       }
     },
-    "ZAPIBPS0004.Upload1": {
+    "ZAPIBPS0004.Upload": {
       "kind": "action",
       "params": {
         "data": {
