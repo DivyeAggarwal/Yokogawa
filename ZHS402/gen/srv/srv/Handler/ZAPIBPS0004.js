@@ -508,32 +508,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         this.isMassEditMessageRaised = false;
     });
     that.on('Upload', async (req) => {
-        let companyCodes = [];
-        let projectDefinitions = [];
-        for (let res of req.data) {
-            let projectAdded = projectDefinitions.includes(res['PS_PSPNR']);
-            if (!projectAdded) {
-                projectDefinitions.push(res['PS_PSPNR']);
-            }
-            let compCodeAdded = companyCodes.includes(res['PBUKR']);
-            if (!compCodeAdded) {
-                companyCodes.push(res['PBUKR']);
-            }
-        }
-
-
-        let success = await CallEntity('ZCDSEBPS0012', req.data.data, req, projectDefinitions, companyCodes, req.data.whollyUpload);
-        if (success) {
-            resolve(req.notify({
-                message: 'Data has been uploaded successfully.',
-                status: 200
-            }));
-        }
-        else {
-            reject(req.error(400, 'Error while uploading the data. Kindly try again. Kindly notify the admin if the issue persists'));
-        }
-    });
-    that.on('Upload1', async (req) => {
+        let srv = await cds.connect.to('ZAPIBPS0004');
         let companyCodes = [];
         let projectDefinitions = [];
         for (let res of req.data.data) {
