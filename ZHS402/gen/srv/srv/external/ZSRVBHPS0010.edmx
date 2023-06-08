@@ -38,6 +38,13 @@
 <edmx:DataServices m:DataServiceVersion="2.0">
 <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_zsrvhps0007" xml:lang="en" sap:schema-version="1">
 <Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Core.SchemaVersion" String="1.0.0"/>
+<EntityType Name="ZCDSEHPSB0055Type" sap:label="CDS Basic View for project miletone" sap:content-version="1">
+<Key>
+<PropertyRef Name="WbsElmt"/>
+</Key>
+<Property Name="WbsElmt" Type="Edm.String" Nullable="false" MaxLength="24"/>
+<Property Name="mlst_zaehl" Type="Edm.String" MaxLength="12" sap:display-format="NonNegative" sap:label="Milestone number"/>
+</EntityType>
 <EntityType Name="ZCDSEHPSC0011Type" sap:label="Custom CDS View for Bill Info" sap:content-version="1">
 <Key>
 <PropertyRef Name="GrpSup"/>
@@ -84,6 +91,7 @@
 <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
 </EntityType>
 <EntityContainer Name="cds_zsrvhps0007_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+<EntitySet Name="ZCDSEHPSB0055" EntityType="cds_zsrvhps0007.ZCDSEHPSB0055Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
 <EntitySet Name="ZCDSEHPSC0011" EntityType="cds_zsrvhps0007.ZCDSEHPSC0011Type" sap:content-version="1"/>
 <EntitySet Name="SAP__Currencies" EntityType="cds_zsrvhps0007.SAP__Currency" sap:content-version="1"/>
 <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zsrvhps0007.SAP__UnitOfMeasure" sap:content-version="1"/>

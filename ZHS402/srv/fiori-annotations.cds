@@ -2904,7 +2904,7 @@ annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
             BusinessPartnerName4 @title: 'Name4';
             PostalCode @title: 'Postal Code';
             Region @title: 'Region';
-            City @title: 'Cit';
+            City @title: 'City';
             StreetName @title: 'Street1';
             StreetPrefixName @title: 'Street2';
             AdditionalStreetPrefixName @title: 'Street3';
