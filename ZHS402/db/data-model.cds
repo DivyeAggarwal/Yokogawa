@@ -411,7 +411,7 @@ entity ZTHBT0059 : managed {
     key ZSD_MILESTONE         : String(10) @title : 'SAP MileStone Number';
         ZSD_ACTUAL_DATE       : Date       @title : 'SAP Actual Date';
         ZSD_BILLINGPLAN_VALUE : String(16) @title : 'SAP Billing Plan Value';
-        ZFG_INVOICE_ID        : String(20) @title : 'FG Invoice ID';
+    key ZFG_INVOICE_ID        : String(20) @title : 'FG Invoice ID';
         ZSD_MAIN_SONUM        : String(10) @title : 'SAP Main SO Number';
         ZSD_SO_DEBIT_NUM      : String(10) @title : 'SAP SO Debit Memo Number';
         ZSD_INV_SUBMIT_DATE   : Date       @title : 'Invoice Submit Date';
