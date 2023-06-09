@@ -3455,6 +3455,7 @@
         },
         "ZFG_INVOICE_ID": {
           "@title": "FG Invoice ID",
+          "key": true,
           "type": "cds.String",
           "length": 20
         },
@@ -25400,6 +25401,7 @@
         },
         "ZFG_INVOICE_ID": {
           "@title": "FG Invoice ID",
+          "key": true,
           "type": "cds.String",
           "length": 20
         },
@@ -25634,6 +25636,7 @@
         },
         "ZFG_INVOICE_ID": {
           "@title": "FG Invoice ID",
+          "key": true,
           "type": "cds.String",
           "length": 20
         },
@@ -35488,7 +35491,7 @@
           "length": 5
         },
         "City": {
-          "@title": "Cit",
+          "@title": "City",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 25

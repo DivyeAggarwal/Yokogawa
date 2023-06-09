@@ -28,7 +28,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
             }
         }
         let objectCustomer = {};
-        //await PrepareResultObject(arrayInput, objectCustomer);
+        await PrepareResultObject(arrayInput, objectCustomer);
 
         /*Manipulate the result from cloud and On Premise */
         if (Array.isArray(results)) {
@@ -187,7 +187,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         if (oDataResults) {
             let copiedData = {
                 ZSHTP: oDataResults[0].ZSHTP,
-                ZSHPNAME1: oDataResults[0].SHPNAME1,
+                ZSHPNAME1: oDataResults[0].ZSHPNAME1,
                 ZSHPNAME2: oDataResults[0].ZSHPNAME2,
                 ZSHPNAME3: oDataResults[0].ZSHPNAME3,
                 ZSHPNAME4: oDataResults[0].ZSHPNAME4,
