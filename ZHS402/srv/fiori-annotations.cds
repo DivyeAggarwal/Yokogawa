@@ -3350,3 +3350,74 @@ annotate ZCDSEHBTC0014.ZCDSEHPPP0004 {
     })
     vbeln; 
 }
+
+annotate ZCDSEHBTC0014.ZCDSEHPPP0004 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : Plant,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : Storgloc,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : MScode,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : matnr,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : serno,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : Msalesord,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : Msalesorditm,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : compno,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : PlannedOrder,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : ProductionOrder,
+            AllowedExpressions : 'SingleValue'
+         }
+    ]
+});
+
+annotate  ZCDSEHBTC0014.ZCDSEHPPP0004 with @(
+    UI: {
+        LineItem: [
+            { Value: matnr, ![@Common.Label] : 'Mat. No. (Avail. Stock)' },
+            { Value: salesdocument, ![@Common.Label] : 'Sales Order' },
+            { Value: item , ![@Common.Label] : 'Sales Order Item'},
+            { Value: compponentno, ![@Common.Label] : 'COMP' } ,
+            { Value: Storgloc , ![@Common.Label] : 'Storage Location'} ,
+            { Value: UnrestrictedUseStock , ![@Common.Label] : 'Unrestricted-Use Stock'} ,
+            { Value: BlockedStock , ![@Common.Label] : 'Blocked Stock'} ,
+            { Value: Reservstock , ![@Common.Label] : 'Reserved Stock'} ,
+            { Value: srlnm , ![@Common.Label] : 'Serial'} ,
+            { Value: OrderType , ![@Common.Label] : 'Sales Order Type' } ,
+            { Value: MaterialType, ![@Common.Label] : 'Material Type' } ,
+            { Value: Msalesord , ![@Common.Label] : 'MS Code of Main Sales Order'} ,
+            { Value: MScode , ![@Common.Label] : 'MS Code (Avail.stock)'} ,
+            { Value: Msalesord, ![@Common.Label] : 'Main Sales Order' } ,
+            { Value: Msalesorditm, ![@Common.Label] : 'Main Sales Order Item' } ,
+            { Value: compno , ![@Common.Label] : 'Main COMP'} ,
+            { Value: matnr , ![@Common.Label] : 'Main Material'  } ,
+            { Value: SerialNumber , ![@Common.Label] : 'Main Serial' }             
+        ]
+    }
+);
+
