@@ -7,6 +7,7 @@ const registerZAPIBPS0001Handler = require("./Handler/ZAPIBPS0001");
 const registerZAPIBPS0002Handler = require("./Handler/ZAPIBPS0002");
 const registerZAPIBPS0004Handler = require("./Handler/ZAPIBPS0004");
 const registerZAPIBPS0005Handler = require("./Handler/ZAPIBPS0005");
+const registerZAPIBPS0006Handler = require("./Handler/ZAPIBPS0006");
 const registerZCDSEHBTC0014Handler = require("./Handler/ZCDSEHBTC0014");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
@@ -40,6 +41,7 @@ module.exports = cds.service.impl(async function (srv) {
     registerZAPIBPS0001Handler(this,cds);
     registerZAPIBPS0002Handler(this,cds);
     registerZAPIBPS0005Handler(this,cds);
+    registerZAPIBPS0006Handler(this,cds);
     registerZCDSEHBTC0014Handler(this,cds);
     registerZAPIBPS0004Handler(this,cds,Readable, PassThrough,XLSX,SequenceHelper);
     this.on('READ', 'ZCDSEHPSB0004', async req => {

@@ -3421,3 +3421,56 @@ annotate  ZCDSEHBTC0014.ZCDSEHPPP0004 with @(
     }
 );
 
+
+annotate ZAPIBPS0006.ZCDSEHPPB0081 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : plant,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : mscode,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : saleorder,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : saleorderitm,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : qty,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : material,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : outofstock_dt,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
+
+annotate  ZAPIBPS0006.ZCDSEHPPB0081 with @(
+    UI: {
+        LineItem: [
+            { Value: mscode, ![@Common.Label] : 'MS Code' },
+            { Value: material, ![@Common.Label] : 'Material' },
+            { Value: material_type , ![@Common.Label] : 'Material Type'},
+            { Value: avail_after, ![@Common.Label] : 'Available (After)' } ,
+            { Value: avail_befor , ![@Common.Label] : 'Available (Before)'} ,
+            { Value: actual , ![@Common.Label] : 'Actual'} ,
+            { Value: planned_gr , ![@Common.Label] : 'Planned GR'} ,
+            { Value: planned_gi , ![@Common.Label] : 'Planned GI'} ,
+            { Value: reserved , ![@Common.Label] : 'Reserved'} ,
+            { Value: outofstock_dt , ![@Common.Label] : 'Date (out of stock)' } ,
+            { Value: qty, ![@Common.Label] : 'Qty (Out of stock)' } ,
+            { Value: totalplanned_gi , ![@Common.Label] : 'Total Planned GI'} ,
+            { Value: totalres , ![@Common.Label] : 'Total reserved'}           
+        ]
+    }
+);
