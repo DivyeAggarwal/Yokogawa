@@ -1,3 +1,4 @@
+using { sap } from '@sap/cds/common';
 using ZHS402 as db from '../db/data-model';
 using TimeSheetEntry from './external/TimeSheetEntry';
 using ZSRVBHPS0008 from './external/ZSRVBHPS0008';
@@ -1046,7 +1047,23 @@ service ZCDSEHBTC0013 {
 service ZCDSEHBTC0014 {
     entity ZCDSEHPPP0004                as projection on ZSRVBHPP0014.ZCDSEHPPP0004;
     entity A_ProductDescription         as projection on API_PRODUCT_SRV.A_ProductDescription;
-    entity A_Product                    as projection on API_PRODUCT_SRV.A_Product;
+    entity I_MaterialStdVH                    as projection on ZSRVBHPP0014.I_MaterialStdVH;
+    entity I_PlantStdVH                    as projection on ZSRVBHPP0014.I_PlantStdVH;
+    entity I_SalesDocumentBasic                    as projection on ZSRVBHPP0014.I_SalesDocumentBasic;
+    entity I_StorageLocation                    as projection on ZSRVBHPP0014.I_StorageLocation;
+    entity I_StorageLocationStdVH                    as projection on ZSRVBHPP0014.I_StorageLocationStdVH;
+   entity ProcessType : sap.common.CodeList {
+        key code : String enum {
+            Reserve = 'Reserve';
+            Cancel  = 'Cancel';
+        };
+    };
+   entity StockAvailabilityType : sap.common.CodeList {
+        key code : String enum {
+            Allotmentavailable = '{i18n>Allotmentavailable}';
+            ReservedAvailable  = '{i18n>ReservedAvailable}';
+        };
+    };
 }
 
 service ZAPIBPS0001 {

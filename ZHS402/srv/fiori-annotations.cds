@@ -3234,3 +3234,119 @@ annotate  YAPIARD.yentard with @(
             name @title: 'Name';
             DOB @title: 'Date Of Birth';
 }
+
+
+
+//Valuehelp
+annotate ZCDSEHBTC0014.ZCDSEHPPP0004 {  
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'I_MaterialStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : matnr,
+                    ValueListProperty : 'Material'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Material_Text'
+                } 
+            ]
+        }
+    })
+    matnr; 
+    @(Common : {
+        Label     : 'Storage Location',
+        ValueList : {
+            CollectionPath : 'I_StorageLocationStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Storgloc,
+                    ValueListProperty : 'StorageLocation'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'StorageLocationName'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Plant'
+                } 
+            ]
+        }
+    })
+    Storgloc; 
+    @(Common : {
+        Label     : 'Storage Location',
+        ValueList : {
+            CollectionPath : 'I_StorageLocationStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : lgort,
+                    ValueListProperty : 'StorageLocation'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'StorageLocationName'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Plant'
+                } 
+            ]
+        }
+    })
+    lgort; 
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Plant,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    Plant; 
+    @(Common : {
+        Label     : 'Sales Document',
+        ValueList : {
+            CollectionPath : 'I_SalesDocumentBasic',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : vbeln,
+                    ValueListProperty : 'SalesDocument'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'SDDocumentCategory'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'SalesDocumentType'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'SalesOffice'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'SoldToParty'
+                } 
+            ]
+        }
+    })
+    vbeln; 
+}
