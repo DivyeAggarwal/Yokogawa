@@ -28687,6 +28687,12 @@
           },
           "columns": [
             {
+              "key": true,
+              "ref": [
+                "ID"
+              ]
+            },
+            {
               "ref": [
                 "ZCABNUM"
               ]
@@ -28764,6 +28770,10 @@
         }
       },
       "elements": {
+        "ID": {
+          "key": true,
+          "type": "cds.UUID"
+        },
         "ZCABNUM": {
           "@title": "Cabinet number",
           "type": "cds.String",

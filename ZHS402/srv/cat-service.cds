@@ -1107,6 +1107,7 @@ service ZAPIBPS0001 {
 
     entity ZCDSEBPS0003                 as
         select from db.ZTHBT0055 {
+            key ID,
             ZCABNUM,
             PBUKR,
             PS_PSPNR,
