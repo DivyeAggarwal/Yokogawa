@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.8.1"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHPP0013": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0013.ZCDSEHPPB0081": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom entity for inventory RS report",
+      "elements": {
+        "mscode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80,
+          "@sap.label": "MS Code",
+          "notNull": true
+        },
+        "material": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "notNull": true
+        },
+        "material_type": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material type"
+        },
+        "plant": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant"
+        },
+        "avail_after": {
+          "type": "cds.Integer",
+          "@sap.label": "INT4",
+          "@sap.quickinfo": "4 Byte Signed Integer"
+        },
+        "avail_befor": {
+          "type": "cds.Integer",
+          "@sap.label": "INT4",
+          "@sap.quickinfo": "4 Byte Signed Integer"
+        },
+        "actual": {
+          "type": "cds.Integer",
+          "@sap.label": "INT4",
+          "@sap.quickinfo": "4 Byte Signed Integer"
+        },
+        "qtyunit": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "planned_gr": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "qtyunit",
+          "@sap.label": "Total Quantity",
+          "@sap.quickinfo": "Order Item Planned Total Quantity"
+        },
+        "planned_gi": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "qtyunit",
+          "@sap.label": "Qty Delivered",
+          "@sap.quickinfo": "Quantity Delivered (Stock Transfer)"
+        },
+        "reserved": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "qtyunit",
+          "@sap.label": "Qty Delivered",
+          "@sap.quickinfo": "Quantity Delivered (Stock Transfer)"
+        },
+        "outofstock_dt": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Material Avail. Date",
+          "@sap.quickinfo": "Material Staging/Availability Date"
+        },
+        "totalplanned_gi": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "qtyunit",
+          "@sap.label": "Qty Delivered",
+          "@sap.quickinfo": "Quantity Delivered (Stock Transfer)"
+        },
+        "totalres": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "qtyunit",
+          "@sap.label": "Qty Delivered",
+          "@sap.quickinfo": "Quantity Delivered (Stock Transfer)"
+        },
+        "saleorder": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales and Distribution Document Number"
+        },
+        "saleorderitm": {
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item (SD)",
+          "@sap.quickinfo": "Item number of the SD document"
+        },
+        "qty": {
+          "type": "cds.Integer",
+          "@sap.label": "Qty",
+          "@sap.quickinfo": "4 Byte Signed Integer"
+        },
+        "invdate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Material Avail. Date",
+          "@sap.quickinfo": "Material Staging/Availability Date"
+        }
+      }
+    },
+    "ZSRVBHPP0013.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.label": "Short text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPP0013.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "ExternalCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Commercial",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "UoM Text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@sap.label": "Decimal Places"
+        }
+      }
+    }
+  }
+}

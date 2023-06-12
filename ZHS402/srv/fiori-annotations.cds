@@ -3234,3 +3234,243 @@ annotate  YAPIARD.yentard with @(
             name @title: 'Name';
             DOB @title: 'Date Of Birth';
 }
+
+
+
+//Valuehelp
+annotate ZCDSEHBTC0014.ZCDSEHPPP0004 {  
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'I_MaterialStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : matnr,
+                    ValueListProperty : 'Material'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Material_Text'
+                } 
+            ]
+        }
+    })
+    matnr; 
+    @(Common : {
+        Label     : 'Storage Location',
+        ValueList : {
+            CollectionPath : 'I_StorageLocationStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Storgloc,
+                    ValueListProperty : 'StorageLocation'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'StorageLocationName'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Plant'
+                } 
+            ]
+        }
+    })
+    Storgloc; 
+    @(Common : {
+        Label     : 'Storage Location',
+        ValueList : {
+            CollectionPath : 'I_StorageLocationStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : lgort,
+                    ValueListProperty : 'StorageLocation'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'StorageLocationName'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Plant'
+                } 
+            ]
+        }
+    })
+    lgort; 
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Plant,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    Plant; 
+    @(Common : {
+        Label     : 'Sales Document',
+        ValueList : {
+            CollectionPath : 'I_SalesDocumentBasic',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : vbeln,
+                    ValueListProperty : 'SalesDocument'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'SDDocumentCategory'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'SalesDocumentType'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'SalesOffice'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'SoldToParty'
+                } 
+            ]
+        }
+    })
+    vbeln; 
+}
+
+annotate ZCDSEHBTC0014.ZCDSEHPPP0004 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : Plant,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : Storgloc,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : MScode,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : matnr,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : serno,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : Msalesord,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : Msalesorditm,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : compno,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : PlannedOrder,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : ProductionOrder,
+            AllowedExpressions : 'SingleValue'
+         }
+    ]
+});
+
+annotate  ZCDSEHBTC0014.ZCDSEHPPP0004 with @(
+    UI: {
+        LineItem: [
+            { Value: matnr, ![@Common.Label] : 'Mat. No. (Avail. Stock)' },
+            { Value: salesdocument, ![@Common.Label] : 'Sales Order' },
+            { Value: item , ![@Common.Label] : 'Sales Order Item'},
+            { Value: compponentno, ![@Common.Label] : 'COMP' } ,
+            { Value: Storgloc , ![@Common.Label] : 'Storage Location'} ,
+            { Value: UnrestrictedUseStock , ![@Common.Label] : 'Unrestricted-Use Stock'} ,
+            { Value: BlockedStock , ![@Common.Label] : 'Blocked Stock'} ,
+            { Value: Reservstock , ![@Common.Label] : 'Reserved Stock'} ,
+            { Value: srlnm , ![@Common.Label] : 'Serial'} ,
+            { Value: OrderType , ![@Common.Label] : 'Sales Order Type' } ,
+            { Value: MaterialType, ![@Common.Label] : 'Material Type' } ,
+            { Value: Msalesord , ![@Common.Label] : 'MS Code of Main Sales Order'} ,
+            { Value: MScode , ![@Common.Label] : 'MS Code (Avail.stock)'} ,
+            { Value: Msalesord, ![@Common.Label] : 'Main Sales Order' } ,
+            { Value: Msalesorditm, ![@Common.Label] : 'Main Sales Order Item' } ,
+            { Value: compno , ![@Common.Label] : 'Main COMP'} ,
+            { Value: matnr , ![@Common.Label] : 'Main Material'  } ,
+            { Value: SerialNumber , ![@Common.Label] : 'Main Serial' }             
+        ]
+    }
+);
+
+
+annotate ZAPIBPS0006.ZCDSEHPPB0081 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : plant,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : mscode,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : saleorder,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : saleorderitm,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : qty,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : material,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : outofstock_dt,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
+
+annotate  ZAPIBPS0006.ZCDSEHPPB0081 with @(
+    UI: {
+        LineItem: [
+            { Value: mscode, ![@Common.Label] : 'MS Code' },
+            { Value: material, ![@Common.Label] : 'Material' },
+            { Value: material_type , ![@Common.Label] : 'Material Type'},
+            { Value: avail_after, ![@Common.Label] : 'Available (After)' } ,
+            { Value: avail_befor , ![@Common.Label] : 'Available (Before)'} ,
+            { Value: actual , ![@Common.Label] : 'Actual'} ,
+            { Value: planned_gr , ![@Common.Label] : 'Planned GR'} ,
+            { Value: planned_gi , ![@Common.Label] : 'Planned GI'} ,
+            { Value: reserved , ![@Common.Label] : 'Reserved'} ,
+            { Value: outofstock_dt , ![@Common.Label] : 'Date (out of stock)' } ,
+            { Value: qty, ![@Common.Label] : 'Qty (Out of stock)' } ,
+            { Value: totalplanned_gi , ![@Common.Label] : 'Total Planned GI'} ,
+            { Value: totalres , ![@Common.Label] : 'Total reserved'}           
+        ]
+    }
+);
