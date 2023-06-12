@@ -49,6 +49,7 @@
 <Key>
 <PropertyRef Name="GrpSup"/>
 <PropertyRef Name="WbsElmt"/>
+<PropertyRef Name="FldInv"/>
 <PropertyRef Name="MileSton"/>
 <PropertyRef Name="InvDat"/>
 <PropertyRef Name="ActDat"/>
@@ -61,6 +62,7 @@
 </Key>
 <Property Name="GrpSup" Type="Edm.String" Nullable="false" MaxLength="2"/>
 <Property Name="WbsElmt" Type="Edm.String" Nullable="false" MaxLength="24"/>
+<Property Name="FldInv" Type="Edm.String" Nullable="false" MaxLength="14"/>
 <Property Name="MileSton" Type="Edm.String" Nullable="false" MaxLength="12"/>
 <Property Name="InvDat" Type="Edm.String" Nullable="false" MaxLength="8"/>
 <Property Name="ActDat" Type="Edm.String" Nullable="false" MaxLength="8"/>
