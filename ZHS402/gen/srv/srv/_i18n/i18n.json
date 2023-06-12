@@ -35,7 +35,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "cs": {
     "CreatedBy": "Vytvořil",
@@ -73,7 +75,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "da": {
     "CreatedBy": "Oprettet af",
@@ -111,7 +115,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "de": {
     "CreatedBy": "Angelegt von",
@@ -149,7 +155,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "en": {
     "CreatedBy": "Created By",
@@ -187,7 +195,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "es": {
     "CreatedBy": "Creado por",
@@ -225,7 +235,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "fi": {
     "CreatedBy": "Tekijä",
@@ -263,7 +275,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "fr": {
     "CreatedBy": "Auteur de la création",
@@ -301,7 +315,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "hu": {
     "CreatedBy": "Létrehozó:",
@@ -339,7 +355,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "it": {
     "CreatedBy": "Autore creazione",
@@ -377,7 +395,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "ja": {
     "CreatedBy": "登録者",
@@ -415,7 +435,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "ko": {
     "CreatedBy": "생성자",
@@ -453,7 +475,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "ms": {
     "CreatedBy": "Dicipta oleh",
@@ -491,7 +515,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "nl": {
     "CreatedBy": "Gecreëerd door",
@@ -529,7 +555,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "no": {
     "CreatedBy": "Opprettet av",
@@ -567,7 +595,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "pl": {
     "CreatedBy": "Utworzone przez",
@@ -605,7 +635,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "pt": {
     "CreatedBy": "Criado por",
@@ -643,7 +675,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "ro": {
     "CreatedBy": "Creat de",
@@ -681,7 +715,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "ru": {
     "CreatedBy": "Создал",
@@ -719,7 +755,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "sv": {
     "CreatedBy": "Uppläggning av",
@@ -757,7 +795,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "th": {
     "CreatedBy": "สร้างโดย",
@@ -795,7 +835,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "tr": {
     "CreatedBy": "Oluşturan",
@@ -833,7 +875,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "zh_CN": {
     "CreatedBy": "创建者",
@@ -871,7 +915,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "zh_TW": {
     "CreatedBy": "建立者",
@@ -909,7 +955,9 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   },
   "": {
     "CreatedBy": "Created By",
@@ -947,6 +995,8 @@
     "PartsStructureSpecification": "Parts Structure Table TR by Specification",
     "PartsStructureMaster": "Parts Structure Master",
     "PartsStructureTr": "Parts Structure Tr",
-    "YEOSMakerNO": "YEOS Maker NO"
+    "YEOSMakerNO": "YEOS Maker NO",
+    "Allotmentavailable": "Only Allotment available stock",
+    "ReservedAvailable": "Reserved & Available stock"
   }
 }
