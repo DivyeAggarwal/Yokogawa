@@ -378,6 +378,18 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
         this.isPasteMessageRaised = false;
     });
     that.before('DOCreate', async (req) => {
+        let srv = await cds.connect.to('ZAPIBPS0004');
+        let oDataResults = await srv.get('ZAPIBPS0004.ZCDSEBPS0012').where(req.query.SELECT.from.ref[0].where);
+        for(let result of oDataResults) {
+            if(result.ZDONUM) {
+                req.reject({
+                    code: 403,
+                    message: 'Delivery number is already created for this Item'
+                });
+                return;
+            }
+        }
+
         const db = await cds.connect.to("db");
         let newNumber = await getGenerateNewNumber(that, req, SequenceHelper, db);
     })
