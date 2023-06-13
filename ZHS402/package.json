@@ -311,6 +311,10 @@
           "csrf": true,
           "csrfInBatch": true
         }
+      },
+      "ZSRVBHPP0019": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVBHPP0019"
       }
     },
     "hana": {

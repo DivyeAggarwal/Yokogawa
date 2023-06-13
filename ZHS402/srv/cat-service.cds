@@ -23,6 +23,7 @@ using ZSRVBHPP0018 from './external/ZSRVBHPP0018';
 using ZSRVBHMM0006 from './external/ZSRVBHMM0006';
 using ZSRVBHSD0011 from './external/ZSRVBHSD0011';
 using ZSRVBHPP0013 from './external/ZSRVBHPP0013';
+using ZSRVBHPP0019 from './external/ZSRVBHPP0019';
 
 service CatalogService {
     entity ZCDSEHCSC0003                as projection on TimeSheetEntry.ZCDSEHCSC0003 {
