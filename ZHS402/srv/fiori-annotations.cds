@@ -3474,3 +3474,133 @@ annotate  ZAPIBPS0006.ZCDSEHPPB0081 with @(
         ]
     }
 );
+
+//Valuehelp
+annotate ZAPIBPS0007.ZCDSEHPPB0097 {  
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'I_MaterialStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : material,
+                    ValueListProperty : 'Material'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Material_Text'
+                } 
+            ]
+        }
+    })
+    material; 
+    @(Common : {
+        Label     : 'Storage Location From',
+        ValueList : {
+            CollectionPath : 'I_StorageLocationStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : strgloc_frm,
+                    ValueListProperty : 'StorageLocation'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'StorageLocationName'
+                }
+            ]
+        }
+    })
+    strgloc_frm; 
+    @(Common : {
+        Label     : 'Storage Location To',
+        ValueList : {
+            CollectionPath : 'I_StorageLocationStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : strgloc_to,
+                    ValueListProperty : 'StorageLocation'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'StorageLocationName'
+                }
+            ]
+        }
+    })
+    strgloc_to; 
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plant,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    plant; 
+    @(Common : {
+        Label     : 'GL Account',
+        ValueList : {
+            CollectionPath : 'I_GLAccountStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : glacc,
+                    ValueListProperty : 'GLAccount'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'GLAccount_Text'
+                }
+            ]
+        }
+    })
+    glacc; 
+    @(Common : {
+        Label     : 'Production Order',
+        ValueList : {
+            CollectionPath : 'I_ProductionOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : prodord,
+                    ValueListProperty : 'ProductionOrder'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'OrderDescription'
+                }
+            ]
+        }
+    })
+    prodord; 
+    @(Common : {
+        Label     : 'Cost Center',
+        ValueList : {
+            CollectionPath : 'I_CostCenterStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : costcntr,
+                    ValueListProperty : 'CostCenter'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'CostCenter_Text'
+                }
+            ]
+        }
+    })
+    costcntr; 
+}

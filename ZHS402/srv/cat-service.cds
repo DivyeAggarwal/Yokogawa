@@ -1577,4 +1577,25 @@ service ZAPIBPS0007 {
     entity I_MaterialStdVH as projection on ZSRVBHPP0019.I_MaterialStdVH;
     entity I_ProductionOrderStdVH as projection on ZSRVBHPP0019.I_ProductionOrderStdVH;
     entity I_StorageLocationStdVH as projection on ZSRVBHPP0019.I_StorageLocationStdVH;
+    @cds.persistence.skip
+    entity IndividualIssue {
+        plant: String;
+        material: String;
+         quantity: String;
+         unit: String;
+         strgloc_frm: String;
+         strgloc_to: String;
+         recip: String;
+         unl_pnt: String;
+         prodord : String;
+         linkage: String;
+         costcntr: String;
+         glacc: String;
+         text: String;
+         basedt: String;
+         immflag: String;
+         optflag: String;
+         ordflag: String;
+
+    }
 }
