@@ -1505,7 +1505,12 @@ service ZAPIBPS0004 {
                         ZSHPNAME1: String @Common.Label: 'Contact Ship to Name 1',
                         ZSHPNAME2: String @Common.Label: 'Contact Ship to Name 2',
                         ZSHPNAME3: String @Common.Label: 'Contact Ship to Name 3',
-                        ZSHPNAME4: String @Common.Label: 'Contact Ship to Name 4') returns ZCDSEBPS0012;
+                        ZSHPNAME4: String @Common.Label: 'Contact Ship to Name 4',
+                        ZCONTACTTEL: String @Common.Label: 'Contact ship to telephone',
+                        ZDOPDATE: Date @Common.Label: 'DO plan date',
+                        ZDELNOTE1: String @Common.Label: 'Delivery notes 1',
+                        ZDELNOTE2: String @Common.Label: 'Delivery notes 2') returns ZCDSEBPS0012;
+
     };
 
     action Upload(data: many ExcelData, whollyUpload:Boolean) returns ZCDSEBPS0012;
