@@ -9,6 +9,7 @@ const registerZAPIBPS0004Handler = require("./Handler/ZAPIBPS0004");
 const registerZAPIBPS0005Handler = require("./Handler/ZAPIBPS0005");
 const registerZAPIBPS0006Handler = require("./Handler/ZAPIBPS0006");
 const registerZCDSEHBTC0014Handler = require("./Handler/ZCDSEHBTC0014");
+const registerZAPIBPS0007Handler = require("./Handler/ZAPIBPS0007");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql;

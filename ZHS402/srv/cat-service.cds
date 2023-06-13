@@ -1568,3 +1568,13 @@ service ZAPIBPS0005 {
 service ZAPIBPS0006 {
     entity ZCDSEHPPB0081 as projection on ZSRVBHPP0013.ZCDSEHPPB0081;
 }
+
+service ZAPIBPS0007 {
+    entity ZCDSEHPPB0097 as projection on ZSRVBHPP0019.ZCDSEHPPB0097;
+    entity I_PlantStdVH as projection on ZSRVBHPP0019.I_PlantStdVH;
+    entity I_CostCenterStdVH as projection on ZSRVBHPP0019.I_CostCenterStdVH;
+    entity I_GLAccountStdVH as projection on ZSRVBHPP0019.I_GLAccountStdVH;
+    entity I_MaterialStdVH as projection on ZSRVBHPP0019.I_MaterialStdVH;
+    entity I_ProductionOrderStdVH as projection on ZSRVBHPP0019.I_ProductionOrderStdVH;
+    entity I_StorageLocationStdVH as projection on ZSRVBHPP0019.I_StorageLocationStdVH;
+}
