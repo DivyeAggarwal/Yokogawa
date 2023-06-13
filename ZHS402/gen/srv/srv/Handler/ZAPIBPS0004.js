@@ -433,7 +433,7 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                 ZDONUM: DONumberMap.DONumber,
                 ZDOITEM: DONumberMap.numberOfCabinet.toString().padStart(3, '0') + DONumberMap.numberOfComponent.toString().padStart(4, '0'),
                 ZDOPDATE: oData.ZDOPDATE,
-                ZDOADATE: new Date(),
+                ZDOADATE: new Date().toISOString().split("T")[0],
                 ZDELFLAG: oData.ZDELFLAG,
                 ZSHPSTAT: oData.ZSHPSTAT,
                 CRITICALITY: oData.CRITICALITY,
@@ -474,16 +474,16 @@ var registerZAPIBPS0004Handler = function (that, cds, Readable, PassThrough, XLS
                 oData.ZSHPNAME4 = req.data.ZSHPNAME4;
             }
             if (req.data.ZCONTACTTEL) {
-                oData.ZSHPNAME4 = req.data.ZCONTACTTEL;
+                oData.ZCONTACTTEL = req.data.ZCONTACTTEL;
             }
             if (req.data.ZDOPDATE) {
-                oData.ZSHPNAME4 = req.data.ZDOPDATE;
+                oData.ZDOPDATE = req.data.ZDOPDATE;
             }
             if (req.data.ZDELNOTE1) {
-                oData.ZSHPNAME4 = req.data.ZDELNOTE1;
+                oData.ZDELNOTE1 = req.data.ZDELNOTE1;
             }
             if (req.data.ZDELNOTE2) {
-                oData.ZSHPNAME4 = req.data.ZDELNOTE2;
+                oData.ZDELNOTE2 = req.data.ZDELNOTE2;
             }
             dataForUpsert.push({
                 ID: oData.ID,
