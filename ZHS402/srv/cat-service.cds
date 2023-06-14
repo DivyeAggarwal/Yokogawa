@@ -1579,23 +1579,24 @@ service ZAPIBPS0007 {
     entity I_StorageLocationStdVH as projection on ZSRVBHPP0019.I_StorageLocationStdVH;
     @cds.persistence.skip
     entity IndividualIssue {
-        plant: String;
-        material: String;
-         quantity: String;
-         unit: String;
-         strgloc_frm: String;
-         strgloc_to: String;
-         recip: String;
-         unl_pnt: String;
-         prodord : String;
-         linkage: String;
-         costcntr: String;
-         glacc: String;
-         text: String;
-         basedt: String;
-         immflag: String;
-         optflag: String;
-         ordflag: String;
+        Inputfield: String(1) @title : 'Input field';
+        option: String(1) @title : 'Option';
+        OrderTransfer: String(1) @title : 'Order Transfer';
+        plant: String(4) @title : 'Plant';
+        material: String(40) @title : 'Material';
+         quantity: Decimal(13,2) @title : 'Quantity';
+         unit: String(3) @title: 'Unit';
+         strgloc_frm: String(4) @title : 'Storage Location From';
+         strgloc_to: String(4) @title : 'Storage Location To';
+         recip: String(12) @title : 'Goods Recipient';
+         unl_pnt: String(25) @title : 'Unloading Point';
+         prodord : String(12) @title : 'Production Order Number';
+         linkage: String(16) @title : 'Linkage No.';
+         costcntr: String(4) @title : 'Cost Center';
+         glacc: String(10) @title : 'G/L Account';
+         text: String(30) @title : 'Text';
+         basedt: Date @title : 'Basic Date';
+         Immediately: Boolean @title: 'Immediately'
 
     }
 }

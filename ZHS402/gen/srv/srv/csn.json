@@ -37754,6 +37754,685 @@
         }
       }
     },
+    "ZAPIBPS0007": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZAPIBPS0007.ZCDSEHPPB0097": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom CDS create invidual issue",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0019.ZCDSEHPPB0097"
+          ]
+        }
+      },
+      "elements": {
+        "plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "quantity": {
+          "@sap.unit": "unit",
+          "@sap.label": "Total Order Quantity",
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": true
+        },
+        "unit": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "strgloc_frm": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "strgloc_to": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "recip": {
+          "@sap.label": "Goods Recipient",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "unl_pnt": {
+          "@sap.label": "Unloading Point",
+          "key": true,
+          "type": "cds.String",
+          "length": 25,
+          "notNull": true
+        },
+        "prodord": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "linkage": {
+          "@sap.label": "Linkage Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 16,
+          "notNull": true
+        },
+        "costcntr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Controlling Area",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "glacc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "G/L Account",
+          "@sap.quickinfo": "G/L Account Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "text": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "30 Characters",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "basedt": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Current Date",
+          "@sap.quickinfo": "ABAP system field: Current date of application server",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "immflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "optflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "ordflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "inpfile": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char256",
+          "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
+          "type": "cds.String",
+          "length": 256,
+          "notNull": true
+        },
+        "outfile": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char256",
+          "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
+          "type": "cds.String",
+          "length": 256,
+          "notNull": true
+        },
+        "errmsg": {
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Text (452 characters)",
+          "key": true,
+          "type": "cds.String",
+          "length": 452,
+          "notNull": true
+        }
+      }
+    },
+    "ZAPIBPS0007.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0019.I_PlantStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PlantName": {
+          "@sap.label": "Plant Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZAPIBPS0007.I_CostCenterStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Cost Center",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0019.I_CostCenterStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "ControllingArea": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Controlling Area",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "CostCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "CostCenter_Text",
+          "@sap.label": "Cost Center",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "ValidityEndDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid To",
+          "@sap.quickinfo": "Valid To Date",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "CostCenter_Text": {
+          "@sap.label": "Cost Center Name",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ValidityStartDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid From",
+          "@sap.quickinfo": "Valid-From Date",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ZAPIBPS0007.I_GLAccountStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "General Ledger Account",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0019.I_GLAccountStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "GLAccount": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "GLAccount_Text",
+          "@sap.label": "G/L Account",
+          "@sap.quickinfo": "G/L Account Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "CompanyCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company Code",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "GLAccount_Text": {
+          "@sap.label": "G/L Account Name",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 20
+        },
+        "GLAccountExternal": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "G/L Acct External ID",
+          "@sap.quickinfo": "G/L Account Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "AlternativeGLAccount": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Altern. Account",
+          "@sap.quickinfo": "Alternative Account Number in Company Code",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ChartOfAccounts": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Chart of Accounts",
+          "type": "cds.String",
+          "length": 4
+        },
+        "GLAccountGroup": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Account Group",
+          "@sap.quickinfo": "G/L Account Group",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ReconciliationAccountType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reconcil.ID",
+          "@sap.quickinfo": "Account is Reconciliation Account",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZAPIBPS0007.I_MaterialStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Material",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0019.I_MaterialStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "Material_Text",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Material_Text": {
+          "@sap.label": "Material Description",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZAPIBPS0007.I_ProductionOrderStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Production Order",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0019.I_ProductionOrderStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "ProductionOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "OrderDescription",
+          "@sap.label": "Manufacturing Order",
+          "@sap.quickinfo": "Manufacturing Order ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "OrderDescription": {
+          "@sap.label": "Order Text",
+          "@sap.quickinfo": "Manufacturing Order Text",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZAPIBPS0007.I_StorageLocationStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Storage Location",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0019.I_StorageLocationStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "StorageLocationName",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocationName": {
+          "@sap.label": "Storage Loc. Name",
+          "@sap.quickinfo": "Storage Location Name",
+          "type": "cds.String",
+          "length": 16
+        },
+        "ConfigDeprecationCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZAPIBPS0007.IndividualIssue": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Inputfield": {
+          "@title": "Input field",
+          "type": "cds.String",
+          "length": 1
+        },
+        "option": {
+          "@title": "Option",
+          "type": "cds.String",
+          "length": 1
+        },
+        "OrderTransfer": {
+          "@title": "Order Transfer",
+          "type": "cds.String",
+          "length": 1
+        },
+        "plant": {
+          "@title": "Plant",
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plant"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
+          "type": "cds.String",
+          "length": 4
+        },
+        "material": {
+          "@title": "Material",
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "I_MaterialStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "material"
+              },
+              "ValueListProperty": "Material"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Material_Text"
+            }
+          ],
+          "type": "cds.String",
+          "length": 40
+        },
+        "quantity": {
+          "@title": "Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "unit": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "strgloc_frm": {
+          "@title": "Storage Location From",
+          "@Common.Label": "Storage Location From",
+          "@Common.ValueList.CollectionPath": "I_StorageLocationStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "strgloc_frm"
+              },
+              "ValueListProperty": "StorageLocation"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "StorageLocationName"
+            }
+          ],
+          "type": "cds.String",
+          "length": 4
+        },
+        "strgloc_to": {
+          "@title": "Storage Location To",
+          "@Common.Label": "Storage Location To",
+          "@Common.ValueList.CollectionPath": "I_StorageLocationStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "strgloc_to"
+              },
+              "ValueListProperty": "StorageLocation"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "StorageLocationName"
+            }
+          ],
+          "type": "cds.String",
+          "length": 4
+        },
+        "recip": {
+          "@title": "Goods Recipient",
+          "type": "cds.String",
+          "length": 12
+        },
+        "unl_pnt": {
+          "@title": "Unloading Point",
+          "type": "cds.String",
+          "length": 25
+        },
+        "prodord": {
+          "@title": "Production Order Number",
+          "@Common.Label": "Production Order",
+          "@Common.ValueList.CollectionPath": "I_ProductionOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "prodord"
+              },
+              "ValueListProperty": "ProductionOrder"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "OrderDescription"
+            }
+          ],
+          "type": "cds.String",
+          "length": 12
+        },
+        "linkage": {
+          "@title": "Linkage No.",
+          "type": "cds.String",
+          "length": 16
+        },
+        "costcntr": {
+          "@title": "Cost Center",
+          "@Common.Label": "Cost Center",
+          "@Common.ValueList.CollectionPath": "I_CostCenterStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "costcntr"
+              },
+              "ValueListProperty": "CostCenter"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "CostCenter_Text"
+            }
+          ],
+          "type": "cds.String",
+          "length": 4
+        },
+        "glacc": {
+          "@title": "G/L Account",
+          "@Common.Label": "GL Account",
+          "@Common.ValueList.CollectionPath": "I_GLAccountStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "glacc"
+              },
+              "ValueListProperty": "GLAccount"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "GLAccount_Text"
+            }
+          ],
+          "type": "cds.String",
+          "length": 10
+        },
+        "text": {
+          "@title": "Text",
+          "type": "cds.String",
+          "length": 30
+        },
+        "basedt": {
+          "@title": "Basic Date",
+          "type": "cds.Date"
+        },
+        "Immediately": {
+          "@title": "Immediately",
+          "type": "cds.Boolean"
+        }
+      }
+    },
     "external.PublicSynonymsService": {
       "@source": "srv/public-synonym.cds",
       "kind": "service"
@@ -75044,6 +75723,479 @@
         "DecimalPlaces": {
           "@sap.label": "Decimal Places",
           "type": "cds.Integer"
+        }
+      }
+    },
+    "ZSRVBHPP0019": {
+      "@source": "srv/external/ZSRVBHPP0019.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0019.I_CostCenterStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Cost Center",
+      "elements": {
+        "ControllingArea": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Controlling Area",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "CostCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "CostCenter_Text",
+          "@sap.label": "Cost Center",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "ValidityEndDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid To",
+          "@sap.quickinfo": "Valid To Date",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "CostCenter_Text": {
+          "@sap.label": "Cost Center Name",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 20
+        },
+        "ValidityStartDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid From",
+          "@sap.quickinfo": "Valid-From Date",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ZSRVBHPP0019.I_GLAccountStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "General Ledger Account",
+      "elements": {
+        "GLAccount": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "GLAccount_Text",
+          "@sap.label": "G/L Account",
+          "@sap.quickinfo": "G/L Account Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "CompanyCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company Code",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "GLAccount_Text": {
+          "@sap.label": "G/L Account Name",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 20
+        },
+        "GLAccountExternal": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "G/L Acct External ID",
+          "@sap.quickinfo": "G/L Account Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "AlternativeGLAccount": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Altern. Account",
+          "@sap.quickinfo": "Alternative Account Number in Company Code",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ChartOfAccounts": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Chart of Accounts",
+          "type": "cds.String",
+          "length": 4
+        },
+        "GLAccountGroup": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Account Group",
+          "@sap.quickinfo": "G/L Account Group",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ReconciliationAccountType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Reconcil.ID",
+          "@sap.quickinfo": "Account is Reconciliation Account",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZSRVBHPP0019.I_MaterialStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Material",
+      "elements": {
+        "Material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "Material_Text",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Material_Text": {
+          "@sap.label": "Material Description",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZSRVBHPP0019.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PlantName": {
+          "@sap.label": "Plant Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZSRVBHPP0019.I_ProductionOrderStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Production Order",
+      "elements": {
+        "ProductionOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "OrderDescription",
+          "@sap.label": "Manufacturing Order",
+          "@sap.quickinfo": "Manufacturing Order ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "OrderDescription": {
+          "@sap.label": "Order Text",
+          "@sap.quickinfo": "Manufacturing Order Text",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZSRVBHPP0019.I_StorageLocationStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Storage Location",
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "StorageLocationName",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocationName": {
+          "@sap.label": "Storage Loc. Name",
+          "@sap.quickinfo": "Storage Location Name",
+          "type": "cds.String",
+          "length": 16
+        },
+        "ConfigDeprecationCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZSRVBHPP0019.ZCDSEHPPB0097": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom CDS create invidual issue",
+      "elements": {
+        "plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "quantity": {
+          "@sap.unit": "unit",
+          "@sap.label": "Total Order Quantity",
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": true
+        },
+        "unit": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "strgloc_frm": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "strgloc_to": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "recip": {
+          "@sap.label": "Goods Recipient",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "unl_pnt": {
+          "@sap.label": "Unloading Point",
+          "key": true,
+          "type": "cds.String",
+          "length": 25,
+          "notNull": true
+        },
+        "prodord": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "linkage": {
+          "@sap.label": "Linkage Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 16,
+          "notNull": true
+        },
+        "costcntr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Controlling Area",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "glacc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "G/L Account",
+          "@sap.quickinfo": "G/L Account Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "text": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "30 Characters",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "basedt": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Current Date",
+          "@sap.quickinfo": "ABAP system field: Current date of application server",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "immflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "optflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "ordflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "inpfile": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char256",
+          "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
+          "type": "cds.String",
+          "length": 256,
+          "notNull": true
+        },
+        "outfile": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char256",
+          "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
+          "type": "cds.String",
+          "length": 256,
+          "notNull": true
+        },
+        "errmsg": {
+          "@sap.label": "Text",
+          "@sap.quickinfo": "Text (452 characters)",
+          "key": true,
+          "type": "cds.String",
+          "length": 452,
+          "notNull": true
+        }
+      },
+      "actions": {
+        "cctrans": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
+          }
+        },
+        "immblank": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
+          }
+        },
+        "linkage": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
+          }
+        },
+        "none": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
+          }
+        },
+        "ordertrf": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
+          }
         }
       }
     },

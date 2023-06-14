@@ -3476,7 +3476,7 @@ annotate  ZAPIBPS0006.ZCDSEHPPB0081 with @(
 );
 
 //Valuehelp
-annotate ZAPIBPS0007.ZCDSEHPPB0097 {  
+annotate ZAPIBPS0007.IndividualIssue {  
     @(Common : {
         Label     : 'Material',
         ValueList : {

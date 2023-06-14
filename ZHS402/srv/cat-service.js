@@ -44,6 +44,7 @@ module.exports = cds.service.impl(async function (srv) {
     registerZAPIBPS0005Handler(this,cds);
     registerZAPIBPS0006Handler(this,cds);
     registerZCDSEHBTC0014Handler(this,cds);
+    registerZAPIBPS0007Handler(this,cds);
     registerZAPIBPS0004Handler(this,cds,Readable, PassThrough,XLSX,SequenceHelper);
     this.on('READ', 'ZCDSEHPSB0004', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
