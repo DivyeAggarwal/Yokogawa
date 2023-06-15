@@ -3657,3 +3657,33 @@ annotate ZCDSEHBTC0015.OrderPartInformation {
     DWERK; 
     
 }
+
+//9994 BOM Explosion
+annotate ZAPIBPS0008.ZCDSEHMMC0012 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : InputType,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : InputTypeCode,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : plant,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : Material,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : MaterialType,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : lgpro,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
