@@ -1135,6 +1135,10 @@ service ZCDSEHBTC0015 {
     entity VL_SH_H_T001                 as projection on external.VL_SH_H_T001;
     entity ZCDSEHMMC0009                as projection on ZSRVBHMM0006.ZCDSEHMMC0009;
     entity ZCDSEHMMC0013                as projection on ZSRVBHMM0006.ZCDSEHMMC0013;
+    entity ZCDSEHMMB0043                as projection on ZSRVBHMM0006.ZCDSEHMMB0043;
+    entity ZCDSEHMMB0044                as projection on ZSRVBHMM0006.ZCDSEHMMB0044;
+    entity ZCDSEHMMB0045                as projection on ZSRVBHMM0006.ZCDSEHMMB0045;
+    entity I_PlantStdVH as projection on ZSRVBHPP0019.I_PlantStdVH;
 
     @cds.persistence.skip
     entity OrderPartInformation {

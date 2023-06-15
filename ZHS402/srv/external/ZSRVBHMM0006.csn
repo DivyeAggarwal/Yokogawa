@@ -1,6 +1,6 @@
 {
   "meta": {
-    "creator": "cds-dk 6.8.1"
+    "creator": "cds-dk 6.8.2"
   },
   "$version": "2.0",
   "definitions": {
@@ -10,6 +10,87 @@
       "@m.IsDefaultEntityContainer": "true",
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHMM0006.ZCDSEHMMB0043": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for By-Order Category Check",
+      "elements": {
+        "Fevor": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planner Group",
+          "@sap.quickinfo": "Responsible Planner Group or Department",
+          "notNull": true
+        },
+        "Txt": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "Planner Group Desc.",
+          "@sap.quickinfo": "Responsible Planner Group Description"
+        }
+      }
+    },
+    "ZSRVBHMM0006.ZCDSEHMMB0044": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for MRP controller check",
+      "elements": {
+        "werks": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "notNull": true
+        },
+        "dispo": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "notNull": true
+        },
+        "dsnam": {
+          "type": "cds.String",
+          "length": 18,
+          "@sap.label": "MRP controller name",
+          "@sap.quickinfo": "Name of MRP controller"
+        }
+      }
+    },
+    "ZSRVBHMM0006.ZCDSEHMMB0045": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for Planned order",
+      "elements": {
+        "plnum": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "notNull": true
+        }
+      }
     },
     "ZSRVBHMM0006.ZCDSEHMMC0009": {
       "kind": "entity",
@@ -126,6 +207,8 @@
       "kind": "entity",
       "@cds.external": true,
       "@cds.persistence.skip": true,
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
       "@sap.content.version": "1",
       "@sap.label": "Custom view Order parts Information",
       "elements": {
@@ -211,6 +294,7 @@
           "key": true,
           "type": "cds.String",
           "length": 6,
+          "@sap.display.format": "NonNegative",
           "notNull": true
         },
         "kdein": {
@@ -229,6 +313,20 @@
           "key": true,
           "type": "cds.String",
           "length": 3,
+          "notNull": true
+        },
+        "OrdCat": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "arbpl": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
           "notNull": true
         },
         "status": {
@@ -251,6 +349,104 @@
           "@sap.unit": "meins",
           "@sap.label": "Total Order Quantity",
           "@sap.quickinfo": "Planned Total Order Quantity",
+          "notNull": true
+        },
+        "btypord": {
+          "key": true,
+          "type": "cds.Integer64",
+          "notNull": true
+        },
+        "prtpln": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "delflg": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "aufnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "notNull": true
+        },
+        "gstrp": {
+          "key": true,
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic start date",
+          "notNull": true
+        },
+        "gltrp": {
+          "key": true,
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "notNull": true
+        },
+        "aufpl": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Opertn task list no.",
+          "@sap.quickinfo": "Routing number of operations in the order",
+          "notNull": true
+        },
+        "kdauf1": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "notNull": true
+        },
+        "kdpos1": {
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "notNull": true
+        },
+        "ms_code": {
+          "key": true,
+          "type": "cds.String",
+          "length": 80,
+          "notNull": true
+        },
+        "cuobj": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Internal object no.",
+          "@sap.quickinfo": "Configuration (internal object number)",
+          "notNull": true
+        },
+        "arbpl1": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "notNull": true
+        },
+        "compno": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component number",
           "notNull": true
         }
       }

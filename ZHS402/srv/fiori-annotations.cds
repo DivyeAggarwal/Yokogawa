@@ -1686,26 +1686,6 @@ annotate ZCDSEHBTC0011.ManBOMUpload @(Capabilities.FilterRestrictions : {
     ]
 });
 
-annotate ZCDSEHBTC0015.OrderPartInformation {
-	    @(Common : {
-	        Label     : 'Plant',
-	        ValueList : {
-	        CollectionPath : 'VL_SH_H_T001',
-            Parameters     : [
-                {
-                    $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : DWERK,
-                    ValueListProperty : 'BUKRS'
-                },
-                {
-                    $Type             : 'Common.ValueListParameterDisplayOnly',
-                    ValueListProperty : 'BUTXT'
-                }
-            ]
-	        }
-	    })
-	    DWERK;
-}
 annotate ZCDSEHBTC0016.ZTHBT0057 {
     @(Common : {
         Label     : 'Document number',
@@ -3603,4 +3583,77 @@ annotate ZAPIBPS0007.IndividualIssue {
         }
     })
     costcntr; 
+}
+
+//Valuehelp
+annotate ZCDSEHBTC0015.OrderPartInformation {  
+    @(Common : {
+        Label     : 'By-Order Category',
+        ValueList : {
+            CollectionPath : 'ZCDSEHMMB0043',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : BTYPECAT,
+                    ValueListProperty : 'Fevor'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Txt'
+                } 
+            ]
+        }
+    })
+    BTYPECAT; 
+    @(Common : {
+        Label     : 'MRP controller',
+        ValueList : {
+            CollectionPath : 'ZCDSEHMMB0044',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : MRPCONT,
+                    ValueListProperty : 'dispo'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'dispo'
+                }
+            ]
+        }
+    })
+    MRPCONT; 
+    @(Common : {
+        Label     : 'Planned Order',
+        ValueList : {
+            CollectionPath : 'ZCDSEHMMB0045',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : PLNUM,
+                    ValueListProperty : 'plnum'
+                }
+            ]
+        }
+    })
+    PLNUM; 
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : DWERK,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    DWERK; 
+    
 }

@@ -35,6 +35,8 @@ var registerZAPIBPS0001Handler = function (that, cds) {
            
             if (!obj[key]) {
               obj[key] = Object.assign(item)
+              sum += Number(item.ZQTY)
+              obj[key].ZQTY = sum
             } else {
                  sum += Number(item.ZQTY)
               obj[key].ZQTY = sum
