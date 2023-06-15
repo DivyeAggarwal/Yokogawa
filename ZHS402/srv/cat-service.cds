@@ -1604,5 +1604,8 @@ service ZAPIBPS0007 {
 
 
 service ZAPIBPS0008 {
-    entity ZCDSEHMMC0012 as projection on ZSRVBHMM0008.ZCDSEHMMC0012;
+    // entity ZCDSEHMMC0012 as projection on ZSRVBHMM0008.ZCDSEHMMC0012 {
+    //     *,
+    //     null as ProjectManager   : String(50)  @title: 'Project Manager',
+    // }; 
 }
