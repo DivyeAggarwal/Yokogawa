@@ -1,0 +1,255 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.8.2"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHMM0008": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHMM0008.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "notNull": true
+        },
+        "PlantName": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "Plant Name"
+        }
+      }
+    },
+    "ZSRVBHMM0008.ZCDSEHMMC0012": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Consumption View - BOM Explosion Report",
+      "elements": {
+        "plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "notNull": true
+        },
+        "Material": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "notNull": true
+        },
+        "MaterialDesc": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description"
+        },
+        "MaterialType": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material type"
+        },
+        "backflush": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Backflush",
+          "@sap.quickinfo": "Indicator: Backflush"
+        },
+        "schgt": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Bulk material",
+          "@sap.quickinfo": "Indicator: bulk material"
+        },
+        "beskz": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Procurement Type"
+        },
+        "sobsl": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Special procurement",
+          "@sap.quickinfo": "Special procurement type"
+        },
+        "lvorm": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "DF at plant level",
+          "@sap.quickinfo": "Flag Material for Deletion at Plant Level"
+        },
+        "lgpro": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prod. stor. location",
+          "@sap.quickinfo": "Issue Storage Location"
+        },
+        "dismm": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Type"
+        },
+        "ekgrp": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purchasing Group"
+        },
+        "meins": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "dispo": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller"
+        },
+        "bklas": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Valuation Class"
+        },
+        "lgpbe": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Bin"
+        },
+        "labst": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "meins",
+          "@sap.label": "Unrestricted",
+          "@sap.quickinfo": "Valuated Unrestricted-Use Stock"
+        },
+        "minbe": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "meins",
+          "@sap.label": "Reorder Point"
+        },
+        "bstfe": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "meins",
+          "@sap.label": "Fixed lot size"
+        }
+      }
+    },
+    "ZSRVBHMM0008.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.label": "Short text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHMM0008.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "ExternalCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Commercial",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "UoM Text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@sap.label": "Decimal Places"
+        }
+      }
+    }
+  }
+}

@@ -24,6 +24,7 @@ using ZSRVBHMM0006 from './external/ZSRVBHMM0006';
 using ZSRVBHSD0011 from './external/ZSRVBHSD0011';
 using ZSRVBHPP0013 from './external/ZSRVBHPP0013';
 using ZSRVBHPP0019 from './external/ZSRVBHPP0019';
+using ZSRVBHMM0008 from './external/ZSRVBHMM0008';
 
 service CatalogService {
     entity ZCDSEHCSC0003                as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -1599,4 +1600,9 @@ service ZAPIBPS0007 {
          Immediately: Boolean @title: 'Immediately'
 
     }
+}
+
+
+service ZAPIBPS0008 {
+    entity ZCDSEHMMC0012 as projection on ZSRVBHMM0008.ZCDSEHMMC0012;
 }
