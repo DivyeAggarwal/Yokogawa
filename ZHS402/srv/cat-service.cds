@@ -1608,8 +1608,14 @@ service ZAPIBPS0007 {
 
 
 service ZAPIBPS0008 {
-    // entity ZCDSEHMMC0012 as projection on ZSRVBHMM0008.ZCDSEHMMC0012 {
-    //     *,
-    //     null as ProjectManager   : String(50)  @title: 'Project Manager',
-    // }; 
+    entity ZCDSEHMMC0012 as projection on ZSRVBHMM0008.ZCDSEHMMC0012 {
+        *,
+        null as InputType               : String(50)  @title: 'Input Type',
+        null as InputTypeCode           : String(50)  @title: 'Input Type Code',
+        null as NoOutputRepScreen       : Boolean     @title: 'No Output Report Screen',
+        null as ExplosionType           : String(50)  @title: 'Explosion Type',
+        null as SummaryType             : String(50)  @title: 'Summary Type',
+        null as OutputType              : String(50)  @title: 'Output Type',
+        null as RawMaterialOutputType   : String(50)  @title: 'Raw Material Output Type',
+    }; 
 }
