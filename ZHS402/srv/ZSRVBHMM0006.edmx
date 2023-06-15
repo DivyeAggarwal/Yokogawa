@@ -38,6 +38,28 @@
 <edmx:DataServices m:DataServiceVersion="2.0">
 <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_zsrvhmm0006" xml:lang="en" sap:schema-version="1">
 <Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Core.SchemaVersion" String="1.0.0"/>
+<EntityType Name="ZCDSEHMMB0043Type" sap:label="Value help for By-Order Category Check" sap:content-version="1">
+<Key>
+<PropertyRef Name="Fevor"/>
+</Key>
+<Property Name="Fevor" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="Planner Group" sap:quickinfo="Responsible Planner Group or Department"/>
+<Property Name="Txt" Type="Edm.String" MaxLength="30" sap:label="Planner Group Desc." sap:quickinfo="Responsible Planner Group Description"/>
+</EntityType>
+<EntityType Name="ZCDSEHMMB0044Type" sap:label="Value help for MRP controller check" sap:content-version="1">
+<Key>
+<PropertyRef Name="werks"/>
+<PropertyRef Name="dispo"/>
+</Key>
+<Property Name="werks" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
+<Property Name="dispo" Type="Edm.String" Nullable="false" MaxLength="3" sap:display-format="UpperCase" sap:label="MRP Controller"/>
+<Property Name="dsnam" Type="Edm.String" MaxLength="18" sap:label="MRP controller name" sap:quickinfo="Name of MRP controller"/>
+</EntityType>
+<EntityType Name="ZCDSEHMMB0045Type" sap:label="Value help for Planned order" sap:content-version="1">
+<Key>
+<PropertyRef Name="plnum"/>
+</Key>
+<Property Name="plnum" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Planned Order"/>
+</EntityType>
 <EntityType Name="ZCDSEHMMC0009Type" sap:label="Consumption Order Information get call" sap:content-version="1">
 <Key>
 <PropertyRef Name="plnum"/>
@@ -75,9 +97,24 @@
 <PropertyRef Name="kdein"/>
 <PropertyRef Name="auffx"/>
 <PropertyRef Name="vagrp"/>
+<PropertyRef Name="OrdCat"/>
+<PropertyRef Name="arbpl"/>
 <PropertyRef Name="status"/>
 <PropertyRef Name="errmsg"/>
 <PropertyRef Name="updqty"/>
+<PropertyRef Name="btypord"/>
+<PropertyRef Name="prtpln"/>
+<PropertyRef Name="delflg"/>
+<PropertyRef Name="aufnr"/>
+<PropertyRef Name="gstrp"/>
+<PropertyRef Name="gltrp"/>
+<PropertyRef Name="aufpl"/>
+<PropertyRef Name="kdauf1"/>
+<PropertyRef Name="kdpos1"/>
+<PropertyRef Name="ms_code"/>
+<PropertyRef Name="cuobj"/>
+<PropertyRef Name="arbpl1"/>
+<PropertyRef Name="compno"/>
 </Key>
 <Property Name="plnum" Type="Edm.String" Nullable="false" MaxLength="10"/>
 <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40"/>
@@ -90,13 +127,28 @@
 <Property Name="pertr" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Order Opening Date" sap:quickinfo="Planned Opening Date in Planned Order"/>
 <Property Name="dispo" Type="Edm.String" Nullable="false" MaxLength="4"/>
 <Property Name="kdauf" Type="Edm.String" Nullable="false" MaxLength="10"/>
-<Property Name="kdpos" Type="Edm.String" Nullable="false" MaxLength="6"/>
+<Property Name="kdpos" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative"/>
 <Property Name="kdein" Type="Edm.String" Nullable="false" MaxLength="4"/>
 <Property Name="auffx" Type="Edm.String" Nullable="false" MaxLength="1"/>
 <Property Name="vagrp" Type="Edm.String" Nullable="false" MaxLength="3"/>
+<Property Name="OrdCat" Type="Edm.String" Nullable="false" MaxLength="8"/>
+<Property Name="arbpl" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:label="Work Center"/>
 <Property Name="status" Type="Edm.String" Nullable="false" MaxLength="10"/>
 <Property Name="errmsg" Type="Edm.String" Nullable="false" MaxLength="400"/>
 <Property Name="updqty" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="meins" sap:label="Total Order Quantity" sap:quickinfo="Planned Total Order Quantity"/>
+<Property Name="btypord" Type="Edm.Int64" Nullable="false"/>
+<Property Name="prtpln" Type="Edm.String" Nullable="false" MaxLength="10"/>
+<Property Name="delflg" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="aufnr" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+<Property Name="gstrp" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Basic start date"/>
+<Property Name="gltrp" Type="Edm.DateTime" Nullable="false" Precision="0" sap:display-format="Date" sap:label="Basic finish date"/>
+<Property Name="aufpl" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="NonNegative" sap:label="Opertn task list no." sap:quickinfo="Routing number of operations in the order"/>
+<Property Name="kdauf1" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales Order" sap:quickinfo="Sales Order Number"/>
+<Property Name="kdpos1" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative" sap:label="Sales order item" sap:quickinfo="Item number in Sales Order"/>
+<Property Name="ms_code" Type="Edm.String" Nullable="false" MaxLength="80"/>
+<Property Name="cuobj" Type="Edm.String" Nullable="false" MaxLength="18" sap:display-format="NonNegative" sap:label="Internal object no." sap:quickinfo="Configuration (internal object number)"/>
+<Property Name="arbpl1" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:label="Work Center"/>
+<Property Name="compno" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Component number"/>
 </EntityType>
 <EntityType Name="SAP__Currency" sap:content-version="1">
 <Key>
@@ -118,8 +170,11 @@
 <Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
 </EntityType>
 <EntityContainer Name="cds_zsrvhmm0006_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
+<EntitySet Name="ZCDSEHMMB0043" EntityType="cds_zsrvhmm0006.ZCDSEHMMB0043Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+<EntitySet Name="ZCDSEHMMB0044" EntityType="cds_zsrvhmm0006.ZCDSEHMMB0044Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
+<EntitySet Name="ZCDSEHMMB0045" EntityType="cds_zsrvhmm0006.ZCDSEHMMB0045Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
 <EntitySet Name="ZCDSEHMMC0009" EntityType="cds_zsrvhmm0006.ZCDSEHMMC0009Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
-<EntitySet Name="ZCDSEHMMC0013" EntityType="cds_zsrvhmm0006.ZCDSEHMMC0013Type" sap:content-version="1"/>
+<EntitySet Name="ZCDSEHMMC0013" EntityType="cds_zsrvhmm0006.ZCDSEHMMC0013Type" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
 <EntitySet Name="SAP__Currencies" EntityType="cds_zsrvhmm0006.SAP__Currency" sap:content-version="1"/>
 <EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zsrvhmm0006.SAP__UnitOfMeasure" sap:content-version="1"/>
 </EntityContainer>
