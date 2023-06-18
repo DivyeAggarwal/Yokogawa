@@ -4,7 +4,7 @@ var registerZAPIBPS0009Handler = function (that, cds) {
         // const bupa = await cds.connect.to('ZSRVBHMM0008');
         // return bupa.run(req.query);
     // });
-    this.on('ZAPIBPS0009_Product', async (req) => {
+    that.on('ZAPIBPS0009_Product', async (req) => {
         var aResponse = {};
         const api = await cds.connect.to('API_PRODUCT_SRV');
         var postData = req.data.input.postData;
