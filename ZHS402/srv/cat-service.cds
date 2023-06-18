@@ -1619,3 +1619,10 @@ service ZAPIBPS0008 {
         null as RawMaterialOutputType   : String(50)  @title: 'Raw Material Output Type',
     }; 
 }
+
+
+//Master Upload Screen
+service ZAPIBPS0009 {
+    entity A_ProductDescription         as projection on API_PRODUCT_SRV.A_ProductDescription;
+    entity A_Product                    as projection on API_PRODUCT_SRV.A_Product;
+}
