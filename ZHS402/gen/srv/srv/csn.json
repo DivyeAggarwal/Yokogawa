@@ -38722,6 +38722,57 @@
         }
       }
     },
+    "ZAPIBPS0007.InputField": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "InputField": {
+          "@title": "Input Field",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "InputFieldDesc": {
+          "@title": "Input Field Desc",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZAPIBPS0007.option": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "option": {
+          "@title": "Option",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "optionDesc": {
+          "@title": "Option Desc",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZAPIBPS0007.OrderTransfer": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "OrderTransfer": {
+          "@title": "Order Transfer",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "OrderTransferDesc": {
+          "@title": "Order Transfer Desc",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
     "ZAPIBPS0008": {
       "@source": "srv/cat-service.cds",
       "kind": "service"

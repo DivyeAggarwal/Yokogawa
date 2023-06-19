@@ -1604,6 +1604,22 @@ service ZAPIBPS0007 {
          Immediately: Boolean @title: 'Immediately'
 
     }
+
+    @cds.persistence.skip
+    entity InputField {
+        key InputField : String(3) @title: 'Input Field';
+            InputFieldDesc : String(30) @title: 'Input Field Desc';
+    }
+    @cds.persistence.skip
+    entity option {
+        key option : String(3) @title: 'Option';
+            optionDesc : String(30) @title: 'Option Desc';
+    }
+    @cds.persistence.skip
+    entity OrderTransfer {
+        key OrderTransfer : String(3) @title: 'Order Transfer';
+            OrderTransferDesc : String(30) @title: 'Order Transfer Desc';
+    }
 }
 
 
