@@ -38528,16 +38528,67 @@
       "elements": {
         "Inputfield": {
           "@title": "Input field",
+          "@Common.ValueListWithFixedValues": true,
+          "@Common.Label": "Input Field",
+          "@Common.ValueList.$Type": "Common.ValueListType",
+          "@Common.ValueList.CollectionPath": "InputField",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "Inputfield"
+              },
+              "ValueListProperty": "InputField"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "InputFieldDesc"
+            }
+          ],
           "type": "cds.String",
           "length": 1
         },
         "option": {
           "@title": "Option",
+          "@Common.ValueListWithFixedValues": true,
+          "@Common.Label": "Option",
+          "@Common.ValueList.$Type": "Common.ValueListType",
+          "@Common.ValueList.CollectionPath": "option",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "option"
+              },
+              "ValueListProperty": "option"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "optionDesc"
+            }
+          ],
           "type": "cds.String",
           "length": 1
         },
         "OrderTransfer": {
           "@title": "Order Transfer",
+          "@Common.ValueListWithFixedValues": true,
+          "@Common.Label": "Order Transfer",
+          "@Common.ValueList.$Type": "Common.ValueListType",
+          "@Common.ValueList.CollectionPath": "OrderTransfer",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "OrderTransfer"
+              },
+              "ValueListProperty": "OrderTransfer"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "OrderTransferDesc"
+            }
+          ],
           "type": "cds.String",
           "length": 1
         },
