@@ -16,17 +16,28 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         var orderTransVal = req.data.OrderTransfer;
         var immValue = req.data.Immediately;
         var functionImport;
+        var immflag;
+        var optionalFlag;
 
-        if(optionValue === "X" && immValue == true ) {
+        if(optionValue === "None(Store)" && immValue == true ) {
             functionImport = "/none";
-        } else if(optionValue === "Y" && immValue == true && orderTransVal == "X" ) {
+            immflag = "X";
+            optionalFlag = "X";
+        } else if(optionValue === "Order Transfer" && immValue == true && orderTransVal == "Production Order No." ) {
             functionImport = "/ordertrf";
-        } else if(optionValue === "Y" && immValue == true && orderTransVal == "Y"  ) {
+            immflag = "X";
+            optionalFlag = "Y";
+        } else if(optionValue === "Order Transfer" && immValue == true && orderTransVal == "Linkage No."  ) {
             functionImport = "/linkage";
-        } else if(optionValue === "Z" && immValue == true ) {
+            immflag = "X";
+            optionalFlag = "Y";
+        } else if(optionValue === "Cost Center Transfer" && immValue == true ) {
             functionImport = "/cctrans";
+            immflag = "X";
+            optionalFlag = "Z";
         } else if(immValue == false ) {
             functionImport = "/immblank"; 
+            immflag = ""
         }
 
         var url = functionImport + "?sap-client=120&plant='" + req.data.plant +"'&material='" + req.data.materia +
@@ -34,7 +45,7 @@ var registerZAPIBPS0007Handler = function (that, cds) {
                  "'&strgloc_to='" + req.data.strgloc_frm + "'&recip='" + req.data.recip + "'&unl_pnt='" + req.data.unl_pnt + 
                  "'&prodord='" + req.data.prodord + "'&linkage='" + req.data.linkage + "'&costcntr='" + req.data.costcntr + 
                  "'&glacc='" + req.data.glacc + "'&text='" + req.data.text + "'&basedt='" + req.data.basedt + 
-                 "'&immflag='" + req.data.immflag + "'&optflag='" + req.data.optflag + "'";
+                 "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'";
         var response = await soapi.tx(req).post(url);
         // var payload = {
         //     plant: req.data.plant,
@@ -58,7 +69,7 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         //     linkage: req.data.plant
         // }
         // var response = await soapi.tx(req).post("/ZCDSEHPPB0097", payload);
-        // return response;
+        return response;
     });
     that.on('READ', 'InputField', async req => {
         let aData = [];
