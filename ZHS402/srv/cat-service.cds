@@ -1624,9 +1624,6 @@ service ZAPIBPS0008 {
 //Master Upload Screen
 @protocol: 'rest'
 service ZAPIBPS0009 {
-    entity A_ProductDescription         as projection on API_PRODUCT_SRV.A_ProductDescription;
-    entity A_Product                    as projection on API_PRODUCT_SRV.A_Product;
-
      @cds.persistence.skip
     entity SelectionOption {
         uploadType: String @title : 'Upload Type';
@@ -1637,4 +1634,13 @@ service ZAPIBPS0009 {
     type Object {};
     
     action ZAPIBPS0009_Product(input : Object) returns SelectionOption; 
+}
+//Master Upload Screen
+service ZAPIBPS0010 {
+     @cds.persistence.skip
+    entity SelectionOption {
+        uploadType: String @title : 'Upload Type';
+        uploadFile: String @title : 'Upload File';
+        outputObject: String @title : 'Result';
+    }
 }
