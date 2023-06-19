@@ -38728,6 +38728,44 @@
     },
     "ZAPIBPS0008.ZCDSEHMMC0012": {
       "kind": "entity",
+      "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+        {
+          "Property": {
+            "=": "InputType"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "InputTypeCode"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "plant"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "Material"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "MaterialType"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "lgpro"
+          },
+          "AllowedExpressions": "SingleValue"
+        }
+      ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.updatable": "false",
@@ -38968,6 +39006,68 @@
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
+        }
+      }
+    },
+    "ZAPIBPS0009": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service",
+      "@protocol": "rest"
+    },
+    "ZAPIBPS0009.SelectionOption": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "uploadType": {
+          "@title": "Upload Type",
+          "type": "cds.String"
+        },
+        "uploadFile": {
+          "@title": "Upload File",
+          "type": "cds.String"
+        },
+        "outputObject": {
+          "@title": "Result",
+          "type": "cds.String"
+        }
+      }
+    },
+    "ZAPIBPS0009.Object": {
+      "kind": "type",
+      "@open": true,
+      "elements": {}
+    },
+    "ZAPIBPS0009.ZAPIBPS0009_Product": {
+      "kind": "action",
+      "params": {
+        "input": {
+          "@open": true,
+          "type": "ZAPIBPS0009.Object"
+        }
+      },
+      "returns": {
+        "type": "ZAPIBPS0009.SelectionOption"
+      }
+    },
+    "ZAPIBPS0010": {
+      "@source": "srv/cat-service.cds",
+      "kind": "service"
+    },
+    "ZAPIBPS0010.SelectionOption": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "uploadType": {
+          "@title": "Upload Type",
+          "type": "cds.String"
+        },
+        "uploadFile": {
+          "@title": "Upload File",
+          "type": "cds.String"
+        },
+        "outputObject": {
+          "@title": "Result",
+          "type": "cds.String"
         }
       }
     },

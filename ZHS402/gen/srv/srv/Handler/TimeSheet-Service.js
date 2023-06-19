@@ -183,9 +183,23 @@ const ValidateAssignment = async (req) => {
         req.data = req.data;
     }
 
+    if (req.data.ZPS_IDENTIFIER === 'S') {
+        await validateAssignmentService(req, bupa);
+    }
+
     if (req.data.ZPS_IDENTIFIER === 'P') {
         await validateAssignmentProject(req, bupa);
     }
+}
+const validateAssignmentService = async (req, bupa) => {
+    // Validate Service Order Item
+    if (!req.data.SERVICEORDERITEM) {
+        req.reject({
+            code: 403,
+            message: 'Service Order Item is Mandatory'
+        })
+    }
+   
 }
 const validateAssignmentProject = async (req, bupa) => {
     let loggedinId = req.user.id;
