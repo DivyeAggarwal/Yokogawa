@@ -66,12 +66,10 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         let aData = [];
         let data = {};
         data = {
-            InputField: "X",
             InputFieldDesc: "From the Screen"
         }
         aData.push(data);
         data = {
-            InputField: "Y",
             InputFieldDesc: "File Upload"
         }
         aData.push(data);
@@ -101,12 +99,10 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         let aData = [];
         let data = {};
         data = {
-            OrderTransfer: "X",
             OrderTransferDesc: "Production Order No."
         }
         aData.push(data);
         data = {
-            OrderTransfer: "Y",
             OrderTransferDesc: "Linkage No."
         }
         aData.push(data);

@@ -38525,6 +38525,9 @@
     "ZAPIBPS0007.IndividualIssue": {
       "kind": "entity",
       "@cds.persistence.skip": true,
+      "@UI.TextArrangement": {
+        "#": "TextLast"
+      },
       "elements": {
         "Inputfield": {
           "@title": "Input field",
@@ -38538,10 +38541,6 @@
               "LocalDataProperty": {
                 "=": "Inputfield"
               },
-              "ValueListProperty": "InputField"
-            },
-            {
-              "$Type": "Common.ValueListParameterDisplayOnly",
               "ValueListProperty": "InputFieldDesc"
             }
           ],
@@ -38550,9 +38549,10 @@
         },
         "option": {
           "@title": "Option",
-          "@Common.ValueListWithFixedValues": true,
           "@Common.Label": "Option",
+          "@Common.ValueListWithFixedValues": true,
           "@Common.ValueList.$Type": "Common.ValueListType",
+          "@Common.ValueList.Label": "Currency",
           "@Common.ValueList.CollectionPath": "option",
           "@Common.ValueList.Parameters": [
             {
@@ -38563,7 +38563,10 @@
               "ValueListProperty": "option"
             },
             {
-              "$Type": "Common.ValueListParameterDisplayOnly",
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "option"
+              },
               "ValueListProperty": "optionDesc"
             }
           ],
@@ -38582,10 +38585,6 @@
               "LocalDataProperty": {
                 "=": "OrderTransfer"
               },
-              "ValueListProperty": "OrderTransfer"
-            },
-            {
-              "$Type": "Common.ValueListParameterDisplayOnly",
               "ValueListProperty": "OrderTransferDesc"
             }
           ],
@@ -38777,12 +38776,6 @@
       "kind": "entity",
       "@cds.persistence.skip": true,
       "elements": {
-        "InputField": {
-          "@title": "Input Field",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
         "InputFieldDesc": {
           "@title": "Input Field Desc",
           "type": "cds.String",
@@ -38798,7 +38791,7 @@
           "@title": "Option",
           "key": true,
           "type": "cds.String",
-          "length": 3
+          "length": 1
         },
         "optionDesc": {
           "@title": "Option Desc",
@@ -38811,12 +38804,6 @@
       "kind": "entity",
       "@cds.persistence.skip": true,
       "elements": {
-        "OrderTransfer": {
-          "@title": "Order Transfer",
-          "key": true,
-          "type": "cds.String",
-          "length": 3
-        },
         "OrderTransferDesc": {
           "@title": "Order Transfer Desc",
           "type": "cds.String",
