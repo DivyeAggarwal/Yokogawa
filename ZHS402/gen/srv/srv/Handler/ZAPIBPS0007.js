@@ -79,17 +79,14 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         let aData = [];
         let data = {};
         data = {
-            option: "X",
             optionDesc: "None(Store)"
         }
         aData.push(data);
         data = {
-            option: "Y",
             optionDesc: "Order Transfer"
         }
         aData.push(data);
         data = {
-            option: "Z",
             optionDesc: "Cost Center Transfer"
         }
         aData.push(data);

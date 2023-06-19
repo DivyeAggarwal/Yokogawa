@@ -3705,57 +3705,25 @@ annotate ZAPIBPS0007.IndividualIssue {
     })
     Inputfield;
 }
-annotate ZAPIBPS0007.IndividualIssue @(
-    UI.TextArrangement : #TextLast
-);
 
-annotate ZAPIBPS0007.IndividualIssue with {
-    @Common.Label : 'Option'
+annotate ZAPIBPS0007.IndividualIssue {
     @Common.ValueListWithFixedValues : true
-    @Common.ValueList : {
-        $Type : 'Common.ValueListType',
-        Label : 'Currency',
-        CollectionPath : 'option',
-        Parameters : [
-            {
-                $Type : 'Common.ValueListParameterInOut',
-                LocalDataProperty : option,
-                ValueListProperty : 'option'
-            },
-            {
-                $Type : 'Common.ValueListParameterInOut',
-                LocalDataProperty : option,
-                ValueListProperty : 'optionDesc'
-            }
-        ]
-    }
-    option
-};
-// annotate ZAPIBPS0007.IndividualIssue {
-//     @Common : {
-//         TextArrangement : #TextOnly
-//     }
-//     @Common.ValueListWithFixedValues : true
-//     @(Common : {
-//         Label     : 'Option',
-//         ValueList : {
-//             $Type : 'Common.ValueListType',
-//             CollectionPath : 'option',
-//             Parameters     : [
-//                 {
-//                     $Type             : 'Common.ValueListParameterInOut',
-//                     LocalDataProperty : option,
-//                     ValueListProperty : 'option'
-//                 },
-//                 {
-//                     $Type             : 'Common.ValueListParameterDisplayOnly',
-//                     ValueListProperty : 'optionDesc'
-//                 }
-//             ]
-//         }
-//     })
-//     option;
-// }
+    @(Common : {
+        Label     : 'Option',
+        ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'option',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : option,
+                    ValueListProperty : 'optionDesc'
+                }
+            ]
+        }
+    })
+    option;
+}
 annotate ZAPIBPS0007.IndividualIssue {
     @Common.ValueListWithFixedValues : true
     @(Common : {

@@ -34,9 +34,7 @@ var registerZAPIBPS0007Handler = function (that, cds) {
                  "'&strgloc_to='" + req.data.strgloc_frm + "'&recip='" + req.data.recip + "'&unl_pnt='" + req.data.unl_pnt + 
                  "'&prodord='" + req.data.prodord + "'&linkage='" + req.data.linkage + "'&costcntr='" + req.data.costcntr + 
                  "'&glacc='" + req.data.glacc + "'&text='" + req.data.text + "'&basedt='" + req.data.basedt + 
-                 "'&immflag='" + req.data.immflag + "'&optflag='" + req.data.optflag + "'&ordflag='" + req.data.ordflag + 
-                 "'&inpfile='" + req.data.inpfile + "'&outfile='" + req.data.outfile + "'&errmsg='" + req.data.errmsg + 
-                 "'&inputfd='" + req.data.inputfd + "'&inputfd='" + req.data.inputfd + "'&ordertfd='" + req.data.ordertfd + "'";
+                 "'&immflag='" + req.data.immflag + "'&optflag='" + req.data.optflag + "'";
         var response = await soapi.tx(req).post(url);
         // var payload = {
         //     plant: req.data.plant,
@@ -79,17 +77,14 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         let aData = [];
         let data = {};
         data = {
-            option: "X",
             optionDesc: "None(Store)"
         }
         aData.push(data);
         data = {
-            option: "Y",
             optionDesc: "Order Transfer"
         }
         aData.push(data);
         data = {
-            option: "Z",
             optionDesc: "Cost Center Transfer"
         }
         aData.push(data);
