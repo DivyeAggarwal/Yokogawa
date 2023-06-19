@@ -1600,7 +1600,7 @@ service ZAPIBPS0007 {
          costcntr: String(4) @title : 'Cost Center';
          glacc: String(10) @title : 'G/L Account';
          text: String(30) @title : 'Text';
-         basedt: Date @title : 'Basic Date';
+         basedt: String(8) @title : 'Basic Date';
          Immediately: Boolean @title: 'Immediately'
 
     }
