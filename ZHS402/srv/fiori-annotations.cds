@@ -3687,3 +3687,58 @@ annotate ZAPIBPS0008.ZCDSEHMMC0012 @(Capabilities.FilterRestrictions : {
         }
     ]
 });
+annotate ZAPIBPS0007.IndividualIssue {
+    @Common.ValueListWithFixedValues : true
+    @(Common : {
+        Label     : 'Input Field',
+        ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'InputField',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : Inputfield,
+                    ValueListProperty : 'InputFieldDesc'
+                }
+            ]
+        }
+    })
+    Inputfield;
+}
+
+annotate ZAPIBPS0007.IndividualIssue {
+    @Common.ValueListWithFixedValues : true
+    @(Common : {
+        Label     : 'Option',
+        ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'option',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : option,
+                    ValueListProperty : 'optionDesc'
+                }
+            ]
+        }
+    })
+    option;
+}
+annotate ZAPIBPS0007.IndividualIssue {
+    @Common.ValueListWithFixedValues : true
+    @(Common : {
+        Label     : 'Order Transfer',
+        ValueList : {
+            $Type : 'Common.ValueListType',
+            CollectionPath : 'OrderTransfer',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : OrderTransfer,
+                    ValueListProperty : 'OrderTransferDesc'
+                }
+            ]
+        }
+    })
+    OrderTransfer;
+}

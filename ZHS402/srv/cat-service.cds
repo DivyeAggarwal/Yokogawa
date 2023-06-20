@@ -1584,9 +1584,9 @@ service ZAPIBPS0007 {
     entity I_StorageLocationStdVH as projection on ZSRVBHPP0019.I_StorageLocationStdVH;
     @cds.persistence.skip
     entity IndividualIssue {
-        Inputfield: String(1) @title : 'Input field';
-        option: String(1) @title : 'Option';
-        OrderTransfer: String(1) @title : 'Order Transfer';
+        Inputfield: String(30) @title : 'Input field';
+        option: String(30) @title : 'Option';
+        OrderTransfer: String(30) @title : 'Order Transfer';
         plant: String(4) @title : 'Plant';
         material: String(40) @title : 'Material';
          quantity: Decimal(13,2) @title : 'Quantity';
@@ -1600,9 +1600,22 @@ service ZAPIBPS0007 {
          costcntr: String(4) @title : 'Cost Center';
          glacc: String(10) @title : 'G/L Account';
          text: String(30) @title : 'Text';
-         basedt: Date @title : 'Basic Date';
+         basedt: String(8) @title : 'Basic Date';
          Immediately: Boolean @title: 'Immediately'
 
+    }
+
+    @cds.persistence.skip
+    entity InputField {
+           key InputFieldDesc : String(30) @title: 'Input Field Desc';
+    }
+    @cds.persistence.skip
+    entity option {
+           key optionDesc : String(30) @title: 'Option Desc';
+    }
+    @cds.persistence.skip
+    entity OrderTransfer {
+           key OrderTransferDesc : String(30) @title: 'Order Transfer Desc';
     }
 }
 
