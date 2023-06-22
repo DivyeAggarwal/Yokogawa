@@ -1554,7 +1554,12 @@ service ZCAPIH0019 {
 }
 //Create Parts Picking Data 23_0453 4519 
 service ZCAPIH0020 {
-    entity PickingData                as projection on ZSRVBHPP0018.PickingData;
+    entity PickingData                   as projection on ZSRVBHPP0018.PickingData;
+    entity ZCDSEHPPB0003                as projection on ZSRVBHPP0018.ZCDSEHPPB0003;
+    entity ZCDSEHPPB0008                as projection on ZSRVBHPP0018.ZCDSEHPPB0008;
+    entity ZCDSEHPPB0095                as projection on ZSRVBHPP0018.ZCDSEHPPB0095;
+    entity ZCDSEHPPB0100                as projection on ZSRVBHPP0018.ZCDSEHPPB0100;
+    entity ZCDSEHPPB0101                as projection on ZSRVBHPP0018.ZCDSEHPPB0101;
 }
 service YAPIARD {
 @odata.draft.enabled

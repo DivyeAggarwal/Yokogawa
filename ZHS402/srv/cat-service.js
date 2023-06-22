@@ -272,6 +272,26 @@ this.on('READ', 'PickingData', async req => {
     const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0018');
     return kandanListScanSrv.run(req.query);
 });
+this.on('READ', 'ZCDSEHPPB0101', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0018');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'ZCDSEHPPB0100', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0018');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'ZCDSEHPPB0095', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0018');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'ZCDSEHPPB0008', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0018');
+    return kandanListScanSrv.run(req.query);
+});
+this.on('READ', 'ZCDSEHPPB0003', async req => {
+    const kandanListScanSrv = await cds.connect.to('ZSRVBHPP0018');
+    return kandanListScanSrv.run(req.query);
+});
 
 
     this.on('CREATE', 'TenDigitsParts', async req => {
