@@ -3745,6 +3745,7 @@ annotate ZAPIBPS0007.IndividualIssue {
 
 
 //Production Order Status List zhpp0005 8727
+//Cancelled Order List
 annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
     HeaderInfo : {
         $Type             :  'UI.HeaderInfoType',
@@ -3763,7 +3764,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : work_centre
+                Value : arbpl
             },
             {
                 $Type : 'UI.DataField',
@@ -3771,11 +3772,15 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : gsmng
+                Value : Total_val
             },
             {
                 $Type : 'UI.DataField',
-                Value : kdauf
+                Value : currencycode
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dauat
             },
             {
                 $Type : 'UI.DataField',
@@ -3799,6 +3804,604 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : gamng
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : txt04
+            }
+        ]
+    }
+});
+
+annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(
+  UI.SelectionPresentationVariant #CancellOrderList : {
+    Text : 'Planned Order status List',
+    SelectionVariant : { 
+        Text : 'CancellOrderList',
+        SelectOptions : [
+            {
+                $Type : 'UI.SelectOptionType',
+                PropertyName : dwerk,
+            }
+        ]
+    },
+    PresentationVariant : {
+        SortOrder : [
+            {
+                Property : dwerk,
+                Descending : false
+            }
+        ]
+    }
+  }
+);
+
+//Production Order Status List zhpp0005 8727
+//Production Order Operation List
+annotate ZAPIBPS0011.ZCDSEHPPC0012 with @(UI : {
+    HeaderInfo : {
+        $Type             :  'UI.HeaderInfoType',
+        TypeName          : 'Production Order Operation List',
+        TypeNamePlural    : 'Production Order Operation List'
+    },
+    LineItem #ProductionOrderOperationList : {
+        $value : [
+            {
+                $Type : 'UI.DataField',
+                Value : aufnr
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ltxa1
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : arbpl
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ktext
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ltxa1
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : steus
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : qlkapar
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : mgvrg
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : meinh
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : isdd
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ierd
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : txt04
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : rueck
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : kostv
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ism03
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ism03
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ile03
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ism04
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ile04
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ism05
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ile05
+            }
+        ]
+    }
+});
+
+annotate ZAPIBPS0011.ZCDSEHPPC0012 with @(
+  UI.SelectionPresentationVariant #ProductionOrderOperationList : {
+    Text : 'Production Order Operation List',
+    SelectionVariant : { 
+        Text : 'ProductionOrderOperationList',
+        SelectOptions : [
+            {
+                $Type : 'UI.SelectOptionType',
+                PropertyName : aufnr,
+            }
+        ]
+    },
+    PresentationVariant : {
+        SortOrder : [
+            {
+                Property : aufnr,
+                Descending : false
+            }
+        ]
+    }
+  }
+);
+
+//Production Order Status List zhpp0005 8727
+//Planned Order Component list
+annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(UI : {
+    HeaderInfo : {
+        $Type             :  'UI.HeaderInfoType',
+        TypeName          : 'Planned Order Component list',
+        TypeNamePlural    : 'Planned Order Component list'
+    },
+    LineItem #PlannedOrderComponentlist : {
+        $value : [
+            {
+                $Type : 'UI.DataField',
+                Value : aufnr
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : plnum
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : matnr
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : zz1_mscode_prd
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : comp_part
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : maktx
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : kdpos
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : bdter
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : bdmng
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : meins
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : werks
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : lgort
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dismm
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : beskz
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : sobsl
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : schgt
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : rgekz
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : stprs
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : peinh
+            }
+        ]
+    }
+});
+
+annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(
+  UI.SelectionPresentationVariant #PlannedOrderComponentlist : {
+    Text : 'Planned Order Component list',
+    SelectionVariant : { 
+        Text : 'PlannedOrderComponentlist',
+        SelectOptions : [
+            {
+                $Type : 'UI.SelectOptionType',
+                PropertyName : aufnr,
+            }
+        ]
+    },
+    PresentationVariant : {
+        SortOrder : [
+            {
+                Property : aufnr,
+                Descending : false
+            }
+        ]
+    }
+  }
+);
+
+
+//Production Order Status List zhpp0005 8727
+//Production Order Component list
+// annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(UI : {
+//     HeaderInfo : {
+//         $Type             :  'UI.HeaderInfoType',
+//         TypeName          : 'Production Order Component list',
+//         TypeNamePlural    : 'Production Order Component list'
+//     },
+//     LineItem #ProductionOrderComponentlist : {
+//         $value : [
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : aufnr
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : plnum
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : matnr
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : zz1_mscode_prd
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : comp_part
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : maktx
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : kdpos
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : bdter
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : bdmng
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : meins
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : werks
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : lgort
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : dismm
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : beskz
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : sobsl
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : schgt
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : rgekz
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : stprs
+//             },
+//             {
+//                 $Type : 'UI.DataField',
+//                 Value : peinh
+//             }
+//         ]
+//     }
+// });
+
+// annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(
+//   UI.SelectionPresentationVariant #ProductionOrderComponentlist : {
+//     Text : 'Production Order Component list',
+//     SelectionVariant : { 
+//         Text : 'ProductionOrderComponentlist',
+//         SelectOptions : [
+//             {
+//                 $Type : 'UI.SelectOptionType',
+//                 PropertyName : aufnr,
+//             }
+//         ]
+//     },
+//     PresentationVariant : {
+//         SortOrder : [
+//             {
+//                 Property : aufnr,
+//                 Descending : false
+//             }
+//         ]
+//     }
+//   }
+// );
+
+//Production Order Status List zhpp0005 8727
+//Production Order status List
+annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
+    HeaderInfo : {
+        $Type             :  'UI.HeaderInfoType',
+        TypeName          : 'Production Order status List',
+        TypeNamePlural    : 'Production Order status List'
+    },
+    LineItem #ProductionOrderstatusList : {
+        $value : [
+            {
+                $Type : 'UI.DataField',
+                Value : porder
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : plnum
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : matnr
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : maktx
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : zz1_mscode_prd
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dauat
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : mrpcontrol
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : fevor
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : plant
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gamng
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gmein
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gstrs
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gltrs
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gltrp
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : txt30
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : verid
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : serialnumber
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : rmanr
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : posnr_rma
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : compponentno
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : zz1_linkagenumber_sdi
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : projn
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : Leveling_g
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : work_centre
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SLTApproved
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : Tokuchu_no
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : XJ_no
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : Neuclear
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : Tokuchu_part_dt
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : IM_no
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : traf_cc
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : trf_linkage
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : pkkey
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : txt04
+            }
+        ]
+    }
+});
+
+annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(
+  UI.SelectionPresentationVariant #ProductionOrderstatusList : {
+    Text : 'Production Order status List',
+    SelectionVariant : { 
+        Text : 'ProductionOrderstatusList',
+        SelectOptions : [
+            {
+                $Type : 'UI.SelectOptionType',
+                PropertyName : porder,
+            }
+        ]
+    },
+    PresentationVariant : {
+        SortOrder : [
+            {
+                Property : porder,
+                Descending : false
+            }
+        ]
+    }
+  }
+);
+
+//Production Order Status List zhpp0005 8727
+//Planned Order status List
+annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
+    HeaderInfo : {
+        $Type             :  'UI.HeaderInfoType',
+        TypeName          : 'Planned Order status List',
+        TypeNamePlural    : 'Planned Order status List'
+    },
+    LineItem #PlannedOrderstatusList : {
+        $value : [
+            {
+                $Type : 'UI.DataField',
+                Value : aufnr
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : plnum
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : matnr
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : maktx
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : zz1_mscode_prd
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dispo
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : plgrp
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : pwwrk
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : gsmng
             },
             {
@@ -3807,8 +4410,115 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : gstrs
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gltrs
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : verid
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : serialnumber
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : kdauf
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : kdpos
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : compponentno
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : zz1_linkagenumber_sdi
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : Leveling_g
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : work_centre
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : SLTApproved
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : Tokuchu_no
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : XJ_no
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : Neuclear
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : Tokuchu_part_dt
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : comb_no
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : comb_ind
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : IM_no
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : pkkey
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : memo1
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : memo2
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : memo3
             }
         ]
     }
 });
+
+annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(
+  UI.SelectionPresentationVariant #PlannedOrderstatusList : {
+    Text : 'Planned Order status List',
+    SelectionVariant : { 
+        Text : 'PlannedOrderstatusList',
+        SelectOptions : [
+            {
+                $Type : 'UI.SelectOptionType',
+                PropertyName : plnum,
+            }
+        ]
+    },
+    PresentationVariant : {
+        SortOrder : [
+            {
+                Property : plnum,
+                Descending : false
+            }
+        ]
+    }
+  }
+);
