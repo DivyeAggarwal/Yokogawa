@@ -25,6 +25,7 @@ using ZSRVBHSD0011 from './external/ZSRVBHSD0011';
 using ZSRVBHPP0013 from './external/ZSRVBHPP0013';
 using ZSRVBHPP0019 from './external/ZSRVBHPP0019';
 using ZSRVBHMM0008 from './external/ZSRVBHMM0008';
+using ZSRVBHPP0003 from './external/ZSRVBHPP0003';
 
 service CatalogService {
     entity ZCDSEHCSC0003                as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -1561,6 +1562,7 @@ service ZCAPIH0020 {
     entity ZCDSEHPPB0100                as projection on ZSRVBHPP0018.ZCDSEHPPB0100;
     entity ZCDSEHPPB0101                as projection on ZSRVBHPP0018.ZCDSEHPPB0101;
 }
+
 service YAPIARD {
 @odata.draft.enabled
 entity yentard as projection on db.YARDTESTDB;
@@ -1661,4 +1663,15 @@ service ZAPIBPS0010 {
         uploadFile: String @title : 'Upload File';
         outputObject: String @title : 'Result';
     }
+}
+
+
+//Production Order Status List zhpp0005 8727
+service ZAPIBPS0011 {
+    entity ZCDSEHPPB0062 as projection on ZSRVBHPP0003.ZCDSEHPPB0062;
+    entity ZCDSEHPPC0010 as projection on ZSRVBHPP0003.ZCDSEHPPC0010;
+    entity ZCDSEHPPC0011 as projection on ZSRVBHPP0003.ZCDSEHPPC0011;
+    entity ZCDSEHPPC0012 as projection on ZSRVBHPP0003.ZCDSEHPPC0012;
+    entity ZCDSEHPPC0013 as projection on ZSRVBHPP0003.ZCDSEHPPC0013;
+    entity ZCDSEHPPC0014 as projection on ZSRVBHPP0003.ZCDSEHPPC0014;
 }

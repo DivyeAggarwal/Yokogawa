@@ -3742,3 +3742,73 @@ annotate ZAPIBPS0007.IndividualIssue {
     })
     OrderTransfer;
 }
+
+
+//Production Order Status List zhpp0005 8727
+annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
+    HeaderInfo : {
+        $Type             :  'UI.HeaderInfoType',
+        TypeName          : 'Cancelled Production Order',
+        TypeNamePlural    : 'Cancelled Production Order'
+    },
+    LineItem #CancellOrderList : {
+        $value : [
+            {
+                $Type : 'UI.DataField',
+                Value : dwerk
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dispo
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : work_centre
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : aufnr
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gsmng
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : kdauf
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : matnr
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : maktx
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : kdauf
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : kdpos
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : zz1_linkagenumber_sdi
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gsmng
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : meins
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : verid
+            }
+        ]
+    }
+});
