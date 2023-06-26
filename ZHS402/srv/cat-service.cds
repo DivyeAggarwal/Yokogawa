@@ -1611,7 +1611,10 @@ service ZAPIBPS0007 {
          Immediately: Boolean @title: 'Immediately'
 
     }
-
+    @cds.persistence.skip
+    entity IndividualIssueMassUpload {
+        uploadFile: Association to many ZCDSEHPPB0097;
+    }
     @cds.persistence.skip
     entity InputField {
            key InputFieldDesc : String(30) @title: 'Input Field Desc';

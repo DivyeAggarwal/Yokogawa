@@ -39312,6 +39312,156 @@
         }
       }
     },
+    "ZAPIBPS0007.IndividualIssueMassUpload": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "uploadFile": {
+          "type": "cds.Association",
+          "cardinality": {
+            "max": "*"
+          },
+          "target": "ZAPIBPS0007.ZCDSEHPPB0097",
+          "keys": [
+            {
+              "ref": [
+                "basedate"
+              ]
+            },
+            {
+              "ref": [
+                "type"
+              ]
+            },
+            {
+              "ref": [
+                "plant"
+              ]
+            },
+            {
+              "ref": [
+                "StorageLocationFrom"
+              ]
+            },
+            {
+              "ref": [
+                "StorageLocationTo"
+              ]
+            },
+            {
+              "ref": [
+                "Material"
+              ]
+            },
+            {
+              "ref": [
+                "Quantity"
+              ]
+            },
+            {
+              "ref": [
+                "Recipient"
+              ]
+            },
+            {
+              "ref": [
+                "UnlPoint"
+              ]
+            },
+            {
+              "ref": [
+                "Text"
+              ]
+            },
+            {
+              "ref": [
+                "Immediately"
+              ]
+            },
+            {
+              "ref": [
+                "ProdOrder"
+              ]
+            },
+            {
+              "ref": [
+                "Linkage"
+              ]
+            },
+            {
+              "ref": [
+                "Costcenter"
+              ]
+            },
+            {
+              "ref": [
+                "GLAccountcode"
+              ]
+            },
+            {
+              "ref": [
+                "Message"
+              ]
+            },
+            {
+              "ref": [
+                "unit"
+              ]
+            },
+            {
+              "ref": [
+                "immflag"
+              ]
+            },
+            {
+              "ref": [
+                "optflag"
+              ]
+            },
+            {
+              "ref": [
+                "inpflag"
+              ]
+            },
+            {
+              "ref": [
+                "ordflag"
+              ]
+            },
+            {
+              "ref": [
+                "inpfile"
+              ]
+            },
+            {
+              "ref": [
+                "outfile"
+              ]
+            },
+            {
+              "ref": [
+                "errflag"
+              ]
+            },
+            {
+              "ref": [
+                "inputfd"
+              ]
+            },
+            {
+              "ref": [
+                "optionfd"
+              ]
+            },
+            {
+              "ref": [
+                "ordertfd"
+              ]
+            }
+          ]
+        }
+      }
+    },
     "ZAPIBPS0007.InputField": {
       "kind": "entity",
       "@cds.persistence.skip": true,

@@ -71,10 +71,63 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         // var response = await soapi.tx(req).post("/ZCDSEHPPB0097", payload);
         return response;
     });
+
+    that.on('CREATE', 'IndividualIssueMassUpload', async req => {
+        const soapi = await cds.connect.to('ZSRVBHPP0019');
+
+        req.data.UploadFile.forEach(e => { 
+
+        })
+
+        var linkage = req.data.Linkage;
+        var prodOrder = req.data.ProdOrder;
+        var costCenter = req.data.Costcenter;
+        var glAccount = req.data.GLAccountcode;
+        var immediately = req.data.Immediately;
+        var functionImport;
+        var immflag;
+        var optionalFlag;
+        var ordflag;
+
+        if(linkage && immediately) {
+            functionImport = "/linkage"; 
+            immflag = "X";
+            optionalFlag = "Y";
+            ordflag = "2";
+
+        } else if (prodOrder && immediately) {
+            functionImport = "/ordertrf";
+            immflag = "X";
+            optionalFlag = "Y";
+            ordflag = "1";
+        } else if (!prodOrder && !linkage && immediately){
+            functionImport = "/none";
+            immflag = "X";
+            optionalFlag = "X";
+        } else if (costCenter && glAccount && immediately){
+            functionImport = "/cctrans";
+            immflag = "X";
+            optionalFlag = "Z";
+        } else if (!immediately) {
+            functionImport = "/immblank"; 
+            immflag = ""
+        }
+
+
+        var url = "/inputfield?sap-client=120&plant='" + req.data.plant +"'&Material='" + req.data.Material +
+                 "'&Quantity=" + req.data.Quantity + "m&unit='" + req.data.unit + "'&StorageLocationFrom='" + req.data.StorageLocationFrom + 
+                 "'&StorageLocationTo='" + req.data.StorageLocationTo + "'&Recipient='" + req.data.Recipient + "'&UnlPoint='" + req.data.UnlPoint + 
+                 "'&ProdOrder='" + req.data.ProdOrder + "'&Linkage='" + req.data.Linkage + "'&Costcenter='" + req.data.Costcenter + 
+                 "'&GLAccountcode='" + req.data.GLAccountcode + "'&Text='" + req.data.Text + "'&basedate='" + req.data.basedate + 
+                 "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'&ordflag='" + ordflag + "'";
+        var response = await soapi.tx(req).post(url);
+        return response;
+    });
+
     that.on('READ', 'InputField', async req => {
         let aData = [];
         let data = {};
-        data = {
+        data = { 
             InputFieldDesc: "From the Screen"
         }
         aData.push(data);

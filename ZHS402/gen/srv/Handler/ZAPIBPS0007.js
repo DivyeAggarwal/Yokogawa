@@ -71,6 +71,52 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         // var response = await soapi.tx(req).post("/ZCDSEHPPB0097", payload);
         return response;
     });
+
+    that.on('CREATE', 'IndividualIssueMassUpload', async req => {
+        const soapi = await cds.connect.to('ZSRVBHPP0019');
+
+        req.data.UploadFile.forEach(e => { 
+
+        })
+
+        var optionValue = req.data.option;
+        var orderTransVal = req.data.OrderTransfer;
+        var immValue = req.data.Immediately;
+        var functionImport;
+        var immflag;
+        var optionalFlag;
+
+        if(optionValue === "None(Store)" && immValue == true ) {
+            functionImport = "/none";
+            immflag = "X";
+            optionalFlag = "X";
+        } else if(optionValue === "Order Transfer" && immValue == true && orderTransVal == "Production Order No." ) {
+            functionImport = "/ordertrf";
+            immflag = "X";
+            optionalFlag = "Y";
+        } else if(optionValue === "Order Transfer" && immValue == true && orderTransVal == "Linkage No."  ) {
+            functionImport = "/linkage";
+            immflag = "X";
+            optionalFlag = "Y";
+        } else if(optionValue === "Cost Center Transfer" && immValue == true ) {
+            functionImport = "/cctrans";
+            immflag = "X";
+            optionalFlag = "Z";
+        } else if(immValue == false ) {
+            functionImport = "/immblank"; 
+            immflag = ""
+        }
+
+        var url = functionImport + "?sap-client=120&plant='" + req.data.plant +"'&Material='" + req.data.Material +
+                 "'&Quantity=" + req.data.Quantity + "m&unit='" + req.data.unit + "'&StorageLocationFrom='" + req.data.StorageLocationFrom + 
+                 "'&StorageLocationTo='" + req.data.StorageLocationTo + "'&Recipient='" + req.data.Recipient + "'&UnlPoint='" + req.data.UnlPoint + 
+                 "'&ProdOrder='" + req.data.ProdOrder + "'&Linkage='" + req.data.Linkage + "'&Costcenter='" + req.data.Costcenter + 
+                 "'&GLAccountcode='" + req.data.GLAccountcode + "'&Text='" + req.data.Text + "'&basedate='" + req.data.basedate + 
+                 "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'";
+        var response = await soapi.tx(req).post(url);
+        return response;
+    });
+
     that.on('READ', 'InputField', async req => {
         let aData = [];
         let data = {};
