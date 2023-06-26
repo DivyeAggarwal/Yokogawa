@@ -1,6 +1,6 @@
 {
   "meta": {
-    "creator": "cds-dk 6.8.1"
+    "creator": "cds-dk 6.8.2"
   },
   "$version": "2.0",
   "definitions": {
@@ -29,6 +29,11 @@
           "@sap.label": "Kanban ID",
           "@sap.quickinfo": "Kanban Identification Number",
           "notNull": true
+        },
+        "language": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.label": "Language Key"
         },
         "plant": {
           "type": "cds.String",
