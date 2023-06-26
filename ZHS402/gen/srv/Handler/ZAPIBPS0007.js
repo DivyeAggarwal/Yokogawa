@@ -40,11 +40,11 @@ var registerZAPIBPS0007Handler = function (that, cds) {
             immflag = ""
         }
 
-        var url = functionImport + "?sap-client=120&plant='" + req.data.plant +"'&material='" + req.data.materia +
-                 "'&quantity=" + req.data.quantity + "m&unit='" + req.data.unit + "'&strgloc_frm='" + req.data.strgloc_frm + 
-                 "'&strgloc_to='" + req.data.strgloc_frm + "'&recip='" + req.data.recip + "'&unl_pnt='" + req.data.unl_pnt + 
-                 "'&prodord='" + req.data.prodord + "'&linkage='" + req.data.linkage + "'&costcntr='" + req.data.costcntr + 
-                 "'&glacc='" + req.data.glacc + "'&text='" + req.data.text + "'&basedt='" + req.data.basedt + 
+        var url = functionImport + "?sap-client=120&plant='" + req.data.plant +"'&Material='" + req.data.Material +
+                 "'&Quantity=" + req.data.Quantity + "m&unit='" + req.data.unit + "'&StorageLocationFrom='" + req.data.StorageLocationFrom + 
+                 "'&StorageLocationTo='" + req.data.StorageLocationTo + "'&Recipient='" + req.data.Recipient + "'&UnlPoint='" + req.data.UnlPoint + 
+                 "'&ProdOrder='" + req.data.ProdOrder + "'&Linkage='" + req.data.Linkage + "'&Costcenter='" + req.data.Costcenter + 
+                 "'&GLAccountcode='" + req.data.GLAccountcode + "'&Text='" + req.data.Text + "'&basedate='" + req.data.basedate + 
                  "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'";
         var response = await soapi.tx(req).post(url);
         // var payload = {

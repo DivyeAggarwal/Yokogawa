@@ -11,38 +11,6 @@
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
     },
-    "ZSRVBHPP0019.I_ConfignDeprecationCode": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.searchable": "true",
-      "@sap.content.version": "1",
-      "@sap.label": "Configuration Deprecation Code",
-      "@sap.value.list": "true",
-      "elements": {
-        "ConfigurationDeprecationCode": {
-          "key": true,
-          "type": "cds.String",
-          "length": 1,
-          "@sap.display.format": "UpperCase",
-          "@sap.text": "ConfigurationDeprecationCode_Text",
-          "@sap.label": "Validity",
-          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
-          "notNull": true
-        },
-        "ConfigurationDeprecationCode_Text": {
-          "type": "cds.String",
-          "length": 60,
-          "@sap.label": "Validity Text",
-          "@sap.quickinfo": "Value Help: Flag Obsolete Entries",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false"
-        }
-      }
-    },
     "ZSRVBHPP0019.I_CostCenterStdVH": {
       "kind": "entity",
       "@cds.external": true,
@@ -293,8 +261,7 @@
           "length": 1,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Validity",
-          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
-          "@sap.value.list": "fixed-values"
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries"
         }
       }
     },
@@ -308,6 +275,24 @@
       "@sap.content.version": "1",
       "@sap.label": "Custom CDS create invidual issue",
       "elements": {
+        "basedate": {
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char8",
+          "@sap.quickinfo": "Character field, 8 characters long",
+          "notNull": true
+        },
+        "type": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "notNull": true
+        },
         "plant": {
           "key": true,
           "type": "cds.String",
@@ -316,7 +301,23 @@
           "@sap.label": "Plant",
           "notNull": true
         },
-        "material": {
+        "StorageLocationFrom": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "notNull": true
+        },
+        "StorageLocationTo": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "notNull": true
+        },
+        "Material": {
           "key": true,
           "type": "cds.String",
           "length": 40,
@@ -325,285 +326,200 @@
           "@sap.quickinfo": "Material Number",
           "notNull": true
         },
-        "cctrans_ac": {
-          "type": "cds.Boolean",
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false"
-        },
-        "immblank_ac": {
-          "type": "cds.Boolean",
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false"
-        },
-        "linkage_ac": {
-          "type": "cds.Boolean",
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false"
-        },
-        "none_ac": {
-          "type": "cds.Boolean",
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false"
-        },
-        "ordertrf_ac": {
-          "type": "cds.Boolean",
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false"
-        },
-        "quantity": {
+        "Quantity": {
+          "key": true,
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 3,
           "@sap.unit": "unit",
-          "@sap.label": "Total Order Quantity"
+          "@sap.label": "Total Order Quantity",
+          "notNull": true
         },
-        "unit": {
-          "type": "cds.String",
-          "length": 3,
-          "@sap.label": "Base Unit of Measure",
-          "@sap.semantics": "unit-of-measure"
-        },
-        "strgloc_frm": {
-          "type": "cds.String",
-          "length": 4,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage location"
-        },
-        "strgloc_to": {
-          "type": "cds.String",
-          "length": 4,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage location"
-        },
-        "recip": {
+        "Recipient": {
+          "key": true,
           "type": "cds.String",
           "length": 12,
-          "@sap.label": "Goods Recipient"
+          "@sap.label": "Goods Recipient",
+          "notNull": true
         },
-        "unl_pnt": {
+        "UnlPoint": {
+          "key": true,
           "type": "cds.String",
           "length": 25,
-          "@sap.label": "Unloading Point"
+          "@sap.label": "Unloading Point",
+          "notNull": true
         },
-        "prodord": {
-          "type": "cds.String",
-          "length": 12,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Order",
-          "@sap.quickinfo": "Order Number"
-        },
-        "linkage": {
-          "type": "cds.String",
-          "length": 16,
-          "@sap.label": "Linkage Number"
-        },
-        "costcntr": {
-          "type": "cds.String",
-          "length": 4,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Controlling Area"
-        },
-        "glacc": {
-          "type": "cds.String",
-          "length": 10,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "G/L Account",
-          "@sap.quickinfo": "G/L Account Number"
-        },
-        "text": {
+        "Text": {
+          "key": true,
           "type": "cds.String",
           "length": 30,
           "@sap.display.format": "UpperCase",
           "@sap.label": "30 Characters",
-          "@sap.heading": ""
+          "@sap.heading": "",
+          "notNull": true
         },
-        "basedt": {
-          "type": "cds.String",
-          "length": 8,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "char8",
-          "@sap.quickinfo": "Character field, 8 characters long"
-        },
-        "immflag": {
+        "Immediately": {
+          "key": true,
           "type": "cds.String",
           "length": 1,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Single-Character Flag",
-          "@sap.heading": ""
+          "@sap.heading": "",
+          "notNull": true
         },
-        "optflag": {
+        "ProdOrder": {
+          "key": true,
           "type": "cds.String",
-          "length": 1,
+          "length": 12,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Single-Character Flag",
-          "@sap.heading": ""
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "notNull": true
         },
-        "ordflag": {
+        "Linkage": {
+          "key": true,
           "type": "cds.String",
-          "length": 1,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Single-Character Flag",
-          "@sap.heading": ""
+          "length": 16,
+          "@sap.label": "Linkage Number",
+          "notNull": true
         },
-        "inpfile": {
+        "Costcenter": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Controlling Area",
+          "notNull": true
+        },
+        "GLAccountcode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "G/L Account",
+          "@sap.quickinfo": "G/L Account Number",
+          "notNull": true
+        },
+        "Message": {
+          "key": true,
           "type": "cds.String",
           "length": 256,
           "@sap.display.format": "UpperCase",
           "@sap.label": "char256",
-          "@sap.quickinfo": "Data element for WWI callback"
-        },
-        "outfile": {
-          "type": "cds.String",
-          "length": 256,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "char256",
-          "@sap.quickinfo": "Data element for WWI callback"
-        },
-        "errmsg": {
-          "type": "cds.String",
-          "length": 452,
-          "@sap.label": "Text",
-          "@sap.quickinfo": "Text (452 characters)"
-        },
-        "inputfd": {
-          "type": "cds.String",
-          "length": 40,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Char",
-          "@sap.quickinfo": "Character field of length 40"
-        },
-        "optionfd": {
-          "type": "cds.String",
-          "length": 40,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Char",
-          "@sap.quickinfo": "Character field of length 40"
-        },
-        "ordertfd": {
-          "type": "cds.String",
-          "length": 40,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Char",
-          "@sap.quickinfo": "Character field of length 40"
-        }
-      },
-      "actions": {
-        "cctrans": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
-        },
-        "immblank": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
-        },
-        "linkage": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
-        },
-        "none": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
-        },
-        "ordertrf": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
-        }
-      }
-    },
-    "ZSRVBHPP0019.SAP__Currencies": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.content.version": "1",
-      "elements": {
-        "CurrencyCode": {
-          "key": true,
-          "type": "cds.String",
-          "length": 5,
-          "@sap.label": "Currency",
-          "@sap.semantics": "currency-code",
+          "@sap.quickinfo": "Data element for WWI callback",
           "notNull": true
         },
-        "ISOCode": {
-          "type": "cds.String",
-          "length": 3,
-          "@sap.label": "ISO code",
-          "notNull": true
-        },
-        "Text": {
-          "type": "cds.String",
-          "length": 15,
-          "@sap.label": "Short text",
-          "notNull": true
-        },
-        "DecimalPlaces": {
-          "type": "cds.Integer",
-          "@odata.Type": "Edm.Byte",
-          "@sap.label": "Decimals",
-          "notNull": true
-        }
-      }
-    },
-    "ZSRVBHPP0019.SAP__UnitsOfMeasure": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.content.version": "1",
-      "elements": {
-        "UnitCode": {
+        "unit": {
           "key": true,
           "type": "cds.String",
           "length": 3,
-          "@sap.label": "Internal UoM",
+          "@sap.label": "Base Unit of Measure",
           "@sap.semantics": "unit-of-measure",
           "notNull": true
         },
-        "ISOCode": {
+        "immflag": {
+          "key": true,
           "type": "cds.String",
-          "length": 3,
-          "@sap.label": "ISO code",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
           "notNull": true
         },
-        "ExternalCode": {
+        "optflag": {
+          "key": true,
           "type": "cds.String",
-          "length": 3,
-          "@sap.label": "Commercial",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
           "notNull": true
         },
-        "Text": {
+        "inpflag": {
+          "key": true,
           "type": "cds.String",
-          "length": 30,
-          "@sap.label": "UoM Text",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
           "notNull": true
         },
-        "DecimalPlaces": {
-          "type": "cds.Integer",
-          "@sap.label": "Decimal Places"
+        "ordflag": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "notNull": true
+        },
+        "inpfile": {
+          "key": true,
+          "type": "cds.String",
+          "length": 256,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char256",
+          "@sap.quickinfo": "Data element for WWI callback",
+          "notNull": true
+        },
+        "outfile": {
+          "key": true,
+          "type": "cds.String",
+          "length": 256,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char256",
+          "@sap.quickinfo": "Data element for WWI callback",
+          "notNull": true
+        },
+        "errflag": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component of the Version Number",
+          "@sap.heading": "",
+          "notNull": true
+        },
+        "inputfd": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "notNull": true
+        },
+        "optionfd": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "notNull": true
+        },
+        "ordertfd": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char",
+          "@sap.quickinfo": "Character field of length 40",
+          "notNull": true
+        }
+      },
+      "actions": {
+        "immediate": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
+          }
+        },
+        "inputfield": {
+          "kind": "action",
+          "returns": {
+            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
+          }
         }
       }
     }

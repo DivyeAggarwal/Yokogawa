@@ -1595,19 +1595,19 @@ service ZAPIBPS0007 {
         option: String(30) @title : 'Option';
         OrderTransfer: String(30) @title : 'Order Transfer';
         plant: String(4) @title : 'Plant';
-        material: String(40) @title : 'Material';
-         quantity: Decimal(13,2) @title : 'Quantity';
+        Material: String(40) @title : 'Material';
+         Quantity: Decimal(13,2) @title : 'Quantity';
          unit: String(3) @title: 'Unit';
-         strgloc_frm: String(4) @title : 'Storage Location From';
-         strgloc_to: String(4) @title : 'Storage Location To';
-         recip: String(12) @title : 'Goods Recipient';
-         unl_pnt: String(25) @title : 'Unloading Point';
-         prodord : String(12) @title : 'Production Order Number';
-         linkage: String(16) @title : 'Linkage No.';
-         costcntr: String(4) @title : 'Cost Center';
-         glacc: String(10) @title : 'G/L Account';
-         text: String(30) @title : 'Text';
-         basedt: String(8) @title : 'Basic Date';
+         StorageLocationFrom: String(4) @title : 'Storage Location From';
+         StorageLocationTo: String(4) @title : 'Storage Location To';
+         Recipient: String(12) @title : 'Goods Recipient';
+         UnlPoint: String(25) @title : 'Unloading Point';
+         ProdOrder : String(12) @title : 'Production Order Number';
+         Linkage: String(16) @title : 'Linkage No.';
+         Costcenter: String(4) @title : 'Cost Center';
+         GLAccountcode: String(10) @title : 'G/L Account';
+         Text: String(30) @title : 'Text';
+         basedate: String(8) @title : 'Basic Date';
          Immediately: Boolean @title: 'Immediately'
 
     }

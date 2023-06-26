@@ -3464,7 +3464,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : material,
+                    LocalDataProperty : Material,
                     ValueListProperty : 'Material'
                 },
                 {
@@ -3474,7 +3474,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             ]
         }
     })
-    material; 
+    Material; 
     @(Common : {
         Label     : 'Storage Location From',
         ValueList : {
@@ -3482,7 +3482,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : strgloc_frm,
+                    LocalDataProperty : StorageLocationFrom,
                     ValueListProperty : 'StorageLocation'
                 },
                 {
@@ -3492,7 +3492,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             ]
         }
     })
-    strgloc_frm; 
+    StorageLocationFrom; 
     @(Common : {
         Label     : 'Storage Location To',
         ValueList : {
@@ -3500,7 +3500,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : strgloc_to,
+                    LocalDataProperty : StorageLocationTo,
                     ValueListProperty : 'StorageLocation'
                 },
                 {
@@ -3510,7 +3510,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             ]
         }
     })
-    strgloc_to; 
+    StorageLocationTo; 
     @(Common : {
         Label     : 'Plant',
         ValueList : {
@@ -3536,7 +3536,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : glacc,
+                    LocalDataProperty : GLAccountcode,
                     ValueListProperty : 'GLAccount'
                 },
                 {
@@ -3546,7 +3546,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             ]
         }
     })
-    glacc; 
+    GLAccountcode; 
     @(Common : {
         Label     : 'Production Order',
         ValueList : {
@@ -3554,7 +3554,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : prodord,
+                    LocalDataProperty : ProdOrder,
                     ValueListProperty : 'ProductionOrder'
                 },
                 {
@@ -3564,7 +3564,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             ]
         }
     })
-    prodord; 
+    ProdOrder; 
     @(Common : {
         Label     : 'Cost Center',
         ValueList : {
@@ -3572,7 +3572,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : costcntr,
+                    LocalDataProperty : Costcenter,
                     ValueListProperty : 'CostCenter'
                 },
                 {
@@ -3582,7 +3582,7 @@ annotate ZAPIBPS0007.IndividualIssue {
             ]
         }
     })
-    costcntr; 
+    Costcenter; 
 }
 
 //Valuehelp

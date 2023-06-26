@@ -4581,7 +4581,7 @@
       }
     },
     "CatalogService": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "CatalogService.ZCDSEHCSC0003": {
@@ -5408,7 +5408,7 @@
       }
     },
     "ZCDSEHBTC0001": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0001.ZTHBT0001": {
@@ -6018,7 +6018,7 @@
       }
     },
     "ZCDSEHBTC0002": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0002.ZTHBT0021": {
@@ -6597,7 +6597,7 @@
       }
     },
     "ZCDSEHBTC0003": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0003.AccountingIndicator": {
@@ -9180,7 +9180,7 @@
       }
     },
     "ZCDSEHBTC0004": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0004.ZTHBT0026": {
@@ -9261,7 +9261,7 @@
       }
     },
     "ZCDSEHBTC0005": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service",
       "@protocol": "rest"
     },
@@ -9433,7 +9433,7 @@
       }
     },
     "ZCDS_ALL_ENTITIES": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDS_ALL_ENTITIES.ZTHBT0001": {
@@ -12865,7 +12865,7 @@
       }
     },
     "ZCDSEHBTC0006": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0006.ZTHBT0048": {
@@ -13179,7 +13179,7 @@
       }
     },
     "ZCDSEHBTC0007": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0007.ZTHBT0001": {
@@ -16881,7 +16881,7 @@
       }
     },
     "ZSRVBHPS0008Service": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZSRVBHPS0008Service.ZCDSEHPSB0004": {
@@ -17556,7 +17556,7 @@
       }
     },
     "ZCDSEHBTC0009": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0009.ZTHBT0001": {
@@ -20259,7 +20259,7 @@
       }
     },
     "ZCDSEHBTC0010": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0010.OperationList": {
@@ -21930,7 +21930,7 @@
       }
     },
     "ZCDSEHBTC0011": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0011.ZTHBT0006": {
@@ -23158,7 +23158,7 @@
       }
     },
     "ZCDSEHBTC0012": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0012.ZTHBT0056": {
@@ -25307,7 +25307,7 @@
       }
     },
     "ZCDSEHBTC0013": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0013.ZTHBT0059": {
@@ -25860,7 +25860,7 @@
       }
     },
     "ZCDSEHBTC0014": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0014.ZCDSEHPPP0004": {
@@ -27778,7 +27778,7 @@
       }
     },
     "ZAPIBPS0001": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZAPIBPS0001.ZCDSEBPS0001": {
@@ -28893,7 +28893,7 @@
       }
     },
     "ZCDSEHBTC0015": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0015.ZTHBT0029": {
@@ -29752,7 +29752,7 @@
       }
     },
     "ZCDSEHBTC0016": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0016.ZTHBT0057": {
@@ -31232,7 +31232,7 @@
       }
     },
     "ZCDSEHBTC0017": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCDSEHBTC0017.ZTHBT0030": {
@@ -31323,7 +31323,7 @@
       }
     },
     "ZCAPIH0018": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCAPIH0018.ZTHBT0030": {
@@ -32434,7 +32434,7 @@
       }
     },
     "ZAPIBPS0002": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZAPIBPS0002.ZCDSEBPS0009": {
@@ -34874,7 +34874,7 @@
       }
     },
     "ZAPIBPS0003": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZAPIBPS0003.ZCDSEHPSC0013": {
@@ -34948,7 +34948,7 @@
       }
     },
     "ZAPIBPS0004": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZAPIBPS0004.Customer": {
@@ -36796,7 +36796,7 @@
       }
     },
     "ZCAPIH0019": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCAPIH0019.ZCDSEHPPB0093": {
@@ -37445,7 +37445,7 @@
       }
     },
     "ZCAPIH0020": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZCAPIH0020.PickingData": {
@@ -37479,6 +37479,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production Order",
           "@sap.quickinfo": "Order Number",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 12,
@@ -37517,6 +37518,7 @@
         "SalesDoc": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales Document",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -37549,6 +37551,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Reservation Number",
           "@sap.quickinfo": "Sales Document",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -37572,18 +37575,23 @@
           "notNull": true
         },
         "PickNo": {
-          "@sap.display.format": "UpperCase",
+          "@sap.display.format": "NonNegative",
           "@sap.label": "Picking Number",
-          "@sap.quickinfo": "Sales Document",
           "type": "cds.String",
-          "length": 10
+          "length": 11
         },
         "PickItemNo": {
           "@sap.display.format": "NonNegative",
           "@sap.label": "Picking Item Number",
-          "@sap.quickinfo": "Sales Document Item",
           "type": "cds.String",
-          "length": 6
+          "length": 4
+        },
+        "ProdOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
         },
         "MSGID": {
           "@sap.display.format": "UpperCase",
@@ -37601,22 +37609,499 @@
         },
         "MSGTP": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Message Type.",
-          "@sap.quickinfo": "Message Type",
+          "@sap.label": "Message Type",
           "type": "cds.String",
           "length": 1
         },
         "MSGTX": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Message Text",
-          "@sap.quickinfo": "Char255",
+          "@sap.label": "Message Variable1",
+          "@sap.quickinfo": "Message Variable",
           "type": "cds.String",
-          "length": 255
+          "length": 50
+        },
+        "MSGTX2": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Message Variable2",
+          "@sap.quickinfo": "Message Variable",
+          "type": "cds.String",
+          "length": 50
+        },
+        "MSGTX3": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Message Variable3",
+          "@sap.quickinfo": "Message Variable",
+          "type": "cds.String",
+          "length": 50
+        },
+        "MSGTX4": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Message Variable4",
+          "@sap.quickinfo": "Message Variable",
+          "type": "cds.String",
+          "length": 50
+        },
+        "MaterialNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MaterialNo",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "MatSupDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Material Supply Date",
+          "type": "cds.Date"
+        },
+        "OutputType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Output type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "WorkCenter": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "PlantIssueTo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant (Issue to)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StorLocIssueTo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location (Issue to)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StartProdDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Start Production Date",
+          "type": "cds.Date"
+        },
+        "RequirDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Requirement Date",
+          "type": "cds.Date"
+        },
+        "PlantIssuefrom": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant (Issue from)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StorLocaIssuFrom": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location (Issue from)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StorBinIssFrom": {
+          "@sap.label": "Storage Bin (Issue from)",
+          "type": "cds.String",
+          "length": 40
+        },
+        "CompMat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component Material",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Quantity": {
+          "@sap.unit": "UOM",
+          "@sap.label": "Quantity",
+          "@sap.quickinfo": "Requirement Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "UOM": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Backflush": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Backflush",
+          "type": "cds.Boolean"
+        },
+        "BulkField": {
+          "@sap.label": "Bulk",
+          "type": "cds.String",
+          "length": 40
+        },
+        "PrintPerID": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Print Person Id",
+          "type": "cds.String",
+          "length": 12
+        },
+        "PrintDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Printed Date",
+          "type": "cds.Date"
+        },
+        "PrintTime": {
+          "@sap.label": "Printed Time",
+          "type": "cds.Time"
+        },
+        "ScanPersonID": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Scanned Person Id",
+          "type": "cds.String",
+          "length": 12
+        },
+        "ScanDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scanned Date",
+          "type": "cds.Date"
+        },
+        "ScanTime": {
+          "@sap.label": "Scanned Time",
+          "type": "cds.Time"
+        },
+        "ScanStatus": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Scanned Status",
+          "type": "cds.String",
+          "length": 1
+        },
+        "MatDoc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ProdType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "Model": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Model",
+          "type": "cds.String",
+          "length": 40
+        },
+        "LevelGRNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Leveling Gr No",
+          "type": "cds.String",
+          "length": 8
+        },
+        "StartProdNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Start Prod No",
+          "type": "cds.String",
+          "length": 6
+        },
+        "Tag_A_StaProdNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tag-A Start Prod No",
+          "type": "cds.String",
+          "length": 13
+        },
+        "MaiS_MFGSchDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Main S-MFG Schedule Date",
+          "type": "cds.Date"
+        },
+        "SetType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Set Type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SetTool": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Set Tool",
+          "type": "cds.String",
+          "length": 18
+        },
+        "SetLoc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Set Location",
+          "@sap.quickinfo": "Location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SetToolNote": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Set Tool Note",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Delflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Delete Flag",
+          "type": "cds.Boolean"
+        },
+        "Recipient": {
+          "@sap.label": "Recipient",
+          "@sap.quickinfo": "Goods Recipient",
+          "type": "cds.String",
+          "length": 12
+        },
+        "UnlPoint": {
+          "@sap.label": "Unl. Point",
+          "@sap.quickinfo": "Unloading Point",
+          "type": "cds.String",
+          "length": 25
+        },
+        "ItemTxt": {
+          "@sap.label": "Item Text",
+          "type": "cds.String",
+          "length": 50
+        },
+        "LinkNo": {
+          "@sap.label": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "CostCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cost Center",
+          "type": "cds.String",
+          "length": 10
+        },
+        "GLAcc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "G/L Account",
+          "@sap.quickinfo": "G/L Account Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "IndiType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Individual Type",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
+    "ZCAPIH0020.ZCDSEHPPB0003": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Production Order Value help",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0018.ZCDSEHPPB0003"
+          ]
+        }
+      },
+      "elements": {
+        "OrderNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "OrderType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "OrderCategory": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Order category",
+          "type": "cds.String",
+          "length": 2
+        },
+        "Description": {
+          "@sap.label": "Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "CompanyCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Company Code",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "type": "cds.String",
+          "length": 4
+        }
+      }
+    },
+    "ZCAPIH0020.ZCDSEHPPB0008": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value Help for Plant",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0018.ZCDSEHPPB0008"
+          ]
+        }
+      },
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PlantName": {
+          "@sap.label": "Name 1",
+          "@sap.quickinfo": "Name",
+          "type": "cds.String",
+          "length": 30
+        },
+        "ValuationArea": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Valuation area",
+          "type": "cds.String",
+          "length": 4
+        }
+      }
+    },
+    "ZCAPIH0020.ZCDSEHPPB0095": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value help for Issue",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0018.ZCDSEHPPB0095"
+          ]
+        }
+      },
+      "elements": {
+        "DOMALANGU": {
+          "@sap.label": "Lang.",
+          "@sap.quickinfo": "Language Key",
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "notNull": true
+        },
+        "domvalue_l": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Lower Value",
+          "@sap.quickinfo": "Values for Domains: Single Value/Lower Limit",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Value": {
+          "@sap.label": "Short Descript.",
+          "@sap.quickinfo": "Short Text for Fixed Values",
+          "type": "cds.String",
+          "length": 60
+        }
+      }
+    },
+    "ZCAPIH0020.ZCDSEHPPB0100": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Reservation number Value help",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0018.ZCDSEHPPB0100"
+          ]
+        }
+      },
+      "elements": {
+        "ReservationNumber": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Reservation",
+          "@sap.quickinfo": "Number of reservation/dependent requirements",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "RecordType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Record type",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "OrderNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "type": "cds.String",
+          "length": 4
+        }
+      }
+    },
+    "ZCAPIH0020.ZCDSEHPPB0101": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Reservation number Value help",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0018.ZCDSEHPPB0101"
+          ]
+        }
+      },
+      "elements": {
+        "OrderNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
         }
       }
     },
     "YAPIARD": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "YAPIARD.yentard": {
@@ -37734,7 +38219,7 @@
       }
     },
     "ZAPIBPS0005": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZAPIBPS0005.ZCDSEHSDC0009": {
@@ -37778,7 +38263,7 @@
       }
     },
     "ZAPIBPS0006": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZAPIBPS0006.ZCDSEHPPB0081": {
@@ -38044,7 +38529,7 @@
       }
     },
     "ZAPIBPS0007": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZAPIBPS0007.ZCDSEHPPB0097": {
@@ -38063,6 +38548,24 @@
         }
       },
       "elements": {
+        "basedate": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char8",
+          "@sap.quickinfo": "Character field, 8 characters long",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "type": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
         "plant": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Plant",
@@ -38071,7 +38574,23 @@
           "length": 4,
           "notNull": true
         },
-        "material": {
+        "StorageLocationFrom": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocationTo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "Material": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
@@ -38080,181 +38599,186 @@
           "length": 40,
           "notNull": true
         },
-        "cctrans_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "immblank_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "linkage_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "none_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "ordertrf_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "quantity": {
+        "Quantity": {
           "@sap.unit": "unit",
           "@sap.label": "Total Order Quantity",
+          "key": true,
           "type": "cds.Decimal",
           "precision": 13,
-          "scale": 3
+          "scale": 3,
+          "notNull": true
+        },
+        "Recipient": {
+          "@sap.label": "Goods Recipient",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "UnlPoint": {
+          "@sap.label": "Unloading Point",
+          "key": true,
+          "type": "cds.String",
+          "length": 25,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "30 Characters",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "Immediately": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "ProdOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "Linkage": {
+          "@sap.label": "Linkage Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 16,
+          "notNull": true
+        },
+        "Costcenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Controlling Area",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "GLAccountcode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "G/L Account",
+          "@sap.quickinfo": "G/L Account Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Message": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char256",
+          "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
+          "type": "cds.String",
+          "length": 256,
+          "notNull": true
         },
         "unit": {
           "@sap.label": "Base Unit of Measure",
           "@sap.semantics": "unit-of-measure",
+          "key": true,
           "type": "cds.String",
-          "length": 3
-        },
-        "strgloc_frm": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage location",
-          "type": "cds.String",
-          "length": 4
-        },
-        "strgloc_to": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage location",
-          "type": "cds.String",
-          "length": 4
-        },
-        "recip": {
-          "@sap.label": "Goods Recipient",
-          "type": "cds.String",
-          "length": 12
-        },
-        "unl_pnt": {
-          "@sap.label": "Unloading Point",
-          "type": "cds.String",
-          "length": 25
-        },
-        "prodord": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Order",
-          "@sap.quickinfo": "Order Number",
-          "type": "cds.String",
-          "length": 12
-        },
-        "linkage": {
-          "@sap.label": "Linkage Number",
-          "type": "cds.String",
-          "length": 16
-        },
-        "costcntr": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Controlling Area",
-          "type": "cds.String",
-          "length": 4
-        },
-        "glacc": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "G/L Account",
-          "@sap.quickinfo": "G/L Account Number",
-          "type": "cds.String",
-          "length": 10
-        },
-        "text": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "30 Characters",
-          "@sap.heading": "",
-          "type": "cds.String",
-          "length": 30
-        },
-        "basedt": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "char8",
-          "@sap.quickinfo": "Character field, 8 characters long",
-          "type": "cds.String",
-          "length": 8
+          "length": 3,
+          "notNull": true
         },
         "immflag": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Single-Character Flag",
           "@sap.heading": "",
+          "key": true,
           "type": "cds.String",
-          "length": 1
+          "length": 1,
+          "notNull": true
         },
         "optflag": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Single-Character Flag",
           "@sap.heading": "",
+          "key": true,
           "type": "cds.String",
-          "length": 1
+          "length": 1,
+          "notNull": true
+        },
+        "inpflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
         },
         "ordflag": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Single-Character Flag",
           "@sap.heading": "",
+          "key": true,
           "type": "cds.String",
-          "length": 1
+          "length": 1,
+          "notNull": true
         },
         "inpfile": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "char256",
           "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
           "type": "cds.String",
-          "length": 256
+          "length": 256,
+          "notNull": true
         },
         "outfile": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "char256",
           "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
           "type": "cds.String",
-          "length": 256
+          "length": 256,
+          "notNull": true
         },
-        "errmsg": {
-          "@sap.label": "Text",
-          "@sap.quickinfo": "Text (452 characters)",
+        "errflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component of the Version Number",
+          "@sap.heading": "",
+          "key": true,
           "type": "cds.String",
-          "length": 452
+          "length": 2,
+          "notNull": true
         },
         "inputfd": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Char",
           "@sap.quickinfo": "Character field of length 40",
+          "key": true,
           "type": "cds.String",
-          "length": 40
+          "length": 40,
+          "notNull": true
         },
         "optionfd": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Char",
           "@sap.quickinfo": "Character field of length 40",
+          "key": true,
           "type": "cds.String",
-          "length": 40
+          "length": 40,
+          "notNull": true
         },
         "ordertfd": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Char",
           "@sap.quickinfo": "Character field of length 40",
+          "key": true,
           "type": "cds.String",
-          "length": 40
+          "length": 40,
+          "notNull": true
         }
       }
     },
@@ -38543,7 +39067,6 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Validity",
           "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
-          "@sap.value.list": "fixed-values",
           "type": "cds.String",
           "length": 1
         }
@@ -38627,7 +39150,7 @@
           "type": "cds.String",
           "length": 4
         },
-        "material": {
+        "Material": {
           "@title": "Material",
           "@Common.Label": "Material",
           "@Common.ValueList.CollectionPath": "I_MaterialStdVH",
@@ -38635,7 +39158,7 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "material"
+                "=": "Material"
               },
               "ValueListProperty": "Material"
             },
@@ -38647,7 +39170,7 @@
           "type": "cds.String",
           "length": 40
         },
-        "quantity": {
+        "Quantity": {
           "@title": "Quantity",
           "type": "cds.Decimal",
           "precision": 13,
@@ -38658,7 +39181,7 @@
           "type": "cds.String",
           "length": 3
         },
-        "strgloc_frm": {
+        "StorageLocationFrom": {
           "@title": "Storage Location From",
           "@Common.Label": "Storage Location From",
           "@Common.ValueList.CollectionPath": "I_StorageLocationStdVH",
@@ -38666,7 +39189,7 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "strgloc_frm"
+                "=": "StorageLocationFrom"
               },
               "ValueListProperty": "StorageLocation"
             },
@@ -38678,7 +39201,7 @@
           "type": "cds.String",
           "length": 4
         },
-        "strgloc_to": {
+        "StorageLocationTo": {
           "@title": "Storage Location To",
           "@Common.Label": "Storage Location To",
           "@Common.ValueList.CollectionPath": "I_StorageLocationStdVH",
@@ -38686,7 +39209,7 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "strgloc_to"
+                "=": "StorageLocationTo"
               },
               "ValueListProperty": "StorageLocation"
             },
@@ -38698,17 +39221,17 @@
           "type": "cds.String",
           "length": 4
         },
-        "recip": {
+        "Recipient": {
           "@title": "Goods Recipient",
           "type": "cds.String",
           "length": 12
         },
-        "unl_pnt": {
+        "UnlPoint": {
           "@title": "Unloading Point",
           "type": "cds.String",
           "length": 25
         },
-        "prodord": {
+        "ProdOrder": {
           "@title": "Production Order Number",
           "@Common.Label": "Production Order",
           "@Common.ValueList.CollectionPath": "I_ProductionOrderStdVH",
@@ -38716,7 +39239,7 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "prodord"
+                "=": "ProdOrder"
               },
               "ValueListProperty": "ProductionOrder"
             },
@@ -38728,12 +39251,12 @@
           "type": "cds.String",
           "length": 12
         },
-        "linkage": {
+        "Linkage": {
           "@title": "Linkage No.",
           "type": "cds.String",
           "length": 16
         },
-        "costcntr": {
+        "Costcenter": {
           "@title": "Cost Center",
           "@Common.Label": "Cost Center",
           "@Common.ValueList.CollectionPath": "I_CostCenterStdVH",
@@ -38741,7 +39264,7 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "costcntr"
+                "=": "Costcenter"
               },
               "ValueListProperty": "CostCenter"
             },
@@ -38753,7 +39276,7 @@
           "type": "cds.String",
           "length": 4
         },
-        "glacc": {
+        "GLAccountcode": {
           "@title": "G/L Account",
           "@Common.Label": "GL Account",
           "@Common.ValueList.CollectionPath": "I_GLAccountStdVH",
@@ -38761,7 +39284,7 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "glacc"
+                "=": "GLAccountcode"
               },
               "ValueListProperty": "GLAccount"
             },
@@ -38773,12 +39296,12 @@
           "type": "cds.String",
           "length": 10
         },
-        "text": {
+        "Text": {
           "@title": "Text",
           "type": "cds.String",
           "length": 30
         },
-        "basedt": {
+        "basedate": {
           "@title": "Basic Date",
           "type": "cds.String",
           "length": 8
@@ -38826,7 +39349,7 @@
       }
     },
     "ZAPIBPS0008": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZAPIBPS0008.ZCDSEHMMC0012": {
@@ -39113,7 +39636,7 @@
       }
     },
     "ZAPIBPS0009": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service",
       "@protocol": "rest"
     },
@@ -39153,7 +39676,7 @@
       }
     },
     "ZAPIBPS0010": {
-      "@source": "srv/cat-service.cds",
+      "@source": "cat-service.cds",
       "kind": "service"
     },
     "ZAPIBPS0010.SelectionOption": {
@@ -39174,8 +39697,2091 @@
         }
       }
     },
+    "ZAPIBPS0011": {
+      "@source": "cat-service.cds",
+      "kind": "service"
+    },
+    "ZAPIBPS0011.ZCDSEHPPB0062": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom entity for plant and ordr",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.ZCDSEHPPB0062"
+          ]
+        }
+      },
+      "elements": {
+        "plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "name": {
+          "@sap.label": "Name 1",
+          "@sap.quickinfo": "Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZAPIBPS0011.ZCDSEHPPC0010": {
+      "kind": "entity",
+      "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
+      "@UI.HeaderInfo.TypeName": "Production Order status List",
+      "@UI.HeaderInfo.TypeNamePlural": "Production Order status List",
+      "@UI.LineItem#ProductionOrderstatusList": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "porder"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "plnum"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "matnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "maktx"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "zz1_mscode_prd"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "dauat"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "mrpcontrol"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "fevor"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "plant"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "gamng"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "gmein"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "gstrs"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "gltrs"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "gltrp"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "txt30"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "verid"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "serialnumber"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "rmanr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "posnr_rma"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "compponentno"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "zz1_linkagenumber_sdi"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "projn"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Leveling_g"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "work_centre"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "SLTApproved"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Tokuchu_no"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "XJ_no"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Neuclear"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Tokuchu_part_dt"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "IM_no"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "traf_cc"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "trf_linkage"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "pkkey"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "txt04"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#ProductionOrderstatusList.Text": "Production Order status List",
+      "@UI.SelectionPresentationVariant#ProductionOrderstatusList.SelectionVariant.Text": "ProductionOrderstatusList",
+      "@UI.SelectionPresentationVariant#ProductionOrderstatusList.SelectionVariant.SelectOptions": [
+        {
+          "$Type": "UI.SelectOptionType",
+          "PropertyName": {
+            "=": "porder"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#ProductionOrderstatusList.PresentationVariant.SortOrder": [
+        {
+          "Property": {
+            "=": "porder"
+          },
+          "Descending": false
+        }
+      ],
+      "@UI.SelectionPresentationVariant#ProductionOrderstatusList.PresentationVariant.Visualizations": [
+        "@UI.LineItem#ProductionOrderstatusList"
+      ],
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Cons view for Production order status",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.ZCDSEHPPC0010"
+          ]
+        }
+      },
+      "elements": {
+        "plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "aufpl": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Opertn task list no.",
+          "@sap.quickinfo": "Routing number of operations in the order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "porder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "serialnumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial No",
+          "@sap.quickinfo": "Serial Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "notNull": true
+        },
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned order",
+          "@sap.quickinfo": "Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Code",
+          "@sap.quickinfo": "Material Number for Order",
+          "type": "cds.String",
+          "length": 40
+        },
+        "maktx": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80
+        },
+        "dauat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "mrpcontrol": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "@sap.quickinfo": "MRP controller for the order",
+          "type": "cds.String",
+          "length": 3
+        },
+        "fevor": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supervisor",
+          "@sap.quickinfo": "Production Supervisor",
+          "type": "cds.String",
+          "length": 3
+        },
+        "gmein": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "gamng": {
+          "@sap.unit": "gmein",
+          "@sap.label": "Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start date",
+          "@sap.quickinfo": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish date",
+          "@sap.quickinfo": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gltrp": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "txt04": {
+          "@sap.label": "B-Type Parent Prod Order Status",
+          "@sap.quickinfo": "Individual status of an object (short form)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "txt30": {
+          "@sap.label": "Status",
+          "@sap.quickinfo": "Object status",
+          "type": "cds.String",
+          "length": 30
+        },
+        "verid": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Version",
+          "type": "cds.String",
+          "length": 4
+        },
+        "rmanr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales and Distribution Document Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "posnr_rma": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Order Item",
+          "@sap.quickinfo": "Item number of the SD document",
+          "type": "cds.String",
+          "length": 6
+        },
+        "projn": {
+          "@sap.label": "WBS",
+          "type": "cds.String",
+          "length": 24
+        },
+        "compponentno": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component number",
+          "type": "cds.String",
+          "length": 4
+        },
+        "zz1_linkagenumber_sdi": {
+          "@sap.label": "Linkage No",
+          "@sap.quickinfo": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "Leveling_g": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Leveling Gr",
+          "@sap.quickinfo": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "work_centre": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "SLTApproved": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "zz1_routindic_plt": {
+          "@sap.label": "RoutingDisplayIndicator",
+          "type": "cds.String",
+          "length": 1
+        },
+        "aprio": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Transfer category",
+          "@sap.quickinfo": "Order priority",
+          "type": "cds.String",
+          "length": 1
+        },
+        "traf_ord": {
+          "@sap.label": "Goods Recipient",
+          "type": "cds.String",
+          "length": 12
+        },
+        "traf_cc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cost Center",
+          "@sap.quickinfo": "Cost Center for Basic Settlement",
+          "type": "cds.String",
+          "length": 10
+        },
+        "trf_linkage": {
+          "@sap.label": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "pkkey": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Tokuchu_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "IM_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "XJ_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "Tokuchu_part_dt": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "Neuclear": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        }
+      }
+    },
+    "ZAPIBPS0011.ZCDSEHPPC0011": {
+      "kind": "entity",
+      "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
+      "@UI.HeaderInfo.TypeName": "Planned Order Component list",
+      "@UI.HeaderInfo.TypeNamePlural": "Planned Order Component list",
+      "@UI.LineItem#PlannedOrderComponentlist": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "aufnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "plnum"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "matnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "zz1_mscode_prd"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "comp_part"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "maktx"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "kdpos"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "bdter"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "bdmng"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "meins"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "werks"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "lgort"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "dismm"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "beskz"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "sobsl"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "schgt"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "rgekz"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "stprs"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "peinh"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.Text": "Planned Order Component list",
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.SelectionVariant.Text": "PlannedOrderComponentlist",
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.SelectionVariant.SelectOptions": [
+        {
+          "$Type": "UI.SelectOptionType",
+          "PropertyName": {
+            "=": "aufnr"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.PresentationVariant.SortOrder": [
+        {
+          "Property": {
+            "=": "aufnr"
+          },
+          "Descending": false
+        }
+      ],
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.PresentationVariant.Visualizations": [
+        "@UI.LineItem#PlannedOrderComponentlist"
+      ],
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Compositview for ProductionOrder comp",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.ZCDSEHPPC0011"
+          ]
+        }
+      },
+      "elements": {
+        "werks": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number for Order",
+          "type": "cds.String",
+          "length": 40
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80
+        },
+        "comp_part": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "posnr": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 4
+        },
+        "reporttype": {
+          "type": "cds.String",
+          "length": 45
+        },
+        "ordtype": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "bdter": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Requirements date",
+          "@sap.quickinfo": "Requirements date for the component",
+          "type": "cds.Date"
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "bdmng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Requirement Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "lgort": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "schgt": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Bulk material",
+          "@sap.quickinfo": "Indicator: bulk material",
+          "type": "cds.Boolean"
+        },
+        "waers": {
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.semantics": "currency-code",
+          "type": "cds.String",
+          "length": 5
+        },
+        "rgekz": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Backflush",
+          "@sap.quickinfo": "Indicator: Backflush",
+          "type": "cds.Boolean"
+        },
+        "maktx": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "dismm": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Type",
+          "type": "cds.String",
+          "length": 2
+        },
+        "beskz": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Procurement Type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "sobsl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Special procurement",
+          "@sap.quickinfo": "Special procurement type",
+          "type": "cds.String",
+          "length": 2
+        },
+        "peinh": {
+          "@sap.label": "Price unit",
+          "type": "cds.Decimal",
+          "precision": 5,
+          "scale": 0
+        },
+        "stprs": {
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Standard price",
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3
+        },
+        "dauat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP controller",
+          "@sap.quickinfo": "MRP controller for the order",
+          "type": "cds.String",
+          "length": 3
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Order Item",
+          "type": "cds.String",
+          "length": 6
+        },
+        "aprio": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Priority",
+          "@sap.quickinfo": "Order priority",
+          "type": "cds.String",
+          "length": 1
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gltrp": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "LevelingG": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "workc": {
+          "@sap.label": "Work Centre",
+          "type": "cds.String",
+          "length": 10
+        },
+        "LinkageNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "WBS": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KanbanNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "SerialNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "txt04": {
+          "@sap.label": "Status",
+          "@sap.quickinfo": "Individual status of an object (short form)",
+          "type": "cds.String",
+          "length": 4
+        }
+      }
+    },
+    "ZAPIBPS0011.ZCDSEHPPC0012": {
+      "kind": "entity",
+      "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
+      "@UI.HeaderInfo.TypeName": "Production Order Operation List",
+      "@UI.HeaderInfo.TypeNamePlural": "Production Order Operation List",
+      "@UI.LineItem#ProductionOrderOperationList": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "aufnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ltxa1"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "arbpl"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ktext"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ltxa1"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "steus"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "qlkapar"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "mgvrg"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "meinh"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "isdd"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ierd"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "txt04"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "rueck"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "kostv"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ism03"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ism03"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ile03"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ism04"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ile04"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ism05"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ile05"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#ProductionOrderOperationList.Text": "Production Order Operation List",
+      "@UI.SelectionPresentationVariant#ProductionOrderOperationList.SelectionVariant.Text": "ProductionOrderOperationList",
+      "@UI.SelectionPresentationVariant#ProductionOrderOperationList.SelectionVariant.SelectOptions": [
+        {
+          "$Type": "UI.SelectOptionType",
+          "PropertyName": {
+            "=": "aufnr"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#ProductionOrderOperationList.PresentationVariant.SortOrder": [
+        {
+          "Property": {
+            "=": "aufnr"
+          },
+          "Descending": false
+        }
+      ],
+      "@UI.SelectionPresentationVariant#ProductionOrderOperationList.PresentationVariant.Visualizations": [
+        "@UI.LineItem#ProductionOrderOperationList"
+      ],
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Compositview for Productionorder oper",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.ZCDSEHPPC0012"
+          ]
+        }
+      },
+      "elements": {
+        "werks": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "vornr": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 24
+        },
+        "reporttype": {
+          "type": "cds.String",
+          "length": 45
+        },
+        "ordtype": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "rueck": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Confirmation",
+          "@sap.quickinfo": "Completion confirmation number for the operation",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ism03": {
+          "@sap.unit": "ile03",
+          "@sap.label": "Act. t/b Confirmed",
+          "@sap.quickinfo": "Activity Currently to be Confirmed",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "ile03": {
+          "@sap.label": "Unit/activity",
+          "@sap.quickinfo": "Unit of measure for the activity to be confirmed",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ism04": {
+          "@sap.unit": "ile04",
+          "@sap.label": "Act. t/b Confirmed",
+          "@sap.quickinfo": "Activity Currently to be Confirmed",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "ile04": {
+          "@sap.label": "Unit/activity",
+          "@sap.quickinfo": "Unit of measure for the activity to be confirmed",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ism05": {
+          "@sap.unit": "ile05",
+          "@sap.label": "Act. t/b Confirmed",
+          "@sap.quickinfo": "Activity Currently to be Confirmed",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "ile05": {
+          "@sap.label": "Unit/activity",
+          "@sap.quickinfo": "Unit of measure for the activity to be confirmed",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "arbid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Object ID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "arbpl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ktext": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Short description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ltxa1": {
+          "@sap.label": "Operation Short Text",
+          "type": "cds.String",
+          "length": 40
+        },
+        "steus": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control key",
+          "type": "cds.String",
+          "length": 4
+        },
+        "qlkapar": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Capacity category",
+          "type": "cds.String",
+          "length": 3
+        },
+        "objnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Object number",
+          "type": "cds.String",
+          "length": 22
+        },
+        "aufpl": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Opertn task list no.",
+          "@sap.quickinfo": "Routing number of operations in the order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "mgvrg": {
+          "@sap.unit": "meinh",
+          "@sap.label": "Operation Quantity",
+          "@sap.quickinfo": "Operation Total Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "meinh": {
+          "@sap.label": "Operation unit",
+          "@sap.quickinfo": "Unit of measure for activity",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "isdd": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Execution Start Date",
+          "@sap.quickinfo": "Actual Execution Start Date",
+          "type": "cds.Date"
+        },
+        "ierd": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Setup End Date",
+          "@sap.quickinfo": "Actual Setup End Date",
+          "type": "cds.Date"
+        },
+        "txt04": {
+          "@sap.label": "Status",
+          "@sap.quickinfo": "Individual status of an object (short form)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "kostv": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Responsible CCtr",
+          "@sap.quickinfo": "Responsible cost center",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ebeln": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purchasing Document",
+          "@sap.quickinfo": "Purchasing Document Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "dauat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number for Order",
+          "type": "cds.String",
+          "length": 40
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP controller",
+          "@sap.quickinfo": "MRP controller for the order",
+          "type": "cds.String",
+          "length": 3
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Order Item",
+          "type": "cds.String",
+          "length": 6
+        },
+        "aprio": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Priority",
+          "@sap.quickinfo": "Order priority",
+          "type": "cds.String",
+          "length": 1
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gltrp": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "LevelingG": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LinkageNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "WBS": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KanbanNo": {
+          "@sap.label": "KANBAN ID",
+          "type": "cds.String",
+          "length": 10
+        },
+        "SerialNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Transfercat": {
+          "@sap.label": "Transfer category",
+          "type": "cds.String",
+          "length": 10
+        },
+        "workc": {
+          "@sap.label": "Work centre",
+          "type": "cds.String",
+          "length": 10
+        }
+      }
+    },
+    "ZAPIBPS0011.ZCDSEHPPC0013": {
+      "kind": "entity",
+      "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
+      "@UI.HeaderInfo.TypeName": "Cancelled Production Order",
+      "@UI.HeaderInfo.TypeNamePlural": "Cancelled Production Order",
+      "@UI.LineItem#CancellOrderList": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "dwerk"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "dispo"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "arbpl"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "aufnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Total_val"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "currencycode"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "dauat"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "matnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "maktx"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "kdauf"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "kdpos"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "zz1_linkagenumber_sdi"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "gamng"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "txt04"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#CancellOrderList.Text": "Planned Order status List",
+      "@UI.SelectionPresentationVariant#CancellOrderList.SelectionVariant.Text": "CancellOrderList",
+      "@UI.SelectionPresentationVariant#CancellOrderList.SelectionVariant.SelectOptions": [
+        {
+          "$Type": "UI.SelectOptionType",
+          "PropertyName": {
+            "=": "dwerk"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#CancellOrderList.PresentationVariant.SortOrder": [
+        {
+          "Property": {
+            "=": "dwerk"
+          },
+          "Descending": false
+        }
+      ],
+      "@UI.SelectionPresentationVariant#CancellOrderList.PresentationVariant.Visualizations": [
+        "@UI.LineItem#CancellOrderList"
+      ],
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Cancelled Production Order output",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.ZCDSEHPPC0013"
+          ]
+        }
+      },
+      "elements": {
+        "dwerk": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "reporttype": {
+          "type": "cds.String",
+          "length": 45
+        },
+        "ordtype": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "gamng": {
+          "@sap.unit": "gmein",
+          "@sap.label": "Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "gmein": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "dauat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number for Order",
+          "type": "cds.String",
+          "length": 40
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Order Item",
+          "type": "cds.String",
+          "length": 6
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "maktx": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "@sap.quickinfo": "MRP controller for the order",
+          "type": "cds.String",
+          "length": 3
+        },
+        "arbpl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "zz1_linkagenumber_sdi": {
+          "@sap.label": "Linkage No",
+          "@sap.quickinfo": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "txt04": {
+          "@sap.label": "Status",
+          "@sap.quickinfo": "Individual status of an object (short form)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "currencycode": {
+          "@sap.label": "Transaction Currency",
+          "@sap.semantics": "currency-code",
+          "type": "cds.String",
+          "length": 5
+        },
+        "Total_val": {
+          "@sap.unit": "currencycode",
+          "@sap.variable.scale": "true",
+          "type": "cds.Decimal",
+          "precision": 31,
+          "scale": 3
+        },
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "aprio": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Priority",
+          "@sap.quickinfo": "Order priority",
+          "type": "cds.String",
+          "length": 1
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gltrp": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "LevelingG": {
+          "@sap.label": "Leveling Gr",
+          "type": "cds.String",
+          "length": 10
+        },
+        "workc": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "WBS": {
+          "@sap.label": "WBS",
+          "type": "cds.String",
+          "length": 10
+        },
+        "KanbanNo": {
+          "@sap.label": "KANBAN ID",
+          "type": "cds.String",
+          "length": 10
+        },
+        "SerialNo": {
+          "@sap.label": "Serial No",
+          "type": "cds.String",
+          "length": 10
+        }
+      }
+    },
+    "ZAPIBPS0011.ZCDSEHPPC0014": {
+      "kind": "entity",
+      "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
+      "@UI.HeaderInfo.TypeName": "Planned Order status List",
+      "@UI.HeaderInfo.TypeNamePlural": "Planned Order status List",
+      "@UI.LineItem#PlannedOrderstatusList": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "aufnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "plnum"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "matnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "maktx"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "zz1_mscode_prd"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "dispo"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "plgrp"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "pwwrk"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "gsmng"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "meins"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "gstrs"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "gltrs"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "verid"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "serialnumber"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "kdauf"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "kdpos"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "compponentno"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "zz1_linkagenumber_sdi"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Leveling_g"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "work_centre"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "SLTApproved"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Tokuchu_no"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "XJ_no"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Neuclear"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "Tokuchu_part_dt"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "comb_no"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "comb_ind"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "IM_no"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "pkkey"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "memo1"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "memo2"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "memo3"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#PlannedOrderstatusList.Text": "Planned Order status List",
+      "@UI.SelectionPresentationVariant#PlannedOrderstatusList.SelectionVariant.Text": "PlannedOrderstatusList",
+      "@UI.SelectionPresentationVariant#PlannedOrderstatusList.SelectionVariant.SelectOptions": [
+        {
+          "$Type": "UI.SelectOptionType",
+          "PropertyName": {
+            "=": "plnum"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#PlannedOrderstatusList.PresentationVariant.SortOrder": [
+        {
+          "Property": {
+            "=": "plnum"
+          },
+          "Descending": false
+        }
+      ],
+      "@UI.SelectionPresentationVariant#PlannedOrderstatusList.PresentationVariant.Visualizations": [
+        "@UI.LineItem#PlannedOrderstatusList"
+      ],
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "consumption of Planned order",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.ZCDSEHPPC0014"
+          ]
+        }
+      },
+      "elements": {
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production order",
+          "@sap.quickinfo": "Run schedule header number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "aufpl": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Opertn task list no.",
+          "@sap.quickinfo": "Routing number of operations in the order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "plgrp": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supervisor",
+          "@sap.quickinfo": "Production Supervisor",
+          "type": "cds.String",
+          "length": 3
+        },
+        "pwwrk": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Production Plant",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 4
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "gsmng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "pedtr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order End Date",
+          "@sap.quickinfo": "Planned Order End Date",
+          "type": "cds.Date"
+        },
+        "umskz": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Conversion Indicator",
+          "@sap.quickinfo": "Planned Order Conversion Indicator",
+          "type": "cds.Boolean"
+        },
+        "verid": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Version",
+          "type": "cds.String",
+          "length": 4
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6
+        },
+        "pspel": {
+          "type": "cds.String",
+          "length": 24
+        },
+        "rsnum": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Reservation",
+          "@sap.quickinfo": "Number of reservation/dependent requirements",
+          "type": "cds.String",
+          "length": 10
+        },
+        "zz1_linkagenumber_sdi": {
+          "@sap.label": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "type": "cds.String",
+          "length": 3
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80
+        },
+        "zz1_routindic_plt": {
+          "@sap.label": "RoutingDisplayIndicator",
+          "type": "cds.String",
+          "length": 1
+        },
+        "serialnumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial Number",
+          "type": "cds.String",
+          "length": 18
+        },
+        "compponentno": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component number",
+          "type": "cds.String",
+          "length": 4
+        },
+        "memo1": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40
+        },
+        "memo2": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40
+        },
+        "memo3": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "maktx": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "pkkey": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "SLTApproved": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Leveling_g": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "work_centre": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Tokuchu_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "IM_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "XJ_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "Tokuchu_part_dt": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "Neuclear": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "comb_ind": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "comb_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        }
+      }
+    },
     "external.PublicSynonymsService": {
-      "@source": "srv/public-synonym.cds",
+      "@source": "public-synonym.cds",
       "kind": "service"
     },
     "external.PublicSynonymsService.Synonyms": {
@@ -39458,7 +42064,7 @@
       }
     },
     "ZSRVBHSD0002": {
-      "@source": "srv/external/ZSRVBHSD0002.csn",
+      "@source": "external/ZSRVBHSD0002.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -39794,7 +42400,7 @@
       }
     },
     "TimeSheetEntry": {
-      "@source": "srv/external/TimeSheetEntry.csn",
+      "@source": "external/TimeSheetEntry.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -40414,7 +43020,7 @@
       }
     },
     "ZSRVBHPS0008": {
-      "@source": "srv/external/ZSRVBHPS0008.csn",
+      "@source": "external/ZSRVBHPS0008.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -40832,7 +43438,7 @@
       }
     },
     "PlantAPI": {
-      "@source": "srv/external/PlantAPI.csn",
+      "@source": "external/PlantAPI.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -57463,7 +60069,7 @@
       }
     },
     "API_PRODUCT_SRV": {
-      "@source": "srv/external/API_PRODUCT_SRV.csn",
+      "@source": "external/API_PRODUCT_SRV.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -61869,7 +64475,7 @@
       }
     },
     "ProductionOrder": {
-      "@source": "srv/external/ProductionOrder.csn",
+      "@source": "external/ProductionOrder.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -64195,7 +66801,7 @@
       }
     },
     "ZSRVBHPP0011": {
-      "@source": "srv/external/ZSRVBHPP0011.csn",
+      "@source": "external/ZSRVBHPP0011.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -64528,7 +67134,7 @@
       }
     },
     "ZSRVBHPP0012": {
-      "@source": "srv/external/ZSRVBHPP0012.csn",
+      "@source": "external/ZSRVBHPP0012.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -64714,7 +67320,7 @@
       }
     },
     "ZSRVBHMM0004": {
-      "@source": "srv/external/ZSRVBHMM0004.csn",
+      "@source": "external/ZSRVBHMM0004.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -64835,7 +67441,7 @@
       }
     },
     "ZSRVBHPS0010": {
-      "@source": "srv/external/ZSRVBHPS0010.csn",
+      "@source": "external/ZSRVBHPS0010.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -65034,7 +67640,7 @@
       }
     },
     "ZSRVBHPP0014": {
-      "@source": "srv/external/ZSRVBHPP0014.csn",
+      "@source": "external/ZSRVBHPP0014.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -66518,7 +69124,7 @@
       }
     },
     "TimeSheetAPI": {
-      "@source": "srv/external/TimeSheetAPI.csn",
+      "@source": "external/TimeSheetAPI.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -68101,7 +70707,7 @@
       }
     },
     "BusinessPartner": {
-      "@source": "srv/external/BusinessPartner.csn",
+      "@source": "external/BusinessPartner.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -73133,7 +75739,7 @@
       }
     },
     "ProjectDetails": {
-      "@source": "srv/external/ProjectDetails.csn",
+      "@source": "external/ProjectDetails.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -73575,7 +76181,7 @@
       }
     },
     "ZSRVBHPP0005": {
-      "@source": "srv/external/ZSRVBHPP0005.csn",
+      "@source": "external/ZSRVBHPP0005.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -74073,7 +76679,7 @@
       }
     },
     "ZSRVBHPP0015": {
-      "@source": "srv/external/ZSRVBHPP0015.csn",
+      "@source": "external/ZSRVBHPP0015.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -74464,7 +77070,7 @@
       }
     },
     "ZSRVBHPP0008": {
-      "@source": "srv/external/ZSRVBHPP0008.csn",
+      "@source": "external/ZSRVBHPP0008.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -74721,7 +77327,7 @@
       }
     },
     "ZSRVBHPP0007": {
-      "@source": "srv/external/ZSRVBHPP0007.csn",
+      "@source": "external/ZSRVBHPP0007.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -74933,7 +77539,7 @@
       }
     },
     "ZSRVBHPS0011": {
-      "@source": "srv/external/ZSRVBHPS0011.csn",
+      "@source": "external/ZSRVBHPS0011.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -75200,7 +77806,7 @@
       }
     },
     "ZSRVBHPP0017": {
-      "@source": "srv/external/ZSRVBHPP0017.csn",
+      "@source": "external/ZSRVBHPP0017.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -75370,181 +77976,94 @@
       }
     },
     "ZSRVBHPP0018": {
-      "@source": "srv/external/ZSRVBHPP0018.csn",
+      "@source": "external/ZSRVBHPP0018.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
     },
-    "ZSRVBHPP0018.I_CompanyCode": {
+    "ZSRVBHPP0018.ZCDSEHPPB0003": {
       "kind": "entity",
       "@cds.external": true,
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.updatable": "false",
       "@sap.deletable": "false",
-      "@sap.searchable": "true",
       "@sap.content.version": "1",
-      "@sap.label": "Company Code",
+      "@sap.label": "Production Order Value help",
       "@sap.value.list": "true",
       "elements": {
+        "OrderNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "OrderType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "OrderCategory": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Order category",
+          "type": "cds.String",
+          "length": 2
+        },
+        "Description": {
+          "@sap.label": "Description",
+          "type": "cds.String",
+          "length": 40
+        },
         "CompanyCode": {
           "@sap.display.format": "UpperCase",
-          "@sap.text": "CompanyCodeName",
           "@sap.label": "Company Code",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "type": "cds.String",
+          "length": 4
+        }
+      }
+    },
+    "ZSRVBHPP0018.ZCDSEHPPB0008": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Value Help for Plant",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
           "key": true,
           "type": "cds.String",
           "length": 4,
           "notNull": true
         },
-        "CompanyCodeName": {
-          "@sap.label": "Company Name",
-          "@sap.quickinfo": "Name of Company Code or Company",
+        "PlantName": {
+          "@sap.label": "Name 1",
+          "@sap.quickinfo": "Name",
           "type": "cds.String",
-          "length": 25
+          "length": 30
         },
-        "CityName": {
-          "@sap.label": "City",
-          "type": "cds.String",
-          "length": 25
-        },
-        "Country": {
+        "ValuationArea": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Country/Region Key",
-          "type": "cds.String",
-          "length": 3
-        },
-        "Currency": {
-          "@sap.label": "Currency",
-          "@sap.quickinfo": "Currency Key",
-          "@sap.semantics": "currency-code",
-          "type": "cds.String",
-          "length": 5
-        },
-        "Language": {
-          "@sap.label": "Language Key",
-          "type": "cds.String",
-          "length": 2
-        },
-        "ChartOfAccounts": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Chart of Accounts",
+          "@sap.label": "Valuation area",
           "type": "cds.String",
           "length": 4
-        },
-        "FiscalYearVariant": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Fiscal Year Variant",
-          "type": "cds.String",
-          "length": 2
-        },
-        "Company": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Company",
-          "type": "cds.String",
-          "length": 6
-        },
-        "CreditControlArea": {
-          "@sap.display.format": "UpperCase",
-          "@sap.text": "CreditControlArea_Text",
-          "@sap.label": "Credit control area",
-          "type": "cds.String",
-          "length": 4
-        },
-        "CreditControlArea_Text": {
-          "@sap.label": "Description",
-          "@sap.quickinfo": "Description of the credit control area",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "type": "cds.String",
-          "length": 35
-        },
-        "CountryChartOfAccounts": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Alternative COA",
-          "@sap.quickinfo": "Alternative Chart of Accounts",
-          "type": "cds.String",
-          "length": 4
-        },
-        "FinancialManagementArea": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "FM Area",
-          "@sap.quickinfo": "Financial Management Area",
-          "type": "cds.String",
-          "length": 4
-        },
-        "AddressID": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Address",
-          "type": "cds.String",
-          "length": 10
-        },
-        "TaxableEntity": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Taxes on Sls/Purc.",
-          "@sap.quickinfo": "Taxes on Sales/Purchases Group",
-          "type": "cds.String",
-          "length": 4
-        },
-        "VATRegistration": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "VAT Registration No.",
-          "@sap.quickinfo": "VAT Registration Number",
-          "type": "cds.String",
-          "length": 20
-        },
-        "ExtendedWhldgTaxIsActive": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Extended WTax Active",
-          "@sap.quickinfo": "Indicator: Extended Withholding Tax Active",
-          "type": "cds.Boolean"
-        },
-        "ControllingArea": {
-          "@sap.display.format": "UpperCase",
-          "@sap.text": "ControllingArea_Text",
-          "@sap.label": "Controlling Area",
-          "type": "cds.String",
-          "length": 4
-        },
-        "ControllingArea_Text": {
-          "@sap.label": "Controlling Area Name",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "type": "cds.String",
-          "length": 25
-        },
-        "FieldStatusVariant": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Field status variant",
-          "@sap.quickinfo": "Field Status Variant",
-          "type": "cds.String",
-          "length": 4
-        },
-        "NonTaxableTransactionTaxCode": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Output Tax Code",
-          "@sap.quickinfo": "Output Tax Code for Non-Taxable Transactions",
-          "type": "cds.String",
-          "length": 2
-        },
-        "DocDateIsUsedForTaxDetn": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Tax Determ.with Doc.Date",
-          "@sap.quickinfo": "Indicator: Document Date As the Basis for Tax Determination",
-          "type": "cds.Boolean"
-        },
-        "TaxRptgDateIsActive": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Tax Date",
-          "@sap.quickinfo": "Tax Reporting Date Active in Documents",
-          "type": "cds.Boolean"
-        },
-        "CashDiscountBaseAmtIsNetAmt": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Net Discount Base",
-          "@sap.quickinfo": "Indicator: Discount base amount is the net value",
-          "type": "cds.Boolean"
         }
       }
     },
@@ -75584,6 +78103,71 @@
         }
       }
     },
+    "ZSRVBHPP0018.ZCDSEHPPB0100": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Reservation number Value help",
+      "@sap.value.list": "true",
+      "elements": {
+        "ReservationNumber": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Reservation",
+          "@sap.quickinfo": "Number of reservation/dependent requirements",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "RecordType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Record type",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "OrderNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "type": "cds.String",
+          "length": 4
+        }
+      }
+    },
+    "ZSRVBHPP0018.ZCDSEHPPB0101": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Reservation number Value help",
+      "@sap.value.list": "true",
+      "elements": {
+        "OrderNumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        }
+      }
+    },
     "ZSRVBHPP0018.PickingData": {
       "kind": "entity",
       "@cds.external": true,
@@ -75609,6 +78193,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production Order",
           "@sap.quickinfo": "Order Number",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 12,
@@ -75647,6 +78232,7 @@
         "SalesDoc": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales Document",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -75679,6 +78265,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Reservation Number",
           "@sap.quickinfo": "Sales Document",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -75702,18 +78289,23 @@
           "notNull": true
         },
         "PickNo": {
-          "@sap.display.format": "UpperCase",
+          "@sap.display.format": "NonNegative",
           "@sap.label": "Picking Number",
-          "@sap.quickinfo": "Sales Document",
           "type": "cds.String",
-          "length": 10
+          "length": 11
         },
         "PickItemNo": {
           "@sap.display.format": "NonNegative",
           "@sap.label": "Picking Item Number",
-          "@sap.quickinfo": "Sales Document Item",
           "type": "cds.String",
-          "length": 6
+          "length": 4
+        },
+        "ProdOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
         },
         "MSGID": {
           "@sap.display.format": "UpperCase",
@@ -75731,17 +78323,279 @@
         },
         "MSGTP": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Message Type.",
-          "@sap.quickinfo": "Message Type",
+          "@sap.label": "Message Type",
           "type": "cds.String",
           "length": 1
         },
         "MSGTX": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Message Text",
-          "@sap.quickinfo": "Char255",
+          "@sap.label": "Message Variable1",
+          "@sap.quickinfo": "Message Variable",
           "type": "cds.String",
-          "length": 255
+          "length": 50
+        },
+        "MSGTX2": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Message Variable2",
+          "@sap.quickinfo": "Message Variable",
+          "type": "cds.String",
+          "length": 50
+        },
+        "MSGTX3": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Message Variable3",
+          "@sap.quickinfo": "Message Variable",
+          "type": "cds.String",
+          "length": 50
+        },
+        "MSGTX4": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Message Variable4",
+          "@sap.quickinfo": "Message Variable",
+          "type": "cds.String",
+          "length": 50
+        },
+        "MaterialNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MaterialNo",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "MatSupDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Material Supply Date",
+          "type": "cds.Date"
+        },
+        "OutputType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Output type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "WorkCenter": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "PlantIssueTo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant (Issue to)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StorLocIssueTo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location (Issue to)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StartProdDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Start Production Date",
+          "type": "cds.Date"
+        },
+        "RequirDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Requirement Date",
+          "type": "cds.Date"
+        },
+        "PlantIssuefrom": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant (Issue from)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StorLocaIssuFrom": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location (Issue from)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StorBinIssFrom": {
+          "@sap.label": "Storage Bin (Issue from)",
+          "type": "cds.String",
+          "length": 40
+        },
+        "CompMat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component Material",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Quantity": {
+          "@sap.unit": "UOM",
+          "@sap.label": "Quantity",
+          "@sap.quickinfo": "Requirement Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "UOM": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Backflush": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Backflush",
+          "type": "cds.Boolean"
+        },
+        "BulkField": {
+          "@sap.label": "Bulk",
+          "type": "cds.String",
+          "length": 40
+        },
+        "PrintPerID": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Print Person Id",
+          "type": "cds.String",
+          "length": 12
+        },
+        "PrintDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Printed Date",
+          "type": "cds.Date"
+        },
+        "PrintTime": {
+          "@sap.label": "Printed Time",
+          "type": "cds.Time"
+        },
+        "ScanPersonID": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Scanned Person Id",
+          "type": "cds.String",
+          "length": 12
+        },
+        "ScanDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scanned Date",
+          "type": "cds.Date"
+        },
+        "ScanTime": {
+          "@sap.label": "Scanned Time",
+          "type": "cds.Time"
+        },
+        "ScanStatus": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Scanned Status",
+          "type": "cds.String",
+          "length": 1
+        },
+        "MatDoc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Document",
+          "@sap.quickinfo": "Number of Material Document",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ProdType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "Model": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Model",
+          "type": "cds.String",
+          "length": 40
+        },
+        "LevelGRNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Leveling Gr No",
+          "type": "cds.String",
+          "length": 8
+        },
+        "StartProdNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Start Prod No",
+          "type": "cds.String",
+          "length": 6
+        },
+        "Tag_A_StaProdNo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Tag-A Start Prod No",
+          "type": "cds.String",
+          "length": 13
+        },
+        "MaiS_MFGSchDate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Main S-MFG Schedule Date",
+          "type": "cds.Date"
+        },
+        "SetType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Set Type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SetTool": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Set Tool",
+          "type": "cds.String",
+          "length": 18
+        },
+        "SetLoc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Set Location",
+          "@sap.quickinfo": "Location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SetToolNote": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Set Tool Note",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Delflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Delete Flag",
+          "type": "cds.Boolean"
+        },
+        "Recipient": {
+          "@sap.label": "Recipient",
+          "@sap.quickinfo": "Goods Recipient",
+          "type": "cds.String",
+          "length": 12
+        },
+        "UnlPoint": {
+          "@sap.label": "Unl. Point",
+          "@sap.quickinfo": "Unloading Point",
+          "type": "cds.String",
+          "length": 25
+        },
+        "ItemTxt": {
+          "@sap.label": "Item Text",
+          "type": "cds.String",
+          "length": 50
+        },
+        "LinkNo": {
+          "@sap.label": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "CostCenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cost Center",
+          "type": "cds.String",
+          "length": 10
+        },
+        "GLAcc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "G/L Account",
+          "@sap.quickinfo": "G/L Account Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "IndiType": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Individual Type",
+          "type": "cds.String",
+          "length": 1
         }
       }
     },
@@ -75818,7 +78672,7 @@
       }
     },
     "ZSRVBHMM0006": {
-      "@source": "srv/external/ZSRVBHMM0006.csn",
+      "@source": "external/ZSRVBHMM0006.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -76338,7 +79192,7 @@
       }
     },
     "ZSRVBHSD0011": {
-      "@source": "srv/external/ZSRVBHSD0011.csn",
+      "@source": "external/ZSRVBHSD0011.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -76452,7 +79306,7 @@
       }
     },
     "ZSRVBHPP0013": {
-      "@source": "srv/external/ZSRVBHPP0013.csn",
+      "@source": "external/ZSRVBHPP0013.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -76664,44 +79518,12 @@
       }
     },
     "ZSRVBHPP0019": {
-      "@source": "srv/external/ZSRVBHPP0019.csn",
+      "@source": "external/ZSRVBHPP0019.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
-    },
-    "ZSRVBHPP0019.I_ConfignDeprecationCode": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.searchable": "true",
-      "@sap.content.version": "1",
-      "@sap.label": "Configuration Deprecation Code",
-      "@sap.value.list": "true",
-      "elements": {
-        "ConfigurationDeprecationCode": {
-          "@sap.display.format": "UpperCase",
-          "@sap.text": "ConfigurationDeprecationCode_Text",
-          "@sap.label": "Validity",
-          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
-          "key": true,
-          "type": "cds.String",
-          "length": 1,
-          "notNull": true
-        },
-        "ConfigurationDeprecationCode_Text": {
-          "@sap.label": "Validity Text",
-          "@sap.quickinfo": "Value Help: Flag Obsolete Entries",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "type": "cds.String",
-          "length": 60
-        }
-      }
     },
     "ZSRVBHPP0019.I_CostCenterStdVH": {
       "kind": "entity",
@@ -76952,7 +79774,6 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Validity",
           "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
-          "@sap.value.list": "fixed-values",
           "type": "cds.String",
           "length": 1
         }
@@ -76968,6 +79789,24 @@
       "@sap.content.version": "1",
       "@sap.label": "Custom CDS create invidual issue",
       "elements": {
+        "basedate": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char8",
+          "@sap.quickinfo": "Character field, 8 characters long",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "type": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
         "plant": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Plant",
@@ -76976,7 +79815,23 @@
           "length": 4,
           "notNull": true
         },
-        "material": {
+        "StorageLocationFrom": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocationTo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "Material": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
@@ -76985,290 +79840,205 @@
           "length": 40,
           "notNull": true
         },
-        "cctrans_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "immblank_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "linkage_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "none_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "ordertrf_ac": {
-          "@sap.label": "Dyn. Action Control",
-          "@sap.creatable": "false",
-          "@sap.updatable": "false",
-          "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "type": "cds.Boolean"
-        },
-        "quantity": {
+        "Quantity": {
           "@sap.unit": "unit",
           "@sap.label": "Total Order Quantity",
+          "key": true,
           "type": "cds.Decimal",
           "precision": 13,
-          "scale": 3
+          "scale": 3,
+          "notNull": true
+        },
+        "Recipient": {
+          "@sap.label": "Goods Recipient",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "UnlPoint": {
+          "@sap.label": "Unloading Point",
+          "key": true,
+          "type": "cds.String",
+          "length": 25,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "30 Characters",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "Immediately": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "ProdOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "Linkage": {
+          "@sap.label": "Linkage Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 16,
+          "notNull": true
+        },
+        "Costcenter": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Controlling Area",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "GLAccountcode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "G/L Account",
+          "@sap.quickinfo": "G/L Account Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Message": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "char256",
+          "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
+          "type": "cds.String",
+          "length": 256,
+          "notNull": true
         },
         "unit": {
           "@sap.label": "Base Unit of Measure",
           "@sap.semantics": "unit-of-measure",
+          "key": true,
           "type": "cds.String",
-          "length": 3
-        },
-        "strgloc_frm": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage location",
-          "type": "cds.String",
-          "length": 4
-        },
-        "strgloc_to": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage location",
-          "type": "cds.String",
-          "length": 4
-        },
-        "recip": {
-          "@sap.label": "Goods Recipient",
-          "type": "cds.String",
-          "length": 12
-        },
-        "unl_pnt": {
-          "@sap.label": "Unloading Point",
-          "type": "cds.String",
-          "length": 25
-        },
-        "prodord": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Order",
-          "@sap.quickinfo": "Order Number",
-          "type": "cds.String",
-          "length": 12
-        },
-        "linkage": {
-          "@sap.label": "Linkage Number",
-          "type": "cds.String",
-          "length": 16
-        },
-        "costcntr": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Controlling Area",
-          "type": "cds.String",
-          "length": 4
-        },
-        "glacc": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "G/L Account",
-          "@sap.quickinfo": "G/L Account Number",
-          "type": "cds.String",
-          "length": 10
-        },
-        "text": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "30 Characters",
-          "@sap.heading": "",
-          "type": "cds.String",
-          "length": 30
-        },
-        "basedt": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "char8",
-          "@sap.quickinfo": "Character field, 8 characters long",
-          "type": "cds.String",
-          "length": 8
+          "length": 3,
+          "notNull": true
         },
         "immflag": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Single-Character Flag",
           "@sap.heading": "",
+          "key": true,
           "type": "cds.String",
-          "length": 1
+          "length": 1,
+          "notNull": true
         },
         "optflag": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Single-Character Flag",
           "@sap.heading": "",
+          "key": true,
           "type": "cds.String",
-          "length": 1
+          "length": 1,
+          "notNull": true
+        },
+        "inpflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
         },
         "ordflag": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Single-Character Flag",
           "@sap.heading": "",
+          "key": true,
           "type": "cds.String",
-          "length": 1
+          "length": 1,
+          "notNull": true
         },
         "inpfile": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "char256",
           "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
           "type": "cds.String",
-          "length": 256
+          "length": 256,
+          "notNull": true
         },
         "outfile": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "char256",
           "@sap.quickinfo": "Data element for WWI callback",
+          "key": true,
           "type": "cds.String",
-          "length": 256
+          "length": 256,
+          "notNull": true
         },
-        "errmsg": {
-          "@sap.label": "Text",
-          "@sap.quickinfo": "Text (452 characters)",
+        "errflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component of the Version Number",
+          "@sap.heading": "",
+          "key": true,
           "type": "cds.String",
-          "length": 452
+          "length": 2,
+          "notNull": true
         },
         "inputfd": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Char",
           "@sap.quickinfo": "Character field of length 40",
+          "key": true,
           "type": "cds.String",
-          "length": 40
+          "length": 40,
+          "notNull": true
         },
         "optionfd": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Char",
           "@sap.quickinfo": "Character field of length 40",
+          "key": true,
           "type": "cds.String",
-          "length": 40
+          "length": 40,
+          "notNull": true
         },
         "ordertfd": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Char",
           "@sap.quickinfo": "Character field of length 40",
+          "key": true,
           "type": "cds.String",
-          "length": 40
+          "length": 40,
+          "notNull": true
         }
       },
       "actions": {
-        "cctrans": {
+        "immediate": {
           "kind": "action",
           "returns": {
             "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
           }
         },
-        "immblank": {
+        "inputfield": {
           "kind": "action",
           "returns": {
             "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
           }
-        },
-        "linkage": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
-        },
-        "none": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
-        },
-        "ordertrf": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
-        }
-      }
-    },
-    "ZSRVBHPP0019.SAP__Currencies": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.content.version": "1",
-      "elements": {
-        "CurrencyCode": {
-          "@sap.label": "Currency",
-          "@sap.semantics": "currency-code",
-          "key": true,
-          "type": "cds.String",
-          "length": 5,
-          "notNull": true
-        },
-        "ISOCode": {
-          "@sap.label": "ISO code",
-          "type": "cds.String",
-          "length": 3,
-          "notNull": true
-        },
-        "Text": {
-          "@sap.label": "Short text",
-          "type": "cds.String",
-          "length": 15,
-          "notNull": true
-        },
-        "DecimalPlaces": {
-          "@odata.Type": "Edm.Byte",
-          "@sap.label": "Decimals",
-          "type": "cds.Integer",
-          "notNull": true
-        }
-      }
-    },
-    "ZSRVBHPP0019.SAP__UnitsOfMeasure": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.content.version": "1",
-      "elements": {
-        "UnitCode": {
-          "@sap.label": "Internal UoM",
-          "@sap.semantics": "unit-of-measure",
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "notNull": true
-        },
-        "ISOCode": {
-          "@sap.label": "ISO code",
-          "type": "cds.String",
-          "length": 3,
-          "notNull": true
-        },
-        "ExternalCode": {
-          "@sap.label": "Commercial",
-          "type": "cds.String",
-          "length": 3,
-          "notNull": true
-        },
-        "Text": {
-          "@sap.label": "UoM Text",
-          "type": "cds.String",
-          "length": 30,
-          "notNull": true
-        },
-        "DecimalPlaces": {
-          "@sap.label": "Decimal Places",
-          "type": "cds.Integer"
         }
       }
     },
     "ZSRVBHMM0008": {
-      "@source": "srv/external/ZSRVBHMM0008.csn",
+      "@source": "external/ZSRVBHMM0008.csn",
       "kind": "service",
       "@cds.external": "odata-v2",
       "@m.IsDefaultEntityContainer": "true",
@@ -77478,6 +80248,1307 @@
       }
     },
     "ZSRVBHMM0008.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ExternalCode": {
+          "@sap.label": "Commercial",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "UoM Text",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@sap.label": "Decimal Places",
+          "type": "cds.Integer"
+        }
+      }
+    },
+    "ZSRVBHPP0003": {
+      "@source": "external/ZSRVBHPP0003.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHPP0003.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PlantName": {
+          "@sap.label": "Plant Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZSRVBHPP0003.ZCDSEHPPB0062": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Custom entity for plant and ordr",
+      "@sap.value.list": "true",
+      "elements": {
+        "plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "name": {
+          "@sap.label": "Name 1",
+          "@sap.quickinfo": "Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZSRVBHPP0003.ZCDSEHPPC0010": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Cons view for Production order status",
+      "elements": {
+        "plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "aufpl": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Opertn task list no.",
+          "@sap.quickinfo": "Routing number of operations in the order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "porder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "serialnumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial No",
+          "@sap.quickinfo": "Serial Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "notNull": true
+        },
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned order",
+          "@sap.quickinfo": "Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Code",
+          "@sap.quickinfo": "Material Number for Order",
+          "type": "cds.String",
+          "length": 40
+        },
+        "maktx": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80
+        },
+        "dauat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "mrpcontrol": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "@sap.quickinfo": "MRP controller for the order",
+          "type": "cds.String",
+          "length": 3
+        },
+        "fevor": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supervisor",
+          "@sap.quickinfo": "Production Supervisor",
+          "type": "cds.String",
+          "length": 3
+        },
+        "gmein": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "gamng": {
+          "@sap.unit": "gmein",
+          "@sap.label": "Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start date",
+          "@sap.quickinfo": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish date",
+          "@sap.quickinfo": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gltrp": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "txt04": {
+          "@sap.label": "B-Type Parent Prod Order Status",
+          "@sap.quickinfo": "Individual status of an object (short form)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "txt30": {
+          "@sap.label": "Status",
+          "@sap.quickinfo": "Object status",
+          "type": "cds.String",
+          "length": 30
+        },
+        "verid": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Version",
+          "type": "cds.String",
+          "length": 4
+        },
+        "rmanr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales and Distribution Document Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "posnr_rma": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Order Item",
+          "@sap.quickinfo": "Item number of the SD document",
+          "type": "cds.String",
+          "length": 6
+        },
+        "projn": {
+          "@sap.label": "WBS",
+          "type": "cds.String",
+          "length": 24
+        },
+        "compponentno": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component number",
+          "type": "cds.String",
+          "length": 4
+        },
+        "zz1_linkagenumber_sdi": {
+          "@sap.label": "Linkage No",
+          "@sap.quickinfo": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "Leveling_g": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Leveling Gr",
+          "@sap.quickinfo": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "work_centre": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "SLTApproved": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "zz1_routindic_plt": {
+          "@sap.label": "RoutingDisplayIndicator",
+          "type": "cds.String",
+          "length": 1
+        },
+        "aprio": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Transfer category",
+          "@sap.quickinfo": "Order priority",
+          "type": "cds.String",
+          "length": 1
+        },
+        "traf_ord": {
+          "@sap.label": "Goods Recipient",
+          "type": "cds.String",
+          "length": 12
+        },
+        "traf_cc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Cost Center",
+          "@sap.quickinfo": "Cost Center for Basic Settlement",
+          "type": "cds.String",
+          "length": 10
+        },
+        "trf_linkage": {
+          "@sap.label": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "pkkey": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Tokuchu_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "IM_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "XJ_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "Tokuchu_part_dt": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "Neuclear": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        }
+      }
+    },
+    "ZSRVBHPP0003.ZCDSEHPPC0011": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Compositview for ProductionOrder comp",
+      "elements": {
+        "werks": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number for Order",
+          "type": "cds.String",
+          "length": 40
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80
+        },
+        "comp_part": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "posnr": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 4
+        },
+        "reporttype": {
+          "type": "cds.String",
+          "length": 45
+        },
+        "ordtype": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "bdter": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Requirements date",
+          "@sap.quickinfo": "Requirements date for the component",
+          "type": "cds.Date"
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "bdmng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Requirement Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "lgort": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "schgt": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Bulk material",
+          "@sap.quickinfo": "Indicator: bulk material",
+          "type": "cds.Boolean"
+        },
+        "waers": {
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.semantics": "currency-code",
+          "type": "cds.String",
+          "length": 5
+        },
+        "rgekz": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Backflush",
+          "@sap.quickinfo": "Indicator: Backflush",
+          "type": "cds.Boolean"
+        },
+        "maktx": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "dismm": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Type",
+          "type": "cds.String",
+          "length": 2
+        },
+        "beskz": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Procurement Type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "sobsl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Special procurement",
+          "@sap.quickinfo": "Special procurement type",
+          "type": "cds.String",
+          "length": 2
+        },
+        "peinh": {
+          "@sap.label": "Price unit",
+          "type": "cds.Decimal",
+          "precision": 5,
+          "scale": 0
+        },
+        "stprs": {
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Standard price",
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3
+        },
+        "dauat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP controller",
+          "@sap.quickinfo": "MRP controller for the order",
+          "type": "cds.String",
+          "length": 3
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Order Item",
+          "type": "cds.String",
+          "length": 6
+        },
+        "aprio": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Priority",
+          "@sap.quickinfo": "Order priority",
+          "type": "cds.String",
+          "length": 1
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gltrp": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "LevelingG": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "workc": {
+          "@sap.label": "Work Centre",
+          "type": "cds.String",
+          "length": 10
+        },
+        "LinkageNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "WBS": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KanbanNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "SerialNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "txt04": {
+          "@sap.label": "Status",
+          "@sap.quickinfo": "Individual status of an object (short form)",
+          "type": "cds.String",
+          "length": 4
+        }
+      }
+    },
+    "ZSRVBHPP0003.ZCDSEHPPC0012": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Compositview for Productionorder oper",
+      "elements": {
+        "werks": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "vornr": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 24
+        },
+        "reporttype": {
+          "type": "cds.String",
+          "length": 45
+        },
+        "ordtype": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "rueck": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Confirmation",
+          "@sap.quickinfo": "Completion confirmation number for the operation",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ism03": {
+          "@sap.unit": "ile03",
+          "@sap.label": "Act. t/b Confirmed",
+          "@sap.quickinfo": "Activity Currently to be Confirmed",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "ile03": {
+          "@sap.label": "Unit/activity",
+          "@sap.quickinfo": "Unit of measure for the activity to be confirmed",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ism04": {
+          "@sap.unit": "ile04",
+          "@sap.label": "Act. t/b Confirmed",
+          "@sap.quickinfo": "Activity Currently to be Confirmed",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "ile04": {
+          "@sap.label": "Unit/activity",
+          "@sap.quickinfo": "Unit of measure for the activity to be confirmed",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ism05": {
+          "@sap.unit": "ile05",
+          "@sap.label": "Act. t/b Confirmed",
+          "@sap.quickinfo": "Activity Currently to be Confirmed",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "ile05": {
+          "@sap.label": "Unit/activity",
+          "@sap.quickinfo": "Unit of measure for the activity to be confirmed",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "arbid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Object ID",
+          "type": "cds.String",
+          "length": 8
+        },
+        "arbpl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "ktext": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Short description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "ltxa1": {
+          "@sap.label": "Operation Short Text",
+          "type": "cds.String",
+          "length": 40
+        },
+        "steus": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control key",
+          "type": "cds.String",
+          "length": 4
+        },
+        "qlkapar": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Capacity category",
+          "type": "cds.String",
+          "length": 3
+        },
+        "objnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Object number",
+          "type": "cds.String",
+          "length": 22
+        },
+        "aufpl": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Opertn task list no.",
+          "@sap.quickinfo": "Routing number of operations in the order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "mgvrg": {
+          "@sap.unit": "meinh",
+          "@sap.label": "Operation Quantity",
+          "@sap.quickinfo": "Operation Total Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "meinh": {
+          "@sap.label": "Operation unit",
+          "@sap.quickinfo": "Unit of measure for activity",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "isdd": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Execution Start Date",
+          "@sap.quickinfo": "Actual Execution Start Date",
+          "type": "cds.Date"
+        },
+        "ierd": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Setup End Date",
+          "@sap.quickinfo": "Actual Setup End Date",
+          "type": "cds.Date"
+        },
+        "txt04": {
+          "@sap.label": "Status",
+          "@sap.quickinfo": "Individual status of an object (short form)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "kostv": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Responsible CCtr",
+          "@sap.quickinfo": "Responsible cost center",
+          "type": "cds.String",
+          "length": 10
+        },
+        "ebeln": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purchasing Document",
+          "@sap.quickinfo": "Purchasing Document Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "dauat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number for Order",
+          "type": "cds.String",
+          "length": 40
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP controller",
+          "@sap.quickinfo": "MRP controller for the order",
+          "type": "cds.String",
+          "length": 3
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Order Item",
+          "type": "cds.String",
+          "length": 6
+        },
+        "aprio": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Priority",
+          "@sap.quickinfo": "Order priority",
+          "type": "cds.String",
+          "length": 1
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gltrp": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "LevelingG": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "LinkageNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "WBS": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "KanbanNo": {
+          "@sap.label": "KANBAN ID",
+          "type": "cds.String",
+          "length": 10
+        },
+        "SerialNo": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Transfercat": {
+          "@sap.label": "Transfer category",
+          "type": "cds.String",
+          "length": 10
+        },
+        "workc": {
+          "@sap.label": "Work centre",
+          "type": "cds.String",
+          "length": 10
+        }
+      }
+    },
+    "ZSRVBHPP0003.ZCDSEHPPC0013": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Cancelled Production Order output",
+      "elements": {
+        "dwerk": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "reporttype": {
+          "type": "cds.String",
+          "length": 45
+        },
+        "ordtype": {
+          "type": "cds.String",
+          "length": 30
+        },
+        "gamng": {
+          "@sap.unit": "gmein",
+          "@sap.label": "Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "gmein": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "dauat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "type": "cds.String",
+          "length": 4
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number for Order",
+          "type": "cds.String",
+          "length": 40
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Order Item",
+          "type": "cds.String",
+          "length": 6
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "maktx": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "@sap.quickinfo": "MRP controller for the order",
+          "type": "cds.String",
+          "length": 3
+        },
+        "arbpl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "zz1_linkagenumber_sdi": {
+          "@sap.label": "Linkage No",
+          "@sap.quickinfo": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "txt04": {
+          "@sap.label": "Status",
+          "@sap.quickinfo": "Individual status of an object (short form)",
+          "type": "cds.String",
+          "length": 4
+        },
+        "currencycode": {
+          "@sap.label": "Transaction Currency",
+          "@sap.semantics": "currency-code",
+          "type": "cds.String",
+          "length": 5
+        },
+        "Total_val": {
+          "@sap.unit": "currencycode",
+          "@sap.variable.scale": "true",
+          "type": "cds.Decimal",
+          "precision": 31,
+          "scale": 3
+        },
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "aprio": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Priority",
+          "@sap.quickinfo": "Order priority",
+          "type": "cds.String",
+          "length": 1
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gltrp": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "type": "cds.Date"
+        },
+        "LevelingG": {
+          "@sap.label": "Leveling Gr",
+          "type": "cds.String",
+          "length": 10
+        },
+        "workc": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "WBS": {
+          "@sap.label": "WBS",
+          "type": "cds.String",
+          "length": 10
+        },
+        "KanbanNo": {
+          "@sap.label": "KANBAN ID",
+          "type": "cds.String",
+          "length": 10
+        },
+        "SerialNo": {
+          "@sap.label": "Serial No",
+          "type": "cds.String",
+          "length": 10
+        }
+      }
+    },
+    "ZSRVBHPP0003.ZCDSEHPPC0014": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "consumption of Planned order",
+      "elements": {
+        "plnum": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "matnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production order",
+          "@sap.quickinfo": "Run schedule header number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "aufpl": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Opertn task list no.",
+          "@sap.quickinfo": "Routing number of operations in the order",
+          "type": "cds.String",
+          "length": 10
+        },
+        "plgrp": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supervisor",
+          "@sap.quickinfo": "Production Supervisor",
+          "type": "cds.String",
+          "length": 3
+        },
+        "pwwrk": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Production Plant",
+          "@sap.value.list": "standard",
+          "type": "cds.String",
+          "length": 4
+        },
+        "meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "gsmng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "pedtr": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Order End Date",
+          "@sap.quickinfo": "Planned Order End Date",
+          "type": "cds.Date"
+        },
+        "umskz": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Conversion Indicator",
+          "@sap.quickinfo": "Planned Order Conversion Indicator",
+          "type": "cds.Boolean"
+        },
+        "verid": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Version",
+          "type": "cds.String",
+          "length": 4
+        },
+        "kdauf": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "kdpos": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6
+        },
+        "pspel": {
+          "type": "cds.String",
+          "length": 24
+        },
+        "rsnum": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Reservation",
+          "@sap.quickinfo": "Number of reservation/dependent requirements",
+          "type": "cds.String",
+          "length": 10
+        },
+        "zz1_linkagenumber_sdi": {
+          "@sap.label": "Linkage Number",
+          "type": "cds.String",
+          "length": 16
+        },
+        "dispo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "type": "cds.String",
+          "length": 3
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80
+        },
+        "zz1_routindic_plt": {
+          "@sap.label": "RoutingDisplayIndicator",
+          "type": "cds.String",
+          "length": 1
+        },
+        "serialnumber": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial Number",
+          "type": "cds.String",
+          "length": 18
+        },
+        "compponentno": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Component number",
+          "type": "cds.String",
+          "length": 4
+        },
+        "memo1": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40
+        },
+        "memo2": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40
+        },
+        "memo3": {
+          "@sap.label": "Memo",
+          "type": "cds.String",
+          "length": 40
+        },
+        "gltrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish",
+          "type": "cds.Date"
+        },
+        "gstrs": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start",
+          "type": "cds.Date"
+        },
+        "maktx": {
+          "@sap.label": "Material Description",
+          "type": "cds.String",
+          "length": 40
+        },
+        "pkkey": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Kanban ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "SLTApproved": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Leveling_g": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "work_centre": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Tokuchu_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "IM_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "XJ_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "Tokuchu_part_dt": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "Neuclear": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "comb_ind": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        },
+        "comb_no": {
+          "@sap.label": "Characteristic Value",
+          "type": "cds.String",
+          "length": 70
+        }
+      }
+    },
+    "ZSRVBHPP0003.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "notNull": true
+        },
+        "ISOCode": {
+          "@sap.label": "ISO code",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Text": {
+          "@sap.label": "Short text",
+          "type": "cds.String",
+          "length": 15,
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "type": "cds.Integer",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPP0003.SAP__UnitsOfMeasure": {
       "kind": "entity",
       "@cds.external": true,
       "@cds.persistence.skip": true,

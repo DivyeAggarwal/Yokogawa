@@ -15,13 +15,9 @@
 </edmx:Reference>
 <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://zdb001-0z9029.dev.ygsp.ykgw.net:44300/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMON',Version='0001',SAP__Origin='')/$value">
 <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
-<edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="SAP__common"/>
 </edmx:Reference>
 <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://zdb001-0z9029.dev.ygsp.ykgw.net:44300/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_COMMUNICATION',Version='0001',SAP__Origin='')/$value">
 <edmx:Include Namespace="com.sap.vocabularies.Communication.v1" Alias="Communication"/>
-</edmx:Reference>
-<edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://zdb001-0z9029.dev.ygsp.ykgw.net:44300/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_CORE',Version='0001',SAP__Origin='')/$value">
-<edmx:Include Namespace="Org.OData.Core.V1" Alias="SAP__core"/>
 </edmx:Reference>
 <edmx:Reference xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Uri="https://zdb001-0z9029.dev.ygsp.ykgw.net:44300/sap/opu/odata/iwfnd/catalogservice;v=2/Vocabularies(TechnicalName='%2FIWBEP%2FVOC_MEASURES',Version='0001',SAP__Origin='')/$value">
 <edmx:Include Namespace="Org.OData.Measures.V1" Alias="Measures"/>
@@ -38,13 +34,6 @@
 <edmx:DataServices m:DataServiceVersion="2.0">
 <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="cds_zsrvehpp0020" xml:lang="en" sap:schema-version="1">
 <Annotation xmlns="http://docs.oasis-open.org/odata/ns/edm" Term="Core.SchemaVersion" String="1.0.0"/>
-<EntityType Name="I_ConfignDeprecationCodeType" sap:label="Configuration Deprecation Code" sap:value-list="true" sap:content-version="1">
-<Key>
-<PropertyRef Name="ConfigurationDeprecationCode"/>
-</Key>
-<Property Name="ConfigurationDeprecationCode" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:text="ConfigurationDeprecationCode_Text" sap:label="Validity" sap:quickinfo="Value Help: Flag Deprecated Entries"/>
-<Property Name="ConfigurationDeprecationCode_Text" Type="Edm.String" MaxLength="60" sap:label="Validity Text" sap:quickinfo="Value Help: Flag Obsolete Entries" sap:creatable="false" sap:updatable="false"/>
-</EntityType>
 <EntityType Name="I_CostCenterStdVHType" sap:label="Cost Center" sap:content-version="1">
 <Key>
 <PropertyRef Name="ControllingArea"/>
@@ -100,63 +89,67 @@
 <Property Name="Plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant" sap:value-list="standard"/>
 <Property Name="StorageLocation" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:text="StorageLocationName" sap:label="Storage location"/>
 <Property Name="StorageLocationName" Type="Edm.String" MaxLength="16" sap:label="Storage Loc. Name" sap:quickinfo="Storage Location Name"/>
-<Property Name="ConfigDeprecationCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Validity" sap:quickinfo="Value Help: Flag Deprecated Entries" sap:value-list="fixed-values"/>
+<Property Name="ConfigDeprecationCode" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Validity" sap:quickinfo="Value Help: Flag Deprecated Entries"/>
 </EntityType>
 <EntityType Name="ZCDSEHPPB0097Type" sap:label="Custom CDS create invidual issue" sap:content-version="1">
 <Key>
+<PropertyRef Name="basedate"/>
+<PropertyRef Name="type"/>
 <PropertyRef Name="plant"/>
-<PropertyRef Name="material"/>
+<PropertyRef Name="StorageLocationFrom"/>
+<PropertyRef Name="StorageLocationTo"/>
+<PropertyRef Name="Material"/>
+<PropertyRef Name="Quantity"/>
+<PropertyRef Name="Recipient"/>
+<PropertyRef Name="UnlPoint"/>
+<PropertyRef Name="Text"/>
+<PropertyRef Name="Immediately"/>
+<PropertyRef Name="ProdOrder"/>
+<PropertyRef Name="Linkage"/>
+<PropertyRef Name="Costcenter"/>
+<PropertyRef Name="GLAccountcode"/>
+<PropertyRef Name="Message"/>
+<PropertyRef Name="unit"/>
+<PropertyRef Name="immflag"/>
+<PropertyRef Name="optflag"/>
+<PropertyRef Name="inpflag"/>
+<PropertyRef Name="ordflag"/>
+<PropertyRef Name="inpfile"/>
+<PropertyRef Name="outfile"/>
+<PropertyRef Name="errflag"/>
+<PropertyRef Name="inputfd"/>
+<PropertyRef Name="optionfd"/>
+<PropertyRef Name="ordertfd"/>
 </Key>
-<Property Name="cctrans_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="immblank_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="linkage_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="none_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="ordertrf_ac" Type="Edm.Boolean" sap:label="Dyn. Action Control" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="basedate" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:label="char8" sap:quickinfo="Character field, 8 characters long"/>
+<Property Name="type" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
 <Property Name="plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
-<Property Name="material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
-<Property Name="quantity" Type="Edm.Decimal" Precision="13" Scale="3" sap:unit="unit" sap:label="Total Order Quantity"/>
-<Property Name="unit" Type="Edm.String" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
-<Property Name="strgloc_frm" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location"/>
-<Property Name="strgloc_to" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location"/>
-<Property Name="recip" Type="Edm.String" MaxLength="12" sap:label="Goods Recipient"/>
-<Property Name="unl_pnt" Type="Edm.String" MaxLength="25" sap:label="Unloading Point"/>
-<Property Name="prodord" Type="Edm.String" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
-<Property Name="linkage" Type="Edm.String" MaxLength="16" sap:label="Linkage Number"/>
-<Property Name="costcntr" Type="Edm.String" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
-<Property Name="glacc" Type="Edm.String" MaxLength="10" sap:display-format="UpperCase" sap:label="G/L Account" sap:quickinfo="G/L Account Number"/>
-<Property Name="text" Type="Edm.String" MaxLength="30" sap:display-format="UpperCase" sap:label="30 Characters" sap:heading=""/>
-<Property Name="basedt" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="char8" sap:quickinfo="Character field, 8 characters long"/>
-<Property Name="immflag" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
-<Property Name="optflag" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
-<Property Name="ordflag" Type="Edm.String" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
-<Property Name="inpfile" Type="Edm.String" MaxLength="256" sap:display-format="UpperCase" sap:label="char256" sap:quickinfo="Data element for WWI callback"/>
-<Property Name="outfile" Type="Edm.String" MaxLength="256" sap:display-format="UpperCase" sap:label="char256" sap:quickinfo="Data element for WWI callback"/>
-<Property Name="errmsg" Type="Edm.String" MaxLength="452" sap:label="Text" sap:quickinfo="Text (452 characters)"/>
-<Property Name="inputfd" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
-<Property Name="optionfd" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
-<Property Name="ordertfd" Type="Edm.String" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
-</EntityType>
-<EntityType Name="SAP__Currency" sap:content-version="1">
-<Key>
-<PropertyRef Name="CurrencyCode"/>
-</Key>
-<Property Name="CurrencyCode" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Currency" sap:semantics="currency-code"/>
-<Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
-<Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="15" sap:label="Short text"/>
-<Property Name="DecimalPlaces" Type="Edm.Byte" Nullable="false" sap:label="Decimals"/>
-</EntityType>
-<EntityType Name="SAP__UnitOfMeasure" sap:content-version="1">
-<Key>
-<PropertyRef Name="UnitCode"/>
-</Key>
-<Property Name="UnitCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Internal UoM" sap:semantics="unit-of-measure"/>
-<Property Name="ISOCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="ISO code"/>
-<Property Name="ExternalCode" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Commercial"/>
-<Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="UoM Text"/>
-<Property Name="DecimalPlaces" Type="Edm.Int16" sap:label="Decimal Places"/>
+<Property Name="StorageLocationFrom" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location"/>
+<Property Name="StorageLocationTo" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location"/>
+<Property Name="Material" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Material" sap:quickinfo="Material Number"/>
+<Property Name="Quantity" Type="Edm.Decimal" Nullable="false" Precision="13" Scale="3" sap:unit="unit" sap:label="Total Order Quantity"/>
+<Property Name="Recipient" Type="Edm.String" Nullable="false" MaxLength="12" sap:label="Goods Recipient"/>
+<Property Name="UnlPoint" Type="Edm.String" Nullable="false" MaxLength="25" sap:label="Unloading Point"/>
+<Property Name="Text" Type="Edm.String" Nullable="false" MaxLength="30" sap:display-format="UpperCase" sap:label="30 Characters" sap:heading=""/>
+<Property Name="Immediately" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
+<Property Name="ProdOrder" Type="Edm.String" Nullable="false" MaxLength="12" sap:display-format="UpperCase" sap:label="Order" sap:quickinfo="Order Number"/>
+<Property Name="Linkage" Type="Edm.String" Nullable="false" MaxLength="16" sap:label="Linkage Number"/>
+<Property Name="Costcenter" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Controlling Area"/>
+<Property Name="GLAccountcode" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="G/L Account" sap:quickinfo="G/L Account Number"/>
+<Property Name="Message" Type="Edm.String" Nullable="false" MaxLength="256" sap:display-format="UpperCase" sap:label="char256" sap:quickinfo="Data element for WWI callback"/>
+<Property Name="unit" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Base Unit of Measure" sap:semantics="unit-of-measure"/>
+<Property Name="immflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
+<Property Name="optflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
+<Property Name="inpflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
+<Property Name="ordflag" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
+<Property Name="inpfile" Type="Edm.String" Nullable="false" MaxLength="256" sap:display-format="UpperCase" sap:label="char256" sap:quickinfo="Data element for WWI callback"/>
+<Property Name="outfile" Type="Edm.String" Nullable="false" MaxLength="256" sap:display-format="UpperCase" sap:label="char256" sap:quickinfo="Data element for WWI callback"/>
+<Property Name="errflag" Type="Edm.String" Nullable="false" MaxLength="2" sap:display-format="UpperCase" sap:label="Component of the Version Number" sap:heading=""/>
+<Property Name="inputfd" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
+<Property Name="optionfd" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
+<Property Name="ordertfd" Type="Edm.String" Nullable="false" MaxLength="40" sap:display-format="UpperCase" sap:label="Char" sap:quickinfo="Character field of length 40"/>
 </EntityType>
 <EntityContainer Name="cds_zsrvehpp0020_Entities" m:IsDefaultEntityContainer="true" sap:message-scope-supported="true" sap:supported-formats="atom json xlsx">
-<EntitySet Name="I_ConfignDeprecationCode" EntityType="cds_zsrvehpp0020.I_ConfignDeprecationCodeType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
 <EntitySet Name="I_CostCenterStdVH" EntityType="cds_zsrvehpp0020.I_CostCenterStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
 <EntitySet Name="I_GLAccountStdVH" EntityType="cds_zsrvehpp0020.I_GLAccountStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
 <EntitySet Name="I_MaterialStdVH" EntityType="cds_zsrvehpp0020.I_MaterialStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
@@ -164,145 +157,73 @@
 <EntitySet Name="I_ProductionOrderStdVH" EntityType="cds_zsrvehpp0020.I_ProductionOrderStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
 <EntitySet Name="I_StorageLocationStdVH" EntityType="cds_zsrvehpp0020.I_StorageLocationStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
 <EntitySet Name="ZCDSEHPPB0097" EntityType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
-<EntitySet Name="SAP__Currencies" EntityType="cds_zsrvehpp0020.SAP__Currency" sap:content-version="1"/>
-<EntitySet Name="SAP__UnitsOfMeasure" EntityType="cds_zsrvehpp0020.SAP__UnitOfMeasure" sap:content-version="1"/>
-<FunctionImport Name="cctrans" ReturnType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" EntitySet="ZCDSEHPPB0097" m:HttpMethod="POST" sap:action-for="cds_zsrvehpp0020.ZCDSEHPPB0097Type" sap:applicable-path="cctrans_ac">
+<FunctionImport Name="immediate" ReturnType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" EntitySet="ZCDSEHPPB0097" m:HttpMethod="POST" sap:action-for="cds_zsrvehpp0020.ZCDSEHPPB0097Type">
+<Parameter Name="basedate" Type="Edm.String" Mode="In" MaxLength="8" sap:label="char8"/>
+<Parameter Name="type" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
 <Parameter Name="plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
-<Parameter Name="material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+<Parameter Name="StorageLocationFrom" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
+<Parameter Name="StorageLocationTo" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
+<Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+<Parameter Name="Quantity" Type="Edm.Decimal" Mode="In" Precision="13" Scale="3" sap:label="Total Order Quantity"/>
+<Parameter Name="Recipient" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Goods Recipient"/>
+<Parameter Name="UnlPoint" Type="Edm.String" Mode="In" MaxLength="25" sap:label="Unloading Point"/>
+<Parameter Name="Text" Type="Edm.String" Mode="In" MaxLength="30" sap:label="30 Characters"/>
+<Parameter Name="Immediately" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="ProdOrder" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Order"/>
+<Parameter Name="Linkage" Type="Edm.String" Mode="In" MaxLength="16" sap:label="Linkage Number"/>
+<Parameter Name="Costcenter" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Controlling Area"/>
+<Parameter Name="GLAccountcode" Type="Edm.String" Mode="In" MaxLength="10" sap:label="G/L Account"/>
+<Parameter Name="Message" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
+<Parameter Name="unit" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Base Unit of Measure"/>
+<Parameter Name="immflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="optflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="inpflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="ordflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="inpfile" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
+<Parameter Name="outfile" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
+<Parameter Name="errflag" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Component of the Version Number"/>
+<Parameter Name="inputfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
+<Parameter Name="optionfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
+<Parameter Name="ordertfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
 </FunctionImport>
-<FunctionImport Name="immblank" ReturnType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" EntitySet="ZCDSEHPPB0097" m:HttpMethod="POST" sap:action-for="cds_zsrvehpp0020.ZCDSEHPPB0097Type" sap:applicable-path="immblank_ac">
+<FunctionImport Name="inputfield" ReturnType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" EntitySet="ZCDSEHPPB0097" m:HttpMethod="POST" sap:action-for="cds_zsrvehpp0020.ZCDSEHPPB0097Type">
+<Parameter Name="basedate" Type="Edm.String" Mode="In" MaxLength="8" sap:label="char8"/>
+<Parameter Name="type" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
 <Parameter Name="plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
-<Parameter Name="material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
-</FunctionImport>
-<FunctionImport Name="linkage" ReturnType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" EntitySet="ZCDSEHPPB0097" m:HttpMethod="POST" sap:action-for="cds_zsrvehpp0020.ZCDSEHPPB0097Type" sap:applicable-path="linkage_ac">
-<Parameter Name="plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
-<Parameter Name="material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
-</FunctionImport>
-<FunctionImport Name="none" ReturnType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" EntitySet="ZCDSEHPPB0097" m:HttpMethod="POST" sap:action-for="cds_zsrvehpp0020.ZCDSEHPPB0097Type" sap:applicable-path="none_ac">
-<Parameter Name="plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
-<Parameter Name="material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
-</FunctionImport>
-<FunctionImport Name="ordertrf" ReturnType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" EntitySet="ZCDSEHPPB0097" m:HttpMethod="POST" sap:action-for="cds_zsrvehpp0020.ZCDSEHPPB0097Type" sap:applicable-path="ordertrf_ac">
-<Parameter Name="plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
-<Parameter Name="material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+<Parameter Name="StorageLocationFrom" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
+<Parameter Name="StorageLocationTo" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
+<Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
+<Parameter Name="Quantity" Type="Edm.Decimal" Mode="In" Precision="13" Scale="3" sap:label="Total Order Quantity"/>
+<Parameter Name="Recipient" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Goods Recipient"/>
+<Parameter Name="UnlPoint" Type="Edm.String" Mode="In" MaxLength="25" sap:label="Unloading Point"/>
+<Parameter Name="Text" Type="Edm.String" Mode="In" MaxLength="30" sap:label="30 Characters"/>
+<Parameter Name="Immediately" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="ProdOrder" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Order"/>
+<Parameter Name="Linkage" Type="Edm.String" Mode="In" MaxLength="16" sap:label="Linkage Number"/>
+<Parameter Name="Costcenter" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Controlling Area"/>
+<Parameter Name="GLAccountcode" Type="Edm.String" Mode="In" MaxLength="10" sap:label="G/L Account"/>
+<Parameter Name="Message" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
+<Parameter Name="unit" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Base Unit of Measure"/>
+<Parameter Name="immflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="optflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="inpflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="ordflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
+<Parameter Name="inpfile" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
+<Parameter Name="outfile" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
+<Parameter Name="errflag" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Component of the Version Number"/>
+<Parameter Name="inputfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
+<Parameter Name="optionfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
+<Parameter Name="ordertfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
 </FunctionImport>
 </EntityContainer>
-<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zsrvehpp0020.I_StorageLocationStdVHType/Plant">
-<Annotation Term="Common.ValueList">
-<Record>
-<PropertyValue Property="Label" String="Plant"/>
-<PropertyValue Property="CollectionPath" String="I_PlantStdVH"/>
-<PropertyValue Property="SearchSupported" Bool="true"/>
-<PropertyValue Property="Parameters">
-<Collection>
-<Record Type="Common.ValueListParameterInOut">
-<PropertyValue Property="LocalDataProperty" PropertyPath="Plant"/>
-<PropertyValue Property="ValueListProperty" String="Plant"/>
-</Record>
-<Record Type="Common.ValueListParameterDisplayOnly">
-<PropertyValue Property="ValueListProperty" String="PlantName"/>
-</Record>
-</Collection>
-</PropertyValue>
-</Record>
-</Annotation>
-</Annotations>
-<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zsrvehpp0020.I_StorageLocationStdVHType/ConfigDeprecationCode">
-<Annotation Term="Common.ValueList">
-<Record>
-<PropertyValue Property="Label" String="Validity"/>
-<PropertyValue Property="CollectionPath" String="I_ConfignDeprecationCode"/>
-<PropertyValue Property="SearchSupported" Bool="true"/>
-<PropertyValue Property="Parameters">
-<Collection>
-<Record Type="Common.ValueListParameterInOut">
-<PropertyValue Property="LocalDataProperty" PropertyPath="ConfigDeprecationCode"/>
-<PropertyValue Property="ValueListProperty" String="ConfigurationDeprecationCode"/>
-</Record>
-<Record Type="Common.ValueListParameterDisplayOnly">
-<PropertyValue Property="ValueListProperty" String="ConfigurationDeprecationCode_Text"/>
-</Record>
-</Collection>
-</PropertyValue>
-</Record>
-</Annotation>
-<Annotation Term="Common.ValueListWithFixedValues"/>
-</Annotations>
 <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zsrvehpp0020.cds_zsrvehpp0020_Entities">
 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>
-</Annotations>
-<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zsrvehpp0020.cds_zsrvehpp0020_Entities/ZCDSEHPPB0097">
-<Annotation Term="Capabilities.FilterRestrictions">
-<Record>
-<PropertyValue Property="NonFilterableProperties">
-<Collection>
-<PropertyPath>cctrans_ac</PropertyPath>
-<PropertyPath>immblank_ac</PropertyPath>
-<PropertyPath>linkage_ac</PropertyPath>
-<PropertyPath>none_ac</PropertyPath>
-<PropertyPath>ordertrf_ac</PropertyPath>
-</Collection>
-</PropertyValue>
-</Record>
-</Annotation>
-<Annotation Term="Capabilities.SortRestrictions">
-<Record>
-<PropertyValue Property="NonSortableProperties">
-<Collection>
-<PropertyPath>cctrans_ac</PropertyPath>
-<PropertyPath>immblank_ac</PropertyPath>
-<PropertyPath>linkage_ac</PropertyPath>
-<PropertyPath>none_ac</PropertyPath>
-<PropertyPath>ordertrf_ac</PropertyPath>
-</Collection>
-</PropertyValue>
-</Record>
-</Annotation>
 </Annotations>
 <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zsrvehpp0020.cds_zsrvehpp0020_Entities">
 <Annotation Term="Org.OData.Capabilities.V1.BatchSupport">
 <Record Type="Org.OData.Capabilities.V1.BatchSupportType">
 <PropertyValue Property="ReferencesAcrossChangeSetsSupported" Bool="true"/>
 </Record>
-</Annotation>
-<Annotation Term="SAP__CodeList.CurrencyCodes">
-<Record>
-<PropertyValue Property="Url" String="./$metadata"/>
-<PropertyValue Property="CollectionPath" String="SAP__Currencies"/>
-</Record>
-</Annotation>
-<Annotation Term="SAP__CodeList.UnitsOfMeasure">
-<Record>
-<PropertyValue Property="Url" String="./$metadata"/>
-<PropertyValue Property="CollectionPath" String="SAP__UnitsOfMeasure"/>
-</Record>
-</Annotation>
-</Annotations>
-<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zsrvehpp0020.SAP__Currency/CurrencyCode">
-<Annotation Term="SAP__common.Text" Path="Text"/>
-<Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
-<Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
-</Annotations>
-<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zsrvehpp0020.SAP__UnitOfMeasure/UnitCode">
-<Annotation Term="SAP__common.Text" Path="Text"/>
-<Annotation Term="SAP__common.UnitSpecificScale" Path="DecimalPlaces"/>
-<Annotation Term="SAP__CodeList.StandardCode" Path="ISOCode"/>
-<Annotation Term="SAP__CodeList.ExternalCode" Path="ExternalCode"/>
-</Annotations>
-<Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zsrvehpp0020.SAP__UnitOfMeasure">
-<Annotation Term="SAP__core.AlternateKeys">
-<Collection>
-<Record>
-<PropertyValue Property="Key">
-<Collection>
-<Record>
-<PropertyValue Property="Name" Path="ExternalCode"/>
-<PropertyValue Property="Alias" String="ExternalCode"/>
-</Record>
-</Collection>
-</PropertyValue>
-</Record>
-</Collection>
 </Annotation>
 </Annotations>
 <atom:link xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="https://zdb001-0z9029.dev.ygsp.ykgw.net:44300/sap/opu/odata/sap/ZSRVBHPP0019/$metadata"/>
