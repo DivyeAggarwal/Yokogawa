@@ -3832,7 +3832,8 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(
                 Property : dwerk,
                 Descending : false
             }
-        ]
+        ],
+        Visualizations : ['@UI.LineItem#CancellOrderList']
     }
   }
 );
@@ -3953,7 +3954,8 @@ annotate ZAPIBPS0011.ZCDSEHPPC0012 with @(
                 Property : aufnr,
                 Descending : false
             }
-        ]
+        ],
+        Visualizations : ['@UI.LineItem#ProductionOrderOperationList']
     }
   }
 );
@@ -4066,7 +4068,8 @@ annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(
                 Property : aufnr,
                 Descending : false
             }
-        ]
+        ],
+        Visualizations : ['@UI.LineItem#PlannedOrderComponentlist']
     }
   }
 );
@@ -4353,7 +4356,8 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(
                 Property : porder,
                 Descending : false
             }
-        ]
+        ],
+        Visualizations : ['@UI.LineItem#ProductionOrderstatusList']
     }
   }
 );
@@ -4518,7 +4522,8 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(
                 Property : plnum,
                 Descending : false
             }
-        ]
+        ],
+        Visualizations : ['@UI.LineItem#PlannedOrderstatusList']
     }
   }
 );
