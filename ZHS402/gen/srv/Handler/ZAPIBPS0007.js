@@ -40,12 +40,19 @@ var registerZAPIBPS0007Handler = function (that, cds) {
             immflag = ""
         }
 
-        var url = functionImport + "?sap-client=120&plant='" + req.data.plant + "'&Material='" + req.data.Material +
-            "'&Quantity=" + req.data.Quantity + "m&unit='" + req.data.unit + "'&StorageLocationFrom='" + req.data.StorageLocationFrom +
-            "'&StorageLocationTo='" + req.data.StorageLocationTo + "'&Recipient='" + req.data.Recipient + "'&UnlPoint='" + req.data.UnlPoint +
-            "'&ProdOrder='" + req.data.ProdOrder + "'&Linkage='" + req.data.Linkage + "'&Costcenter='" + req.data.Costcenter +
-            "'&GLAccountcode='" + req.data.GLAccountcode + "'&Text='" + req.data.Text + "'&basedate='" + req.data.basedate +
-            "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'";
+        // var url = "/immediate?sap-client=120&plant='" + req.data.plant + "'&Material='" + req.data.Material +
+        //     "'&Quantity=" + req.data.Quantity + "m&unit='" + req.data.unit + "'&StorageLocationFrom='" + req.data.StorageLocationFrom +
+        //     "'&StorageLocationTo='" + req.data.StorageLocationTo + "'&Recipient='" + req.data.Recipient + "'&UnlPoint='" + req.data.UnlPoint +
+        //     "'&ProdOrder='" + req.data.ProdOrder + "'&Linkage='" + req.data.Linkage + "'&Costcenter='" + req.data.Costcenter +
+        //     "'&GLAccountcode='" + req.data.GLAccountcode + "'&Text='" + req.data.Text + "'&basedate='" + req.data.basedate +
+        //     "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'";
+        var url = "/immediate?sap-client=120&plant='" + req.data.plant + "'&Material='" + req.data.Material + "'&type=''&Immediately='" + req.data.Immediately +
+                "'&Quantity=" + req.data.Quantity + "m&unit='" + req.data.unit + "'&StorageLocationFrom='" + req.data.StorageLocationFrom + 
+                "'&StorageLocationTo='" + req.data.StorageLocationTo + "'&Recipient='" + req.data.Recipient + "'&UnlPoint='" + req.data.UnlPoint +
+                "'&ProdOrder='" + req.data.ProdOrder + "'&Linkage='" + req.data.Linkage + "'&Costcenter='" + req.data.Costcenter +
+                "'&GLAccountcode='" + req.data.GLAccountcode + "'&Text='" + req.data.Text + "'&basedate='" + req.data.basedate +
+                "'&inpfile=''&outfile=''&errflag=''&inputfd=''&optionfd=''&ordertfd=''&Message=''&inpflag='" + 
+                "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'&ordflag='" + ordflag + "'";
         var response = await soapi.tx(req).post(url);
         // var payload = {
         //     plant: req.data.plant,

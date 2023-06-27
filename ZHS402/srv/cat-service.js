@@ -371,7 +371,21 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     this.on('READ', 'OrderPartInformation', async req => {
         var filterData = req._queryOptions;
         const orderApi = await cds.connect.to('ZSRVBHMM0006');
-        const plannedOrder = await orderApi.Fget('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': filterData.plnum }, plwrk: { '=': filterData.plwrk }, paart: { '=': filterData.paart }, dispo: { '=': filterData.dispo }, psttr: { '=': filterData.psttr }, pedtr: { '=': filterData.pedtr }, pertr: { '=': filterData.pertr } });
+        // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': filterData.plnum }, plwrk: { '=': filterData.plwrk }, paart: { '=': filterData.paart }, dispo: { '=': filterData.dispo }, psttr: { '=': filterData.psttr }, pedtr: { '=': filterData.pedtr }, pertr: { '=': filterData.pertr } });
+        // const plannedOrder1 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(
+        //     {
+        //         psttr:"2022-05-18"
+        //     }
+        // )
+        const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
+            plnum: filterData.plnum,
+            plwrk: filterData.plwrk,
+            paart: filterData.paart,
+            dispo: filterData.dispo,
+            psttr: filterData.psttr,
+            pedtr: filterData.pedtr,
+            pertr: filterData.pertr
+        })
         // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009');
         let checkPlannedOrder = [];
         let payloadArray = [];
