@@ -40,12 +40,19 @@ var registerZAPIBPS0007Handler = function (that, cds) {
             immflag = ""
         }
 
-        var url = functionImport + "?sap-client=120&plant='" + req.data.plant + "'&Material='" + req.data.Material +
-            "'&Quantity=" + req.data.Quantity + "m&unit='" + req.data.unit + "'&StorageLocationFrom='" + req.data.StorageLocationFrom +
-            "'&StorageLocationTo='" + req.data.StorageLocationTo + "'&Recipient='" + req.data.Recipient + "'&UnlPoint='" + req.data.UnlPoint +
-            "'&ProdOrder='" + req.data.ProdOrder + "'&Linkage='" + req.data.Linkage + "'&Costcenter='" + req.data.Costcenter +
-            "'&GLAccountcode='" + req.data.GLAccountcode + "'&Text='" + req.data.Text + "'&basedate='" + req.data.basedate +
-            "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'";
+        // var url = "/immediate?sap-client=120&plant='" + req.data.plant + "'&Material='" + req.data.Material +
+        //     "'&Quantity=" + req.data.Quantity + "m&unit='" + req.data.unit + "'&StorageLocationFrom='" + req.data.StorageLocationFrom +
+        //     "'&StorageLocationTo='" + req.data.StorageLocationTo + "'&Recipient='" + req.data.Recipient + "'&UnlPoint='" + req.data.UnlPoint +
+        //     "'&ProdOrder='" + req.data.ProdOrder + "'&Linkage='" + req.data.Linkage + "'&Costcenter='" + req.data.Costcenter +
+        //     "'&GLAccountcode='" + req.data.GLAccountcode + "'&Text='" + req.data.Text + "'&basedate='" + req.data.basedate +
+        //     "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'";
+        var url = "/immediate?sap-client=120&plant='" + req.data.plant + "'&Material='" + req.data.Material + "'&type=''&Immediately='" + req.data.Immediately +
+                "'&Quantity=" + req.data.Quantity + "m&unit='" + req.data.unit + "'&StorageLocationFrom='" + req.data.StorageLocationFrom + 
+                "'&StorageLocationTo='" + req.data.StorageLocationTo + "'&Recipient='" + req.data.Recipient + "'&UnlPoint='" + req.data.UnlPoint +
+                "'&ProdOrder='" + req.data.ProdOrder + "'&Linkage='" + req.data.Linkage + "'&Costcenter='" + req.data.Costcenter +
+                "'&GLAccountcode='" + req.data.GLAccountcode + "'&Text='" + req.data.Text + "'&basedate='" + req.data.basedate +
+                "'&inpfile=''&outfile=''&errflag=''&inputfd=''&optionfd=''&ordertfd=''&Message=''&inpflag='" + 
+                "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'&ordflag='" + ordflag + "'";
         var response = await soapi.tx(req).post(url);
         // var payload = {
         //     plant: req.data.plant,
@@ -114,17 +121,20 @@ var registerZAPIBPS0007Handler = function (that, cds) {
             }
 
 
-            var url = "/inputfield?sap-client=120&plant='" + req.data.uploadFile[i].plant + "'&Material='" + req.data.uploadFile[i].Material +
-                "'&Quantity=" + req.data.uploadFile[i].Quantity + "m&unit='" + req.data.uploadFile[i].unit + "'&StorageLocationFrom='" + req.data.uploadFile[i].StorageLocationFrom +
+            var url = "/inputfield?sap-client=120&plant='" + req.data.uploadFile[i].plant + "'&Material='" + req.data.uploadFile[i].Material + "'&type=''&Immediately='" + req.data.uploadFile[i].Immediately +
+                "'&Quantity=" + req.data.uploadFile[i].Quantity + "m&unit='" + req.data.uploadFile[i].unit + "'&StorageLocationFrom='" + req.data.uploadFile[i].StorageLocationFrom + 
                 "'&StorageLocationTo='" + req.data.uploadFile[i].StorageLocationTo + "'&Recipient='" + req.data.uploadFile[i].Recipient + "'&UnlPoint='" + req.data.uploadFile[i].UnlPoint +
                 "'&ProdOrder='" + req.data.uploadFile[i].ProdOrder + "'&Linkage='" + req.data.uploadFile[i].Linkage + "'&Costcenter='" + req.data.uploadFile[i].Costcenter +
                 "'&GLAccountcode='" + req.data.uploadFile[i].GLAccountcode + "'&Text='" + req.data.uploadFile[i].Text + "'&basedate='" + req.data.uploadFile[i].basedate +
+                "'&inpfile=''&outfile=''&errflag=''&inputfd=''&optionfd=''&ordertfd=''&Message=''&inpflag='" + 
                 "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'&ordflag='" + ordflag + "'";
                 
             var response = await soapi.tx(req).post(url);
             output.push(response);
         }
-        return response;
+        return {
+            "uploadFile":output
+        }
     });
 
     that.on('READ', 'InputField', async req => {

@@ -31993,6 +31993,11 @@
           "length": 10,
           "notNull": true
         },
+        "language": {
+          "@sap.label": "Language Key",
+          "type": "cds.String",
+          "length": 2
+        },
         "plant": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Plant",
@@ -77502,6 +77507,11 @@
           "type": "cds.String",
           "length": 10,
           "notNull": true
+        },
+        "language": {
+          "@sap.label": "Language Key",
+          "type": "cds.String",
+          "length": 2
         },
         "plant": {
           "@sap.display.format": "UpperCase",
