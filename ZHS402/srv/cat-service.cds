@@ -26,6 +26,7 @@ using ZSRVBHPP0013 from './external/ZSRVBHPP0013';
 using ZSRVBHPP0019 from './external/ZSRVBHPP0019';
 using ZSRVBHMM0008 from './external/ZSRVBHMM0008';
 using ZSRVBHPP0003 from './external/ZSRVBHPP0003';
+using ZAPIHPS0003_SRV from './external/ZAPIHPS0003_SRV';
 
 service CatalogService {
     entity ZCDSEHCSC0003                as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -1074,6 +1075,7 @@ service ZAPIBPS0001 {
         Customer,
         CustomerFullName
     }
+    entity outputSet as projection on ZAPIHPS0003_SRV.outputSet;
 
     entity ZCDSEBPS0002                 as projection on ProjectDetails.ZCDSEHPSC0002 {
         ProjectId,

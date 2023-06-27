@@ -27828,6 +27828,204 @@
         }
       }
     },
+    "ZAPIBPS0001.outputSet": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.pageable": "false",
+      "@sap.content.version": "1",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZAPIHPS0003_SRV.outputSet"
+          ]
+        }
+      },
+      "elements": {
+        "Zdonum": {
+          "@sap.unicode": "false",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "PsPspnr": {
+          "@sap.unicode": "false",
+          "@sap.label": "Text 24",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        },
+        "Pbukr": {
+          "@sap.unicode": "false",
+          "@sap.label": "Undefined range (can be used for patch levels)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "Zdoitem": {
+          "@sap.unicode": "false",
+          "@sap.label": "Character field, length 7",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 7,
+          "notNull": true
+        },
+        "Zshtp": {
+          "@sap.unicode": "false",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Zmatnr": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zqty": {
+          "@sap.unicode": "false",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Zdescrip": {
+          "@sap.unicode": "false",
+          "@sap.label": "Description",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zdopdate": {
+          "@sap.unicode": "false",
+          "@sap.label": "char8",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "Zcontacttel": {
+          "@sap.unicode": "false",
+          "@sap.label": "30 Characters",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "Zshpname1": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zshpname2": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zshpname3": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zshpname4": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Name1": {
+          "@sap.unicode": "false",
+          "@sap.label": "Name 1",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "Zshpstat": {
+          "@sap.unicode": "false",
+          "@sap.label": "Single-Character Flag",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        }
+      }
+    },
     "ZAPIBPS0001.ZCDSEBPS0002": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -81743,6 +81941,205 @@
         "DecimalPlaces": {
           "@sap.label": "Decimal Places",
           "type": "cds.Integer"
+        }
+      }
+    },
+    "ZAPIHPS0003_SRV": {
+      "@source": "external/ZAPIHPS0003_SRV.csn",
+      "kind": "service",
+      "@cds.external": "odata-v2",
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZAPIHPS0003_SRV.outputSet": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.pageable": "false",
+      "@sap.content.version": "1",
+      "elements": {
+        "Zdonum": {
+          "@sap.unicode": "false",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "PsPspnr": {
+          "@sap.unicode": "false",
+          "@sap.label": "Text 24",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 24,
+          "notNull": true
+        },
+        "Pbukr": {
+          "@sap.unicode": "false",
+          "@sap.label": "Undefined range (can be used for patch levels)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "Zdoitem": {
+          "@sap.unicode": "false",
+          "@sap.label": "Character field, length 7",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "key": true,
+          "type": "cds.String",
+          "length": 7,
+          "notNull": true
+        },
+        "Zshtp": {
+          "@sap.unicode": "false",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Zmatnr": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zqty": {
+          "@sap.unicode": "false",
+          "@sap.label": "Character Field with Length 10",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Zdescrip": {
+          "@sap.unicode": "false",
+          "@sap.label": "Description",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zdopdate": {
+          "@sap.unicode": "false",
+          "@sap.label": "char8",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "Zcontacttel": {
+          "@sap.unicode": "false",
+          "@sap.label": "30 Characters",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "Zshpname1": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zshpname2": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zshpname3": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Zshpname4": {
+          "@sap.unicode": "false",
+          "@sap.label": "Char",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Name1": {
+          "@sap.unicode": "false",
+          "@sap.label": "Name 1",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "Zshpstat": {
+          "@sap.unicode": "false",
+          "@sap.label": "Single-Character Flag",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
         }
       }
     },

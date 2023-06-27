@@ -7,6 +7,11 @@ var registerZAPIBPS0001Handler = function (that, cds) {
         const bupa = await cds.connect.to('ProjectDetails');
         return bupa.run(req.query);
     });
+    that.on('CREATE', 'outputSet', async req => {
+        const api = await cds.connect.to('ZAPIHPS0003_SRV');
+        var response = await api.tx(req).post("/outputSet",req.data);
+        return response;
+    });
     that.before('READ','ZCDSEBPS0003', async req => {
         if(!req._queryOptions.$filter || (!req._queryOptions.$filter.includes('PS_PSPNR') && !req._queryOptions.$filter.includes('ZDONUM'))){
             req.reject({
