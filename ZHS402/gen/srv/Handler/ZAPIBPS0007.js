@@ -16,13 +16,14 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         var orderTransVal = req.data.OrderTransfer;
         var immValue = req.data.Immediately;
         var functionImport;
-        var immflag;
-        var optionalFlag;
-
+        var immflag = '';
+        var optionalFlag = '';
+        var ordflag = '';
         if (optionValue === "None(Store)" && immValue == true) {
             functionImport = "/none";
             immflag = "X";
             optionalFlag = "X";
+            ordflag = "";
         } else if (optionValue === "Order Transfer" && immValue == true && orderTransVal == "Production Order No.") {
             functionImport = "/ordertrf";
             immflag = "X";
@@ -37,9 +38,11 @@ var registerZAPIBPS0007Handler = function (that, cds) {
             functionImport = "/cctrans";
             immflag = "X";
             optionalFlag = "Z";
+            ordflag = "";
         } else if (immValue == false) {
             functionImport = "/immblank";
             immflag = ""
+            ordflag = "";
         }
 
         // var url = "/immediate?sap-client=120&plant='" + req.data.plant + "'&Material='" + req.data.Material +
@@ -56,6 +59,50 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         //         "'&inpfile=''&outfile=''&errflag=''&inputfd=''&optionfd=''&ordertfd=''&Message=''&inpflag='" + 
         //         "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'&ordflag='" + ordflag + "'";
         // var response = await soapi.tx(req).post(url);
+
+        if(req.data.plant == undefined) {
+            req.data.plant = ''
+        }
+        if(req.data.Material == undefined) {
+            req.data.Material = ''
+        }
+        if(req.data.Quantity == undefined) {
+            req.data.Quantity = ''
+        }
+        if(req.data.Recipient == undefined) {
+            req.data.Recipient = ''
+        }
+        if(req.data.UnlPoint == undefined) {
+            req.data.UnlPoint = ''
+        }
+        if(req.data.Text == undefined) {
+            req.data.Text = ''
+        }
+        if(req.data.ProdOrder == undefined) {
+            req.data.ProdOrder = ''
+        }
+        if(req.data.Linkage == undefined) {
+            req.data.Linkage = ''
+        }
+        if(req.data.Costcenter == undefined) {
+            req.data.Costcenter = ''
+        }
+        if(req.data.GLAccountcode == undefined) {
+            req.data.GLAccountcode = ''
+        }
+        if(req.data.unit == undefined) {
+            req.data.unit = ''
+        }
+        if(req.data.basedate == undefined) {
+            req.data.basedate = ''
+        }
+        if(req.data.StorageLocationFrom == undefined) {
+            req.data.StorageLocationFrom = ''
+        }
+        if(req.data.StorageLocationTo == undefined) {
+            req.data.StorageLocationTo = ''
+        }
+
         var payload = {
             plant: req.data.plant,
             Material: req.data.Material,
@@ -98,26 +145,30 @@ var registerZAPIBPS0007Handler = function (that, cds) {
 
             if (linkage && immediately) {
                 functionImport = "/linkage";
-                immflag = "X";
-                optionalFlag = "Y";
-                ordflag = "2";
+                req.data.immflag = "X";
+                req.data.optflag = "Y";
+                req.data.ordflag = "2";
 
             } else if (prodOrder && immediately) {
                 functionImport = "/ordertrf";
-                immflag = "X";
-                optionalFlag = "Y";
-                ordflag = "1";
+                req.data.immflag = "X";
+                req.data.optflag = "Y";
+                req.data.ordflag = "1";
+                req.data.ordflag = "";
             } else if (!prodOrder && !linkage && immediately) {
                 functionImport = "/none";
-                immflag = "X";
-                optionalFlag = "X";
+                req.data.immflag = "X";
+                req.data.optflag = "X";
+                req.data.ordflag = "";
             } else if (costCenter && glAccount && immediately) {
                 functionImport = "/cctrans";
-                immflag = "X";
-                optionalFlag = "Z";
+                req.data.immflag = "X";
+                req.data.optflag = "Z";
+                req.data.ordflag = "";
             } else if (!immediately) {
                 functionImport = "/immblank";
-                immflag = ""
+                req.data.immflag = ""
+                req.data.ordflag = "";
             }
 
 
@@ -144,12 +195,12 @@ var registerZAPIBPS0007Handler = function (that, cds) {
                 Costcenter: req.data.Costcenter,
                 GLAccountcode: req.data.GLAccountcode,
                 Text: req.data.Text,
-                immflag: immflag,
-                optflag: optionalFlag,
+                immflag: req.data.immflag,
+                optflag: req.data.optflag,
                 basedate: req.data.basedate,
-                ordflag: ordflag
+                ordflag: req.data.ordflag
             }
-            var response = await soapi.tx(req).post("/ZCDSEHPPB0097", payload);
+            var response = await soapi.tx(req).post("/ZCDSEHPPB0097", req.data);
             output.push(response);
         }
         return {

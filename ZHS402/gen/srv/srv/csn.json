@@ -28293,6 +28293,14 @@
     },
     "ZAPIBPS0001.ZCDSEBPS0013": {
       "kind": "entity",
+      "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+        {
+          "Property": {
+            "=": "PS_PSPNR"
+          },
+          "AllowedExpressions": "SingleValue"
+        }
+      ],
       "@Capabilities.SearchRestrictions.$Type": "Capabilities.SearchRestrictionsType",
       "@Capabilities.SearchRestrictions.Searchable": false,
       "@Capabilities.InsertRestrictions.$Type": "Capabilities.InsertRestrictionsType",

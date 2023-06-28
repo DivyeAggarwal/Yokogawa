@@ -2631,6 +2631,14 @@ annotate ZAPIBPS0002.ZCDSEBPS0011 with @(Capabilities : {
 annotate ZAPIBPS0001.ZCDSEBPS0013 with {
     ZDONUM  @title : 'DO Number';
 }
+annotate ZAPIBPS0001.ZCDSEBPS0013 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : PS_PSPNR,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
 annotate ZAPIBPS0001.ZCDSEBPS0013 @(Capabilities : {
     SearchRestrictions : {
         $Type      : 'Capabilities.SearchRestrictionsType',
