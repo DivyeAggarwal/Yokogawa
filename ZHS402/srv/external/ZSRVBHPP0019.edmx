@@ -94,7 +94,7 @@
 <EntityType Name="ZCDSEHPPB0097Type" sap:label="Custom CDS create invidual issue" sap:content-version="1">
 <Key>
 <PropertyRef Name="basedate"/>
-<PropertyRef Name="type"/>
+<PropertyRef Name="typee"/>
 <PropertyRef Name="plant"/>
 <PropertyRef Name="StorageLocationFrom"/>
 <PropertyRef Name="StorageLocationTo"/>
@@ -122,7 +122,7 @@
 <PropertyRef Name="ordertfd"/>
 </Key>
 <Property Name="basedate" Type="Edm.String" Nullable="false" MaxLength="8" sap:display-format="UpperCase" sap:label="char8" sap:quickinfo="Character field, 8 characters long"/>
-<Property Name="type" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
+<Property Name="typee" Type="Edm.String" Nullable="false" MaxLength="1" sap:display-format="UpperCase" sap:label="Single-Character Flag" sap:heading=""/>
 <Property Name="plant" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Plant"/>
 <Property Name="StorageLocationFrom" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location"/>
 <Property Name="StorageLocationTo" Type="Edm.String" Nullable="false" MaxLength="4" sap:display-format="UpperCase" sap:label="Storage location"/>
@@ -156,65 +156,7 @@
 <EntitySet Name="I_PlantStdVH" EntityType="cds_zsrvehpp0020.I_PlantStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
 <EntitySet Name="I_ProductionOrderStdVH" EntityType="cds_zsrvehpp0020.I_ProductionOrderStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
 <EntitySet Name="I_StorageLocationStdVH" EntityType="cds_zsrvehpp0020.I_StorageLocationStdVHType" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:searchable="true" sap:content-version="1"/>
-<EntitySet Name="ZCDSEHPPB0097" EntityType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1"/>
-<FunctionImport Name="immediate" ReturnType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" EntitySet="ZCDSEHPPB0097" m:HttpMethod="POST" sap:action-for="cds_zsrvehpp0020.ZCDSEHPPB0097Type">
-<Parameter Name="basedate" Type="Edm.String" Mode="In" MaxLength="8" sap:label="char8"/>
-<Parameter Name="type" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
-<Parameter Name="StorageLocationFrom" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
-<Parameter Name="StorageLocationTo" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
-<Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
-<Parameter Name="Quantity" Type="Edm.Decimal" Mode="In" Precision="13" Scale="3" sap:label="Total Order Quantity"/>
-<Parameter Name="Recipient" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Goods Recipient"/>
-<Parameter Name="UnlPoint" Type="Edm.String" Mode="In" MaxLength="25" sap:label="Unloading Point"/>
-<Parameter Name="Text" Type="Edm.String" Mode="In" MaxLength="30" sap:label="30 Characters"/>
-<Parameter Name="Immediately" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="ProdOrder" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Order"/>
-<Parameter Name="Linkage" Type="Edm.String" Mode="In" MaxLength="16" sap:label="Linkage Number"/>
-<Parameter Name="Costcenter" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Controlling Area"/>
-<Parameter Name="GLAccountcode" Type="Edm.String" Mode="In" MaxLength="10" sap:label="G/L Account"/>
-<Parameter Name="Message" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
-<Parameter Name="unit" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Base Unit of Measure"/>
-<Parameter Name="immflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="optflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="inpflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="ordflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="inpfile" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
-<Parameter Name="outfile" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
-<Parameter Name="errflag" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Component of the Version Number"/>
-<Parameter Name="inputfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
-<Parameter Name="optionfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
-<Parameter Name="ordertfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
-</FunctionImport>
-<FunctionImport Name="inputfield" ReturnType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" EntitySet="ZCDSEHPPB0097" m:HttpMethod="POST" sap:action-for="cds_zsrvehpp0020.ZCDSEHPPB0097Type">
-<Parameter Name="basedate" Type="Edm.String" Mode="In" MaxLength="8" sap:label="char8"/>
-<Parameter Name="type" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="plant" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Plant"/>
-<Parameter Name="StorageLocationFrom" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
-<Parameter Name="StorageLocationTo" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Storage location"/>
-<Parameter Name="Material" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Material"/>
-<Parameter Name="Quantity" Type="Edm.Decimal" Mode="In" Precision="13" Scale="3" sap:label="Total Order Quantity"/>
-<Parameter Name="Recipient" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Goods Recipient"/>
-<Parameter Name="UnlPoint" Type="Edm.String" Mode="In" MaxLength="25" sap:label="Unloading Point"/>
-<Parameter Name="Text" Type="Edm.String" Mode="In" MaxLength="30" sap:label="30 Characters"/>
-<Parameter Name="Immediately" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="ProdOrder" Type="Edm.String" Mode="In" MaxLength="12" sap:label="Order"/>
-<Parameter Name="Linkage" Type="Edm.String" Mode="In" MaxLength="16" sap:label="Linkage Number"/>
-<Parameter Name="Costcenter" Type="Edm.String" Mode="In" MaxLength="4" sap:label="Controlling Area"/>
-<Parameter Name="GLAccountcode" Type="Edm.String" Mode="In" MaxLength="10" sap:label="G/L Account"/>
-<Parameter Name="Message" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
-<Parameter Name="unit" Type="Edm.String" Mode="In" MaxLength="3" sap:label="Base Unit of Measure"/>
-<Parameter Name="immflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="optflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="inpflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="ordflag" Type="Edm.String" Mode="In" MaxLength="1" sap:label="Single-Character Flag"/>
-<Parameter Name="inpfile" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
-<Parameter Name="outfile" Type="Edm.String" Mode="In" MaxLength="256" sap:label="char256"/>
-<Parameter Name="errflag" Type="Edm.String" Mode="In" MaxLength="2" sap:label="Component of the Version Number"/>
-<Parameter Name="inputfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
-<Parameter Name="optionfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
-<Parameter Name="ordertfd" Type="Edm.String" Mode="In" MaxLength="40" sap:label="Char"/>
-</FunctionImport>
+<EntitySet Name="ZCDSEHPPB0097" EntityType="cds_zsrvehpp0020.ZCDSEHPPB0097Type" sap:content-version="1"/>
 </EntityContainer>
 <Annotations xmlns="http://docs.oasis-open.org/odata/ns/edm" Target="cds_zsrvehpp0020.cds_zsrvehpp0020_Entities">
 <Annotation Term="Common.ApplyMultiUnitBehaviorForSortingAndFiltering" Bool="true"/>

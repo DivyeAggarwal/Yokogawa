@@ -269,9 +269,6 @@
       "kind": "entity",
       "@cds.external": true,
       "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
       "@sap.content.version": "1",
       "@sap.label": "Custom CDS create invidual issue",
       "elements": {
@@ -284,7 +281,7 @@
           "@sap.quickinfo": "Character field, 8 characters long",
           "notNull": true
         },
-        "type": {
+        "typee": {
           "key": true,
           "type": "cds.String",
           "length": 1,
@@ -506,20 +503,6 @@
           "@sap.label": "Char",
           "@sap.quickinfo": "Character field of length 40",
           "notNull": true
-        }
-      },
-      "actions": {
-        "immediate": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
-        },
-        "inputfield": {
-          "kind": "action",
-          "returns": {
-            "type": "ZSRVBHPP0019.ZCDSEHPPB0097"
-          }
         }
       }
     }
