@@ -2675,7 +2675,8 @@ annotate ZAPIBPS0001.ZCDSEBPS0013 with @(
             { Value : ZSHPNAME1 },
             { Value : ZSHPNAME2 },
             { Value : ZSHPNAME3 },
-            { Value : ZSHPNAME4 }                                   
+            { Value : ZSHPNAME4 },
+             { Value : PS_PSPNR }                                  
         ],
      }
 ){

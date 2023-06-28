@@ -28,13 +28,13 @@ var registerZAPIBPS0001Handler = function (that, cds) {
         return oDataWithManager;
 
     });
-    that.on('UPDATE', 'ZCDSEBPS0018', async req => {
+    that.on('UPDATE', 'ZTHBT0055', async req => {
         var oInput = req.data;
-        var oInputQueryData = SELECT.from('ZHS402.ZTHBT0055').where({ MATNR: { '=': oInput.MATNR }, PS_POSNR: { '=': oInput.PS_POSNR }, ZDONUM: { '=': oInput.ZDONUM } }); //UPDATE('ZHS402.ZTHBT0055').with(oInput)where({ ID: { '=': oData.data.ID }});
-        for(var i=0; i<oInputQuery.length; i++) {
-            oInputQueryData.ZSHPSTAT = "T";
-            const updateQuery =  UPDATE.entity('ZHS402.ZTHBT0055').data(oInput).where({ ID: { '=': oInputQueryData.ID }}); 
-              await db.run(updateQuery);
+        var oInputQueryData = await SELECT.from('ZHS402.ZTHBT0055').where({ MATNR: { '=': oInput.MATNR }, PS_PSPNR: { '=': oInput.PS_PSPNR }, ZDONUM: { '=': oInput.ZDONUM } }); //UPDATE('ZHS402.ZTHBT0055').with(oInput)where({ ID: { '=': oData.data.ID }});
+        for(var i=0; i < oInputQueryData.length; i++) {
+            oInputQueryData[i].ZSHPSTAT = "T";
+            const updateQuery = await UPDATE.entity('ZHS402.ZTHBT0055').data(oInputQueryData[i]).where({ ID: { '=': oInputQueryData[i].ID }}); 
+            //   await db.run(updateQuery);
         }
         // return oDataWithManager;
 

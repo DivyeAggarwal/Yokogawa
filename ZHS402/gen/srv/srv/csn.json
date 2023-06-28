@@ -28609,6 +28609,11 @@
           "Value": {
             "=": "ZSHPNAME4"
           }
+        },
+        {
+          "Value": {
+            "=": "PS_PSPNR"
+          }
         }
       ],
       "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
