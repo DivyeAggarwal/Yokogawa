@@ -28786,6 +28786,7 @@
               "ValueListProperty": "PBUKR"
             }
           ],
+          "@Common.FilterDefaultValue": "6W00",
           "@title": "Company code",
           "type": "cds.String",
           "length": 4

@@ -2676,7 +2676,8 @@ annotate ZAPIBPS0001.ZCDSEBPS0013 with @(
             { Value : ZSHPNAME2 },
             { Value : ZSHPNAME3 },
             { Value : ZSHPNAME4 },
-             { Value : PS_PSPNR }                                  
+             { Value : PS_PSPNR }, 
+             { Value : PBUKR }                                 
         ],
      }
 ){
@@ -2743,6 +2744,11 @@ annotate ZAPIBPS0001.ZCDSEBPS0013 {
 annotate ZAPIBPS0001.ZCDSEBPS0013 with {
 ZSHPSTAT @UI.HiddenFilter: true;
 }
+annotate ZAPIBPS0001.ZCDSEBPS0013 with {
+    @Common.FilterDefaultValue : '6W00'
+    PBUKR
+};
+
 
 annotate  ZAPIBPS0004.ZCDSEBPS0012 with @(
     UI: {
