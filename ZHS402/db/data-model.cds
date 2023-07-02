@@ -526,6 +526,17 @@ entity ZTHBT0073: managed {
         CHANGESETID: UUID @title: 'Change Set Id from Odata Batch Call'
 }
 
+entity ZTHBT0074: cuid, managed {
+        PhysInvDoc: String(100) @title: 'Physical Inventory Document';
+        HEADER: String @title: 'Header Data';
+        ITEM: String @title: 'Item Data';
+        STATUS: String @title: 'Status';
+        TYPE: String @title: 'Type';
+        CLASS: String @title: 'Class';
+        MNO: String @title: 'Message nO';
+        MESSAGE: String @title: 'Message';
+}
+
 entity YARDTESTDB: managed,cuid {
     name: String(40);
     DOB: Date;

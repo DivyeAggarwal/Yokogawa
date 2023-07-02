@@ -4542,3 +4542,31 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(
     }
   }
 );
+
+
+
+annotate ZAPIBPS0012.ZAPIBPS0012Report with @(
+    
+    UI : { 
+        SelectionFields  : [
+            Plant ,StorageLocation,PlannedCountDate,PostingDate,PhysInvDoc
+        ],
+        LineItem  : [
+            { Value : PhysInvDoc },
+            { Value : STATUS },
+            { Value : TYPE }, 
+            { Value : CLASS },
+            { Value : MNO },
+            { Value : MESSAGE }                              
+        ],
+     }
+){
+};
+
+
+annotate ZAPIBPS0012.ZAPIBPS0012Report {
+  Plant @mandatory;
+  StorageLocation @mandatory;
+  PlannedCountDate @mandatory;
+  PostingDate @mandatory;
+};

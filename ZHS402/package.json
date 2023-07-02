@@ -354,6 +354,28 @@
           "csrf": true,
           "csrfInBatch": true
         }
+      },
+      "ZAPIHMM0003_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZAPIHMM0003_SRV",
+        "csrf": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/ZAPIHPS0003_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
+      },
+      "ZSRVBHMM0007": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVBHMM0007",
+        "csrf": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/ZAPIHPS0003_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
       }
     },
     "hana": {
