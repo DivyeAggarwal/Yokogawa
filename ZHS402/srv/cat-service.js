@@ -440,6 +440,16 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
 
         var test = 1;
         var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+        var dataPayload = {
+            BTYPEORDER:"",
+            BTYPEITEM:"",
+            DWERK:"",
+            BTYPECAT:"",
+            AUFNR:"",
+            GSTRP:"",
+            GLTRP:""
+        }
+        await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload);
         var test1 = 1;
         // return response;
 
