@@ -531,7 +531,7 @@ entity ZTHBT0074: cuid, managed {
         HEADER: String @title: 'Header Data';
         ITEM: String @title: 'Item Data';
         STATUS: String @title: 'Status';
-        TYPE: String @title: 'Type';
+        MTYPE: String @title: 'Type';
         CLASS: String @title: 'Class';
         MNO: String @title: 'Message nO';
         MESSAGE: String @title: 'Message';

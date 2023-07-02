@@ -13,6 +13,7 @@ const registerZAPIBPS0007Handler = require("./Handler/ZAPIBPS0007");
 const registerZAPIBPS0008Handler = require("./Handler/ZAPIBPS0008");
 const registerZAPIBPS0009Handler = require("./Handler/ZAPIBPS0009");
 const registerZAPIBPS0011Handler = require("./Handler/ZAPIBPS0011");
+const registerZAPIBPS0012Handler = require("./Handler/ZAPIBPS0012");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql;
@@ -51,6 +52,7 @@ module.exports = cds.service.impl(async function (srv) {
     registerZAPIBPS0008Handler(this,cds);
     registerZAPIBPS0009Handler(this,cds);
     registerZAPIBPS0011Handler(this,cds);
+    registerZAPIBPS0012Handler(this,cds);
     registerZAPIBPS0004Handler(this,cds,Readable, PassThrough,XLSX,SequenceHelper);
     this.on('READ', 'ZCDSEHPSB0004', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
@@ -206,7 +208,7 @@ this.on('Scan_Start1', async (req) => {
 });
 this.on('Find_Scan', async (req) => {
     const api = await cds.connect.to('ZSRVBHPP0005');
-    return api.post("/Find_Scan?pkkey='" + req.data.pkkey + "'&pkbst='" + req.data.pkbst + "'&pkstu='" + req.data.pkstu + "'",{}).then((res, response, o) =>{
+    return api.postst("/Find_Scan?pkkey='" + req.data.pkkey + "'&pkbst='" + req.data.pkbst + "'&pkstu='" + req.data.pkstu + "'",{}).then((res, response, o) =>{
         return res;
     });
 });

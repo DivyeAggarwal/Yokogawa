@@ -1688,20 +1688,31 @@ service ZAPIBPS0011 {
 
 //Post Inventory Difference zhmm0010 36004
 service ZAPIBPS0012 {
-    entity ZTHBT0074 as projection on db.ZTHBT0074;
-     @cds.persistence.skip
-    entity ZAPIBPS0012Report {
-        PhysInvDoc: String @title : 'Physical Inventory Document';
-        Plant: String @title : 'Plant';
-        StorageLocation: String @title : 'Storage Location';
-        PlannedCountDate: Date @title : 'Planned Date of Inventory Count';
-        PostingDate: Date @title : 'Posting Date';
-        STATUS: String @title : 'Status';
-        TYPE: String @title : 'Message Type';
-        CLASS: String @title : 'Message Class';
-        MNO: String @title : 'Message No';
-        MESSAGE: String @title : 'Messageo';
-    }
-    entity ZCDSEHMMC0014 as projection on ZSRVBHMM0007.ZCDSEHMMC0014;
-    entity HeaderPI as projection on ZAPIHMM0003_SRV.HeaderPISet;
+    entity ZTHBT0074 as projection on db.ZTHBT0074; 
+entity ZAPIBPS0012Report as projection on ZSRVBHMM0007.ZCDSEHMMC0014 {
+        key PhysInvDoc,
+            Plant,
+            StorageLocation,
+            PlannedCountDate,
+            null as PostingDate : Date,
+            null as STATUS: String @title : 'Status',
+            null as MTYPE: String @title : 'Message Type',
+            null as CLASS: String @title : 'Message Class',
+            null as MNO: String @title : 'Message No',
+            null as MESSAGE: String @title : 'Message',
+            null as SCHEDULED_BY: DateTime @title : 'Scheduled By',
+            null as SCHEDULED_DATE: DateTime @title : 'Scheduled Date',
+            null as PROCESSED_DATE: DateTime @title : 'Processed Date',
+            to_item : Association to many ZSRVBHMM0007.ZCDSEHMMC0010 on PhysInvDoc = $projection.PhysInvDoc
+    };
+    // entity ZCDSEHMMC0014 as projection on ZSRVBHMM0007.ZCDSEHMMC0014;
+    // entity HeaderPI as projection on ZAPIHMM0003_SRV.HeaderPISet;
+    entity ZAPIBPS0012POST as projection on ZAPIHMM0003_SRV.HeaderPISet {
+        key Iblnr,
+            Werks,
+            Lgort,
+            Gidat,
+            Budat,
+            HeaderToItemNav : Association to many ZAPIHMM0003_SRV.ItemPISet on Iblnr = $projection.Iblnr
+    };
 } 

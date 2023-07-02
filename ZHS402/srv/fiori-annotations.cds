@@ -4545,8 +4545,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(
 
 
 
-annotate ZAPIBPS0012.ZAPIBPS0012Report with @(
-    
+annotate ZAPIBPS0012.ZAPIBPS0012Report with @(    
     UI : { 
         SelectionFields  : [
             Plant ,StorageLocation,PlannedCountDate,PostingDate,PhysInvDoc
@@ -4554,19 +4553,34 @@ annotate ZAPIBPS0012.ZAPIBPS0012Report with @(
         LineItem  : [
             { Value : PhysInvDoc },
             { Value : STATUS },
-            { Value : TYPE }, 
+            { Value : MTYPE }, 
             { Value : CLASS },
             { Value : MNO },
-            { Value : MESSAGE }                              
+            { Value : MESSAGE }  ,
+            { Value : SCHEDULED_BY }  ,
+            { Value : SCHEDULED_DATE }  ,
+            { Value : PROCESSED_DATE }                              
         ],
      }
-){
+){    
+    PhysInvDoc @( title: 'Invoice' );  
+    Plant @( title: 'Plant' );  
+    StorageLocation @( title: 'Storage Location' );  
+    PlannedCountDate @( title: 'Planned Date of Inventory Count' );  
+    PostingDate @( title: 'Posting Date' );  
+    STATUS @( title: 'Status' );  
+    MTYPE @( title: 'Message Type' );  
+    CLASS @( title: 'Message Class' );  
+    MNO @( title: 'Message No' );    
+    MESSAGE @( title: 'Message' );    
+    SCHEDULED_BY @( title: 'Scheduled By' );    
+    SCHEDULED_DATE @( title: 'Scheduled Date' );    
+    PROCESSED_DATE @( title: 'Processed Date' );    
 };
-
 
 annotate ZAPIBPS0012.ZAPIBPS0012Report {
-  Plant @mandatory;
-  StorageLocation @mandatory;
-  PlannedCountDate @mandatory;
-  PostingDate @mandatory;
-};
+    Plant @mandatory;
+    StorageLocation @mandatory;
+    PlannedCountDate @mandatory;
+    PostingDate @mandatory; 
+}

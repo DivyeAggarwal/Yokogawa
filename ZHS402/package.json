@@ -360,7 +360,7 @@
         "model": "srv/external/ZAPIHMM0003_SRV",
         "csrf": true,
         "credentials": {
-          "path": "/sap/opu/odata/sap/ZAPIHPS0003_SRV",
+          "path": "/sap/opu/odata/sap/ZAPIHMM0003_SRV",
           "destination": "s4003-ap-https_ZSRVBHPS0008",
           "csrf": true,
           "csrfInBatch": true
@@ -371,8 +371,9 @@
         "model": "srv/external/ZSRVBHMM0007",
         "csrf": true,
         "credentials": {
-          "path": "/sap/opu/odata/sap/ZAPIHPS0003_SRV",
+          "path": "/sap/opu/odata/sap/ZSRVBHMM0007",
           "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "sap-client":120,
           "csrf": true,
           "csrfInBatch": true
         }
