@@ -27,6 +27,8 @@ using ZSRVBHPP0019 from './external/ZSRVBHPP0019';
 using ZSRVBHMM0008 from './external/ZSRVBHMM0008';
 using ZSRVBHPP0003 from './external/ZSRVBHPP0003';
 using ZAPIHPS0003_SRV from './external/ZAPIHPS0003_SRV';
+using ZSRVBHMM0007 from './external/ZSRVBHMM0007';
+using ZAPIHMM0003_SRV from './external/ZAPIHMM0003_SRV';
 
 service CatalogService {
     entity ZCDSEHCSC0003                as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -1681,3 +1683,25 @@ service ZAPIBPS0011 {
     entity ZCDSEHPPC0013 as projection on ZSRVBHPP0003.ZCDSEHPPC0013;
     entity ZCDSEHPPC0014 as projection on ZSRVBHPP0003.ZCDSEHPPC0014;
 }
+
+
+
+//Post Inventory Difference zhmm0010 36004
+service ZAPIBPS0012 {
+    entity ZTHBT0074 as projection on db.ZTHBT0074;
+     @cds.persistence.skip
+    entity ZAPIBPS0012Report {
+        PhysInvDoc: String @title : 'Physical Inventory Document';
+        Plant: String @title : 'Plant';
+        StorageLocation: String @title : 'Storage Location';
+        PlannedCountDate: Date @title : 'Planned Date of Inventory Count';
+        PostingDate: Date @title : 'Posting Date';
+        STATUS: String @title : 'Status';
+        TYPE: String @title : 'Message Type';
+        CLASS: String @title : 'Message Class';
+        MNO: String @title : 'Message No';
+        MESSAGE: String @title : 'Messageo';
+    }
+    entity ZCDSEHMMC0014 as projection on ZSRVBHMM0007.ZCDSEHMMC0014;
+    entity HeaderPI as projection on ZAPIHMM0003_SRV.HeaderPISet;
+} 

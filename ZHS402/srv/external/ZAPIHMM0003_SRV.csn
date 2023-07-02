@@ -1,0 +1,243 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.8.2"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZAPIHMM0003_SRV": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZAPIHMM0003_SRV.HeaderPISet": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.pageable": "false",
+      "@sap.content.version": "1",
+      "elements": {
+        "Iblnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.unicode": "false",
+          "@sap.label": "Phys. Inv. Doc.",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Werks": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.unicode": "false",
+          "@sap.label": "Plant",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Lgort": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.unicode": "false",
+          "@sap.label": "Stor. Loc.",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Gidat": {
+          "type": "cds.Timestamp",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 7,
+          "@sap.unicode": "false",
+          "@sap.label": "Plan.Count date",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Budat": {
+          "type": "cds.Timestamp",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 7,
+          "@sap.unicode": "false",
+          "@sap.label": "Posting Date",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "HeaderToItemNav": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ZAPIHMM0003_SRV.ItemPISet",
+          "cardinality": {
+            "max": "*"
+          },
+          "on": [
+            {
+              "ref": [
+                "HeaderToItemNav",
+                "Iblnr"
+              ]
+            },
+            "=",
+            {
+              "ref": [
+                "Iblnr"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "ZAPIHMM0003_SRV.ItemPISet": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.pageable": "false",
+      "@sap.content.version": "1",
+      "elements": {
+        "Iblnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.unicode": "false",
+          "@sap.label": "Phys. Inv. Doc.",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Gjahr": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.unicode": "false",
+          "@sap.label": "Fiscal Year",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Zeili": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.unicode": "false",
+          "@sap.label": "Item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Matnr": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.unicode": "false",
+          "@sap.label": "Material",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Werks": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.unicode": "false",
+          "@sap.label": "Plant",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Lgort": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.unicode": "false",
+          "@sap.label": "Stor. Loc.",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Menge": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unicode": "false",
+          "@sap.label": "Quantity",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Meins": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.unicode": "false",
+          "@sap.label": "Base Unit",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": true
+        },
+        "Xzael": {
+          "type": "cds.Boolean",
+          "@sap.unicode": "false",
+          "@sap.label": "Item Counted",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Gidat": {
+          "type": "cds.Timestamp",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 7,
+          "@sap.unicode": "false",
+          "@sap.label": "Plan.Count date",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        },
+        "Budat": {
+          "type": "cds.Timestamp",
+          "@odata.Type": "Edm.DateTime",
+          "@odata.Precision": 7,
+          "@sap.unicode": "false",
+          "@sap.label": "Posting Date",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "notNull": true
+        }
+      }
+    }
+  }
+}
