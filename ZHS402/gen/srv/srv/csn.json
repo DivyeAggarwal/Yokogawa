@@ -28614,6 +28614,11 @@
           "Value": {
             "=": "PS_PSPNR"
           }
+        },
+        {
+          "Value": {
+            "=": "PBUKR"
+          }
         }
       ],
       "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
@@ -39728,12 +39733,15 @@
         },
         "basedate": {
           "@title": "Basic Date",
-          "type": "cds.String",
-          "length": 8
+          "type": "cds.Date"
         },
         "Immediately": {
           "@title": "Immediately",
           "type": "cds.Boolean"
+        },
+        "Message": {
+          "@title": "Message",
+          "type": "cds.String"
         }
       }
     },

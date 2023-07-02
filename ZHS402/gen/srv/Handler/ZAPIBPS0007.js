@@ -67,7 +67,7 @@ var registerZAPIBPS0007Handler = function (that, cds) {
             req.data.Material = ''
         }
         if(req.data.Quantity == undefined) {
-            req.data.Quantity = ''
+            req.data.Quantity = '0.000'
         }
         if(req.data.Recipient == undefined) {
             req.data.Recipient = ''
@@ -91,7 +91,7 @@ var registerZAPIBPS0007Handler = function (that, cds) {
             req.data.GLAccountcode = ''
         }
         if(req.data.unit == undefined) {
-            req.data.unit = ''
+            req.data.unit = 'PS'
         }
         if(req.data.basedate == undefined) {
             req.data.basedate = ''
@@ -101,6 +101,10 @@ var registerZAPIBPS0007Handler = function (that, cds) {
         }
         if(req.data.StorageLocationTo == undefined) {
             req.data.StorageLocationTo = ''
+        }
+
+        if(req.data.basedate !== undefined) {
+            req.data.basedate = req.data.basedate.split('-').join('');
         }
 
         var payload = {
@@ -145,30 +149,30 @@ var registerZAPIBPS0007Handler = function (that, cds) {
 
             if (linkage && immediately) {
                 functionImport = "/linkage";
-                req.data.immflag = "X";
-                req.data.optflag = "Y";
-                req.data.ordflag = "2";
+                req.data.uploadFile[i].immflag = "X";
+                req.data.uploadFile[i].optflag = "Y";
+                req.data.uploadFile[i].ordflag = "2";
 
             } else if (prodOrder && immediately) {
                 functionImport = "/ordertrf";
-                req.data.immflag = "X";
-                req.data.optflag = "Y";
-                req.data.ordflag = "1";
-                req.data.ordflag = "";
+                req.data.uploadFile[i].immflag = "X";
+                req.data.uploadFile[i].optflag = "Y";
+                req.data.uploadFile[i].ordflag = "1";
+                req.data.uploadFile[i].ordflag = "";
             } else if (!prodOrder && !linkage && immediately) {
                 functionImport = "/none";
-                req.data.immflag = "X";
-                req.data.optflag = "X";
-                req.data.ordflag = "";
+                req.data.uploadFile[i].immflag = "X";
+                req.data.uploadFile[i].optflag = "X";
+                req.data.uploadFile[i].ordflag = "";
             } else if (costCenter && glAccount && immediately) {
                 functionImport = "/cctrans";
-                req.data.immflag = "X";
-                req.data.optflag = "Z";
-                req.data.ordflag = "";
+                req.data.uploadFile[i].immflag = "X";
+                req.data.uploadFile[i].optflag = "Z";
+                req.data.uploadFile[i].ordflag = "";
             } else if (!immediately) {
                 functionImport = "/immblank";
-                req.data.immflag = ""
-                req.data.ordflag = "";
+                req.data.uploadFile[i].immflag = ""
+                req.data.uploadFile[i].ordflag = "";
             }
 
 
@@ -181,26 +185,71 @@ var registerZAPIBPS0007Handler = function (that, cds) {
             //     "'&immflag='" + immflag + "'&optflag='" + optionalFlag + "'&ordflag='" + ordflag + "'";
                 
             // var response = await soapi.tx(req).post(url);
-            var payload = {
-                plant: req.data.plant,
-                Material: req.data.Material,
-                Quantity: req.data.Quantity,
-                unit: req.data.unit,
-                StorageLocationFrom: req.data.StorageLocationFrom,
-                StorageLocationTo: req.data.StorageLocationTo,
-                Recipient: req.data.Recipient,
-                UnlPoint: req.data.UnlPoint,
-                ProdOrder: req.data.ProdOrder,
-                Linkage: req.data.Linkage,
-                Costcenter: req.data.Costcenter,
-                GLAccountcode: req.data.GLAccountcode,
-                Text: req.data.Text,
-                immflag: req.data.immflag,
-                optflag: req.data.optflag,
-                basedate: req.data.basedate,
-                ordflag: req.data.ordflag
+
+            if(req.data.uploadFile[i].plant == undefined) {
+                req.data.uploadFile[i].plant = ''
             }
-            var response = await soapi.tx(req).post("/ZCDSEHPPB0097", req.data);
+            if(req.data.uploadFile[i].Material == undefined) {
+                req.data.uploadFile[i].Material = ''
+            }
+            if(req.data.uploadFile[i].Quantity == undefined) {
+                req.data.uploadFile[i].Quantity = ''
+            }
+            if(req.data.uploadFile[i].Recipient == undefined) {
+                req.data.uploadFile[i].Recipient = ''
+            }
+            if(req.data.uploadFile[i].UnlPoint == undefined) {
+                req.data.uploadFile[i].UnlPoint = ''
+            }
+            if(req.data.uploadFile[i].Text == undefined) {
+                req.data.uploadFile[i].Text = ''
+            }
+            if(req.data.uploadFile[i].ProdOrder == undefined) {
+                req.data.uploadFile[i].ProdOrder = ''
+            }
+            if(req.data.uploadFile[i].Linkage == undefined) {
+                req.data.uploadFile[i].Linkage = ''
+            }
+            if(req.data.uploadFile[i].Costcenter == undefined) {
+                req.data.uploadFile[i].Costcenter = ''
+            }
+            if(req.data.uploadFile[i].GLAccountcode == undefined) {
+                req.data.uploadFile[i].GLAccountcode = ''
+            }
+            if(req.data.uploadFile[i].unit == undefined) {
+                req.data.uploadFile[i].unit = ''
+            }
+            if(req.data.uploadFile[i].basedate == undefined) {
+                req.data.uploadFile[i].basedate = ''
+            }
+            if(req.data.uploadFile[i].StorageLocationFrom == undefined) {
+                req.data.uploadFile[i].StorageLocationFrom = ''
+            }
+            if(req.data.uploadFile[i].StorageLocationTo == undefined) {
+                req.data.uploadFile[i].StorageLocationTo = ''
+            }
+    
+
+            var payload = {
+                plant: req.data.uploadFile[i].plant,
+                Material: req.data.uploadFile[i].Material,
+                Quantity: req.data.uploadFile[i].Quantity,
+                unit: req.data.uploadFile[i].unit,
+                StorageLocationFrom: req.data.uploadFile[i].StorageLocationFrom,
+                StorageLocationTo: req.data.uploadFile[i].StorageLocationTo,
+                Recipient: req.data.uploadFile[i].Recipient,
+                UnlPoint: req.data.uploadFile[i].UnlPoint,
+                ProdOrder: req.data.uploadFile[i].ProdOrder,
+                Linkage: req.data.uploadFile[i].Linkage,
+                Costcenter: req.data.uploadFile[i].Costcenter,
+                GLAccountcode: req.data.uploadFile[i].GLAccountcode,
+                Text: req.data.uploadFile[i].Text,
+                immflag: req.data.uploadFile[i].immflag,
+                optflag: req.data.uploadFile[i].optflag,
+                basedate: req.data.uploadFile[i].basedate,
+                ordflag: req.data.uploadFile[i].ordflag
+            }
+            var response = await soapi.tx(req).post("/ZCDSEHPPB0097", payload);
             output.push(response);
         }
         return {

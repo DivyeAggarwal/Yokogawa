@@ -1610,8 +1610,9 @@ service ZAPIBPS0007 {
          Costcenter: String(4) @title : 'Cost Center';
          GLAccountcode: String(10) @title : 'G/L Account';
          Text: String(30) @title : 'Text';
-         basedate: String(8) @title : 'Basic Date';
-         Immediately: Boolean @title: 'Immediately'
+         basedate: Date @title : 'Basic Date';
+         Immediately: Boolean @title: 'Immediately';
+         Message: String @title: 'Message';
 
     }
     @cds.persistence.skip

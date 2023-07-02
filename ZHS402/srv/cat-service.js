@@ -377,10 +377,15 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         //         psttr:"2022-05-18"
         //     }
         // )
+        const plannedOrder1 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(
+                {
+                    plnum:filterData.plnum
+                }
+            )
         const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
             plnum: filterData.plnum,
             plwrk: filterData.plwrk,
-            paart: filterData.paart,
+            vagrp: filterData.paart,
             dispo: filterData.dispo,
             psttr: filterData.psttr,
             pedtr: filterData.pedtr,
@@ -432,7 +437,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         // }
 
         var test = 1;
-        // var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+        var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
         var test1 = 1;
         // return response;
 
