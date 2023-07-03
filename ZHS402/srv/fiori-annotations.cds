@@ -2082,7 +2082,7 @@ YEOS_MNF_NO @UI.HiddenFilter: true;
 }
 annotate ZCDSEHBTC0007.specificationChange {
     @(Common : {
-        Label     : 'Material',
+        Label     : 'Production Parts',
         ValueList : {
             CollectionPath : 'ZTHBT0001',
             Parameters     : [
