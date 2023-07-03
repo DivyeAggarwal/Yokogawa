@@ -4592,3 +4592,13 @@ annotate ZAPIBPS0012.ZAPIBPS0012Report {
     PlannedCountDate @mandatory;
     PostingDate @mandatory; 
 }
+
+
+annotate ZAPIBPS0012.ZAPIBPS0012Report @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : PostingDate,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});

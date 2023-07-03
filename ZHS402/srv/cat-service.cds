@@ -1704,6 +1704,7 @@ entity ZAPIBPS0012Report as projection on ZSRVBHMM0007.ZCDSEHMMC0014 {
             StorageLocation,
             PlannedCountDate,
             null as PostingDate : Date,
+            null as datetime : String,
             null as STATUS: String @title : 'Status',
             null as MTYPE: String @title : 'Message Type',
             null as CLASS: String @title : 'Message Class',
@@ -1718,10 +1719,22 @@ entity ZAPIBPS0012Report as projection on ZSRVBHMM0007.ZCDSEHMMC0014 {
     // entity HeaderPI as projection on ZAPIHMM0003_SRV.HeaderPISet;
     entity ZAPIBPS0012POST as projection on ZAPIHMM0003_SRV.HeaderPISet {
         key Iblnr,
+            CountErrFlg, 
             Werks,
+            DiffErrFlg,
             Lgort,
+            Type,
             Gidat,
+            Id,
             Budat,
-            HeaderToItemNav : Association to many ZAPIHMM0003_SRV.ItemPISet on Iblnr = $projection.Iblnr
+            Number,
+            Message,
+            LogNo,
+            LogMsgNo,
+            MessageV1,
+            MessageV2,
+            MessageV3,
+            MessageV4,            
+            null as HeaderToItemNav : String
     };
 } 

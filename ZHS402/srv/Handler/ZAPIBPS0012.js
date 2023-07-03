@@ -35,6 +35,8 @@ var registerZAPIBPS0012Handler = function (that, cds) {
     that.on('CREATE', 'ZAPIBPS0012POST', async req => {
         const api = await cds.connect.to('ZAPIHMM0003_SRV');
         var dulicate = Object.assign({}, req.data);
+        delete dulicate.HeaderToItemNav;
+        dulicate.HeaderToItemNav = JSON.parse(req.data.HeaderToItemNav);        
         var response = await api.tx(req).post("/HeaderPISet",dulicate); 
         return response;
     });
