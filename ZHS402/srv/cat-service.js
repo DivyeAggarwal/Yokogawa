@@ -513,6 +513,22 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         context.data.INVOICEID = InvoiceID;
     });
 
+    this.on('READ', 'ZCDSEHPPC0015', async (context) => {
+        let responseWorkato = await axios({
+            method: 'GET',
+            url: "https://apim.workato.com/yokogawa_veri/y-api-v1/iomodule/bmsdiv?ms_code=EJX110A-FMS5G-717DN/FS15/D1/N4/EE",
+            params: {
+              $format: "json"
+            },
+            headers: {
+              'Accept': 'application/json',
+              'API-TOKEN': 'd265459426fb462263e03438a47ee3195177cfdb92aee0188695a94f80dea07a'
+            }
+          });
+
+          
+    })
+
     this.after('CREATE', 'ZTHBT0033', async (context) => {
         var MSCODE = context.MSCODE;
         var PRODUCTCAREER = context.PRODUCTCAREER;

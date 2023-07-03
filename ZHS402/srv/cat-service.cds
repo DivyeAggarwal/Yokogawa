@@ -469,6 +469,14 @@ service ZCDSEHBTC0006 {
     entity ZTHBT0033                    as projection on db.ZTHBT0033;
     entity ZCDSEHMMC0004                as projection on ZSRVBHMM0004.ZCDSEHMMC0004;
 
+    @cds.persistence.skip
+    entity ZCDSEHPPC0015 {
+        key MATERIALCODE : String(80);
+            MODEL: String(8);
+        key SUFFIXLEVEL: String(18);
+        key SUFFIXVALUE: String(18);
+    }
+
 }
 
 service ZCDSEHBTC0007 {
