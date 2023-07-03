@@ -1698,6 +1698,8 @@ service ZAPIBPS0011 {
 //Post Inventory Difference zhmm0010 36004
 service ZAPIBPS0012 {
     entity ZTHBT0074 as projection on db.ZTHBT0074; 
+    entity ZAPIBPS0012_PlantStdVH as projection on ZSRVBHMM0007.I_PlantStdVH; 
+    entity ZAPIBPS0012_StorageLocationStdVH as projection on ZSRVBHMM0007.I_StorageLocationStdVH; 
 entity ZAPIBPS0012Report as projection on ZSRVBHMM0007.ZCDSEHMMC0014 {
         key PhysInvDoc,
             Plant,
@@ -1716,7 +1718,17 @@ entity ZAPIBPS0012Report as projection on ZSRVBHMM0007.ZCDSEHMMC0014 {
             to_item : Association to many ZSRVBHMM0007.ZCDSEHMMC0010 on PhysInvDoc = $projection.PhysInvDoc
     };
     entity ZCDSEHMMC0010 as projection on ZSRVBHMM0007.ZCDSEHMMC0010;
-    entity ItemPISet as projection on ZAPIHMM0003_SRV.ItemPISet;
+    entity ItemPISet as projection on ZAPIHMM0003_SRV.ItemPISet{
+        key Iblnr,
+            Gjahr ,
+            Zeili,
+            Matnr, 
+            Werks, 
+            Lgort, 
+            Menge, 
+            Meins, 
+            Xzael 
+    };
     @cds.persistence.skip
     entity ZAPIBPS0012POST  {
         key Iblnr : String(10);
@@ -1725,9 +1737,9 @@ entity ZAPIBPS0012Report as projection on ZSRVBHMM0007.ZCDSEHMMC0014 {
             DiffErrFlg : Boolean;
             Lgort : String(4);
             Type : String(1);
-            Gidat : DateTime;
+            Gidat : Date;
             Id : String(20);
-            Budat : DateTime;
+            Budat : Date;
             Number : String(3);
             Message : String(220);
             LogNo : String(20);

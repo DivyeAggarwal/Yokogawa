@@ -4596,7 +4596,7 @@ annotate ZAPIBPS0012.ZAPIBPS0012Report {
      @(Common : {
         Label        : 'Plant',
         ValueList    : {
-            CollectionPath : 'I_PlantStdVH',
+            CollectionPath : 'ZAPIBPS0012_PlantStdVH',
             Parameters     : [
             {
                 $Type             : 'Common.ValueListParameterInOut',
@@ -4615,7 +4615,7 @@ annotate ZAPIBPS0012.ZAPIBPS0012Report {
      @(Common : {
         Label        : 'Sotage Location',
         ValueList    : {
-            CollectionPath : 'I_StorageLocationStdVH',
+            CollectionPath : 'ZAPIBPS0012_StorageLocationStdVH',
             Parameters     : [
             {
                 $Type             : 'Common.ValueListParameterInOut',
