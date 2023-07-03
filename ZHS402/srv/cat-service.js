@@ -515,9 +515,14 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     });
 
     this.on('READ', 'ZCDSEHPPC0015', async (context) => {
+        if (context.query.SELECT.where) {
+        const mcode_idx = context.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "MATERIALCODE"));
+        if (mcode_idx >= 0) {
+            var ms_code = context.query.SELECT.where[mcode_idx + 2].val
+        
         let responseWorkato = await axios({
             method: 'GET',
-            url: "https://apim.workato.com/yokogawa_veri/y-api-v1/iomodule/bmsdiv?ms_code=EJX110A-FMS5G-717DN/FS15/D1/N4/EE",
+            url: "https://apim.workato.com/yokogawa_veri/y-api-v1/iomodule/bmsdiv?ms_code=" + ms_code,
             params: {
               $format: "json"
             },
@@ -527,16 +532,10 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
             }
           });
           var response = [];
-        //   var responseArray = {
-        //         MATERIALCODE:"",
-        //         MODEL:"",
-        //         SUFFIXLEVEL:"",
-        //         SUFFIXVALUE:""
-        //     }
           if(responseWorkato.data.err_code == "") {
             var suffix = responseWorkato.data.suffix;
             var option = responseWorkato.data.option;
-            var materialCode = "";
+            var materialCode = ms_code;
             var model = responseWorkato.data.model;
 
             for(var i=0;i < suffix.length; i++ ) {
@@ -563,6 +562,8 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
           }
           
           return response;
+        }
+    }
     })
 
     this.after('CREATE', 'ZTHBT0033', async (context) => {
@@ -664,13 +665,13 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 }
             }
             //code for spec table
-            const specData = await bupa.get('ZCDSEHBTC0006.ZCDSEHMMC0004').where({ model: MODEL });
+            const specData = await bupa.get('ZCDSEHBTC0006.ZCDSEHPPC0015').where({ MATERIALCODE: MODEL });
             if(specData.length > 0) {
                 var conversionSpec = {
-                    MATERIALCODE: specData[0].mscode,
-                    MODEL: specData[0].model,
-                    SUFFIXLEVEL: specData[0].suffixlevel,
-                    SUFFIXVALUE: specData[0].suffixvalue
+                    MATERIALCODE: specData[0].MATERIALCODE,
+                    MODEL: specData[0].MODEL,
+                    SUFFIXLEVEL: specData[0].SUFFIXLEVEL,
+                    SUFFIXVALUE: specData[0].SUFFIXVALUE
                 };
                 await UPSERT.into('ZHS402.ZTHBT0032').entries(conversionSpec);
             }
