@@ -11,6 +11,111 @@
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
     },
+    "ZSRVBHMM0007.I_ConfignDeprecationCode": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Configuration Deprecation Code",
+      "@sap.value.list": "true",
+      "elements": {
+        "ConfigurationDeprecationCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "ConfigurationDeprecationCode_Text",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
+          "notNull": true
+        },
+        "ConfigurationDeprecationCode_Text": {
+          "type": "cds.String",
+          "length": 60,
+          "@sap.label": "Validity Text",
+          "@sap.quickinfo": "Value Help: Flag Obsolete Entries",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        }
+      }
+    },
+    "ZSRVBHMM0007.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "notNull": true
+        },
+        "PlantName": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "Plant Name"
+        }
+      }
+    },
+    "ZSRVBHMM0007.I_StorageLocationStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Storage Location",
+      "elements": {
+        "Plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "notNull": true
+        },
+        "StorageLocation": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "StorageLocationName",
+          "@sap.label": "Storage location",
+          "notNull": true
+        },
+        "StorageLocationName": {
+          "type": "cds.String",
+          "length": 16,
+          "@sap.label": "Storage Loc. Name",
+          "@sap.quickinfo": "Storage Location Name"
+        },
+        "ConfigDeprecationCode": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
+          "@sap.value.list": "fixed-values"
+        }
+      }
+    },
     "ZSRVBHMM0007.ZCDSEHMMC0010": {
       "kind": "entity",
       "@cds.external": true,
@@ -83,169 +188,17 @@
           "@sap.quickinfo": "Item has been counted"
         },
         "PlannedCountDate": {
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Count Date",
-          "@sap.quickinfo": "Planned Date of Inventory Count"
+          "@sap.quickinfo": "Character Field with Length 10"
         },
         "to_Header": {
           "@cds.ambiguous": "missing on condition?",
           "type": "cds.Association",
           "target": "ZSRVBHMM0007.ZCDSEHMMC0014",
           "keys": []
-        }
-      }
-    },
-    "ZSRVBHMM0007.POST_ENTITY": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.content.version": "1",
-      "@sap.label": "Custom CDS: Post Inventory Difference",
-      "elements": {
-        "FiscalYear": {
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Fiscal Year",
-          "notNull": true
-        },
-        "PhysicalInv": {
-          "key": true,
-          "type": "cds.String",
-          "length": 10,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Physical Inventory Document",
-          "notNull": true
-        },
-        "PLineNo": {
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Item",
-          "@sap.quickinfo": "Line Number",
-          "notNull": true
-        },
-        "Material": {
-          "key": true,
-          "type": "cds.String",
-          "length": 40,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
-          "notNull": true
-        },
-        "Plant": {
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Plant",
-          "notNull": true
-        },
-        "StorageLocation": {
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage Location",
-          "@sap.quickinfo": "Storage location",
-          "notNull": true
-        },
-        "Quantity": {
-          "key": true,
-          "type": "cds.Decimal",
-          "precision": 13,
-          "scale": 3,
-          "@sap.unit": "Unit",
-          "@sap.label": "Quantity",
-          "notNull": true
-        },
-        "Unit": {
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "@sap.label": "Unit",
-          "@sap.quickinfo": "Base Unit of Measure",
-          "@sap.semantics": "unit-of-measure",
-          "notNull": true
-        },
-        "CountInd": {
-          "key": true,
-          "type": "cds.Boolean",
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Count Indicator",
-          "@sap.quickinfo": "Item has been counted",
-          "notNull": true
-        },
-        "PlannedCountDate": {
-          "key": true,
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
-          "@sap.label": "Planned Count Date",
-          "@sap.quickinfo": "Planned Date of Inventory Count",
-          "notNull": true
-        },
-        "PostingDate": {
-          "key": true,
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
-          "@sap.label": "Posting Date",
-          "@sap.quickinfo": "Posting Date in the Document",
-          "notNull": true
-        },
-        "CountErrFlg": {
-          "key": true,
-          "type": "cds.Boolean",
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Inventory Count Error",
-          "@sap.quickinfo": "General Flag",
-          "notNull": true
-        },
-        "DiffErrFlg": {
-          "key": true,
-          "type": "cds.Boolean",
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Post Difference Error",
-          "@sap.quickinfo": "General Flag",
-          "notNull": true
-        },
-        "Type": {
-          "key": true,
-          "type": "cds.String",
-          "length": 1,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Message Type",
-          "@sap.quickinfo": "Message type: S Success, E Error, W Warning, I Info, A Abort",
-          "notNull": true
-        },
-        "Id": {
-          "key": true,
-          "type": "cds.String",
-          "length": 20,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Message Class",
-          "notNull": true
-        },
-        "MsgNo": {
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Message No.",
-          "@sap.quickinfo": "Message Number",
-          "notNull": true
-        },
-        "Message": {
-          "key": true,
-          "type": "cds.String",
-          "length": 220,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Message",
-          "@sap.quickinfo": "Message Text",
-          "notNull": true
         }
       }
     },
@@ -281,10 +234,11 @@
           "@sap.quickinfo": "Storage location"
         },
         "PlannedCountDate": {
-          "type": "cds.Date",
-          "@sap.display.format": "Date",
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Count Date",
-          "@sap.quickinfo": "Planned Date of Inventory Count"
+          "@sap.quickinfo": "Character Field with Length 10"
         },
         "to_item": {
           "@cds.ambiguous": "missing on condition?",
