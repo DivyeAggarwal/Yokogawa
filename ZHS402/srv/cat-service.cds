@@ -1715,26 +1715,28 @@ entity ZAPIBPS0012Report as projection on ZSRVBHMM0007.ZCDSEHMMC0014 {
             null as PROCESSED_DATE: DateTime @title : 'Processed Date',
             to_item : Association to many ZSRVBHMM0007.ZCDSEHMMC0010 on PhysInvDoc = $projection.PhysInvDoc
     };
-    // entity ZCDSEHMMC0014 as projection on ZSRVBHMM0007.ZCDSEHMMC0014;
-    // entity HeaderPI as projection on ZAPIHMM0003_SRV.HeaderPISet;
-    entity ZAPIBPS0012POST as projection on ZAPIHMM0003_SRV.HeaderPISet {
-        key Iblnr,
-            CountErrFlg, 
-            Werks,
-            DiffErrFlg,
-            Lgort,
-            Type,
-            Gidat,
-            Id,
-            Budat,
-            Number,
-            Message,
-            LogNo,
-            LogMsgNo,
-            MessageV1,
-            MessageV2,
-            MessageV3,
-            MessageV4,            
-            null as HeaderToItemNav : String
+    entity ZCDSEHMMC0010 as projection on ZSRVBHMM0007.ZCDSEHMMC0010;
+    entity ItemPISet as projection on ZAPIHMM0003_SRV.ItemPISet;
+    @cds.persistence.skip
+    entity ZAPIBPS0012POST  {
+        key Iblnr : String(10);
+            CountErrFlg :Boolean;
+            Werks : String(4);
+            DiffErrFlg : Boolean;
+            Lgort : String(4);
+            Type : String(1);
+            Gidat : DateTime;
+            Id : String(20);
+            Budat : DateTime;
+            Number : String(3);
+            Message : String(220);
+            LogNo : String(20);
+            LogMsgNo : String(6);
+            MessageV1 : String(50);
+            MessageV2 : String(50);
+            MessageV3 : String(50);
+            MessageV4 : String(50);
+            HeaderToItemNav : Association to many ZAPIHMM0003_SRV.ItemPISet on Iblnr = $self.Iblnr           
+            // null as HeaderToItemNav : String
     };
 } 
