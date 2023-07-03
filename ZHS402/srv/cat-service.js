@@ -15,6 +15,7 @@ const registerZAPIBPS0009Handler = require("./Handler/ZAPIBPS0009");
 const registerZAPIBPS0011Handler = require("./Handler/ZAPIBPS0011");
 const registerZAPIBPS0012Handler = require("./Handler/ZAPIBPS0012");
 const cds = require('@sap/cds');
+const axios = require("axios");
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql;
 const { Readable, PassThrough } = require('stream');
@@ -525,8 +526,43 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
               'API-TOKEN': 'd265459426fb462263e03438a47ee3195177cfdb92aee0188695a94f80dea07a'
             }
           });
+          var response = [];
+        //   var responseArray = {
+        //         MATERIALCODE:"",
+        //         MODEL:"",
+        //         SUFFIXLEVEL:"",
+        //         SUFFIXVALUE:""
+        //     }
+          if(responseWorkato.data.err_code == "") {
+            var suffix = responseWorkato.data.suffix;
+            var option = responseWorkato.data.option;
+            var materialCode = "";
+            var model = responseWorkato.data.model;
 
+            for(var i=0;i < suffix.length; i++ ) {
+                var responseArray = {
+                    MATERIALCODE:materialCode,
+                    MODEL:model,
+                    SUFFIXLEVEL:suffix[i].suffix_level,
+                    SUFFIXVALUE:suffix[i].suffix_id
+                }
+                response.push(responseArray);
+            }
+            var counter = 1;
+            for(var i=0;i < option.length; i++ ) {
+                
+                var responseArrayOp = {
+                    MATERIALCODE:materialCode,
+                    MODEL:model,
+                    SUFFIXLEVEL:"00" + counter.toString(),
+                    SUFFIXVALUE:option[i].option_id
+                }
+                response.push(responseArrayOp);
+                counter = counter + 1;
+            }
+          }
           
+          return response;
     })
 
     this.after('CREATE', 'ZTHBT0033', async (context) => {

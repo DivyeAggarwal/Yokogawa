@@ -13,6 +13,7 @@ const registerZAPIBPS0007Handler = require("./Handler/ZAPIBPS0007");
 const registerZAPIBPS0008Handler = require("./Handler/ZAPIBPS0008");
 const registerZAPIBPS0009Handler = require("./Handler/ZAPIBPS0009");
 const registerZAPIBPS0011Handler = require("./Handler/ZAPIBPS0011");
+const registerZAPIBPS0012Handler = require("./Handler/ZAPIBPS0012");
 const cds = require('@sap/cds');
 const { read } = require("@sap/cds/lib/utils/cds-utils");
 const { SELECT, INSERT, UPDATE } = cds.ql;
@@ -51,6 +52,7 @@ module.exports = cds.service.impl(async function (srv) {
     registerZAPIBPS0008Handler(this,cds);
     registerZAPIBPS0009Handler(this,cds);
     registerZAPIBPS0011Handler(this,cds);
+    registerZAPIBPS0012Handler(this,cds);
     registerZAPIBPS0004Handler(this,cds,Readable, PassThrough,XLSX,SequenceHelper);
     this.on('READ', 'ZCDSEHPSB0004', async req => {
         const bupa = await cds.connect.to('ZSRVBHPS0008');
@@ -206,7 +208,7 @@ this.on('Scan_Start1', async (req) => {
 });
 this.on('Find_Scan', async (req) => {
     const api = await cds.connect.to('ZSRVBHPP0005');
-    return api.post("/Find_Scan?pkkey='" + req.data.pkkey + "'&pkbst='" + req.data.pkbst + "'&pkstu='" + req.data.pkstu + "'",{}).then((res, response, o) =>{
+    return api.postst("/Find_Scan?pkkey='" + req.data.pkkey + "'&pkbst='" + req.data.pkbst + "'&pkstu='" + req.data.pkstu + "'",{}).then((res, response, o) =>{
         return res;
     });
 });
@@ -377,10 +379,15 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         //         psttr:"2022-05-18"
         //     }
         // )
+        const plannedOrder1 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(
+                {
+                    plnum:filterData.plnum
+                }
+            )
         const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
             plnum: filterData.plnum,
             plwrk: filterData.plwrk,
-            paart: filterData.paart,
+            vagrp: filterData.paart,
             dispo: filterData.dispo,
             psttr: filterData.psttr,
             pedtr: filterData.pedtr,
@@ -432,8 +439,33 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         // }
 
         var test = 1;
-        // var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
-        var test1 = 1;
+        try {
+            var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+        } catch (error) {
+            req.reject({
+                code: 403,
+                message: 'Post request failing'
+            });
+        }
+        
+        var dataPayload = {
+            BTYPEORDER:"",
+            BTYPEITEM:"",
+            DWERK:"",
+            BTYPECAT:"",
+            AUFNR:"",
+            GSTRP:"",
+            GLTRP:""
+        }
+        await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload);
+
+        var dataPayload28 = {
+            PRODUCTIONORDER:"",
+            ZZPLANT:"",
+            ZZG_PRINTED_REV:""
+
+        }
+        await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
         // return response;
 
     });
@@ -480,6 +512,22 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         var InvoiceID = currentYear + "-" + convertedID;
         context.data.INVOICEID = InvoiceID;
     });
+
+    this.on('READ', 'ZCDSEHPPC0015', async (context) => {
+        let responseWorkato = await axios({
+            method: 'GET',
+            url: "https://apim.workato.com/yokogawa_veri/y-api-v1/iomodule/bmsdiv?ms_code=EJX110A-FMS5G-717DN/FS15/D1/N4/EE",
+            params: {
+              $format: "json"
+            },
+            headers: {
+              'Accept': 'application/json',
+              'API-TOKEN': 'd265459426fb462263e03438a47ee3195177cfdb92aee0188695a94f80dea07a'
+            }
+          });
+
+          
+    })
 
     this.after('CREATE', 'ZTHBT0033', async (context) => {
         var MSCODE = context.MSCODE;
