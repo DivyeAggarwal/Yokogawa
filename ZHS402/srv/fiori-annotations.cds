@@ -4592,12 +4592,60 @@ annotate ZAPIBPS0012.ZAPIBPS0012Report {
     PlannedCountDate @mandatory;
     PostingDate @mandatory; 
 }
+annotate ZAPIBPS0012.ZAPIBPS0012Report {
+     @(Common : {
+        Label        : 'Plant',
+        ValueList    : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+            {
+                $Type             : 'Common.ValueListParameterInOut',
+                LocalDataProperty : Plant,
+                ValueListProperty : 'Plant'
+            },
+            {
+                $Type             : 'Common.ValueListParameterDisplayOnly',
+                ValueListProperty : 'PlantName'
+            }
+            ]
+        }
+    })
+    Plant;
+    
+     @(Common : {
+        Label        : 'Sotage Location',
+        ValueList    : {
+            CollectionPath : 'I_StorageLocationStdVH',
+            Parameters     : [
+            {
+                $Type             : 'Common.ValueListParameterInOut',
+                LocalDataProperty : Plant,
+                ValueListProperty : 'Plant'
+            },
+            {
+                $Type             : 'Common.ValueListParameterInOut',
+                LocalDataProperty : StorageLocation,
+                ValueListProperty : 'StorageLocation'
+            },
+            {
+                $Type             : 'Common.ValueListParameterDisplayOnly',
+                ValueListProperty : 'StorageLocationName'
+            }
+            ]
+        }
+    })
+    StorageLocation;
+}
 
 
 annotate ZAPIBPS0012.ZAPIBPS0012Report @(Capabilities.FilterRestrictions : {
    FilterExpressionRestrictions : [
         {
             Property : PostingDate,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : PlannedCountDate,
             AllowedExpressions : 'SingleValue'
         }
     ]
