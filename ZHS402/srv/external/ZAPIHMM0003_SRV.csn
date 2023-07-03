@@ -42,21 +42,21 @@
           "@sap.filterable": "false",
           "notNull": true
         },
-        "Werks": {
-          "type": "cds.String",
-          "length": 4,
+        "DiffErrFlg": {
+          "type": "cds.Boolean",
           "@sap.unicode": "false",
-          "@sap.label": "Plant",
+          "@sap.label": "Indicator",
           "@sap.creatable": "false",
           "@sap.updatable": "false",
           "@sap.sortable": "false",
           "@sap.filterable": "false",
           "notNull": true
         },
-        "DiffErrFlg": {
-          "type": "cds.Boolean",
+        "Werks": {
+          "type": "cds.String",
+          "length": 4,
           "@sap.unicode": "false",
-          "@sap.label": "Indicator",
+          "@sap.label": "Plant",
           "@sap.creatable": "false",
           "@sap.updatable": "false",
           "@sap.sortable": "false",
@@ -94,8 +94,7 @@
           "@sap.creatable": "false",
           "@sap.updatable": "false",
           "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "notNull": true
+          "@sap.filterable": "false"
         },
         "Id": {
           "type": "cds.String",
@@ -117,8 +116,7 @@
           "@sap.creatable": "false",
           "@sap.updatable": "false",
           "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "notNull": true
+          "@sap.filterable": "false"
         },
         "Number": {
           "type": "cds.String",
@@ -352,8 +350,7 @@
           "@sap.creatable": "false",
           "@sap.updatable": "false",
           "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "notNull": true
+          "@sap.filterable": "false"
         },
         "Budat": {
           "type": "cds.Timestamp",
@@ -364,8 +361,7 @@
           "@sap.creatable": "false",
           "@sap.updatable": "false",
           "@sap.sortable": "false",
-          "@sap.filterable": "false",
-          "notNull": true
+          "@sap.filterable": "false"
         }
       }
     }
