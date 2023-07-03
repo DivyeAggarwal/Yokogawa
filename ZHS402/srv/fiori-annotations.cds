@@ -1866,6 +1866,14 @@ annotate ZCDSEHBTC0007.specificationChange with @(Capabilities : {
         ],
     }
 });
+annotate ZCDSEHBTC0007.specificationChange @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : WERKS,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
 annotate ZCDSEHBTC0007.specificationChange with {
     E_PART_NO       @title : 'Design Parts';
     COMP_PART_NO       @title : 'Production Parts';
