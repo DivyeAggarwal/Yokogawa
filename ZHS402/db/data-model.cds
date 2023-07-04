@@ -252,6 +252,7 @@ entity ZTHBT0033 : managed {
     key PARTSNUMBER: String(18);
     key MODEL: String(18);
         PPLLAG: String(1);
+        STATUS: String(40);
 }
 @title : '{i18n>PartsStructureSpecification}'
 entity ZTHBT0010 : managed {
