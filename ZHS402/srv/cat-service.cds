@@ -1735,9 +1735,9 @@ entity ZAPIBPS0012Report as projection on ZSRVBHMM0007.ZCDSEHMMC0014 {
             null as CLASS: String @title : 'Message Class',
             null as MNO: String @title : 'Message No',
             null as MESSAGE: String @title : 'Message',
-            null as SCHEDULED_BY: DateTime @title : 'Scheduled By',
-            null as SCHEDULED_DATE: DateTime @title : 'Scheduled Date',
-            null as PROCESSED_DATE: DateTime @title : 'Processed Date',
+            null as SCHEDULED_BY: String @title : 'Scheduled By',
+            null as SCHEDULED_DATE: Timestamp @title : 'Scheduled Date',
+            null as PROCESSED_DATE: Timestamp @title : 'Processed Date',
             to_item : Association to many ZSRVBHMM0007.ZCDSEHMMC0010 on PhysInvDoc = $projection.PhysInvDoc
     };
     entity ZCDSEHMMC0010 as projection on ZSRVBHMM0007.ZCDSEHMMC0010;
