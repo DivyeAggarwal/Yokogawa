@@ -1626,6 +1626,29 @@ service ZAPIBPS0007 {
 
     }
     @cds.persistence.skip
+    entity IndividualIssueDummy {
+        Inputfield: String(30) @title : 'Input field';
+        option: String(30) @title : 'Option';
+        OrderTransfer: String(30) @title : 'Order Transfer';
+        plant: String(4) @title : 'Plant';
+        Material: String(40) @title : 'Material';
+         Quantity: Decimal(13,2) @title : 'Quantity';
+         unit: String(3) @title: 'Unit';
+         StorageLocationFrom: String(4) @title : 'Storage Location From';
+         StorageLocationTo: String(4) @title : 'Storage Location To';
+         Recipient: String(12) @title : 'Goods Recipient';
+         UnlPoint: String(25) @title : 'Unloading Point';
+         ProdOrder : String(12) @title : 'Production Order Number';
+         Linkage: String(16) @title : 'Linkage No.';
+         Costcenter: String(4) @title : 'Cost Center';
+         GLAccountcode: String(10) @title : 'G/L Account';
+         Text: String(30) @title : 'Text';
+         basedate: String(10) @title : 'Basic Date';
+         Immediately: Boolean @title: 'Immediately';
+         Message: String @title: 'Message';
+
+    }
+    @cds.persistence.skip
     entity IndividualIssueMassUpload {
         uploadFile: Association to many ZCDSEHPPB0097;
     }

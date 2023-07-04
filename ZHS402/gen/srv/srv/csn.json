@@ -4343,6 +4343,10 @@
         "MESSAGE": {
           "@title": "Message",
           "type": "cds.String"
+        },
+        "REQ_BY": {
+          "@title": "Message",
+          "type": "cds.String"
         }
       }
     },
@@ -39872,6 +39876,106 @@
         }
       }
     },
+    "ZAPIBPS0007.IndividualIssueDummy": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Inputfield": {
+          "@title": "Input field",
+          "type": "cds.String",
+          "length": 30
+        },
+        "option": {
+          "@title": "Option",
+          "type": "cds.String",
+          "length": 30
+        },
+        "OrderTransfer": {
+          "@title": "Order Transfer",
+          "type": "cds.String",
+          "length": 30
+        },
+        "plant": {
+          "@title": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Material": {
+          "@title": "Material",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Quantity": {
+          "@title": "Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 2
+        },
+        "unit": {
+          "@title": "Unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "StorageLocationFrom": {
+          "@title": "Storage Location From",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StorageLocationTo": {
+          "@title": "Storage Location To",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Recipient": {
+          "@title": "Goods Recipient",
+          "type": "cds.String",
+          "length": 12
+        },
+        "UnlPoint": {
+          "@title": "Unloading Point",
+          "type": "cds.String",
+          "length": 25
+        },
+        "ProdOrder": {
+          "@title": "Production Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "Linkage": {
+          "@title": "Linkage No.",
+          "type": "cds.String",
+          "length": 16
+        },
+        "Costcenter": {
+          "@title": "Cost Center",
+          "type": "cds.String",
+          "length": 4
+        },
+        "GLAccountcode": {
+          "@title": "G/L Account",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Text": {
+          "@title": "Text",
+          "type": "cds.String",
+          "length": 30
+        },
+        "basedate": {
+          "@title": "Basic Date",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Immediately": {
+          "@title": "Immediately",
+          "type": "cds.Boolean"
+        },
+        "Message": {
+          "@title": "Message",
+          "type": "cds.String"
+        }
+      }
+    },
     "ZAPIBPS0007.IndividualIssueMassUpload": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -42588,6 +42692,95 @@
         "MESSAGE": {
           "@title": "Message",
           "type": "cds.String"
+        },
+        "REQ_BY": {
+          "@title": "Message",
+          "type": "cds.String"
+        }
+      }
+    },
+    "ZAPIBPS0012.ZAPIBPS0012_PlantStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHMM0007.I_PlantStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PlantName": {
+          "@sap.label": "Plant Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZAPIBPS0012.ZAPIBPS0012_StorageLocationStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Storage Location",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHMM0007.I_StorageLocationStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "StorageLocationName",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocationName": {
+          "@sap.label": "Storage Loc. Name",
+          "@sap.quickinfo": "Storage Location Name",
+          "type": "cds.String",
+          "length": 16
+        },
+        "ConfigDeprecationCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
+          "@sap.value.list": "fixed-values",
+          "type": "cds.String",
+          "length": 1
         }
       }
     },
@@ -42657,6 +42850,20 @@
           }
         }
       ],
+      "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+        {
+          "Property": {
+            "=": "PostingDate"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "PlannedCountDate"
+          },
+          "AllowedExpressions": "SingleValue"
+        }
+      ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.updatable": "false",
@@ -42696,6 +42903,13 @@
             "as": "PostingDate",
             "cast": {
               "type": "cds.Date"
+            }
+          },
+          {
+            "val": null,
+            "as": "datetime",
+            "cast": {
+              "type": "cds.String"
             }
           },
           {
@@ -42793,6 +43007,21 @@
         "Plant": {
           "@title": "Plant",
           "@mandatory": true,
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "ZAPIBPS0012_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "Plant"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Plant",
           "type": "cds.String",
@@ -42801,6 +43030,28 @@
         "StorageLocation": {
           "@title": "Storage Location",
           "@mandatory": true,
+          "@Common.Label": "Sotage Location",
+          "@Common.ValueList.CollectionPath": "ZAPIBPS0012_StorageLocationStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "Plant"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "StorageLocation"
+              },
+              "ValueListProperty": "StorageLocation"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "StorageLocationName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Storage Location",
           "@sap.quickinfo": "Storage location",
@@ -42810,16 +43061,21 @@
         "PlannedCountDate": {
           "@title": "Planned Date of Inventory Count",
           "@mandatory": true,
-          "@sap.display.format": "Date",
+          "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Count Date",
-          "@sap.quickinfo": "Planned Date of Inventory Count",
-          "type": "cds.Date"
+          "@sap.quickinfo": "Character Field with Length 10",
+          "type": "cds.String",
+          "length": 10
         },
         "PostingDate": {
           "@title": "Posting Date",
           "@mandatory": true,
           "@Core.Computed": true,
           "type": "cds.Date"
+        },
+        "datetime": {
+          "@Core.Computed": true,
+          "type": "cds.String"
         },
         "STATUS": {
           "@title": "Status",
@@ -42884,7 +43140,99 @@
         }
       }
     },
-    "ZAPIBPS0012.ZAPIBPS0012POST": {
+    "ZAPIBPS0012.ZCDSEHMMC0010": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Post Inventory Difference",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHMM0007.ZCDSEHMMC0010"
+          ]
+        }
+      },
+      "elements": {
+        "PhysInvDoc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Physical Inventory Document",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Item": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item",
+          "@sap.quickinfo": "Line Number",
+          "type": "cds.String",
+          "length": 3
+        },
+        "FiscalYear": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Fiscal Year",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage Location",
+          "@sap.quickinfo": "Storage location",
+          "type": "cds.String",
+          "length": 4
+        },
+        "Quantity": {
+          "@sap.unit": "Unit",
+          "@sap.label": "Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "Unit": {
+          "@sap.label": "Unit",
+          "@sap.quickinfo": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "CountInd": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Count Indicator",
+          "@sap.quickinfo": "Item has been counted",
+          "type": "cds.Boolean"
+        },
+        "PlannedCountDate": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Count Date",
+          "@sap.quickinfo": "Character Field with Length 10",
+          "type": "cds.String",
+          "length": 10
+        },
+        "to_Header": {
+          "@cds.ambiguous": "missing on condition?",
+          "type": "cds.Association",
+          "target": "ZAPIBPS0012.ZAPIBPS0012Report",
+          "keys": []
+        }
+      }
+    },
+    "ZAPIBPS0012.ItemPISet": {
       "kind": "entity",
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
@@ -42895,7 +43243,7 @@
       "projection": {
         "from": {
           "ref": [
-            "ZAPIHMM0003_SRV.HeaderPISet"
+            "ZAPIHMM0003_SRV.ItemPISet"
           ]
         },
         "columns": [
@@ -42903,6 +43251,21 @@
             "key": true,
             "ref": [
               "Iblnr"
+            ]
+          },
+          {
+            "ref": [
+              "Gjahr"
+            ]
+          },
+          {
+            "ref": [
+              "Zeili"
+            ]
+          },
+          {
+            "ref": [
+              "Matnr"
             ]
           },
           {
@@ -42917,37 +43280,18 @@
           },
           {
             "ref": [
-              "Gidat"
+              "Menge"
             ]
           },
           {
             "ref": [
-              "Budat"
+              "Meins"
             ]
           },
           {
-            "as": "HeaderToItemNav",
-            "cast": {
-              "target": "ZAPIHMM0003_SRV.ItemPISet",
-              "cardinality": {
-                "max": "*"
-              },
-              "type": "cds.Association",
-              "on": [
-                {
-                  "ref": [
-                    "Iblnr"
-                  ]
-                },
-                "=",
-                {
-                  "ref": [
-                    "$projection",
-                    "Iblnr"
-                  ]
-                }
-              ]
-            }
+            "ref": [
+              "Xzael"
+            ]
           }
         ]
       },
@@ -42962,6 +43306,39 @@
           "key": true,
           "type": "cds.String",
           "length": 10,
+          "notNull": true
+        },
+        "Gjahr": {
+          "@sap.unicode": "false",
+          "@sap.label": "Fiscal Year",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "Zeili": {
+          "@sap.unicode": "false",
+          "@sap.label": "Item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Matnr": {
+          "@sap.unicode": "false",
+          "@sap.label": "Material",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 40,
           "notNull": true
         },
         "Werks": {
@@ -42986,36 +43363,117 @@
           "length": 4,
           "notNull": true
         },
-        "Gidat": {
-          "@odata.Type": "Edm.DateTime",
-          "@odata.Precision": 7,
+        "Menge": {
           "@sap.unicode": "false",
-          "@sap.label": "Plan.Count date",
+          "@sap.label": "Quantity",
           "@sap.creatable": "false",
           "@sap.updatable": "false",
           "@sap.sortable": "false",
           "@sap.filterable": "false",
-          "type": "cds.Timestamp",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
           "notNull": true
         },
-        "Budat": {
-          "@odata.Type": "Edm.DateTime",
-          "@odata.Precision": 7,
+        "Meins": {
           "@sap.unicode": "false",
-          "@sap.label": "Posting Date",
+          "@sap.label": "Base Unit",
           "@sap.creatable": "false",
           "@sap.updatable": "false",
           "@sap.sortable": "false",
           "@sap.filterable": "false",
-          "type": "cds.Timestamp",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3,
           "notNull": true
+        },
+        "Xzael": {
+          "@sap.unicode": "false",
+          "@sap.label": "Item Counted",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.Boolean",
+          "notNull": true
+        }
+      }
+    },
+    "ZAPIBPS0012.ZAPIBPS0012POST": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "elements": {
+        "Iblnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "CountErrFlg": {
+          "type": "cds.Boolean"
+        },
+        "Werks": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "DiffErrFlg": {
+          "type": "cds.Boolean"
+        },
+        "Lgort": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Type": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Gidat": {
+          "type": "cds.Date"
+        },
+        "Id": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "Budat": {
+          "type": "cds.Date"
+        },
+        "Number": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "Message": {
+          "type": "cds.String",
+          "length": 220
+        },
+        "LogNo": {
+          "type": "cds.String",
+          "length": 20
+        },
+        "LogMsgNo": {
+          "type": "cds.String",
+          "length": 6
+        },
+        "MessageV1": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "MessageV2": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "MessageV3": {
+          "type": "cds.String",
+          "length": 50
+        },
+        "MessageV4": {
+          "type": "cds.String",
+          "length": 50
         },
         "HeaderToItemNav": {
           "type": "cds.Association",
           "cardinality": {
             "max": "*"
           },
-          "target": "ZAPIHMM0003_SRV.ItemPISet",
+          "target": "ZAPIBPS0012.ItemPISet",
           "on": [
             {
               "ref": [
@@ -43025,7 +43483,7 @@
             "=",
             {
               "ref": [
-                "$projection",
+                "$self",
                 "Iblnr"
               ]
             }
@@ -83055,6 +83513,26 @@
           "length": 10,
           "notNull": true
         },
+        "CountErrFlg": {
+          "@sap.unicode": "false",
+          "@sap.label": "Indicator",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.Boolean",
+          "notNull": true
+        },
+        "DiffErrFlg": {
+          "@sap.unicode": "false",
+          "@sap.label": "Indicator",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.Boolean",
+          "notNull": true
+        },
         "Werks": {
           "@sap.unicode": "false",
           "@sap.label": "Plant",
@@ -83077,6 +83555,17 @@
           "length": 4,
           "notNull": true
         },
+        "Type": {
+          "@sap.unicode": "false",
+          "@sap.label": "Message type",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
         "Gidat": {
           "@odata.Type": "Edm.DateTime",
           "@odata.Precision": 7,
@@ -83086,7 +83575,17 @@
           "@sap.updatable": "false",
           "@sap.sortable": "false",
           "@sap.filterable": "false",
-          "type": "cds.Timestamp",
+          "type": "cds.Timestamp"
+        },
+        "Id": {
+          "@sap.unicode": "false",
+          "@sap.label": "Message Class",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 20,
           "notNull": true
         },
         "Budat": {
@@ -83098,7 +83597,94 @@
           "@sap.updatable": "false",
           "@sap.sortable": "false",
           "@sap.filterable": "false",
-          "type": "cds.Timestamp",
+          "type": "cds.Timestamp"
+        },
+        "Number": {
+          "@sap.unicode": "false",
+          "@sap.label": "Message Number",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "Message": {
+          "@sap.unicode": "false",
+          "@sap.label": "Message Text",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 220,
+          "notNull": true
+        },
+        "LogNo": {
+          "@sap.unicode": "false",
+          "@sap.label": "Log number",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 20,
+          "notNull": true
+        },
+        "LogMsgNo": {
+          "@sap.unicode": "false",
+          "@sap.label": "Message no.",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 6,
+          "notNull": true
+        },
+        "MessageV1": {
+          "@sap.unicode": "false",
+          "@sap.label": "Message Variable",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 50,
+          "notNull": true
+        },
+        "MessageV2": {
+          "@sap.unicode": "false",
+          "@sap.label": "Message Variable",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 50,
+          "notNull": true
+        },
+        "MessageV3": {
+          "@sap.unicode": "false",
+          "@sap.label": "Message Variable",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 50,
+          "notNull": true
+        },
+        "MessageV4": {
+          "@sap.unicode": "false",
+          "@sap.label": "Message Variable",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 50,
           "notNull": true
         },
         "HeaderToItemNav": {
@@ -83245,8 +83831,7 @@
           "@sap.updatable": "false",
           "@sap.sortable": "false",
           "@sap.filterable": "false",
-          "type": "cds.Timestamp",
-          "notNull": true
+          "type": "cds.Timestamp"
         },
         "Budat": {
           "@odata.Type": "Edm.DateTime",
@@ -83257,8 +83842,7 @@
           "@sap.updatable": "false",
           "@sap.sortable": "false",
           "@sap.filterable": "false",
-          "type": "cds.Timestamp",
-          "notNull": true
+          "type": "cds.Timestamp"
         }
       }
     },
@@ -83269,6 +83853,111 @@
       "@m.IsDefaultEntityContainer": "true",
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHMM0007.I_ConfignDeprecationCode": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Configuration Deprecation Code",
+      "@sap.value.list": "true",
+      "elements": {
+        "ConfigurationDeprecationCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "ConfigurationDeprecationCode_Text",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "ConfigurationDeprecationCode_Text": {
+          "@sap.label": "Validity Text",
+          "@sap.quickinfo": "Value Help: Flag Obsolete Entries",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 60
+        }
+      }
+    },
+    "ZSRVBHMM0007.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PlantName": {
+          "@sap.label": "Plant Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZSRVBHMM0007.I_StorageLocationStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Storage Location",
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocation": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "StorageLocationName",
+          "@sap.label": "Storage location",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "StorageLocationName": {
+          "@sap.label": "Storage Loc. Name",
+          "@sap.quickinfo": "Storage Location Name",
+          "type": "cds.String",
+          "length": 16
+        },
+        "ConfigDeprecationCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Validity",
+          "@sap.quickinfo": "Value Help: Flag Deprecated Entries",
+          "@sap.value.list": "fixed-values",
+          "type": "cds.String",
+          "length": 1
+        }
+      }
     },
     "ZSRVBHMM0007.ZCDSEHMMC0010": {
       "kind": "entity",
@@ -83342,169 +84031,17 @@
           "type": "cds.Boolean"
         },
         "PlannedCountDate": {
-          "@sap.display.format": "Date",
+          "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Count Date",
-          "@sap.quickinfo": "Planned Date of Inventory Count",
-          "type": "cds.Date"
+          "@sap.quickinfo": "Character Field with Length 10",
+          "type": "cds.String",
+          "length": 10
         },
         "to_Header": {
           "@cds.ambiguous": "missing on condition?",
           "type": "cds.Association",
           "target": "ZSRVBHMM0007.ZCDSEHMMC0014",
           "keys": []
-        }
-      }
-    },
-    "ZSRVBHMM0007.POST_ENTITY": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.content.version": "1",
-      "@sap.label": "Custom CDS: Post Inventory Difference",
-      "elements": {
-        "FiscalYear": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Fiscal Year",
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "notNull": true
-        },
-        "PhysicalInv": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Physical Inventory Document",
-          "key": true,
-          "type": "cds.String",
-          "length": 10,
-          "notNull": true
-        },
-        "PLineNo": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Item",
-          "@sap.quickinfo": "Line Number",
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "notNull": true
-        },
-        "Material": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
-          "key": true,
-          "type": "cds.String",
-          "length": 40,
-          "notNull": true
-        },
-        "Plant": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Plant",
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "notNull": true
-        },
-        "StorageLocation": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage Location",
-          "@sap.quickinfo": "Storage location",
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "notNull": true
-        },
-        "Quantity": {
-          "@sap.unit": "Unit",
-          "@sap.label": "Quantity",
-          "key": true,
-          "type": "cds.Decimal",
-          "precision": 13,
-          "scale": 3,
-          "notNull": true
-        },
-        "Unit": {
-          "@sap.label": "Unit",
-          "@sap.quickinfo": "Base Unit of Measure",
-          "@sap.semantics": "unit-of-measure",
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "notNull": true
-        },
-        "CountInd": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Count Indicator",
-          "@sap.quickinfo": "Item has been counted",
-          "key": true,
-          "type": "cds.Boolean",
-          "notNull": true
-        },
-        "PlannedCountDate": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Planned Count Date",
-          "@sap.quickinfo": "Planned Date of Inventory Count",
-          "key": true,
-          "type": "cds.Date",
-          "notNull": true
-        },
-        "PostingDate": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Posting Date",
-          "@sap.quickinfo": "Posting Date in the Document",
-          "key": true,
-          "type": "cds.Date",
-          "notNull": true
-        },
-        "CountErrFlg": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Inventory Count Error",
-          "@sap.quickinfo": "General Flag",
-          "key": true,
-          "type": "cds.Boolean",
-          "notNull": true
-        },
-        "DiffErrFlg": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Post Difference Error",
-          "@sap.quickinfo": "General Flag",
-          "key": true,
-          "type": "cds.Boolean",
-          "notNull": true
-        },
-        "Type": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Message Type",
-          "@sap.quickinfo": "Message type: S Success, E Error, W Warning, I Info, A Abort",
-          "key": true,
-          "type": "cds.String",
-          "length": 1,
-          "notNull": true
-        },
-        "Id": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Message Class",
-          "key": true,
-          "type": "cds.String",
-          "length": 20,
-          "notNull": true
-        },
-        "MsgNo": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Message No.",
-          "@sap.quickinfo": "Message Number",
-          "key": true,
-          "type": "cds.String",
-          "length": 3,
-          "notNull": true
-        },
-        "Message": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Message",
-          "@sap.quickinfo": "Message Text",
-          "key": true,
-          "type": "cds.String",
-          "length": 220,
-          "notNull": true
         }
       }
     },
@@ -83540,10 +84077,11 @@
           "length": 4
         },
         "PlannedCountDate": {
-          "@sap.display.format": "Date",
+          "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Count Date",
-          "@sap.quickinfo": "Planned Date of Inventory Count",
-          "type": "cds.Date"
+          "@sap.quickinfo": "Character Field with Length 10",
+          "type": "cds.String",
+          "length": 10
         },
         "to_item": {
           "@cds.ambiguous": "missing on condition?",
@@ -84465,98 +85003,6 @@
           "@cds.ambiguous": "missing on condition?",
           "type": "cds.Association",
           "target": "ZAPIBPS0003.ZCDSEHPSC0013",
-          "keys": []
-        }
-      }
-    },
-    "ZAPIBPS0012.ZCDSEHMMC0010": {
-      "kind": "entity",
-      "@cds.autoexposed": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.content.version": "1",
-      "@sap.label": "Post Inventory Difference",
-      "projection": {
-        "from": {
-          "ref": [
-            "ZSRVBHMM0007.ZCDSEHMMC0010"
-          ]
-        }
-      },
-      "elements": {
-        "PhysInvDoc": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Physical Inventory Document",
-          "key": true,
-          "type": "cds.String",
-          "length": 10,
-          "notNull": true
-        },
-        "Item": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Item",
-          "@sap.quickinfo": "Line Number",
-          "type": "cds.String",
-          "length": 3
-        },
-        "FiscalYear": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Fiscal Year",
-          "type": "cds.String",
-          "length": 4
-        },
-        "Material": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number",
-          "type": "cds.String",
-          "length": 40
-        },
-        "Plant": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Plant",
-          "type": "cds.String",
-          "length": 4
-        },
-        "StorageLocation": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Storage Location",
-          "@sap.quickinfo": "Storage location",
-          "type": "cds.String",
-          "length": 4
-        },
-        "Quantity": {
-          "@sap.unit": "Unit",
-          "@sap.label": "Quantity",
-          "type": "cds.Decimal",
-          "precision": 13,
-          "scale": 3
-        },
-        "Unit": {
-          "@sap.label": "Unit",
-          "@sap.quickinfo": "Base Unit of Measure",
-          "@sap.semantics": "unit-of-measure",
-          "type": "cds.String",
-          "length": 3
-        },
-        "CountInd": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Count Indicator",
-          "@sap.quickinfo": "Item has been counted",
-          "type": "cds.Boolean"
-        },
-        "PlannedCountDate": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Planned Count Date",
-          "@sap.quickinfo": "Planned Date of Inventory Count",
-          "type": "cds.Date"
-        },
-        "to_Header": {
-          "@cds.ambiguous": "missing on condition?",
-          "type": "cds.Association",
-          "target": "ZAPIBPS0012.ZAPIBPS0012Report",
           "keys": []
         }
       }

@@ -9,7 +9,7 @@ var registerZAPIBPS0007Handler = function (that, cds) {
     //     var response = await soapi.tx(req).post("/ZCDSEHPPB0097", req.data);
     //     return response;
     // });
-    that.on('CREATE', 'IndividualIssue', async req => {
+    that.on('CREATE', 'IndividualIssueDummy', async req => {
         const soapi = await cds.connect.to('ZSRVBHPP0019');
 
         var optionValue = req.data.option;

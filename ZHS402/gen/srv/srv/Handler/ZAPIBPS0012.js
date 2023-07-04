@@ -34,11 +34,23 @@ var registerZAPIBPS0012Handler = function (that, cds) {
     
     that.on('CREATE', 'ZAPIBPS0012POST', async req => {
         const api = await cds.connect.to('ZAPIHMM0003_SRV');
-        var dulicate = Object.assign({}, req.data);
+        var dulicate = Object.assign({}, req.data);        
+        dulicate.Budat = dulicate.Budat + "T00:00:00";
+        dulicate.Gidat = dulicate.Gidat + "T00:00:00";
+        // delete dulicate.HeaderToItemNav;
+        // dulicate.HeaderToItemNav = JSON.parse(req.data.HeaderToItemNav);        
         var response = await api.tx(req).post("/HeaderPISet",dulicate); 
         return response;
     });
     
+    that.on('READ', 'ZAPIBPS0012_PlantStdVH', async req => {
+        const kandanListScanSrv = await cds.connect.to('ZSRVBHMM0007');
+        return kandanListScanSrv.run(req.query);
+    });
+    that.on('READ', 'ZAPIBPS0012_StorageLocationStdVH', async req => {
+        const kandanListScanSrv = await cds.connect.to('ZSRVBHMM0007');
+        return kandanListScanSrv.run(req.query);
+    });
 
 } 
 module.exports = registerZAPIBPS0012Handler;
