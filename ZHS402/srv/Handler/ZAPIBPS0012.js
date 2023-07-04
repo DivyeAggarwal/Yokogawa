@@ -23,7 +23,7 @@ var registerZAPIBPS0012Handler = function (that, cds) {
                     element.MNO = dataFe[0].MNO;
                     element.MESSAGE = dataFe[0].MESSAGE;
                     element.SCHEDULED_DATE = dataFe[0].createdAt;
-                    element.SCHEDULED_BY = dataFe[0].createdBy;
+                    element.SCHEDULED_BY = dataFe[0].REQ_BY;
                     element.PROCESSED_DATE = dataFe[0].modifiedAt;
                 } 
                 data.push(element);
