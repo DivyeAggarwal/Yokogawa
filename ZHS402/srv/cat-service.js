@@ -753,6 +753,54 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     //     + "Updated " + req.data.input.update.length + " entries \n"  }
     // });
 
+    this.on('READ', 'Formalize', async req => {
+        const db = await cds.connect.to('db');
+        if (req.query) {
+            const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
+            if (doc_type_idx >= 0) {
+                var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
+            }
+        if (E_DOC_TYPE == "FE0") {
+            const dataFe0 = await SELECT.from('ZCDSEHBTC0007.DATAFE0').where(req.query.SELECT.where)
+
+            let aData = [];
+            for (let oData of dataFe0) {
+                const data = {
+                    E_DOC_TYPE: oData.E_DOC_TYPE,
+                    WERKS: oData.WERKS,
+                    PS_ITEM_NO: oData.PS_ITEM_NO,
+                    E_DOC_NO: oData.E_DOC_NO,
+                    E_REV_NO: oData.E_REV_NO,
+                    PS_GROUP_NO: oData.PS_GROUP_NO,
+                    FORMALIZE_DATE: oData.INVALID_D,
+                    CREATION_DATE: oData.EFFECT_D
+                }
+                aData.push(data);
+            }
+            return aData;
+        } else if (E_DOC_TYPE == "FE1") {
+            const dataFe1 = await SELECT.from('ZCDSEHBTC0007.DATAFE1').where(req.query.SELECT.where)
+            let aData = [];
+            for (let oData of dataFe1) {
+                const data = {
+                    E_DOC_TYPE: oData.E_DOC_TYPE,
+                    WERKS: oData.WERKS,
+                    PS_ITEM_NO: oData.PS_ITEM_NO,
+                    E_DOC_NO: oData.E_DOC_NO,
+                    E_REV_NO: oData.E_REV_NO,
+                    PS_GROUP_NO: oData.PS_GROUP_NO,
+                    FORMALIZE_DATE: oData.INVALID_D,
+                    CREATION_DATE: oData.EFFECT_D
+                }
+                aData.push(data);
+            }
+            return aData;
+        }
+        }
+
+        // return oData;
+    });
+
     this.on('READ', 'BOMDisplay', async req => {
         const db = await cds.connect.to('db');
         if (req.query) {

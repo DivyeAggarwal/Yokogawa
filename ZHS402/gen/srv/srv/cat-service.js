@@ -665,15 +665,59 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 }
             }
             //code for spec table
-            const specData = await bupa.get('ZCDSEHBTC0006.ZCDSEHPPC0015').where({ MATERIALCODE: MODEL });
-            if(specData.length > 0) {
-                var conversionSpec = {
-                    MATERIALCODE: specData[0].MATERIALCODE,
-                    MODEL: specData[0].MODEL,
-                    SUFFIXLEVEL: specData[0].SUFFIXLEVEL,
-                    SUFFIXVALUE: specData[0].SUFFIXVALUE
-                };
-                await UPSERT.into('ZHS402.ZTHBT0032').entries(conversionSpec);
+            // const specData = await SELECT.from('ZCDSEHBTC0006.ZCDSEHPPC0015').where({ MATERIALCODE: MSCODE });
+            if(MSCODE !== "") {}
+            let responseWorkato = await axios({
+                method: 'GET',
+                url: "https://apim.workato.com/yokogawa_veri/y-api-v1/iomodule/bmsdiv?ms_code=" + MSCODE,
+                params: {
+                  $format: "json"
+                },
+                headers: {
+                  'Accept': 'application/json',
+                  'API-TOKEN': 'd265459426fb462263e03438a47ee3195177cfdb92aee0188695a94f80dea07a'
+                }
+              });
+              var response = [];
+              if(responseWorkato.data.err_code == "") {
+                var suffix = responseWorkato.data.suffix;
+                var option = responseWorkato.data.option;
+                var materialCode = MSCODE;
+                var model = responseWorkato.data.model;
+    
+                for(var i=0;i < suffix.length; i++ ) {
+                    var responseArray = {
+                        MATERIALCODE:materialCode,
+                        MODEL:model,
+                        SUFFIXLEVEL:suffix[i].suffix_level,
+                        SUFFIXVALUE:suffix[i].suffix_id
+                    }
+                    response.push(responseArray);
+                }
+                var counter = 1;
+                for(var i=0;i < option.length; i++ ) {
+                    
+                    var responseArrayOp = {
+                        MATERIALCODE:materialCode,
+                        MODEL:model,
+                        SUFFIXLEVEL:"00" + counter.toString(),
+                        SUFFIXVALUE:option[i].option_id
+                    }
+                    response.push(responseArrayOp);
+                    counter = counter + 1;
+                }
+              }
+            // await SELECT.from('ZCDSEHBTC0007.DATAFE0').where(req.query.SELECT.where)
+            if(response.length > 0) {
+                // for(var i=0; i<response.length; i++) { 
+                // var conversionSpec = {
+                //     MATERIALCODE: response[i].MATERIALCODE,
+                //     MODEL: response[i].MODEL,
+                //     SUFFIXLEVEL: response[i].SUFFIXLEVEL,
+                //     SUFFIXVALUE: response[i].SUFFIXVALUE
+                // };
+                // }
+                await INSERT.into('ZHS402.ZTHBT0032').entries(response);
             }
         }
     });
@@ -708,6 +752,54 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     //     return {acknowledge:"Success", message: "Deleted " + req.data.input.delete.length + " entries \n" 
     //     + "Updated " + req.data.input.update.length + " entries \n"  }
     // });
+
+    this.on('READ', 'Formalize', async req => {
+        const db = await cds.connect.to('db');
+        if (req.query) {
+            const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
+            if (doc_type_idx >= 0) {
+                var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
+            }
+        if (E_DOC_TYPE == "FE0") {
+            const dataFe0 = await SELECT.from('ZCDSEHBTC0007.DATAFE0').where(req.query.SELECT.where)
+
+            let aData = [];
+            for (let oData of dataFe0) {
+                const data = {
+                    E_DOC_TYPE: oData.E_DOC_TYPE,
+                    WERKS: oData.WERKS,
+                    PS_ITEM_NO: oData.PS_ITEM_NO,
+                    E_DOC_NO: oData.E_DOC_NO,
+                    E_REV_NO: oData.E_REV_NO,
+                    PS_GROUP_NO: oData.PS_GROUP_NO,
+                    FORMALIZE_DATE: oData.INVALID_D,
+                    CREATION_DATE: oData.EFFECT_D
+                }
+                aData.push(data);
+            }
+            return aData;
+        } else if (E_DOC_TYPE == "FE1") {
+            const dataFe1 = await SELECT.from('ZCDSEHBTC0007.DATAFE1').where(req.query.SELECT.where)
+            let aData = [];
+            for (let oData of dataFe1) {
+                const data = {
+                    E_DOC_TYPE: oData.E_DOC_TYPE,
+                    WERKS: oData.WERKS,
+                    PS_ITEM_NO: oData.PS_ITEM_NO,
+                    E_DOC_NO: oData.E_DOC_NO,
+                    E_REV_NO: oData.E_REV_NO,
+                    PS_GROUP_NO: oData.PS_GROUP_NO,
+                    FORMALIZE_DATE: oData.INVALID_D,
+                    CREATION_DATE: oData.EFFECT_D
+                }
+                aData.push(data);
+            }
+            return aData;
+        }
+        }
+
+        // return oData;
+    });
 
     this.on('READ', 'BOMDisplay', async req => {
         const db = await cds.connect.to('db');

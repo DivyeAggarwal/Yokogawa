@@ -16339,6 +16339,213 @@
         }
       }
     },
+    "ZCDSEHBTC0007.Formalize": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@UI.SelectionFields": [
+        {
+          "=": "WERKS"
+        },
+        {
+          "=": "E_DOC_NO"
+        }
+      ],
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "E_DOC_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_REV_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_GROUP_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "FORMALIZE_DATE"
+          }
+        },
+        {
+          "Value": {
+            "=": "CREATION_DATE"
+          }
+        }
+      ],
+      "@Capabilities.FilterRestrictions.$Type": "Capabilities.FilterRestrictionsType",
+      "@Capabilities.FilterRestrictions.RequiredProperties": [
+        {
+          "=": "WERKS"
+        },
+        {
+          "=": "E_DOC_NO"
+        }
+      ],
+      "elements": {
+        "E_DOC_TYPE": {
+          "@title": "Document Type7",
+          "type": "cds.String",
+          "length": 3
+        },
+        "WERKS": {
+          "@title": "Plant",
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "VL_SH_H_T001",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "WERKS"
+              },
+              "ValueListProperty": "BUKRS"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "BUTXT"
+            }
+          ],
+          "type": "cds.String",
+          "length": 4
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "@Common.Label": "Document number",
+          "@Common.ValueList.Label": "DOC Type/Doc No",
+          "@Common.ValueList.CollectionPath": "DOC_NO_HELP",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "E_DOC_NO"
+              },
+              "ValueListProperty": "E_DOC_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_TYPE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_REV_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "MEDAI_TYPE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "YEOS_MODEL_GROUP"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "FZ2_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "REV_SBJCT"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "MODIFY_CAUSE_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "APPLY_DATE_N"
+            }
+          ],
+          "@Common.ValueList#MainModel.Label": "Main Model/FZ2 No",
+          "@Common.ValueList#MainModel.CollectionPath": "MAIN_MODEL_HELP",
+          "@Common.ValueList#MainModel.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "E_DOC_NO"
+              },
+              "ValueListProperty": "FZ2_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "YEOS_MODEL_GROUP"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_TYPE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_REV_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "MEDAI_TYPE"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_DOC_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "REV_SBJCT"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "MODIFY_CAUSE_N"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "APPLY_DATE_N"
+            }
+          ],
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "FORMALIZE_DATE": {
+          "@title": "Formalized Date",
+          "type": "cds.Date"
+        },
+        "CREATION_DATE": {
+          "@title": "Creation Date",
+          "type": "cds.Date"
+        }
+      }
+    },
     "ZCDSEHBTC0007.Doc_Type": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -42951,21 +43158,21 @@
             "val": null,
             "as": "SCHEDULED_BY",
             "cast": {
-              "type": "cds.DateTime"
+              "type": "cds.String"
             }
           },
           {
             "val": null,
             "as": "SCHEDULED_DATE",
             "cast": {
-              "type": "cds.DateTime"
+              "type": "cds.Timestamp"
             }
           },
           {
             "val": null,
             "as": "PROCESSED_DATE",
             "cast": {
-              "type": "cds.DateTime"
+              "type": "cds.Timestamp"
             }
           },
           {
@@ -43105,17 +43312,17 @@
         "SCHEDULED_BY": {
           "@title": "Scheduled By",
           "@Core.Computed": true,
-          "type": "cds.DateTime"
+          "type": "cds.String"
         },
         "SCHEDULED_DATE": {
           "@title": "Scheduled Date",
           "@Core.Computed": true,
-          "type": "cds.DateTime"
+          "type": "cds.Timestamp"
         },
         "PROCESSED_DATE": {
           "@title": "Processed Date",
           "@Core.Computed": true,
-          "type": "cds.DateTime"
+          "type": "cds.Timestamp"
         },
         "to_item": {
           "type": "cds.Association",
