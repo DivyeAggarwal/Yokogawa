@@ -492,6 +492,37 @@ service ZCDSEHBTC0007 {
     entity A_ProductPlant               as projection on API_PRODUCT_SRV.A_ProductPlant;
     entity specificationChange          as projection on db.ZTHBT0037;
 
+     @cds.persistence.skip
+    entity specificationChangeMessage  {
+        key WERKS: String(4) @title : 'Plant';
+    key E_DOC_TYPE: String(3) @title : 'Document Type';
+    key E_DOC_NO: String(18) @title : 'Technical document No';
+    key E_REV_NO: String(5) @title : 'Technical renewal REV No';
+    key PS_GROUP_NO: String(3) @title : 'PS group No';
+    key PS_ITEM_NO: String(3) @title : 'PS Item No';
+    key MODEL: String(10) @title : 'MODEL';
+    key E_SEQUENCE_NO: String(3) @title : 'Sequence No';
+    PS_SYMBOL: String(10) @title : 'PS Symbol';
+    E_PART_NO: String(18) @title : 'Material number';
+    TEN_DIGIT_SIGN: String(1) @title : '10 Digit Sign';
+    COMP_PART_NO: String(18) @title : 'Part No';
+    PARTS_QTY: String(13) @title : 'Parts quantity';
+    PARTS_QTY_UNIT: String(3) @title : 'Parts quantity unit';
+    SELECT_SIGN: String(1) @title : 'Select sign';
+    PARTS_USE_RATIO: String(3) @title : 'Parts use ratio';
+    PS_NOTE: String(64) @title : 'PS note';
+    OR_SIGN: String(1) @title : 'OR sign';
+    SFIX_DIGIT_PTN: String(50) @title : 'Basic suffix digit pattern';
+    SFIX_PTN: String @title : 'Suffix pattern';
+    OPTION_PTN: String @title : 'Option pattern';
+    PROD_CARRER: String(9) @title : 'Production carrer';
+    EFFECT_D: Date @title : 'Valid From';
+    INVALID_D: Date @title : 'Valid To';
+    E_TR_TYPE: String(1) @title : 'Techinical transaction type';
+    PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
+    ERROR_MESSAGE   : String(250)  @title: 'Error Message';
+        }
+
     @cds.persistence.skip
     entity checkProductionPart {
         flag : Boolean;

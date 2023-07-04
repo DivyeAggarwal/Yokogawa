@@ -2158,6 +2158,10 @@
         "PPLLAG": {
           "type": "cds.String",
           "length": 1
+        },
+        "STATUS": {
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -11441,6 +11445,10 @@
         "PPLLAG": {
           "type": "cds.String",
           "length": 1
+        },
+        "STATUS": {
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -13227,6 +13235,10 @@
         "PPLLAG": {
           "type": "cds.String",
           "length": 1
+        },
+        "STATUS": {
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -15548,6 +15560,221 @@
           "@title": "Parts no exist sign",
           "type": "cds.String",
           "length": 1
+        }
+      }
+    },
+    "ZCDSEHBTC0007.specificationChangeMessage": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureMaster}",
+      "query": {
+        "SELECT": {
+          "from": {
+            "ref": [
+              "ZHS402.ZTHBT0037"
+            ]
+          },
+          "columns": [
+            {
+              "key": true,
+              "ref": [
+                "WERKS"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "E_DOC_TYPE"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "E_DOC_NO"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "E_REV_NO"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "PS_GROUP_NO"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "PS_ITEM_NO"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "MODEL"
+              ]
+            },
+            {
+              "key": true,
+              "ref": [
+                "E_SEQUENCE_NO"
+              ]
+            },
+            {
+              "ref": [
+                "E_PART_NO"
+              ]
+            },
+            {
+              "ref": [
+                "TEN_DIGIT_SIGN"
+              ]
+            },
+            {
+              "ref": [
+                "COMP_PART_NO"
+              ]
+            },
+            {
+              "ref": [
+                "PARTS_QTY"
+              ]
+            },
+            {
+              "ref": [
+                "PARTS_QTY_UNIT"
+              ]
+            },
+            {
+              "ref": [
+                "SELECT_SIGN"
+              ]
+            },
+            {
+              "ref": [
+                "EFFECT_D"
+              ]
+            },
+            {
+              "ref": [
+                "INVALID_D"
+              ]
+            },
+            {
+              "ref": [
+                "E_TR_TYPE"
+              ]
+            },
+            {
+              "val": null,
+              "as": "ERROR_MESSAGE",
+              "cast": {
+                "type": "cds.String",
+                "length": 250
+              }
+            }
+          ]
+        }
+      },
+      "elements": {
+        "WERKS": {
+          "@title": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4
+        },
+        "E_DOC_TYPE": {
+          "@title": "Document Type",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "MODEL": {
+          "@title": "MODEL",
+          "key": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_SEQUENCE_NO": {
+          "@title": "Sequence No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 18
+        },
+        "TEN_DIGIT_SIGN": {
+          "@title": "10 Digit Sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "COMP_PART_NO": {
+          "@title": "Part No",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 3
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "ERROR_MESSAGE": {
+          "@title": "Error Message",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 250
         }
       }
     },

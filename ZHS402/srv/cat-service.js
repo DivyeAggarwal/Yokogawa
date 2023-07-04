@@ -1133,6 +1133,20 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     this.after('READ', 'yentard', async req => {
         const product = await cds.connect.to('YAPIARD');
     });
+    this.on('READ', 'specificationChangeMessage', async req => {
+        var results = await SELECT.from('ZHS402.ZTHBT0035').where(req.query.SELECT.where);
+        return results;      
+    });
+    // this.on('UPDATE', 'specificationChangeMessage', async req => {
+    //     var oInput = req.data;
+    //     var results = await SELECT.from('ZHS402.ZTHBT0001').where({ ID: { '=': oInput.COMP_PART_NO }});
+    //     if (!results) {
+    //         req.data.ERROR_MESSAGE = "Enter Valid Part Number";
+    //         return;
+    //     } else {
+    //         await UPDATE.entity('ZHS402.ZTHBT0037').with({ STATUS: "Registering" }).where({ WERKS: { '=': MSCODE }, PRODUCTCAREER: { '=': PRODUCTCAREER }, INSTRUMENTMODEL: { '=': INSTRUMENTMODEL }, PARTSNUMBER: { '=': PARTSNUMBER }, MODEL: { '=': MODEL } });
+    //     }
+    // });
 
 });
 
