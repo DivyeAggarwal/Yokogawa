@@ -535,6 +535,7 @@ entity ZTHBT0074: cuid, managed {
         CLASS: String @title: 'Class';
         MNO: String @title: 'Message nO';
         MESSAGE: String @title: 'Message';
+        REQ_BY: String @title: 'Message';
 }
 
 entity YARDTESTDB: managed,cuid {
