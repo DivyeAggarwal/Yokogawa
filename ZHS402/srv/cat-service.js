@@ -665,15 +665,59 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 }
             }
             //code for spec table
-            const specData = await bupa.get('ZCDSEHBTC0006.ZCDSEHPPC0015').where({ MATERIALCODE: MODEL });
-            if(specData.length > 0) {
-                var conversionSpec = {
-                    MATERIALCODE: specData[0].MATERIALCODE,
-                    MODEL: specData[0].MODEL,
-                    SUFFIXLEVEL: specData[0].SUFFIXLEVEL,
-                    SUFFIXVALUE: specData[0].SUFFIXVALUE
-                };
-                await UPSERT.into('ZHS402.ZTHBT0032').entries(conversionSpec);
+            // const specData = await SELECT.from('ZCDSEHBTC0006.ZCDSEHPPC0015').where({ MATERIALCODE: MSCODE });
+            if(MSCODE !== "") {}
+            let responseWorkato = await axios({
+                method: 'GET',
+                url: "https://apim.workato.com/yokogawa_veri/y-api-v1/iomodule/bmsdiv?ms_code=" + MSCODE,
+                params: {
+                  $format: "json"
+                },
+                headers: {
+                  'Accept': 'application/json',
+                  'API-TOKEN': 'd265459426fb462263e03438a47ee3195177cfdb92aee0188695a94f80dea07a'
+                }
+              });
+              var response = [];
+              if(responseWorkato.data.err_code == "") {
+                var suffix = responseWorkato.data.suffix;
+                var option = responseWorkato.data.option;
+                var materialCode = MSCODE;
+                var model = responseWorkato.data.model;
+    
+                for(var i=0;i < suffix.length; i++ ) {
+                    var responseArray = {
+                        MATERIALCODE:materialCode,
+                        MODEL:model,
+                        SUFFIXLEVEL:suffix[i].suffix_level,
+                        SUFFIXVALUE:suffix[i].suffix_id
+                    }
+                    response.push(responseArray);
+                }
+                var counter = 1;
+                for(var i=0;i < option.length; i++ ) {
+                    
+                    var responseArrayOp = {
+                        MATERIALCODE:materialCode,
+                        MODEL:model,
+                        SUFFIXLEVEL:"00" + counter.toString(),
+                        SUFFIXVALUE:option[i].option_id
+                    }
+                    response.push(responseArrayOp);
+                    counter = counter + 1;
+                }
+              }
+            // await SELECT.from('ZCDSEHBTC0007.DATAFE0').where(req.query.SELECT.where)
+            if(response.length > 0) {
+                // for(var i=0; i<response.length; i++) { 
+                // var conversionSpec = {
+                //     MATERIALCODE: response[i].MATERIALCODE,
+                //     MODEL: response[i].MODEL,
+                //     SUFFIXLEVEL: response[i].SUFFIXLEVEL,
+                //     SUFFIXVALUE: response[i].SUFFIXVALUE
+                // };
+                // }
+                await INSERT.into('ZHS402.ZTHBT0032').entries(response);
             }
         }
     });
