@@ -2291,7 +2291,239 @@ annotate ZCDSEHBTC0007.specificationChange {
     })
     COMP_PART_NO;
 }
+/////Specification change Dummy
+annotate ZCDSEHBTC0007.specificationChangeMessage with @(Capabilities : {
+    FilterRestrictions : {
+        $Type              : 'Capabilities.FilterRestrictionsType',
+        RequiredProperties : [
+            WERKS
+        ],
+    }
+});
+annotate ZCDSEHBTC0007.specificationChangeMessage @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : WERKS,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
+annotate ZCDSEHBTC0007.specificationChangeMessage with @(
+    
+    UI : { 
+        UpdateHidden        : false,
+        DeleteHidden        : true,
+        CreateHidden        : false,
 
+        SelectionFields  : [
+            WERKS,E_DOC_NO,E_PART_NO,COMP_PART_NO
+        ],
+        LineItem  : [
+            { Value : WERKS },
+            { Value : E_DOC_NO },
+            { Value : E_REV_NO }, 
+            { Value : PS_GROUP_NO },
+            { Value : PS_ITEM_NO },
+            { Value : E_PART_NO },
+            { Value : TEN_DIGIT_SIGN },
+            { Value : COMP_PART_NO },
+            { Value : PARTS_QTY },
+            { Value : PARTS_QTY_UNIT },
+            { Value : SELECT_SIGN },   
+            { Value : EFFECT_D },
+            { Value : INVALID_D },
+            { Value : E_TR_TYPE }                                  
+        ],
+        
+        Facets: [
+            {
+                $Type: 'UI.ReferenceFacet',
+                Label: 'Parts Structure Specification',
+                Target: '@UI.FieldGroup#MainAs'
+                
+            }
+        ],        
+        FieldGroup #MainAs: {
+            $Type : 'UI.FieldGroupType',
+            Data: [
+               { Value: TEN_DIGIT_SIGN },
+            
+            {
+                $Type : 'UI.DataField',
+                Value : E_PART_NO,
+                ![@Common.FieldControl] : { $edmJson : {$If : [ { $Eq : [ { $Path : 'TEN_DIGIT_SIGN'}, '0' ]}, 3, 1 ]}}
+            },
+            { Value: SELECT_SIGN },
+            { Value: PARTS_QTY },
+            { Value: EFFECT_D }              
+            ]
+        }
+     }
+){
+};
+annotate ZCDSEHBTC0007.specificationChangeMessage with {
+    E_PART_NO       @title : 'Design Parts';
+    COMP_PART_NO       @title : 'Production Parts';
+}
+annotate ZCDSEHBTC0007.specificationChangeMessage {
+    @(Common : {
+        Label     : 'Document number',
+        ValueList : {
+            Label: 'DOC Type/Doc No',
+            CollectionPath : 'DOC_NO_HELP',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : E_DOC_NO,
+                    ValueListProperty : 'E_DOC_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_TYPE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_REV_NO'
+                }
+                ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_N'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MEDAI_TYPE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'YEOS_MODEL_GROUP'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'FZ2_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'REV_SBJCT'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MODIFY_CAUSE_N'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'APPLY_DATE_N'
+                }
+
+
+            ]
+        },
+        ValueList #MainModel : {
+            Label: 'Main Model/FZ2 No',
+            CollectionPath : 'MAIN_MODEL_HELP',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : E_DOC_NO,
+                    ValueListProperty : 'FZ2_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'YEOS_MODEL_GROUP'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_TYPE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_REV_NO'
+                }
+                ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_N'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MEDAI_TYPE'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_DOC_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'REV_SBJCT'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'MODIFY_CAUSE_N'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'APPLY_DATE_N'
+                }
+            ]
+        }
+    })
+    E_DOC_NO;
+}
+
+
+annotate ZCDSEHBTC0007.specificationChangeMessage @(Capabilities : {
+    Insertable : false,
+    Deletable  : false,
+    Updatable  : true,
+});
+
+
+annotate ZCDSEHBTC0007.specificationChangeMessage {
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'VL_SH_H_T001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : WERKS,
+                    ValueListProperty : 'BUKRS'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'BUTXT'
+                }
+            ]
+        }
+    })
+    WERKS;
+}
+
+annotate ZCDSEHBTC0007.specificationChangeMessage {
+    @(Common : {
+        Label     : 'Production Parts',
+        ValueList : {
+            CollectionPath : 'ZTHBT0001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : COMP_PART_NO,
+                    ValueListProperty : 'PARTS_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : E_PART_NO,
+                    ValueListProperty : 'E_PARTS_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_PARTS_NO'
+                }
+            ]
+        }
+    })
+    COMP_PART_NO;
+}
 // annotate ZAPIBPS0001.ZCDSEBPS0003{
      
 //          @(Common : {

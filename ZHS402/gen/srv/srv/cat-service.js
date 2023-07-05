@@ -1133,14 +1133,30 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     this.after('READ', 'yentard', async req => {
         const product = await cds.connect.to('YAPIARD');
     });
-
+    this.on('READ', 'specificationChangeMessage', async req => {
+        if(req.query.SELECT.where) {
+        var results = await SELECT.from('ZHS402.ZTHBT0037').where(req.query.SELECT.where);
+        } else {
+            var results = await SELECT.from('ZHS402.ZTHBT0037');
+        }
+        return results;      
+    });
     this.on('UPDATE', 'specificationChangeMessage', async req => {
         var oInput = req.data;
-        var results = await SELECT.from('ZHS402.ZTHBT0001').where({ ID: { '=': oInput.COMP_PART_NO }});
-        if (!results) {
+        var flag = false;
+        if(oInput.COMP_PART_NO) {
+            var results = await SELECT.from('ZHS402.ZTHBT0001').where({ ID: { '=': oInput.COMP_PART_NO }});
+            if (results.length > 0) {
+                flag = true
+            }
+        }
+        if(flag == true) {
             req.data.ERROR_MESSAGE = "Enter Valid Part Number";
             return;
+        }else {
+            await UPDATE.entity('ZHS402.ZTHBT0037').with(req.data).where({ WERKS: { '=': oInput.WERKS }, E_DOC_TYPE: { '=': oInput.E_DOC_TYPE }, E_DOC_NO: { '=': oInput.E_DOC_NO }, E_REV_NO: { '=': oInput.E_REV_NO }, PS_GROUP_NO: { '=': oInput.PS_GROUP_NO }, PS_ITEM_NO: { '=': oInput.PS_ITEM_NO }, MODEL: { '=': oInput.MODEL }, E_SEQUENCE_NO: { '=': oInput.E_SEQUENCE_NO }});
         }
+        
     });
 
 });

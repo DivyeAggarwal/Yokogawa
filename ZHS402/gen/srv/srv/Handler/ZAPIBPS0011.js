@@ -29,6 +29,11 @@ var registerZAPIBPS0011Handler = function (that, cds) {
         const bupa = await cds.connect.to('ZSRVBHPP0003');
         return bupa.run(req.query);
     });
+    
+    that.on('READ', 'ZAPIBPS0011', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0003');
+        return bupa.run(req.query);
+    });
 
 } 
 module.exports = registerZAPIBPS0011Handler;
