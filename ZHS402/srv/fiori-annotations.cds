@@ -4451,21 +4451,21 @@ annotate ZAPIBPS0011.ZCDSEHPPC0023 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : matnr
             },
-            {
-                $Type : 'UI.DataField',
-                Value : zz1_mscode_prd
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : comp_part
-            },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : zz1_mscode_prd
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : comp_part
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : maktx
             },
             {
                 $Type : 'UI.DataField',
-                Value : posnr
+                Value : posnr_rma
             },
             {
                 $Type : 'UI.DataField',
@@ -4521,10 +4521,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0023 with @(UI : {
     aufnr @( title: 'Production Order' );
     plnum @( title: 'Planned Order' );
     matnr @( title: 'Material' );
-    zz1_mscode_prd @( title: 'MS Code' );
-    comp_part @( title: 'Component Material' );
+    // zz1_mscode_prd @( title: 'MS Code' );
+    // comp_part @( title: 'Component Material' );
     maktx @( title: 'Material text' );
-    posnr @( title: 'BOM Item' );
+    posnr_rma @( title: 'BOM Item' );
     bdter @( title: 'Requirement date' );
     bdmng @( title: 'Req QTY' );
     meins @( title: 'Base Unit' );
@@ -4971,10 +4971,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
     },
     LineItem #PlannedOrderstatusList : {
         $value : [
-            {
-                $Type : 'UI.DataField',
-                Value : porder
-            },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : porder
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : plnum
@@ -4999,30 +4999,30 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : zz1_mscode_prd
             },
-            {
-                $Type : 'UI.DataField',
-                Value : dauat
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : mrpcontrol
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : fevor
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : plant
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : gamng
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : gmein
-            },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : dauat
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : mrpcontrol
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : fevor
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : plant
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : gamng
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : gmein
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : gstrs
@@ -5031,14 +5031,14 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : gltrs
             },
-            {
-                $Type : 'UI.DataField',
-                Value : gltrp
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : txt30
-            },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : gltrp
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : txt30
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : verid
@@ -5147,10 +5147,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : AUFNR
             },
-            {
-                $Type : 'UI.DataField',
-                Value : txt04
-            },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : txt04
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : memo1
@@ -5168,14 +5168,14 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
 }){    
     matnr @( title: 'Material' );  
     maktx @( title: 'Material text' );  
-    fevor @( title: 'Production Supervisor' );  
-    gamng @( title: 'Order Qty.' );  
-    gmein @( title: 'Base Unit' );  
+    // fevor @( title: 'Production Supervisor' );  
+    // gamng @( title: 'Order Qty.' );  
+    // gmein @( title: 'Base Unit' );  
     gstrs @( title: 'Scheduled Start Date' );  
     gltrs @( title: 'Scheduled Finish Date' );  
-    gltrp @( title: 'Basic Finish Date' );  
+    // gltrp @( title: 'Basic Finish Date' );  
     serialnumber @( title: 'Serial' );  
-    txt30 @( title: 'System status' );  
+    // txt30 @( title: 'System status' );  
     compponentno @( title: 'COMP' );  
     zz1_routindic_plt @( title: 'Usage of routing' );  
     Tokuchu_no @( title: 'Tokuchu No.' );  
@@ -5185,10 +5185,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
     comb_ind @( title: 'Combination Flag' );  
     comb_no @( title: 'Combination No. ' );  
     IM_no @( title: 'IM' );  
-    txt04 @( title: 'B-Type Parent Prod Order Status' );  
-    aprio @( title: 'Order Transfer status' );  
-    traf_ord @( title: 'Order Transfer ' );  
-    traf_cc @( title: 'Transfer cost center' );  
+    // txt04 @( title: 'B-Type Parent Prod Order Status' );  
+    // aprio @( title: 'Order Transfer status' );  
+    // traf_ord @( title: 'Order Transfer ' );  
+    // traf_cc @( title: 'Transfer cost center' );  
     zz1_linkagenumber_sdi @( title: 'Transfer Linkage' );  
     BTYPECAT @( title: 'B Type Category' );  
     PRDSTNO  @( title: 'B Type Prod. Start No' );  
