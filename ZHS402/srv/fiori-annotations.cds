@@ -4009,11 +4009,25 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : gmein
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : txt04
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gamng
             }
         ]
     }
-});
+}){    
+    Total_val @( title: 'Total Value in CO Currency' );
+    matnr @( title: 'Order Material' );
+    gmein @( title: 'Common unit of measure for all order items' );
+    txt04 @( title: 'System status' );
+    STATUS @( title: 'Production status' );
+};
 
 annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(
   UI.SelectionPresentationVariant #CancellOrderList : {
@@ -4055,7 +4069,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0012 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : ltxa1
+                Value : vornr
             },
             {
                 $Type : 'UI.DataField',
@@ -4107,7 +4121,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0012 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : ism03
+                Value : ebeln
             },
             {
                 $Type : 'UI.DataField',
@@ -4135,7 +4149,29 @@ annotate ZAPIBPS0011.ZCDSEHPPC0012 with @(UI : {
             }
         ]
     }
-});
+}){    
+    aufnr @( title: 'Production Order' );
+    vornr @( title: 'Operation' );
+    arbpl @( title: 'Work Center' );
+    ktext @( title: 'Work Center Text' );
+    ltxa1 @( title: 'Operation Text' );
+    steus @( title: 'Control Key' );
+    qlkapar @( title: 'Capacity Category' );
+    mgvrg @( title: 'Operation Qty' );
+    meinh @( title: 'Operation UoM' );
+    isdd @( title: 'Actual Start Date' );
+    ierd @( title: 'Actual Finish' );
+    txt04 @( title: 'System status' );
+    rueck @( title: 'Confirmation No.' );
+    kostv @( title: 'Cost Center' );
+    ebeln @( title: 'PO' );
+    ism03 @( title: 'Set up' );
+    ile03 @( title: 'Base Unit' );
+    ism04 @( title: 'Machine' );
+    ile04 @( title: 'Base Unit' );
+    ism05 @( title: 'Labor' );
+    ile05 @( title: 'Base Unit' );
+};
 
 annotate ZAPIBPS0011.ZCDSEHPPC0012 with @(
   UI.SelectionPresentationVariant #ProductionOrderOperationList : {
@@ -4197,7 +4233,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : kdpos
+                Value : posnr
             },
             {
                 $Type : 'UI.DataField',
@@ -4249,7 +4285,27 @@ annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(UI : {
             }
         ]
     }
-});
+}){    
+    aufnr @( title: 'Production Order' );
+    plnum @( title: 'Planned Order' );
+    matnr @( title: 'Material' );
+    zz1_mscode_prd @( title: 'MS Code' );
+    comp_part @( title: 'Component Material' );
+    maktx @( title: 'Material text' );
+    posnr @( title: 'BOM Item' );
+    bdter @( title: 'Requirement date' );
+    bdmng @( title: 'Req QTY' );
+    meins @( title: 'Base Unit' );
+    werks @( title: 'Plant' );
+    lgort @( title: 'Storage Location' );
+    dismm @( title: 'MRP type' );
+    beskz @( title: 'Procurement type' );
+    sobsl @( title: 'Special Procurement type' );
+    schgt @( title: 'Bulk' );
+    rgekz @( title: 'Back flush' );
+    stprs @( title: 'Standard Price' );
+    peinh @( title: 'Price Unit' );
+};
 
 annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(
   UI.SelectionPresentationVariant #PlannedOrderComponentlist : {
@@ -4566,6 +4622,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
             {
                 $Type : 'UI.DataField',
                 Value : BTYPECAT
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : BTYPEITEM
             },
             {
                 $Type : 'UI.DataField',

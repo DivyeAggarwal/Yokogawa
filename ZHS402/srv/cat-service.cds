@@ -1791,7 +1791,10 @@ service ZAPIBPS0011 {
     };
     entity ZCDSEHPPC0011 as projection on ZSRVBHPP0003.ZCDSEHPPC0011;
     entity ZCDSEHPPC0012 as projection on ZSRVBHPP0003.ZCDSEHPPC0012;
-    entity ZCDSEHPPC0013 as projection on ZSRVBHPP0003.ZCDSEHPPC0013;
+    entity ZCDSEHPPC0013 as projection on ZSRVBHPP0003.ZCDSEHPPC0013{
+        *,
+       null as STATUS    : String(13) @title: 'Production status', //ZTHBT0028-STATUS
+    };
     entity ZCDSEHPPC0014 as projection on ZSRVBHPP0003.ZCDSEHPPC0014;
 }
 
