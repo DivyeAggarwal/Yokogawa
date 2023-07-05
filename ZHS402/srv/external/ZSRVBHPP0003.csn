@@ -220,10 +220,25 @@
           "@sap.label": "Sales Order Item",
           "@sap.quickinfo": "Item number of the SD document"
         },
+        "atwrt": {
+          "type": "cds.String",
+          "length": 70,
+          "@sap.label": "Characteristic Value"
+        },
         "projn": {
           "type": "cds.String",
           "length": 24,
           "@sap.label": "WBS"
+        },
+        "comb_ind": {
+          "type": "cds.String",
+          "length": 70,
+          "@sap.label": "Characteristic Value"
+        },
+        "comb_no": {
+          "type": "cds.String",
+          "length": 70,
+          "@sap.label": "Characteristic Value"
         },
         "compponentno": {
           "type": "cds.String",
@@ -281,13 +296,13 @@
           "type": "cds.String",
           "length": 1,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Transfer category",
+          "@sap.label": "Order Transfer status",
           "@sap.quickinfo": "Order priority"
         },
         "traf_ord": {
           "type": "cds.String",
           "length": 12,
-          "@sap.label": "Transfer Order",
+          "@sap.label": "Order Transfer",
           "@sap.quickinfo": "Goods Recipient"
         },
         "traf_cc": {
@@ -330,10 +345,15 @@
           "length": 70,
           "@sap.label": "Characteristic Value"
         },
+        "wempf": {
+          "type": "cds.String",
+          "length": 12,
+          "@sap.label": "Goods Recipient"
+        },
         "Neuclear": {
           "type": "cds.String",
           "length": 70,
-          "@sap.label": "Transfer Order status",
+          "@sap.label": "Neuclear",
           "@sap.quickinfo": "Characteristic Value"
         }
       }

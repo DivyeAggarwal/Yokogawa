@@ -4529,7 +4529,27 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : comb_no
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : zz1_routindic_plt
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : comb_ind
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : IM_no
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : aprio
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : traf_ord
             },
             {
                 $Type : 'UI.DataField',
@@ -4545,7 +4565,23 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : AUFNR
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : txt04
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : memo1
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : memo2
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : memo3
             }
         ]
     }
@@ -4559,14 +4595,19 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
     gltrs @( title: 'Scheduled Finish Date' );  
     gltrp @( title: 'Basic Finish Date' );  
     serialnumber @( title: 'Serial' );  
+    txt30 @( title: 'System status' );  
     compponentno @( title: 'COMP' );  
     zz1_routindic_plt @( title: 'Usage of routing' );  
     Tokuchu_no @( title: 'Tokuchu No.' );  
     XJ_no @( title: 'XJ No.' );  
     Neuclear @( title: 'Nuclear' );  
     Tokuchu_part_dt @( title: 'Tokuchu parts due date ' );  
+    comb_ind @( title: 'Combination Flag' );  
     comb_no @( title: 'Combination No. ' );  
     IM_no @( title: 'IM' );  
+    txt04 @( title: 'B-Type Parent Prod Order Status' );  
+    aprio @( title: 'Order Transfer status' );  
+    traf_ord @( title: 'Order Transfer ' );  
     traf_cc @( title: 'Transfer cost center' );  
     zz1_linkagenumber_sdi @( title: 'Transfer Linkage' );  
     BTYPECAT @( title: 'B Type Category' );  
