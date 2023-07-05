@@ -4565,6 +4565,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : BTYPECAT
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : AUFNR
             },
             {
