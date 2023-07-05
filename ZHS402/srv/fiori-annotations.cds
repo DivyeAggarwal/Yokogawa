@@ -4013,7 +4013,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             }
         ]
     }
-});
+})
 
 annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(
   UI.SelectionPresentationVariant #CancellOrderList : {
@@ -4417,6 +4417,14 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : ZZG_PRINTED_REV
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ZPRINT
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : zz1_mscode_prd
             },
             {
@@ -4497,6 +4505,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : PRDSTNO
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : SLTApproved
             },
             {
@@ -4537,7 +4549,36 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
             }
         ]
     }
-});
+}){    
+    matnr @( title: 'Material' );  
+    maktx @( title: 'Material text' );  
+    fevor @( title: 'Production Supervisor' );  
+    gamng @( title: 'Order Qty.' );  
+    gmein @( title: 'Base Unit' );  
+    gstrs @( title: 'Scheduled Start Date' );  
+    gltrs @( title: 'Scheduled Finish Date' );  
+    gltrp @( title: 'Basic Finish Date' );  
+    serialnumber @( title: 'Serial' );  
+    compponentno @( title: 'COMP' );  
+    zz1_routindic_plt @( title: 'Usage of routing' );  
+    Tokuchu_no @( title: 'Tokuchu No.' );  
+    XJ_no @( title: 'XJ No.' );  
+    Neuclear @( title: 'Nuclear' );  
+    Tokuchu_part_dt @( title: 'Tokuchu parts due date ' );  
+    comb_no @( title: 'Combination No. ' );  
+    IM_no @( title: 'IM' );  
+    traf_cc @( title: 'Transfer cost center' );  
+    zz1_linkagenumber_sdi @( title: 'Transfer Linkage' );  
+    BTYPECAT @( title: 'B Type Category' );  
+    PRDSTNO  @( title: 'B Type Prod. Start No' );  
+    BTYPEITEM @( title: 'B Type start No. Item' );  
+    PAUFNR @( title: 'B-Type Parent Prod Order' );  
+    BTYPESTATUS @( title: 'B-Type Parent Prod Order Status' );  
+    AUFNR @( title: 'B-Type Parent Start Prod Number' );  
+    memo1 @( title: 'Manufacturing memo1' );  
+    memo2 @( title: 'Manufacturing memo2' );  
+    memo3 @( title: 'Manufacturing memo3' );  
+};
 
 annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(
   UI.SelectionPresentationVariant #ProductionOrderstatusList : {
