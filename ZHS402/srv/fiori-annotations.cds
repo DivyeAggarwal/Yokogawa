@@ -4013,7 +4013,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             }
         ]
     }
-})
+});
 
 annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(
   UI.SelectionPresentationVariant #CancellOrderList : {
