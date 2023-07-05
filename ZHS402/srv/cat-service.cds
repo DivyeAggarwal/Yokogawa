@@ -1750,6 +1750,7 @@ service ZAPIBPS0010 {
 
 //Production Order Status List zhpp0005 8727
 service ZAPIBPS0011 {
+    entity ZCDSEHPPC0023 as projection on ZSRVBHPP0003.ZCDSEHPPC0023;
     entity ZCDSEHPPB0062 as projection on ZSRVBHPP0003.ZCDSEHPPB0062;
     entity ZCDSEHPPC0010 as projection on ZSRVBHPP0003.ZCDSEHPPC0010;
     entity ZCDSEHPPC0011 as projection on ZSRVBHPP0003.ZCDSEHPPC0011;

@@ -237,6 +237,24 @@
           "@sap.label": "Linkage No",
           "@sap.quickinfo": "Linkage Number"
         },
+        "memo1": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Manufacturing memo1",
+          "@sap.quickinfo": "Memo"
+        },
+        "memo2": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Manufacturing memo2",
+          "@sap.quickinfo": "Memo"
+        },
+        "memo3": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Manufacturing memo3",
+          "@sap.quickinfo": "Memo"
+        },
         "Leveling_g": {
           "type": "cds.String",
           "length": 8,
@@ -269,25 +287,27 @@
         "traf_ord": {
           "type": "cds.String",
           "length": 12,
-          "@sap.label": "Goods Recipient"
+          "@sap.label": "Transfer Order",
+          "@sap.quickinfo": "Goods Recipient"
         },
         "traf_cc": {
           "type": "cds.String",
           "length": 10,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Cost Center",
+          "@sap.label": "Transfer cost center",
           "@sap.quickinfo": "Cost Center for Basic Settlement"
         },
         "trf_linkage": {
           "type": "cds.String",
           "length": 16,
-          "@sap.label": "Linkage Number"
+          "@sap.label": "Transfer linkage",
+          "@sap.quickinfo": "Linkage Number"
         },
         "pkkey": {
           "type": "cds.String",
           "length": 10,
           "@sap.display.format": "NonNegative",
-          "@sap.label": "Kanban ID",
+          "@sap.label": "KANBAN ID",
           "@sap.quickinfo": "Kanban Identification Number"
         },
         "Tokuchu_no": {
@@ -313,7 +333,8 @@
         "Neuclear": {
           "type": "cds.String",
           "length": 70,
-          "@sap.label": "Characteristic Value"
+          "@sap.label": "Transfer Order status",
+          "@sap.quickinfo": "Characteristic Value"
         }
       }
     },
@@ -1112,7 +1133,8 @@
         "zz1_linkagenumber_sdi": {
           "type": "cds.String",
           "length": 16,
-          "@sap.label": "Linkage Number"
+          "@sap.label": "Linkage No",
+          "@sap.quickinfo": "Linkage Number"
         },
         "dispo": {
           "type": "cds.String",
@@ -1134,7 +1156,8 @@
           "type": "cds.String",
           "length": 18,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Serial Number"
+          "@sap.label": "Serial No",
+          "@sap.quickinfo": "Serial Number"
         },
         "compponentno": {
           "type": "cds.String",
@@ -1145,17 +1168,20 @@
         "memo1": {
           "type": "cds.String",
           "length": 40,
-          "@sap.label": "Memo"
+          "@sap.label": "Manufacturing memo1",
+          "@sap.quickinfo": "Memo"
         },
         "memo2": {
           "type": "cds.String",
           "length": 40,
-          "@sap.label": "Memo"
+          "@sap.label": "Manufacturing memo2",
+          "@sap.quickinfo": "Memo"
         },
         "memo3": {
           "type": "cds.String",
           "length": 40,
-          "@sap.label": "Memo"
+          "@sap.label": "Manufacturing memo3",
+          "@sap.quickinfo": "Memo"
         },
         "gltrs": {
           "type": "cds.Date",
@@ -1176,8 +1202,13 @@
           "type": "cds.String",
           "length": 10,
           "@sap.display.format": "NonNegative",
-          "@sap.label": "Kanban ID",
+          "@sap.label": "KANBAN ID",
           "@sap.quickinfo": "Kanban Identification Number"
+        },
+        "ordertype": {
+          "type": "cds.String",
+          "length": 8,
+          "@sap.label": "Order type"
         },
         "SLTApproved": {
           "type": "cds.String",
@@ -1187,13 +1218,15 @@
           "type": "cds.String",
           "length": 8,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Work Center"
+          "@sap.label": "Leveling Gr",
+          "@sap.quickinfo": "Work Center"
         },
         "work_centre": {
           "type": "cds.String",
           "length": 8,
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Work Center"
+          "@sap.label": "Work centre",
+          "@sap.quickinfo": "Work Center"
         },
         "Tokuchu_no": {
           "type": "cds.String",
@@ -1229,6 +1262,209 @@
           "type": "cds.String",
           "length": 70,
           "@sap.label": "Characteristic Value"
+        }
+      }
+    },
+    "ZSRVBHPP0003.ZCDSEHPPC0023": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "CDS Planned component output",
+      "elements": {
+        "plnum": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "notNull": true
+        },
+        "matnr": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "notNull": true
+        },
+        "aufnr": {
+          "type": "cds.String",
+          "length": 12,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Run schedule header",
+          "@sap.quickinfo": "Run schedule header number"
+        },
+        "rsnum": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Reservation",
+          "@sap.quickinfo": "Number of reservation/dependent requirements"
+        },
+        "bdter": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Requirements date",
+          "@sap.quickinfo": "Requirements date for the component"
+        },
+        "bdmng": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "meins",
+          "@sap.label": "Requirement Quantity"
+        },
+        "meins": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "werks": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard"
+        },
+        "lgort": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Storage location"
+        },
+        "schgt": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Bulk material",
+          "@sap.quickinfo": "Indicator: bulk material"
+        },
+        "rgekz": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Backflush",
+          "@sap.quickinfo": "Indicator: Backflush"
+        },
+        "waers": {
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.semantics": "currency-code"
+        },
+        "maktx": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Material Description"
+        },
+        "dismm": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Type"
+        },
+        "beskz": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Procurement Type"
+        },
+        "sobsl": {
+          "type": "cds.String",
+          "length": 2,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Special procurement",
+          "@sap.quickinfo": "Special procurement type"
+        },
+        "stprs": {
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3,
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Standard price"
+        },
+        "peinh": {
+          "type": "cds.Decimal",
+          "precision": 5,
+          "scale": 0,
+          "@sap.label": "Price unit"
+        },
+        "fevor": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supervisor",
+          "@sap.quickinfo": "Production Supervisor"
+        },
+        "gamng": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "gmein",
+          "@sap.label": "Total Order Quantity"
+        },
+        "gmein": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "gstrs": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start"
+        },
+        "gltrs": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish"
+        },
+        "gltrp": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date"
+        },
+        "rmanr": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales and Distribution Document Number"
+        },
+        "posnr_rma": {
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Item (SD)",
+          "@sap.quickinfo": "Item number of the SD document"
+        },
+        "aufpl": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Opertn task list no.",
+          "@sap.quickinfo": "Routing number of operations in the order"
+        },
+        "dispo": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller"
+        },
+        "aprio": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Priority",
+          "@sap.quickinfo": "Order priority"
         }
       }
     },
