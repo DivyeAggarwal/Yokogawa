@@ -374,25 +374,70 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     this.on('READ', 'OrderPartInformation', async req => {
         var filterData = req._queryOptions;
         const orderApi = await cds.connect.to('ZSRVBHMM0006');
-        // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': filterData.plnum }, plwrk: { '=': filterData.plwrk }, paart: { '=': filterData.paart }, dispo: { '=': filterData.dispo }, psttr: { '=': filterData.psttr }, pedtr: { '=': filterData.pedtr }, pertr: { '=': filterData.pertr } });
+        if(filterData.paart == 3 || filterData.paart == 6) {
+            const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
+                // plnum: filterData.plnum,
+                plwrk: filterData.plwrk,
+                vagrp: filterData.paart,
+                dispo: filterData.dispo,
+                // psttr: filterData.psttr,
+                // pedtr: filterData.pedtr,
+                // pertr: filterData.pertr
+            })
+
+            for (let result of plannedOrder) {
+                const btpPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({
+                    DWERK: result.plwrk,
+                    MATNR: result.matnr,
+                    PLNUM: result.plnum
+                })
+                if (btpPlannedOrder.length == 0) {
+                    var payload = {
+                        plnum: result.plnum,
+                        matnr: result.matnr,
+                        plwrk: result.plwrk,
+                        paart: result.paart,
+                        gsmng: result.gsmng,
+                        meins: result.meins,
+                        psttr: result.psttr,
+                        pedtr: result.pedtr,
+                        pertr: result.pertr,
+                        dispo: result.dispo,
+                        kdauf: result.kdauf,
+                        kdpos: result.kdpos,
+                        kdein: result.kdein,
+                        auffx: result.auffx,
+                        vagrp: result.vagrp,
+                        status: result.status,
+                        errmsg: result.errmsg,
+                        updqty: result.updqty
+                    }
+                    payloadArray.push(payload);
+                    // checkPlannedOrder.push(btpPlannedOrder[0]);
+                }
+                
+            }
+        }
+        // const plannedOrder3 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': filterData.plnum }, plwrk: { '=': filterData.plwrk }, vagrp: { '=': filterData.paart }, dispo: { '=': filterData.dispo }, psttr: { '=': filterData.psttr }, pedtr: { '=': filterData.pedtr }, pertr: { '=': filterData.pertr } });
         // const plannedOrder1 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(
         //     {
         //         psttr:"2022-05-18"
         //     }
         // )
-        const plannedOrder1 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(
-                {
-                    plnum:filterData.plnum
-                }
-            )
+        const plannedOrder2 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009');
+        // const plannedOrder1 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(
+        //         {
+        //             plnum:filterData.plnum
+        //         }
+        //     )
         const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
-            plnum: filterData.plnum,
+            // plnum: filterData.plnum,
             plwrk: filterData.plwrk,
             vagrp: filterData.paart,
             dispo: filterData.dispo,
-            psttr: filterData.psttr,
-            pedtr: filterData.pedtr,
-            pertr: filterData.pertr
+            // psttr: filterData.psttr,
+            // pedtr: filterData.pedtr,
+            // pertr: filterData.pertr
         })
         // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009');
         let checkPlannedOrder = [];

@@ -41171,6 +41171,134 @@
     },
     "ZAPIBPS0011.ZCDSEHPPC0023": {
       "kind": "entity",
+      "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
+      "@UI.HeaderInfo.TypeName": "Planned Order Component list",
+      "@UI.HeaderInfo.TypeNamePlural": "Planned Order Component list",
+      "@UI.LineItem#PlannedOrderComponentlist": [
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "aufnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "plnum"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "matnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "maktx"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "posnr_rma"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "bdter"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "bdmng"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "meins"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "werks"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "lgort"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "dismm"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "beskz"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "sobsl"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "schgt"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "rgekz"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "stprs"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "peinh"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.Text": "Planned Order Component list",
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.SelectionVariant.Text": "PlannedOrderComponentlist",
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.SelectionVariant.SelectOptions": [
+        {
+          "$Type": "UI.SelectOptionType",
+          "PropertyName": {
+            "=": "aufnr"
+          }
+        }
+      ],
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.PresentationVariant.SortOrder": [
+        {
+          "Property": {
+            "=": "aufnr"
+          },
+          "Descending": false
+        }
+      ],
+      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.PresentationVariant.Visualizations": [
+        "@UI.LineItem#PlannedOrderComponentlist"
+      ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.updatable": "false",
@@ -41187,6 +41315,7 @@
       },
       "elements": {
         "plnum": {
+          "@title": "Planned Order",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Order",
           "key": true,
@@ -41195,6 +41324,7 @@
           "notNull": true
         },
         "matnr": {
+          "@title": "Material",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
@@ -41204,6 +41334,7 @@
           "notNull": true
         },
         "aufnr": {
+          "@title": "Production Order",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Run schedule header",
           "@sap.quickinfo": "Run schedule header number",
@@ -41218,12 +41349,14 @@
           "length": 10
         },
         "bdter": {
+          "@title": "Requirement date",
           "@sap.display.format": "Date",
           "@sap.label": "Requirements date",
           "@sap.quickinfo": "Requirements date for the component",
           "type": "cds.Date"
         },
         "bdmng": {
+          "@title": "Req QTY",
           "@sap.unit": "meins",
           "@sap.label": "Requirement Quantity",
           "type": "cds.Decimal",
@@ -41231,12 +41364,14 @@
           "scale": 3
         },
         "meins": {
+          "@title": "Base Unit",
           "@sap.label": "Base Unit of Measure",
           "@sap.semantics": "unit-of-measure",
           "type": "cds.String",
           "length": 3
         },
         "werks": {
+          "@title": "Plant",
           "@sap.display.format": "UpperCase",
           "@sap.required.in.filter": "true",
           "@sap.label": "Plant",
@@ -41245,18 +41380,21 @@
           "length": 4
         },
         "lgort": {
+          "@title": "Storage Location",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Storage location",
           "type": "cds.String",
           "length": 4
         },
         "schgt": {
+          "@title": "Bulk",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Bulk material",
           "@sap.quickinfo": "Indicator: bulk material",
           "type": "cds.Boolean"
         },
         "rgekz": {
+          "@title": "Back flush",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Backflush",
           "@sap.quickinfo": "Indicator: Backflush",
@@ -41270,23 +41408,27 @@
           "length": 5
         },
         "maktx": {
+          "@title": "Material text",
           "@sap.label": "Material Description",
           "type": "cds.String",
           "length": 40
         },
         "dismm": {
+          "@title": "MRP type",
           "@sap.display.format": "UpperCase",
           "@sap.label": "MRP Type",
           "type": "cds.String",
           "length": 2
         },
         "beskz": {
+          "@title": "Procurement type",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Procurement Type",
           "type": "cds.String",
           "length": 1
         },
         "sobsl": {
+          "@title": "Special Procurement type",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Special procurement",
           "@sap.quickinfo": "Special procurement type",
@@ -41294,6 +41436,7 @@
           "length": 2
         },
         "stprs": {
+          "@title": "Standard Price",
           "@sap.unit": "waers",
           "@sap.variable.scale": "true",
           "@sap.label": "Standard price",
@@ -41302,6 +41445,7 @@
           "scale": 3
         },
         "peinh": {
+          "@title": "Price Unit",
           "@sap.label": "Price unit",
           "type": "cds.Decimal",
           "precision": 5,
@@ -41350,6 +41494,7 @@
           "length": 10
         },
         "posnr_rma": {
+          "@title": "BOM Item",
           "@sap.display.format": "NonNegative",
           "@sap.label": "Item (SD)",
           "@sap.quickinfo": "Item number of the SD document",
@@ -41672,6 +41817,12 @@
         {
           "$Type": "UI.DataField",
           "Value": {
+            "=": "BTYPEORDER"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
             "=": "BTYPEITEM"
           }
         },
@@ -41744,14 +41895,6 @@
           "*",
           {
             "val": null,
-            "as": "comb_no",
-            "cast": {
-              "type": "cds.String",
-              "length": 13
-            }
-          },
-          {
-            "val": null,
             "as": "BTYPEORDER",
             "cast": {
               "type": "cds.String",
@@ -41771,30 +41914,6 @@
             "as": "BTYPEITEM",
             "cast": {
               "type": "cds.Integer"
-            }
-          },
-          {
-            "val": null,
-            "as": "DWERK",
-            "cast": {
-              "type": "cds.String",
-              "length": 4
-            }
-          },
-          {
-            "val": null,
-            "as": "LEVELINGGROUP",
-            "cast": {
-              "type": "cds.String",
-              "length": 8
-            }
-          },
-          {
-            "val": null,
-            "as": "ARBPL",
-            "cast": {
-              "type": "cds.String",
-              "length": 8
             }
           },
           {
@@ -41830,152 +41949,7 @@
             }
           },
           {
-            "val": null,
-            "as": "KDAUF",
-            "cast": {
-              "type": "cds.String",
-              "length": 10
-            }
-          },
-          {
-            "val": null,
-            "as": "KDPOS",
-            "cast": {
-              "type": "cds.Integer"
-            }
-          },
-          {
-            "val": null,
-            "as": "COMPNO",
-            "cast": {
-              "type": "cds.String",
-              "length": 4
-            }
-          },
-          {
-            "val": null,
-            "as": "MSCODE",
-            "cast": {
-              "type": "cds.String",
-              "length": 40
-            }
-          },
-          {
-            "val": null,
-            "as": "GSTRP",
-            "cast": {
-              "type": "cds.Date"
-            }
-          },
-          {
-            "val": null,
-            "as": "GLTRP",
-            "cast": {
-              "type": "cds.Date"
-            }
-          },
-          {
-            "val": null,
-            "as": "MATNR",
-            "cast": {
-              "type": "cds.String",
-              "length": 40
-            }
-          },
-          {
-            "val": null,
-            "as": "GSMNG",
-            "cast": {
-              "type": "cds.String",
-              "length": 13
-            }
-          },
-          {
-            "val": null,
-            "as": "MEINS",
-            "cast": {
-              "type": "cds.String",
-              "length": 3
-            }
-          },
-          {
-            "val": null,
-            "as": "PSTTR",
-            "cast": {
-              "type": "cds.Date"
-            }
-          },
-          {
-            "val": null,
-            "as": "PLNUM",
-            "cast": {
-              "type": "cds.String",
-              "length": 10
-            }
-          },
-          {
-            "val": null,
-            "as": "PAUFNR",
-            "cast": {
-              "type": "cds.String",
-              "length": 12
-            }
-          },
-          {
-            "val": null,
-            "as": "PEBELN",
-            "cast": {
-              "type": "cds.String",
-              "length": 10
-            }
-          },
-          {
-            "val": null,
-            "as": "PEBELP",
-            "cast": {
-              "type": "cds.String",
-              "length": 5
-            }
-          },
-          {
-            "val": null,
-            "as": "BTYPENOTE",
-            "cast": {
-              "type": "cds.String",
-              "length": 20
-            }
-          },
-          {
-            "val": null,
-            "as": "SYDATS",
-            "cast": {
-              "type": "cds.Date"
-            }
-          },
-          {
-            "val": null,
-            "as": "SYTIME",
-            "cast": {
-              "type": "cds.Time"
-            }
-          },
-          {
-            "val": null,
-            "as": "STARTTIME",
-            "cast": {
-              "type": "cds.Time"
-            }
-          },
-          {
-            "val": null,
-            "as": "UUSR",
-            "cast": {
-              "type": "cds.String",
-              "length": 12
-            }
-          },
-          {
-            "val": null,
+            "val": "",
             "as": "ZZG_PRINTED_REV",
             "cast": {
               "type": "cds.String",
@@ -41988,14 +41962,6 @@
             "cast": {
               "type": "cds.String",
               "length": 1
-            }
-          },
-          {
-            "val": null,
-            "as": "UREPID",
-            "cast": {
-              "type": "cds.String",
-              "length": 40
             }
           }
         ]
@@ -42173,9 +42139,9 @@
         },
         "comb_no": {
           "@title": "Combination No. ",
-          "@Core.Computed": true,
+          "@sap.label": "Characteristic Value",
           "type": "cds.String",
-          "length": 13
+          "length": 70
         },
         "compponentno": {
           "@title": "COMP",
@@ -42185,7 +42151,6 @@
           "length": 4
         },
         "zz1_linkagenumber_sdi": {
-          "@title": "Transfer Linkage",
           "@sap.label": "Linkage No",
           "@sap.quickinfo": "Linkage Number",
           "type": "cds.String",
@@ -42308,7 +42273,7 @@
           "length": 70
         },
         "BTYPEORDER": {
-          "@title": "B-type Prod. No",
+          "@title": "B Type Prod. Start No.",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 13
@@ -42323,24 +42288,6 @@
           "@title": "B Type start No. Item",
           "@Core.Computed": true,
           "type": "cds.Integer"
-        },
-        "DWERK": {
-          "@title": "Plant",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 4
-        },
-        "LEVELINGGROUP": {
-          "@title": "Leveling group",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 8
-        },
-        "ARBPL": {
-          "@title": "Parts Work Center",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 8
         },
         "BTYPECAT": {
           "@title": "B Type Category",
@@ -42361,114 +42308,7 @@
           "length": 8
         },
         "AUFNR": {
-          "@title": "B-Type Parent Start Prod Number",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 12
-        },
-        "KDAUF": {
-          "@title": "Sales Order",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 10
-        },
-        "KDPOS": {
-          "@title": "Sales Order Item",
-          "@Core.Computed": true,
-          "type": "cds.Integer"
-        },
-        "COMPNO": {
-          "@title": "Comp No.",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 4
-        },
-        "MSCODE": {
-          "@title": "MS Code",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 40
-        },
-        "GSTRP": {
-          "@title": "Basic start date",
-          "@Core.Computed": true,
-          "type": "cds.Date"
-        },
-        "GLTRP": {
-          "@title": "Basic finish date",
-          "@Core.Computed": true,
-          "type": "cds.Date"
-        },
-        "MATNR": {
-          "@title": "Parts Material",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 40
-        },
-        "GSMNG": {
-          "@title": "Order quantity",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 13
-        },
-        "MEINS": {
-          "@title": "Base Unit",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 3
-        },
-        "PSTTR": {
-          "@title": "Parts Planned start date",
-          "@Core.Computed": true,
-          "type": "cds.Date"
-        },
-        "PLNUM": {
-          "@title": "Parts Planned Order",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 10
-        },
-        "PAUFNR": {
           "@title": "B-Type Parent Prod Order",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 12
-        },
-        "PEBELN": {
-          "@title": "Parts PO",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 10
-        },
-        "PEBELP": {
-          "@title": "Parts PO Item",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 5
-        },
-        "BTYPENOTE": {
-          "@title": "By-Order Parts Note",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 20
-        },
-        "SYDATS": {
-          "@title": "Printed Date",
-          "@Core.Computed": true,
-          "type": "cds.Date"
-        },
-        "SYTIME": {
-          "@title": "Printed Time",
-          "@Core.Computed": true,
-          "type": "cds.Time"
-        },
-        "STARTTIME": {
-          "@title": "Parts Planned start time",
-          "@Core.Computed": true,
-          "type": "cds.Time"
-        },
-        "UUSR": {
-          "@title": "Changed by",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 12
@@ -42484,21 +42324,15 @@
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 1
-        },
-        "UREPID": {
-          "@title": "PROGRAMM",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 40
         }
       }
     },
     "ZAPIBPS0011.ZCDSEHPPC0011": {
       "kind": "entity",
       "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
-      "@UI.HeaderInfo.TypeName": "Planned Order Component list",
-      "@UI.HeaderInfo.TypeNamePlural": "Planned Order Component list",
-      "@UI.LineItem#PlannedOrderComponentlist": [
+      "@UI.HeaderInfo.TypeName": "Production Order Component list",
+      "@UI.HeaderInfo.TypeNamePlural": "Production Order Component list",
+      "@UI.LineItem#ProductionOrderComponentlist": [
         {
           "$Type": "UI.DataField",
           "Value": {
@@ -42614,9 +42448,9 @@
           }
         }
       ],
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.Text": "Planned Order Component list",
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.SelectionVariant.Text": "PlannedOrderComponentlist",
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.SelectionVariant.SelectOptions": [
+      "@UI.SelectionPresentationVariant#ProductionOrderComponentlist.Text": "Production Order Component list",
+      "@UI.SelectionPresentationVariant#ProductionOrderComponentlist.SelectionVariant.Text": "ProductionOrderComponentlist",
+      "@UI.SelectionPresentationVariant#ProductionOrderComponentlist.SelectionVariant.SelectOptions": [
         {
           "$Type": "UI.SelectOptionType",
           "PropertyName": {
@@ -42624,16 +42458,13 @@
           }
         }
       ],
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.PresentationVariant.SortOrder": [
+      "@UI.SelectionPresentationVariant#ProductionOrderComponentlist.PresentationVariant.SortOrder": [
         {
           "Property": {
             "=": "aufnr"
           },
           "Descending": false
         }
-      ],
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.PresentationVariant.Visualizations": [
-        "@UI.LineItem#PlannedOrderComponentlist"
       ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
@@ -43699,7 +43530,25 @@
         {
           "$Type": "UI.DataField",
           "Value": {
+            "=": "ZZG_PRINTED_REV"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ZPRINT"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
             "=": "zz1_mscode_prd"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ordertype"
           }
         },
         {
@@ -43742,6 +43591,12 @@
           "$Type": "UI.DataField",
           "Value": {
             "=": "gltrs"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "pedtr"
           }
         },
         {
@@ -43795,6 +43650,12 @@
         {
           "$Type": "UI.DataField",
           "Value": {
+            "=": "PRDSTNO"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
             "=": "SLTApproved"
           }
         },
@@ -43831,6 +43692,12 @@
         {
           "$Type": "UI.DataField",
           "Value": {
+            "=": "zz1_routindic_plt"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
             "=": "comb_ind"
           }
         },
@@ -43844,6 +43711,30 @@
           "$Type": "UI.DataField",
           "Value": {
             "=": "pkkey"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "BTYPECAT"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "BTYPEORDER"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "BTYPEITEM"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "AUFNR"
           }
         },
         {
@@ -43898,7 +43789,81 @@
           "ref": [
             "ZSRVBHPP0003.ZCDSEHPPC0014"
           ]
-        }
+        },
+        "columns": [
+          "*",
+          {
+            "val": null,
+            "as": "BTYPEORDER",
+            "cast": {
+              "type": "cds.String",
+              "length": 13
+            }
+          },
+          {
+            "val": null,
+            "as": "TRANS_DES",
+            "cast": {
+              "type": "cds.String",
+              "length": 10
+            }
+          },
+          {
+            "val": null,
+            "as": "BTYPEITEM",
+            "cast": {
+              "type": "cds.Integer"
+            }
+          },
+          {
+            "val": null,
+            "as": "BTYPECAT",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          },
+          {
+            "val": null,
+            "as": "BTYPESTATUS",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          },
+          {
+            "val": null,
+            "as": "PRDSTNO",
+            "cast": {
+              "type": "cds.String",
+              "length": 8
+            }
+          },
+          {
+            "val": null,
+            "as": "AUFNR",
+            "cast": {
+              "type": "cds.String",
+              "length": 12
+            }
+          },
+          {
+            "val": "",
+            "as": "ZZG_PRINTED_REV",
+            "cast": {
+              "type": "cds.String",
+              "length": 12
+            }
+          },
+          {
+            "val": null,
+            "as": "ZPRINT",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          }
+        ]
       },
       "elements": {
         "plnum": {
@@ -43910,6 +43875,7 @@
           "notNull": true
         },
         "matnr": {
+          "@title": "Material",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
@@ -43917,6 +43883,7 @@
           "length": 40
         },
         "aufnr": {
+          "@title": "Production Order",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production order",
           "@sap.quickinfo": "Run schedule header number",
@@ -44020,11 +43987,13 @@
           "length": 80
         },
         "zz1_routindic_plt": {
+          "@title": "Usage of routing",
           "@sap.label": "RoutingDisplayIndicator",
           "type": "cds.String",
           "length": 1
         },
         "serialnumber": {
+          "@title": "Serial",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Serial No",
           "@sap.quickinfo": "Serial Number",
@@ -44032,40 +44001,47 @@
           "length": 18
         },
         "compponentno": {
+          "@title": "COMP",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Component number",
           "type": "cds.String",
           "length": 4
         },
         "memo1": {
+          "@title": "Manufacturing memo1",
           "@sap.label": "Manufacturing memo1",
           "@sap.quickinfo": "Memo",
           "type": "cds.String",
           "length": 40
         },
         "memo2": {
+          "@title": "Manufacturing memo2",
           "@sap.label": "Manufacturing memo2",
           "@sap.quickinfo": "Memo",
           "type": "cds.String",
           "length": 40
         },
         "memo3": {
+          "@title": "Manufacturing memo3",
           "@sap.label": "Manufacturing memo3",
           "@sap.quickinfo": "Memo",
           "type": "cds.String",
           "length": 40
         },
         "gltrs": {
+          "@title": "Scheduled Finish Date",
           "@sap.display.format": "Date",
           "@sap.label": "Scheduled finish",
           "type": "cds.Date"
         },
         "gstrs": {
+          "@title": "Scheduled Start Date",
           "@sap.display.format": "Date",
           "@sap.label": "Scheduled start",
           "type": "cds.Date"
         },
         "maktx": {
+          "@title": "Material text",
           "@sap.label": "Material Description",
           "type": "cds.String",
           "length": 40
@@ -44101,39 +44077,99 @@
           "length": 8
         },
         "Tokuchu_no": {
+          "@title": "Tokuchu No.",
           "@sap.label": "Characteristic Value",
           "type": "cds.String",
           "length": 70
         },
         "IM_no": {
+          "@title": "IM",
           "@sap.label": "Characteristic Value",
           "type": "cds.String",
           "length": 70
         },
         "XJ_no": {
+          "@title": "XJ No.",
           "@sap.label": "Characteristic Value",
           "type": "cds.String",
           "length": 70
         },
         "Tokuchu_part_dt": {
+          "@title": "Tokuchu parts due date ",
           "@sap.label": "Characteristic Value",
           "type": "cds.String",
           "length": 70
         },
         "Neuclear": {
+          "@title": "Nuclear",
           "@sap.label": "Characteristic Value",
           "type": "cds.String",
           "length": 70
         },
         "comb_ind": {
+          "@title": "Combination Flag",
           "@sap.label": "Characteristic Value",
           "type": "cds.String",
           "length": 70
         },
         "comb_no": {
+          "@title": "Combination No. ",
           "@sap.label": "Characteristic Value",
           "type": "cds.String",
           "length": 70
+        },
+        "BTYPEORDER": {
+          "@title": "B Type Prod. Start No.",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 13
+        },
+        "TRANS_DES": {
+          "@title": "Transfer Destination",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "BTYPEITEM": {
+          "@title": "B Type start No. Item",
+          "@Core.Computed": true,
+          "type": "cds.Integer"
+        },
+        "BTYPECAT": {
+          "@title": "B Type Category",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "BTYPESTATUS": {
+          "@title": "B-Type Parent Prod Order Status",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "PRDSTNO": {
+          "@title": "B Type Prod. Start No",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 8
+        },
+        "AUFNR": {
+          "@title": "B-Type Parent Prod Order",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 12
+        },
+        "ZZG_PRINTED_REV": {
+          "@title": "Printed Rev No.",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 12
+        },
+        "ZPRINT": {
+          "@title": "Print Status",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
         }
       }
     },
