@@ -4925,11 +4925,11 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
     aprio @( title: 'Order Transfer status' );  
     traf_ord @( title: 'Order Transfer ' );  
     traf_cc @( title: 'Transfer cost center' );  
-    zz1_linkagenumber_sdi @( title: 'Transfer Linkage' );  
+    // zz1_linkagenumber_sdi @( title: 'Transfer Linkage' );  
     BTYPECAT @( title: 'B Type Category' );  
     PRDSTNO  @( title: 'B Type Prod. Start No' );  
     BTYPEITEM @( title: 'B Type start No. Item' );  
-    PAUFNR @( title: 'B-Type Parent Prod Order' );  
+    AUFNR @( title: 'B-Type Parent Prod Order' );  
     BTYPESTATUS @( title: 'B-Type Parent Prod Order Status' );  
     AUFNR @( title: 'B-Type Parent Start Prod Number' );  
     memo1 @( title: 'Manufacturing memo1' );  
@@ -5189,11 +5189,11 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
     // aprio @( title: 'Order Transfer status' );  
     // traf_ord @( title: 'Order Transfer ' );  
     // traf_cc @( title: 'Transfer cost center' );  
-    zz1_linkagenumber_sdi @( title: 'Transfer Linkage' );  
+    // zz1_linkagenumber_sdi @( title: 'Transfer Linkage' );  
     BTYPECAT @( title: 'B Type Category' );  
     PRDSTNO  @( title: 'B Type Prod. Start No' );  
     BTYPEITEM @( title: 'B Type start No. Item' );  
-    PAUFNR @( title: 'B-Type Parent Prod Order' );  
+    AUFNR @( title: 'B-Type Parent Prod Order' );  
     BTYPESTATUS @( title: 'B-Type Parent Prod Order Status' );  
     AUFNR @( title: 'B-Type Parent Start Prod Number' );  
     memo1 @( title: 'Manufacturing memo1' );  
