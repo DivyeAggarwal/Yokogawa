@@ -1753,40 +1753,16 @@ service ZAPIBPS0011 {
     entity ZCDSEHPPC0023 as projection on ZSRVBHPP0003.ZCDSEHPPC0023;
     entity ZCDSEHPPB0062 as projection on ZSRVBHPP0003.ZCDSEHPPB0062;
     entity ZCDSEHPPC0010 as projection on ZSRVBHPP0003.ZCDSEHPPC0010 {
-        *,
-       null as comb_no    : String(13) @title: 'Combination No.',
-       null as BTYPEORDER    : String(13) @title: 'B-type Prod. No',
+        *, 
+        null as BTYPEORDER    : String(13) @title: 'B Type Prod. Start No.',
         null as TRANS_DES         : String(10)  @title: 'Transfer Destination',
-        null as BTYPEITEM     : Integer    @title: 'B-type Prod. Item No',
-        null as DWERK         : String(4)  @title: 'Plant',
-        null as LEVELINGGROUP : String(8)  @title: 'Leveling group',
-        null as ARBPL         : String(8)  @title: 'Parts Work Center',
-        null as BTYPECAT      : String(1)  @title: 'By-Order Category',
+        null as BTYPEITEM     : Integer    @title: 'B Type start No. Item',
+        null as BTYPECAT      : String(1)  @title: 'B Type Category',
         null as BTYPESTATUS   : String(1)  @title: 'By-Order Parts Status',
         null as PRDSTNO       : String(8)  @title: 'Prod. Start No.',
-        null as AUFNR         : String(12) @title: 'Prod. Order',
-        null as KDAUF         : String(10) @title: 'Sales Order',
-        null as KDPOS         : Integer    @title: 'Sales Order Item',
-        null as COMPNO        : String(4)  @title: 'Comp No.',
-        null as MSCODE        : String(40) @title: 'MS Code',
-        null as GSTRP         : Date       @title: 'Basic start date',
-        null as GLTRP         : Date       @title: 'Basic finish date',
-        null as MATNR         : String(40) @title: 'Parts Material',
-        null as GSMNG         : String(13) @title: 'Order quantity', //check
-        null as MEINS         : String(3)  @title: 'Base Unit',
-        null as PSTTR         : Date       @title: 'Parts Planned start date',
-        null as PLNUM         : String(10) @title: 'Parts Planned Order',
-        null as PAUFNR        : String(12) @title: 'Parts Production Order',
-        null as PEBELN        : String(10) @title: 'Parts PO',
-        null as PEBELP        : String(5)  @title: 'Parts PO Item',
-        null as BTYPENOTE     : String(20) @title: 'By-Order Parts Note',
-        null as SYDATS        : Date       @title: 'Printed Date',
-        null as SYTIME        : Time       @title: 'Printed Time',
-        null as STARTTIME     : Time       @title: 'Parts Planned start time',
-        null as UUSR          : String(12) @title: 'Changed by',
+        null as AUFNR         : String(12) @title: 'B-Type Parent Prod Order',
         '' as ZZG_PRINTED_REV          : String(12) @title: 'Printed Rev No.',
-        null as ZPRINT: String(1) @title : 'Print Status',
-        null as UREPID        : String(40) @title: 'PROGRAMM'
+        null as ZPRINT: String(1) @title : 'Print Status'
     };
     entity ZCDSEHPPC0011 as projection on ZSRVBHPP0003.ZCDSEHPPC0011;
     entity ZCDSEHPPC0012 as projection on ZSRVBHPP0003.ZCDSEHPPC0012;
@@ -1796,39 +1772,15 @@ service ZAPIBPS0011 {
     };
     entity ZCDSEHPPC0014 as projection on ZSRVBHPP0003.ZCDSEHPPC0014{
         *,
-       null as comb_no    : String(13) @title: 'Combination No.',
-       null as BTYPEORDER    : String(13) @title: 'B-type Prod. No',
+        null as BTYPEORDER    : String(13) @title: 'B Type Prod. Start No.',
         null as TRANS_DES         : String(10)  @title: 'Transfer Destination',
-        null as BTYPEITEM     : Integer    @title: 'B-type Prod. Item No',
-        null as DWERK         : String(4)  @title: 'Plant',
-        null as LEVELINGGROUP : String(8)  @title: 'Leveling group',
-        null as ARBPL         : String(8)  @title: 'Parts Work Center',
-        null as BTYPECAT      : String(1)  @title: 'By-Order Category',
+        null as BTYPEITEM     : Integer    @title: 'B Type start No. Item',
+        null as BTYPECAT      : String(1)  @title: 'B Type Category',
         null as BTYPESTATUS   : String(1)  @title: 'By-Order Parts Status',
         null as PRDSTNO       : String(8)  @title: 'Prod. Start No.',
-        null as AUFNR         : String(12) @title: 'Prod. Order',
-        null as KDAUF         : String(10) @title: 'Sales Order',
-        null as KDPOS         : Integer    @title: 'Sales Order Item',
-        null as COMPNO        : String(4)  @title: 'Comp No.',
-        null as MSCODE        : String(40) @title: 'MS Code',
-        null as GSTRP         : Date       @title: 'Basic start date',
-        null as GLTRP         : Date       @title: 'Basic finish date',
-        null as MATNR         : String(40) @title: 'Parts Material',
-        null as GSMNG         : String(13) @title: 'Order quantity', //check
-        null as MEINS         : String(3)  @title: 'Base Unit',
-        null as PSTTR         : Date       @title: 'Parts Planned start date',
-        null as PLNUM         : String(10) @title: 'Parts Planned Order',
-        null as PAUFNR        : String(12) @title: 'Parts Production Order',
-        null as PEBELN        : String(10) @title: 'Parts PO',
-        null as PEBELP        : String(5)  @title: 'Parts PO Item',
-        null as BTYPENOTE     : String(20) @title: 'By-Order Parts Note',
-        null as SYDATS        : Date       @title: 'Printed Date',
-        null as SYTIME        : Time       @title: 'Printed Time',
-        null as STARTTIME     : Time       @title: 'Parts Planned start time',
-        null as UUSR          : String(12) @title: 'Changed by',
-        null as ZZG_PRINTED_REV          : String(12) @title: 'Printed Rev No.',
-        null as ZPRINT: String(1) @title : 'Print Status',
-        null as UREPID        : String(40) @title: 'PROGRAMM'
+        null as AUFNR         : String(12) @title: 'B-Type Parent Prod Order',
+        '' as ZZG_PRINTED_REV          : String(12) @title: 'Printed Rev No.',
+        null as ZPRINT: String(1) @title : 'Print Status'
     };
 }
 
