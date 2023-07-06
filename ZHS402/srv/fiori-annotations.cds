@@ -4877,6 +4877,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
+                Value : BTYPEORDER
+            },
+            {
+                $Type : 'UI.DataField',
                 Value : BTYPEITEM
             },
             {
@@ -4929,9 +4933,8 @@ annotate ZAPIBPS0011.ZCDSEHPPC0010 with @(UI : {
     BTYPECAT @( title: 'B Type Category' );  
     PRDSTNO  @( title: 'B Type Prod. Start No' );  
     BTYPEITEM @( title: 'B Type start No. Item' );  
-    AUFNR @( title: 'B-Type Parent Prod Order' );  
     BTYPESTATUS @( title: 'B-Type Parent Prod Order Status' );  
-    AUFNR @( title: 'B-Type Parent Start Prod Number' );  
+    AUFNR @( title: 'B-Type Parent Prod Order' );  
     memo1 @( title: 'Manufacturing memo1' );  
     memo2 @( title: 'Manufacturing memo2' );  
     memo3 @( title: 'Manufacturing memo3' );  
@@ -4971,10 +4974,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
     },
     LineItem #PlannedOrderstatusList : {
         $value : [
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : porder
-            // },
+            {
+                $Type : 'UI.DataField',
+                Value : aufnr
+            },
             {
                 $Type : 'UI.DataField',
                 Value : plnum
@@ -4999,30 +5002,30 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : zz1_mscode_prd
             },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : dauat
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : mrpcontrol
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : fevor
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : plant
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : gamng
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : gmein
-            // },
+            {
+                $Type : 'UI.DataField',
+                Value : ordertype
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : dispo
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : plgrp
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : pwwrk
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : gsmng
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : meins
+            },
             {
                 $Type : 'UI.DataField',
                 Value : gstrs
@@ -5031,10 +5034,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : gltrs
             },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : gltrp
-            // },
+            {
+                $Type : 'UI.DataField',
+                Value : pedtr
+            },
             // {
             //     $Type : 'UI.DataField',
             //     Value : txt30
@@ -5049,11 +5052,11 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : rmanr
+                Value : kdauf
             },
             {
                 $Type : 'UI.DataField',
-                Value : posnr_rma
+                Value : kdpos
             },
             {
                 $Type : 'UI.DataField',
@@ -5063,10 +5066,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : zz1_linkagenumber_sdi
             },
-            {
-                $Type : 'UI.DataField',
-                Value : projn
-            },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : projn
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : Leveling_g
@@ -5115,22 +5118,22 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : IM_no
             },
-            {
-                $Type : 'UI.DataField',
-                Value : aprio
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : traf_ord
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : traf_cc
-            },
-            {
-                $Type : 'UI.DataField',
-                Value : trf_linkage
-            },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : aprio
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : traf_ord
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : traf_cc
+            // },
+            // {
+            //     $Type : 'UI.DataField',
+            //     Value : trf_linkage
+            // },
             {
                 $Type : 'UI.DataField',
                 Value : pkkey
@@ -5138,6 +5141,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
             {
                 $Type : 'UI.DataField',
                 Value : BTYPECAT
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : BTYPEORDER
             },
             {
                 $Type : 'UI.DataField',
@@ -5166,6 +5173,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
         ]
     }
 }){    
+    aufnr @( title: 'Production Order' );  
     matnr @( title: 'Material' );  
     maktx @( title: 'Material text' );  
     // fevor @( title: 'Production Supervisor' );  
@@ -5193,9 +5201,8 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
     BTYPECAT @( title: 'B Type Category' );  
     PRDSTNO  @( title: 'B Type Prod. Start No' );  
     BTYPEITEM @( title: 'B Type start No. Item' );  
-    AUFNR @( title: 'B-Type Parent Prod Order' );  
     BTYPESTATUS @( title: 'B-Type Parent Prod Order Status' );  
-    AUFNR @( title: 'B-Type Parent Start Prod Number' );  
+    AUFNR @( title: 'B-Type Parent Prod Order' );  
     memo1 @( title: 'Manufacturing memo1' );  
     memo2 @( title: 'Manufacturing memo2' );  
     memo3 @( title: 'Manufacturing memo3' );  
