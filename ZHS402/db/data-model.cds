@@ -386,6 +386,7 @@ entity ZTHBT0028: managed{
         ZZG_PRNTDATE: Date @title : 'Printed Date';
         ZZG_PRNTTIME: Time @title : 'Printed Time';
         ZZG_PRNTPRID: String(12) @title : 'Printed Person Id';
+        PRDSTNO       : String(8)  @title: 'Prod. Start No.';
 }
 entity ZTHBT0058: managed {
     key REPORTID   : Integer @title : 'Report ID';

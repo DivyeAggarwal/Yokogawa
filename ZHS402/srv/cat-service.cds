@@ -1195,7 +1195,7 @@ service ZCDSEHBTC0015 {
     entity ZCDSEHMMB0044                as projection on ZSRVBHMM0006.ZCDSEHMMB0044;
     entity ZCDSEHMMB0045                as projection on ZSRVBHMM0006.ZCDSEHMMB0045;
     entity I_PlantStdVH as projection on ZSRVBHPP0019.I_PlantStdVH;
-
+    entity ZCDSEHMMB0046                as projection on ZSRVBHMM0006.ZCDSEHMMB0046;
     @cds.persistence.skip
     entity OrderPartInformation {
         key Product    : String(40)  @title: 'Material'  @Common.QuickInfo: 'Material';

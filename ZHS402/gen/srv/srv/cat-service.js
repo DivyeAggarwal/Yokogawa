@@ -371,103 +371,165 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         const product = await cds.connect.to('ZSRVBHMM0006');
         return product.run(req.query);
     });
+    this.on('READ', 'ZCDSEHMMB0046', async req => {
+        const product = await cds.connect.to('ZCDSEHMMB0046');
+        return product.run(req.query);
+    });
     this.on('READ', 'OrderPartInformation', async req => {
         var filterData = req._queryOptions;
         const orderApi = await cds.connect.to('ZSRVBHMM0006');
-        // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({ plnum: { '=': filterData.plnum }, plwrk: { '=': filterData.plwrk }, paart: { '=': filterData.paart }, dispo: { '=': filterData.dispo }, psttr: { '=': filterData.psttr }, pedtr: { '=': filterData.pedtr }, pertr: { '=': filterData.pertr } });
-        // const plannedOrder1 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(
-        //     {
-        //         psttr:"2022-05-18"
-        //     }
-        // )
-        const plannedOrder1 = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(
-                {
-                    plnum:filterData.plnum
-                }
-            )
-        const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
-            plnum: filterData.plnum,
-            plwrk: filterData.plwrk,
-            vagrp: filterData.paart,
-            dispo: filterData.dispo,
-            psttr: filterData.psttr,
-            pedtr: filterData.pedtr,
-            pertr: filterData.pertr
-        })
-        // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009');
-        let checkPlannedOrder = [];
-        let payloadArray = [];
-        for (let result of plannedOrder) {
-            const btpPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({
-                DWERK: result.plwrk,
-                MATNR: result.matnr,
-                PLNUM: result.plnum
+        if(filterData.paart == 3 || filterData.paart == 6) {
+            const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
+                // plnum: filterData.plnum,
+                plwrk: filterData.plwrk,
+                vagrp: filterData.paart,
+                dispo: filterData.dispo,
+                // psttr: filterData.psttr,
+                // pedtr: filterData.pedtr,
+                // pertr: filterData.pertr
             })
-            if (btpPlannedOrder.length == 0) {
-                var payload = {
-                    plnum: result.plnum,
-                    matnr: result.matnr,
-                    plwrk: result.plwrk,
-                    paart: result.paart,
-                    gsmng: result.gsmng,
-                    meins: result.meins,
-                    psttr: result.psttr,
-                    pedtr: result.pedtr,
-                    pertr: result.pertr,
-                    dispo: result.dispo,
-                    kdauf: result.kdauf,
-                    kdpos: result.kdpos,
-                    kdein: result.kdein,
-                    auffx: result.auffx,
-                    vagrp: result.vagrp,
-                    status: result.status,
-                    errmsg: result.errmsg,
-                    updqty: result.updqty
-                }
-                payloadArray.push(payload);
-                // checkPlannedOrder.push(btpPlannedOrder[0]);
-            }
-            
-        }
-        // for (let i = 0; i < checkPlannedOrder.length; i++) {
-        //     var element = checkPlannedOrder[i];
-        //     var aObjectIndex = plannedOrder.findIndex(function name(order) {
-        //         return order.plnum === element.PLNUM &&
-        //             order.matnr === element.MATNR &&
-        //             order.plwrk === element.DWERK
-        //     });
-        //     plannedOrder.splice(aObjectIndex, 1);
-        // }
 
-        var test = 1;
-        try {
-            var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
-        } catch (error) {
-            req.reject({
-                code: 403,
-                message: 'Post request failing'
-            });
+            var uniqueKey = Math.floor(Math.random() * 99999);
+            var length = plannedOrder.length;
+            var counter = 0;
+            var lastValue = "";
+            for (let result of plannedOrder) {
+                if(counter == length) {
+                    lastValue = "X"
+                }
+                const btpPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({
+                    DWERK: result.plwrk,
+                    MATNR: result.matnr,
+                    PLNUM: result.plnum
+                })
+                if (btpPlannedOrder.length == 0) {
+                    var payload = {
+                        plnum: result.plnum,
+                        matnr: result.matnr,
+                        plwrk: result.plwrk,
+                        paart: result.paart,
+                        gsmng: result.gsmng,
+                        meins: result.meins,
+                        psttr: result.psttr,
+                        pedtr: result.pedtr,
+                        pertr: result.pertr,
+                        dispo: result.dispo,
+                        kdauf: result.kdauf,
+                        kdpos: result.kdpos,
+                        kdein: result.kdein,
+                        auffx: result.auffx,
+                        vagrp: result.vagrp,
+                        status: result.status,
+                        errmsg: result.errmsg,
+                        updqty: result.updqty,
+                        Cat3key:uniqueKey,
+                        Cat3Last:lastValue
+                    }
+                    payloadArray.push(payload);
+                    
+                    //Create in S4 hana
+
+                    var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+                    var responsePost = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMB0046').where({
+                        Cat3key: uniqueKey
+                    }) 
+
+                    var dataPayload29 = {
+                        BTYPEORDER:responsePost.OrdCat,
+                        BTYPEITEM:"",
+                        DWERK:responsePost.plwrk,
+                        BTYPECAT:responsePost.btypord,
+                        AUFNR:responsePost.aufnr,
+                        GSTRP:responsePost.gstrp,
+                        GLTRP:responsePost.gltrp
+                    }
+                    await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload);
+                    
+                    var dataPayload28 = {
+                        PRODUCTIONORDER:"",
+                        ZZPLANT:"",
+                        ZZG_PRINTED_REV:"",
+                        PRDSTNO:""
+            
+                    }
+                    await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
+                }
+                
+            }
+        } else {
+            const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
+                // plnum: filterData.plnum,
+                plwrk: filterData.plwrk,
+                vagrp: filterData.paart,
+                dispo: filterData.dispo,
+                // psttr: filterData.psttr,
+                // pedtr: filterData.pedtr,
+                // pertr: filterData.pertr
+            })
+
+            // var uniqueKey = Math.floor(Math.random() * 99999);
+            // var length = plannedOrder.length;
+            // var counter = 0;
+            // var lastValue = "";
+            for (let result of plannedOrder) {
+                const btpPlannedOrder = await SELECT.from('ZHS402.ZTHBT0029').where({
+                    DWERK: result.plwrk,
+                    MATNR: result.matnr,
+                    PLNUM: result.plnum
+                })
+                if (btpPlannedOrder.length == 0) {
+                    var payload = {
+                        plnum: result.plnum,
+                        matnr: result.matnr,
+                        plwrk: result.plwrk,
+                        paart: result.paart,
+                        gsmng: result.gsmng,
+                        meins: result.meins,
+                        psttr: result.psttr,
+                        pedtr: result.pedtr,
+                        pertr: result.pertr,
+                        dispo: result.dispo,
+                        kdauf: result.kdauf,
+                        kdpos: result.kdpos,
+                        kdein: result.kdein,
+                        auffx: result.auffx,
+                        vagrp: result.vagrp,
+                        status: result.status,
+                        errmsg: result.errmsg,
+                        updqty: result.updqty,
+                        Cat3key:"",
+                        Cat3Last:""
+                    }
+                    payloadArray.push(payload);
+                    
+                    //Create in S4 hana
+
+                    var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+
+                    var dataPayload29 = {
+                        BTYPEORDER:response.OrdCat,
+                        BTYPEITEM:"",
+                        DWERK:response.plwrk,
+                        BTYPECAT:response.btypord,
+                        AUFNR:response.aufnr,
+                        GSTRP:response.gstrp,
+                        GLTRP:response.gltrp
+                    }
+                    await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload);
+                    
+                    var dataPayload28 = {
+                        PRODUCTIONORDER:"",
+                        ZZPLANT:"",
+                        ZZG_PRINTED_REV:"",
+                        PRDSTNO:""
+            
+                    }
+                    await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
+                }
+                
+            }
         }
         
-        var dataPayload = {
-            BTYPEORDER:"",
-            BTYPEITEM:"",
-            DWERK:"",
-            BTYPECAT:"",
-            AUFNR:"",
-            GSTRP:"",
-            GLTRP:""
-        }
-        await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload);
-
-        var dataPayload28 = {
-            PRODUCTIONORDER:"",
-            ZZPLANT:"",
-            ZZG_PRINTED_REV:""
-
-        }
-        await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
-        // return response;
 
     });
 

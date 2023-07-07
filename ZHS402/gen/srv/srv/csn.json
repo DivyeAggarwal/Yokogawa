@@ -3144,6 +3144,11 @@
           "@title": "Printed Person Id",
           "type": "cds.String",
           "length": 12
+        },
+        "PRDSTNO": {
+          "@title": "Prod. Start No.",
+          "type": "cds.String",
+          "length": 8
         }
       }
     },
@@ -21455,6 +21460,11 @@
           "@title": "Printed Person Id",
           "type": "cds.String",
           "length": 12
+        },
+        "PRDSTNO": {
+          "@title": "Prod. Start No.",
+          "type": "cds.String",
+          "length": 8
         }
       }
     },
@@ -30534,27 +30544,21 @@
           "notNull": true
         },
         "psttr": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Order Start Date",
-          "@sap.quickinfo": "Planned Order Start Date",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "pedtr": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Order End Date",
-          "@sap.quickinfo": "Planned Order End Date",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "pertr": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Order Opening Date",
-          "@sap.quickinfo": "Planned Opening Date in Planned Order",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "dispo": {
@@ -30638,7 +30642,7 @@
         "prtpln": {
           "key": true,
           "type": "cds.String",
-          "length": 10,
+          "length": 12,
           "notNull": true
         },
         "delflg": {
@@ -30657,23 +30661,18 @@
           "notNull": true
         },
         "gstrp": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Basic start date",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "gltrp": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Basic finish date",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "aufpl": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Opertn task list no.",
-          "@sap.quickinfo": "Routing number of operations in the order",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -30721,11 +30720,21 @@
           "notNull": true
         },
         "compno": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Component number",
           "key": true,
           "type": "cds.String",
           "length": 4,
+          "notNull": true
+        },
+        "Cat3key": {
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "notNull": true
+        },
+        "Cat3Last": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
           "notNull": true
         }
       }
@@ -30860,6 +30869,194 @@
           "@sap.label": "Plant Name",
           "type": "cds.String",
           "length": 30
+        }
+      }
+    },
+    "ZCDSEHBTC0015.ZCDSEHMMB0046": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Order part info cat 3 result CDS",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHMM0006.ZCDSEHMMB0046"
+          ]
+        }
+      },
+      "elements": {
+        "Cat3key": {
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "notNull": true
+        },
+        "Plnum": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Matnr": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "Plwrk": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Paart": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Gsmng": {
+          "@sap.unit": "Meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "Meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Psttr": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Pedtr": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Pertr": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Dispo": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Kdauf": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Kdpos": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 6
+        },
+        "Kdein": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Auffx": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Vagrp": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "Ordcat": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Arbpl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Status": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Errmsg": {
+          "type": "cds.String",
+          "length": 400
+        },
+        "Updqty": {
+          "@sap.unit": "Meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "Btypord": {
+          "type": "cds.Integer64"
+        },
+        "Prtpln": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "Delflg": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "Gstrp": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Gltrp": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Aufpl": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Kdauf1": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Kdpos1": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6
+        },
+        "MsCode": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "Cuobj": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Internal object no.",
+          "@sap.quickinfo": "Configuration (internal object number)",
+          "type": "cds.String",
+          "length": 18
+        },
+        "Arbpl1": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Compno": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Cat3last": {
+          "type": "cds.String",
+          "length": 1
         }
       }
     },
@@ -38493,6 +38690,11 @@
           "@title": "Printed Person Id",
           "type": "cds.String",
           "length": 12
+        },
+        "PRDSTNO": {
+          "@title": "Prod. Start No.",
+          "type": "cds.String",
+          "length": 8
         }
       }
     },
@@ -82055,6 +82257,188 @@
         }
       }
     },
+    "ZSRVBHMM0006.ZCDSEHMMB0046": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Order part info cat 3 result CDS",
+      "elements": {
+        "Cat3key": {
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "notNull": true
+        },
+        "Plnum": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "Matnr": {
+          "type": "cds.String",
+          "length": 40
+        },
+        "Plwrk": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Paart": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Gsmng": {
+          "@sap.unit": "Meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "Meins": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "Psttr": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Pedtr": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Pertr": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Dispo": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Kdauf": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Kdpos": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 6
+        },
+        "Kdein": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Auffx": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Vagrp": {
+          "type": "cds.String",
+          "length": 3
+        },
+        "Ordcat": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Arbpl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Status": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Errmsg": {
+          "type": "cds.String",
+          "length": 400
+        },
+        "Updqty": {
+          "@sap.unit": "Meins",
+          "@sap.label": "Total Order Quantity",
+          "@sap.quickinfo": "Planned Total Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "Btypord": {
+          "type": "cds.Integer64"
+        },
+        "Prtpln": {
+          "type": "cds.String",
+          "length": 12
+        },
+        "Delflg": {
+          "type": "cds.String",
+          "length": 1
+        },
+        "Aufnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order",
+          "@sap.quickinfo": "Order Number",
+          "type": "cds.String",
+          "length": 12
+        },
+        "Gstrp": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Gltrp": {
+          "type": "cds.String",
+          "length": 8
+        },
+        "Aufpl": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "Kdauf1": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales Order Number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "Kdpos1": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales order item",
+          "@sap.quickinfo": "Item number in Sales Order",
+          "type": "cds.String",
+          "length": 6
+        },
+        "MsCode": {
+          "type": "cds.String",
+          "length": 80
+        },
+        "Cuobj": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Internal object no.",
+          "@sap.quickinfo": "Configuration (internal object number)",
+          "type": "cds.String",
+          "length": 18
+        },
+        "Arbpl1": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "Compno": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Cat3last": {
+          "type": "cds.String",
+          "length": 1
+        }
+      }
+    },
     "ZSRVBHMM0006.ZCDSEHMMC0009": {
       "kind": "entity",
       "@cds.external": true,
@@ -82218,27 +82602,21 @@
           "notNull": true
         },
         "psttr": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Order Start Date",
-          "@sap.quickinfo": "Planned Order Start Date",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "pedtr": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Order End Date",
-          "@sap.quickinfo": "Planned Order End Date",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "pertr": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Order Opening Date",
-          "@sap.quickinfo": "Planned Opening Date in Planned Order",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "dispo": {
@@ -82322,7 +82700,7 @@
         "prtpln": {
           "key": true,
           "type": "cds.String",
-          "length": 10,
+          "length": 12,
           "notNull": true
         },
         "delflg": {
@@ -82341,23 +82719,18 @@
           "notNull": true
         },
         "gstrp": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Basic start date",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "gltrp": {
-          "@sap.display.format": "Date",
-          "@sap.label": "Basic finish date",
           "key": true,
-          "type": "cds.Date",
+          "type": "cds.String",
+          "length": 8,
           "notNull": true
         },
         "aufpl": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Opertn task list no.",
-          "@sap.quickinfo": "Routing number of operations in the order",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -82405,11 +82778,21 @@
           "notNull": true
         },
         "compno": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Component number",
           "key": true,
           "type": "cds.String",
           "length": 4,
+          "notNull": true
+        },
+        "Cat3key": {
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "notNull": true
+        },
+        "Cat3Last": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
           "notNull": true
         }
       }
