@@ -389,10 +389,11 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 // pertr: filterData.pertr
             })
 
-            var uniqueKey = Math.floor(Math.random() * 99999);
+            var uniqueKey = Math.floor(Math.random() * 99999).toString();
             var length = plannedOrder.length;
             var counter = 0;
             var lastValue = "";
+            var payloadArray = [];
             for (let result of plannedOrder) {
                 if(counter == length) {
                     lastValue = "X"
@@ -403,12 +404,16 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     PLNUM: result.plnum
                 })
                 if (btpPlannedOrder.length == 0) {
+                    result.psttr = result.psttr.split('-').join('');
+                    result.pertr = result.pertr.split('-').join('');
+                    result.pedtr = result.pedtr.split('-').join('');
+
                     var payload = {
                         plnum: result.plnum,
                         matnr: result.matnr,
                         plwrk: result.plwrk,
                         paart: result.paart,
-                        gsmng: result.gsmng,
+                        gsmng: result.gsmng.toString(),
                         meins: result.meins,
                         psttr: result.psttr,
                         pedtr: result.pedtr,
@@ -422,6 +427,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         status: result.status,
                         errmsg: result.errmsg,
                         updqty: result.updqty,
+                        auffx:"",
                         Cat3key:uniqueKey,
                         Cat3Last:lastValue
                     }
@@ -429,27 +435,26 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     
                     //Create in S4 hana
 
-                    var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+                    var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payload);
                     var responsePost = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMB0046').where({
                         Cat3key: uniqueKey
                     }) 
 
                     var dataPayload29 = {
-                        BTYPEORDER:responsePost.OrdCat,
+                        BTYPEORDER:responsePost[0].OrdCat,
                         BTYPEITEM:"",
-                        DWERK:responsePost.plwrk,
-                        BTYPECAT:responsePost.btypord,
-                        AUFNR:responsePost.aufnr,
-                        GSTRP:responsePost.gstrp,
-                        GLTRP:responsePost.gltrp
+                        DWERK:responsePost[0].plwrk,
+                        BTYPECAT:responsePost[0].btypord,
+                        AUFNR:responsePost[0].aufnr,
+                        GSTRP:responsePost[0].gstrp,
+                        GLTRP:responsePost[0].gltrp
                     }
-                    await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload);
+                    await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload29);
                     
                     var dataPayload28 = {
-                        PRODUCTIONORDER:responsePost.Plnum,
-                        ZZPLANT:responsePost.Plwrk,
-                        ZZG_PRINTED_REV:"",
-                        PRDSTNO:""
+                        PRODUCTIONORDER:responsePost[0].Plnum,
+                        ZZPLANT:responsePost[0].Plwrk,
+                        PRDSTNO:response.aufnr
             
                     }
                     await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
@@ -507,21 +512,20 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
 
                     var dataPayload29 = {
-                        BTYPEORDER:response.OrdCat,
-                        BTYPEITEM:"",
-                        DWERK:response.plwrk,
-                        BTYPECAT:response.btypord,
-                        AUFNR:response.aufnr,
-                        GSTRP:response.gstrp,
-                        GLTRP:response.gltrp
+                        BTYPEORDER:response[0].OrdCat,
+                        BTYPEITEM:response[0].Btypitem,
+                        DWERK:response[0].plwrk,
+                        BTYPECAT:response[0].btypord,
+                        AUFNR:response[0].aufnr,
+                        GSTRP:response[0].gstrp,
+                        GLTRP:response[0].gltrp
                     }
                     await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload);
                     
                     var dataPayload28 = {
-                        PRODUCTIONORDER:"",
-                        ZZPLANT:"",
-                        ZZG_PRINTED_REV:"",
-                        PRDSTNO:""
+                        PRODUCTIONORDER:response[0].OrdCat,
+                        ZZPLANT:response[0].plwrk,
+                        PRDSTNO:response[0].aufnr
             
                     }
                     await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
@@ -636,6 +640,17 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         var MODEL = context.MODEL;
         var PPLFLAG = context.PPLLAG;
         // var value = "";
+        var code;
+        const materialcode = await SELECT.from('ZHS402.ZTHBT0048').where({
+            MODEL: context.MODEL,
+        })
+        if(materialcode.length > 0) {
+            let sortedmaterialcode = materialcode.sort(
+                (p1, p2) => (p1.ID < p2.ID) ? 1 : (p1.ID > p2.ID) ? -1 : 0);
+            code = sortedmaterialcode[0].ID + 1;
+        } else {
+            code = 1;
+        }
         const mscode = await SELECT.from('ZHS402.ZTHBT0048').where({
             MSCODE: context.MSCODE,
             PRODUCTCAREER: context.PRODUCTCAREER,
@@ -647,15 +662,20 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
             return;
         } else {
             if (PPLFLAG == "X") {
+                const materialcodeppl = await SELECT.from('ZHS402.ZTHBT0048').where({
+                    MODEL: context.MODEL,
+                })
+                if(materialcodeppl.length == 0) { 
                 //PPL
-                const mcodeId = new SequenceHelper({
-                    db: db,
-                    sequence: "MATERIALCODE_ID",
-                    table: "ZTHBT0048",
-                    field: "ID"
-                });
-                var ID = await mcodeId.getNextNumber();
-                var convertedID = String(ID).padStart(9, "0");
+                // const mcodeId = new SequenceHelper({
+                //     db: db,
+                //     sequence: "MATERIALCODE_ID",
+                //     table: "ZTHBT0048",
+                //     field: "ID"
+                // });
+                // var ID = await mcodeId.getNextNumber();
+                var ID = code;
+                var convertedID = String(code).padStart(9, "0");
                 var MaterialCode = MODEL + "_" + convertedID;
                 var conversion = {
                     ID: ID,
@@ -671,15 +691,17 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
 
                 await UPDATE.entity('ZHS402.ZTHBT0033').with({ STATUS: "Registering" }).where({ MSCODE: { '=': MSCODE }, PRODUCTCAREER: { '=': PRODUCTCAREER }, INSTRUMENTMODEL: { '=': INSTRUMENTMODEL }, PARTSNUMBER: { '=': PARTSNUMBER }, MODEL: { '=': MODEL } });
             }
+            }
             if (MSCODE) {
-                const mcodeId = new SequenceHelper({
-                    db: db,
-                    sequence: "MATERIALCODE_ID",
-                    table: "ZTHBT0048",
-                    field: "ID"
-                });
-                var ID = await mcodeId.getNextNumber();
-                var convertedID = String(ID).padStart(9, "0");
+                // const mcodeId = new SequenceHelper({
+                //     db: db,
+                //     sequence: "MATERIALCODE_ID",
+                //     table: "ZTHBT0048",
+                //     field: "ID"
+                // });
+                // var ID = await mcodeId.getNextNumber();
+                var ID = code;
+                var convertedID = String(code).padStart(9, "0");
 
                 let checkZ = MSCODE.includes('Z');
                 if (checkZ == false) {

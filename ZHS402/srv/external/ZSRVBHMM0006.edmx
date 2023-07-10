@@ -158,6 +158,7 @@
 <PropertyRef Name="compno"/>
 <PropertyRef Name="Cat3key"/>
 <PropertyRef Name="Cat3Last"/>
+<PropertyRef Name="Btypitem"/>
 </Key>
 <Property Name="plnum" Type="Edm.String" Nullable="false" MaxLength="10"/>
 <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40"/>
@@ -194,6 +195,7 @@
 <Property Name="compno" Type="Edm.String" Nullable="false" MaxLength="4"/>
 <Property Name="Cat3key" Type="Edm.String" Nullable="false" MaxLength="20"/>
 <Property Name="Cat3Last" Type="Edm.String" Nullable="false" MaxLength="1"/>
+<Property Name="Btypitem" Type="Edm.String" Nullable="false" MaxLength="4"/>
 </EntityType>
 <EntityType Name="SAP__Currency" sap:content-version="1">
 <Key>

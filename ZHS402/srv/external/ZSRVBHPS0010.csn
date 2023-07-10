@@ -98,6 +98,17 @@
           "@sap.semantics": "currency-code",
           "notNull": true
         },
+        "SapBilVal": {
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3,
+          "@sap.unit": "Currency",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Net Value",
+          "@sap.quickinfo": "Net Value of the Sales Order in Document Currency",
+          "notNull": true
+        },
         "MainSo": {
           "key": true,
           "type": "cds.String",

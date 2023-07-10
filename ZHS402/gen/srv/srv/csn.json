@@ -26552,6 +26552,17 @@
           "length": 5,
           "notNull": true
         },
+        "SapBilVal": {
+          "@sap.unit": "Currency",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Net Value",
+          "@sap.quickinfo": "Net Value of the Sales Order in Document Currency",
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3,
+          "notNull": true
+        },
         "MainSo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales document",
@@ -30735,6 +30746,12 @@
           "key": true,
           "type": "cds.String",
           "length": 1,
+          "notNull": true
+        },
+        "Btypitem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
           "notNull": true
         }
       }
@@ -71027,6 +71044,17 @@
           "length": 5,
           "notNull": true
         },
+        "SapBilVal": {
+          "@sap.unit": "Currency",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Net Value",
+          "@sap.quickinfo": "Net Value of the Sales Order in Document Currency",
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 15,
+          "scale": 3,
+          "notNull": true
+        },
         "MainSo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales document",
@@ -82793,6 +82821,12 @@
           "key": true,
           "type": "cds.String",
           "length": 1,
+          "notNull": true
+        },
+        "Btypitem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
           "notNull": true
         }
       }

@@ -55,6 +55,7 @@
 <PropertyRef Name="ActDat"/>
 <PropertyRef Name="BillVal"/>
 <PropertyRef Name="Currency"/>
+<PropertyRef Name="SapBilVal"/>
 <PropertyRef Name="MainSo"/>
 <PropertyRef Name="DebitSo"/>
 <PropertyRef Name="Status"/>
@@ -68,6 +69,7 @@
 <Property Name="ActDat" Type="Edm.String" Nullable="false" MaxLength="8"/>
 <Property Name="BillVal" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Net Value" sap:quickinfo="Net Value of the Sales Order in Document Currency"/>
 <Property Name="Currency" Type="Edm.String" Nullable="false" MaxLength="5" sap:label="Document Currency" sap:quickinfo="SD Document Currency" sap:semantics="currency-code"/>
+<Property Name="SapBilVal" Type="Edm.Decimal" Nullable="false" Precision="15" Scale="3" sap:unit="Currency" sap:variable-scale="true" sap:label="Net Value" sap:quickinfo="Net Value of the Sales Order in Document Currency"/>
 <Property Name="MainSo" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales Document"/>
 <Property Name="DebitSo" Type="Edm.String" Nullable="false" MaxLength="10" sap:display-format="UpperCase" sap:label="Sales document" sap:quickinfo="Sales Document"/>
 <Property Name="Status" Type="Edm.String" Nullable="false" MaxLength="40"/>

@@ -629,6 +629,12 @@
           "type": "cds.String",
           "length": 1,
           "notNull": true
+        },
+        "Btypitem": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
         }
       }
     },
