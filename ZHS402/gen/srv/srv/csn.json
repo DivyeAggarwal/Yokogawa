@@ -31081,14 +31081,7 @@
       "kind": "entity",
       "@cds.persistence.skip": true,
       "elements": {
-        "Product": {
-          "@title": "Material",
-          "@Common.QuickInfo": "Material",
-          "key": true,
-          "type": "cds.String",
-          "length": 40
-        },
-        "DWERK": {
+        "plwrk": {
           "@title": "Plant",
           "@Common.Label": "Plant",
           "@Common.ValueList.CollectionPath": "I_PlantStdVH",
@@ -31096,7 +31089,7 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "DWERK"
+                "=": "plwrk"
               },
               "ValueListProperty": "Plant"
             },
@@ -31108,7 +31101,7 @@
           "type": "cds.String",
           "length": 4
         },
-        "BTYPECAT": {
+        "vagrp": {
           "@title": "By-Order Category",
           "@Common.Label": "By-Order Category",
           "@Common.ValueList.CollectionPath": "ZCDSEHMMB0043",
@@ -31116,7 +31109,7 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "BTYPECAT"
+                "=": "vagrp"
               },
               "ValueListProperty": "Fevor"
             },
@@ -31128,7 +31121,7 @@
           "type": "cds.String",
           "length": 1
         },
-        "MRPCONT": {
+        "dispo": {
           "@title": "MRP Controller",
           "@Common.Label": "MRP controller",
           "@Common.ValueList.CollectionPath": "ZCDSEHMMB0044",
@@ -31136,7 +31129,7 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "MRPCONT"
+                "=": "dispo"
               },
               "ValueListProperty": "dispo"
             },
@@ -31148,7 +31141,7 @@
           "type": "cds.String",
           "length": 12
         },
-        "PLNUM": {
+        "plnum": {
           "@title": "Parts Planned Order",
           "@Common.Label": "Planned Order",
           "@Common.ValueList.CollectionPath": "ZCDSEHMMB0045",
@@ -31156,23 +31149,24 @@
             {
               "$Type": "Common.ValueListParameterInOut",
               "LocalDataProperty": {
-                "=": "PLNUM"
+                "=": "plnum"
               },
               "ValueListProperty": "plnum"
             }
           ],
+          "key": true,
           "type": "cds.String",
           "length": 10
         },
-        "GSTRP": {
+        "psttr": {
           "@title": "Basic start date",
           "type": "cds.Date"
         },
-        "GLTRP": {
+        "pedtr": {
           "@title": "Basic finish date",
           "type": "cds.Date"
         },
-        "CHNAGEDATE": {
+        "pertr": {
           "@title": "Change date",
           "type": "cds.Date"
         }

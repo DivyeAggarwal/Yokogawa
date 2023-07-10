@@ -378,6 +378,9 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     this.on('READ', 'OrderPartInformation', async req => {
         var filterData = req._queryOptions;
         const orderApi = await cds.connect.to('ZSRVBHMM0006');
+        // req.query.SELECT.from.ref[0] = 'ZCDSEHBTC0015.ZCDSEHMMC0009'
+        // var t =  await orderApi.run(req.query);
+        // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(req.query.SELECT.where);
         if(filterData.paart == 3 || filterData.paart == 6) {
             const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
                 // plnum: filterData.plnum,

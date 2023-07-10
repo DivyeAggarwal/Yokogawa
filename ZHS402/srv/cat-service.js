@@ -378,16 +378,24 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     this.on('READ', 'OrderPartInformation', async req => {
         var filterData = req._queryOptions;
         const orderApi = await cds.connect.to('ZSRVBHMM0006');
-        if(filterData.paart == 3 || filterData.paart == 6) {
-            const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
-                // plnum: filterData.plnum,
-                plwrk: filterData.plwrk,
-                vagrp: filterData.paart,
-                dispo: filterData.dispo,
-                // psttr: filterData.psttr,
-                // pedtr: filterData.pedtr,
-                // pertr: filterData.pertr
-            })
+        req.query.SELECT.from.ref[0] = 'ZCDSEHBTC0015.ZCDSEHMMC0009'
+        var t =  await orderApi.run(req.query);
+        const vagrp_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "vagrp"));
+            if (vagrp_idx >= 0) {
+                var vagrp = req.query.SELECT.where[vagrp_idx + 2].val
+            }
+        // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(req.query.SELECT.where);
+        if(vagrp == 3 || vagrp == 6) {
+            // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
+            //     // plnum: filterData.plnum,
+            //     plwrk: filterData.plwrk,
+            //     vagrp: filterData.paart,
+            //     dispo: filterData.dispo,
+            //     // psttr: filterData.psttr,
+            //     // pedtr: filterData.pedtr,
+            //     // pertr: filterData.pertr
+            // })
+            const plannedOrder =  await orderApi.run(req.query);
 
             var uniqueKey = Math.floor(Math.random() * 99999).toString();
             var length = plannedOrder.length;
@@ -462,15 +470,16 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 
             }
         } else {
-            const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
-                // plnum: filterData.plnum,
-                plwrk: filterData.plwrk,
-                vagrp: filterData.paart,
-                dispo: filterData.dispo,
-                // psttr: filterData.psttr,
-                // pedtr: filterData.pedtr,
-                // pertr: filterData.pertr
-            })
+            // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
+            //     // plnum: filterData.plnum,
+            //     plwrk: filterData.plwrk,
+            //     vagrp: filterData.paart,
+            //     dispo: filterData.dispo,
+            //     // psttr: filterData.psttr,
+            //     // pedtr: filterData.pedtr,
+            //     // pertr: filterData.pertr
+            // })
+            const plannedOrder =  await orderApi.run(req.query);
 
             // var uniqueKey = Math.floor(Math.random() * 99999);
             // var length = plannedOrder.length;
@@ -483,12 +492,15 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     PLNUM: result.plnum
                 })
                 if (btpPlannedOrder.length == 0) {
+                    result.psttr = result.psttr.split('-').join('');
+                    result.pertr = result.pertr.split('-').join('');
+                    result.pedtr = result.pedtr.split('-').join('');
                     var payload = {
                         plnum: result.plnum,
                         matnr: result.matnr,
                         plwrk: result.plwrk,
                         paart: result.paart,
-                        gsmng: result.gsmng,
+                        gsmng: result.gsmng.toString(),
                         meins: result.meins,
                         psttr: result.psttr,
                         pedtr: result.pedtr,
@@ -497,7 +509,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         kdauf: result.kdauf,
                         kdpos: result.kdpos,
                         kdein: result.kdein,
-                        auffx: result.auffx,
+                        auffx: "",
                         vagrp: result.vagrp,
                         status: result.status,
                         errmsg: result.errmsg,
@@ -505,30 +517,30 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         Cat3key:"",
                         Cat3Last:""
                     }
-                    payloadArray.push(payload);
+                    // payloadArray.push(payload);
                     
                     //Create in S4 hana
 
-                    var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+                    var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payload);
 
                     var dataPayload29 = {
-                        BTYPEORDER:response[0].OrdCat,
-                        BTYPEITEM:response[0].Btypitem,
-                        DWERK:response[0].plwrk,
-                        BTYPECAT:response[0].btypord,
-                        AUFNR:response[0].aufnr,
-                        GSTRP:response[0].gstrp,
-                        GLTRP:response[0].gltrp
+                        BTYPEORDER:response.OrdCat,
+                        BTYPEITEM:response.Btypitem,
+                        DWERK:response.plwrk,
+                        BTYPECAT:response.btypord,
+                        AUFNR:response.aufnr,
+                        GSTRP:response.gstrp,
+                        GLTRP:response.gltrp
                     }
-                    await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload);
+                    await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload29);
                     
-                    var dataPayload28 = {
-                        PRODUCTIONORDER:response[0].OrdCat,
-                        ZZPLANT:response[0].plwrk,
-                        PRDSTNO:response[0].aufnr
+                    // var dataPayload28 = {
+                    //     PRODUCTIONORDER:response[0].OrdCat,
+                    //     ZZPLANT:response[0].plwrk,
+                    //     PRDSTNO:response[0].aufnr
             
-                    }
-                    await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
+                    // }
+                    // await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
                 }
                 
             }

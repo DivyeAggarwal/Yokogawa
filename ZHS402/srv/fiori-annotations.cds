@@ -4027,7 +4027,7 @@ annotate ZCDSEHBTC0015.OrderPartInformation {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : BTYPECAT,
+                    LocalDataProperty : vagrp,
                     ValueListProperty : 'Fevor'
                 },
                 {
@@ -4037,7 +4037,7 @@ annotate ZCDSEHBTC0015.OrderPartInformation {
             ]
         }
     })
-    BTYPECAT; 
+    vagrp; 
     @(Common : {
         Label     : 'MRP controller',
         ValueList : {
@@ -4045,7 +4045,7 @@ annotate ZCDSEHBTC0015.OrderPartInformation {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : MRPCONT,
+                    LocalDataProperty : dispo,
                     ValueListProperty : 'dispo'
                 },
                 {
@@ -4055,7 +4055,7 @@ annotate ZCDSEHBTC0015.OrderPartInformation {
             ]
         }
     })
-    MRPCONT; 
+    dispo; 
     @(Common : {
         Label     : 'Planned Order',
         ValueList : {
@@ -4063,13 +4063,13 @@ annotate ZCDSEHBTC0015.OrderPartInformation {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : PLNUM,
+                    LocalDataProperty : plnum,
                     ValueListProperty : 'plnum'
                 }
             ]
         }
     })
-    PLNUM; 
+    plnum; 
     @(Common : {
         Label     : 'Plant',
         ValueList : {
@@ -4077,7 +4077,7 @@ annotate ZCDSEHBTC0015.OrderPartInformation {
             Parameters     : [
                 {
                     $Type             : 'Common.ValueListParameterInOut',
-                    LocalDataProperty : DWERK,
+                    LocalDataProperty : plwrk,
                     ValueListProperty : 'Plant'
                 },
                 {
@@ -4087,7 +4087,7 @@ annotate ZCDSEHBTC0015.OrderPartInformation {
             ]
         }
     })
-    DWERK; 
+    plwrk; 
     
 }
 

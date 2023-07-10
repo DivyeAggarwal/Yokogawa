@@ -1198,14 +1198,13 @@ service ZCDSEHBTC0015 {
     entity ZCDSEHMMB0046                as projection on ZSRVBHMM0006.ZCDSEHMMB0046;
     @cds.persistence.skip
     entity OrderPartInformation {
-        key Product    : String(40)  @title: 'Material'  @Common.QuickInfo: 'Material';
-            DWERK      : String(4)   @title: 'Plant';
-            BTYPECAT   : String(1)   @title: 'By-Order Category';
-            MRPCONT    : String(12)  @title: 'MRP Controller';
-            PLNUM      : String(10)  @title: 'Parts Planned Order';
-            GSTRP      : Date        @title: 'Basic start date';
-            GLTRP      : Date        @title: 'Basic finish date';
-            CHNAGEDATE : Date        @title: 'Change date';
+            plwrk : String(4)  @title: 'Plant';
+            vagrp : String(1)  @title: 'By-Order Category';
+            dispo : String(12) @title: 'MRP Controller';
+        key plnum : String(10) @title: 'Parts Planned Order';
+            psttr : Date       @title: 'Basic start date';
+            pedtr : Date       @title: 'Basic finish date';
+            pertr : Date       @title: 'Change date';
     }
 }
 

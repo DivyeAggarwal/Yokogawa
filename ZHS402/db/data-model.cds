@@ -416,8 +416,8 @@ entity ZTHBT0059 : managed {
     key ZFG_INVOICE_ID        : String(20) @title : 'FG Invoice ID';
         ZSD_MAIN_SONUM        : String(10) @title : 'SAP Main SO Number';
         ZSD_SO_DEBIT_NUM      : String(10) @title : 'SAP SO Debit Memo Number';
-        ZSD_INV_SUBMIT_DATE   : Date       @title : 'Invoice Submit Date';
-        ZSD_GROSS_VALUE       : String(16) @title : 'SO Gross Value';
+        ZSD_INV_SUBMIT_DATE   : Date       @title : 'FG Invoice submit date';
+        ZSD_GROSS_VALUE       : String(16) @title : 'FG Gross Invoice Amt';
         ZSD_BILLING_DATE      : Date       @title : 'SAP SO Debit Memo Billing Date';
         ZSD_PRICING_DATE      : Date       @title : 'SAP SO Pricing Date';
         ZSD_DEBIT_DOC_DATE    : Date       @title : 'SAP SO Debit Document Date';
