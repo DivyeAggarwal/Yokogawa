@@ -100,6 +100,7 @@
 <Property Name="Arbpl1" Type="Edm.String" MaxLength="8" sap:display-format="UpperCase" sap:label="Work Center"/>
 <Property Name="Compno" Type="Edm.String" MaxLength="4"/>
 <Property Name="Cat3last" Type="Edm.String" MaxLength="1"/>
+<Property Name="Btypitem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative"/>
 </EntityType>
 <EntityType Name="ZCDSEHMMC0009Type" sap:label="Consumption Order Information get call" sap:content-version="1">
 <Key>
@@ -195,7 +196,7 @@
 <Property Name="compno" Type="Edm.String" Nullable="false" MaxLength="4"/>
 <Property Name="Cat3key" Type="Edm.String" Nullable="false" MaxLength="20"/>
 <Property Name="Cat3Last" Type="Edm.String" Nullable="false" MaxLength="1"/>
-<Property Name="Btypitem" Type="Edm.String" Nullable="false" MaxLength="4"/>
+<Property Name="Btypitem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative"/>
 </EntityType>
 <EntityType Name="SAP__Currency" sap:content-version="1">
 <Key>

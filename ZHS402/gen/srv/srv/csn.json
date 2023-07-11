@@ -3479,11 +3479,11 @@
           "length": 10
         },
         "ZSD_INV_SUBMIT_DATE": {
-          "@title": "Invoice Submit Date",
+          "@title": "FG Invoice submit date",
           "type": "cds.Date"
         },
         "ZSD_GROSS_VALUE": {
-          "@title": "SO Gross Value",
+          "@title": "FG Gross Invoice Amt",
           "type": "cds.String",
           "length": 16
         },
@@ -26211,11 +26211,11 @@
           "length": 10
         },
         "ZSD_INV_SUBMIT_DATE": {
-          "@title": "Invoice Submit Date",
+          "@title": "FG Invoice submit date",
           "type": "cds.Date"
         },
         "ZSD_GROSS_VALUE": {
-          "@title": "SO Gross Value",
+          "@title": "FG Gross Invoice Amt",
           "type": "cds.String",
           "length": 16
         },
@@ -26446,11 +26446,11 @@
           "length": 10
         },
         "ZSD_INV_SUBMIT_DATE": {
-          "@title": "Invoice Submit Date",
+          "@title": "FG Invoice submit date",
           "type": "cds.Date"
         },
         "ZSD_GROSS_VALUE": {
-          "@title": "SO Gross Value",
+          "@title": "FG Gross Invoice Amt",
           "type": "cds.String",
           "length": 16
         },
@@ -30749,9 +30749,10 @@
           "notNull": true
         },
         "Btypitem": {
+          "@sap.display.format": "NonNegative",
           "key": true,
           "type": "cds.String",
-          "length": 4,
+          "length": 6,
           "notNull": true
         }
       }
@@ -31074,6 +31075,11 @@
         "Cat3last": {
           "type": "cds.String",
           "length": 1
+        },
+        "Btypitem": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 6
         }
       }
     },
@@ -82458,6 +82464,11 @@
         "Cat3last": {
           "type": "cds.String",
           "length": 1
+        },
+        "Btypitem": {
+          "@sap.display.format": "NonNegative",
+          "type": "cds.String",
+          "length": 6
         }
       }
     },
@@ -82818,9 +82829,10 @@
           "notNull": true
         },
         "Btypitem": {
+          "@sap.display.format": "NonNegative",
           "key": true,
           "type": "cds.String",
-          "length": 4,
+          "length": 6,
           "notNull": true
         }
       }

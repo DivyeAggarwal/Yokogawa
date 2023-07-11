@@ -271,6 +271,11 @@
         "Cat3last": {
           "type": "cds.String",
           "length": 1
+        },
+        "Btypitem": {
+          "type": "cds.String",
+          "length": 6,
+          "@sap.display.format": "NonNegative"
         }
       }
     },
@@ -633,7 +638,8 @@
         "Btypitem": {
           "key": true,
           "type": "cds.String",
-          "length": 4,
+          "length": 6,
+          "@sap.display.format": "NonNegative",
           "notNull": true
         }
       }

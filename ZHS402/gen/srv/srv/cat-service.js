@@ -378,23 +378,28 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     this.on('READ', 'OrderPartInformation', async req => {
         var filterData = req._queryOptions;
         const orderApi = await cds.connect.to('ZSRVBHMM0006');
-        // req.query.SELECT.from.ref[0] = 'ZCDSEHBTC0015.ZCDSEHMMC0009'
-        // var t =  await orderApi.run(req.query);
+        req.query.SELECT.from.ref[0] = 'ZCDSEHBTC0015.ZCDSEHMMC0009'
+        var t =  await orderApi.run(req.query);
+        const vagrp_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "vagrp"));
+            if (vagrp_idx >= 0) {
+                var vagrp = req.query.SELECT.where[vagrp_idx + 2].val
+            }
         // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where(req.query.SELECT.where);
-        if(filterData.paart == 3 || filterData.paart == 6) {
-            const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
-                // plnum: filterData.plnum,
-                plwrk: filterData.plwrk,
-                vagrp: filterData.paart,
-                dispo: filterData.dispo,
-                // psttr: filterData.psttr,
-                // pedtr: filterData.pedtr,
-                // pertr: filterData.pertr
-            })
+        if(vagrp == 3 || vagrp == 6) {
+            // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
+            //     // plnum: filterData.plnum,
+            //     plwrk: filterData.plwrk,
+            //     vagrp: filterData.paart,
+            //     dispo: filterData.dispo,
+            //     // psttr: filterData.psttr,
+            //     // pedtr: filterData.pedtr,
+            //     // pertr: filterData.pertr
+            // })
+            const plannedOrder =  await orderApi.run(req.query);
 
             var uniqueKey = Math.floor(Math.random() * 99999).toString();
             var length = plannedOrder.length;
-            var counter = 0;
+            var counter = 1;
             var lastValue = "";
             var payloadArray = [];
             for (let result of plannedOrder) {
@@ -439,41 +444,54 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     //Create in S4 hana
 
                     var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payload);
-                    var responsePost = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMB0046').where({
-                        Cat3key: uniqueKey
-                    }) 
-
-                    var dataPayload29 = {
-                        BTYPEORDER:responsePost[0].OrdCat,
-                        BTYPEITEM:"",
-                        DWERK:responsePost[0].plwrk,
-                        BTYPECAT:responsePost[0].btypord,
-                        AUFNR:responsePost[0].aufnr,
-                        GSTRP:responsePost[0].gstrp,
-                        GLTRP:responsePost[0].gltrp
-                    }
-                    await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload29);
                     
-                    var dataPayload28 = {
-                        PRODUCTIONORDER:responsePost[0].Plnum,
-                        ZZPLANT:responsePost[0].Plwrk,
-                        PRDSTNO:response.aufnr
-            
-                    }
-                    await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
                 }
+                counter = counter + 1;
                 
             }
+            var responsePost = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMB0046').where({
+                Cat3key: uniqueKey
+            }) 
+            for (let result of responsePost) {
+            var dataPayload29 = {
+                BTYPEORDER:result.Btypord.toString(),
+                BTYPEITEM:parseInt(result.Btypitem),
+                DWERK:result.Plwrk,
+                BTYPECAT:result.Ordcat,
+                AUFNR:result.Aufnr,
+                PLNUM:result.Plnum,
+                MATNR:result.Matnr,
+                KDPOS:result.Kdpos,
+                KDAUF:result.Kdauf,
+                MEINS:result.Meins,
+                GSMNG:result.Gsmng.toString(),
+                MSCODE:result.MsCode,
+                PSTTR: result.Pertr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
+                GSTRP: result.Psttr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
+                GLTRP: result.Pedtr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
+                PRDSTNO:result.Aufnr
+            }
+            await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload29);
+            
+            var dataPayload28 = {
+                PRODUCTIONORDER:result.Plnum,
+                ZZPLANT:result.Plwrk,
+                PRDSTNO:result.Aufnr
+    
+            }
+            await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
+        }
         } else {
-            const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
-                // plnum: filterData.plnum,
-                plwrk: filterData.plwrk,
-                vagrp: filterData.paart,
-                dispo: filterData.dispo,
-                // psttr: filterData.psttr,
-                // pedtr: filterData.pedtr,
-                // pertr: filterData.pertr
-            })
+            // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
+            //     // plnum: filterData.plnum,
+            //     plwrk: filterData.plwrk,
+            //     vagrp: filterData.paart,
+            //     dispo: filterData.dispo,
+            //     // psttr: filterData.psttr,
+            //     // pedtr: filterData.pedtr,
+            //     // pertr: filterData.pertr
+            // })
+            const plannedOrder =  await orderApi.run(req.query);
 
             // var uniqueKey = Math.floor(Math.random() * 99999);
             // var length = plannedOrder.length;
@@ -486,12 +504,15 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     PLNUM: result.plnum
                 })
                 if (btpPlannedOrder.length == 0) {
+                    result.psttr = result.psttr.split('-').join('');
+                    result.pertr = result.pertr.split('-').join('');
+                    result.pedtr = result.pedtr.split('-').join('');
                     var payload = {
                         plnum: result.plnum,
                         matnr: result.matnr,
                         plwrk: result.plwrk,
                         paart: result.paart,
-                        gsmng: result.gsmng,
+                        gsmng: result.gsmng.toString(),
                         meins: result.meins,
                         psttr: result.psttr,
                         pedtr: result.pedtr,
@@ -500,7 +521,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         kdauf: result.kdauf,
                         kdpos: result.kdpos,
                         kdein: result.kdein,
-                        auffx: result.auffx,
+                        auffx: "",
                         vagrp: result.vagrp,
                         status: result.status,
                         errmsg: result.errmsg,
@@ -508,30 +529,40 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         Cat3key:"",
                         Cat3Last:""
                     }
-                    payloadArray.push(payload);
+                    // payloadArray.push(payload);
                     
                     //Create in S4 hana
 
-                    var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payloadArray);
+                    var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payload);
 
                     var dataPayload29 = {
-                        BTYPEORDER:response[0].OrdCat,
-                        BTYPEITEM:response[0].Btypitem,
-                        DWERK:response[0].plwrk,
-                        BTYPECAT:response[0].btypord,
-                        AUFNR:response[0].aufnr,
-                        GSTRP:response[0].gstrp,
-                        GLTRP:response[0].gltrp
+                        BTYPEORDER:response.btypord.toString(),
+                        BTYPEITEM:parseInt(response.Btypitem),
+                        DWERK:response.plwrk,
+                        BTYPECAT:response.OrdCat,
+                        AUFNR:response.aufnr,
+                        PLNUM:response.plnum,
+                        MATNR:response.matnr,
+                        KDPOS:response.kdpos,
+                        KDAUF:response.kdauf,
+                        MEINS:response.meins,
+                        GSMNG:response.gsmng.toString(),
+                        MSCODE:response.ms_code,
+                        PSTTR: response.pertr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
+                        GSTRP: response.psttr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
+                        GLTRP: response.pedtr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
+                        PRDSTNO:response.aufnr
                     }
-                    await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload);
-                    
+                    await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload29);
+                    if(vagrp == 'A') {
                     var dataPayload28 = {
-                        PRODUCTIONORDER:response[0].OrdCat,
-                        ZZPLANT:response[0].plwrk,
-                        PRDSTNO:response[0].aufnr
+                        PRODUCTIONORDER:response.btypord.toString(),
+                        ZZPLANT:response.plwrk,
+                        PRDSTNO:response.aufnr
             
                     }
-                    await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
+                }
+                    // await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
                 }
                 
             }
