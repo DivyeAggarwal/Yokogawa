@@ -1,0 +1,201 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.8.2"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "ZSRVBHMM0010": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "ZSRVBHMM0010.ZCDSEHMMC0015": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Create Interface Design",
+      "elements": {
+        "DESIGNNAME": {
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Design",
+          "@sap.quickinfo": "Design Name",
+          "notNull": true
+        },
+        "INT_NUM_UI": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Internal design no.",
+          "@sap.heading": "",
+          "notNull": true
+        },
+        "GROUP_NAME": {
+          "key": true,
+          "type": "cds.String",
+          "length": 30,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char. Group",
+          "@sap.quickinfo": "Characteristics Group",
+          "notNull": true
+        },
+        "PUSHBUTTON": {
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Pushbutton",
+          "@sap.quickinfo": "Pushbutton for Characteristics Group",
+          "notNull": true
+        },
+        "LINE_FROM": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "From line",
+          "notNull": true
+        },
+        "COL_FROM": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "From column",
+          "notNull": true
+        },
+        "LINE_TO": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "To line",
+          "notNull": true
+        },
+        "COL_TO": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "To column",
+          "notNull": true
+        },
+        "LANGUAGE_INT": {
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "@sap.label": "Language Key",
+          "notNull": true
+        },
+        "GROUP_TEXT": {
+          "key": true,
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Characteristics Group Description",
+          "notNull": true
+        },
+        "PUSHBUTTON_TEXT": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Pushbutton description",
+          "notNull": true
+        },
+        "STATUS": {
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "ERRMSG": {
+          "key": true,
+          "type": "cds.String",
+          "length": 400,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHMM0010.SAP__Currencies": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "CurrencyCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.semantics": "currency-code",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 15,
+          "@sap.label": "Short text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@odata.Type": "Edm.Byte",
+          "@sap.label": "Decimals",
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHMM0010.SAP__UnitsOfMeasure": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "elements": {
+        "UnitCode": {
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Internal UoM",
+          "@sap.semantics": "unit-of-measure",
+          "notNull": true
+        },
+        "ISOCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "ISO code",
+          "notNull": true
+        },
+        "ExternalCode": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Commercial",
+          "notNull": true
+        },
+        "Text": {
+          "type": "cds.String",
+          "length": 30,
+          "@sap.label": "UoM Text",
+          "notNull": true
+        },
+        "DecimalPlaces": {
+          "type": "cds.Integer",
+          "@sap.label": "Decimal Places"
+        }
+      }
+    }
+  }
+}

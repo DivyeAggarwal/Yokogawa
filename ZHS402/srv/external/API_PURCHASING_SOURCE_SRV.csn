@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "creator": "cds-dk 6.8.2"
+  },
+  "$version": "2.0",
+  "definitions": {
+    "API_PURCHASING_SOURCE_SRV": {
+      "kind": "service",
+      "@cds.external": true,
+      "@m.IsDefaultEntityContainer": "true",
+      "@sap.message.scope.supported": "true",
+      "@sap.supported.formats": "atom json xlsx"
+    },
+    "API_PURCHASING_SOURCE_SRV.A_PurchasingSource": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.content.version": "1",
+      "@sap.label": "Purchasing Source Type",
+      "elements": {
+        "Material": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "notNull": true
+        },
+        "Plant": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Plant",
+          "notNull": true
+        },
+        "SourceListRecord": {
+          "key": true,
+          "type": "cds.String",
+          "length": 5,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Number",
+          "@sap.quickinfo": "Number of Source List Record",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "notNull": true
+        },
+        "CreationDate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Created on",
+          "@sap.quickinfo": "Date on which the record was created",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "CreatedByUserName": {
+          "type": "cds.String",
+          "length": 12,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Created By",
+          "@sap.quickinfo": "Name of Person Responsible for Creating the Object",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "ValidityStartDate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid from",
+          "@sap.quickinfo": "Source List Record Valid From"
+        },
+        "ValidityEndDate": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid to",
+          "@sap.quickinfo": "Source List Record Valid To"
+        },
+        "Supplier": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier",
+          "@sap.quickinfo": "Vendor's account number"
+        },
+        "SupplierIsFixed": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Fixed Supplier",
+          "@sap.quickinfo": "Indicator: Fixed Supplier",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PurchaseOutlineAgreement": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Agreement",
+          "@sap.quickinfo": "Agreement Number"
+        },
+        "PurchaseOutlineAgreementItem": {
+          "type": "cds.String",
+          "length": 5,
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Agreement Item"
+        },
+        "SupplyingPlant": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Procurement Plant",
+          "@sap.quickinfo": "Plant from Which Material is Procured"
+        },
+        "SourceOfSupplyIsBlocked": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Blocked",
+          "@sap.quickinfo": "Blocked Source of Supply"
+        },
+        "PurchasingOrganization": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Purch. organization",
+          "@sap.quickinfo": "Purchasing organization"
+        },
+        "MRPSourcingControl": {
+          "type": "cds.String",
+          "length": 1,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Materials Planning",
+          "@sap.quickinfo": "Source List Usage in Materials Planning"
+        },
+        "OrderQuantityUnit": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Order Unit",
+          "@sap.quickinfo": "Purchase Order Unit of Measure",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "LastChangeDateTime": {
+          "type": "cds.Timestamp",
+          "@odata.Type": "Edm.DateTimeOffset",
+          "@odata.Precision": 7,
+          "@sap.label": "Time Stamp",
+          "@sap.quickinfo": "UTC Time Stamp in Long Form (YYYYMMDDhhmmssmmmuuun)",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "IssgPlantIsFixed": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Fixed iss.plant",
+          "@sap.quickinfo": "Fixed issuing plant in case of stock transport order",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "PurOutlineAgreementIsFixed": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Fixed Agreement Item",
+          "@sap.quickinfo": "Fixed Outline Purchase Agreement Item",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        },
+        "SourceOfSupplyIsFixed": {
+          "type": "cds.Boolean",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Fixed Supply Source",
+          "@sap.quickinfo": "Fixed Source of Supply",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false"
+        }
+      }
+    }
+  }
+}

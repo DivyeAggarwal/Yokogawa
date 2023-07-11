@@ -1735,8 +1735,15 @@ service ZAPIBPS0009 {
     }
     @open
     type Object {};
-    
-    action ZAPIBPS0009_Product(input : Object) returns SelectionOption; 
+     
+    action ZAPIBPS0009_CHARACTERISTIC(input : Object) returns SelectionOption; 
+    action ZAPIBPS0009_CLASS(input : Object) returns SelectionOption; 
+    action ZAPIBPS0009_INFORECORD(input : Object) returns SelectionOption; 
+    action ZAPIBPS0009_PURCHASING_SOURCE(input : Object) returns SelectionOption; 
+    action ZAPIBPS0009_PURGPRCGCONDITIONRECORD(input : Object) returns SelectionOption; 
+    action ZAPIBPS0009_SLSPRICINGCONDITIONRECORD(input : Object) returns SelectionOption; 
+    action ZAPIBPS0009_ZSRVBHMM0010(input : Object) returns SelectionOption;
+    action ZAPIBPS0009_Product(input : Object) returns SelectionOption;
 }
 //Master Upload Screen
 service ZAPIBPS0010 {
