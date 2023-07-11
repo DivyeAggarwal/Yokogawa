@@ -101,6 +101,8 @@
 <Property Name="Compno" Type="Edm.String" MaxLength="4"/>
 <Property Name="Cat3last" Type="Edm.String" MaxLength="1"/>
 <Property Name="Btypitem" Type="Edm.String" MaxLength="6" sap:display-format="NonNegative"/>
+<Property Name="Lvlgrp" Type="Edm.String" MaxLength="4"/>
+<Property Name="Ktext" Type="Edm.String" MaxLength="40"/>
 </EntityType>
 <EntityType Name="ZCDSEHMMC0009Type" sap:label="Consumption Order Information get call" sap:content-version="1">
 <Key>
@@ -121,6 +123,7 @@
 <Property Name="kdein" Type="Edm.String" MaxLength="4" sap:display-format="NonNegative" sap:label="Sales order schedule" sap:quickinfo="Delivery schedule for sales order"/>
 <Property Name="auffx" Type="Edm.Boolean" sap:display-format="UpperCase" sap:label="Firming Indicator" sap:quickinfo="Firming Indicator for Planned Order Data"/>
 <Property Name="vagrp" Type="Edm.String" MaxLength="3" sap:display-format="UpperCase" sap:label="Planner Group" sap:quickinfo="Responsible Planner Group or Department"/>
+<Property Name="ktext" Type="Edm.String" MaxLength="40" sap:label="Description" sap:quickinfo="Routing Description"/>
 </EntityType>
 <EntityType Name="ZCDSEHMMC0013Type" sap:label="Custom view Order parts Information" sap:content-version="1">
 <Key>
@@ -160,6 +163,8 @@
 <PropertyRef Name="Cat3key"/>
 <PropertyRef Name="Cat3Last"/>
 <PropertyRef Name="Btypitem"/>
+<PropertyRef Name="LvlGrp"/>
+<PropertyRef Name="Ktext"/>
 </Key>
 <Property Name="plnum" Type="Edm.String" Nullable="false" MaxLength="10"/>
 <Property Name="matnr" Type="Edm.String" Nullable="false" MaxLength="40"/>
@@ -197,6 +202,8 @@
 <Property Name="Cat3key" Type="Edm.String" Nullable="false" MaxLength="20"/>
 <Property Name="Cat3Last" Type="Edm.String" Nullable="false" MaxLength="1"/>
 <Property Name="Btypitem" Type="Edm.String" Nullable="false" MaxLength="6" sap:display-format="NonNegative"/>
+<Property Name="LvlGrp" Type="Edm.String" Nullable="false" MaxLength="4"/>
+<Property Name="Ktext" Type="Edm.String" Nullable="false" MaxLength="40"/>
 </EntityType>
 <EntityType Name="SAP__Currency" sap:content-version="1">
 <Key>

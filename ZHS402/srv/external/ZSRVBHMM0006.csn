@@ -276,6 +276,14 @@
           "type": "cds.String",
           "length": 6,
           "@sap.display.format": "NonNegative"
+        },
+        "Lvlgrp": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Ktext": {
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -387,6 +395,12 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planner Group",
           "@sap.quickinfo": "Responsible Planner Group or Department"
+        },
+        "ktext": {
+          "type": "cds.String",
+          "length": 40,
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Routing Description"
         }
       }
     },
@@ -640,6 +654,18 @@
           "type": "cds.String",
           "length": 6,
           "@sap.display.format": "NonNegative",
+          "notNull": true
+        },
+        "LvlGrp": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "Ktext": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
           "notNull": true
         }
       }
