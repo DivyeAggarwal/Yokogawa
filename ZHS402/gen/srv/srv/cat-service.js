@@ -442,8 +442,11 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     payloadArray.push(payload);
                     
                     //Create in S4 hana
-
-                    var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payload);
+                    try {
+                        var response = await orderApi.tx(req).post("/ZCDSEHMMC0013",payload);
+                    } catch (error) {
+                        
+                    }
                     
                 }
                 counter = counter + 1;
@@ -469,9 +472,16 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 PSTTR: result.Pertr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
                 GSTRP: result.Psttr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
                 GLTRP: result.Pedtr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
-                PRDSTNO:result.Aufnr
+                PRDSTNO:result.Aufnr,
+                ARBPL:response.Arbpl,
+                LEVELINGGROUP:response.Lvlgrp,
+                BTYPENOTE:response.Ktext
             }
-            await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload29);
+            try {
+                await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload29);
+            } catch (error) {
+                
+            }
             
             var dataPayload28 = {
                 PRODUCTIONORDER:result.Plnum,
@@ -479,7 +489,12 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 PRDSTNO:result.Aufnr
     
             }
-            await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
+            try {
+                await INSERT.into('ZHS402.ZTHBT0028').entries(dataPayload28);
+            } catch (error) {
+                
+            }
+            
         }
         } else {
             // const plannedOrder = await orderApi.get('ZCDSEHBTC0015.ZCDSEHMMC0009').where({
@@ -551,7 +566,9 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         PSTTR: response.pertr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
                         GSTRP: response.psttr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
                         GLTRP: response.pedtr.replace(/(\d{4})(\d{2})(\d{2})/g, '$1-$2-$3'),
-                        PRDSTNO:response.aufnr
+                        PRDSTNO:response.aufnr,
+                        ARBPL:response.arbpl,
+                        LEVELINGGROUP:response.LvlGrp
                     }
                     await INSERT.into('ZHS402.ZTHBT0029').entries(dataPayload29);
                     if(vagrp == 'A') {

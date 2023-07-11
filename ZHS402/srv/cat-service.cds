@@ -491,6 +491,8 @@ service ZCDSEHBTC0007 {
     entity VL_SH_H_T001                 as projection on external.VL_SH_H_T001;
     entity A_ProductPlant               as projection on API_PRODUCT_SRV.A_ProductPlant;
     entity specificationChange          as projection on db.ZTHBT0037;
+    entity ZCDSEHPPC0016                    as projection on db.ZTHBT0010;
+    entity ZCDSEHPPC0017                    as projection on db.ZTHBT0014;
 
      @cds.persistence.skip
     entity specificationChangeMessage  {

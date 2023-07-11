@@ -892,7 +892,9 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     //     return {acknowledge:"Success", message: "Deleted " + req.data.input.delete.length + " entries \n" 
     //     + "Updated " + req.data.input.update.length + " entries \n"  }
     // });
-
+    this.after('UPDATE','ZCDSEHPPC0016', async req => {
+        await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:req.INVALID_D}).where({ WERKS: { '=': req.WERKS }, E_DOC_TYPE: { '=': req.E_DOC_TYPE }, E_DOC_NO: { '=': req.E_DOC_NO }, E_REV_NO: { '=': req.E_REV_NO }, PS_GROUP_NO: { '=': req.PS_GROUP_NO }, PS_ITEM_NO: { '=': req.PS_ITEM_NO }, MODEL: { '=': req.MODEL }, E_SEQUENCE_NO: { '=': req.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput);
+    })
     this.on('READ', 'Formalize', async req => {
         const db = await cds.connect.to('db');
         if (req.query) {

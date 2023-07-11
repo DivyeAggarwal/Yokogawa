@@ -15568,6 +15568,325 @@
         }
       }
     },
+    "ZCDSEHBTC0007.ZCDSEHPPC0016": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureSpecification}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0010"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "MODEL1": {
+          "@title": "MODEL1",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PS_SYMBOL": {
+          "@title": "PS Symbol",
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 18
+        },
+        "PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_USE_RATIO": {
+          "@title": "Parts use ratio",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_NOTE": {
+          "@title": "PS note",
+          "type": "cds.String",
+          "length": 64
+        },
+        "OR_SIGN": {
+          "@title": "OR sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_DIGIT_PTN": {
+          "@title": "Basic suffix digit pattern",
+          "type": "cds.String",
+          "length": 1
+        },
+        "SFIX_PTN": {
+          "@title": "Suffix pattern",
+          "type": "cds.String"
+        },
+        "OPTION_PTN": {
+          "@title": "Option pattern",
+          "type": "cds.String"
+        },
+        "PROD_CARRER": {
+          "@title": "Production carrer",
+          "type": "cds.String",
+          "length": 9
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_NO_EXT_SIGN": {
+          "@title": "Parts no exist sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        }
+      }
+    },
+    "ZCDSEHBTC0007.ZCDSEHPPC0017": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureTr}",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZHS402.ZTHBT0014"
+          ]
+        }
+      },
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_SYMBOL": {
+          "@title": "PS Symbol",
+          "type": "cds.String",
+          "length": 10
+        },
+        "E_SIGN": {
+          "@title": "E SIGN",
+          "type": "cds.String",
+          "length": 1
+        },
+        "M_SIGN": {
+          "@title": "M SIGN",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARENT_PARTS_NO": {
+          "@title": "Parts no.",
+          "type": "cds.String",
+          "length": 40
+        },
+        "E_PART_NO": {
+          "@title": "Material number",
+          "type": "cds.String",
+          "length": 40
+        },
+        "COMP_PARTS_QTY": {
+          "@title": "Parts quantity",
+          "type": "cds.String",
+          "length": 13
+        },
+        "COMP_PARTS_QTY_UNIT": {
+          "@title": "Parts quantity unit",
+          "type": "cds.String",
+          "length": 4
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_USE_RATIO": {
+          "@title": "Parts use ratio",
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_NOTE": {
+          "@title": "PS note",
+          "type": "cds.String",
+          "length": 64
+        },
+        "E_TR_TYPE": {
+          "@title": "Techinical transaction type",
+          "type": "cds.String",
+          "length": 1
+        },
+        "PARTS_NO_EXT_SIGN": {
+          "@title": "Parts no exist sign",
+          "type": "cds.String",
+          "length": 1
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
+        }
+      }
+    },
     "ZCDSEHBTC0007.specificationChangeMessage": {
       "kind": "entity",
       "@cds.persistence.skip": true,
@@ -30494,6 +30813,12 @@
           "@sap.quickinfo": "Responsible Planner Group or Department",
           "type": "cds.String",
           "length": 3
+        },
+        "ktext": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Routing Description",
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -30753,6 +31078,18 @@
           "key": true,
           "type": "cds.String",
           "length": 6,
+          "notNull": true
+        },
+        "LvlGrp": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "Ktext": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
           "notNull": true
         }
       }
@@ -31080,6 +31417,14 @@
           "@sap.display.format": "NonNegative",
           "type": "cds.String",
           "length": 6
+        },
+        "Lvlgrp": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Ktext": {
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -44794,7 +45139,7 @@
       },
       "elements": {
         "PhysInvDoc": {
-          "@title": "Invoice",
+          "@title": "Physical Inventory Document",
           "@sap.display.format": "UpperCase",
           "@sap.label": "Physical Inventory Document",
           "key": true,
@@ -82469,6 +82814,14 @@
           "@sap.display.format": "NonNegative",
           "type": "cds.String",
           "length": 6
+        },
+        "Lvlgrp": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "Ktext": {
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -82580,6 +82933,12 @@
           "@sap.quickinfo": "Responsible Planner Group or Department",
           "type": "cds.String",
           "length": 3
+        },
+        "ktext": {
+          "@sap.label": "Description",
+          "@sap.quickinfo": "Routing Description",
+          "type": "cds.String",
+          "length": 40
         }
       }
     },
@@ -82833,6 +83192,18 @@
           "key": true,
           "type": "cds.String",
           "length": 6,
+          "notNull": true
+        },
+        "LvlGrp": {
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "Ktext": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
           "notNull": true
         }
       }
