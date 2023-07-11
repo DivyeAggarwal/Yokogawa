@@ -5252,7 +5252,7 @@ annotate ZAPIBPS0012.ZAPIBPS0012Report with @(
         ],
      }
 ){    
-    PhysInvDoc @( title: 'Invoice' );  
+    PhysInvDoc @( title: 'Physical Inventory Document' );  
     Plant @( title: 'Plant' );  
     StorageLocation @( title: 'Storage Location' );  
     PlannedCountDate @( title: 'Planned Date of Inventory Count' );  
