@@ -757,6 +757,22 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 let checkZ = MSCODE.includes('Z');
                 if (checkZ == false) {
                     //Normal scenario
+
+                    const materialcodee = await SELECT.from('ZHS402.ZTHBT0048').where({
+                        MODEL: context.MODEL,
+                        IDENTIFIER: "NR"
+                    })
+                    if(materialcodee.length > 0) {
+                        let sortedmaterialcode = materialcodee.sort(
+                            (p1, p2) => (p1.ID < p2.ID) ? 1 : (p1.ID > p2.ID) ? -1 : 0);
+                        code = sortedmaterialcode[0].ID + 1;
+                    } else {
+                        code = 1;
+                    }
+
+                    ID = code;
+                    convertedID = String(code).padStart(9, "0");
+
                     var MaterialCode = MODEL + "_F" + convertedID;
                     var conversion = {
                         ID: ID,
@@ -766,13 +782,29 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         PARTSNUMBER: PARTSNUMBER,
                         MODEL: MODEL,
                         MATERIALCODE: MaterialCode,
-                        TOKUCHUFLAG: ""
+                        TOKUCHUFLAG: "",
+                        IDENTIFIER: "NR"
                     };
                     await UPSERT.into('ZHS402.ZTHBT0048').entries(conversion);
                     await UPDATE.entity('ZHS402.ZTHBT0033').with({ STATUS: "Registering" }).where({ MSCODE: { '=': MSCODE }, PRODUCTCAREER: { '=': PRODUCTCAREER }, INSTRUMENTMODEL: { '=': INSTRUMENTMODEL }, PARTSNUMBER: { '=': PARTSNUMBER }, MODEL: { '=': MODEL } });
 
                 } else if (checkZ == true && INSTRUMENTMODEL === "" && PARTSNUMBER === "") {
                     //Tokuchu Product
+                    const materialcodee = await SELECT.from('ZHS402.ZTHBT0048').where({
+                        MODEL: context.MODEL,
+                        IDENTIFIER: "PR"
+                    })
+                    if(materialcodee.length > 0) {
+                        let sortedmaterialcode = materialcodee.sort(
+                            (p1, p2) => (p1.ID < p2.ID) ? 1 : (p1.ID > p2.ID) ? -1 : 0);
+                        code = sortedmaterialcode[0].ID + 1;
+                    } else {
+                        code = 1;
+                    }
+
+                    ID = code;
+                    convertedID = String(code).padStart(9, "0");
+
                     var MaterialCode = MODEL + "_Z" + convertedID;
                     var conversion = {
                         ID: ID,
@@ -782,12 +814,28 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         PARTSNUMBER: PARTSNUMBER,
                         MODEL: MODEL,
                         MATERIALCODE: MaterialCode,
-                        TOKUCHUFLAG: "X"
+                        TOKUCHUFLAG: "X",
+                        IDENTIFIER: "PR"
                     };
                     await UPSERT.into('ZHS402.ZTHBT0048').entries(conversion);
                     await UPDATE.entity('ZHS402.ZTHBT0033').with({ STATUS: "Registering" }).where({ MSCODE: { '=': MSCODE }, PRODUCTCAREER: { '=': PRODUCTCAREER }, INSTRUMENTMODEL: { '=': INSTRUMENTMODEL }, PARTSNUMBER: { '=': PARTSNUMBER }, MODEL: { '=': MODEL } });
                 } else if (checkZ == true && INSTRUMENTMODEL !== "" && PARTSNUMBER !== "") {
                     //Tokuchu Parts
+                    const materialcodee = await SELECT.from('ZHS402.ZTHBT0048').where({
+                        MODEL: context.MODEL,
+                        IDENTIFIER: "TP"
+                    })
+                    if(materialcodee.length > 0) {
+                        let sortedmaterialcode = materialcodee.sort(
+                            (p1, p2) => (p1.ID < p2.ID) ? 1 : (p1.ID > p2.ID) ? -1 : 0);
+                        code = sortedmaterialcode[0].ID + 1;
+                    } else {
+                        code = 1;
+                    }
+
+                    ID = code;
+                    convertedID = String(code).padStart(9, "0");
+
                     var MaterialCode = PARTSNUMBER + "_" + convertedID;
                     var conversion = {
                         ID: ID,
@@ -797,7 +845,8 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         PARTSNUMBER: PARTSNUMBER,
                         MODEL: MODEL,
                         MATERIALCODE: MaterialCode,
-                        TOKUCHUFLAG: "X"
+                        TOKUCHUFLAG: "X",
+                        IDENTIFIER: "TP"
                     };
                     await UPSERT.into('ZHS402.ZTHBT0048').entries(conversion);
                     await UPDATE.entity('ZHS402.ZTHBT0033').with({ STATUS: "Registering" }).where({ MSCODE: { '=': MSCODE }, PRODUCTCAREER: { '=': PRODUCTCAREER }, INSTRUMENTMODEL: { '=': INSTRUMENTMODEL }, PARTSNUMBER: { '=': PARTSNUMBER }, MODEL: { '=': MODEL } });
@@ -892,7 +941,9 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     //     return {acknowledge:"Success", message: "Deleted " + req.data.input.delete.length + " entries \n" 
     //     + "Updated " + req.data.input.update.length + " entries \n"  }
     // });
-
+    this.after('UPDATE','ZCDSEHPPC0016', async req => {
+        await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:req.INVALID_D}).where({ WERKS: { '=': req.WERKS }, E_DOC_TYPE: { '=': req.E_DOC_TYPE }, E_DOC_NO: { '=': req.E_DOC_NO }, E_REV_NO: { '=': req.E_REV_NO }, PS_GROUP_NO: { '=': req.PS_GROUP_NO }, PS_ITEM_NO: { '=': req.PS_ITEM_NO }, MODEL: { '=': req.MODEL }, E_SEQUENCE_NO: { '=': req.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput);
+    })
     this.on('READ', 'Formalize', async req => {
         const db = await cds.connect.to('db');
         if (req.query) {

@@ -1998,6 +1998,10 @@
         "TOKUCHUFLAG": {
           "type": "cds.String",
           "length": 1
+        },
+        "IDENTIFIER": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },
@@ -11550,6 +11554,10 @@
         "TOKUCHUFLAG": {
           "type": "cds.String",
           "length": 1
+        },
+        "IDENTIFIER": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },
@@ -12160,6 +12168,10 @@
         "TOKUCHUFLAG": {
           "type": "cds.String",
           "length": 1
+        },
+        "IDENTIFIER": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },
@@ -13072,6 +13084,10 @@
         "TOKUCHUFLAG": {
           "type": "cds.String",
           "length": 1
+        },
+        "IDENTIFIER": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },
@@ -14178,6 +14194,10 @@
         "TOKUCHUFLAG": {
           "type": "cds.String",
           "length": 1
+        },
+        "IDENTIFIER": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },
@@ -31931,6 +31951,10 @@
         "TOKUCHUFLAG": {
           "type": "cds.String",
           "length": 1
+        },
+        "IDENTIFIER": {
+          "type": "cds.String",
+          "length": 2
         }
       }
     },
@@ -41694,6 +41718,90 @@
       "kind": "type",
       "@open": true,
       "elements": {}
+    },
+    "ZAPIBPS0009.ZAPIBPS0009_CHARACTERISTIC": {
+      "kind": "action",
+      "params": {
+        "input": {
+          "@open": true,
+          "type": "ZAPIBPS0009.Object"
+        }
+      },
+      "returns": {
+        "type": "ZAPIBPS0009.SelectionOption"
+      }
+    },
+    "ZAPIBPS0009.ZAPIBPS0009_CLASS": {
+      "kind": "action",
+      "params": {
+        "input": {
+          "@open": true,
+          "type": "ZAPIBPS0009.Object"
+        }
+      },
+      "returns": {
+        "type": "ZAPIBPS0009.SelectionOption"
+      }
+    },
+    "ZAPIBPS0009.ZAPIBPS0009_INFORECORD": {
+      "kind": "action",
+      "params": {
+        "input": {
+          "@open": true,
+          "type": "ZAPIBPS0009.Object"
+        }
+      },
+      "returns": {
+        "type": "ZAPIBPS0009.SelectionOption"
+      }
+    },
+    "ZAPIBPS0009.ZAPIBPS0009_PURCHASING_SOURCE": {
+      "kind": "action",
+      "params": {
+        "input": {
+          "@open": true,
+          "type": "ZAPIBPS0009.Object"
+        }
+      },
+      "returns": {
+        "type": "ZAPIBPS0009.SelectionOption"
+      }
+    },
+    "ZAPIBPS0009.ZAPIBPS0009_PURGPRCGCONDITIONRECORD": {
+      "kind": "action",
+      "params": {
+        "input": {
+          "@open": true,
+          "type": "ZAPIBPS0009.Object"
+        }
+      },
+      "returns": {
+        "type": "ZAPIBPS0009.SelectionOption"
+      }
+    },
+    "ZAPIBPS0009.ZAPIBPS0009_SLSPRICINGCONDITIONRECORD": {
+      "kind": "action",
+      "params": {
+        "input": {
+          "@open": true,
+          "type": "ZAPIBPS0009.Object"
+        }
+      },
+      "returns": {
+        "type": "ZAPIBPS0009.SelectionOption"
+      }
+    },
+    "ZAPIBPS0009.ZAPIBPS0009_ZSRVBHMM0010": {
+      "kind": "action",
+      "params": {
+        "input": {
+          "@open": true,
+          "type": "ZAPIBPS0009.Object"
+        }
+      },
+      "returns": {
+        "type": "ZAPIBPS0009.SelectionOption"
+      }
     },
     "ZAPIBPS0009.ZAPIBPS0009_Product": {
       "kind": "action",

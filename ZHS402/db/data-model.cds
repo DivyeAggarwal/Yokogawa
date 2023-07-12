@@ -236,6 +236,7 @@ entity ZTHBT0048 : managed {
     key MODEL: String(18);
     key MATERIALCODE: String(40);
         TOKUCHUFLAG: String(1);
+        IDENTIFIER: String(2);
 }
 
 entity ZTHBT0032 : managed {
