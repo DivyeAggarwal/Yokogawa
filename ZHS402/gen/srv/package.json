@@ -377,6 +377,84 @@
           "csrf": true,
           "csrfInBatch": true
         }
+      },
+      "API_CLFN_CHARACTERISTIC_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_CLFN_CHARACTERISTIC_SRV",
+        "csrf": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_CLFN_CHARACTERISTIC_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
+      },
+      "API_CLFN_CLASS_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_CLFN_CLASS_SRV",
+        "csrf": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_CLFN_CLASS_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
+      },
+      "API_INFORECORD_PROCESS_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_INFORECORD_PROCESS_SRV",
+        "csrf": true,
+        "csrfInBatch": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_INFORECORD_PROCESS_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
+      },
+      "API_PURCHASING_SOURCE_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_PURCHASING_SOURCE_SRV",
+        "csrf": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_PURCHASING_SOURCE_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
+      },
+      "API_PURGPRCGCONDITIONRECORD_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_PURGPRCGCONDITIONRECORD_SRV",
+        "csrf": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_PURGPRCGCONDITIONRECORD_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
+      },
+      "API_SLSPRICINGCONDITIONRECORD_SRV": {
+        "kind": "odata-v2",
+        "model": "srv/external/API_SLSPRICINGCONDITIONRECORD_SRV",
+        "csrf": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/API_SLSPRICINGCONDITIONRECORD_SRV",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
+      },
+      "ZSRVBHMM0010": {
+        "kind": "odata-v2",
+        "model": "srv/external/ZSRVBHMM0010",
+        "csrf": true,
+        "credentials": {
+          "path": "/sap/opu/odata/sap/ZSRVBHMM0010",
+          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "csrf": true,
+          "csrfInBatch": true
+        }
       }
     },
     "hana": {
