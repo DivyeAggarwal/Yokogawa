@@ -361,7 +361,7 @@
         "csrf": true,
         "credentials": {
           "path": "/sap/opu/odata/sap/ZAPIHMM0003_SRV",
-          "destination": "s4003-ap-https_ZSRVBHPS0008",
+          "destination": "S4_POST_INVT_DIFF",
           "csrf": true,
           "csrfInBatch": true
         }
