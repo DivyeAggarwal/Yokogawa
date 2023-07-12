@@ -545,5 +545,31 @@ entity YARDTESTDB: managed,cuid {
     DOB: Date;
 }
 
-
-
+//Reservation Stock
+entity ZTHBT0043 : managed {
+    key VBELN : String(10) @title: 'Sales Document';
+    key POSNR : Integer @title: 'Sales Document Item';
+    key SEQNO : Integer @title: 'Sequence number';
+    MATNR : String(18) @title: 'Material Number';
+    ZZG_RESMS : String(80) @title: 'Reserved MS-Code';
+    ZZG_RESQT : Decimal(13, 3) @title: 'Reserved quantity';
+    MEINS : String(3) @title: 'Base Unit of Measure';
+    ZZG_RESDAT : Date @title: 'Reserved date';
+    USDQTY : Decimal(13, 3) @title: 'Used quantity';
+    CTDAT : Date @title: 'Counted date';
+    CTUSR : String(12) @title: 'Counted by';
+    SO_CHDAT : Date @title: 'SO Changed date';
+    RSVD_STAT : String(1) @title: 'Reserved status';
+}
+//YSTO Allotment reservation information)
+entity ZTHBT0044 : managed {
+    key WERKS : String(4) @title: 'Plant'; 
+    key LGORT : String(4) @title: 'Storage location (of Free Stock)';
+    SER_NO : String(18) @title: 'Serial Number (Free stock)';
+    PLNUM : String(10) @title: 'Planned order(Allotment)';
+    AUFNR : String(12) @title: 'Production order(Allotment)';
+    KDAUF : String(10) @title: 'Sales order(Main SO)';
+    KDPOS : Integer @title: 'Sales order item(Main SO Item)';
+    ZZCOMPNO : String(4) @title: 'Component (Main SO Component)';
+    ZZSERNO : String(18) @title: 'Serial number (Allotment)';
+}
