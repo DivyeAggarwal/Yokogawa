@@ -2066,7 +2066,7 @@
         },
         "MODEL": {
           "type": "cds.String",
-          "length": 8
+          "length": 18
         },
         "SUFFIXLEVEL": {
           "key": true,
@@ -11577,7 +11577,7 @@
         },
         "MODEL": {
           "type": "cds.String",
-          "length": 8
+          "length": 18
         },
         "SUFFIXLEVEL": {
           "key": true,
@@ -13379,7 +13379,7 @@
         },
         "MODEL": {
           "type": "cds.String",
-          "length": 8
+          "length": 18
         },
         "SUFFIXLEVEL": {
           "key": true,

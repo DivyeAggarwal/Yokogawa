@@ -241,7 +241,7 @@ entity ZTHBT0048 : managed {
 
 entity ZTHBT0032 : managed {
     key MATERIALCODE : String(80);
-        MODEL: String(8);
+        MODEL: String(18);
     key SUFFIXLEVEL: String(18);
     key SUFFIXVALUE: String(18);
 }
