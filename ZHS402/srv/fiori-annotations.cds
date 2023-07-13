@@ -4572,7 +4572,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(UI : {
         TypeName          : 'Production Order Component list',
         TypeNamePlural    : 'Production Order Component list'
     },
-    LineItem #ProductionOrderComponentlist : {
+    LineItem #ProductionOrderOrderComponents : {
         $value : [
             {
                 $Type : 'UI.DataField',
@@ -4675,10 +4675,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(UI : {
 };
 
 annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(
-  UI.SelectionPresentationVariant #ProductionOrderComponentlist : {
+  UI.SelectionPresentationVariant #ProductionOrderOrderComponents : {
     Text : 'Production Order Component list',
     SelectionVariant : { 
-        Text : 'ProductionOrderComponentlist',
+        Text : 'ProductionOrderOrderComponents',
         SelectOptions : [
             {
                 $Type : 'UI.SelectOptionType',
