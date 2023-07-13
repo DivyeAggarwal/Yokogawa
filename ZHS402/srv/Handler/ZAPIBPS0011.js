@@ -42,6 +42,7 @@ var registerZAPIBPS0011Handler = function (that, cds) {
     });
 } 
 async function formatProdOrderFields(res){
+    // console.log(res);
     var finalData = [];
     for (let index = 0; index < res.length; index++) {
         const element = res[index];
@@ -56,10 +57,16 @@ async function formatProdOrderFields(res){
             ZZG_PRINTED_REV:"",
             ZPRINT:"",
         }
+        if(element.porder){
+            var aZTHBT0029 = await SELECT.from('ZHS402.ZTHBT0029').where({
+                PAUFNR: element.porder
+            });
+        }else{
+            var aZTHBT0029 = await SELECT.from('ZHS402.ZTHBT0029').where({
+                PAUFNR: element.aufnr
+            });
+        }
         
-        var aZTHBT0029 = await SELECT.from('ZHS402.ZTHBT0029').where({
-            PAUFNR: element.aufnr
-        });
         if(aZTHBT0029.length > 0){
             object.BTYPEORDER = aZTHBT0029[0].BTYPEORDER;
             object.BTYPEITEM = aZTHBT0029[0].BTYPEITEM;

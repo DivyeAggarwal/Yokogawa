@@ -574,3 +574,25 @@ entity ZTHBT0044 : managed {
     ZZCOMPNO : String(4) @title: 'Component (Main SO Component)';
     ZZSERNO : String(18) @title: 'Serial number (Allotment)';
 }
+//ROHS INFO
+entity ZTHBT0060 : managed {
+    key Parts_number            : String(18) @title : 'Parts number';
+    key Source_CD               : String(2)  @title : 'Source CD';
+    key Rev_number              : String(3) @title : 'Rev number';
+    key CSIM_Number             : String(512) @title : 'CSIM Number'; 
+        MAKEMKCD                : String(64) @title : 'Maker code';
+        FILEKNRN                : String(160) @title : 'Document Number';
+        R6_SELKOMOKUNO          : String(3) @title : 'RoHS(6)';
+        R6_KOMOKUDATA_1         : String(2400) @title : 'Supplement1';
+        R6_KOMOKUDATA_2         : String(2400) @title : 'Supplement2';
+        R6_KOMOKUDATA_3         : String(2400) @title : 'Supplement3';
+        R10_SELKOMOKUNO         : String(3) @title : 'RoHS(10)';
+        R10_KOMOKUDATA_1        : String(2400) @title : 'Supplement1';
+        R10_KOMOKUDATA_2        : String(2400) @title : 'Supplement2';
+        R10_KOMOKUDATA_3        : String(2400) @title : 'Supplement3';
+        TOROKUHI_1              : Date @title : 'RoHS Creation Date';
+        KOUSINHI_1              : Date @title : 'RoHS Change Date';
+        TOROKUHI_2              : Date @title : 'Supplement Creation Date';
+        KOUSINHI_2              : Date @title : 'Supplement Change Date';
+
+}
