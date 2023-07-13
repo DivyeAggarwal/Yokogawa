@@ -493,59 +493,114 @@ service ZCDSEHBTC0007 {
     entity specificationChange          as projection on db.ZTHBT0037;
     // entity ZCDSEHPPC0016                    as projection on db.ZTHBT0010;
     // entity ZCDSEHPPC0017                    as projection on db.ZTHBT0014;
-    entity ZCDSEHPPC0016                    as
-        select from db.ZTHBT0010 {
-            key E_DOC_NO,
-            key E_REV_NO,
-            key PS_GROUP_NO,
-            key PS_ITEM_NO,
-                MODEL1,
-                PS_SYMBOL,
-                E_PART_NO,
-                PARTS_QTY,
-                PARTS_QTY_UNIT,
-                SELECT_SIGN,
-                PARTS_USE_RATIO,
-                PS_NOTE,
-                OR_SIGN,
-                SFIX_DIGIT_PTN,
-                SFIX_PTN,
-                OPTION_PTN,
-                PROD_CARRER,
-                E_TR_TYPE,
-                PARTS_NO_EXT_SIGN,
-                EFFECT_D,
-                INVALID_D,
-                null as WERKS         : String(4)  @title: 'Plant',
-                null as E_DOC_TYPE    : String(3)  @title: 'Document Type',
-                null as MODEL         : String(50) @title: 'MODEL',
-                null as E_SEQUENCE_NO : String(50) @title: 'E_SEQUENCE_NO'
-        };
-    entity ZCDSEHPPC0017                    as
-        select from db.ZTHBT0014 {
-            key E_DOC_NO,
-            key E_REV_NO,
-            key PS_GROUP_NO,
-            key PS_ITEM_NO,
-                PS_SYMBOL,
-                E_SIGN,
-                M_SIGN,
-                PARENT_PARTS_NO,
-                E_PART_NO,
-                COMP_PARTS_QTY,
-                COMP_PARTS_QTY_UNIT,
-                SELECT_SIGN,
-                PARTS_USE_RATIO,
-                PS_NOTE,
-                E_TR_TYPE,
-                PARTS_NO_EXT_SIGN,
-                EFFECT_D,
-                INVALID_D,
-                null as WERKS         : String(4)  @title: 'Plant',
-                null as E_DOC_TYPE    : String(3)  @title: 'Document Type',
-                null as MODEL         : String(50) @title: 'MODEL',
-                null as E_SEQUENCE_NO : String(50) @title: 'E_SEQUENCE_NO'
-        };
+    // entity ZCDSEHPPC0016                    as
+    //     select from db.ZTHBT0010 {
+    //         key E_DOC_NO,
+    //         key E_REV_NO,
+    //         key PS_GROUP_NO,
+    //         key PS_ITEM_NO,
+    //             MODEL1,
+    //             PS_SYMBOL,
+    //             E_PART_NO,
+    //             PARTS_QTY,
+    //             PARTS_QTY_UNIT,
+    //             SELECT_SIGN,
+    //             PARTS_USE_RATIO,
+    //             PS_NOTE,
+    //             OR_SIGN,
+    //             SFIX_DIGIT_PTN,
+    //             SFIX_PTN,
+    //             OPTION_PTN,
+    //             PROD_CARRER,
+    //             E_TR_TYPE,
+    //             PARTS_NO_EXT_SIGN,
+    //             EFFECT_D,
+    //             INVALID_D,
+    //             null as WERKS         : String(4)  @title: 'Plant',
+    //             null as E_DOC_TYPE    : String(3)  @title: 'Document Type',
+    //             null as MODEL         : String(50) @title: 'MODEL',
+    //             null as E_SEQUENCE_NO : String(50) @title: 'E_SEQUENCE_NO'
+    //     };
+    // entity ZCDSEHPPC0017                    as
+    //     select from db.ZTHBT0014 {
+    //         key E_DOC_NO,
+    //         key E_REV_NO,
+    //         key PS_GROUP_NO,
+    //         key PS_ITEM_NO,
+    //             PS_SYMBOL,
+    //             E_SIGN,
+    //             M_SIGN,
+    //             PARENT_PARTS_NO,
+    //             E_PART_NO,
+    //             COMP_PARTS_QTY,
+    //             COMP_PARTS_QTY_UNIT,
+    //             SELECT_SIGN,
+    //             PARTS_USE_RATIO,
+    //             PS_NOTE,
+    //             E_TR_TYPE,
+    //             PARTS_NO_EXT_SIGN,
+    //             EFFECT_D,
+    //             INVALID_D,
+    //             null as WERKS         : String(4)  @title: 'Plant',
+    //             null as E_DOC_TYPE    : String(3)  @title: 'Document Type',
+    //             null as MODEL         : String(50) @title: 'MODEL',
+    //             null as E_SEQUENCE_NO : String(50) @title: 'E_SEQUENCE_NO'
+    //     };
+
+    @cds.persistence.skip
+    entity ZCDSEHPPC0016  {
+    key E_DOC_NO: String(18) @title : 'Technical document No';
+    key E_REV_NO: String(5) @title : 'Technical renewal REV No';
+    key PS_GROUP_NO: String(3) @title : 'PS group No';
+    KEY PS_ITEM_NO: String(3) @title : 'PS Item No';
+    MODEL1: String(18) @title : 'MODEL1';
+    PS_SYMBOL: String(10) @title : 'PS Symbol';
+    E_PART_NO: String(18) @title : 'Material number';
+    PARTS_QTY: String(13) @title : 'Parts quantity';
+    PARTS_QTY_UNIT: String(4) @title : 'Parts quantity unit';
+    SELECT_SIGN: String(1) @title : 'Select sign';
+    PARTS_USE_RATIO: String(3) @title : 'Parts use ratio';
+    PS_NOTE: String(64) @title : 'PS note';
+    OR_SIGN: String(1) @title : 'OR sign';
+    SFIX_DIGIT_PTN: String(1) @title : 'Basic suffix digit pattern';
+    SFIX_PTN: String @title : 'Suffix pattern';
+    OPTION_PTN: String @title : 'Option pattern';
+    PROD_CARRER: String(9) @title : 'Production carrer';
+    E_TR_TYPE: String(1) @title : 'Techinical transaction type';
+    PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
+    EFFECT_D: Date @title : 'Valid From';
+    INVALID_D: Date @title : 'Valid To';
+    WERKS         : String(4)  @title: 'Plant';
+    MODEL         : String(50) @title: 'MODEL';
+    E_DOC_TYPE    : String(3)  @title: 'Document Type';
+    E_SEQUENCE_NO : String(50) @title: 'E_SEQUENCE_NO';
+}
+
+    @cds.persistence.skip
+    entity ZCDSEHPPC0017 {
+    key E_DOC_NO: String(18) @title : 'Technical document No';
+    key E_REV_NO: String(5) @title : 'Technical renewal REV No';
+    key PS_GROUP_NO: String(3) @title : 'PS group No';
+    key PS_ITEM_NO: String(3) @title : 'PS Item No';
+    PS_SYMBOL: String(10) @title : 'PS Symbol';
+    E_SIGN: String(1) @title : 'E SIGN';
+    M_SIGN: String(1) @title : 'M SIGN';
+    PARENT_PARTS_NO: String(40) @title : 'Parts no.';
+    E_PART_NO: String(40) @title : 'Material number';
+    COMP_PARTS_QTY: String(13) @title : 'Parts quantity';
+    COMP_PARTS_QTY_UNIT: String(4) @title : 'Parts quantity unit';
+    SELECT_SIGN: String(1) @title : 'Select sign';
+    PARTS_USE_RATIO: String(3) @title : 'Parts use ratio';
+    PS_NOTE: String(64) @title : 'PS note';
+    E_TR_TYPE: String(1) @title : 'Techinical transaction type';
+    PARTS_NO_EXT_SIGN: String(1) @title : 'Parts no exist sign';
+    EFFECT_D: Date @title : 'Valid From';
+    INVALID_D: Date @title : 'Valid To';
+    WERKS         : String(4)  @title: 'Plant';
+    E_DOC_TYPE    : String(3)  @title: 'Document Type';
+    MODEL         : String(50) @title: 'MODEL';
+    E_SEQUENCE_NO : String(50) @title: 'E_SEQUENCE_NO';
+}
 
      @cds.persistence.skip
     entity specificationChangeMessage  {

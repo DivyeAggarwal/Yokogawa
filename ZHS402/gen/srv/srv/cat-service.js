@@ -941,10 +941,23 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     //     return {acknowledge:"Success", message: "Deleted " + req.data.input.delete.length + " entries \n" 
     //     + "Updated " + req.data.input.update.length + " entries \n"  }
     // });
-    this.on('UPDATE','ZCDSEHPPC0017', async req => {
-        var oInput = req.data;
-        await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:oInput.INVALID_D}).where({ WERKS: { '=': oInput.WERKS }, E_DOC_TYPE: { '=': oInput.E_DOC_TYPE }, E_DOC_NO: { '=': oInput.E_DOC_NO }, E_REV_NO: { '=': oInput.E_REV_NO }, PS_GROUP_NO: { '=': oInput.PS_GROUP_NO }, PS_ITEM_NO: { '=': oInput.PS_ITEM_NO }, MODEL: { '=': oInput.MODEL }, E_SEQUENCE_NO: { '=': oInput.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput);
-    })
+
+    this.on('READ', 'ZCDSEHPPC0017', async req => {
+        if(req.query.SELECT.where) {
+        var results = await SELECT.from('ZHS402.ZTHBT0014').where(req.query.SELECT.where);
+        } else {
+            var results = await SELECT.from('ZHS402.ZTHBT0014');
+        }
+        return results;      
+    });
+    this.on('READ', 'ZCDSEHPPC0016', async req => {
+        if(req.query.SELECT.where) {
+        var results = await SELECT.from('ZHS402.ZTHBT0010').where(req.query.SELECT.where);
+        } else {
+            var results = await SELECT.from('ZHS402.ZTHBT0010');
+        }
+        return results;      
+    });
     this.on('READ', 'Formalize', async req => {
         if (req.query) {
             const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));

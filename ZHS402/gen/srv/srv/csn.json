@@ -15813,159 +15813,7 @@
     },
     "ZCDSEHBTC0007.ZCDSEHPPC0016": {
       "kind": "entity",
-      "@title": "{i18n>PartsStructureSpecification}",
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "ZHS402.ZTHBT0010"
-            ]
-          },
-          "columns": [
-            {
-              "key": true,
-              "ref": [
-                "E_DOC_NO"
-              ]
-            },
-            {
-              "key": true,
-              "ref": [
-                "E_REV_NO"
-              ]
-            },
-            {
-              "key": true,
-              "ref": [
-                "PS_GROUP_NO"
-              ]
-            },
-            {
-              "key": true,
-              "ref": [
-                "PS_ITEM_NO"
-              ]
-            },
-            {
-              "ref": [
-                "MODEL1"
-              ]
-            },
-            {
-              "ref": [
-                "PS_SYMBOL"
-              ]
-            },
-            {
-              "ref": [
-                "E_PART_NO"
-              ]
-            },
-            {
-              "ref": [
-                "PARTS_QTY"
-              ]
-            },
-            {
-              "ref": [
-                "PARTS_QTY_UNIT"
-              ]
-            },
-            {
-              "ref": [
-                "SELECT_SIGN"
-              ]
-            },
-            {
-              "ref": [
-                "PARTS_USE_RATIO"
-              ]
-            },
-            {
-              "ref": [
-                "PS_NOTE"
-              ]
-            },
-            {
-              "ref": [
-                "OR_SIGN"
-              ]
-            },
-            {
-              "ref": [
-                "SFIX_DIGIT_PTN"
-              ]
-            },
-            {
-              "ref": [
-                "SFIX_PTN"
-              ]
-            },
-            {
-              "ref": [
-                "OPTION_PTN"
-              ]
-            },
-            {
-              "ref": [
-                "PROD_CARRER"
-              ]
-            },
-            {
-              "ref": [
-                "E_TR_TYPE"
-              ]
-            },
-            {
-              "ref": [
-                "PARTS_NO_EXT_SIGN"
-              ]
-            },
-            {
-              "ref": [
-                "EFFECT_D"
-              ]
-            },
-            {
-              "ref": [
-                "INVALID_D"
-              ]
-            },
-            {
-              "val": null,
-              "as": "WERKS",
-              "cast": {
-                "type": "cds.String",
-                "length": 4
-              }
-            },
-            {
-              "val": null,
-              "as": "E_DOC_TYPE",
-              "cast": {
-                "type": "cds.String",
-                "length": 3
-              }
-            },
-            {
-              "val": null,
-              "as": "MODEL",
-              "cast": {
-                "type": "cds.String",
-                "length": 50
-              }
-            },
-            {
-              "val": null,
-              "as": "E_SEQUENCE_NO",
-              "cast": {
-                "type": "cds.String",
-                "length": 50
-              }
-            }
-          ]
-        }
-      },
+      "@cds.persistence.skip": true,
       "elements": {
         "E_DOC_NO": {
           "@title": "Technical document No",
@@ -16074,25 +15922,21 @@
         },
         "WERKS": {
           "@title": "Plant",
-          "@Core.Computed": true,
           "type": "cds.String",
           "length": 4
         },
-        "E_DOC_TYPE": {
-          "@title": "Document Type",
-          "@Core.Computed": true,
-          "type": "cds.String",
-          "length": 3
-        },
         "MODEL": {
           "@title": "MODEL",
-          "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
         },
+        "E_DOC_TYPE": {
+          "@title": "Document Type",
+          "type": "cds.String",
+          "length": 3
+        },
         "E_SEQUENCE_NO": {
           "@title": "E_SEQUENCE_NO",
-          "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
         }
@@ -16100,144 +15944,7 @@
     },
     "ZCDSEHBTC0007.ZCDSEHPPC0017": {
       "kind": "entity",
-      "@title": "{i18n>PartsStructureTr}",
-      "query": {
-        "SELECT": {
-          "from": {
-            "ref": [
-              "ZHS402.ZTHBT0014"
-            ]
-          },
-          "columns": [
-            {
-              "key": true,
-              "ref": [
-                "E_DOC_NO"
-              ]
-            },
-            {
-              "key": true,
-              "ref": [
-                "E_REV_NO"
-              ]
-            },
-            {
-              "key": true,
-              "ref": [
-                "PS_GROUP_NO"
-              ]
-            },
-            {
-              "key": true,
-              "ref": [
-                "PS_ITEM_NO"
-              ]
-            },
-            {
-              "ref": [
-                "PS_SYMBOL"
-              ]
-            },
-            {
-              "ref": [
-                "E_SIGN"
-              ]
-            },
-            {
-              "ref": [
-                "M_SIGN"
-              ]
-            },
-            {
-              "ref": [
-                "PARENT_PARTS_NO"
-              ]
-            },
-            {
-              "ref": [
-                "E_PART_NO"
-              ]
-            },
-            {
-              "ref": [
-                "COMP_PARTS_QTY"
-              ]
-            },
-            {
-              "ref": [
-                "COMP_PARTS_QTY_UNIT"
-              ]
-            },
-            {
-              "ref": [
-                "SELECT_SIGN"
-              ]
-            },
-            {
-              "ref": [
-                "PARTS_USE_RATIO"
-              ]
-            },
-            {
-              "ref": [
-                "PS_NOTE"
-              ]
-            },
-            {
-              "ref": [
-                "E_TR_TYPE"
-              ]
-            },
-            {
-              "ref": [
-                "PARTS_NO_EXT_SIGN"
-              ]
-            },
-            {
-              "ref": [
-                "EFFECT_D"
-              ]
-            },
-            {
-              "ref": [
-                "INVALID_D"
-              ]
-            },
-            {
-              "val": null,
-              "as": "WERKS",
-              "cast": {
-                "type": "cds.String",
-                "length": 4
-              }
-            },
-            {
-              "val": null,
-              "as": "E_DOC_TYPE",
-              "cast": {
-                "type": "cds.String",
-                "length": 3
-              }
-            },
-            {
-              "val": null,
-              "as": "MODEL",
-              "cast": {
-                "type": "cds.String",
-                "length": 50
-              }
-            },
-            {
-              "val": null,
-              "as": "E_SEQUENCE_NO",
-              "cast": {
-                "type": "cds.String",
-                "length": 50
-              }
-            }
-          ]
-        }
-      },
+      "@cds.persistence.skip": true,
       "elements": {
         "E_DOC_NO": {
           "@title": "Technical document No",
@@ -16333,25 +16040,21 @@
         },
         "WERKS": {
           "@title": "Plant",
-          "@Core.Computed": true,
           "type": "cds.String",
           "length": 4
         },
         "E_DOC_TYPE": {
           "@title": "Document Type",
-          "@Core.Computed": true,
           "type": "cds.String",
           "length": 3
         },
         "MODEL": {
           "@title": "MODEL",
-          "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
         },
         "E_SEQUENCE_NO": {
           "@title": "E_SEQUENCE_NO",
-          "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
         }
