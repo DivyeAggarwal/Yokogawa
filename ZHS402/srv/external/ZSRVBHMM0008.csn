@@ -80,6 +80,19 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material type"
         },
+        "validfrm": {
+          "type": "cds.Date",
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid To",
+          "@sap.quickinfo": "Valid-To Date of Production Version"
+        },
+        "slocto": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issue Stor. Location",
+          "@sap.quickinfo": "Proposed Issue Storage Location for Components"
+        },
         "backflush": {
           "type": "cds.String",
           "length": 1,
@@ -131,10 +144,9 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Purchasing Group"
         },
-        "meins": {
+        "buom": {
           "type": "cds.String",
           "length": 3,
-          "@sap.label": "Base Unit of Measure",
           "@sap.semantics": "unit-of-measure"
         },
         "dispo": {
@@ -142,6 +154,43 @@
           "length": 3,
           "@sap.display.format": "UpperCase",
           "@sap.label": "MRP Controller"
+        },
+        "lifnr": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier",
+          "@sap.quickinfo": "Vendor's account number"
+        },
+        "name1": {
+          "type": "cds.String",
+          "length": 35,
+          "@sap.label": "Name",
+          "@sap.quickinfo": "Name 1"
+        },
+        "waers": {
+          "type": "cds.String",
+          "length": 5,
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.semantics": "currency-code"
+        },
+        "stprs": {
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3,
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Standard price"
+        },
+        "verpr": {
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3,
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Moving price",
+          "@sap.quickinfo": "Moving Average Price/Periodic Unit Price"
         },
         "bklas": {
           "type": "cds.String",
@@ -159,7 +208,7 @@
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 3,
-          "@sap.unit": "meins",
+          "@sap.unit": "buom",
           "@sap.label": "Unrestricted",
           "@sap.quickinfo": "Valuated Unrestricted-Use Stock"
         },
@@ -167,15 +216,136 @@
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 3,
-          "@sap.unit": "meins",
+          "@sap.unit": "buom",
           "@sap.label": "Reorder Point"
         },
         "bstfe": {
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 3,
-          "@sap.unit": "meins",
+          "@sap.unit": "buom",
           "@sap.label": "Fixed lot size"
+        },
+        "pkumw": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issuing Plant",
+          "@sap.quickinfo": "Issuing Plant in Kanban Processing"
+        },
+        "lt": {
+          "type": "cds.String",
+          "length": 4,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control key"
+        },
+        "ltunit": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "vagrp": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planner Group",
+          "@sap.quickinfo": "Responsible Planner Group or Department"
+        },
+        "arbpl": {
+          "type": "cds.String",
+          "length": 8,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center"
+        },
+        "meins": {
+          "type": "cds.String",
+          "length": 3,
+          "@sap.label": "Order Unit",
+          "@sap.quickinfo": "Purchase Order Unit of Measure",
+          "@sap.semantics": "unit-of-measure"
+        },
+        "wemng": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "meins",
+          "@sap.label": "Quantity delivered",
+          "@sap.quickinfo": "Quantity of goods received"
+        },
+        "minbm": {
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "@sap.unit": "meins",
+          "@sap.label": "Minimum Qty",
+          "@sap.quickinfo": "Minimum Purchase Order Quantity"
+        },
+        "netpr": {
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3,
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Net Price",
+          "@sap.quickinfo": "Net Price in Purchasing Info Record"
+        },
+        "component": {
+          "type": "cds.String",
+          "length": 1333,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "docno": {
+          "type": "cds.String",
+          "length": 1333,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "rev": {
+          "type": "cds.String",
+          "length": 1333,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "bombulk": {
+          "type": "cds.String",
+          "length": 1333,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "bomsp": {
+          "type": "cds.String",
+          "length": 1333,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "bomdesc": {
+          "type": "cds.String",
+          "length": 1333,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "item": {
+          "type": "cds.String",
+          "length": 1333,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
         }
       }
     },
