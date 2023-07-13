@@ -946,52 +946,162 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:oInput.INVALID_D}).where({ WERKS: { '=': oInput.WERKS }, E_DOC_TYPE: { '=': oInput.E_DOC_TYPE }, E_DOC_NO: { '=': oInput.E_DOC_NO }, E_REV_NO: { '=': oInput.E_REV_NO }, PS_GROUP_NO: { '=': oInput.PS_GROUP_NO }, PS_ITEM_NO: { '=': oInput.PS_ITEM_NO }, MODEL: { '=': oInput.MODEL }, E_SEQUENCE_NO: { '=': oInput.E_SEQUENCE_NO } }); //UPDATE('ZHS402.ZTHBT0027').with(oInput);
     })
     this.on('READ', 'Formalize', async req => {
-        const db = await cds.connect.to('db');
         if (req.query) {
             const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
             if (doc_type_idx >= 0) {
                 var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
             }
-        if (E_DOC_TYPE == "FE0") {
-            const dataFe0 = await SELECT.from('ZCDSEHBTC0007.DATAFE0').where(req.query.SELECT.where)
-
-            let aData = [];
-            for (let oData of dataFe0) {
-                const data = {
-                    E_DOC_TYPE: oData.E_DOC_TYPE,
-                    WERKS: oData.WERKS,
-                    PS_ITEM_NO: oData.PS_ITEM_NO,
-                    E_DOC_NO: oData.E_DOC_NO,
-                    E_REV_NO: oData.E_REV_NO,
-                    PS_GROUP_NO: oData.PS_GROUP_NO,
-                    FORMALIZE_DATE: oData.INVALID_D,
-                    CREATION_DATE: oData.EFFECT_D
-                }
-                aData.push(data);
+            const WERKS_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "WERKS"));
+            if (WERKS_idx >= 0) {
+                var WERKS = req.query.SELECT.where[WERKS_idx + 2].val
             }
-            return aData;
-        } else if (E_DOC_TYPE == "FE1") {
-            const dataFe1 = await SELECT.from('ZCDSEHBTC0007.DATAFE1').where(req.query.SELECT.where)
-            let aData = [];
-            for (let oData of dataFe1) {
-                const data = {
-                    E_DOC_TYPE: oData.E_DOC_TYPE,
-                    WERKS: oData.WERKS,
-                    PS_ITEM_NO: oData.PS_ITEM_NO,
-                    E_DOC_NO: oData.E_DOC_NO,
-                    E_REV_NO: oData.E_REV_NO,
-                    PS_GROUP_NO: oData.PS_GROUP_NO,
-                    FORMALIZE_DATE: oData.INVALID_D,
-                    CREATION_DATE: oData.EFFECT_D
-                }
-                aData.push(data);
+            const DOC_NO_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_NO"));
+            if (DOC_NO_idx >= 0) {
+                var E_DOC_NO = req.query.SELECT.where[DOC_NO_idx + 2].val
             }
-            return aData;
-        }
+            var table37 = await SELECT.from('ZHS402.ZTHBT0037').where({ WERKS: WERKS, E_DOC_NO: E_DOC_NO });
+
+            if (E_DOC_TYPE == "FE1") {
+
+                var table14 = await SELECT.from('ZHS402.ZTHBT0014').where({ E_DOC_NO: E_DOC_NO });
+                var arrayFinal = [];
+                for (var i = 0; i < table14.length; i++) {
+                    var index = table37.findIndex(function (params, index) {
+                        if (params.E_DOC_NO === table14[i].E_DOC_NO && params.E_REV_NO === table14[i].E_REV_NO &&
+                            params.PS_GROUP_NO === table14[i].PS_GROUP_NO && params.PS_ITEM_NO === table14[i].PS_ITEM_NO)
+                            return true;
+                    });
+                    if (index !== -1) {
+                        var array = {
+                            E_DOC_TYPE: 'FE1',
+                            E_DOC_NO: table14[i].E_DOC_NO,
+                            E_REV_NO: table14[i].E_REV_NO,
+                            PS_GROUP_NO: table14[i].PS_GROUP_NO,
+                            PS_ITEM_NO: table14[i].PS_ITEM_NO,
+                            FORMALIZE_DATE: table37[index].createdAt,
+                            CREATION_DATE: table14[i].createdAt
+                        }
+                    } else {
+                        var array = {
+                            E_DOC_TYPE: 'FE1',
+                            E_DOC_NO: table14[i].E_DOC_NO,
+                            E_REV_NO: table14[i].E_REV_NO,
+                            PS_GROUP_NO: table14[i].PS_GROUP_NO,
+                            PS_ITEM_NO: table14[i].PS_ITEM_NO,
+                            FORMALIZE_DATE: null,
+                            CREATION_DATE: table14[i].createdAt
+                        }
+                    }
+                    arrayFinal.push(array);
+
+                }
+                var updated = Object.values(arrayFinal.reduce((obj, item) => {
+                    var key = item.E_DOC_NO + item.E_REV_NO                   
+                    if (!obj[key]) {
+                      obj[key] = Object.assign(item)
+                    }
+                    return obj
+                  }, {}))
+                return updated;
+
+
+            } else if (E_DOC_TYPE == "FE0") {
+
+                var table10 = await SELECT.from('ZHS402.ZTHBT0010').where({ E_DOC_NO: E_DOC_NO });
+                var arrayFinal = [];
+                for (var i = 0; i < table10.length; i++) {
+                    var index = table37.findIndex(function (params, index) {
+                        if (params.E_DOC_NO === table10[i].E_DOC_NO && params.E_REV_NO === table10[i].E_REV_NO &&
+                            params.PS_GROUP_NO === table10[i].PS_GROUP_NO && params.PS_ITEM_NO === table10[i].PS_ITEM_NO
+                            && params.MODEL === table10[i].MODEL1)
+                            return true;
+                    });
+                    if (index !== -1) {
+                        var array = {
+                            E_DOC_TYPE: 'FE1',
+                            E_DOC_NO: table10[i].E_DOC_NO,
+                            E_REV_NO: table10[i].E_REV_NO,
+                            PS_GROUP_NO: table10[i].PS_GROUP_NO,
+                            PS_ITEM_NO: table10[i].PS_ITEM_NO,
+                            FORMALIZE_DATE: table37[index].createdAt,
+                            CREATION_DATE: table10[i].createdAt
+                        }
+                    } else {
+                        var array = {
+                            E_DOC_TYPE: 'FE1',
+                            E_DOC_NO: table14[i].E_DOC_NO,
+                            E_REV_NO: table14[i].E_REV_NO,
+                            PS_GROUP_NO: table14[i].PS_GROUP_NO,
+                            PS_ITEM_NO: table14[i].PS_ITEM_NO,
+                            FORMALIZE_DATE: null,
+                            CREATION_DATE: table14[i].createdAt
+                        }
+                    }
+                    arrayFinal.push(array);
+
+                }
+                // return arrayFinal;
+                var updated = Object.values(arrayFinal.reduce((obj, item) => {
+                    var key = item.E_DOC_NO + item.E_REV_NO                   
+                    if (!obj[key]) {
+                      obj[key] = Object.assign(item)
+                    }
+                    return obj
+                  }, {}))
+                return updated;
+
+            }
         }
 
-        // return oData;
-    });
+
+    })
+    // this.on('READ', 'Formalize', async req => {
+    //     const db = await cds.connect.to('db');
+    //     if (req.query) {
+    //         const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
+    //         if (doc_type_idx >= 0) {
+    //             var E_DOC_TYPE = req.query.SELECT.where[doc_type_idx + 2].val
+    //         }
+    //         if (E_DOC_TYPE == "FE0") {
+    //             const dataFe0 = await SELECT.from('ZCDSEHBTC0007.DATAFE0').where(req.query.SELECT.where)
+
+    //             let aData = [];
+    //             for (let oData of dataFe0) {
+    //                 const data = {
+    //                     E_DOC_TYPE: oData.E_DOC_TYPE,
+    //                     WERKS: oData.WERKS,
+    //                     PS_ITEM_NO: oData.PS_ITEM_NO,
+    //                     E_DOC_NO: oData.E_DOC_NO,
+    //                     E_REV_NO: oData.E_REV_NO,
+    //                     PS_GROUP_NO: oData.PS_GROUP_NO,
+    //                     FORMALIZE_DATE: oData.INVALID_D,
+    //                     CREATION_DATE: oData.EFFECT_D
+    //                 }
+    //                 aData.push(data);
+    //             }
+    //             return aData;
+    //         } else if (E_DOC_TYPE == "FE1") {
+    //             const dataFe1 = await SELECT.from('ZCDSEHBTC0007.DATAFE1').where(req.query.SELECT.where)
+    //             let aData = [];
+    //             for (let oData of dataFe1) {
+    //                 const data = {
+    //                     E_DOC_TYPE: oData.E_DOC_TYPE,
+    //                     WERKS: oData.WERKS,
+    //                     PS_ITEM_NO: oData.PS_ITEM_NO,
+    //                     E_DOC_NO: oData.E_DOC_NO,
+    //                     E_REV_NO: oData.E_REV_NO,
+    //                     PS_GROUP_NO: oData.PS_GROUP_NO,
+    //                     FORMALIZE_DATE: oData.INVALID_D,
+    //                     CREATION_DATE: oData.EFFECT_D
+    //                 }
+    //                 aData.push(data);
+    //             }
+    //             return aData;
+    //         }
+    //     }
+
+    //     // return oData;
+    // });
 
     this.on('READ', 'BOMDisplay', async req => {
         const db = await cds.connect.to('db');

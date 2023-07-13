@@ -714,7 +714,26 @@ service ZCDSEHBTC0007 {
         where
             B.E_DOC_TYPE = 'FE1';
 
+    entity DATAFE1Test3                      as
+        select from db.ZTHBT0014 as A
+        left outer join db.ZTHBT0037 as B
+            on  A.E_DOC_NO    = B.E_DOC_NO
+            and A.E_REV_NO    = B.E_REV_NO
+            and A.PS_GROUP_NO = B.PS_GROUP_NO
+            and A.PS_ITEM_NO  = B.PS_ITEM_NO
+        {
 
+            key A.E_DOC_NO    as E_DOC_NO,
+            key A.E_REV_NO    as E_REV_NO,
+            key A.PS_GROUP_NO as PS_GROUP_NO,
+            key A.PS_ITEM_NO  as PS_ITEM_NO,
+                B.E_DOC_TYPE  as E_DOC_TYPE,
+                B.WERKS       as WERKS,
+                A.EFFECT_D    as EFFECT_D,
+                B.INVALID_D   as INVALID_D
+        }
+        where
+            B.WERKS = WERKS;
 }
 
 service ZSRVBHPS0008Service {

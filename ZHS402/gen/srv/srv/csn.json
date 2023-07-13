@@ -18297,7 +18297,7 @@
             {
               "key": true,
               "ref": [
-                "B",
+                "A",
                 "E_DOC_NO"
               ],
               "as": "E_DOC_NO"
@@ -18305,7 +18305,7 @@
             {
               "key": true,
               "ref": [
-                "B",
+                "A",
                 "E_REV_NO"
               ],
               "as": "E_REV_NO"
@@ -18313,7 +18313,7 @@
             {
               "key": true,
               "ref": [
-                "B",
+                "A",
                 "PS_GROUP_NO"
               ],
               "as": "PS_GROUP_NO"
@@ -18321,7 +18321,7 @@
             {
               "key": true,
               "ref": [
-                "B",
+                "A",
                 "PS_ITEM_NO"
               ],
               "as": "PS_ITEM_NO"
@@ -18342,7 +18342,7 @@
             },
             {
               "ref": [
-                "B",
+                "A",
                 "EFFECT_D"
               ],
               "as": "EFFECT_D"
@@ -18353,30 +18353,6 @@
                 "INVALID_D"
               ],
               "as": "INVALID_D"
-            },
-            {
-              "as": "ZTHBT0014",
-              "cast": {
-                "target": "ZCDSEHBTC0007.ZTHBT0014",
-                "cardinality": {
-                  "max": "*"
-                },
-                "type": "cds.Association",
-                "on": [
-                  {
-                    "ref": [
-                      "ZTHBT0014",
-                      "E_DOC_NO"
-                    ]
-                  },
-                  "=",
-                  {
-                    "ref": [
-                      "E_DOC_NO"
-                    ]
-                  }
-                ]
-              }
             }
           ],
           "where": [
@@ -18435,27 +18411,208 @@
         "INVALID_D": {
           "@title": "Valid To",
           "type": "cds.Date"
-        },
-        "ZTHBT0014": {
-          "type": "cds.Association",
-          "cardinality": {
-            "max": "*"
+        }
+      }
+    },
+    "ZCDSEHBTC0007.DATAFE1Test3": {
+      "kind": "entity",
+      "@title": "{i18n>PartsStructureTr}",
+      "query": {
+        "SELECT": {
+          "from": {
+            "join": "left",
+            "args": [
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0014"
+                ],
+                "as": "A"
+              },
+              {
+                "ref": [
+                  "ZHS402.ZTHBT0037"
+                ],
+                "as": "B"
+              }
+            ],
+            "on": [
+              {
+                "ref": [
+                  "A",
+                  "E_DOC_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "B",
+                  "E_DOC_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "A",
+                  "E_REV_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "B",
+                  "E_REV_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "A",
+                  "PS_GROUP_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "B",
+                  "PS_GROUP_NO"
+                ]
+              },
+              "and",
+              {
+                "ref": [
+                  "A",
+                  "PS_ITEM_NO"
+                ]
+              },
+              "=",
+              {
+                "ref": [
+                  "B",
+                  "PS_ITEM_NO"
+                ]
+              }
+            ]
           },
-          "target": "ZCDSEHBTC0007.ZTHBT0014",
-          "on": [
+          "columns": [
+            {
+              "key": true,
+              "ref": [
+                "A",
+                "E_DOC_NO"
+              ],
+              "as": "E_DOC_NO"
+            },
+            {
+              "key": true,
+              "ref": [
+                "A",
+                "E_REV_NO"
+              ],
+              "as": "E_REV_NO"
+            },
+            {
+              "key": true,
+              "ref": [
+                "A",
+                "PS_GROUP_NO"
+              ],
+              "as": "PS_GROUP_NO"
+            },
+            {
+              "key": true,
+              "ref": [
+                "A",
+                "PS_ITEM_NO"
+              ],
+              "as": "PS_ITEM_NO"
+            },
             {
               "ref": [
-                "ZTHBT0014",
-                "E_DOC_NO"
+                "B",
+                "E_DOC_TYPE"
+              ],
+              "as": "E_DOC_TYPE"
+            },
+            {
+              "ref": [
+                "B",
+                "WERKS"
+              ],
+              "as": "WERKS"
+            },
+            {
+              "ref": [
+                "A",
+                "EFFECT_D"
+              ],
+              "as": "EFFECT_D"
+            },
+            {
+              "ref": [
+                "B",
+                "INVALID_D"
+              ],
+              "as": "INVALID_D"
+            }
+          ],
+          "where": [
+            {
+              "ref": [
+                "B",
+                "WERKS"
               ]
             },
             "=",
             {
               "ref": [
-                "E_DOC_NO"
+                "WERKS"
               ]
             }
           ]
+        }
+      },
+      "elements": {
+        "E_DOC_NO": {
+          "@title": "Technical document No",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "E_REV_NO": {
+          "@title": "Technical renewal REV No",
+          "key": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "PS_GROUP_NO": {
+          "@title": "PS group No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "PS Item No",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "E_DOC_TYPE": {
+          "@title": "Document Type",
+          "type": "cds.String",
+          "length": 3
+        },
+        "WERKS": {
+          "@title": "Plant",
+          "type": "cds.String",
+          "length": 4
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "type": "cds.Date"
         }
       }
     },
