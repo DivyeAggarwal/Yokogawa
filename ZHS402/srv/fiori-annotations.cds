@@ -763,10 +763,10 @@ annotate ZCDSEHBTC0007.Formalize with @(
             WERKS,E_DOC_NO
         ],
         LineItem  : [
+            { Value : WERKS },
             { Value : E_DOC_TYPE },
             { Value : E_DOC_NO }, 
             { Value : E_REV_NO },
-            { Value : PS_GROUP_NO },
             { Value : FORMALIZE_DATE },
             { Value : CREATION_DATE }                                         
         ],

@@ -981,7 +981,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
             "PARTS_USE_RATIO": input.PARTS_USE_RATIO,
             "PS_NOTE": input.PS_NOTE,
             "EFFECT_D": input.EFFECT_D,
-            "INVALID_D": "31-12-9999",
+            "INVALID_D": "9999-12-31",
             "PARTS_NO_EXT_SIGN": input.PARTS_NO_EXT_SIGN
         }
         await INSERT.into('ZHS402.ZTHBT0037').entries(payload);
@@ -1015,6 +1015,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     });
                     if (index !== -1) {
                         var array = {
+                            WERKS: WERKS,
                             E_DOC_TYPE: 'FE1',
                             E_DOC_NO: table14[i].E_DOC_NO,
                             E_REV_NO: table14[i].E_REV_NO,
@@ -1025,6 +1026,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         }
                     } else {
                         var array = {
+                            WERKS: WERKS,
                             E_DOC_TYPE: 'FE1',
                             E_DOC_NO: table14[i].E_DOC_NO,
                             E_REV_NO: table14[i].E_REV_NO,
@@ -1060,7 +1062,8 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     });
                     if (index !== -1) {
                         var array = {
-                            E_DOC_TYPE: 'FE1',
+                            WERKS: WERKS,
+                            E_DOC_TYPE: 'FE0',
                             E_DOC_NO: table10[i].E_DOC_NO,
                             E_REV_NO: table10[i].E_REV_NO,
                             PS_GROUP_NO: table10[i].PS_GROUP_NO,
@@ -1070,7 +1073,8 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         }
                     } else {
                         var array = {
-                            E_DOC_TYPE: 'FE1',
+                            WERKS: WERKS,
+                            E_DOC_TYPE: 'FE0',
                             E_DOC_NO: table14[i].E_DOC_NO,
                             E_REV_NO: table14[i].E_REV_NO,
                             PS_GROUP_NO: table14[i].PS_GROUP_NO,

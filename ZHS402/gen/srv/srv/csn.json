@@ -4654,6 +4654,152 @@
         }
       }
     },
+    "ZHS402.ZTHBT0060": {
+      "kind": "entity",
+      "includes": [
+        "managed"
+      ],
+      "elements": {
+        "createdAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "createdBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@Core.Immutable": true,
+          "@title": "{i18n>CreatedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "modifiedAt": {
+          "@cds.on.insert": {
+            "=": "$now"
+          },
+          "@cds.on.update": {
+            "=": "$now"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedAt}",
+          "@readonly": true,
+          "type": "cds.Timestamp"
+        },
+        "modifiedBy": {
+          "@cds.on.insert": {
+            "=": "$user"
+          },
+          "@cds.on.update": {
+            "=": "$user"
+          },
+          "@UI.HiddenFilter": true,
+          "@title": "{i18n>ChangedBy}",
+          "@readonly": true,
+          "@description": "{i18n>UserID.Description}",
+          "type": "User",
+          "length": 255
+        },
+        "Parts_number": {
+          "@title": "Parts number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "Source_CD": {
+          "@title": "Source CD",
+          "key": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "Rev_number": {
+          "@title": "Rev number",
+          "key": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "CSIM_Number": {
+          "@title": "CSIM Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 512
+        },
+        "MAKEMKCD": {
+          "@title": "Maker code",
+          "type": "cds.String",
+          "length": 64
+        },
+        "FILEKNRN": {
+          "@title": "Document Number",
+          "type": "cds.String",
+          "length": 160
+        },
+        "R6_SELKOMOKUNO": {
+          "@title": "RoHS(6)",
+          "type": "cds.String",
+          "length": 3
+        },
+        "R6_KOMOKUDATA_1": {
+          "@title": "Supplement1",
+          "type": "cds.String",
+          "length": 2400
+        },
+        "R6_KOMOKUDATA_2": {
+          "@title": "Supplement2",
+          "type": "cds.String",
+          "length": 2400
+        },
+        "R6_KOMOKUDATA_3": {
+          "@title": "Supplement3",
+          "type": "cds.String",
+          "length": 2400
+        },
+        "R10_SELKOMOKUNO": {
+          "@title": "RoHS(10)",
+          "type": "cds.String",
+          "length": 3
+        },
+        "R10_KOMOKUDATA_1": {
+          "@title": "Supplement1",
+          "type": "cds.String",
+          "length": 2400
+        },
+        "R10_KOMOKUDATA_2": {
+          "@title": "Supplement2",
+          "type": "cds.String",
+          "length": 2400
+        },
+        "R10_KOMOKUDATA_3": {
+          "@title": "Supplement3",
+          "type": "cds.String",
+          "length": 2400
+        },
+        "TOROKUHI_1": {
+          "@title": "RoHS Creation Date",
+          "type": "cds.Date"
+        },
+        "KOUSINHI_1": {
+          "@title": "RoHS Change Date",
+          "type": "cds.Date"
+        },
+        "TOROKUHI_2": {
+          "@title": "Supplement Creation Date",
+          "type": "cds.Date"
+        },
+        "KOUSINHI_2": {
+          "@title": "Supplement Change Date",
+          "type": "cds.Date"
+        }
+      }
+    },
     "PUBLIC.DUMMY": {
       "kind": "entity",
       "@cds.persistence.exists": true,
@@ -17297,6 +17443,11 @@
       "@UI.LineItem": [
         {
           "Value": {
+            "=": "WERKS"
+          }
+        },
+        {
+          "Value": {
             "=": "E_DOC_TYPE"
           }
         },
@@ -17308,11 +17459,6 @@
         {
           "Value": {
             "=": "E_REV_NO"
-          }
-        },
-        {
-          "Value": {
-            "=": "PS_GROUP_NO"
           }
         },
         {
@@ -41775,10 +41921,205 @@
           "*",
           {
             "val": null,
+            "as": "SEQ_NO",
+            "cast": {
+              "type": "cds.String",
+              "length": 50
+            }
+          },
+          {
+            "val": null,
+            "as": "E_DOC_TYPE",
+            "cast": {
+              "type": "cds.String",
+              "length": 3
+            }
+          },
+          {
+            "val": null,
+            "as": "E_DOC_NO",
+            "cast": {
+              "type": "cds.String",
+              "length": 18
+            }
+          },
+          {
+            "val": null,
+            "as": "PS_GROUP_NO",
+            "cast": {
+              "type": "cds.String",
+              "length": 3
+            }
+          },
+          {
+            "val": null,
+            "as": "PS_ITEM_NO",
+            "cast": {
+              "type": "cds.String",
+              "length": 3
+            }
+          },
+          {
+            "val": null,
+            "as": "E_REV_NO",
+            "cast": {
+              "type": "cds.String",
+              "length": 5
+            }
+          },
+          {
+            "val": null,
+            "as": "IDATS",
+            "cast": {
+              "type": "cds.Date"
+            }
+          },
+          {
+            "val": null,
+            "as": "PS_SYMBOL",
+            "cast": {
+              "type": "cds.String",
+              "length": 10
+            }
+          },
+          {
+            "val": null,
+            "as": "SFIX_DIGIT_PTN",
+            "cast": {
+              "type": "cds.String",
+              "length": 50
+            }
+          },
+          {
+            "val": null,
+            "as": "SFIX_PTN",
+            "cast": {
+              "type": "cds.String",
+              "length": 450
+            }
+          },
+          {
+            "val": null,
+            "as": "PROD_CAREER",
+            "cast": {
+              "type": "cds.String",
+              "length": 9
+            }
+          },
+          {
+            "val": null,
+            "as": "OPTION_PTN",
+            "cast": {
+              "type": "cds.String",
+              "length": 450
+            }
+          },
+          {
+            "val": null,
+            "as": "EFFECT_D",
+            "cast": {
+              "type": "cds.Date"
+            }
+          },
+          {
+            "val": null,
+            "as": "INVALID_D",
+            "cast": {
+              "type": "cds.Date"
+            }
+          },
+          {
+            "val": null,
+            "as": "CREATED_ON",
+            "cast": {
+              "type": "cds.Date"
+            }
+          },
+          {
+            "val": null,
+            "as": "CHANGED_ON",
+            "cast": {
+              "type": "cds.Date"
+            }
+          },
+          {
+            "val": null,
             "as": "InputType",
             "cast": {
               "type": "cds.String",
               "length": 50
+            }
+          },
+          {
+            "val": null,
+            "as": "SELECT_SIGN",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          },
+          {
+            "val": null,
+            "as": "SAFETY_SIGN",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          },
+          {
+            "val": null,
+            "as": "ANTIEXPLODE_SIGN",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          },
+          {
+            "val": null,
+            "as": "RoHS_info",
+            "cast": {
+              "type": "cds.String",
+              "length": 2
+            }
+          },
+          {
+            "val": null,
+            "as": "EMC_SIGN",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          },
+          {
+            "val": null,
+            "as": "PED_SIGN",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          },
+          {
+            "val": null,
+            "as": "Radio_SIGN",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          },
+          {
+            "val": null,
+            "as": "Non_Used",
+            "cast": {
+              "type": "cds.String",
+              "length": 1
+            }
+          },
+          {
+            "val": null,
+            "as": "PS_NOTE",
+            "cast": {
+              "type": "cds.String",
+              "length": 64
             }
           },
           {
@@ -41861,6 +42202,19 @@
           "type": "cds.String",
           "length": 4
         },
+        "validfrm": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid To",
+          "@sap.quickinfo": "Valid-To Date of Production Version",
+          "type": "cds.Date"
+        },
+        "slocto": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issue Stor. Location",
+          "@sap.quickinfo": "Proposed Issue Storage Location for Components",
+          "type": "cds.String",
+          "length": 4
+        },
         "backflush": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Backflush",
@@ -41912,8 +42266,7 @@
           "type": "cds.String",
           "length": 3
         },
-        "meins": {
-          "@sap.label": "Base Unit of Measure",
+        "buom": {
           "@sap.semantics": "unit-of-measure",
           "type": "cds.String",
           "length": 3
@@ -41923,6 +42276,43 @@
           "@sap.label": "MRP Controller",
           "type": "cds.String",
           "length": 3
+        },
+        "lifnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier",
+          "@sap.quickinfo": "Vendor's account number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "name1": {
+          "@sap.label": "Name",
+          "@sap.quickinfo": "Name 1",
+          "type": "cds.String",
+          "length": 35
+        },
+        "waers": {
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.semantics": "currency-code",
+          "type": "cds.String",
+          "length": 5
+        },
+        "stprs": {
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Standard price",
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3
+        },
+        "verpr": {
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Moving price",
+          "@sap.quickinfo": "Moving Average Price/Periodic Unit Price",
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3
         },
         "bklas": {
           "@sap.display.format": "UpperCase",
@@ -41937,7 +42327,7 @@
           "length": 10
         },
         "labst": {
-          "@sap.unit": "meins",
+          "@sap.unit": "buom",
           "@sap.label": "Unrestricted",
           "@sap.quickinfo": "Valuated Unrestricted-Use Stock",
           "type": "cds.Decimal",
@@ -41945,24 +42335,290 @@
           "scale": 3
         },
         "minbe": {
-          "@sap.unit": "meins",
+          "@sap.unit": "buom",
           "@sap.label": "Reorder Point",
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 3
         },
         "bstfe": {
-          "@sap.unit": "meins",
+          "@sap.unit": "buom",
           "@sap.label": "Fixed lot size",
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 3
         },
-        "InputType": {
-          "@title": "Input Type",
+        "pkumw": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issuing Plant",
+          "@sap.quickinfo": "Issuing Plant in Kanban Processing",
+          "type": "cds.String",
+          "length": 4
+        },
+        "lt": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control key",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ltunit": {
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "vagrp": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planner Group",
+          "@sap.quickinfo": "Responsible Planner Group or Department",
+          "type": "cds.String",
+          "length": 3
+        },
+        "arbpl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "meins": {
+          "@sap.label": "Order Unit",
+          "@sap.quickinfo": "Purchase Order Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "wemng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Quantity delivered",
+          "@sap.quickinfo": "Quantity of goods received",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "minbm": {
+          "@sap.unit": "meins",
+          "@sap.label": "Minimum Qty",
+          "@sap.quickinfo": "Minimum Purchase Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "netpr": {
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Net Price",
+          "@sap.quickinfo": "Net Price in Purchasing Info Record",
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3
+        },
+        "component": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "docno": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "rev": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "bombulk": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "bomsp": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "bomdesc": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "item": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "SEQ_NO": {
+          "@title": "No",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
+        },
+        "E_DOC_TYPE": {
+          "@title": "Document category",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "E_DOC_NO": {
+          "@title": "Document No.",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 18
+        },
+        "PS_GROUP_NO": {
+          "@title": "Page",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "PS_ITEM_NO": {
+          "@title": "Line",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 3
+        },
+        "E_REV_NO": {
+          "@title": "REV",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 5
+        },
+        "IDATS": {
+          "@title": "Formalized Date ",
+          "@Core.Computed": true,
+          "type": "cds.Date"
+        },
+        "PS_SYMBOL": {
+          "@title": "Item",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 10
+        },
+        "SFIX_DIGIT_PTN": {
+          "@title": "Digit Assignation",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "SFIX_PTN": {
+          "@title": "Basic Specification",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 450
+        },
+        "PROD_CAREER": {
+          "@title": "Product Career",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 9
+        },
+        "OPTION_PTN": {
+          "@title": "Optional Specification",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 450
+        },
+        "EFFECT_D": {
+          "@title": "Valid From",
+          "@Core.Computed": true,
+          "type": "cds.Date"
+        },
+        "INVALID_D": {
+          "@title": "Valid To",
+          "@Core.Computed": true,
+          "type": "cds.Date"
+        },
+        "CREATED_ON": {
+          "@title": "Created on",
+          "@Core.Computed": true,
+          "type": "cds.Date"
+        },
+        "CHANGED_ON": {
+          "@title": "Changed on",
+          "@Core.Computed": true,
+          "type": "cds.Date"
+        },
+        "InputType": {
+          "@title": "Input",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 50
+        },
+        "SELECT_SIGN": {
+          "@title": "Select sign",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "SAFETY_SIGN": {
+          "@title": "Safety sign",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "ANTIEXPLODE_SIGN": {
+          "@title": "Antiexplode sign",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "RoHS_info": {
+          "@title": "RoHS info",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 2
+        },
+        "EMC_SIGN": {
+          "@title": "EMC sign",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "PED_SIGN": {
+          "@title": "Ped sign",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "Radio_SIGN": {
+          "@title": "Radio Sign",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "Non_Used": {
+          "@title": "Use Non-complaint Product Sign",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 1
+        },
+        "PS_NOTE": {
+          "@title": "PS Note",
+          "@Core.Computed": true,
+          "type": "cds.String",
+          "length": 64
         },
         "InputTypeCode": {
           "@title": "Input Type Code",
@@ -43314,7 +43970,7 @@
       "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
       "@UI.HeaderInfo.TypeName": "Production Order Component list",
       "@UI.HeaderInfo.TypeNamePlural": "Production Order Component list",
-      "@UI.LineItem#ProductionOrderComponentlist": [
+      "@UI.LineItem#ProductionOrderOrderComponents": [
         {
           "$Type": "UI.DataField",
           "Value": {
@@ -43430,9 +44086,9 @@
           }
         }
       ],
-      "@UI.SelectionPresentationVariant#ProductionOrderComponentlist.Text": "Production Order Component list",
-      "@UI.SelectionPresentationVariant#ProductionOrderComponentlist.SelectionVariant.Text": "ProductionOrderComponentlist",
-      "@UI.SelectionPresentationVariant#ProductionOrderComponentlist.SelectionVariant.SelectOptions": [
+      "@UI.SelectionPresentationVariant#ProductionOrderOrderComponents.Text": "Production Order Component list",
+      "@UI.SelectionPresentationVariant#ProductionOrderOrderComponents.SelectionVariant.Text": "ProductionOrderOrderComponents",
+      "@UI.SelectionPresentationVariant#ProductionOrderOrderComponents.SelectionVariant.SelectOptions": [
         {
           "$Type": "UI.SelectOptionType",
           "PropertyName": {
@@ -43440,13 +44096,16 @@
           }
         }
       ],
-      "@UI.SelectionPresentationVariant#ProductionOrderComponentlist.PresentationVariant.SortOrder": [
+      "@UI.SelectionPresentationVariant#ProductionOrderOrderComponents.PresentationVariant.SortOrder": [
         {
           "Property": {
             "=": "aufnr"
           },
           "Descending": false
         }
+      ],
+      "@UI.SelectionPresentationVariant#ProductionOrderOrderComponents.PresentationVariant.Visualizations": [
+        "@UI.LineItem#ProductionOrderOrderComponents"
       ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
@@ -84604,6 +85263,19 @@
           "type": "cds.String",
           "length": 4
         },
+        "validfrm": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Valid To",
+          "@sap.quickinfo": "Valid-To Date of Production Version",
+          "type": "cds.Date"
+        },
+        "slocto": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issue Stor. Location",
+          "@sap.quickinfo": "Proposed Issue Storage Location for Components",
+          "type": "cds.String",
+          "length": 4
+        },
         "backflush": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Backflush",
@@ -84655,8 +85327,7 @@
           "type": "cds.String",
           "length": 3
         },
-        "meins": {
-          "@sap.label": "Base Unit of Measure",
+        "buom": {
           "@sap.semantics": "unit-of-measure",
           "type": "cds.String",
           "length": 3
@@ -84666,6 +85337,43 @@
           "@sap.label": "MRP Controller",
           "type": "cds.String",
           "length": 3
+        },
+        "lifnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Supplier",
+          "@sap.quickinfo": "Vendor's account number",
+          "type": "cds.String",
+          "length": 10
+        },
+        "name1": {
+          "@sap.label": "Name",
+          "@sap.quickinfo": "Name 1",
+          "type": "cds.String",
+          "length": 35
+        },
+        "waers": {
+          "@sap.label": "Currency",
+          "@sap.quickinfo": "Currency Key",
+          "@sap.semantics": "currency-code",
+          "type": "cds.String",
+          "length": 5
+        },
+        "stprs": {
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Standard price",
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3
+        },
+        "verpr": {
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Moving price",
+          "@sap.quickinfo": "Moving Average Price/Periodic Unit Price",
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3
         },
         "bklas": {
           "@sap.display.format": "UpperCase",
@@ -84680,7 +85388,7 @@
           "length": 10
         },
         "labst": {
-          "@sap.unit": "meins",
+          "@sap.unit": "buom",
           "@sap.label": "Unrestricted",
           "@sap.quickinfo": "Valuated Unrestricted-Use Stock",
           "type": "cds.Decimal",
@@ -84688,18 +85396,139 @@
           "scale": 3
         },
         "minbe": {
-          "@sap.unit": "meins",
+          "@sap.unit": "buom",
           "@sap.label": "Reorder Point",
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 3
         },
         "bstfe": {
-          "@sap.unit": "meins",
+          "@sap.unit": "buom",
           "@sap.label": "Fixed lot size",
           "type": "cds.Decimal",
           "precision": 13,
           "scale": 3
+        },
+        "pkumw": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Issuing Plant",
+          "@sap.quickinfo": "Issuing Plant in Kanban Processing",
+          "type": "cds.String",
+          "length": 4
+        },
+        "lt": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Control key",
+          "type": "cds.String",
+          "length": 4
+        },
+        "ltunit": {
+          "@sap.label": "Standard Value Unit",
+          "@sap.quickinfo": "Unit of Measurement of Standard Value",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "vagrp": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planner Group",
+          "@sap.quickinfo": "Responsible Planner Group or Department",
+          "type": "cds.String",
+          "length": 3
+        },
+        "arbpl": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "type": "cds.String",
+          "length": 8
+        },
+        "meins": {
+          "@sap.label": "Order Unit",
+          "@sap.quickinfo": "Purchase Order Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "type": "cds.String",
+          "length": 3
+        },
+        "wemng": {
+          "@sap.unit": "meins",
+          "@sap.label": "Quantity delivered",
+          "@sap.quickinfo": "Quantity of goods received",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "minbm": {
+          "@sap.unit": "meins",
+          "@sap.label": "Minimum Qty",
+          "@sap.quickinfo": "Minimum Purchase Order Quantity",
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "netpr": {
+          "@sap.unit": "waers",
+          "@sap.variable.scale": "true",
+          "@sap.label": "Net Price",
+          "@sap.quickinfo": "Net Price in Purchasing Info Record",
+          "type": "cds.Decimal",
+          "precision": 11,
+          "scale": 3
+        },
+        "component": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "docno": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "rev": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "bombulk": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "bomsp": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "bomdesc": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
+        },
+        "item": {
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false",
+          "type": "cds.String",
+          "length": 1333
         }
       }
     },

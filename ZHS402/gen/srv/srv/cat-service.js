@@ -958,6 +958,35 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         }
         return results;      
     });
+    this.on('CREATE', 'ZCDSEHPPC0017', async req => {
+        var input = req.data;
+        // var table37 = await SELECT.from('ZHS402.ZTHBT0037').where({ WERKS: input.WERKS, E_DOC_NO: input.E_DOC_NO, E_DOC_TYPE: input.E_DOC_TYPE, E_REV_NO: input.E_REV_NO, PS_GROUP_NO: input.PS_GROUP_NO });
+
+        var payload = {
+            "WERKS": input.WERKS,
+            "E_DOC_TYPE": input.E_DOC_TYPE,
+            "E_DOC_NO": input.E_DOC_NO,
+            "E_REV_NO": input.E_REV_NO,
+            "PS_GROUP_NO": input.PS_GROUP_NO,
+            "PS_ITEM_NO": input.PS_ITEM_NO,
+            "MODEL": input.PARENT_PARTS_NO,
+            "E_SEQUENCE_NO": "001",
+            "PS_SYMBOL": input.PS_SYMBOL,
+            "E_PART_NO": input.E_PART_NO,
+            "TEN_DIGIT_SIGN": input.SELECT_SIGN,
+            "COMP_PART_NO": input.PARENT_PARTS_NO,
+            "PARTS_QTY": input.COMP_PARTS_QTY,
+            "PARTS_QTY_UNIT": input.COMP_PARTS_QTY_UNIT,
+            "SELECT_SIGN": input.SELECT_SIGN,
+            "PARTS_USE_RATIO": input.PARTS_USE_RATIO,
+            "PS_NOTE": input.PS_NOTE,
+            "EFFECT_D": input.EFFECT_D,
+            "INVALID_D": "9999-12-31",
+            "PARTS_NO_EXT_SIGN": input.PARTS_NO_EXT_SIGN
+        }
+        await INSERT.into('ZHS402.ZTHBT0037').entries(payload);
+
+    });
     this.on('READ', 'Formalize', async req => {
         if (req.query) {
             const doc_type_idx = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "E_DOC_TYPE"));
@@ -986,6 +1015,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     });
                     if (index !== -1) {
                         var array = {
+                            WERKS: WERKS,
                             E_DOC_TYPE: 'FE1',
                             E_DOC_NO: table14[i].E_DOC_NO,
                             E_REV_NO: table14[i].E_REV_NO,
@@ -996,6 +1026,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         }
                     } else {
                         var array = {
+                            WERKS: WERKS,
                             E_DOC_TYPE: 'FE1',
                             E_DOC_NO: table14[i].E_DOC_NO,
                             E_REV_NO: table14[i].E_REV_NO,
@@ -1031,7 +1062,8 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     });
                     if (index !== -1) {
                         var array = {
-                            E_DOC_TYPE: 'FE1',
+                            WERKS: WERKS,
+                            E_DOC_TYPE: 'FE0',
                             E_DOC_NO: table10[i].E_DOC_NO,
                             E_REV_NO: table10[i].E_REV_NO,
                             PS_GROUP_NO: table10[i].PS_GROUP_NO,
@@ -1041,7 +1073,8 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         }
                     } else {
                         var array = {
-                            E_DOC_TYPE: 'FE1',
+                            WERKS: WERKS,
+                            E_DOC_TYPE: 'FE0',
                             E_DOC_NO: table14[i].E_DOC_NO,
                             E_REV_NO: table14[i].E_REV_NO,
                             PS_GROUP_NO: table14[i].PS_GROUP_NO,
