@@ -4692,7 +4692,8 @@ annotate ZAPIBPS0011.ZCDSEHPPC0011 with @(
                 Property : aufnr,
                 Descending : false
             }
-        ]
+        ],
+        Visualizations : ['@UI.LineItem#ProductionOrderOrderComponents']
     }
   }
 );
