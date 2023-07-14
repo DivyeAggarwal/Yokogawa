@@ -965,7 +965,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     });
     this.on('CREATE', 'ZCDSEHPPC0016', async req => {
         var input = req.data;
-        if(req.data.E_TR_TYPE === "C" || req.data.E_TR_TYPE === "D")
+        if(req.data.E_TR_TYPE === "C" || req.data.E_TR_TYPE === "D") {
         var table37 = await SELECT.from('ZHS402.ZTHBT0037').where({ WERKS: input.WERKS, E_DOC_NO: input.E_DOC_NO, E_DOC_TYPE: input.E_DOC_TYPE, PS_ITEM_NO: input.PS_ITEM_NO, PS_GROUP_NO: input.PS_GROUP_NO });
         if(table37.length > 0) {
             var aObject = table37.filter(function name(params) {
@@ -986,6 +986,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
             
             await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:validFrom}).where({ WERKS: { '=': aObject[0].WERKS }, E_DOC_TYPE: { '=': aObject[0].E_DOC_TYPE }, E_DOC_NO: { '=': aObject[0].E_DOC_NO }, E_REV_NO: { '=': aObject[0].E_REV_NO }, PS_GROUP_NO: { '=': aObject[0].PS_GROUP_NO }, PS_ITEM_NO: { '=': aObject[0].PS_ITEM_NO }, MODEL: { '=': aObject[0].MODEL }, E_SEQUENCE_NO: { '=': aObject[0].E_SEQUENCE_NO } });
             
+        }
         }
         var payload = {
             "WERKS": input.WERKS,
@@ -1029,7 +1030,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
     });
     this.on('CREATE', 'ZCDSEHPPC0017', async req => {
         var input = req.data;
-        if(req.data.E_TR_TYPE === "C" || req.data.E_TR_TYPE === "D")
+        if(req.data.E_TR_TYPE === "C" || req.data.E_TR_TYPE === "D") {
         var table37 = await SELECT.from('ZHS402.ZTHBT0037').where({ WERKS: input.WERKS, E_DOC_NO: input.E_DOC_NO, E_DOC_TYPE: input.E_DOC_TYPE, PS_ITEM_NO: input.PS_ITEM_NO, PS_GROUP_NO: input.PS_GROUP_NO });
         if(table37.length > 0) {
             var aObject = table37.filter(function name(params) {
@@ -1051,6 +1052,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
             await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:validFrom}).where({ WERKS: { '=': aObject[0].WERKS }, E_DOC_TYPE: { '=': aObject[0].E_DOC_TYPE }, E_DOC_NO: { '=': aObject[0].E_DOC_NO }, E_REV_NO: { '=': aObject[0].E_REV_NO }, PS_GROUP_NO: { '=': aObject[0].PS_GROUP_NO }, PS_ITEM_NO: { '=': aObject[0].PS_ITEM_NO }, MODEL: { '=': aObject[0].MODEL }, E_SEQUENCE_NO: { '=': aObject[0].E_SEQUENCE_NO } });
             
         }
+    }
         var payload = {
             "WERKS": input.WERKS,
             "E_DOC_TYPE": input.E_DOC_TYPE,
@@ -1173,12 +1175,12 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                         var array = {
                             WERKS: WERKS,
                             E_DOC_TYPE: 'FE0',
-                            E_DOC_NO: table14[i].E_DOC_NO,
-                            E_REV_NO: table14[i].E_REV_NO,
-                            PS_GROUP_NO: table14[i].PS_GROUP_NO,
-                            PS_ITEM_NO: table14[i].PS_ITEM_NO,
+                            E_DOC_NO: table10[i].E_DOC_NO,
+                            E_REV_NO: table10[i].E_REV_NO,
+                            PS_GROUP_NO: table10[i].PS_GROUP_NO,
+                            PS_ITEM_NO: table10[i].PS_ITEM_NO,
                             FORMALIZE_DATE: null,
-                            CREATION_DATE: table14[i].createdAt
+                            CREATION_DATE: table10[i].createdAt
                         }
                     }
                     arrayFinal.push(array);
