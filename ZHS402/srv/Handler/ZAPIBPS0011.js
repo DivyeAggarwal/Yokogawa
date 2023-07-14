@@ -25,7 +25,9 @@ var registerZAPIBPS0011Handler = function (that, cds) {
     
     that.on('READ', 'ZCDSEHPPC0013', async req => {
         const bupa = await cds.connect.to('ZSRVBHPP0003');
-        return bupa.run(req.query);
+        return bupa.run(req.query).then(async (res) => {           
+            return formatProdOrderCancelFields(res);
+        });
     });
     
     that.on('READ', 'ZCDSEHPPC0014', async req => {
@@ -41,6 +43,27 @@ var registerZAPIBPS0011Handler = function (that, cds) {
         return bupa.run(req.query);
     });
 } 
+
+async function formatProdOrderCancelFields(res){
+    // console.log(res);
+    var finalData = [];
+    for (let index = 0; index < res.length; index++) {
+        const element = res[index];
+        var object = {
+            STATUS:""
+        }        
+        var aZTHBT0028 = await SELECT.from('ZHS402.ZTHBT0028').where({
+            PRODUCTIONORDER: element.aufnr
+        });
+        if(aZTHBT0028.length > 0){
+            object.STATUS = aZTHBT0028[0].STATUS;
+        }
+        object = {...object, ...element}
+        finalData.push(object);
+    }
+    return finalData; 
+}
+
 async function formatProdOrderFields(res){
     // console.log(res);
     var finalData = [];
@@ -88,6 +111,7 @@ async function formatProdOrderFields(res){
     }
     return finalData; 
 }
+
 function formatProdOrderColumns(req){
     var columns = []
     req.query.SELECT.columns.forEach(element => {

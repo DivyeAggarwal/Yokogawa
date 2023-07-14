@@ -1909,8 +1909,14 @@ service ZAPIBPS0010 {
 
 //Production Order Status List zhpp0005 8727
 service ZAPIBPS0011 {
-    entity ZCDSEHPPC0023 as projection on ZSRVBHPP0003.ZCDSEHPPC0023;
-    entity ZCDSEHPPB0062 as projection on ZSRVBHPP0003.ZCDSEHPPB0062;
+    entity I_PlantStdVH as projection on ZSRVBHPP0003.I_PlantStdVH;
+    entity I_PlannedOrderStdVH as projection on ZSRVBHPP0003.I_PlannedOrderStdVH;
+    entity I_MaterialStdVH as projection on ZSRVBHPP0003.I_MaterialStdVH;
+    entity I_ProductionOrderStdVH as projection on ZSRVBHPP0003.I_ProductionOrderStdVH;
+    entity I_SalesOrderStdVH as projection on ZSRVBHPP0003.I_SalesOrderStdVH;
+    entity I_WorkCenterStdVH as projection on ZSRVBHPP0003.I_WorkCenterStdVH;
+    
+    entity ZCDSEHPPC0023 as projection on ZSRVBHPP0003.ZCDSEHPPC0023; 
     entity ZCDSEHPPC0010 as projection on ZSRVBHPP0003.ZCDSEHPPC0010 {
         *, 
         null as BTYPEORDER    : String(13) @title: 'B Type Prod. Start No.',

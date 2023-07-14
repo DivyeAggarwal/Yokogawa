@@ -4235,11 +4235,11 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
         TypeName          : 'Cancelled Production Order',
         TypeNamePlural    : 'Cancelled Production Order'
     },
-    LineItem #CancellOrderList : {
+    LineItem #CancelledOrderList : {
         $value : [
             {
                 $Type : 'UI.DataField',
-                Value : dwerk
+                Value : plant
             },
             {
                 $Type : 'UI.DataField',
@@ -4251,7 +4251,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : aufnr
+                Value : porder
             },
             {
                 $Type : 'UI.DataField',
@@ -4275,11 +4275,11 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : kdauf
+                Value : vbeln
             },
             {
                 $Type : 'UI.DataField',
-                Value : kdpos
+                Value : posnr
             },
             {
                 $Type : 'UI.DataField',
@@ -4299,7 +4299,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
             },
             {
                 $Type : 'UI.DataField',
-                Value : gamng
+                Value : STATUS
             }
         ]
     }
@@ -4312,25 +4312,25 @@ annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(UI : {
 };
 
 annotate ZAPIBPS0011.ZCDSEHPPC0013 with @(
-  UI.SelectionPresentationVariant #CancellOrderList : {
+  UI.SelectionPresentationVariant #CancelledOrderList : {
     Text : 'Planned Order status List',
     SelectionVariant : { 
-        Text : 'CancellOrderList',
+        Text : 'CancelledOrderList',
         SelectOptions : [
             {
                 $Type : 'UI.SelectOptionType',
-                PropertyName : dwerk,
+                PropertyName : porder,
             }
         ]
     },
     PresentationVariant : {
         SortOrder : [
             {
-                Property : dwerk,
+                Property : porder,
                 Descending : false
             }
         ],
-        Visualizations : ['@UI.LineItem#CancellOrderList']
+        Visualizations : ['@UI.LineItem#CancelledOrderList']
     }
   }
 );
@@ -4487,7 +4487,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0023 with @(UI : {
         TypeName          : 'Planned Order Component list',
         TypeNamePlural    : 'Planned Order Component list'
     },
-    LineItem #PlannedOrderComponentlist : {
+    LineItem #PlannedOrderOrderComponents : {
         $value : [
             {
                 $Type : 'UI.DataField',
@@ -4590,10 +4590,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0023 with @(UI : {
 };
 
 annotate ZAPIBPS0011.ZCDSEHPPC0023 with @(
-  UI.SelectionPresentationVariant #PlannedOrderComponentlist : {
+  UI.SelectionPresentationVariant #PlannedOrderOrderComponents : {
     Text : 'Planned Order Component list',
     SelectionVariant : { 
-        Text : 'PlannedOrderComponentlist',
+        Text : 'PlannedOrderOrderComponents',
         SelectOptions : [
             {
                 $Type : 'UI.SelectOptionType',
@@ -4608,7 +4608,7 @@ annotate ZAPIBPS0011.ZCDSEHPPC0023 with @(
                 Descending : false
             }
         ],
-        Visualizations : ['@UI.LineItem#PlannedOrderComponentlist']
+        Visualizations : ['@UI.LineItem#PlannedOrderOrderComponents']
     }
   }
 );
@@ -5382,3 +5382,533 @@ annotate ZAPIBPS0012.ZAPIBPS0012Report @(Capabilities.FilterRestrictions : {
         }
     ]
 });
+
+
+//Valuehelp
+annotate ZAPIBPS0011.ZCDSEHPPC0013 {  
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plant,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    plant;    
+}
+annotate ZAPIBPS0011.ZCDSEHPPC0023 {  
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : werks,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    werks;  
+    @(Common : {
+        Label     : 'Planned Order',
+        ValueList : {
+            CollectionPath : 'I_PlannedOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plnum,
+                    ValueListProperty : 'PlannedOrder'
+                }
+            ]
+        }
+    })
+    plnum;
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'I_MaterialStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : matnr,
+                    ValueListProperty : 'Material'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Material_Text'
+                } 
+            ]
+        }
+    })
+    matnr;
+    @(Common : {
+        Label     : 'Production Order',
+        ValueList : {
+            CollectionPath : 'I_ProductionOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : aufnr,
+                    ValueListProperty : 'ProductionOrder'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'OrderDescription'
+                } 
+            ]
+        }
+    })
+    aufnr;  
+}
+
+
+annotate ZAPIBPS0011.ZCDSEHPPC0010 {  
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plant,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    plant;  
+    @(Common : {
+        Label     : 'Planned Order',
+        ValueList : {
+            CollectionPath : 'I_PlannedOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plnum,
+                    ValueListProperty : 'PlannedOrder'
+                }
+            ]
+        }
+    })
+    plnum;
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'I_MaterialStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : matnr,
+                    ValueListProperty : 'Material'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Material_Text'
+                } 
+            ]
+        }
+    })
+    matnr;
+    @(Common : {
+        Label     : 'Production Order',
+        ValueList : {
+            CollectionPath : 'I_ProductionOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : porder,
+                    ValueListProperty : 'ProductionOrder'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'OrderDescription'
+                } 
+            ]
+        }
+    })
+    porder;  
+    @(Common : {
+        Label     : 'Sales Order',
+        ValueList : {
+            CollectionPath : 'I_SalesOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : rmanr,
+                    ValueListProperty : 'SalesOrder'
+                }
+            ]
+        }
+    })
+    rmanr;   
+    @(Common : {
+        Label     : 'Work Center',
+        ValueList : {
+            CollectionPath : 'I_SalesOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : work_centre,
+                    ValueListProperty : 'WorkCenterInternalID'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'WorkCenterInternalID_Text'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'WorkCenterTypeCode'
+                } 
+            ]
+        }
+    })
+    work_centre;  
+}
+
+
+annotate ZAPIBPS0011.ZCDSEHPPC0011 {  
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : werks,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    werks;  
+    @(Common : {
+        Label     : 'Planned Order',
+        ValueList : {
+            CollectionPath : 'I_PlannedOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plnum,
+                    ValueListProperty : 'PlannedOrder'
+                }
+            ]
+        }
+    })
+    plnum;
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'I_MaterialStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : matnr,
+                    ValueListProperty : 'Material'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Material_Text'
+                } 
+            ]
+        }
+    })
+    matnr;
+    @(Common : {
+        Label     : 'Production Order',
+        ValueList : {
+            CollectionPath : 'I_ProductionOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : aufnr,
+                    ValueListProperty : 'ProductionOrder'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'OrderDescription'
+                } 
+            ]
+        }
+    })
+    aufnr;  
+    @(Common : {
+        Label     : 'Sales Order',
+        ValueList : {
+            CollectionPath : 'I_SalesOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : kdauf,
+                    ValueListProperty : 'SalesOrder'
+                }
+            ]
+        }
+    })
+    kdauf;   
+    @(Common : {
+        Label     : 'Work Center',
+        ValueList : {
+            CollectionPath : 'I_SalesOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : workc,
+                    ValueListProperty : 'WorkCenterInternalID'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'WorkCenterInternalID_Text'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'WorkCenterTypeCode'
+                } 
+            ]
+        }
+    })
+    workc;  
+}
+
+
+annotate ZAPIBPS0011.ZCDSEHPPC0012 {  
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : werks,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    werks;  
+    @(Common : {
+        Label     : 'Planned Order',
+        ValueList : {
+            CollectionPath : 'I_PlannedOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plnum,
+                    ValueListProperty : 'PlannedOrder'
+                }
+            ]
+        }
+    })
+    plnum;
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'I_MaterialStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : matnr,
+                    ValueListProperty : 'Material'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Material_Text'
+                } 
+            ]
+        }
+    })
+    matnr;
+    @(Common : {
+        Label     : 'Production Order',
+        ValueList : {
+            CollectionPath : 'I_ProductionOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : aufnr,
+                    ValueListProperty : 'ProductionOrder'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'OrderDescription'
+                } 
+            ]
+        }
+    })
+    aufnr;    
+    @(Common : {
+        Label     : 'Work Center',
+        ValueList : {
+            CollectionPath : 'I_SalesOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : workc,
+                    ValueListProperty : 'WorkCenterInternalID'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'WorkCenterInternalID_Text'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'WorkCenterTypeCode'
+                } 
+            ]
+        }
+    })
+    workc;  
+}
+
+
+
+annotate ZAPIBPS0011.ZCDSEHPPC0014 {  
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : werks,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    werks;  
+    @(Common : {
+        Label     : 'Planned Order',
+        ValueList : {
+            CollectionPath : 'I_PlannedOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plnum,
+                    ValueListProperty : 'PlannedOrder'
+                }
+            ]
+        }
+    })
+    plnum;
+    @(Common : {
+        Label     : 'Material',
+        ValueList : {
+            CollectionPath : 'I_MaterialStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : matnr,
+                    ValueListProperty : 'Material'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'Material_Text'
+                } 
+            ]
+        }
+    })
+    matnr;
+    @(Common : {
+        Label     : 'Production Order',
+        ValueList : {
+            CollectionPath : 'I_ProductionOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : aufnr,
+                    ValueListProperty : 'ProductionOrder'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'OrderDescription'
+                } 
+            ]
+        }
+    })
+    aufnr;    
+    @(Common : {
+        Label     : 'Production Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : pwwrk,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    pwwrk;  
+    @(Common : {
+        Label     : 'Work Center',
+        ValueList : {
+            CollectionPath : 'I_SalesOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : work_centre,
+                    ValueListProperty : 'WorkCenterInternalID'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'WorkCenterInternalID_Text'
+                } ,
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'WorkCenterTypeCode'
+                } 
+            ]
+        }
+    })
+    work_centre;  
+    @(Common : {
+        Label     : 'Sales Order',
+        ValueList : {
+            CollectionPath : 'I_SalesOrderStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : kdauf,
+                    ValueListProperty : 'SalesOrder'
+                }
+            ]
+        }
+    })
+    kdauf;  
+}
