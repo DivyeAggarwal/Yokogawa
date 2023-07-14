@@ -115,7 +115,7 @@ async function formatProdOrderFields(res){
 function formatProdOrderColumns(req){
     var columns = []
     req.query.SELECT.columns.forEach(element => {
-        if(["BTYPEORDER","TRANS_DES", "BTYPEITEM", "BTYPECAT", "BTYPESTATUS", "PRDSTNO",  "AUFNR", "ZZG_PRINTED_REV", "ZPRINT"].indexOf(element.ref[0]) === -1){
+        if(["BTYPEORDER","TRANS_DES", "BTYPEITEM", "BTYPECAT", "BTYPESTATUS", "PRDSTNO",  "AUFNR", "ZZG_PRINTED_REV", "ZPRINT", "STATUS"].indexOf(element.ref[0]) === -1){
             columns.push(element);
         }
     });
