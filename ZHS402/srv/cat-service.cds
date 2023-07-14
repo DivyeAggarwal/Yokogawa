@@ -578,10 +578,10 @@ service ZCDSEHBTC0007 {
 
     @cds.persistence.skip
     entity ZCDSEHPPC0017 {
-    key E_DOC_NO: String(18) @title : 'Technical document No';
-    key E_REV_NO: String(5) @title : 'Technical renewal REV No';
-    key PS_GROUP_NO: String(3) @title : 'PS group No';
-    key PS_ITEM_NO: String(3) @title : 'PS Item No';
+     E_DOC_NO: String(18) @title : 'Technical document No';
+     E_REV_NO: String(5) @title : 'Technical renewal REV No';
+     PS_GROUP_NO: String(3) @title : 'PS group No';
+     PS_ITEM_NO: String(3) @title : 'PS Item No';
     PS_SYMBOL: String(10) @title : 'PS Symbol';
     E_SIGN: String(1) @title : 'E SIGN';
     M_SIGN: String(1) @title : 'M SIGN';

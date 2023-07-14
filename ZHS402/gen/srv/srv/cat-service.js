@@ -692,6 +692,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         var PPLFLAG = context.PPLLAG;
         // var value = "";
         var code;
+        var MaterialCodekey;
         const materialcode = await SELECT.from('ZHS402.ZTHBT0048').where({
             MODEL: context.MODEL,
         })
@@ -728,6 +729,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 var ID = code;
                 var convertedID = String(code).padStart(9, "0");
                 var MaterialCode = MODEL + "_" + convertedID;
+                MaterialCodekey = MaterialCode;
                 var conversion = {
                     ID: ID,
                     MSCODE: MSCODE,
@@ -774,6 +776,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     convertedID = String(code).padStart(9, "0");
 
                     var MaterialCode = MODEL + "_F" + convertedID;
+                    MaterialCodekey = MaterialCode;
                     var conversion = {
                         ID: ID,
                         MSCODE: MSCODE,
@@ -806,6 +809,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     convertedID = String(code).padStart(9, "0");
 
                     var MaterialCode = MODEL + "_Z" + convertedID;
+                    MaterialCodekey = MaterialCode;
                     var conversion = {
                         ID: ID,
                         MSCODE: MSCODE,
@@ -837,6 +841,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                     convertedID = String(code).padStart(9, "0");
 
                     var MaterialCode = PARTSNUMBER + "_" + convertedID;
+                    MaterialCodekey = MaterialCode;
                     var conversion = {
                         ID: ID,
                         MSCODE: MSCODE,
@@ -870,7 +875,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
                 if (responseWorkato.data.err_code == "") {
                     var suffix = responseWorkato.data.suffix;
                     var option = responseWorkato.data.option;
-                    var materialCode = MSCODE;
+                    var materialCode = MaterialCodekey;
                     var model = responseWorkato.data.model;
 
                     for (var i = 0; i < suffix.length; i++) {
@@ -984,7 +989,13 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
             "INVALID_D": "9999-12-31",
             "PARTS_NO_EXT_SIGN": input.PARTS_NO_EXT_SIGN
         }
-        await INSERT.into('ZHS402.ZTHBT0037').entries(payload);
+        try {
+            var resultt = await INSERT.into('ZHS402.ZTHBT0037').entries(payload);
+        } catch (error) {
+            
+        }
+        
+        return payload;
 
     });
     this.on('READ', 'Formalize', async req => {

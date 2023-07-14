@@ -16094,25 +16094,21 @@
       "elements": {
         "E_DOC_NO": {
           "@title": "Technical document No",
-          "key": true,
           "type": "cds.String",
           "length": 18
         },
         "E_REV_NO": {
           "@title": "Technical renewal REV No",
-          "key": true,
           "type": "cds.String",
           "length": 5
         },
         "PS_GROUP_NO": {
           "@title": "PS group No",
-          "key": true,
           "type": "cds.String",
           "length": 3
         },
         "PS_ITEM_NO": {
           "@title": "PS Item No",
-          "key": true,
           "type": "cds.String",
           "length": 3
         },
