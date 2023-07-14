@@ -15997,6 +15997,28 @@
         },
         "E_PART_NO": {
           "@title": "Material number",
+          "@Common.Label": "Production Parts",
+          "@Common.ValueList.CollectionPath": "ZTHBT0001",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "E_PART_NO"
+              },
+              "ValueListProperty": "PARTS_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterIn",
+              "LocalDataProperty": {
+                "=": "E_PART_NO"
+              },
+              "ValueListProperty": "E_PARTS_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_PARTS_NO"
+            }
+          ],
           "type": "cds.String",
           "length": 18
         },
@@ -16134,6 +16156,28 @@
         },
         "E_PART_NO": {
           "@title": "Material number",
+          "@Common.Label": "Production Parts",
+          "@Common.ValueList.CollectionPath": "ZTHBT0001",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "E_PART_NO"
+              },
+              "ValueListProperty": "PARTS_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterIn",
+              "LocalDataProperty": {
+                "=": "E_PART_NO"
+              },
+              "ValueListProperty": "E_PARTS_NO"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "E_PARTS_NO"
+            }
+          ],
           "type": "cds.String",
           "length": 40
         },

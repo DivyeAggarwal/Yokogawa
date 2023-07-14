@@ -963,6 +963,70 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
         }
         return results;      
     });
+    this.on('CREATE', 'ZCDSEHPPC0016', async req => {
+        var input = req.data;
+        if(req.data.E_TR_TYPE === "C" || req.data.E_TR_TYPE === "D")
+        var table37 = await SELECT.from('ZHS402.ZTHBT0037').where({ WERKS: input.WERKS, E_DOC_NO: input.E_DOC_NO, E_DOC_TYPE: input.E_DOC_TYPE, PS_ITEM_NO: input.PS_ITEM_NO, PS_GROUP_NO: input.PS_GROUP_NO });
+        if(table37.length > 0) {
+            var aObject = table37.filter(function name(params) {
+                return params.INVALID_D === "9999-12-31"
+            });
+            var validFrom = new Date(input.EFFECT_D);
+            validFrom.setDate(validFrom.getDate() - 1);
+                    month = '' + (validFrom.getMonth() + 1),
+                    day = '' + validFrom.getDate(),
+                    year = validFrom.getFullYear();
+            
+                if (month.length < 2) 
+                    month = '0' + month;
+                if (day.length < 2) 
+                    day = '0' + day;
+            
+                    validFrom = [year, month, day].join('-');
+            
+            await UPDATE.entity('ZHS402.ZTHBT0037').with({INVALID_D:validFrom}).where({ WERKS: { '=': aObject[0].WERKS }, E_DOC_TYPE: { '=': aObject[0].E_DOC_TYPE }, E_DOC_NO: { '=': aObject[0].E_DOC_NO }, E_REV_NO: { '=': aObject[0].E_REV_NO }, PS_GROUP_NO: { '=': aObject[0].PS_GROUP_NO }, PS_ITEM_NO: { '=': aObject[0].PS_ITEM_NO }, MODEL: { '=': aObject[0].MODEL }, E_SEQUENCE_NO: { '=': aObject[0].E_SEQUENCE_NO } });
+            
+        }
+        var payload = {
+            "WERKS": input.WERKS,
+            "E_DOC_TYPE": input.E_DOC_TYPE,
+            "E_DOC_NO": input.E_DOC_NO,
+            "E_REV_NO": input.E_REV_NO,
+            "PS_GROUP_NO": input.PS_GROUP_NO,
+            "PS_ITEM_NO": input.PS_ITEM_NO,
+            "MODEL": input.MODEL1,
+            "E_SEQUENCE_NO": "001",
+            "PS_SYMBOL": input.PS_SYMBOL,
+            "E_PART_NO": input.E_PART_NO,
+            "TEN_DIGIT_SIGN": input.PARTS_NO_EXT_SIGN,
+            "COMP_PART_NO": input.PARENT_PARTS_NO,
+            "PARTS_QTY": input.COMP_PARTS_QTY,
+            "PARTS_QTY_UNIT": input.COMP_PARTS_QTY_UNIT,
+            "SELECT_SIGN": input.SELECT_SIGN,
+            "PARTS_USE_RATIO": input.PARTS_USE_RATIO,
+            "PS_NOTE": input.PS_NOTE,
+            "OR_SIGN": input.OR_SIGN,
+            "SFIX_DIGIT_PTN": input.SFIX_DIGIT_PTN,
+            "SFIX_PTN": input.SFIX_PTN,
+            "OPTION_PTN": input.OPTION_PTN,
+            "PROD_CARRER": input.PROD_CARRER,
+            "E_TR_TYPE": InputDeviceInfo.E_TR_TYPE,
+            "EFFECT_D": input.EFFECT_D,
+            "INVALID_D": "9999-12-31",
+            "PARTS_NO_EXT_SIGN": input.PARTS_NO_EXT_SIGN
+        }
+        try {
+            await INSERT.into('ZHS402.ZTHBT0037').entries(payload);
+        } catch (error) {
+            req.reject({
+                code: 403,
+                message: error
+            })
+        }
+        
+        return payload;
+
+    });
     this.on('CREATE', 'ZCDSEHPPC0017', async req => {
         var input = req.data;
         if(req.data.E_TR_TYPE === "C" || req.data.E_TR_TYPE === "D")
@@ -998,7 +1062,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
             "E_SEQUENCE_NO": "001",
             "PS_SYMBOL": input.PS_SYMBOL,
             "E_PART_NO": input.E_PART_NO,
-            "TEN_DIGIT_SIGN": input.SELECT_SIGN,
+            "TEN_DIGIT_SIGN": input.PARTS_NO_EXT_SIGN,
             "COMP_PART_NO": input.PARENT_PARTS_NO,
             "PARTS_QTY": input.COMP_PARTS_QTY,
             "PARTS_QTY_UNIT": input.COMP_PARTS_QTY_UNIT,
