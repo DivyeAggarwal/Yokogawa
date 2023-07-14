@@ -757,6 +757,56 @@ APPLY_DATE_N @UI.HiddenFilter: true;
 }
 
 ////Formalize
+annotate ZCDSEHBTC0007.ZCDSEHPPC0017 {
+    @(Common : {
+        Label     : 'Production Parts',
+        ValueList : {
+            CollectionPath : 'ZTHBT0001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : E_PART_NO,
+                    ValueListProperty : 'PARTS_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : E_PART_NO,
+                    ValueListProperty : 'E_PARTS_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_PARTS_NO'
+                }
+            ]
+        }
+    })
+    E_PART_NO;
+}
+annotate ZCDSEHBTC0007.ZCDSEHPPC0016 {
+    @(Common : {
+        Label     : 'Production Parts',
+        ValueList : {
+            CollectionPath : 'ZTHBT0001',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : E_PART_NO,
+                    ValueListProperty : 'PARTS_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterIn',
+                    LocalDataProperty : E_PART_NO,
+                    ValueListProperty : 'E_PARTS_NO'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'E_PARTS_NO'
+                }
+            ]
+        }
+    })
+    E_PART_NO;
+}
 annotate ZCDSEHBTC0007.Formalize with @(
     UI : { 
         SelectionFields  : [
