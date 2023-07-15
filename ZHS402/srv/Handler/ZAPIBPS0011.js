@@ -18,6 +18,11 @@ var registerZAPIBPS0011Handler = function (that, cds) {
         return bupa.run(req.query);
     });
     
+    that.on('READ', 'ZCDSEHPPC0023', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0003');
+        return bupa.run(req.query);
+    });    
+    
     that.on('READ', 'ZCDSEHPPC0012', async req => {
         const bupa = await cds.connect.to('ZSRVBHPP0003');
         return bupa.run(req.query);
@@ -25,6 +30,7 @@ var registerZAPIBPS0011Handler = function (that, cds) {
     
     that.on('READ', 'ZCDSEHPPC0013', async req => {
         const bupa = await cds.connect.to('ZSRVBHPP0003');
+        req.query.SELECT.columns = formatCancelColumns(req);
         return bupa.run(req.query).then(async (res) => {           
             return formatProdOrderCancelFields(res);
         });
@@ -39,6 +45,36 @@ var registerZAPIBPS0011Handler = function (that, cds) {
     });
     
     that.on('READ', 'ZAPIBPS0011', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0003');
+        return bupa.run(req.query);
+    });
+    
+    that.on('READ', 'I_PlannedOrderStdVH', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0003');
+        return bupa.run(req.query);
+    });
+    
+    that.on('READ', 'I_SalesOrderStdVH', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0003');
+        return bupa.run(req.query);
+    });
+    
+    that.on('READ', 'I_WorkCenterStdVH', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0003');
+        return bupa.run(req.query);
+    });
+    
+    that.on('READ', 'I_ProductionOrderStdVH', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0003');
+        return bupa.run(req.query);
+    });
+    
+    that.on('READ', 'I_MaterialStdVH', async req => {
+        const bupa = await cds.connect.to('ZSRVBHPP0003');
+        return bupa.run(req.query);
+    });
+    
+    that.on('READ', 'I_PlantStdVH', async req => {
         const bupa = await cds.connect.to('ZSRVBHPP0003');
         return bupa.run(req.query);
     });
@@ -116,6 +152,15 @@ function formatProdOrderColumns(req){
     var columns = []
     req.query.SELECT.columns.forEach(element => {
         if(["BTYPEORDER","TRANS_DES", "BTYPEITEM", "BTYPECAT", "BTYPESTATUS", "PRDSTNO",  "AUFNR", "ZZG_PRINTED_REV", "ZPRINT", "STATUS"].indexOf(element.ref[0]) === -1){
+            columns.push(element);
+        }
+    });
+    return columns;
+}
+function formatCancelColumns(req){
+    var columns = []
+    req.query.SELECT.columns.forEach(element => {
+        if(["STATUS"].indexOf(element.ref[0]) === -1){
             columns.push(element);
         }
     });

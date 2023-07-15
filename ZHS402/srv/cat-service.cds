@@ -1839,7 +1839,9 @@ service ZAPIBPS0007 {
 service ZAPIBPS0008 {
     entity ZCDSEHMMC0012 as projection on ZSRVBHMM0008.ZCDSEHMMC0012 {
         *,
-        null as SEQ_NO               : String(50)  @title: 'No',
+        key null as SEQ_NO               : String(50)  @title: 'No',
+        MaterialDesc as ComponentDescription                : String(3)  @title: 'Component Description',
+        MaterialType as ComponentMaterialType               : String(3)  @title: 'Material Type of Component',
         null as E_DOC_TYPE               : String(3)  @title: 'Document category',
         null as E_DOC_NO               : String(18)  @title: 'Document No.',
         null as PS_GROUP_NO               : String(3)  @title: 'Page',
@@ -1871,11 +1873,14 @@ service ZAPIBPS0008 {
         null as SummaryType             : String(50)  @title: 'Summary Type',
         null as OutputType              : String(50)  @title: 'Output Type',
         null as RawMaterialOutputType   : String(50)  @title: 'Raw Material Output Type',
+        null as RequirementQty   : Decimal(13,3)  @title: 'Requirement Qty',
+        null as AlternativeBOM    : Integer  @title: 'Alternative BOM',
+        null as LEVEL    : Integer  @title: 'Level', 
+        null as PARTS_QTY    : Integer  @title: 'Parts Quantity',
+        null as PARTS_QTY_UNIT    : Integer  @title: 'Parts Quantity unit',
     }; 
 }
-
-
-//Master Upload Screen
+//Master Upload Screen L/T
 @protocol: 'rest'
 service ZAPIBPS0009 {
      @cds.persistence.skip
