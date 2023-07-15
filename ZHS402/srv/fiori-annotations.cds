@@ -5475,7 +5475,14 @@ annotate ZAPIBPS0011.ZCDSEHPPC0023 {
     })
     aufnr;  
 }
-
+annotate ZAPIBPS0011.ZCDSEHPPC0010 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : plant,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
 
 annotate ZAPIBPS0011.ZCDSEHPPC0010 {  
     @(Common : {
