@@ -184,8 +184,11 @@ async function formatProdOrderFields(res, sBTYPEORDER, sTRANS_DES){
             object.ZZG_PRINTED_REV = aZTHBT0028[0].ZZG_PRINTED_REV;
             object.ZPRINT = aZTHBT0028[0].ZPRINT;
         }
-        object = {...object, ...element}
-        finalData.push(object);
+        object = {...object, ...element};
+        if(((sBTYPEORDER && aZTHBT0029.length === 0)) || ((sTRANS_DES && aZTHBT0029.length === 0))){
+            finalData.push(object);
+        }
+        
     }
     return finalData; 
 }

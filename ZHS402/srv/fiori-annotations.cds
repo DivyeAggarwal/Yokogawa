@@ -5785,18 +5785,9 @@ annotate ZAPIBPS0011.ZCDSEHPPC0012 {
     workc;  
 }
 
-
-annotate ZAPIBPS0011.ZCDSEHPPC0014 @(Capabilities.FilterRestrictions : {
-   FilterExpressionRestrictions : [
-        {
-            Property : BTYPEORDER,
-            AllowedExpressions : 'SingleValue'
-        },
-        {
-            Property : TRANS_DES,
-            AllowedExpressions : 'SingleValue'
-        }
-    ]
+ 
+annotate ZAPIBPS0011.ZCDSEHPPC0014 @(Capabilities.SortRestrictions : {
+   NonSortableProperties:[BTYPEORDER,TRANS_DES]
 });
 
 annotate ZAPIBPS0011.ZCDSEHPPC0010 @(Capabilities.FilterRestrictions : {
