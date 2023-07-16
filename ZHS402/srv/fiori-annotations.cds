@@ -4501,14 +4501,14 @@ annotate ZAPIBPS0011.ZCDSEHPPC0023 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : matnr
             },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : zz1_mscode_prd
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : comp_part
-            // },
+            {
+                $Type : 'UI.DataField',
+                Value : zz1_mscode_prd
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : cmatnr
+            },
             {
                 $Type : 'UI.DataField',
                 Value : maktx
@@ -4571,8 +4571,8 @@ annotate ZAPIBPS0011.ZCDSEHPPC0023 with @(UI : {
     aufnr @( title: 'Production Order' );
     plnum @( title: 'Planned Order' );
     matnr @( title: 'Material' );
-    // zz1_mscode_prd @( title: 'MS Code' );
-    // comp_part @( title: 'Component Material' );
+    zz1_mscode_prd @( title: 'MS Code' );
+    cmatnr @( title: 'Component Material' );
     maktx @( title: 'Material text' );
     posnr_rma @( title: 'BOM Item' );
     bdter @( title: 'Requirement date' );
@@ -5786,6 +5786,31 @@ annotate ZAPIBPS0011.ZCDSEHPPC0012 {
 }
 
 
+annotate ZAPIBPS0011.ZCDSEHPPC0014 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : BTYPEORDER,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : TRANS_DES,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
+
+annotate ZAPIBPS0011.ZCDSEHPPC0010 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : BTYPEORDER,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : TRANS_DES,
+            AllowedExpressions : 'SingleValue'
+        }
+    ]
+});
 
 annotate ZAPIBPS0011.ZCDSEHPPC0014 {  
     @(Common : {

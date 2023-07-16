@@ -7,9 +7,28 @@ var registerZAPIBPS0011Handler = function (that, cds) {
     
     that.on('READ', 'ZCDSEHPPC0010', async req => {
         const bupa = await cds.connect.to('ZSRVBHPP0003');       
-        req.query.SELECT.columns = formatProdOrderColumns(req);
+        req.query.SELECT.columns = formatProdOrderColumns(req); 
+        var where = [];
+        var sBTYPEORDER = "";
+        var sTRANS_DES = "";
+        for (let index = 0; index < req.query.SELECT.where.length; index++) {
+            const element = req.query.SELECT.where[index];
+            if(element && element.ref && (element.ref[0] === "BTYPEORDER" || element.ref[0] === "TRANS_DES")){
+                index = index + 2;
+                if(element.ref[0] === "BTYPEORDER"){
+                    sBTYPEORDER = req.query.SELECT.where[index].val
+                }
+                if(element.ref[0] === "TRANS_DES"){
+                    sTRANS_DES = req.query.SELECT.where[index].val
+                }
+                where.pop();
+            }else{
+                where.push(element);
+            }
+        }
+        req.query.SELECT.where = where;
         return bupa.run(req.query).then(async (res) => {           
-            return formatProdOrderFields(res);
+            return formatProdOrderFields(res, sBTYPEORDER, sTRANS_DES);
         });
     });
     
@@ -39,8 +58,27 @@ var registerZAPIBPS0011Handler = function (that, cds) {
     that.on('READ', 'ZCDSEHPPC0014', async req => {
         const bupa = await cds.connect.to('ZSRVBHPP0003');       
         req.query.SELECT.columns = formatProdOrderColumns(req);
+        var where = [];
+        var sBTYPEORDER = "";
+        var sTRANS_DES = "";
+        for (let index = 0; index < req.query.SELECT.where.length; index++) {
+            const element = req.query.SELECT.where[index];
+            if(element && element.ref && (element.ref[0] === "BTYPEORDER" || element.ref[0] === "TRANS_DES")){
+                index = index + 2;
+                if(element.ref[0] === "BTYPEORDER"){
+                    sBTYPEORDER = req.query.SELECT.where[index].val
+                }
+                if(element.ref[0] === "TRANS_DES"){
+                    sTRANS_DES = req.query.SELECT.where[index].val
+                }
+                where.pop();
+            }else{
+                where.push(element);
+            }
+        }
+        req.query.SELECT.where = where;
         return bupa.run(req.query).then(async (res) => {           
-            return formatProdOrderFields(res);
+            return formatProdOrderFields(res, sBTYPEORDER, sTRANS_DES);
         });
     });
     
@@ -100,7 +138,7 @@ async function formatProdOrderCancelFields(res){
     return finalData; 
 }
 
-async function formatProdOrderFields(res){
+async function formatProdOrderFields(res, sBTYPEORDER, sTRANS_DES){
     // console.log(res);
     var finalData = [];
     for (let index = 0; index < res.length; index++) {
@@ -116,16 +154,20 @@ async function formatProdOrderFields(res){
             ZZG_PRINTED_REV:"",
             ZPRINT:"",
         }
+        var objet = {}
         if(element.porder){
-            var aZTHBT0029 = await SELECT.from('ZHS402.ZTHBT0029').where({
-                PAUFNR: element.porder
-            });
+            objet.PAUFNR = element.porder;
         }else{
-            var aZTHBT0029 = await SELECT.from('ZHS402.ZTHBT0029').where({
-                PAUFNR: element.aufnr
-            });
+            objet.PAUFNR = element.aufnr;
+        }
+        if(sBTYPEORDER){
+            objet.BTYPEORDER = sBTYPEORDER;
+        }
+        if(sTRANS_DES){
+            objet.TRANS_DES = sTRANS_DES;
         }
         
+        var aZTHBT0029 = await SELECT.from('ZHS402.ZTHBT0029').where(objet);
         if(aZTHBT0029.length > 0){
             object.BTYPEORDER = aZTHBT0029[0].BTYPEORDER;
             object.BTYPEITEM = aZTHBT0029[0].BTYPEITEM;
