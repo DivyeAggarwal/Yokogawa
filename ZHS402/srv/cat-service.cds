@@ -693,13 +693,13 @@ service ZCDSEHBTC0007 {
     }
     @cds.persistence.skip
     entity Formalize {
-            E_DOC_TYPE     : String(3)  @title: 'Document Type7';
+            E_DOC_TYPE     : String(3)  @title: 'Document Type';
             WERKS          : String(4)  @title: 'Plant';
-        key E_DOC_NO       : String(18) @title: 'Technical document No';
-        key E_REV_NO       : String(5)  @title: 'Technical renewal REV No';
+        key E_DOC_NO       : String(18) @title: 'Document Number';
+        key E_REV_NO       : String(5)  @title: 'Revision Number';
         key PS_GROUP_NO    : String(3)  @title: 'PS group No';
         key PS_ITEM_NO     : String(3)  @title: 'PS Item No';
-            FORMALIZE_DATE : Date       @title: 'Formalized Date';
+            FORMALIZE_DATE : Date       @title: 'Formalization Date';
             CREATION_DATE  : Date       @title: 'Creation Date';
     }
 

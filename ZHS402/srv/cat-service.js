@@ -711,6 +711,7 @@ this.on('READ', 'ZCDSEHPPB0003', async req => {
             MODEL: context.MODEL,
         })
         if (mscode.length > 0) {
+            await UPDATE.entity('ZHS402.ZTHBT0033').with({ STATUS: "Error : End of Process" }).where({ MSCODE: { '=': MSCODE }, PRODUCTCAREER: { '=': PRODUCTCAREER }, INSTRUMENTMODEL: { '=': INSTRUMENTMODEL }, PARTSNUMBER: { '=': PARTSNUMBER }, MODEL: { '=': MODEL } });
             return;
         } else {
             if (PPLFLAG == "X") {
