@@ -623,13 +623,11 @@
           "notNull": true
         },
         "serialnumber": {
-          "key": true,
           "type": "cds.String",
           "length": 18,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Serial No",
-          "@sap.quickinfo": "Serial Number",
-          "notNull": true
+          "@sap.quickinfo": "Serial Number"
         },
         "plnum": {
           "type": "cds.String",
@@ -740,11 +738,6 @@
           "@sap.label": "Sales Order Item",
           "@sap.quickinfo": "Item number of the SD document"
         },
-        "atwrt": {
-          "type": "cds.String",
-          "length": 70,
-          "@sap.label": "Characteristic Value"
-        },
         "projn": {
           "type": "cds.String",
           "length": 24,
@@ -752,13 +745,11 @@
         },
         "comb_ind": {
           "type": "cds.String",
-          "length": 70,
-          "@sap.label": "Characteristic Value"
+          "length": 70
         },
         "comb_no": {
           "type": "cds.String",
-          "length": 70,
-          "@sap.label": "Characteristic Value"
+          "length": 70
         },
         "compponentno": {
           "type": "cds.String",
@@ -848,23 +839,19 @@
         },
         "Tokuchu_no": {
           "type": "cds.String",
-          "length": 70,
-          "@sap.label": "Characteristic Value"
+          "length": 70
         },
         "IM_no": {
           "type": "cds.String",
-          "length": 70,
-          "@sap.label": "Characteristic Value"
+          "length": 70
         },
         "XJ_no": {
           "type": "cds.String",
-          "length": 70,
-          "@sap.label": "Characteristic Value"
+          "length": 70
         },
         "Tokuchu_part_dt": {
           "type": "cds.String",
-          "length": 70,
-          "@sap.label": "Characteristic Value"
+          "length": 70
         },
         "wempf": {
           "type": "cds.String",
@@ -874,8 +861,7 @@
         "Neuclear": {
           "type": "cds.String",
           "length": 70,
-          "@sap.label": "Neuclear",
-          "@sap.quickinfo": "Characteristic Value"
+          "@sap.label": "Neuclear"
         }
       }
     },
@@ -901,12 +887,23 @@
           "notNull": true
         },
         "aufnr": {
+          "key": true,
           "type": "cds.String",
           "length": 12,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Order",
           "@sap.quickinfo": "Order Number",
-          "@sap.value.list": "standard"
+          "@sap.value.list": "standard",
+          "notNull": true
+        },
+        "comp_part": {
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "notNull": true
         },
         "plnum": {
           "type": "cds.String",
@@ -927,13 +924,6 @@
           "type": "cds.String",
           "length": 80,
           "@sap.label": "MS Code"
-        },
-        "comp_part": {
-          "type": "cds.String",
-          "length": 40,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Material",
-          "@sap.quickinfo": "Material Number"
         },
         "posnr": {
           "type": "cds.String",
@@ -1134,17 +1124,21 @@
           "notNull": true
         },
         "aufnr": {
+          "key": true,
           "type": "cds.String",
           "length": 12,
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production Order",
           "@sap.quickinfo": "Order Number",
-          "@sap.value.list": "standard"
+          "@sap.value.list": "standard",
+          "notNull": true
         },
         "vornr": {
+          "key": true,
           "type": "cds.String",
           "length": 24,
-          "@sap.display.format": "NonNegative"
+          "@sap.display.format": "NonNegative",
+          "notNull": true
         },
         "reporttype": {
           "type": "cds.String",
@@ -1764,6 +1758,23 @@
           "length": 8,
           "@sap.label": "Order type"
         },
+        "ord_trf_st": {
+          "type": "cds.String",
+          "length": 10,
+          "@sap.label": "Order Transfer status"
+        },
+        "ord_trf": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "trf_cc": {
+          "type": "cds.String",
+          "length": 10
+        },
+        "trf_link": {
+          "type": "cds.String",
+          "length": 10
+        },
         "SLTApproved": {
           "type": "cds.String",
           "length": 1
@@ -1806,7 +1817,8 @@
         "Neuclear": {
           "type": "cds.String",
           "length": 70,
-          "@sap.label": "Characteristic Value"
+          "@sap.label": "Neuclear",
+          "@sap.quickinfo": "Characteristic Value"
         },
         "comb_ind": {
           "type": "cds.String",
