@@ -1839,7 +1839,7 @@ service ZAPIBPS0007 {
 service ZAPIBPS0008 {
     entity ZCDSEHMMC0012 as projection on ZSRVBHMM0008.ZCDSEHMMC0012 {
         *,
-        key null as SEQ_NO               : String(50)  @title: 'No',
+        key null as SEQ_NO               : String(10)  @title: 'No',
         MaterialDesc as ComponentDescription                : String(3)  @title: 'Component Description',
         MaterialType as ComponentMaterialType               : String(3)  @title: 'Material Type of Component',
         null as E_DOC_TYPE               : String(3)  @title: 'Document category',
@@ -1857,7 +1857,7 @@ service ZAPIBPS0008 {
         null as INVALID_D               : Date @title: 'Valid To',
         null as CREATED_ON               : Date @title: 'Created on',
         null as CHANGED_ON               : Date  @title: 'Changed on',
-        null as InputType               : String(50)  @title: 'Input', 
+        null as InputType               : String(50)  @title: 'Input Type', 
         null as SELECT_SIGN               : String(1)  @title: 'Select sign',
         null as SAFETY_SIGN               : String(1)  @title: 'Safety sign',
         null as ANTIEXPLODE_SIGN               : String(1)  @title: 'Antiexplode sign',

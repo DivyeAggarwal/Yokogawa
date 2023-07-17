@@ -4141,35 +4141,6 @@ annotate ZCDSEHBTC0015.OrderPartInformation {
     
 }
 
-//9994 BOM Explosion
-annotate ZAPIBPS0008.ZCDSEHMMC0012 @(Capabilities.FilterRestrictions : {
-   FilterExpressionRestrictions : [
-        {
-            Property : InputType,
-            AllowedExpressions : 'SingleValue'
-        },
-        {
-            Property : InputTypeCode,
-            AllowedExpressions : 'SingleValue'
-        },
-        {
-            Property : plant,
-            AllowedExpressions : 'SingleValue'
-        },
-        {
-            Property : Material,
-            AllowedExpressions : 'SingleValue'
-        },
-        {
-            Property : MaterialType,
-            AllowedExpressions : 'SingleValue'
-        },
-        {
-            Property : lgpro,
-            AllowedExpressions : 'SingleValue'
-        }
-    ]
-});
 annotate ZAPIBPS0007.IndividualIssue {
     @Common.ValueListWithFixedValues : true
     @(Common : {
@@ -5117,10 +5088,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : zz1_linkagenumber_sdi
             },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : projn
-            // },
+            {
+                $Type : 'UI.DataField',
+                Value : pspel
+            },
             {
                 $Type : 'UI.DataField',
                 Value : Leveling_g
@@ -5169,22 +5140,22 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
                 $Type : 'UI.DataField',
                 Value : IM_no
             },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : aprio
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : traf_ord
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : traf_cc
-            // },
-            // {
-            //     $Type : 'UI.DataField',
-            //     Value : trf_linkage
-            // },
+            {
+                $Type : 'UI.DataField',
+                Value : ord_trf_st
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : ord_trf
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : trf_cc
+            },
+            {
+                $Type : 'UI.DataField',
+                Value : trf_link
+            },
             {
                 $Type : 'UI.DataField',
                 Value : pkkey
@@ -5245,10 +5216,10 @@ annotate ZAPIBPS0011.ZCDSEHPPC0014 with @(UI : {
     comb_no @( title: 'Combination No. ' );  
     IM_no @( title: 'IM' );  
     // txt04 @( title: 'B-Type Parent Prod Order Status' );  
-    // aprio @( title: 'Order Transfer status' );  
-    // traf_ord @( title: 'Order Transfer ' );  
-    // traf_cc @( title: 'Transfer cost center' );  
-    // zz1_linkagenumber_sdi @( title: 'Transfer Linkage' );  
+    ord_trf_st @( title: 'Order Transfer status' );  
+    ord_trf @( title: 'Order Transfer ' );  
+    trf_cc @( title: 'Transfer cost center' );  
+    trf_link @( title: 'Transfer Linkage' );  
     BTYPECAT @( title: 'B Type Category' );  
     PRDSTNO  @( title: 'B Type Prod. Start No' );  
     BTYPEITEM @( title: 'B Type start No. Item' );  
@@ -5937,8 +5908,8 @@ annotate  ZAPIBPS0008.ZCDSEHMMC0012 with @(
             Title: { Value: SEQ_NO },
             Description: { Value: SEQ_NO }
         },
-        SelectionFields: [ InputType,InputTypeCode,PROD_CAREER,plant,EFFECT_D,RequirementQty,NoOutputRepScreen,AlternativeBOM,
-        ExplosionType,SummaryType,OutputType,RawMaterialOutputType],
+        // SelectionFields: [ InputType,InputTypeCode,PROD_CAREER,plant,EFFECT_D,RequirementQty,NoOutputRepScreen,AlternativeBOM,
+        // ExplosionType,SummaryType,OutputType,RawMaterialOutputType],
         LineItem: [
             { Value: SEQ_NO },
             { Value: E_DOC_TYPE },
@@ -6025,3 +5996,56 @@ annotate  ZAPIBPS0008.ZCDSEHMMC0012 with @(
         ]
     }
 );
+ 
+annotate ZAPIBPS0008.ZCDSEHMMC0012 @(Capabilities.FilterRestrictions : {
+   FilterExpressionRestrictions : [
+        {
+            Property : InputType,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : InputTypeCode,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : PROD_CAREER,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : plant,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : EFFECT_D,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : RequirementQty,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : NoOutputRepScreen,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : AlternativeBOM,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : ExplosionType,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : SummaryType,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : OutputType,
+            AllowedExpressions : 'SingleValue'
+        },
+        {
+            Property : RawMaterialOutputType,
+            AllowedExpressions : 'SingleValue'
+        } 
+    ]
+});

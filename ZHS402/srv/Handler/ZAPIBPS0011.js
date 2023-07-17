@@ -186,6 +186,8 @@ async function formatProdOrderFields(res, sBTYPEORDER, sTRANS_DES){
         }
         object = {...object, ...element};
         if(((sBTYPEORDER && aZTHBT0029.length === 0)) || ((sTRANS_DES && aZTHBT0029.length === 0))){
+           
+        }else{
             finalData.push(object);
         }
         
