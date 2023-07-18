@@ -28,8 +28,7 @@ using ZSRVBHMM0008 from './external/ZSRVBHMM0008';
 using ZSRVBHPP0003 from './external/ZSRVBHPP0003';
 using ZAPIHPS0003_SRV from './external/ZAPIHPS0003_SRV';
 using ZSRVBHMM0007 from './external/ZSRVBHMM0007';
-using ZAPIHMM0003_SRV from './external/ZAPIHMM0003_SRV';
-using ZSRVBHPP0018 from './external/ZSRVBHPP0018';
+using ZAPIHMM0003_SRV from './external/ZAPIHMM0003_SRV'; 
 
 service CatalogService {
     entity ZCDSEHCSC0003                as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -1741,7 +1740,7 @@ service ZCAPIH0020 {
     entity PickingData                   as projection on ZSRVBHPP0018.PickingData;
     entity ZCDSEHPPB0003                as projection on ZSRVBHPP0018.ZCDSEHPPB0003;
     entity ZCDSEHPPB0008                as projection on ZSRVBHPP0018.ZCDSEHPPB0008;
-    entity ZCDSEHPPB0095                as projection on ZSRVBHPP0018.ZCDSEHPPB0095;
+    // entity ZCDSEHPPB0095                as projection on ZSRVBHPP0018.ZCDSEHPPB0095;
     entity ZCDSEHPPB0100                as projection on ZSRVBHPP0018.ZCDSEHPPB0100;
     entity ZCDSEHPPB0101                as projection on ZSRVBHPP0018.ZCDSEHPPB0101;
 }
@@ -2058,6 +2057,6 @@ service ZAPIBPS0013 {
             PLANT: String(4) @title : 'Plant';
             FORMALIZEDATE: Date @title : 'Formalize Date';
             MCODE: String(40) @title : 'Material Code';
-            CREATION_DATE: Date) @title : 'Material Code Creation Date';
+            CREATION_DATE: Date @title : 'Material Code Creation Date';
         }
  }
