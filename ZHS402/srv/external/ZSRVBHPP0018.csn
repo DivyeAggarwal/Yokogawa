@@ -95,42 +95,6 @@
         }
       }
     },
-    "ZSRVBHPP0018.ZCDSEHPPB0095": {
-      "kind": "entity",
-      "@cds.external": true,
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.content.version": "1",
-      "@sap.label": "Value help for Issue",
-      "@sap.value.list": "true",
-      "elements": {
-        "DOMALANGU": {
-          "key": true,
-          "type": "cds.String",
-          "length": 2,
-          "@sap.label": "Lang.",
-          "@sap.quickinfo": "Language Key",
-          "notNull": true
-        },
-        "domvalue_l": {
-          "key": true,
-          "type": "cds.String",
-          "length": 10,
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Lower Value",
-          "@sap.quickinfo": "Values for Domains: Single Value/Lower Limit",
-          "notNull": true
-        },
-        "Value": {
-          "type": "cds.String",
-          "length": 60,
-          "@sap.label": "Short Descript.",
-          "@sap.quickinfo": "Short Text for Fixed Values"
-        }
-      }
-    },
     "ZSRVBHPP0018.ZCDSEHPPB0100": {
       "kind": "entity",
       "@cds.external": true,
@@ -312,8 +276,8 @@
           "key": true,
           "type": "cds.String",
           "length": 40,
+          "@sap.required.in.filter": "true",
           "@sap.label": "Issue",
-          "@sap.value.list": "fixed-values",
           "notNull": true
         },
         "PickNo": {

@@ -29,6 +29,7 @@ using ZSRVBHPP0003 from './external/ZSRVBHPP0003';
 using ZAPIHPS0003_SRV from './external/ZAPIHPS0003_SRV';
 using ZSRVBHMM0007 from './external/ZSRVBHMM0007';
 using ZAPIHMM0003_SRV from './external/ZAPIHMM0003_SRV';
+using ZSRVBHPP0018 from './external/ZSRVBHPP0018';
 
 service CatalogService {
     entity ZCDSEHCSC0003                as projection on TimeSheetEntry.ZCDSEHCSC0003 {
@@ -2013,3 +2014,13 @@ entity ZAPIBPS0012Report as projection on ZSRVBHMM0007.ZCDSEHMMC0014 {
             // null as HeaderToItemNav : String
     };
 } 
+
+service ZAPIBPS0013 {
+        entity ZCDSEHPPC0018 {
+            EXECUTE_MODE: String(1) @title : 'Execute Mode';
+            PLANT: String(4) @title : 'Plant';
+            FORMALIZEDATE: Date @title : 'Formalize Date';
+            MCODE: String(40) @title : 'Material Code';
+            CREATION_DATE: Date) @title : 'Material Code Creation Date';
+        }
+ }

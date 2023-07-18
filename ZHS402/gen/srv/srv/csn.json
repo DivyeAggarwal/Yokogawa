@@ -17523,7 +17523,7 @@
       ],
       "elements": {
         "E_DOC_TYPE": {
-          "@title": "Document Type7",
+          "@title": "Document Type",
           "type": "cds.String",
           "length": 3
         },
@@ -17548,7 +17548,7 @@
           "length": 4
         },
         "E_DOC_NO": {
-          "@title": "Technical document No",
+          "@title": "Document Number",
           "@Common.Label": "Document number",
           "@Common.ValueList.Label": "DOC Type/Doc No",
           "@Common.ValueList.CollectionPath": "DOC_NO_HELP",
@@ -17649,7 +17649,7 @@
           "length": 18
         },
         "E_REV_NO": {
-          "@title": "Technical renewal REV No",
+          "@title": "Revision Number",
           "key": true,
           "type": "cds.String",
           "length": 5
@@ -17667,7 +17667,7 @@
           "length": 3
         },
         "FORMALIZE_DATE": {
-          "@title": "Formalized Date",
+          "@title": "Formalization Date",
           "type": "cds.Date"
         },
         "CREATION_DATE": {
@@ -41906,6 +41906,411 @@
     },
     "ZAPIBPS0008.ZCDSEHMMC0012": {
       "kind": "entity",
+      "@UI.HeaderInfo.TypeName": "BOM Explosion Report",
+      "@UI.HeaderInfo.TypeNamePlural": "BOM Explosion Report",
+      "@UI.HeaderInfo.Title.Value": {
+        "=": "SEQ_NO"
+      },
+      "@UI.HeaderInfo.Description.Value": {
+        "=": "SEQ_NO"
+      },
+      "@UI.LineItem": [
+        {
+          "Value": {
+            "=": "SEQ_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_DOC_TYPE"
+          }
+        },
+        {
+          "Value": {
+            "=": "LEVEL"
+          }
+        },
+        {
+          "Value": {
+            "=": "plant"
+          }
+        },
+        {
+          "Value": {
+            "=": "Material"
+          }
+        },
+        {
+          "Value": {
+            "=": "MaterialDesc"
+          }
+        },
+        {
+          "Value": {
+            "=": "MaterialType"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_DOC_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_GROUP_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_ITEM_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "E_REV_NO"
+          }
+        },
+        {
+          "Value": {
+            "=": "IDATS"
+          }
+        },
+        {
+          "Value": {
+            "=": "component"
+          }
+        },
+        {
+          "Value": {
+            "=": "ComponentDescription"
+          }
+        },
+        {
+          "Value": {
+            "=": "ComponentMaterialType"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_QTY"
+          }
+        },
+        {
+          "Value": {
+            "=": "PARTS_QTY_UNIT"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_SYMBOL"
+          }
+        },
+        {
+          "Value": {
+            "=": "backflush"
+          }
+        },
+        {
+          "Value": {
+            "=": "bombulk"
+          }
+        },
+        {
+          "Value": {
+            "=": "bomsp"
+          }
+        },
+        {
+          "Value": {
+            "=": "lgpro"
+          }
+        },
+        {
+          "Value": {
+            "=": "schgt"
+          }
+        },
+        {
+          "Value": {
+            "=": "beskz"
+          }
+        },
+        {
+          "Value": {
+            "=": "sobsl"
+          }
+        },
+        {
+          "Value": {
+            "=": "lvorm"
+          }
+        },
+        {
+          "Value": {
+            "=": "pkumw"
+          }
+        },
+        {
+          "Value": {
+            "=": "lgpro"
+          }
+        },
+        {
+          "Value": {
+            "=": "dismm"
+          }
+        },
+        {
+          "Value": {
+            "=": "schgt"
+          }
+        },
+        {
+          "Value": {
+            "=": "beskz"
+          }
+        },
+        {
+          "Value": {
+            "=": "sobsl"
+          }
+        },
+        {
+          "Value": {
+            "=": "lvorm"
+          }
+        },
+        {
+          "Value": {
+            "=": "ekgrp"
+          }
+        },
+        {
+          "Value": {
+            "=": "buom"
+          }
+        },
+        {
+          "Value": {
+            "=": "meins"
+          }
+        },
+        {
+          "Value": {
+            "=": "stprs"
+          }
+        },
+        {
+          "Value": {
+            "=": "waers"
+          }
+        },
+        {
+          "Value": {
+            "=": "verpr"
+          }
+        },
+        {
+          "Value": {
+            "=": "bklas"
+          }
+        },
+        {
+          "Value": {
+            "=": "dispo"
+          }
+        },
+        {
+          "Value": {
+            "=": "dismm"
+          }
+        },
+        {
+          "Value": {
+            "=": "lgpbe"
+          }
+        },
+        {
+          "Value": {
+            "=": "labst"
+          }
+        },
+        {
+          "Value": {
+            "=": "netpr"
+          }
+        },
+        {
+          "Value": {
+            "=": "lifnr"
+          }
+        },
+        {
+          "Value": {
+            "=": "name1"
+          }
+        },
+        {
+          "Value": {
+            "=": "wemng"
+          }
+        },
+        {
+          "Value": {
+            "=": "minbm"
+          }
+        },
+        {
+          "Value": {
+            "=": "arbpl"
+          }
+        },
+        {
+          "Value": {
+            "=": "minbe"
+          }
+        },
+        {
+          "Value": {
+            "=": "bstfe"
+          }
+        },
+        {
+          "Value": {
+            "=": "SFIX_DIGIT_PTN"
+          }
+        },
+        {
+          "Value": {
+            "=": "SFIX_PTN"
+          }
+        },
+        {
+          "Value": {
+            "=": "PROD_CAREER"
+          }
+        },
+        {
+          "Value": {
+            "=": "OPTION_PTN"
+          }
+        },
+        {
+          "Value": {
+            "=": "EFFECT_D"
+          }
+        },
+        {
+          "Value": {
+            "=": "INVALID_D"
+          }
+        },
+        {
+          "Value": {
+            "=": "CREATED_ON"
+          }
+        },
+        {
+          "Value": {
+            "=": "CHANGED_ON"
+          }
+        },
+        {
+          "Value": {
+            "=": "InputTypeCode"
+          }
+        },
+        {
+          "Value": {
+            "=": "PROD_CAREER"
+          }
+        },
+        {
+          "Value": {
+            "=": "plant"
+          }
+        },
+        {
+          "Value": {
+            "=": "EFFECT_D"
+          }
+        },
+        {
+          "Value": {
+            "=": "RequirementQty"
+          }
+        },
+        {
+          "Value": {
+            "=": "ExplosionType"
+          }
+        },
+        {
+          "Value": {
+            "=": "SummaryType"
+          }
+        },
+        {
+          "Value": {
+            "=": "InputType"
+          }
+        },
+        {
+          "Value": {
+            "=": "NoOutputRepScreen"
+          }
+        },
+        {
+          "Value": {
+            "=": "SELECT_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "vagrp"
+          }
+        },
+        {
+          "Value": {
+            "=": "RoHS_info"
+          }
+        },
+        {
+          "Value": {
+            "=": "SAFETY_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "ANTIEXPLODE_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "EMC_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "PED_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "Radio_SIGN"
+          }
+        },
+        {
+          "Value": {
+            "=": "Non_Used"
+          }
+        },
+        {
+          "Value": {
+            "=": "PS_NOTE"
+          }
+        }
+      ],
       "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
         {
           "Property": {
@@ -41921,25 +42326,61 @@
         },
         {
           "Property": {
+            "=": "PROD_CAREER"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
             "=": "plant"
           },
           "AllowedExpressions": "SingleValue"
         },
         {
           "Property": {
-            "=": "Material"
+            "=": "EFFECT_D"
           },
           "AllowedExpressions": "SingleValue"
         },
         {
           "Property": {
-            "=": "MaterialType"
+            "=": "RequirementQty"
           },
           "AllowedExpressions": "SingleValue"
         },
         {
           "Property": {
-            "=": "lgpro"
+            "=": "NoOutputRepScreen"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "AlternativeBOM"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "ExplosionType"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "SummaryType"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "OutputType"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "RawMaterialOutputType"
           },
           "AllowedExpressions": "SingleValue"
         }
@@ -41960,11 +42401,32 @@
         "columns": [
           "*",
           {
+            "key": true,
             "val": null,
             "as": "SEQ_NO",
             "cast": {
               "type": "cds.String",
-              "length": 50
+              "length": 10
+            }
+          },
+          {
+            "ref": [
+              "MaterialDesc"
+            ],
+            "as": "ComponentDescription",
+            "cast": {
+              "type": "cds.String",
+              "length": 3
+            }
+          },
+          {
+            "ref": [
+              "MaterialType"
+            ],
+            "as": "ComponentMaterialType",
+            "cast": {
+              "type": "cds.String",
+              "length": 3
             }
           },
           {
@@ -42208,6 +42670,43 @@
               "type": "cds.String",
               "length": 50
             }
+          },
+          {
+            "val": null,
+            "as": "RequirementQty",
+            "cast": {
+              "type": "cds.Decimal",
+              "precision": 13,
+              "scale": 3
+            }
+          },
+          {
+            "val": null,
+            "as": "AlternativeBOM",
+            "cast": {
+              "type": "cds.Integer"
+            }
+          },
+          {
+            "val": null,
+            "as": "LEVEL",
+            "cast": {
+              "type": "cds.Integer"
+            }
+          },
+          {
+            "val": null,
+            "as": "PARTS_QTY",
+            "cast": {
+              "type": "cds.Integer"
+            }
+          },
+          {
+            "val": null,
+            "as": "PARTS_QTY_UNIT",
+            "cast": {
+              "type": "cds.Integer"
+            }
           }
         ]
       },
@@ -42217,7 +42716,6 @@
           "@sap.required.in.filter": "true",
           "@sap.label": "Plant",
           "@sap.value.list": "standard",
-          "key": true,
           "type": "cds.String",
           "length": 4,
           "notNull": true
@@ -42226,7 +42724,6 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
-          "key": true,
           "type": "cds.String",
           "length": 40,
           "notNull": true
@@ -42512,8 +43009,19 @@
         "SEQ_NO": {
           "@title": "No",
           "@Core.Computed": true,
+          "key": true,
           "type": "cds.String",
-          "length": 50
+          "length": 10
+        },
+        "ComponentDescription": {
+          "@title": "Component Description",
+          "type": "cds.String",
+          "length": 3
+        },
+        "ComponentMaterialType": {
+          "@title": "Material Type of Component",
+          "type": "cds.String",
+          "length": 3
         },
         "E_DOC_TYPE": {
           "@title": "Document category",
@@ -42601,7 +43109,7 @@
           "type": "cds.Date"
         },
         "InputType": {
-          "@title": "Input",
+          "@title": "Input Type",
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
@@ -42694,6 +43202,33 @@
           "@Core.Computed": true,
           "type": "cds.String",
           "length": 50
+        },
+        "RequirementQty": {
+          "@title": "Requirement Qty",
+          "@Core.Computed": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3
+        },
+        "AlternativeBOM": {
+          "@title": "Alternative BOM",
+          "@Core.Computed": true,
+          "type": "cds.Integer"
+        },
+        "LEVEL": {
+          "@title": "Level",
+          "@Core.Computed": true,
+          "type": "cds.Integer"
+        },
+        "PARTS_QTY": {
+          "@title": "Parts Quantity",
+          "@Core.Computed": true,
+          "type": "cds.Integer"
+        },
+        "PARTS_QTY_UNIT": {
+          "@title": "Parts Quantity unit",
+          "@Core.Computed": true,
+          "type": "cds.Integer"
         }
       }
     },
@@ -42847,12 +43382,220 @@
       "@source": "srv/cat-service.cds",
       "kind": "service"
     },
+    "ZAPIBPS0011.I_PlantStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Plant",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.I_PlantStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "PlantName",
+          "@sap.label": "Plant",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "PlantName": {
+          "@sap.label": "Plant Name",
+          "type": "cds.String",
+          "length": 30
+        }
+      }
+    },
+    "ZAPIBPS0011.I_PlannedOrderStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Planned Order",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.I_PlannedOrderStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "PlannedOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        }
+      }
+    },
+    "ZAPIBPS0011.I_MaterialStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Material",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.I_MaterialStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "Material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "Material_Text",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Material_Text": {
+          "@sap.label": "Material Description",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZAPIBPS0011.I_ProductionOrderStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Production Order",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.I_ProductionOrderStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "ProductionOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "OrderDescription",
+          "@sap.label": "Manufacturing Order",
+          "@sap.quickinfo": "Manufacturing Order ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "OrderDescription": {
+          "@sap.label": "Order Text",
+          "@sap.quickinfo": "Manufacturing Order Text",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZAPIBPS0011.I_SalesOrderStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Sales Order",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.I_SalesOrderStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "SalesOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        }
+      }
+    },
+    "ZAPIBPS0011.I_WorkCenterStdVH": {
+      "kind": "entity",
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Work Center",
+      "@sap.value.list": "true",
+      "projection": {
+        "from": {
+          "ref": [
+            "ZSRVBHPP0003.I_WorkCenterStdVH"
+          ]
+        }
+      },
+      "elements": {
+        "WorkCenterInternalID": {
+          "@sap.display.format": "NonNegative",
+          "@sap.text": "WorkCenterInternalID_Text",
+          "@sap.label": "Object ID",
+          "@sap.quickinfo": "Object ID of the resource",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "WorkCenterTypeCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Object Type",
+          "@sap.quickinfo": "Object types of the CIM resource",
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "notNull": true
+        },
+        "WorkCenterInternalID_Text": {
+          "@sap.label": "Work Center Text",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
     "ZAPIBPS0011.ZCDSEHPPC0023": {
       "kind": "entity",
       "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
       "@UI.HeaderInfo.TypeName": "Planned Order Component list",
       "@UI.HeaderInfo.TypeNamePlural": "Planned Order Component list",
-      "@UI.LineItem#PlannedOrderComponentlist": [
+      "@UI.LineItem#PlannedOrderOrderComponents": [
         {
           "$Type": "UI.DataField",
           "Value": {
@@ -42869,6 +43612,18 @@
           "$Type": "UI.DataField",
           "Value": {
             "=": "matnr"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "zz1_mscode_prd"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "cmatnr"
           }
         },
         {
@@ -42956,9 +43711,9 @@
           }
         }
       ],
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.Text": "Planned Order Component list",
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.SelectionVariant.Text": "PlannedOrderComponentlist",
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.SelectionVariant.SelectOptions": [
+      "@UI.SelectionPresentationVariant#PlannedOrderOrderComponents.Text": "Planned Order Component list",
+      "@UI.SelectionPresentationVariant#PlannedOrderOrderComponents.SelectionVariant.Text": "PlannedOrderOrderComponents",
+      "@UI.SelectionPresentationVariant#PlannedOrderOrderComponents.SelectionVariant.SelectOptions": [
         {
           "$Type": "UI.SelectOptionType",
           "PropertyName": {
@@ -42966,7 +43721,7 @@
           }
         }
       ],
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.PresentationVariant.SortOrder": [
+      "@UI.SelectionPresentationVariant#PlannedOrderOrderComponents.PresentationVariant.SortOrder": [
         {
           "Property": {
             "=": "aufnr"
@@ -42974,8 +43729,8 @@
           "Descending": false
         }
       ],
-      "@UI.SelectionPresentationVariant#PlannedOrderComponentlist.PresentationVariant.Visualizations": [
-        "@UI.LineItem#PlannedOrderComponentlist"
+      "@UI.SelectionPresentationVariant#PlannedOrderOrderComponents.PresentationVariant.Visualizations": [
+        "@UI.LineItem#PlannedOrderOrderComponents"
       ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
@@ -42994,8 +43749,20 @@
       "elements": {
         "plnum": {
           "@title": "Planned Order",
+          "@Common.Label": "Planned Order",
+          "@Common.ValueList.CollectionPath": "I_PlannedOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plnum"
+              },
+              "ValueListProperty": "PlannedOrder"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Order",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -43003,9 +43770,25 @@
         },
         "matnr": {
           "@title": "Material",
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "I_MaterialStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "matnr"
+              },
+              "ValueListProperty": "Material"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Material_Text"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 40,
@@ -43013,9 +43796,25 @@
         },
         "aufnr": {
           "@title": "Production Order",
+          "@Common.Label": "Production Order",
+          "@Common.ValueList.CollectionPath": "I_ProductionOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "aufnr"
+              },
+              "ValueListProperty": "ProductionOrder"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "OrderDescription"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Run schedule header",
           "@sap.quickinfo": "Run schedule header number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 12
         },
@@ -43032,6 +43831,18 @@
           "@sap.label": "Requirements date",
           "@sap.quickinfo": "Requirements date for the component",
           "type": "cds.Date"
+        },
+        "posnr": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "cmatnr": {
+          "@title": "Component Material",
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
         },
         "bdmng": {
           "@title": "Req QTY",
@@ -43050,6 +43861,21 @@
         },
         "werks": {
           "@title": "Plant",
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "werks"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.required.in.filter": "true",
           "@sap.label": "Plant",
@@ -43192,45 +44018,18 @@
           "type": "cds.String",
           "length": 3
         },
+        "zz1_mscode_prd": {
+          "@title": "MS Code",
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80
+        },
         "aprio": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Priority",
           "@sap.quickinfo": "Order priority",
           "type": "cds.String",
           "length": 1
-        }
-      }
-    },
-    "ZAPIBPS0011.ZCDSEHPPB0062": {
-      "kind": "entity",
-      "@cds.persistence.skip": true,
-      "@sap.creatable": "false",
-      "@sap.updatable": "false",
-      "@sap.deletable": "false",
-      "@sap.content.version": "1",
-      "@sap.label": "Custom entity for plant and ordr",
-      "@sap.value.list": "true",
-      "projection": {
-        "from": {
-          "ref": [
-            "ZSRVBHPP0003.ZCDSEHPPB0062"
-          ]
-        }
-      },
-      "elements": {
-        "plant": {
-          "@sap.display.format": "UpperCase",
-          "@sap.label": "Plant",
-          "key": true,
-          "type": "cds.String",
-          "length": 4,
-          "notNull": true
-        },
-        "name": {
-          "@sap.label": "Name 1",
-          "@sap.quickinfo": "Name",
-          "type": "cds.String",
-          "length": 30
         }
       }
     },
@@ -43556,6 +44355,20 @@
       "@UI.SelectionPresentationVariant#ProductionOrderstatusList.PresentationVariant.Visualizations": [
         "@UI.LineItem#ProductionOrderstatusList"
       ],
+      "@Capabilities.FilterRestrictions.FilterExpressionRestrictions": [
+        {
+          "Property": {
+            "=": "BTYPEORDER"
+          },
+          "AllowedExpressions": "SingleValue"
+        },
+        {
+          "Property": {
+            "=": "TRANS_DES"
+          },
+          "AllowedExpressions": "SingleValue"
+        }
+      ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
       "@sap.updatable": "false",
@@ -43646,6 +44459,21 @@
       },
       "elements": {
         "plant": {
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plant"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.required.in.filter": "true",
           "@sap.label": "Plant",
@@ -43665,9 +44493,25 @@
           "notNull": true
         },
         "porder": {
+          "@Common.Label": "Production Order",
+          "@Common.ValueList.CollectionPath": "I_ProductionOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "porder"
+              },
+              "ValueListProperty": "ProductionOrder"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "OrderDescription"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production Order",
           "@sap.quickinfo": "Order Number",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 12,
@@ -43684,17 +44528,45 @@
           "notNull": true
         },
         "plnum": {
+          "@Common.Label": "Planned Order",
+          "@Common.ValueList.CollectionPath": "I_PlannedOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plnum"
+              },
+              "ValueListProperty": "PlannedOrder"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned order",
           "@sap.quickinfo": "Planned Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
         "matnr": {
           "@title": "Material",
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "I_MaterialStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "matnr"
+              },
+              "ValueListProperty": "Material"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Material_Text"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material Code",
           "@sap.quickinfo": "Material Number for Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 40
         },
@@ -43786,9 +44658,21 @@
           "length": 4
         },
         "rmanr": {
+          "@Common.Label": "Sales Order",
+          "@Common.ValueList.CollectionPath": "I_SalesOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "rmanr"
+              },
+              "ValueListProperty": "SalesOrder"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales Order",
           "@sap.quickinfo": "Sales and Distribution Document Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -43863,8 +44747,28 @@
           "length": 8
         },
         "work_centre": {
+          "@Common.Label": "Work Center",
+          "@Common.ValueList.CollectionPath": "I_SalesOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "work_centre"
+              },
+              "ValueListProperty": "WorkCenterInternalID"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "WorkCenterInternalID_Text"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "WorkCenterTypeCode"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Work Center",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 8
         },
@@ -44164,6 +45068,21 @@
       "elements": {
         "werks": {
           "@title": "Plant",
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "werks"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.required.in.filter": "true",
           "@sap.label": "Plant",
@@ -44175,24 +45094,68 @@
         },
         "aufnr": {
           "@title": "Production Order",
+          "@Common.Label": "Production Order",
+          "@Common.ValueList.CollectionPath": "I_ProductionOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "aufnr"
+              },
+              "ValueListProperty": "ProductionOrder"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "OrderDescription"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Order",
           "@sap.quickinfo": "Order Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 12
         },
         "plnum": {
           "@title": "Planned Order",
+          "@Common.Label": "Planned Order",
+          "@Common.ValueList.CollectionPath": "I_PlannedOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plnum"
+              },
+              "ValueListProperty": "PlannedOrder"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
         "matnr": {
           "@title": "Material",
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "I_MaterialStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "matnr"
+              },
+              "ValueListProperty": "Material"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Material_Text"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number for Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 40
         },
@@ -44332,8 +45295,20 @@
           "length": 3
         },
         "kdauf": {
+          "@Common.Label": "Sales Order",
+          "@Common.ValueList.CollectionPath": "I_SalesOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "kdauf"
+              },
+              "ValueListProperty": "SalesOrder"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -44370,7 +45345,27 @@
           "length": 10
         },
         "workc": {
+          "@Common.Label": "Work Center",
+          "@Common.ValueList.CollectionPath": "I_SalesOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "workc"
+              },
+              "ValueListProperty": "WorkCenterInternalID"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "WorkCenterInternalID_Text"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "WorkCenterTypeCode"
+            }
+          ],
           "@sap.label": "Work Centre",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -44568,6 +45563,21 @@
       },
       "elements": {
         "werks": {
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "werks"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.required.in.filter": "true",
           "@sap.label": "Plant",
@@ -44579,9 +45589,25 @@
         },
         "aufnr": {
           "@title": "Production Order",
+          "@Common.Label": "Production Order",
+          "@Common.ValueList.CollectionPath": "I_ProductionOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "aufnr"
+              },
+              "ValueListProperty": "ProductionOrder"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "OrderDescription"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production Order",
           "@sap.quickinfo": "Order Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 12
         },
@@ -44772,15 +45798,43 @@
           "length": 4
         },
         "plnum": {
+          "@Common.Label": "Planned Order",
+          "@Common.ValueList.CollectionPath": "I_PlannedOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plnum"
+              },
+              "ValueListProperty": "PlannedOrder"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
         "matnr": {
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "I_MaterialStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "matnr"
+              },
+              "ValueListProperty": "Material"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Material_Text"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number for Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 40
         },
@@ -44852,7 +45906,27 @@
           "length": 10
         },
         "workc": {
+          "@Common.Label": "Work Center",
+          "@Common.ValueList.CollectionPath": "I_SalesOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "workc"
+              },
+              "ValueListProperty": "WorkCenterInternalID"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "WorkCenterInternalID_Text"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "WorkCenterTypeCode"
+            }
+          ],
           "@sap.label": "Work centre",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         }
@@ -44863,11 +45937,11 @@
       "@UI.HeaderInfo.$Type": "UI.HeaderInfoType",
       "@UI.HeaderInfo.TypeName": "Cancelled Production Order",
       "@UI.HeaderInfo.TypeNamePlural": "Cancelled Production Order",
-      "@UI.LineItem#CancellOrderList": [
+      "@UI.LineItem#CancelledOrderList": [
         {
           "$Type": "UI.DataField",
           "Value": {
-            "=": "dwerk"
+            "=": "plant"
           }
         },
         {
@@ -44885,7 +45959,7 @@
         {
           "$Type": "UI.DataField",
           "Value": {
-            "=": "aufnr"
+            "=": "porder"
           }
         },
         {
@@ -44921,13 +45995,13 @@
         {
           "$Type": "UI.DataField",
           "Value": {
-            "=": "kdauf"
+            "=": "vbeln"
           }
         },
         {
           "$Type": "UI.DataField",
           "Value": {
-            "=": "kdpos"
+            "=": "posnr"
           }
         },
         {
@@ -44957,30 +46031,30 @@
         {
           "$Type": "UI.DataField",
           "Value": {
-            "=": "gamng"
+            "=": "STATUS"
           }
         }
       ],
-      "@UI.SelectionPresentationVariant#CancellOrderList.Text": "Planned Order status List",
-      "@UI.SelectionPresentationVariant#CancellOrderList.SelectionVariant.Text": "CancellOrderList",
-      "@UI.SelectionPresentationVariant#CancellOrderList.SelectionVariant.SelectOptions": [
+      "@UI.SelectionPresentationVariant#CancelledOrderList.Text": "Cancelled Production Order",
+      "@UI.SelectionPresentationVariant#CancelledOrderList.SelectionVariant.Text": "CancelledOrderList",
+      "@UI.SelectionPresentationVariant#CancelledOrderList.SelectionVariant.SelectOptions": [
         {
           "$Type": "UI.SelectOptionType",
           "PropertyName": {
-            "=": "dwerk"
+            "=": "porder"
           }
         }
       ],
-      "@UI.SelectionPresentationVariant#CancellOrderList.PresentationVariant.SortOrder": [
+      "@UI.SelectionPresentationVariant#CancelledOrderList.PresentationVariant.SortOrder": [
         {
           "Property": {
-            "=": "dwerk"
+            "=": "porder"
           },
           "Descending": false
         }
       ],
-      "@UI.SelectionPresentationVariant#CancellOrderList.PresentationVariant.Visualizations": [
-        "@UI.LineItem#CancellOrderList"
+      "@UI.SelectionPresentationVariant#CancelledOrderList.PresentationVariant.Visualizations": [
+        "@UI.LineItem#CancelledOrderList"
       ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
@@ -45008,7 +46082,22 @@
         ]
       },
       "elements": {
-        "dwerk": {
+        "plant": {
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plant"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.required.in.filter": "true",
           "@sap.label": "Plant",
@@ -45018,7 +46107,7 @@
           "length": 4,
           "notNull": true
         },
-        "aufnr": {
+        "porder": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production Order",
           "@sap.quickinfo": "Order Number",
@@ -45061,17 +46150,18 @@
           "type": "cds.String",
           "length": 40
         },
-        "kdpos": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Sales Order Item",
-          "type": "cds.String",
-          "length": 6
-        },
-        "kdauf": {
+        "vbeln": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Sales Order",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales Document",
           "type": "cds.String",
           "length": 10
+        },
+        "posnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Document Item",
+          "type": "cds.String",
+          "length": 6
         },
         "maktx": {
           "@sap.label": "Material Description",
@@ -45081,7 +46171,6 @@
         "dispo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "MRP Controller",
-          "@sap.quickinfo": "MRP controller for the order",
           "type": "cds.String",
           "length": 3
         },
@@ -45319,6 +46408,12 @@
         {
           "$Type": "UI.DataField",
           "Value": {
+            "=": "pspel"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
             "=": "Leveling_g"
           }
         },
@@ -45391,6 +46486,30 @@
         {
           "$Type": "UI.DataField",
           "Value": {
+            "=": "ord_trf_st"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "ord_trf"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "trf_cc"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
+            "=": "trf_link"
+          }
+        },
+        {
+          "$Type": "UI.DataField",
+          "Value": {
             "=": "pkkey"
           }
         },
@@ -45457,6 +46576,14 @@
       ],
       "@UI.SelectionPresentationVariant#PlannedOrderstatusList.PresentationVariant.Visualizations": [
         "@UI.LineItem#PlannedOrderstatusList"
+      ],
+      "@Capabilities.SortRestrictions.NonSortableProperties": [
+        {
+          "=": "BTYPEORDER"
+        },
+        {
+          "=": "TRANS_DES"
+        }
       ],
       "@cds.persistence.skip": true,
       "@sap.creatable": "false",
@@ -45548,8 +46675,20 @@
       },
       "elements": {
         "plnum": {
+          "@Common.Label": "Planned Order",
+          "@Common.ValueList.CollectionPath": "I_PlannedOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "plnum"
+              },
+              "ValueListProperty": "PlannedOrder"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Order",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -45557,17 +46696,49 @@
         },
         "matnr": {
           "@title": "Material",
+          "@Common.Label": "Material",
+          "@Common.ValueList.CollectionPath": "I_MaterialStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "matnr"
+              },
+              "ValueListProperty": "Material"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "Material_Text"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 40
         },
         "aufnr": {
           "@title": "Production Order",
+          "@Common.Label": "Production Order",
+          "@Common.ValueList.CollectionPath": "I_ProductionOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "aufnr"
+              },
+              "ValueListProperty": "ProductionOrder"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "OrderDescription"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production order",
           "@sap.quickinfo": "Run schedule header number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 12
         },
@@ -45586,6 +46757,21 @@
           "length": 3
         },
         "pwwrk": {
+          "@Common.Label": "Production Plant",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "pwwrk"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.required.in.filter": "true",
           "@sap.label": "Production Plant",
@@ -45626,9 +46812,21 @@
           "length": 4
         },
         "kdauf": {
+          "@Common.Label": "Sales Order",
+          "@Common.ValueList.CollectionPath": "I_SalesOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "kdauf"
+              },
+              "ValueListProperty": "SalesOrder"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales Order",
           "@sap.quickinfo": "Sales Order Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -45751,9 +46949,29 @@
           "length": 8
         },
         "work_centre": {
+          "@Common.Label": "Work Center",
+          "@Common.ValueList.CollectionPath": "I_SalesOrderStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "work_centre"
+              },
+              "ValueListProperty": "WorkCenterInternalID"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "WorkCenterInternalID_Text"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "WorkCenterTypeCode"
+            }
+          ],
           "@sap.display.format": "UpperCase",
           "@sap.label": "Work centre",
           "@sap.quickinfo": "Work Center",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 8
         },
@@ -85652,6 +86870,59 @@
       "@sap.message.scope.supported": "true",
       "@sap.supported.formats": "atom json xlsx"
     },
+    "ZSRVBHPP0003.I_MaterialStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Material",
+      "@sap.value.list": "true",
+      "elements": {
+        "Material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "Material_Text",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "Material_Text": {
+          "@sap.label": "Material Description",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZSRVBHPP0003.I_PlannedOrderStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Planned Order",
+      "@sap.value.list": "true",
+      "elements": {
+        "PlannedOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        }
+      }
+    },
     "ZSRVBHPP0003.I_PlantStdVH": {
       "kind": "entity",
       "@cds.external": true,
@@ -85677,6 +86948,469 @@
           "@sap.label": "Plant Name",
           "type": "cds.String",
           "length": 30
+        }
+      }
+    },
+    "ZSRVBHPP0003.I_ProductionOrderStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Production Order",
+      "@sap.value.list": "true",
+      "elements": {
+        "ProductionOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.text": "OrderDescription",
+          "@sap.label": "Manufacturing Order",
+          "@sap.quickinfo": "Manufacturing Order ID",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "OrderDescription": {
+          "@sap.label": "Order Text",
+          "@sap.quickinfo": "Manufacturing Order Text",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZSRVBHPP0003.I_SalesOrderStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.searchable": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Sales Order",
+      "@sap.value.list": "true",
+      "elements": {
+        "SalesOrder": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        }
+      }
+    },
+    "ZSRVBHPP0003.I_WorkCenterStdVH": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.content.version": "1",
+      "@sap.label": "Work Center",
+      "@sap.value.list": "true",
+      "elements": {
+        "WorkCenterInternalID": {
+          "@sap.display.format": "NonNegative",
+          "@sap.text": "WorkCenterInternalID_Text",
+          "@sap.label": "Object ID",
+          "@sap.quickinfo": "Object ID of the resource",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "WorkCenterTypeCode": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Object Type",
+          "@sap.quickinfo": "Object types of the CIM resource",
+          "key": true,
+          "type": "cds.String",
+          "length": 2,
+          "notNull": true
+        },
+        "WorkCenterInternalID_Text": {
+          "@sap.label": "Work Center Text",
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "type": "cds.String",
+          "length": 40
+        }
+      }
+    },
+    "ZSRVBHPP0003.ZCDSEHPPB0029": {
+      "kind": "entity",
+      "@cds.external": true,
+      "@cds.persistence.skip": true,
+      "@sap.creatable": "false",
+      "@sap.updatable": "false",
+      "@sap.deletable": "false",
+      "@sap.requires.filter": "true",
+      "@sap.content.version": "1",
+      "@sap.label": "Combine planned and prod data",
+      "elements": {
+        "prodord": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Order",
+          "@sap.quickinfo": "Order Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "planord": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Planned order",
+          "@sap.quickinfo": "Planned Order",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "material": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material Code",
+          "@sap.quickinfo": "Material Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "matdesc": {
+          "@sap.label": "Material Description",
+          "key": true,
+          "type": "cds.String",
+          "length": 40,
+          "notNull": true
+        },
+        "mscode": {
+          "@sap.label": "MS Code",
+          "key": true,
+          "type": "cds.String",
+          "length": 80,
+          "notNull": true
+        },
+        "orderty": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Type",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "mrpctr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "MRP Controller",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "prodsupv": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Prodn Supervisor",
+          "@sap.quickinfo": "Production Supervisor",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "plant": {
+          "@sap.display.format": "UpperCase",
+          "@sap.required.in.filter": "true",
+          "@sap.label": "Plant",
+          "@sap.value.list": "standard",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "orderq": {
+          "@sap.unit": "bunit",
+          "@sap.label": "Total Order Quantity",
+          "key": true,
+          "type": "cds.Decimal",
+          "precision": 13,
+          "scale": 3,
+          "notNull": true
+        },
+        "bunit": {
+          "@sap.label": "Base Unit of Measure",
+          "@sap.semantics": "unit-of-measure",
+          "key": true,
+          "type": "cds.String",
+          "length": 3,
+          "notNull": true
+        },
+        "ssdate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled start date",
+          "@sap.quickinfo": "Scheduled finish",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "sfdate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Scheduled finish date",
+          "@sap.quickinfo": "Scheduled finish",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "bsdate": {
+          "@sap.display.format": "Date",
+          "@sap.label": "Basic finish date",
+          "@sap.quickinfo": "Scheduled finish",
+          "key": true,
+          "type": "cds.Date",
+          "notNull": true
+        },
+        "sstat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "30 Characters",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 30,
+          "notNull": true
+        },
+        "prodv": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Production Version",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "serial": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Serial No",
+          "@sap.quickinfo": "Serial Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 18,
+          "notNull": true
+        },
+        "saleso": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Sales Order",
+          "@sap.quickinfo": "Sales and Distribution Document Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "salesoi": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Order Item",
+          "@sap.quickinfo": "Item number of the SD document",
+          "key": true,
+          "type": "cds.String",
+          "length": 6,
+          "notNull": true
+        },
+        "compno": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Undefined range (can be used for patch levels)",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "linkage": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Linkage No",
+          "@sap.quickinfo": "Field of length 16",
+          "key": true,
+          "type": "cds.String",
+          "length": 16,
+          "notNull": true
+        },
+        "wbse": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "WBS",
+          "@sap.quickinfo": "Character field, 8 characters long",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "leveling": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Leveling Gr",
+          "@sap.quickinfo": "Work Center",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "workc": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Work Center",
+          "key": true,
+          "type": "cds.String",
+          "length": 8,
+          "notNull": true
+        },
+        "sltapp": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "tokuchu": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char 70",
+          "@sap.quickinfo": "Character field, length 70",
+          "key": true,
+          "type": "cds.String",
+          "length": 70,
+          "notNull": true
+        },
+        "xjno": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char 70",
+          "@sap.quickinfo": "Character field, length 70",
+          "key": true,
+          "type": "cds.String",
+          "length": 70,
+          "notNull": true
+        },
+        "nuclear": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Neuclear",
+          "@sap.quickinfo": "Character field, length 70",
+          "key": true,
+          "type": "cds.String",
+          "length": 70,
+          "notNull": true
+        },
+        "tokuchupart": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Char 70",
+          "@sap.quickinfo": "Character field, length 70",
+          "key": true,
+          "type": "cds.String",
+          "length": 70,
+          "notNull": true
+        },
+        "combinno": {
+          "@sap.label": "Characteristic Value",
+          "key": true,
+          "type": "cds.String",
+          "length": 70,
+          "notNull": true
+        },
+        "usagrout": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
+        },
+        "combflag": {
+          "@sap.label": "Characteristic Value",
+          "key": true,
+          "type": "cds.String",
+          "length": 70,
+          "notNull": true
+        },
+        "imf": {
+          "@sap.label": "Characteristic Value",
+          "key": true,
+          "type": "cds.String",
+          "length": 70,
+          "notNull": true
+        },
+        "ordtrfstat": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Order Transfer status",
+          "@sap.quickinfo": "Undefined range (can be used for patch levels)",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "ordertrnf": {
+          "@sap.label": "Order Transfer",
+          "@sap.quickinfo": "Goods Recipient",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "tranfscc": {
+          "@sap.label": "Transfer cost center",
+          "@sap.quickinfo": "Goods Recipient",
+          "key": true,
+          "type": "cds.String",
+          "length": 12,
+          "notNull": true
+        },
+        "kanbanid": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "KANBAN ID",
+          "@sap.quickinfo": "Kanban Identification Number",
+          "key": true,
+          "type": "cds.String",
+          "length": 10,
+          "notNull": true
+        },
+        "btyppo": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "B-Type Parent Prod Order Status",
+          "@sap.quickinfo": "Undefined range (can be used for patch levels)",
+          "key": true,
+          "type": "cds.String",
+          "length": 4,
+          "notNull": true
+        },
+        "memo1": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Manufacturing memo1",
+          "@sap.quickinfo": "Char 20",
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "notNull": true
+        },
+        "memo2": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Manufacturing memo2",
+          "@sap.quickinfo": "Char 20",
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "notNull": true
+        },
+        "memo3": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Manufacturing memo3",
+          "@sap.quickinfo": "Char 20",
+          "key": true,
+          "type": "cds.String",
+          "length": 20,
+          "notNull": true
+        },
+        "ordflag": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Single-Character Flag",
+          "@sap.heading": "",
+          "key": true,
+          "type": "cds.String",
+          "length": 1,
+          "notNull": true
         }
       }
     },
@@ -85741,6 +87475,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production Order",
           "@sap.quickinfo": "Order Number",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 12,
@@ -85759,6 +87494,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned order",
           "@sap.quickinfo": "Planned Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -85766,6 +87502,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material Code",
           "@sap.quickinfo": "Material Number for Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 40
         },
@@ -85851,6 +87588,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales Order",
           "@sap.quickinfo": "Sales and Distribution Document Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -85921,6 +87659,7 @@
         "work_centre": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Work Center",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 8
         },
@@ -86024,12 +87763,14 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Order",
           "@sap.quickinfo": "Order Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 12
         },
         "plnum": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -86037,6 +87778,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number for Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 40
         },
@@ -86163,6 +87905,7 @@
         "kdauf": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -86200,6 +87943,7 @@
         },
         "workc": {
           "@sap.label": "Work Centre",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -86252,6 +87996,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production Order",
           "@sap.quickinfo": "Order Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 12
         },
@@ -86424,6 +88169,7 @@
         "plnum": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -86431,6 +88177,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number for Order",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 40
         },
@@ -86503,6 +88250,7 @@
         },
         "workc": {
           "@sap.label": "Work centre",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         }
@@ -86519,7 +88267,7 @@
       "@sap.content.version": "1",
       "@sap.label": "Cancelled Production Order output",
       "elements": {
-        "dwerk": {
+        "plant": {
           "@sap.display.format": "UpperCase",
           "@sap.required.in.filter": "true",
           "@sap.label": "Plant",
@@ -86529,7 +88277,7 @@
           "length": 4,
           "notNull": true
         },
-        "aufnr": {
+        "porder": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production Order",
           "@sap.quickinfo": "Order Number",
@@ -86570,17 +88318,18 @@
           "type": "cds.String",
           "length": 40
         },
-        "kdpos": {
-          "@sap.display.format": "NonNegative",
-          "@sap.label": "Sales Order Item",
-          "type": "cds.String",
-          "length": 6
-        },
-        "kdauf": {
+        "vbeln": {
           "@sap.display.format": "UpperCase",
-          "@sap.label": "Sales Order",
+          "@sap.label": "Sales document",
+          "@sap.quickinfo": "Sales Document",
           "type": "cds.String",
           "length": 10
+        },
+        "posnr": {
+          "@sap.display.format": "NonNegative",
+          "@sap.label": "Sales Document Item",
+          "type": "cds.String",
+          "length": 6
         },
         "maktx": {
           "@sap.label": "Material Description",
@@ -86590,7 +88339,6 @@
         "dispo": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "MRP Controller",
-          "@sap.quickinfo": "MRP controller for the order",
           "type": "cds.String",
           "length": 3
         },
@@ -86693,6 +88441,7 @@
         "plnum": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Order",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -86702,6 +88451,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 40
         },
@@ -86709,6 +88459,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Production order",
           "@sap.quickinfo": "Run schedule header number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 12
         },
@@ -86770,6 +88521,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Sales Order",
           "@sap.quickinfo": "Sales Order Number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 10
         },
@@ -86886,6 +88638,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Work centre",
           "@sap.quickinfo": "Work Center",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 8
         },
@@ -86940,6 +88693,7 @@
         "plnum": {
           "@sap.display.format": "UpperCase",
           "@sap.label": "Planned Order",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 10,
@@ -86949,6 +88703,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Material",
           "@sap.quickinfo": "Material Number",
+          "@sap.value.list": "standard",
           "key": true,
           "type": "cds.String",
           "length": 40,
@@ -86958,6 +88713,7 @@
           "@sap.display.format": "UpperCase",
           "@sap.label": "Run schedule header",
           "@sap.quickinfo": "Run schedule header number",
+          "@sap.value.list": "standard",
           "type": "cds.String",
           "length": 12
         },
@@ -86973,6 +88729,17 @@
           "@sap.label": "Requirements date",
           "@sap.quickinfo": "Requirements date for the component",
           "type": "cds.Date"
+        },
+        "posnr": {
+          "type": "cds.String",
+          "length": 4
+        },
+        "cmatnr": {
+          "@sap.display.format": "UpperCase",
+          "@sap.label": "Material",
+          "@sap.quickinfo": "Material Number",
+          "type": "cds.String",
+          "length": 40
         },
         "bdmng": {
           "@sap.unit": "meins",
@@ -87119,6 +88886,11 @@
           "@sap.label": "MRP Controller",
           "type": "cds.String",
           "length": 3
+        },
+        "zz1_mscode_prd": {
+          "@sap.label": "MS Code",
+          "type": "cds.String",
+          "length": 80
         },
         "aprio": {
           "@sap.display.format": "UpperCase",
@@ -94904,6 +96676,40 @@
     }
   },
   "extensions": [
+    {
+      "annotate": "ZAPIBPS0011.ZCDSEHPPC0014",
+      "elements": {
+        "ord_trf_st": {
+          "@title": "Order Transfer status"
+        },
+        "ord_trf": {
+          "@title": "Order Transfer "
+        },
+        "trf_cc": {
+          "@title": "Transfer cost center"
+        },
+        "trf_link": {
+          "@title": "Transfer Linkage"
+        },
+        "werks": {
+          "@Common.Label": "Plant",
+          "@Common.ValueList.CollectionPath": "I_PlantStdVH",
+          "@Common.ValueList.Parameters": [
+            {
+              "$Type": "Common.ValueListParameterInOut",
+              "LocalDataProperty": {
+                "=": "werks"
+              },
+              "ValueListProperty": "Plant"
+            },
+            {
+              "$Type": "Common.ValueListParameterDisplayOnly",
+              "ValueListProperty": "PlantName"
+            }
+          ]
+        }
+      }
+    },
     {
       "annotate": "ZCDSEHBTC0001.ZSCREEN1",
       "elements": {
