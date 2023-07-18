@@ -339,9 +339,25 @@
           "@sap.sortable": "false",
           "@sap.filterable": "false"
         },
+        "bomqty": {
+          "type": "cds.String",
+          "length": 1333,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
         "item": {
           "type": "cds.String",
           "length": 1333,
+          "@sap.creatable": "false",
+          "@sap.updatable": "false",
+          "@sap.sortable": "false",
+          "@sap.filterable": "false"
+        },
+        "asmflg": {
+          "type": "cds.String",
+          "length": 10,
           "@sap.creatable": "false",
           "@sap.updatable": "false",
           "@sap.sortable": "false",

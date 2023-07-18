@@ -1838,6 +1838,40 @@ service ZAPIBPS0007 {
 
 
 service ZAPIBPS0008 {
+    entity I_PlantStdVH as projection on ZSRVBHMM0008.I_PlantStdVH;
+    entity ZTHBT003706 as
+        select  
+            ZTHBT0037.MODEL ,
+            ZTHBT0037.E_DOC_TYPE ,
+            ZTHBT0037.E_DOC_NO ,
+            ZTHBT0037.PS_GROUP_NO ,
+            ZTHBT0037.PS_ITEM_NO ,
+            ZTHBT0037.E_REV_NO ,
+            // ZTHBT0037.IDATS,
+            ZTHBT0037.COMP_PART_NO ,
+            ZTHBT0037.PARTS_QTY ,
+            ZTHBT0037.PARTS_QTY_UNIT ,
+            ZTHBT0037.PS_SYMBOL  ,
+            ZTHBT0037.SFIX_DIGIT_PTN  ,
+            ZTHBT0037.SFIX_PTN  ,
+            ZTHBT0037.PROD_CARRER ,
+            ZTHBT0037.OPTION_PTN ,
+            ZTHBT0037.EFFECT_D ,
+            ZTHBT0037.INVALID_D ,
+            ZTHBT0037.createdAt as IDATS  ,
+            ZTHBT0037.modifiedAt as UDATS  ,
+            ZTHBT0037.SELECT_SIGN ,
+            ZTHBT0037.PS_NOTE    ,
+            ZTHBT0037.OR_SIGN   ,
+            ZTHBT0006.SAFETY_SIGN   ,
+            ZTHBT0006.ANTIEXPLODE_SIGN   ,
+            ZTHBT0006.EMC_SIGN ,
+            ZTHBT0006.PED_SIGN ,
+            ZTHBT0006.RADIO_SIGN ,
+            ZTHBT0006.USE_NON_COMPLAINT   
+        from db.ZTHBT0037 as ZTHBT0037
+        join db.ZTHBT0006 as ZTHBT0006
+            on ZTHBT0037.E_PART_NO = ZTHBT0006.E_PARTS_NO;
     entity ZCDSEHMMC0012 as projection on ZSRVBHMM0008.ZCDSEHMMC0012 {
         *,
         key null as SEQ_NO               : String(10)  @title: 'No',
@@ -1877,8 +1911,11 @@ service ZAPIBPS0008 {
         null as RequirementQty   : Decimal(13,3)  @title: 'Requirement Qty',
         null as AlternativeBOM    : Integer  @title: 'Alternative BOM',
         null as LEVEL    : Integer  @title: 'Level', 
-        null as PARTS_QTY    : Integer  @title: 'Parts Quantity',
+        // null as PARTS_QTY    : Integer  @title: 'Parts Quantity',
         null as PARTS_QTY_UNIT    : Integer  @title: 'Parts Quantity unit',
+        null as InputFIle    : String  @title: 'Input File',
+        null as OutputFile    : String  @title: 'Output File',
+        null as InputValidFrom    : Date  @title: 'Valid From',
     }; 
 }
 //Master Upload Screen L/T

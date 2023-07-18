@@ -5926,7 +5926,7 @@ annotate  ZAPIBPS0008.ZCDSEHMMC0012 with @(
             { Value: component },
             { Value: ComponentDescription },
             { Value: ComponentMaterialType },
-            { Value: PARTS_QTY },
+            { Value: bomqty },
             // { Value: PARTS_QTY },req_qty
             { Value: PARTS_QTY_UNIT },
             { Value: PS_SYMBOL },
@@ -5965,7 +5965,9 @@ annotate  ZAPIBPS0008.ZCDSEHMMC0012 with @(
             { Value: arbpl },
             { Value: minbe },
             { Value: bstfe },
-            // 58	STPO-POTX1
+            { Value: asmflg },
+            { Value: bomdesc },
+            // 58	STPO-POTX1 bomqty 
             { Value: SFIX_DIGIT_PTN },
             { Value: SFIX_PTN },
             { Value: PROD_CAREER },
@@ -5995,7 +5997,34 @@ annotate  ZAPIBPS0008.ZCDSEHMMC0012 with @(
             { Value: PS_NOTE }          
         ]
     }
-);
+){    
+    bomdesc @( title: 'BOM Description' ); 
+    bomqty @( title: 'BOM Quantity' ); 
+    asmflg @( title: 'ASM' ); 
+};
+
+
+
+annotate ZAPIBPS0008.ZCDSEHMMC0012 {  
+    @(Common : {
+        Label     : 'Plant',
+        ValueList : {
+            CollectionPath : 'I_PlantStdVH',
+            Parameters     : [
+                {
+                    $Type             : 'Common.ValueListParameterInOut',
+                    LocalDataProperty : plant,
+                    ValueListProperty : 'Plant'
+                },
+                {
+                    $Type             : 'Common.ValueListParameterDisplayOnly',
+                    ValueListProperty : 'PlantName'
+                } 
+            ]
+        }
+    })
+    plant;  
+}
  
 annotate ZAPIBPS0008.ZCDSEHMMC0012 @(Capabilities.FilterRestrictions : {
    FilterExpressionRestrictions : [
