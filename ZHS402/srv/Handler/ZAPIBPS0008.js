@@ -11,7 +11,36 @@ var registerZAPIBPS0008Handler = function (that, cds) {
         return bupa.run(req.query).then(async (res) => {           
             for (let index = 0; index < res.length; index++) {
                 const element = res[index];
+                element.SEQ_NO = ( index + 1 ).toString();
                 const aZTHBT003706 = await SELECT.from('ZAPIBPS0008.ZTHBT003706').where({ WERKS: { '=': element.plant }, E_TR_TYPE: { '!=': 'D' }, PARTS_QTY: { '!=': 0 }, EFFECT_D : { '<=': validFrom }, INVALID_D : { '>=': validFrom } });
+                if(aZTHBT003706.length > 0){
+                    element.E_DOC_TYPE = aZTHBT003706[0].E_DOC_TYPE;
+                    element.E_DOC_NO = aZTHBT003706[0].E_DOC_NO;
+                    element.PS_GROUP_NO = aZTHBT003706[0].PS_GROUP_NO;
+                    element.PS_ITEM_NO = aZTHBT003706[0].PS_ITEM_NO;
+                    element.E_REV_NO = aZTHBT003706[0].E_REV_NO;
+                    element.IDATS = aZTHBT003706[0].IDATS;
+                    element.PS_SYMBOL = aZTHBT003706[0].PS_SYMBOL;
+                    element.SFIX_DIGIT_PTN = aZTHBT003706[0].SFIX_DIGIT_PTN;
+                    element.SFIX_PTN = aZTHBT003706[0].SFIX_PTN;
+                    element.PROD_CARRER = aZTHBT003706[0].PROD_CARRER;
+                    element.OPTION_PTN = aZTHBT003706[0].OPTION_PTN;
+                    element.EFFECT_D = aZTHBT003706[0].EFFECT_D;
+                    element.INVALID_D = aZTHBT003706[0].E_DOCINVALID_D_TYPE;
+                    element.CREATED_ON = aZTHBT003706[0].CREATED_ON;
+                    element.CHANGED_ON = aZTHBT003706[0].CHANGED_ON;
+                    element.SELECT_SIGN = aZTHBT003706[0].SELECT_SIGN;
+                    element.SAFETY_SIGN = aZTHBT003706[0].SAFETY_SIGN;
+                    element.ANTIEXPLODE_SIGN = aZTHBT003706[0].ANTIEXPLODE_SIGN;
+                    element.EMC_SIGN = aZTHBT003706[0].EMC_SIGN;
+                    element.PED_SIGN = aZTHBT003706[0].PED_SIGN;
+                    element.RADIO_SIGN = aZTHBT003706[0].RADIO_SIGN;
+                    element.USE_NON_COMPLAINT = aZTHBT003706[0].USE_NON_COMPLAINT;
+                    element.PS_NOTE = aZTHBT003706[0].PS_NOTE;
+                    element.LEVEL = aZTHBT003706[0].LEVEL;
+                    element.PARTS_QTY_UNIT = aZTHBT003706[0].PARTS_QTY_UNIT;
+                    element.PARTS_QTY = aZTHBT003706[0].PARTS_QTY; 
+                }
                 object.RoHS_info = await getROHSInfo(element.COMP_PART_NO);
                 finalData.push(object);
             }

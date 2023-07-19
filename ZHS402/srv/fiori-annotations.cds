@@ -5970,14 +5970,14 @@ annotate  ZAPIBPS0008.ZCDSEHMMC0012 with @(
             // 58	STPO-POTX1 bomqty 
             { Value: SFIX_DIGIT_PTN },
             { Value: SFIX_PTN },
-            { Value: PROD_CAREER },
+            { Value: PROD_CARRER },
             { Value: OPTION_PTN },
             { Value: EFFECT_D },
             { Value: INVALID_D },
             { Value: CREATED_ON },
             { Value: CHANGED_ON },
             { Value: InputTypeCode },
-            { Value: PROD_CAREER },
+            { Value: PROD_CARRER },
             { Value: plant },
             { Value: EFFECT_D },
             { Value: RequirementQty },
@@ -5992,8 +5992,8 @@ annotate  ZAPIBPS0008.ZCDSEHMMC0012 with @(
             { Value: ANTIEXPLODE_SIGN },
             { Value: EMC_SIGN },
             { Value: PED_SIGN },
-            { Value: Radio_SIGN },
-            { Value: Non_Used },
+            { Value: RADIO_SIGN },
+            { Value: USE_NON_COMPLAINT },
             { Value: PS_NOTE }          
         ]
     }
