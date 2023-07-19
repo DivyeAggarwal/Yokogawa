@@ -2,6 +2,7 @@ var registerZAPIBPS0008Handler = function (that, cds) {
     
     that.on('READ', 'ZCDSEHMMC0012', async req => {
         const bupa = await cds.connect.to('ZSRVBHMM0008');
+        req.query.SELECT.columns = formatProdOrderColumns(req); 
         const validFromIndex = null; 
         const validFrom = null;
         validFromIndex = req.query.SELECT.where.findIndex((filter) => filter && filter.ref && filter.ref.find((field) => field === "InputValidFrom"));
@@ -52,6 +53,19 @@ var registerZAPIBPS0008Handler = function (that, cds) {
     });
 
 
+    function formatProdOrderColumns(req){
+        var columns = []
+        req.query.SELECT.columns.forEach(element => {
+            if(["SEQ_NO","ComponentDescription", "ComponentMaterialType", "E_DOC_NO", "PS_GROUP_NO", "PS_ITEM_NO",  "E_REV_NO", 
+            "IDATS", "PS_SYMBOL", "SFIX_DIGIT_PTN", "SFIX_PTN", "PROD_CARRER", "OPTION_PTN", "EFFECT_D", "INVALID_D", "CREATED_ON",
+            "CHANGED_ON", "InputType", "SELECT_SIGN", "SAFETY_SIGN", "ANTIEXPLODE_SIGN", "RoHS_info", "EMC_SIGN", "PED_SIGN",
+            "RADIO_SIGN", "USE_NON_COMPLAINT", "PS_NOTE", "InputTypeCode", "NoOutputRepScreen", "ExplosionType", "SummaryType","InputValidFrom",
+            "OutputType", "RawMaterialOutputType", "RequirementQty", "AlternativeBOM", "LEVEL", "PARTS_QTY_UNIT", "InputFIle", "OutputFile"].indexOf(element.ref[0]) === -1){
+                columns.push(element);
+            }
+        });
+        return columns;
+    }
     
 async function getROHSInfo(COMP_PART_NO){
     // console.log(res);
